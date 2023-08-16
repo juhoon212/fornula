@@ -1,0 +1,67 @@
+{
+  "name": "lana-pet",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Lana Codes"
+  ],
+  "license": "GPL-2.0",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~4.x",
+    "jquery": "~3.x",
+    "popper.js": "~1.x",
+    "animate.css": "~3.x",
+    "smartmenus": "~1.x",
+    "components-font-awesome": "~5.x",
+    "swiper": "~4.x",
+    "scrollmagic": "~2.x",
+    "magnific-popup": "~1.x"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "smartmenus": {
+      "main": [
+        "dist/jquery.smartmenus.js",
+        "dist/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.css",
+        "dist/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.js"
+      ]
+    },
+    "swiper": {
+      "main": [
+        "dist/js/swiper.js"
+      ]
+    },
+    "components-font-awesome": {
+      "main": [
+        "webfonts/fa-brands-400.eot",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-brands-400.woff",
+        "webfonts/fa-brands-400.ttf",
+        "webfonts/fa-brands-400.svg",
+        "webfonts/fa-regular-400.eot",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-regular-400.woff",
+        "webfonts/fa-regular-400.ttf",
+        "webfonts/fa-regular-400.svg",
+        "webfonts/fa-solid-900.eot",
+        "webfonts/fa-solid-900.woff2",
+        "webfonts/fa-solid-900.woff",
+        "webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.svg"
+      ]
+    }
+  }
+}
