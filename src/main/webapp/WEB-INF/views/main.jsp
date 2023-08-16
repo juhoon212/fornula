@@ -48,10 +48,10 @@
     opacity: 1;
  }
  .white-bg {
-    width: 600px;
+    width: 400px;
     height: 600px;
     background-color: white;
-    border-radius: 10%;
+    border-radius: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
     display: block;
     width: 250px;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 15px;
  }
  
  .id-error, .pw-error {
@@ -99,6 +99,42 @@
  	justify-content: center;
  	display: none;
  }
+ #find-id-pw {
+ 	height : 10px;
+ 	display: flex;
+ 	justify-content: center;
+ 	font-size: 13px;
+ }
+ 
+ #social{
+ 	display: flex;
+ 	justify-content: space-between;
+ 	align-items: center;
+ }
+ 
+ #social img {
+ 	padding-top : 20px;
+ }
+ 
+ #social img:hover {
+ }
+ 
+ #exampleInput {
+ 	margin : 0;
+ }
+ 
+ .logo-round1, .logo-round2, .logo-round3 {
+ 	width: 5px;
+ 	border: 1px solid white;
+ 	border-radius: 50%;
+ }
+ 
+ #find {
+ 	color : black;
+ }
+ 
+ 
+
  
 </style>
 
@@ -121,16 +157,22 @@
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
               <div class="pw-error">비밀번호 에러</div>
             </div>
-            <div class="mb-3 form-check">
-            	<div><a href="<c:url value="id-pw-check-form"/>">아이디/비밀번호 찾기</a></div>
+            <div class="mb-2 form-check" id="find-id-pw">
+            	<div><a id="find" href="<c:url value="id-pw-check-form"/>">아이디 / 비밀번호 찾기</a></div>
             </div>
             <div class="btn-container">
               <button type="submit" class="btn btn-light" id="login">로그인</button>
               <button type="submit" class="btn btn-light" id="join">회원가입</button>
             </div>
+            <div id="social">
+            	<div class="logo-round1"><a href=""><img src="<c:url value="/pictures/placeholder/btn_apple.svg"/>"></a></div>
+            	<div class="logo-round2"><a href=""><img src="<c:url value="/pictures/placeholder/btn_google.svg"/>"></a></div>
+            	<div class="logo-round3"><a href=""><img src="<c:url value="/pictures/placeholder/btn_kakao.svg"/>"></a></div>
+            	<div class="logo-round4"><a href=""><img src="<c:url value="/pictures/placeholder/btn_naver.svg"/>"></a></div>
+            </div>
           </form>
     </div>
-
+		
 </div>
 
 <header class="header slider-header bg-dark lana-full-bg-image-golden-large-sitting-dog-body-indoor d-flex flex-column">
