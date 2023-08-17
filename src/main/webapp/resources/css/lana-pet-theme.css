@@ -2769,6 +2769,7 @@ a.lana_story.type-lana_story.story-grid-card:hover, a.lana_story.type-lana_story
   font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
+	color: #fdbb42;
 }
 
 .widget a.url,
@@ -2927,11 +2928,11 @@ a.lana_story.type-lana_story.story-grid-card:hover, a.lana_story.type-lana_story
 .pre-footer .widget .widget-title {
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #cccccc;
+  color: #fdbb42;
 }
 
 .pre-footer .widget a:not(.btn) {
-  color: #fff;
+  color: #212121;
 }
 
 .pre-footer .widget a:not(.btn):hover, .pre-footer .widget a:not(.btn):focus {
