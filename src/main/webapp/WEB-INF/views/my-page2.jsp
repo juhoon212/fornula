@@ -275,7 +275,7 @@
 	margin-bottom: 22px;
 	}
 	
-	/* 박스 */
+	/* 박스*/
 	.box {
   width: 100%;
   height: 50px;
