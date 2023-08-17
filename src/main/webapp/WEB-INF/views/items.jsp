@@ -284,40 +284,21 @@
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                     <div class="post-content">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id ipsum at augue malesuada
-                            viverra. Integer cursus sem et est lacinia, sit amet tincidunt tortor sollicitudin.
-                            Curabitur vitae interdum augue. Donec lacinia tempus vestibulum. Vivamus porta lectus ac
-                            faucibus suscipit. Nam condimentum lectus at tincidunt commodo. Donec sagittis est molestie
-                            laoreet posuere. Praesent viverra, est eget lacinia blandit, nunc velit dapibus justo, vitae
-                            sollicitudin lectus sapien id nibh.
+                            제목<br>
+                            작성자
                         </p>
 
                         <p>
-                            Mauris tempor nibh sed auctor hendrerit. Vivamus commodo nisi purus, ac interdum velit
-                            cursus sit amet. Proin id justo eu velit egestas auctor et at erat. Sed ac lorem vehicula,
-                            viverra nunc vel, maximus diam. Etiam iaculis vestibulum diam. Maecenas nisl nisi, placerat
-                            ut sem pellentesque, pellentesque mollis massa. Praesent rhoncus, erat ut placerat faucibus,
-                            lectus odio consectetur erat, nec ullamcorper ipsum nulla ac ex. Quisque mattis sollicitudin
-                            urna, non malesuada eros sodales ut. Integer lobortis purus nulla, non dignissim odio
-                            pulvinar id. Etiam turpis nisl, porttitor sit amet dignissim hendrerit, facilisis
-                            condimentum diam. Suspendisse neque lectus, venenatis eget felis eu, laoreet ultrices nulla.
-                            Nullam finibus mi nibh, nec fermentum ligula aliquet a. Maecenas neque libero, feugiat eu
-                            purus eget, molestie ornare nisl.
+                            내용
                         </p>
 
-                        <p>
-                            Aliquam quis nunc turpis. Nam eget mi non sem convallis egestas. Etiam mattis suscipit arcu
-                            eget sollicitudin. Nunc lobortis nulla nec orci hendrerit feugiat. Pellentesque quis sapien
-                            vitae ante pellentesque ultricies. Donec vel tempor lectus. Sed sit amet ipsum ac ante
-                            tempus sollicitudin quis at ipsum. Nulla a ornare leo. In hac habitasse platea dictumst.
-                        </p>
                     </div>
 
                     <div class="post-tags">
-                        <span class="tags-text">Tags</span>
-                        <a href="#">Single</a>
-                        <a href="#">Post</a>
-                        <a href="#">Tag</a>
+                        <span class="tags-text">연관 카테고리</span>
+                        <a href="#">카테고리 1</a>
+                        <a href="#">카테고리 2</a>
+                        <a href="#">카테고리 3</a>
                     </div>
 
                     <hr/>
