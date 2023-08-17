@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지ㅇ</title>
+    <title>마이페이지</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +14,20 @@
     <link rel="stylesheet" id="open-sans-css"
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="../css/animate.min.css?ver=3.7.2" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="../css/font-awesome.min.css?ver=5.15.4" type="text/css"
+    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="../css/bootstrap.min.css?ver=4.6.0" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="../css/smartmenus-bootstrap.min.css?ver=1.1.1"
+    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
           type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="../css/swiper.min.css?ver=4.5.3" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="../css/magnific-popup.min.css?ver=1.1.0" type="text/css"
+    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="../css/lana-pet-icon.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="../css/lana-pet-theme.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="../css/lana-pet-print.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
 <style>
@@ -292,7 +294,8 @@
                 <div id="post-2" class="post type-post post-2 card post-card">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            
                         </div>
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
@@ -310,7 +313,8 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
-                                        <img src="../pictures/placeholder/32x32.svg"
+                                   
+                                        <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
                                              class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
                                         By: <a href="#" class="author-link card-link">판매자</a>
                                     </div>
@@ -348,7 +352,8 @@
       
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
-            <div id="button"><img src="../pictures/placeholder/250x250.svg"
+            
+            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   
@@ -429,15 +434,16 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../js/jquery.min.js?ver=3.6.0"></script>
-<script type="text/javascript" src="../js/popper.min.js?ver=1.16.1"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js?ver=4.6.0"></script>
-<script type="text/javascript" src="../js/smartmenus.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/smartmenus-bootstrap.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/swiper.min.js?ver=4.5.3"></script>
-<script type="text/javascript" src="../js/scrollmagic.min.js?ver=2.0.8"></script>
-<script type="text/javascript" src="../js/magnific-popup.min.js?ver=1.1.0"></script>
-<script type="text/javascript" src="../js/custom-theme.js?ver=1.0.0"></script>
+
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 </body>
 </html>
