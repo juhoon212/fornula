@@ -13,6 +13,6 @@ public class HomeController {
 	@GetMapping("/home")
 	public String home() {
 		log.info("Homecontroller = {}", HomeController.class);
-		return "main";
+		return "my-page";
 	}
 }
