@@ -346,10 +346,8 @@
                                 </div>
                                 <div class="comment-text">
                                     <p>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                        felis in faucibus.
+                                        주훈아 이거는 그냥 댓글이 각 ul 태그에다가 ID=1 / ID=2 ... 이렇게 붙여놓고 해당 댓글로 이동하고
+                                        싶으면 그냥 #ID값을 사용해서 이동하게 하면 된단다
                                     </p>
                                 </div>
                                 <ul class="comment-meta">
@@ -408,7 +406,7 @@
                                                 <h5 class="comment-title">
                                                     <a href="#">Commenter</a>
                                                 </h5>
-                                                <div class="comment-date">
+                                                <div class="comment-date"> 
                                                     <a href="#">May 24, 2017 at 11:47 am</a>
                                                 </div>
                                             </div>
