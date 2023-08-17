@@ -4,6 +4,11 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
     <meta charset="utf-8">
     <title>Lana Pet - Front Page</title>
 
@@ -174,352 +179,65 @@
     </div>
 		
 </div>
+<jsp:include page="header.jsp" />
 
-<header class="header slider-header bg-dark lana-full-bg-image-golden-large-sitting-dog-body-indoor d-flex flex-column">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
-        <a class="navbar-brand" href="../index.html">
-            <img class="navbar-logo" src="../pictures/placeholder/190x50.svg" alt="Navbar Logo">
-        </a>
-        <div class="toggler-buttons d-flex flex-fill justify-content-end">
-            <button class="search-toggler" type="button" data-toggle="collapse" data-target="#lana-search"
-                    aria-controls="lana-search" aria-expanded="false" aria-label="Toggle search">
-                <i class="fas fa-search fa-lg fa-fw text-light">/</i>
-            </button>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lana-navbar"
-                    aria-controls="lana-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars fa-lg fa-fw text-light"></i>
-            </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="lana-navbar">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="front-page.html">Front Page</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="page.html" id="page-dropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Page</a>
-                    <ul class="dropdown-menu" aria-labelledby="page-dropdown">
-                        <li><a class="dropdown-item" href="page.html">Page (Default Template)</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">More Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="template-our-services.html">Our Services (Template)</a></li>
-                        <li><a class="dropdown-item" href="template-our-partners.html">Our Partners (Template)</a></li>
-                        <li><a class="dropdown-item" href="template-our-team.html">Our Team (Template)</a></li>
-                        <li><a class="dropdown-item" href="template-contact.html">Contact (Template)</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Error Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="404.html">404 (Error Page)</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="archive.html" id="post-dropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Post</a>
-                    <ul class="dropdown-menu" aria-labelledby="post-dropdown">
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">List Layout</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="archive.html">Archive</a></li>
-                        <li>
-                            <a class="dropdown-item" href="archive-without-sidebar.html">
-                                Archive (without Sidebar)
-                            </a>
-                        </li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Grid Layout</h6>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-grid-2-columns.html">
-                                Archive (Grid - 2 Columns)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-grid-3-columns.html">
-                                Archive (Grid - 3 Columns)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-grid-4-columns.html">
-                                Archive (Grid - 4 Columns)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-grid-auto-columns.html">
-                                Archive (Grid - Auto Columns)
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item" href="single.html">Single</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="archive-lana_pet.html" id="pet-dropdown"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet</a>
-                    <ul class="dropdown-menu" aria-labelledby="pet-dropdown">
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">List Layout</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="archive-lana_pet.html">Archive</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Grid Layout</h6>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-lana_pet-grid-2-columns.html">
-                                Archive (Grid - 2 Columns)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-lana_pet-grid-3-columns.html">
-                                Archive (Grid - 3 Columns)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-lana_pet-grid-auto-columns.html">
-                                Archive (Grid - Auto Columns)
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item" href="single-lana_pet.html">Single</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="archive-lana_story.html" id="story-dropdown"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Story</a>
-                    <ul class="dropdown-menu" aria-labelledby="story-dropdown">
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">List Layout</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="archive-lana_story.html">Archive</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Grid Layout</h6>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-lana_story-grid-3-columns.html">
-                                Archive (Grid - 3 Columns)
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item" href="single-lana_story.html">Single</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="archive-lana_fundraiser.html" id="fundraiser-dropdown"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fundraiser</a>
-                    <ul class="dropdown-menu" aria-labelledby="fundraiser-dropdown">
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">List Layout</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="archive-lana_fundraiser.html">Archive</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Grid Layout</h6>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="archive-lana_fundraiser-grid-3-columns.html">
-                                Archive (Grid - 3 Columns)
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item" href="single-lana_fundraiser.html">Single</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="search.html" id="search-dropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Search</a>
-                    <ul class="dropdown-menu" aria-labelledby="search-dropdown">
-                        <li><a class="dropdown-item" href="search.html">Search Result</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Other Templates</h6>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="search-no-results.html">
-                                Search No Results
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="attachment.html">Attachment</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="additional-dropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        More
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="additional-dropdown">
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Landing Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="front-page-style-2.html">Front Page (Style 2)</a></li>
-                        <li><a class="dropdown-item" href="front-page-style-3.html">Front Page (Style 3)</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Header Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="header-style-2.html">Header (Style 2)</a></li>
-                        <li><a class="dropdown-item" href="header-style-3.html">Header (Style 3)</a></li>
-                        <li>
-                            <a class="dropdown-item" href="header-style-4-primary.html">Header (Style 4 - Primary)</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="header-style-4-dark.html">Header (Style 4 - Dark)</a>
-                        </li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Navbar Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="navbar-sticky.html">Navbar (Sticky)</a></li>
-                        <li>
-                            <h6 class="dropdown-header font-weight-medium text-primary">Footer Templates</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="footer-grid-1-column.html">Footer (Grid - 1 Column)</a></li>
-                        <li><a class="dropdown-item" href="footer-grid-3-columns.html">Footer (Grid - 3 Column)</a></li>
-                        <li><a class="dropdown-item" href="footer-grid-4-columns.html">Footer (Grid - 4 Column)</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="search-widget d-none d-xl-inline-flex">
-                <button class="search-toggler" type="button" data-toggle="collapse" data-target="#lana-search"
-                        aria-controls="lana-search" aria-expanded="false" aria-label="Toggle search">
-                    <i class="fas fa-search fa-lg fa-fw text-light"></i>
-                </button>
-            </form>
-            <div class="button-nav-widget d-none d-xl-inline-flex">
-                <ul class="nav button-nav">
-                    <li class="nav-item">
-                        <button href="#" class="btn btn-sm btn-primary text-white text-uppercase font-weight-bold my-auto" id="loginButton">
-                            login
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-          
-
-        <div class="collapse search-collapse bg-dark text-white position-absolute animated fadeInDown"
-             id="lana-search">
-            <form method="get" class="search-form d-flex align-items-center h-100">
-                <div class="input-group search border-transparent">
-                    <input type="text" name="s" class="form-control search-input text-light" placeholder="Search"
-                           aria-label="Search" aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-sm close-button" data-toggle="collapse"
-                                data-target="#lana-search" aria-controls="lana-search" aria-expanded="true"
-                                aria-label="Close search">
-                            <i class="fas fa-times fa-lg text-light"></i>
-                        </button>
-                    </div>
-                    <div class="input-group-append">
-                        <button type="submit" id="search-button" class="btn search-button">
-                            <i class="fa fa-search fa-lg text-light"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </nav>
-
-    
-
-    <div class="container-fluid text-white mt-auto py-5">
-        <div class="row">
+<!-- 광고 삽입 -->
+ <div class="container-fluid bg-dark text-white mt-auto py-5 " style="z-index: 2;">
+         <div class="row">
             <div class="col-12 col-md-9 col-lg-8 col-xl-7 h-100">
-                <div class="header-carousel swiper-container bg-transparent h-100">
-                    <div class="swiper-wrapper" data-scroll-animate="comeInUp">
-                        <div class="swiper-slide">
-                            <div class="lana_slider type-lana_slider card slider-card h-100">
-                                <div class="card-body">
-                                    <h1 class="card-title">
-                                        Do you think about adopting a pet?
-                                    </h1>
-                                    <p class="card-text">
-                                        Open your heart and home to a friend for life.
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <p class="card-text">
-                                        <a href="#"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold mr-3 mb-3 w-15x">
-                                            Find Out Now
-                                        </a>
-                                        <a href="#"
-                                           class="btn btn-outline-primary btn-lg text-white text-uppercase font-weight-bold mb-3 w-15x">
-                                            Donate
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
+               <div class="header-carousel swiper-container bg-transparent h-100">
+                  <div class="swiper-wrapper" data-scroll-animate="comeInUp">
+                     <div class="swiper-slide">
+                        <div class="lana_slider type-lana_slider card slider-card h-100">
+                           <div class="card-body">
+                              <h1 class="card-title">광고-1
+                              </h1>
+                              <p class="card-text">광고내용</p>
+                           </div>
+                          
                         </div>
-                        <div class="swiper-slide">
-                            <div class="lana_slider type-lana_slider card slider-card h-100">
-                                <div class="card-body">
-                                    <h1 class="card-title">
-                                        Open your heart and home to a friend for life.
-                                    </h1>
-                                    <p class="card-text">
-                                        Do you think about adopting a pet?
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <p class="card-text">
-                                        <a href="#"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold mr-3 mb-3 w-15x">
-                                            Find Out Now
-                                        </a>
-                                        <a href="#"
-                                           class="btn btn-outline-primary btn-lg text-white text-uppercase font-weight-bold mb-3 w-15x">
-                                            Donate
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="lana_slider type-lana_slider card slider-card h-100">
+                           <div class="card-body">
+                              <h1 class="card-title">Open your heart and home to a
+                                 friend for life.</h1>
+                              <p class="card-text">Do you think about adopting a pet?</p>
+                           </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="lana_slider type-lana_slider card slider-card h-100">
-                                <div class="card-body">
-                                    <h1 class="card-title">
-                                        Do you think about adopting a pet?
-                                    </h1>
-                                    <p class="card-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore.
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <p class="card-text">
-                                        <a href="#"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold mr-3 mb-3 w-15x">
-                                            Find Out Now
-                                        </a>
-                                        <a href="#"
-                                           class="btn btn-outline-primary btn-lg text-white text-uppercase font-weight-bold mb-3 w-15x">
-                                            Donate
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="lana_slider type-lana_slider card slider-card h-100">
+                           <div class="card-body">
+                              <h1 class="card-title">Do you think about adopting a pet?
+                              </h1>
+                              <p class="card-text">Lorem ipsum dolor sit amet,
+                                 consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                 ut labore.</p>
+                           </div>
                         </div>
-                    </div>
-                    <div class="d-flex swiper-controllers mt-5" data-scroll-animate="fadeInDown">
-                        <div class="swiper-text-button-prev swiper-text-button-white mr-4 my-auto">
-                            <div class="swiper-button-prev swiper-button-sm position-relative d-inline-block my-auto align-middle"></div>
-                            <div class="swiper-text-prev d-inline-block my-auto">Prev</div>
-                        </div>
-                        <div class="swiper-text-button-next swiper-text-button-white ml-4 my-auto">
-                            <div class="swiper-text-next d-inline-block my-auto">Next</div>
-                            <div class="swiper-button-next swiper-button-sm position-relative d-inline-block my-auto align-middle"></div>
-                        </div>
-                        <div class="swiper-pagination position-relative ml-auto my-auto"></div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <div class="d-flex swiper-controllers mt-5"
+                     data-scroll-animate="fadeInDown">
+                     <div
+                        class="swiper-text-button-prev swiper-text-button-white mr-4 my-auto">
+                        <div
+                           class="swiper-button-prev swiper-button-sm position-relative d-inline-block my-auto align-middle"></div>
+                        <div class="swiper-text-prev d-inline-block my-auto">Prev</div>
+                     </div>
+                     <div
+                        class="swiper-text-button-next swiper-text-button-white ml-4 my-auto">
+                        <div class="swiper-text-next d-inline-block my-auto">Next</div>
+                        <div
+                           class="swiper-button-next swiper-button-sm position-relative d-inline-block my-auto align-middle"></div>
+                     </div>
+                     <div class="swiper-pagination position-relative ml-auto my-auto"></div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-</header>
+         </div>
+      </div>
 
 <main class="main">
     <div id="who-we-are-container" class="container-fluid bg-light-orange section-py--large">
@@ -1292,52 +1010,8 @@
     </div>
 </main>
 
-<div class="pre-footer footer-grid-1 bg-dark text-white">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-6 text-center">
-                <div class="widget widget_lana_pet_subscribe">
-                    <h3 class="widget-title">Subscribe</h3>
-                    <p>Your weekly updates on the Pethome</p>
-                    <div class="lana-hr lana-hr-4 border-primary mt-4 mb-3"></div>
-                    <form class="mt-5">
-                        <div class="input-group input-group-lg">
-                            <input type="email"
-                                   class="form-control bg-transparent border-primary text-white text-uppercase"
-                                   placeholder="Email" aria-label="Email" aria-describedby="subscribe">
-                            <div class="input-group-append">
-                                <button type="submit" id="subscribe"
-                                        class="btn btn-primary text-uppercase font-weight-bold">
-                                    <span class="d-none d-sm-inline">Subscribe</span>
-                                    <i class="fas fa-paper-plane d-inline d-sm-none"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="footer.jsp"/>
 
-<footer class="footer bg-dark text-white">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <p class="footer-text text-center text-md-left">
-                    Lana Pet theme by <a href="http://lana.codes/" target="_blank">Lana Codes</a> © 2020 All Rights
-                    Reserved.
-                </p>
-            </div>
-            <div class="col-md-6">
-                <ul class="nav justify-content-center justify-content-md-end">
-                    <li class="nav-item"><a href="#" class="nav-link">Terms of Use</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
