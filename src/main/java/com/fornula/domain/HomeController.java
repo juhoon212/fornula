@@ -16,7 +16,7 @@ public class HomeController {
 		return "main";
 	}
 	
-	//마이페이지 체크 용도 메소드
+	//마이페이지 체크 용도 메소드 
 	@GetMapping("/mypage")
 	public String mypage() {
 		log.info("Homecontroller = {}", HomeController.class);
