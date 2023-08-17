@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,28 +14,28 @@
     <link rel="stylesheet" id="open-sans-css"
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="../css/animate.min.css?ver=3.7.2" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="../css/font-awesome.min.css?ver=5.15.4" type="text/css"
+    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="../css/bootstrap.min.css?ver=4.6.0" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="../css/smartmenus-bootstrap.min.css?ver=1.1.1"
+    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
           type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="../css/swiper.min.css?ver=4.5.3" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="../css/magnific-popup.min.css?ver=1.1.0" type="text/css"
+    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="../css/lana-pet-icon.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="../css/lana-pet-theme.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="../css/lana-pet-print.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
 <body class="archive grid-3-columns">
-
+<%--
 <header class="header bg-dark lana-bg-image-brown-and-white-medium-staring-dog-body-indoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
-        <a class="navbar-brand" href="../index.html">
-            <img class="navbar-logo" src="../pictures/placeholder/190x50.svg" alt="Navbar Logo">
+        <a class="navbar-brand" href="<c:url value="/index.html"/>">
+            <img class="navbar-logo" src="<c:url value="/pictures/placeholder/190x50.svg"/>" alt="Navbar Logo">
         </a>
         <div class="toggler-buttons d-flex flex-fill justify-content-end">
             <button class="search-toggler" type="button" data-toggle="collapse" data-target="#lana-search"
@@ -273,7 +273,9 @@
         </div>
     </div>
 </header>
-
+ --%>
+ <jsp:include page="header.jsp" />
+  
 <main class="main container">
     <div class="row">
         <div class="col-12">
@@ -281,122 +283,120 @@
                 <div class="row">
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/17</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #1</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
                                 <p class="post-text card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                   우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더 보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/16</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #2</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
                                 <p class="post-text card-text">
-                                    Donec sit amet ultricies dui, et posuere lacus.
+                                   개굴개굴개굴
                                 </p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer"> 
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-3" class="post type-post post-3 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/15</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #3</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">광복절</a></h5>
                                 <p class="post-text card-text">
-                                    Vestibulum accumsan justo eget justo rhoncus convallis.
+                                    1945/8/15
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-4" class="post type-post post-4 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/14</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #4</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">카테고리1이란?</a></h5>
                                 <p class="post-text card-text">
-                                    Nullam in malesuada turpis. Phasellus eget consectetur odio.
+                                    상품등록시 연관 카테고리를 고르는데 그 중에서 첫번쨰로 받는 카테고리임!
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-5" class="post type-post post-5 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/13</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #5</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">이게 버튼을</a></h5>
                                 <p class="post-text card-text">
-                                    Donec aliquam ac felis vel fermentum. Proin at vestibulum lacus. Vestibulum ut urna
-                                    ac eros suscipit vulputate nec et elit.
+                                    이 게시글을 클릭하면 이제 해당 상품 상세페이지로 이동하는 메소드를 작성해야함
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-6" class="post type-post post-6 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="../pictures/placeholder/530x400.svg" alt="Post">
+                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/12</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #6</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">게시글들은</a></h5>
                                 <p class="post-text card-text">
-                                    Suspendisse porta eget odio eu faucibus. Vestibulum ullamcorper nulla sapien, ac
-                                    pulvinar elit ultrices quis.
+                                    최신순일수록 좌측 상단에 오도록 배치하였음
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -412,7 +412,7 @@
                         <ul class="page-numbers">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
                             <li><a class="page-numbers" href="#">2</a></li>
-                            <li><span class="page-numbers dots">â¦</span></li>
+                            <li><span class="page-numbers dots" >...</span></li>
                             <li><a class="page-numbers" href="#">4</a></li>
                         </ul>
                     </div>
@@ -424,7 +424,7 @@
         </div>
     </div>
 </main>
-
+<!-- 
 <div class="pre-footer footer-grid-1 bg-dark text-white">
     <div class="container">
         <div class="row justify-content-center">
@@ -453,7 +453,7 @@
     </div>
 </div>
 
-<footer class="footer bg-dark text-white">
+<footer class="footer bg-dark text-white">  
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
@@ -471,16 +471,18 @@
         </div>
     </div>
 </footer>
-
-<script type="text/javascript" src="../js/jquery.min.js?ver=3.6.0"></script>
-<script type="text/javascript" src="../js/popper.min.js?ver=1.16.1"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js?ver=4.6.0"></script>
-<script type="text/javascript" src="../js/smartmenus.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/smartmenus-bootstrap.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/swiper.min.js?ver=4.5.3"></script>
-<script type="text/javascript" src="../js/scrollmagic.min.js?ver=2.0.8"></script>
-<script type="text/javascript" src="../js/magnific-popup.min.js?ver=1.1.0"></script>
-<script type="text/javascript" src="../js/custom-theme.js?ver=1.0.0"></script>
+ -->
+ <jsp:include page="footer.jsp"/>
+ 
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 </body>
 </html>

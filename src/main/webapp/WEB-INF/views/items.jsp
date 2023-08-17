@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,28 +14,28 @@
     <link rel="stylesheet" id="open-sans-css"
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="../css/animate.min.css?ver=3.7.2" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="../css/font-awesome.min.css?ver=5.15.4" type="text/css"
+    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="../css/bootstrap.min.css?ver=4.6.0" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="../css/smartmenus-bootstrap.min.css?ver=1.1.1"
+    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
           type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="../css/swiper.min.css?ver=4.5.3" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="../css/magnific-popup.min.css?ver=1.1.0" type="text/css"
+    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="../css/lana-pet-icon.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="../css/lana-pet-theme.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="../css/lana-pet-print.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
 <body class="single single-post">
-
+<!-- 
 <header class="header bg-dark lana-bg-image-beige-small-sitting-dog-face-outdoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
-        <a class="navbar-brand" href="../index.html">
-            <img class="navbar-logo" src="../pictures/placeholder/190x50.svg" alt="Navbar Logo">
+        <a class="navbar-brand" href="<c:url value="/index.html"/>">
+            <img class="navbar-logo" src="<c:url value="/pictures/placeholder/190x50.svg"/>" alt="Navbar Logo">
         </a>
         <div class="toggler-buttons d-flex flex-fill justify-content-end">
             <button class="search-toggler" type="button" data-toggle="collapse" data-target="#lana-search"
@@ -273,51 +273,34 @@
         </div>
     </div>
 </header>
-
+ -->
+  <jsp:include page="header.jsp" />
+ 
 <main class="main">
     <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
         <div class="container post-container bg-white">
             <div class="row justify-content-center post-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                    <img class="img-fluid post-thumbnail" src="../pictures/placeholder/1110x520.svg" alt="Post">
+                    <img class="img-fluid post-thumbnail" src="<c:url value="/pictures/placeholder/1110x520.svg"/>" alt="Post">
                 </div>
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                     <div class="post-content">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id ipsum at augue malesuada
-                            viverra. Integer cursus sem et est lacinia, sit amet tincidunt tortor sollicitudin.
-                            Curabitur vitae interdum augue. Donec lacinia tempus vestibulum. Vivamus porta lectus ac
-                            faucibus suscipit. Nam condimentum lectus at tincidunt commodo. Donec sagittis est molestie
-                            laoreet posuere. Praesent viverra, est eget lacinia blandit, nunc velit dapibus justo, vitae
-                            sollicitudin lectus sapien id nibh.
+                            제목<br>
+                            작성자
                         </p>
 
                         <p>
-                            Mauris tempor nibh sed auctor hendrerit. Vivamus commodo nisi purus, ac interdum velit
-                            cursus sit amet. Proin id justo eu velit egestas auctor et at erat. Sed ac lorem vehicula,
-                            viverra nunc vel, maximus diam. Etiam iaculis vestibulum diam. Maecenas nisl nisi, placerat
-                            ut sem pellentesque, pellentesque mollis massa. Praesent rhoncus, erat ut placerat faucibus,
-                            lectus odio consectetur erat, nec ullamcorper ipsum nulla ac ex. Quisque mattis sollicitudin
-                            urna, non malesuada eros sodales ut. Integer lobortis purus nulla, non dignissim odio
-                            pulvinar id. Etiam turpis nisl, porttitor sit amet dignissim hendrerit, facilisis
-                            condimentum diam. Suspendisse neque lectus, venenatis eget felis eu, laoreet ultrices nulla.
-                            Nullam finibus mi nibh, nec fermentum ligula aliquet a. Maecenas neque libero, feugiat eu
-                            purus eget, molestie ornare nisl.
+                            내용
                         </p>
 
-                        <p>
-                            Aliquam quis nunc turpis. Nam eget mi non sem convallis egestas. Etiam mattis suscipit arcu
-                            eget sollicitudin. Nunc lobortis nulla nec orci hendrerit feugiat. Pellentesque quis sapien
-                            vitae ante pellentesque ultricies. Donec vel tempor lectus. Sed sit amet ipsum ac ante
-                            tempus sollicitudin quis at ipsum. Nulla a ornare leo. In hac habitasse platea dictumst.
-                        </p>
                     </div>
 
                     <div class="post-tags">
-                        <span class="tags-text">Tags</span>
-                        <a href="#">Single</a>
-                        <a href="#">Post</a>
-                        <a href="#">Tag</a>
+                        <span class="tags-text">연관 카테고리</span>
+                        <a href="#">카테고리 1</a>
+                        <a href="#">카테고리 2</a>
+                        <a href="#">카테고리 3</a>
                     </div>
 
                     <hr/>
@@ -353,7 +336,7 @@
                     <ul class="comment-list list-unstyled">
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -365,10 +348,8 @@
                                 </div>
                                 <div class="comment-text">
                                     <p>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                        felis in faucibus.
+                                        주훈아 이거는 그냥 댓글이 각 ul 태그에다가 ID=1 / ID=2 ... 이렇게 붙여놓고 해당 댓글로 이동하고
+                                        싶으면 그냥 #ID값을 사용해서 이동하게 하면 된단다
                                     </p>
                                 </div>
                                 <ul class="comment-meta">
@@ -387,7 +368,7 @@
                         </li>
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -421,13 +402,13 @@
                                 <ul class="comment-children list-unstyled">
                                     <li class="media">
                                         <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                             src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                             src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                                         <div class="media-body">
                                             <div class="d-bock d-md-flex w-100 justify-content-between">
                                                 <h5 class="comment-title">
                                                     <a href="#">Commenter</a>
                                                 </h5>
-                                                <div class="comment-date">
+                                                <div class="comment-date"> 
                                                     <a href="#">May 24, 2017 at 11:47 am</a>
                                                 </div>
                                             </div>
@@ -455,7 +436,7 @@
                                             <ul class="comment-children list-unstyled">
                                                 <li class="media">
                                                     <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                                         src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                                         src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                                                     <div class="media-body">
                                                         <div class="d-bock d-md-flex w-100 justify-content-between">
                                                             <h5 class="comment-title">
@@ -497,7 +478,7 @@
                         </li>
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -589,7 +570,7 @@
         </div>
     </div>
 </main>
-
+<!-- 
 <div class="pre-footer footer-grid-1 bg-dark text-white">
     <div class="container">
         <div class="row justify-content-center">
@@ -636,16 +617,18 @@
         </div>
     </div>
 </footer>
-
-<script type="text/javascript" src="../js/jquery.min.js?ver=3.6.0"></script>
-<script type="text/javascript" src="../js/popper.min.js?ver=1.16.1"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js?ver=4.6.0"></script>
-<script type="text/javascript" src="../js/smartmenus.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/smartmenus-bootstrap.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/swiper.min.js?ver=4.5.3"></script>
-<script type="text/javascript" src="../js/scrollmagic.min.js?ver=2.0.8"></script>
-<script type="text/javascript" src="../js/magnific-popup.min.js?ver=1.1.0"></script>
-<script type="text/javascript" src="../js/custom-theme.js?ver=1.0.0"></script>
+ -->
+  <jsp:include page="footer.jsp"/>
+ 
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 </body>
 </html>
