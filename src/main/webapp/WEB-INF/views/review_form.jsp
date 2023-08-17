@@ -60,60 +60,6 @@
 <style>
 
 
-.black-bg {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
-    padding: 30px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 1s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
- .show-modal {
-    visibility: visible;
-    opacity: 1;
- }
- .white-bg {
-    width: 400px;
-    height: 600px;
-    background-color: white;
-    border-radius: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow:
-      4.9px 4.6px 5.9px rgba(0, 0, 0, 0.023),
-      13.6px 12.6px 16.4px rgba(0, 0, 0, 0.049),
-      32.9px 30.4px 39.5px rgba(0, 0, 0, 0.08),
-      109px 101px 131px rgba(0, 0, 0, 0.14);
-    position: relative;
- }  
- .name {
-    display: flex;
-    justify-content: center;
-    /* margin-bottom: 10px; */
- }
- .form-control {
-    margin-bottom: 20px;
-    
- }
- .close {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    cursor: pointer;
-    
- }
-
-
-
 </style>
 </head>
 <body>
@@ -132,6 +78,8 @@
 								aria-required="true" required="required" aria-label="Name">
 						</div>
 					</div>
+					
+					<!-- 파일 업로드 input태그 -->
 					<div class="form-group row">
 						<div class="col">
 							<input class="form-control" type="file" id="formFile">
