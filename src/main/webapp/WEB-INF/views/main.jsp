@@ -67,12 +67,12 @@
       13.6px 12.6px 16.4px rgba(0, 0, 0, 0.049),
       32.9px 30.4px 39.5px rgba(0, 0, 0, 0.08),
       109px 101px 131px rgba(0, 0, 0, 0.14);
-    position: relative;
  }  
  .name {
     display: flex;
     justify-content: center;
     /* margin-bottom: 10px; */
+    font-size: 50px;
  }
  .form-control {
     margin-bottom: 20px;
@@ -139,7 +139,30 @@
  #find {
  	color : black;
  }
-
+ 
+ #logos {
+ 	display: flex;
+ 	justify-content: space-between;
+ }
+ 
+ #logos img{
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+	margin-top: 30px;
+ }
+ 
+ .id-pw-find {
+ 	display: flex;
+ 	justify-content: center;
+ 	
+ }
+ 
+ .id-pw-find a {
+ 	color : black;
+ 	font-size: 13px;
+ 	transition : all 0.5s;
+ }
  
  
  
@@ -155,23 +178,32 @@
     <div class="white-bg">
         <form action="">
             <div class="mb-3">
-            <h1 class="name">ForNula</h1>
-            <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
-              <label for="exampleInputEmail1" class="form-label"></label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
-              <div id="emailHelp" class="form-text"></div>
+            <!-- <h1 class="name">ForNula</h1> -->
+           	   <div class="name">Fornual</div>
+               <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
+               <label for="exampleInputEmail1" class="form-label"></label>
+               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+               <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"></label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <div class="mb-3 form-check">
+            <div class="id-pw-find" >
+            	<a href="">아이디 / 비밀번호 찾기</a>
             </div>
             <div class="btn-container">
               <button type="submit" class="btn btn-light" id="login">로그인</button>
               <button type="submit" class="btn btn-light" id="join">회원가입</button>
             </div>
+            <div id="logos">
+          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
+          	<a href=""><img src="<c:url value="/pictures/placeholder/instagram.png"/>" alt="instagram"></a>
+          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
+          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
+          	</div>
           </form>
+          
     </div>
 
 </div>
