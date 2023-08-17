@@ -13,7 +13,7 @@ public class HomeController {
 	@GetMapping("/home")
 	public String home() {
 		log.info("Homecontroller = {}", HomeController.class);
-		return "main";
+		return "review_form";
 	}
 	
 	//마이페이지 체크 용도 메소드 
