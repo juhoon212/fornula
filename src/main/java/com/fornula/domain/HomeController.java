@@ -21,4 +21,10 @@ public class HomeController {
 		log.info("Homecontroller = {}", HomeController.class);
 		return "item-add";
 	}
+	
+	@GetMapping("/test")
+	@ResponseBody
+	public String test() {
+		return "ok";
+	}
 }
