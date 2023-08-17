@@ -112,12 +112,6 @@
     
  }
 
- #review {
-    display: block;
-    width: 250px;
-    text-align: center;
-    margin-top: 15px;
- }
 
 
 </style>
