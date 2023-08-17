@@ -20,10 +20,10 @@ public class HomeController {
 	@GetMapping("/mypage")
 	public String mypage() {
 		log.info("Homecontroller = {}", HomeController.class);
-		return "my-page";
+		return "my-page2";
 	}
 	 
-	//전문가페이지 체크 용도 메소드
+	//전문가페이지 체크 용도 메소드 
 	@GetMapping("/expert")
 	public String expert() {
 		log.info("Homecontroller = {}", HomeController.class);

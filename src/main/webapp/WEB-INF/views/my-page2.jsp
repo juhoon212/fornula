@@ -29,6 +29,9 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+  
+          
+
  
 </head>
 <style>
@@ -265,12 +268,86 @@
                 
             <div class="story-posts">
               
-                 <section>
-        <h3>아이디</h3>
+<section>
+<!-- my-page style-->
+<style>
+	.info {
+	margin-bottom: 22px;
+	}
+	
+	/* 박스*/
+	.box {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 5px 0 5px 15px;
+  border-radius: 4px;
+  border: 1px solid #d9d6d6;
+  color: #383838;
+  font-weight: 400;
+}
+.box::placeholder {
+  color: #a0a0a0;
+}
+
+.info#info__id #id-input {
+  position: relative;
+}
+
+.info#info__id button {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto 0;
+  border-radius: 3px;
+  font-size: 15px; 
+}
+
+h3 {
+	font-size : 20px;
+}
+
+/* 카테고리 */
+.info#info__category #category-flex {
+  display: flex;
+}
+.info#info__category select {
+  margin-left : 7px;
+  color: #a0a0a0;
+}
+
+.info#info__category select:first-child {
+  margin-left : 0px;
+}
+
+.info#info__category select::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info#info__category select::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 3px;
+}
+
+.info#info__category select::-webkit-scrollbar-track {
+  background-color: #ebe9e9;
+  border-radius: 6px;
+}
+
+
+</style>
+<!-- 스타일 태그 끝 -->
+        <h3>
+        아이디
+        </h3>
         <div class="info" id="info__id">
+        
           <div id="id-input">
-            <input class="box" type="text" placeholder="아이디 입력해 주세요."/>
-            <button id="id-check" onclick='check()'>중복 확인</button>
+            <input class="box" type="text" placeholder="아이디"/>
+            
           </div>
           
         </div>
@@ -278,27 +355,50 @@
         <h3>이메일</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" placeholder="이메일을 입력해 주세요."/>
+            <input class="box" type="text" placeholder="1234@1234"/>
             
           </div>
           
         </div>
       
-        <h3>비밀번호</h3>
+        <h3>휴대폰</h3>
         <div class="info">
-          <input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
+          <input class="box" type="text" placeholder="01012345678"/>
           
-        </div>
-        <div class="info">
-          <input class="box" type="password" placeholder="비밀번호를 한번 더 입력해 주세요."/>
-          
-        
         </div>
         <h3>관심사 분야</h3>
-        <div class="info">
-      
-
-       
+       <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
+        </div>
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
+        </div>
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
         </div>
 
         
@@ -306,7 +406,7 @@
       <div id="join"></div>
       <button id="submit">가입하기</button>
       
-    </section>
+</section>
         
                   </div>
             
