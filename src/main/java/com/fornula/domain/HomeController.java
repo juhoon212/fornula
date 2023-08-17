@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class HomeController {
-	
+	//주석 테스트
 	@GetMapping("/home")
 	public String home() {
 		log.info("Homecontroller = {}", HomeController.class);
