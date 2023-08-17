@@ -4,11 +4,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>">
+	<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
     <meta charset="utf-8">
     <title>Lana Pet - Front Page</title>
@@ -32,15 +31,8 @@
     <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
+    
 </head>
-<style>
-
- 
- 
- 
-
- 
-</style>
 
 <body class="home page page-template-template-lana-editor">
 
@@ -50,23 +42,32 @@
     <div class="white-bg">
         <form action="">
             <div class="mb-3">
-            <h1 class="name">ForNula</h1>
-            <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
-              <label for="exampleInputEmail1" class="form-label"></label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
-              <div id="emailHelp" class="form-text"></div>
+            <!-- <h1 class="name">ForNula</h1> -->
+           	   <div class="name">FORNUAL</div>
+               <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
+               <label for="exampleInputEmail1" class="form-label"></label>
+               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+               <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"></label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <div class="mb-3 form-check">
+            <div class="id-pw-find" >
+            	<a href="">아이디 / 비밀번호 찾기</a>
             </div>
             <div class="btn-container">
               <button type="submit" class="btn btn-light" id="login">로그인</button>
               <button type="submit" class="btn btn-light" id="join">회원가입</button>
             </div>
+            <div id="logos">
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/instagram.png"/>" alt="instagram"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
+          	</div>
           </form>
+          
     </div>
 
 </div>
