@@ -4,11 +4,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>">
+	<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
     <meta charset="utf-8">
     <title>Lana Pet - Front Page</title>
@@ -32,143 +31,8 @@
     <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
+    
 </head>
-<style>
-
-
-.black-bg {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
-    padding: 30px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 1s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
- .show-modal {
-    visibility: visible;
-    opacity: 1;
- }
- .white-bg {
-    width: 400px;
-    height: 600px;
-    background-color: white;
-    border-radius: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow:
-      4.9px 4.6px 5.9px rgba(0, 0, 0, 0.023),
-      13.6px 12.6px 16.4px rgba(0, 0, 0, 0.049),
-      32.9px 30.4px 39.5px rgba(0, 0, 0, 0.08),
-      109px 101px 131px rgba(0, 0, 0, 0.14);
- }  
- .name {
-    display: flex;
-    justify-content: center;
-    /* margin-bottom: 10px; */
-    font-size: 50px;
- }
- .form-control {
-    margin-bottom: 20px;
-    
- }
- .kakao-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
- }
- .close {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    cursor: pointer;
-    
- }
-
- #login, #join {
-    display: block;
-    width: 250px;
-    text-align: center;
-    margin-top: 15px;
- }
- 
- .id-error, .pw-error {
- 	color: red;
- 	display : flex;
- 	justify-content: center;
- 	display: none;
- }
- #find-id-pw {
- 	height : 10px;
- 	display: flex;
- 	justify-content: center;
- 	font-size: 13px;
- }
- 
- #social{
- 	display: flex;
- 	justify-content: space-between;
- 	align-items: center;
- }
- 
- #social img {
- 	padding-top : 20px;
- }
- 
- #social img:hover {
- }
- 
- #exampleInput {
- 	margin : 0;
- }
- 
- .logo-round1, .logo-round2, .logo-round3 {
- 	width: 5px;
- 	border: 1px solid white;
- 	border-radius: 50%;
- }
- 
- #find {
- 	color : black;
- }
- 
- #logos {
- 	display: flex;
- 	justify-content: space-between;
- }
- 
- #logos img{
-	background-size: contain;
-	width: 30px;
-	height: 30px;
-	margin-top: 30px;
- }
- 
- .id-pw-find {
- 	display: flex;
- 	justify-content: center;
- 	
- }
- 
- .id-pw-find a {
- 	color : black;
- 	font-size: 13px;
- 	transition : all 0.5s;
- }
- 
- 
- 
-
- 
-</style>
 
 <body class="home page page-template-template-lana-editor">
 
@@ -179,7 +43,7 @@
         <form action="">
             <div class="mb-3">
             <!-- <h1 class="name">ForNula</h1> -->
-           	   <div class="name">Fornual</div>
+           	   <div class="name">FORNUAL</div>
                <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
                <label for="exampleInputEmail1" class="form-label"></label>
                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
@@ -197,10 +61,10 @@
               <button type="submit" class="btn btn-light" id="join">회원가입</button>
             </div>
             <div id="logos">
-          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
-          	<a href=""><img src="<c:url value="/pictures/placeholder/instagram.png"/>" alt="instagram"></a>
-          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
-          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/instagram.png"/>" alt="instagram"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
           	</div>
           </form>
           
