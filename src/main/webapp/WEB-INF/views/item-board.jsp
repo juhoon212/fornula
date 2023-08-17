@@ -284,17 +284,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/17</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #1</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
                                 <p class="post-text card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                   우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더 보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -304,17 +304,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/16</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #2</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
                                 <p class="post-text card-text">
-                                    Donec sit amet ultricies dui, et posuere lacus.
+                                   개굴개굴개굴
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -324,17 +324,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/15</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #3</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">광복절</a></h5>
                                 <p class="post-text card-text">
-                                    Vestibulum accumsan justo eget justo rhoncus convallis.
+                                    1945/8/15
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -344,17 +344,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/14</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #4</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">카테고리1이란?</a></h5>
                                 <p class="post-text card-text">
-                                    Nullam in malesuada turpis. Phasellus eget consectetur odio.
+                                    상품등록시 연관 카테고리를 고르는데 그 중에서 첫번쨰로 받는 카테고리임!
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -364,18 +364,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/13</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #5</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">이게 버튼을</a></h5>
                                 <p class="post-text card-text">
-                                    Donec aliquam ac felis vel fermentum. Proin at vestibulum lacus. Vestibulum ut urna
-                                    ac eros suscipit vulputate nec et elit.
+                                    이 게시글을 클릭하면 이제 해당 상품 상세페이지로 이동하는 메소드를 작성해야함
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -385,18 +384,17 @@
                             <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">May 24, 2017</a></li>
-                                    <li><a href="#">News</a></li>
+                                    <li><a href="single.html">2023/8/12</a></li>
+                                    <li><a href="#">카테고리1</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">Post #6</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">게시글들은</a></h5>
                                 <p class="post-text card-text">
-                                    Suspendisse porta eget odio eu faucibus. Vestibulum ullamcorper nulla sapien, ac
-                                    pulvinar elit ultrices quis.
+                                    최신순일수록 좌측 상단에 오도록 배치하였음
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <a href="single.html" class="more-link card-link">
-                                    Read More <i class="lana-icon-arrow-right text-primary"></i>
+                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
                         </div>
@@ -412,7 +410,7 @@
                         <ul class="page-numbers">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
                             <li><a class="page-numbers" href="#">2</a></li>
-                            <li><span class="page-numbers dots">â¦</span></li>
+                            <li><span class="page-numbers dots" >...</span></li>
                             <li><a class="page-numbers" href="#">4</a></li>
                         </ul>
                     </div>
