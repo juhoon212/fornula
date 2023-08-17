@@ -15,4 +15,10 @@ public class HomeController {
 		log.info("Homecontroller = {}", HomeController.class);
 		return "main";
 	}
+	
+	@GetMapping("/item")
+	public String item() {
+		log.info("Homecontroller = {}", HomeController.class);
+		return "item-add";
+	}
 }
