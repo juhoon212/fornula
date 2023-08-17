@@ -312,7 +312,7 @@
                                    개굴개굴개굴
                                 </p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer"> 
                                 <a href="single.html" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
