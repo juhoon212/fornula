@@ -453,7 +453,7 @@
     </div>
 </div>
 
-<footer class="footer bg-dark text-white"> 
+<footer class="footer bg-dark text-white">  
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">

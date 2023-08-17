@@ -22,7 +22,7 @@ public class HomeController {
 		log.info("Homecontroller = {}", HomeController.class);
 		return "my-page";
 	}
-	
+	 
 	//전문가페이지 체크 용도 메소드
 	@GetMapping("/expert")
 	public String expert() {
