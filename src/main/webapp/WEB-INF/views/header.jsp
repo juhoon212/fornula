@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
    <header
-      class="header position-relative overflow-hidden">
+      class="header position-relative">
       <div class="header-navbar border-bottom border-white">
          <nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange" id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
             id="lana-pet-main-navbar">
@@ -36,7 +36,7 @@
 				</div>
 
 				<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-            <div class="collapse navbar-collapse" id="lana-navbar" style="z-index: 1;">
+            <div class="collapse navbar-collapse" id="lana-navbar" style="z-index: 10000;">
                <ul class="navbar-nav ml-lg-auto">
                   <li class="nav-item dropdown">
                   	<a class="nav-link dropdown-toggle" href="archive.html"
