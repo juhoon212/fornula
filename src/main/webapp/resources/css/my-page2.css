@@ -1,0 +1,150 @@
+/* 마이페이지 css */
+#header {
+  background-color: #fff;
+  padding-top: 6px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+#logo {
+  width: 190px;
+  height: 60px;
+  cursor: pointer;
+}
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 850px;
+  color: #333;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  
+}
+
+button {
+  background-color: #7a7f8a;
+  color: #f8f8f8;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  font-weight: 400;
+  transition: .1s;
+}
+
+button:focus-visible {
+  outline: 0px solid;
+  background-color: #f68e0f;
+}
+
+.info {
+  margin-bottom: 22px;
+}
+
+.box {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 5px 0 5px 15px;
+  border-radius: 4px;
+  border: 1px solid #d9d6d6;
+  color: #383838;
+  font-weight: 400;
+  
+}
+
+.box::placeholder {
+  color: #a0a0a0;
+}
+
+.box:focus {
+  outline: 1px solid #7a7f8a;
+}
+
+.content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+}
+
+/* HEADER */
+header  {
+  width: 100%;
+}
+
+header h2 {
+  display: inline;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+
+section {
+  margin: 50px 0 25px 0;
+}
+
+/* h3 뒤에 필수 표시 */
+/*
+h3::after {
+  position: relative;
+  left: -1px;
+  top: -2px;
+  content: "*";
+  color: rgb(255, 114, 98);
+}
+*/
+
+/* 아이디 안 버튼 */
+.info#info__id #id-input {
+  position: relative;
+}
+
+.info#info__id button {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto 0;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+/* 버튼 */
+button#submit {
+  width: 100%;
+  height: 45px;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: not-allowed;
+}
+
+/* 가입하기 */
+#join {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 5px;
+  text-align: center;
+  color:red;
+  font-size: 13px;
+}
+
+
+
+
+.my_btn {
+  font-size: 17px;
+  background-color: #7a7f8a;
+  color: white;
+  border: none;
+  width: 65px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.my_btn:active{
+ background-color: #f68e0f;
+}

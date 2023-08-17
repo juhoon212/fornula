@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-구매페이지</title>
+    <title>마이페이지-나의정보</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +29,10 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+  
+          
+
+ 
 </head>
 <style>
 #button{
@@ -258,95 +262,154 @@
 <main class="main container">
     <div class="row">
         <div class="col-12 col-lg-8">
+         <div class="widget">
         
-        
-              <div class="widget">
-                    <div class="input-group">
-                         <select id="archive" class="form-control">
-                        <option>전체상품</option>
-                        <option>이건뭘넣나</option>
-                        <option>?</option>
-                    </select>
-                      <select id="archive" class="form-control">
-                        <option>전체상태</option>
-                        <option>구매확정</option>
-                        <option>취소</option>
-                    </select>
-                      <select id="archive" class="form-control">
-                        <option>달력</option>
-                        <option>으로</option>
-                        <option>하고</option>
-                    </select>
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                       
-                        </div>
-                    </div>
-                </div>
+           
                 
             <div class="story-posts">
-                <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
-                    <div class="card-body">
-                       <div class="blog-posts">
-                <div id="post-2" class="post type-post post-2 card post-card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="card-img img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body h-100 d-flex align-items-start flex-column">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">구매일자 월 일, 년도</a></li>
-                                    <li><a href="#">주문상태</a></li>
-                                </ul>
-                                <p class="post-text card-text">
-                                <h6 class="post-title card-title">구매번호</h6>
-                                <h4 class="post-title card-title"><a href="single.html">게시물이름</a></h4>
-                                <p class="subtitle">
-                  상품설명
-                </p>
-                                    
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
-                                    <div class="author-meta">
-                                   
-                                        <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
-                                             class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                                        By: <a href="#" class="author-link card-link">판매자</a>
-                                    </div>
-                                    
-                                    <a href="single.html" class="more-link card-link d-flex align-items-center">
-                                        리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        </div>
-                    </div>
-                </div>
-               
-                <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
-                    <a class="prev disabled" href="#">
-                        Prev
-                    </a>
-                    <div class="nav-links">
-                        <ul class="page-numbers">
-                            <li><span aria-current="page" class="page-numbers current">1</span></li>
-                            <li><a class="page-numbers" href="#">2</a></li>
-                            <li><span class="page-numbers dots">…</span></li>
-                            <li><a class="page-numbers" href="#">4</a></li>
-                        </ul>
-                    </div>
-                    <a class="next" href="#">
-                        Next
-                    </a>
-                </nav>
+              
+<section>
+<!-- my-page style-->
+<style>
+	.info {
+	margin-bottom: 22px;
+	}
+	
+	/* 박스*/
+	.box {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 5px 0 5px 15px;
+  border-radius: 4px;
+  border: 1px solid #d9d6d6;
+  color: #383838;
+  font-weight: 400;
+}
+.box::placeholder {
+  color: #a0a0a0;
+}
+
+.info#info__id #id-input {
+  position: relative;
+}
+
+.info#info__id button {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto 0;
+  border-radius: 3px;
+  font-size: 15px; 
+}
+
+h3 {
+	font-size : 20px;
+}
+
+/* 카테고리 */
+.info#info__category #category-flex {
+  display: flex;
+}
+.info#info__category select {
+  margin-left : 7px;
+  color: #a0a0a0;
+}
+
+.info#info__category select:first-child {
+  margin-left : 0px;
+}
+
+.info#info__category select::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info#info__category select::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 3px;
+}
+
+.info#info__category select::-webkit-scrollbar-track {
+  background-color: #ebe9e9;
+  border-radius: 6px;
+}
+
+
+</style>
+<!-- 스타일 태그 끝 -->
+        <h3>
+        아이디
+        </h3>
+        <div class="info" id="info__id">
+        
+          <div id="id-input">
+            <input class="box" type="text" placeholder="아이디"/>
+            
+          </div>
+          
+        </div>
+
+        <h3>이메일</h3>
+        <div class="info">
+          <div id="id-input">
+            <input class="box" type="text" placeholder="1234@1234"/>
+            
+          </div>
+          
+        </div>
+      
+        <h3>휴대폰</h3>
+        <div class="info">
+          <input class="box" type="text" placeholder="01012345678"/>
+          
+        </div>
+        <h3>관심사 분야</h3>
+       <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
+        </div>
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
+        </div>
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <select class="box" id="category-big">
+              <option disabled selected>대 카테고리</option>
+            </select>
+            <select class="box" id="category-middle">
+              <option disabled selected>중 카테고리</option>
+            </select>
+          </div>
+          <div class="error-msg"></div>
+        </div>
+
+        
+      
+      <div id="join"></div>
+      <button id="submit">가입하기</button>
+      
+</section>
+        
+                  </div>
+            
             </div>
         </div>
       
