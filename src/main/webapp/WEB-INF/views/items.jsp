@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,28 +14,28 @@
     <link rel="stylesheet" id="open-sans-css"
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="../css/animate.min.css?ver=3.7.2" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="../css/font-awesome.min.css?ver=5.15.4" type="text/css"
+    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="../css/bootstrap.min.css?ver=4.6.0" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="../css/smartmenus-bootstrap.min.css?ver=1.1.1"
+    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
           type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="../css/swiper.min.css?ver=4.5.3" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="../css/magnific-popup.min.css?ver=1.1.0" type="text/css"
+    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="../css/lana-pet-icon.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="../css/lana-pet-theme.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="../css/lana-pet-print.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
 <body class="single single-post">
 
 <header class="header bg-dark lana-bg-image-beige-small-sitting-dog-face-outdoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
-        <a class="navbar-brand" href="../index.html">
-            <img class="navbar-logo" src="../pictures/placeholder/190x50.svg" alt="Navbar Logo">
+        <a class="navbar-brand" href="<c:url value="/index.html"/>">
+            <img class="navbar-logo" src="<c:url value="/pictures/placeholder/190x50.svg"/>" alt="Navbar Logo">
         </a>
         <div class="toggler-buttons d-flex flex-fill justify-content-end">
             <button class="search-toggler" type="button" data-toggle="collapse" data-target="#lana-search"
@@ -279,7 +279,7 @@
         <div class="container post-container bg-white">
             <div class="row justify-content-center post-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                    <img class="img-fluid post-thumbnail" src="../pictures/placeholder/1110x520.svg" alt="Post">
+                    <img class="img-fluid post-thumbnail" src="<c:url value="/pictures/placeholder/1110x520.svg"/>" alt="Post">
                 </div>
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                     <div class="post-content">
@@ -353,7 +353,7 @@
                     <ul class="comment-list list-unstyled">
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -387,7 +387,7 @@
                         </li>
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -421,7 +421,7 @@
                                 <ul class="comment-children list-unstyled">
                                     <li class="media">
                                         <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                             src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                             src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                                         <div class="media-body">
                                             <div class="d-bock d-md-flex w-100 justify-content-between">
                                                 <h5 class="comment-title">
@@ -455,7 +455,7 @@
                                             <ul class="comment-children list-unstyled">
                                                 <li class="media">
                                                     <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                                         src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                                         src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                                                     <div class="media-body">
                                                         <div class="d-bock d-md-flex w-100 justify-content-between">
                                                             <h5 class="comment-title">
@@ -497,7 +497,7 @@
                         </li>
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="../pictures/placeholder/65x65.svg" alt="Avatar">
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
@@ -637,15 +637,15 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../js/jquery.min.js?ver=3.6.0"></script>
-<script type="text/javascript" src="../js/popper.min.js?ver=1.16.1"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js?ver=4.6.0"></script>
-<script type="text/javascript" src="../js/smartmenus.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/smartmenus-bootstrap.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/swiper.min.js?ver=4.5.3"></script>
-<script type="text/javascript" src="../js/scrollmagic.min.js?ver=2.0.8"></script>
-<script type="text/javascript" src="../js/magnific-popup.min.js?ver=1.1.0"></script>
-<script type="text/javascript" src="../js/custom-theme.js?ver=1.0.0"></script>
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 </body>
 </html>

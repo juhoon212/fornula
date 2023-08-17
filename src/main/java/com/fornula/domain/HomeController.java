@@ -38,9 +38,16 @@ public class HomeController {
 	}
 	
 	//상품게시판 체크 용도 메소드
-	@GetMapping("/item")
-	public String item() {
+	@GetMapping("/itemboard")
+	public String itemboard() {
 		log.info("Homecontroller = {}", HomeController.class);
 		return "item-board";
+	}
+	
+	//상품상세페이지 체크 용도 메소드
+	@GetMapping("/items")
+	public String items() {
+		log.info("Homecontroller = {}", HomeController.class);
+		return "items";
 	}
 }
