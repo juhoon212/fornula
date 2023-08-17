@@ -31,7 +31,7 @@
           media="print">
 </head>
 <body class="archive grid-3-columns">
-
+<%--
 <header class="header bg-dark lana-bg-image-brown-and-white-medium-staring-dog-body-indoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
         <a class="navbar-brand" href="<c:url value="/index.html"/>">
@@ -273,7 +273,9 @@
         </div>
     </div>
 </header>
-
+ --%>
+ <jsp:include page="header.jsp" />
+  
 <main class="main container">
     <div class="row">
         <div class="col-12">
@@ -422,7 +424,7 @@
         </div>
     </div>
 </main>
-
+<!-- 
 <div class="pre-footer footer-grid-1 bg-dark text-white">
     <div class="container">
         <div class="row justify-content-center">
@@ -469,7 +471,9 @@
         </div>
     </div>
 </footer>
-
+ -->
+ <jsp:include page="footer.jsp"/>
+ 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>

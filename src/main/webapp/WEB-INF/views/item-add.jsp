@@ -32,6 +32,7 @@
 </head>
 <body class="page page-template-default">
 
+<%-- 
 <header class="header bg-dark lana-bg-image-black-large-embracing-dog-and-human-body-outdoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="lana-pet-main-navbar">
         <a class="navbar-brand" href="<c:url value="/index.html"/>">
@@ -243,35 +244,8 @@
         </div>
     </nav>
 
-    <div class="container header-content text-white">
-        <div class="row back-row">
-            <div class="col-12">
-                <a href="#" class="btn btn-sm btn-outline-primary text-white font-weight-bold btn-back">
-                    <i class="lana-icon-arrow-left text-white mr-2"></i> Back
-                </a>
-            </div>
-        </div>
-        <div class="row title-row post type-page">
-            <div class="col-12 col-md-9 col-lg-8 col-xl-7">
-                <h1 class="post-title title">
-                    Contact (Template)
-                </h1>
-                <p class="subtitle">
-                    We're here to help and answer any question you might have. We look forward to hearing from you.
-                </p>
-            </div>
-        </div>
-        <div class="row breadcrumb-row">
-            <div class="col-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Page</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact (Template)</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</header>
+</header> --%>
+<jsp:include page="header.jsp" />
 
 <main class="main">
     <div id="post-1" class="page type-page post-1">
@@ -279,37 +253,43 @@
             <div class="row justify-content-start post-row no-gutters">
                 <div class="col-12 px-0 px-sm-3 col-md-10 offset-md-1 px-md-0 col-xl-9">
                     <div class="post-content">
-                        <h4 class="font-weight-bold">Contact Us</h4>
-                        <p>Feel free to contact us, if you have any questions. To contact us please email us.</p>
+                        <h4 class="font-weight-bold">상품등록</h4>
+                        <p>규정을 준수하여 상품을 등록해주세요</p>
 
                         <form id="contactform" class="contact-form mt-5">
                             <div class="form-group row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Name" aria-required="true"
+                                    <input type="text" class="form-control" placeholder="이름" aria-required="true"
                                            required="required" aria-label="Name">
                                 </div>
                                 <div class="col">
-                                    <input type="email" class="form-control" placeholder="Email" aria-required="true"
+                                    <input type="email" class="form-control" placeholder="이메일" aria-required="true"
                                            required="required" aria-label="Email">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Subject" aria-required="true"
+                                    <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
                                            required="required" aria-label="Subject">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col">
-                                    <textarea class="form-control" name="message" rows="8" placeholder="Message"
+                                    <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
                                               aria-required="true" required="required" aria-label="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="item_photo upload">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="여기다가 업로드기능"
+                                              aria-required="true" required="required" aria-label="Photo"></input>
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col">
                                     <input name="submit" type="submit" id="submit"
                                            class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="Send Message">
+                                           value="상품등록">
                                 </div>
                             </div>
                         </form>
@@ -319,7 +299,7 @@
         </div>
     </div>
 </main>
-
+<!-- 
 <div class="pre-footer footer-grid-1 bg-dark text-white">
     <div class="container">
         <div class="row justify-content-center">
@@ -366,7 +346,11 @@
         </div>
     </div>
 </footer>
+ -->
+ 
+ <jsp:include page="footer.jsp"/>
 
+ 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
