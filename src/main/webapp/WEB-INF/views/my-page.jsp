@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Lana Pet - Archive (Story)</title>
+    <title>마이페이지</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +14,32 @@
     <link rel="stylesheet" id="open-sans-css"
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="../css/animate.min.css?ver=3.7.2" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="../css/font-awesome.min.css?ver=5.15.4" type="text/css"
+    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="../css/bootstrap.min.css?ver=4.6.0" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="../css/smartmenus-bootstrap.min.css?ver=1.1.1"
+    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
           type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="../css/swiper.min.css?ver=4.5.3" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="../css/magnific-popup.min.css?ver=1.1.0" type="text/css"
+    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="../css/lana-pet-icon.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="../css/lana-pet-theme.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
           media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="../css/lana-pet-print.min.css?ver=1.0.0" type="text/css"
+    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
+<style>
+#button{
+	display: flex;
+	justify-content: center;
+	align-items center;
+	padding-bottom: 2em;
+	
+}
+
+</style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 
 <header class="header bg-dark lana-bg-image-brown-and-white-small-staring-dog-face-indoor">
@@ -242,111 +252,85 @@
             </form>
         </div>
     </nav>
-
-    <div class="container header-content text-white">
-        <div class="row back-row">
-            <div class="col-12">
-                <a href="#" class="btn btn-sm btn-outline-primary text-white font-weight-bold btn-back">
-                    <i class="lana-icon-arrow-left text-white mr-2"></i> Back
-                </a>
-            </div>
-        </div>
-        <div class="row title-row">
-            <div class="col-12 col-md-9 col-lg-8 col-xl-7">
-                <h1 class="archive-title title">
-                    Happy Stories
-                </h1>
-                <p class="subtitle">
-                    We are happy that we help families find a new family member for themselves.
-                </p>
-            </div>
-        </div>
-        <div class="row breadcrumb-row">
-            <div class="col-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Story</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Archive</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 </header>
+ 
 
 <main class="main container">
     <div class="row">
         <div class="col-12 col-lg-8">
+        
+        
+              <div class="widget">
+                    <div class="input-group">
+                         <select id="archive" class="form-control">
+                        <option>전체상품</option>
+                        <option>이건뭘넣나</option>
+                        <option>?</option>
+                    </select>
+                      <select id="archive" class="form-control">
+                        <option>전체상태</option>
+                        <option>구매확정</option>
+                        <option>취소</option>
+                    </select>
+                      <select id="archive" class="form-control">
+                        <option>달력</option>
+                        <option>으로</option>
+                        <option>하고</option>
+                    </select>
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                       
+                        </div>
+                    </div>
+                </div>
+                
             <div class="story-posts">
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
                     <div class="card-body">
-                        <div class="media">
-                            <img src="../pictures/placeholder/100x100.svg" class="img-fluid rounded-circle" alt="Pet">
-                            <div class="media-body align-self-center">
-                                <h5 class="post-title card-title">Jumbo</h5>
-                                <h6 class="card-subtitle">Anastasia</h6>
-                            </div>
+                       <div class="blog-posts">
+                <div id="post-2" class="post type-post post-2 card post-card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="card-img img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            
                         </div>
-                        <p class="post-text card-text">
-                            How did we live without a cat? This is an indescribable happiness! Thank you Pethome for
-                            allowing us adopt him!
-                        </p>
-                        <div class="d-flex justify-content-between post-meta mt-4">
-                            <div class="date-meta">
-                                May 24, 2017
+                        <div class="col-md-8">
+                            <div class="card-body h-100 d-flex align-items-start flex-column">
+                                <ul class="post-meta">
+                                    <li><a href="single.html">구매일자 월 일, 년도</a></li>
+                                    <li><a href="#">주문상태</a></li>
+                                </ul>
+                                <p class="post-text card-text">
+                                <h6 class="post-title card-title">구매번호</h6>
+                                <h4 class="post-title card-title"><a href="single.html">게시물이름</a></h4>
+                                <p class="subtitle">
+                  상품설명
+                </p>
+                                    
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
+                                    <div class="author-meta">
+                                   
+                                        <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
+                                             class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+                                        By: <a href="#" class="author-link card-link">판매자</a>
+                                    </div>
+                                    
+                                    <a href="single.html" class="more-link card-link d-flex align-items-center">
+                                        리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <a href="single-lana_story.html" class="more-link card-link d-flex align-items-center">
-                                Read More <i class="lana-icon-arrow-right text-primary"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
-                <div id="post-2" class="lana_story type-lana_story post-2 card story-card">
-                    <div class="card-body">
-                        <div class="media">
-                            <img src="../pictures/placeholder/100x100.svg" class="img-fluid rounded-circle" alt="Pet">
-                            <div class="media-body align-self-center">
-                                <h5 class="post-title card-title">Jumbo</h5>
-                                <h6 class="card-subtitle">Anastasia</h6>
-                            </div>
-                        </div>
-                        <p class="post-text card-text">
-                            How did we live without a cat? This is an indescribable happiness! Thank you Pethome for
-                            allowing us adopt him!
-                        </p>
-                        <div class="d-flex justify-content-between post-meta mt-4">
-                            <div class="date-meta">
-                                May 24, 2017
-                            </div>
-                            <a href="single-lana_story.html" class="more-link card-link d-flex align-items-center">
-                                Read More <i class="lana-icon-arrow-right text-primary"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
-                <div id="post-3" class="lana_story type-lana_story post-3 card story-card">
-                    <div class="card-body">
-                        <div class="media">
-                            <img src="../pictures/placeholder/100x100.svg" class="img-fluid rounded-circle" alt="Pet">
-                            <div class="media-body align-self-center">
-                                <h5 class="post-title card-title">Jumbo</h5>
-                                <h6 class="card-subtitle">Anastasia</h6>
-                            </div>
-                        </div>
-                        <p class="post-text card-text">
-                            How did we live without a cat? This is an indescribable happiness! Thank you Pethome for
-                            allowing us adopt him!
-                        </p>
-                        <div class="d-flex justify-content-between post-meta mt-4">
-                            <div class="date-meta">
-                                May 24, 2017
-                            </div>
-                            <a href="single-lana_story.html" class="more-link card-link d-flex align-items-center">
-                                Read More <i class="lana-icon-arrow-right text-primary"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+               
                 <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
                     <a class="prev disabled" href="#">
                         Prev
@@ -365,53 +349,38 @@
                 </nav>
             </div>
         </div>
+      
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
-                <div class="widget">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">Recent Posts</h3>
-                    <ul>
-                        <li><a href="#">Post #1</a></li>
-                        <li><a href="#">Post #2</a></li>
-                        <li><a href="#">Post #3</a></li>
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">Recent Comments</h3>
-                    <ul>
-                        <li><a href="#">Comment #1</a></li>
-                        <li><a href="#">Comment #2</a></li>
-                        <li><a href="#">Comment #3</a></li>
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">Archive</h3>
-                    <label for="archive" class="sr-only"></label>
-                    <select id="archive" class="form-control">
-                        <option>March 2018</option>
-                        <option>February 2018</option>
-                        <option>January 2018</option>
-                    </select>
-                </div>
-                <div class="widget widget_tag_cloud">
-                    <h3 class="widget-title">Tag Cloud</h3>
+            
+            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
+              
+                  
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+                       
+                  
+               </div>
+               <div class="widget widget_tag_cloud">
+                  
                     <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link" aria-label="Cats (1 item)">Cats</a>
-                        <a href="#" class="tag-cloud-link" aria-label="Dogs (3 items)">Dogs</a>
-                        <a href="#" class="tag-cloud-link" aria-label="Adopting (1 item)">Adopting</a>
-                        <a href="#" class="tag-cloud-link" aria-label="Traning (1 item)">Traning</a>
-                        <a href="#" class="tag-cloud-link" aria-label="Volonteer (1 item)">Volonteer</a>
-                        <a href="#" class="tag-cloud-link" aria-label="Team work (2 items)">Team work</a>
-                    </div>
+                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">전문가로 전환</a>
+                       
+                  
+               </div>
+            <div class="row" >
+                <div class="widget">
+                    <h3 class="widget-title">나의 정보</h3>
+               
+                    <ul>
+                        <li><a href="#">전문가 정보</a></li>
+                        <li><a href="#">구매 관리</a></li>
+                        <li><a href="#">비밀번호 변경</a></li>
+                        <li><a href="#">회원 탈퇴</a></li>
+                    </ul>
+                </div>
+               
+                  </div>
                 </div>
             </div>
         </div>
@@ -465,15 +434,16 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../js/jquery.min.js?ver=3.6.0"></script>
-<script type="text/javascript" src="../js/popper.min.js?ver=1.16.1"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js?ver=4.6.0"></script>
-<script type="text/javascript" src="../js/smartmenus.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/smartmenus-bootstrap.min.js?ver=1.1.1"></script>
-<script type="text/javascript" src="../js/swiper.min.js?ver=4.5.3"></script>
-<script type="text/javascript" src="../js/scrollmagic.min.js?ver=2.0.8"></script>
-<script type="text/javascript" src="../js/magnific-popup.min.js?ver=1.1.0"></script>
-<script type="text/javascript" src="../js/custom-theme.js?ver=1.0.0"></script>
+
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 </body>
 </html>
