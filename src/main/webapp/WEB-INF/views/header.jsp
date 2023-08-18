@@ -10,20 +10,15 @@
             <a class="navbar-brand" href="../index.html"> <img
                class="navbar-logo" src="<c:url value="/pictures/placeholder/logo_label.png"/>"
                alt="Navbar Logo">
-            </a>
 				<div class="toggler-buttons d-flex flex-fill justify-content-end">
-					<!-- 화면 크기 조정시 로그인 버튼 -->
-					<a href="#" class="btn my-auto"
-						aria-controls="lana-navbar" aria-expanded="false"
-						aria-label="Toggle navigation" >
-						<i class="fas fa-sign-in-alt fa-2x" style="color: #ff8a00;"></i></a>
+					
 					<!-- 화면크기 조정시 검색 토글 버튼  -->
 					<button class="search-toggler" type="button" data-toggle="collapse"
 						data-target="#lana-search" aria-controls="lana-search"
 						aria-expanded="false" aria-label="Toggle search">
 						<i class="fas fa-search fa-lg fa-fw text-dark"></i>
 					</button>
-					<!-- 화면크기 조정시 카테고리 토글 버튼  -->
+					<!-- 화면크기 조정시 카테고리 토글  버튼  -->
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#lana-navbar" aria-controls="lana-navbar"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +28,7 @@
 				</div>
 
 				<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-            <div class="collapse navbar-collapse" id="lana-navbar" style="z-index: 10000;">
+            <div class="collapse navbar-collapse" id="lana-navbar">
                <ul class="navbar-nav ml-lg-auto">
                   <li class="nav-item dropdown">
                   	<a class="nav-link dropdown-toggle" href="archive.html"
@@ -139,6 +134,4 @@
             </div>
          </nav>
       </div>
-<hr>
- 
    </header>
