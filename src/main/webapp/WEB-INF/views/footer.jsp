@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="widget">
+                <div class="widget" style="text-align: left;">
                     <img class="footer-logo img-fluid mb-4" src="<c:url value="/pictures/placeholder/logo2.png"/>"
                          alt="Footer Logo">
-                    <p>
+                    <p style="text-align: left;">
                         외주 사이트
                     </p>
                     <ul class="social-icons list-inline">

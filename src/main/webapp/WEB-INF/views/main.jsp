@@ -53,7 +53,7 @@ p #logo{
 }
 #logo a{
 	font-family: 'Permanent Marker', cursive;
-	padding-left: 20px;
+	padding-left: 30px;
 	padding-bottom:0px;
 	padding-top: 0px;
 	margin: 0 auto;

@@ -1145,7 +1145,7 @@ ul.social-icons li a.social-icon::after {
 	}
 	#lana-pet-main-navbar.navbar-expand-lg[data-lana-collapse-bg-transparent=true],
 		#lana-pet-main-navbar.navbar-expand-lg[data-lana-collapse-bg] {
-		background: 0 0 !important
+		background: #fff !important
 	}
 }
 
@@ -3178,8 +3178,8 @@ a.post.type-post.post-slide-card:focus, a.post.type-post.post-slide-card:hover
 }
 
 .pre-footer {
-	padding-top: 7rem;
-	padding-bottom: 7rem
+	padding-top: 4rem;
+	padding-bottom: 4rem
 }
 
 @media ( max-width :767.98px) {
