@@ -91,7 +91,7 @@
 						
 					</ul>
 
-					<!-- 토글, 검색 버튼  -->
+					<!-- 토글, 검 색 버튼  -->
 					<div class="d-none d-xl-inline-flex ml-xl-4">
 						<form class="search-widget d-none d-xl-inline-flex ml-3">
 							<button class="search-toggler" type="button"

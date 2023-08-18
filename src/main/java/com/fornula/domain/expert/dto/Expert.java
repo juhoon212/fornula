@@ -13,7 +13,7 @@ CAREER                   VARCHAR2(20)
 COMPANY_ONE              VARCHAR2(20)  
 COMPANY_TWO              VARCHAR2(20)  
 COMPANY_THREE            VARCHAR2(20)  
-EXPERTFILE_NAME          VARCHAR2(100) */
+EXPERTFILE_NAME          VARCHAR2(100)  */
 
 
 @Data
