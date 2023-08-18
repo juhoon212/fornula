@@ -11,9 +11,6 @@
                class="navbar-logo" src="<c:url value="/pictures/placeholder/logo_label.png"/>"
                alt="Navbar Logo">
             </a>
-
-
-
 				<div class="toggler-buttons d-flex flex-fill justify-content-end">
 					<!-- 화면 크기 조정시 로그인 버튼 -->
 					<a href="#" class="btn my-auto"
@@ -105,8 +102,7 @@
                   <div class="button-nav-widget d-none d-xl-inline-flex">
                      <ul class="nav button-nav">
                         <li class="nav-item">
-                        	<a href="#"
-                           class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
+                        	<a href="#" class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
                               Login </a>
                         </li>
                      </ul>
