@@ -7,12 +7,9 @@
       <div class="header-navbar border-bottom border-white">
          <nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange" id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
             id="lana-pet-main-navbar">
-            <p id="logo"><a class="navbar-brand" href="<c:url value="/index.html"/>">
-             	FORNUAL
-            </a></p>
-
-
-
+            <a class="navbar-brand" href="../index.html"> <img
+               class="navbar-logo" src="<c:url value="/pictures/placeholder/logo_label.png"/>"
+               alt="Navbar Logo">
 				<div class="toggler-buttons d-flex flex-fill justify-content-end">
 					
 					<!-- 화면크기 조정시 검색 토글 버튼  -->
@@ -100,9 +97,8 @@
                   <div class="button-nav-widget d-none d-xl-inline-flex">
                      <ul class="nav button-nav">
                         <li class="nav-item">
-                        	<a href="#"
-                           class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
-                              Login </a>
+                        	<button class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
+                              Login </button>
                         </li>
                      </ul>
                   </div>
