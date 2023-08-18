@@ -1,4 +1,7 @@
 package com.fornula.domain.item.dto;
+
+import lombok.Data;
+
 /*
   이름           널?       유형             
 ------------ -------- -------------- 
@@ -12,6 +15,7 @@ ITEM_STATUS  NOT NULL NUMBER
 ITEM_DATE    NOT NULL DATE   
  */
 
+@Data
 public class Item {
 	private int itemIdx;
 	private int categoryIdx;

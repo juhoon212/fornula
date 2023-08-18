@@ -13,7 +13,10 @@ REVIEWFILE_NAME          VARCHAR2(100)
 ANSWER_CONTENT           VARCHAR2(2000) 
 ANSWER_DATE              DATE       
  */
- 
+
+import lombok.Data;
+
+@Data
 public class Review {
 	private int reviewIdx;
 	private int purchaseIdx;
