@@ -6,6 +6,10 @@ PHOTO_IDX     NOT NULL NUMBER
 ITEM_IDX      NOT NULL NUMBER        
 ITEMFILE_NAME          VARCHAR2(100) 
 */
+
+import lombok.Data;
+
+@Data
 public class Photo {
 	private int photoIdx;
 	private int itemIdx;
