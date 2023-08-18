@@ -25,14 +25,9 @@ public class HomeController {
 	   @GetMapping("/mypage")
 	   public String mypage() {
 	      log.info("Homecontroller = {}", HomeController.class);
-	      return "my-page";
+	      return "mypage-purchase";
 	   }
-	   
-	   @GetMapping("/mypage2")
-	   public String mypage2() {
-	      log.info("Homecontroller = {}", HomeController.class);
-	      return "my-page2";
-	   }
+	  
 	   
 	   @GetMapping("/items")
 	   public String items() {
