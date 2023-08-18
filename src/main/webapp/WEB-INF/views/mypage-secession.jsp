@@ -370,7 +370,7 @@ h3 {
         
           <h3>관심사 분야</h3>
            <div class="info">
-          <label><input type="checkbox" name="caution" value="cautioncheck"> 주의사항을 모두 입력하였습니다.</label><br>
+          <label><input type="checkbox" name="caution" value="cautioncheck"> 주의사항을 모두 입력하였습니다</label><br>
            </div>
           
      
