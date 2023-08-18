@@ -13,6 +13,7 @@ PURCHASE_STATUS NOT NULL NUMBER
  */
 
 @Data
+
 public class Purchase {
 	private int purchaseIdx;
 	private int itemIdx;

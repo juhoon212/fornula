@@ -14,6 +14,7 @@ SALES_IDX      NOT NULL NUMBER
  
 */ 
 @Data
+
 public class Payment {
 	private int paymentIdx;
 	private String paymentOption;
