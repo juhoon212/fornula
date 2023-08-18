@@ -8,6 +8,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <meta charset="utf-8">
     <title>Lana Pet - Front Page</title>
@@ -31,7 +34,40 @@
     <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css" media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
-    
+    <style type="text/css">
+.profile {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+p #logo{
+	width:400px;
+	height: 70px;
+
+}
+#logo a{
+	font-family: 'Permanent Marker', cursive;
+	padding-left: 20px;
+	padding-bottom:0px;
+	padding-top: 0px;
+	margin: 0 auto;
+	font-size: 2.5em;
+	text-align: center;
+}
+.navbar{
+	text-align: center;
+}
+
+#lana-navbar{
+	text-align: left;
+}
+</style>
 </head>
 
 <body class="home page page-template-template-lana-editor">
@@ -78,7 +114,7 @@
 
 
 <!-- 광고 삽입 -->
- <div class="container-fluid bg-dark text-white mt-auto py-5 " style="z-index: 2;">
+ <div class="container-fluid bg-dark text-white mt-auto py-5 ">
          <div class="row">
             <div class="col-12 col-md-9 col-lg-8 col-xl-7 h-100">
                <div class="header-carousel swiper-container bg-transparent h-100">

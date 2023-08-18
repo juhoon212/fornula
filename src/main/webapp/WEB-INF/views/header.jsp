@@ -7,19 +7,14 @@
       <div class="header-navbar border-bottom border-white">
          <nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange" id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
             id="lana-pet-main-navbar">
-            <a class="navbar-brand" href="../index.html"> <img
-               class="navbar-logo" src="<c:url value="/pictures/placeholder/logo_label.png"/>"
-               alt="Navbar Logo">
-            </a>
+            <p id="logo"><a class="navbar-brand" href="<c:url value="/index.html"/>">
+             	FORNUAL
+            </a></p>
 
 
 
 				<div class="toggler-buttons d-flex flex-fill justify-content-end">
-					<!-- 화면 크기 조정시 로그인 버튼 -->
-					<a href="#" class="btn my-auto"
-						aria-controls="lana-navbar" aria-expanded="false"
-						aria-label="Toggle navigation" >
-						<i class="fas fa-sign-in-alt fa-2x" style="color: #ff8a00;"></i></a>
+					
 					<!-- 화면크기 조정시 검색 토글 버튼  -->
 					<button class="search-toggler" type="button" data-toggle="collapse"
 						data-target="#lana-search" aria-controls="lana-search"
@@ -36,7 +31,7 @@
 				</div>
 
 				<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-            <div class="collapse navbar-collapse" id="lana-navbar" style="z-index: 10000;">
+            <div class="collapse navbar-collapse" id="lana-navbar">
                <ul class="navbar-nav ml-lg-auto">
                   <li class="nav-item dropdown">
                   	<a class="nav-link dropdown-toggle" href="archive.html"
@@ -143,6 +138,4 @@
             </div>
          </nav>
       </div>
-<hr>
- 
    </header>
