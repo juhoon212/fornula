@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.member.mapper.MemberLoginMapper">
+<mapper namespace="com.fornula.domain.member.mapper.java.MemberLoginMapper">
 	<select id="selectMemberInfo" resultType="Member">
 		select  member_idx,
 				id,
@@ -11,12 +11,11 @@
 				login_date
 		from member
 		<where>
-				id = #{id}
-			<if test="password != null and password == ''">
+			id = #{id}
+			<if test="password != null and password != ''">
 				and password = #{password}
 			</if>
 		</where>
-			
 	</select>
 	
 	

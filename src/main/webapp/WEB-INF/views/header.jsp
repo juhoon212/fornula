@@ -102,8 +102,8 @@
                   <div class="button-nav-widget d-none d-xl-inline-flex">
                      <ul class="nav button-nav">
                         <li class="nav-item">
-                        	<a href="#" class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
-                              Login </a>
+                        	<button class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto" id="loginButton">
+                              Login </button>
                         </li>
                      </ul>
                   </div>

@@ -26,7 +26,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		boolean isCheckedPassword = BCrypt.checkpw(password, loginMember.getPassword());
 		
 		if(!isCheckedPassword) {
-			throw new LoginFailException("비밀번호 인증오류", loginMember);
+			throw new LoginFailException("비밀번호 인증오류");
 		}
 		
 		

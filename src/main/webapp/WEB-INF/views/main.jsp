@@ -40,25 +40,28 @@
 
 <div class="black-bg">
     <div class="white-bg">
-        <form action="">
+        <form action="<c:url value="/member/login"/>" method="post">
             <div class="mb-3">
             <!-- <h1 class="name">ForNula</h1> -->
            	   <div class="name">FORNUAL</div>
                <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
                <label for="exampleInputEmail1" class="form-label"></label>
-               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+               <input type="text" id="id-input" class="form-control" placeholder="아이디">
                <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"></label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input type="password" class="form-control" id="password-input" placeholder="Password">
             </div>
+            <c:if test="${message != null}">
+            	<div class="error">${message}</div>
+            </c:if>
             <div class="id-pw-find" >
             	<a href="">아이디 / 비밀번호 찾기</a>
             </div>
             <div class="btn-container">
-              <button type="submit" class="btn btn-light" id="login">로그인</button>
-              <button type="submit" class="btn btn-light" id="join">회원가입</button>
+              <button type="submit" id="login" class="btn btn-light" >로그인</button>
+              <button type="submit" id="join" class="btn btn-light" >회원가입</button>
             </div>
             <div id="logos">
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
@@ -66,10 +69,8 @@
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
           	</div>
-          </form>
-          
+          </form>  
     </div>
-
 </div>
 
 		
@@ -924,18 +925,48 @@
 <script>
 	let loginButton = document.querySelector('#loginButton');
 	let close = document.querySelector('.close');
+	let id = document.querySelector('#id-input');
+	let password = document.querySelector('#password-input');
+	let loginSubmit = document.querySelector('#login');
+	
+	id.addEventListener('input', (e) => {
+		console.log(e);
+	})
 	
 	
 	loginButton.addEventListener('click', () => {
 	    document.querySelector('.black-bg').classList.add('show-modal');
+	    console.log(1);
 	})
 	
 	close.addEventListener('click', () => {
 	    document.querySelector('.black-bg').classList.remove('show-modal');
 	})
+	
+	loginSubmit.addEventListener('click', (e) => {
+		
+		
+		if(id.value == "" || id.value == null) {
+			e.preventDefault();
+            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+            return;
+		}
+		
+		if(password.value == "" || password.value == null) {
+			e.preventDefault();
+            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+            return;
+		}
+	});
+	
+	
+	
+	
+	
+	
 
 
-</script>
+</script>  
 </body>
 </html>
 

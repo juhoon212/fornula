@@ -14,9 +14,8 @@ public class LoginFailException extends RuntimeException{
 	@Getter
 	private Member member;
 
-	public LoginFailException(String message, Member member) {
+	public LoginFailException(String message) {
 		super(message);
-		this.member = member;
 	}
 	
 	

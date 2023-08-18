@@ -33,7 +33,7 @@ public class MemberLoginController {
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
 		if(loginMember == null) {
-			throw new LoginFailException("미인증 사용자입니다.", loginMember);
+			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
 		}
 		
 		HttpSession session = request.getSession();
