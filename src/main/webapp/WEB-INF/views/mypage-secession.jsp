@@ -349,7 +349,7 @@ h3 {
         </h3>
         <div class="info" id="info__id">
          <div>
-            <label><input type="checkbox" name="reason" value="cautionreason1"> 이용하고 싶은 서비스가 없어요.</label><br>
+            <label><input type="checkbox" name="reason" value="cautionreason1"> 이용하고 싶은 서비스가 없어요</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason2"> 서비스 퀄리티가 낮아요.</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason3"> 비매너 회원을 만났어요.</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason4"> 기타</label><br>
