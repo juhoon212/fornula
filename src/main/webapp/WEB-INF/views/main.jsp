@@ -53,7 +53,7 @@ p #logo{
 }
 #logo a{
 	font-family: 'Permanent Marker', cursive;
-	padding-left: 20px;
+	padding-left: 30px;
 	padding-bottom:0px;
 	padding-top: 0px;
 	margin: 0 auto;
@@ -72,7 +72,7 @@ p #logo{
 
 <body class="home page page-template-template-lana-editor">
 
-<!--로그인 팝업창 by Juho on-->
+<!--로그인 팝업창 by J  uho on-->
 
 <div class="black-bg">
     <div class="white-bg">
