@@ -1,20 +1,21 @@
 /**
  * 
  */
-
-console.log(1);
+ 
 let loginButton = document.querySelector('#loginButton');
 let close = document.querySelector('.close');
-let id = document.querySelector('#id-input').value;
-let password = document.querySelector('#password-input').value;
-let loginSubmit = document.querySelector('#login');
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/juhoon
     loginButton.addEventListener('click', () => {
         document.querySelector('.black-bg').classList.add('show-modal');
     })
 
     close.addEventListener('click', () => {
         document.querySelector('.black-bg').classList.remove('show-modal');
+<<<<<<< HEAD
     })
     
     loginSubmit.addEventListener('click', (e) => {
@@ -31,3 +32,6 @@ let loginSubmit = document.querySelector('#login');
             return;
 		}
 	});
+=======
+    })
+>>>>>>> refs/remotes/origin/juhoon
