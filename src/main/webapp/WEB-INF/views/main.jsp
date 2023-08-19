@@ -82,16 +82,15 @@ p #logo{
            	   <div class="name">FORNUAL</div>
                <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
                <label for="exampleInputEmail1" class="form-label"></label>
-               <input type="text" id="id-input" class="form-control" placeholder="아이디">
+               <input type="text" id="id-input" class="form-control" placeholder="아이디" name="id">
                <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"></label>
-              <input type="password" class="form-control" id="password-input" placeholder="Password">
+              <input type="password" class="form-control" id="password-input" placeholder="Password" name="password">
             </div>
-            <c:if test="${message != null}">
-            	<div class="error">${message}</div>
-            </c:if>
+            <div class="front-error"></div>
+            
             <div class="id-pw-find" >
             	<a href="">아이디 / 비밀번호 찾기</a>
             </div>
@@ -955,19 +954,15 @@ p #logo{
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/login-form.js"/>"></script>
+<%-- <script type="text/javascript" src="<c:url value="/js/login-form.js"/>"></script> --%>
 
-
-<script>
+ <script>
 	let loginButton = document.querySelector('#loginButton');
 	let close = document.querySelector('.close');
 	let id = document.querySelector('#id-input');
 	let password = document.querySelector('#password-input');
 	let loginSubmit = document.querySelector('#login');
-	
-	id.addEventListener('input', (e) => {
-		console.log(e);
-	})
+	let frontError = document.querySelector('.front-error');
 	
 	
 	loginButton.addEventListener('click', () => {
@@ -983,16 +978,40 @@ p #logo{
 		
 		
 		if(id.value == "" || id.value == null) {
-			e.preventDefault();
-            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+			frontError.style.display = 'flex';
+			frontError.innerHTML = "아이디 또는 비밀번호가 맞지 않습니다."
+			frontError.style = 'color : red';
+            e.preventDefault();
             return;
 		}
 		
 		if(password.value == "" || password.value == null) {
-			e.preventDefault();
-            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+			frontError.style.display = 'flex';
+			frontError.innerHTML = "아이디 또는 비밀번호가 맞지 않습니다."
+			frontError.style = 'color : red';
+           	e.preventDefault();
             return;
 		}
+		
+		fetch("<c:url value="/member/login"/>", {
+			  method: "POST", 
+			  headers: { 
+			    "Content-Type": "application/json",
+			  },
+			  body: JSON.stringify({
+			   	"id":id.value,
+			   	"password":password.value
+			  }),
+			})
+			  .then((response) => response.json())
+              .then((data) => {
+                let html = `<div class="error">${message}</div>`
+                frontError.insertAdjacentElement(html);
+              })
+              .then(() => {
+            	  e.preventDefault();
+              })
+              
 	});
 	
 	
@@ -1000,9 +1019,15 @@ p #logo{
 	
 	
 	
+	
+	
+	
+	
+	
+	
 
 
-</script>  
+</script>
 </body>
 </html>
 

@@ -23,6 +23,7 @@ LOGIN_DATE               DATE
  */
 
 @Data
+@AllArgsConstructor
 public class Member {
 	
 	private int memberIdx;
