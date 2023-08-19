@@ -14,7 +14,7 @@
 
 
 			<div class="toggler-buttons d-flex flex-fill justify-content-end">
-					<!-- 화면크기 조정시 검색 토글 버튼  -->
+					<!-- 화면크기 조정시 검색 토글  버튼  -->
 					<button class="search-toggler" type="button" data-toggle="collapse"
 						data-target="#lana-search" aria-controls="lana-search"
 						aria-expanded="false" aria-label="Toggle search">

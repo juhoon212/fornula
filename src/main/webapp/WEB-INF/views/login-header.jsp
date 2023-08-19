@@ -16,7 +16,7 @@
 
 
 			<div class="toggler-buttons d-flex flex-fill justify-content-end">
-				<!-- 화면 크기 조정시 로 그인 버튼 -->
+				<!-- 화면 크기 조정시 로  그인 버튼 -->
 				<a href="#" class="btn my-auto" aria-controls="lana-navbar"
 					aria-expanded="false" aria-label="Toggle navigation"> <i
 					class="fas fa-user-circle fa-2x" style="color: #ff8a00;"></i></a>

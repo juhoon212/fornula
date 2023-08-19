@@ -72,7 +72,7 @@ p #logo{
 
 <body class="home page page-template-template-lana-editor">
 
-<!--로그인 팝업창 by J uho on-->
+<!--로그인 팝업창 by J  uho on-->
 
 <div class="black-bg">
     <div class="white-bg">
