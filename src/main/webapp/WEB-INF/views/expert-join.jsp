@@ -279,7 +279,7 @@ h3 {
 		</div>
 	</main>
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp"/>
 
 
 	<script type="text/javascript"
