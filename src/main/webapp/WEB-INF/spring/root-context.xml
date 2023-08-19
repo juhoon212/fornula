@@ -47,7 +47,7 @@
 		<property name="mapperLocations">
 			<list>
 				<!-- [src/main/java] 폴더의 패키지에 작성된 모든 XML 파일을 매퍼로 등록되도록 처리 -->
-				<value>classpath:com/fornula/*.xml</value>
+				<value>classpath:com/fornula/domain/member/mapper/xml/*.xml</value>
 			</list>
 		</property>
 	</bean>
