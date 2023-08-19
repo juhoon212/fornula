@@ -9,7 +9,7 @@
                     <img class="footer-logo img-fluid mb-4" src="<c:url value="/pictures/placeholder/logo2.png"/>"
                          alt="Footer Logo">
                     <p style="text-align: left;">
-                        외주 사이트
+                        외주 사이트 입니다.
                     </p>
                     <ul class="social-icons list-inline">
                         <li class="list-inline-item">
