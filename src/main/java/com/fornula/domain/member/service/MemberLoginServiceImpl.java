@@ -1,5 +1,7 @@
 package com.fornula.domain.member.service;
 
+import java.util.Optional;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +23,22 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member login(String id, String password) {
 		
-		Member loginMember = memberLoginRepository.selectMemberInfo(id, password);
+		Optional<Member> optionalLoginMember = memberLoginRepository.selectMemberInfo(id, password);
+		Member loginMember = optionalLoginMember.orElse(null);
+		
+		if(loginMember == null) {
+			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
+		}
+		
+		log.info("loginMember = {}", loginMember.getId());
 		
 		boolean isCheckedPassword = BCrypt.checkpw(password, loginMember.getPassword());
 		
 		if(!isCheckedPassword) {
 			throw new LoginFailException("비밀번호 인증오류");
+		} else {
+			return loginMember;
 		}
-		
-		
-		return loginMember;
 	}
 	
 	

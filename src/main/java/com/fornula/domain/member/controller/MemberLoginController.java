@@ -22,29 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/member")
 public class MemberLoginController {
 	
-	private final MemberLoginService memberLoginService;
 	
-	@PostMapping("/login")
-	public String login(@ModelAttribute LoginForm form, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		
-		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
-		
-		if(loginMember == null) {
-			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
-		}
-		
-		HttpSession session = request.getSession();
-		session.setAttribute(SessionConst.Login_member, loginMember);
-		redirectAttributes.addAttribute("loginMember", loginMember.getId());
-		
-		return "redirect:/main";
-		
-		
-		
-	}
 	
 	
 	

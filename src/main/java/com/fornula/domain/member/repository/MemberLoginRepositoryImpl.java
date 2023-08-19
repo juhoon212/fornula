@@ -1,5 +1,7 @@
 package com.fornula.domain.member.repository;
 
+import java.util.Optional;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +20,7 @@ public class MemberLoginRepositoryImpl implements MemberLoginRepository{
 	private final SqlSession sqlSession;
 
 	@Override
-	public Member selectMemberInfo(String id, String password) {
+	public Optional<Member> selectMemberInfo(String id, String password) {
 		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberInfo(id, password);
 	}
 	

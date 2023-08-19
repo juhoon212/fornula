@@ -9,8 +9,6 @@ let id = document.querySelector('#id-input').value;
 let password = document.querySelector('#password-input').value;
 let loginSubmit = document.querySelector('#login');
     
-    console.log(id);
-
     loginButton.addEventListener('click', () => {
         document.querySelector('.black-bg').classList.add('show-modal');
     })
@@ -22,14 +20,14 @@ let loginSubmit = document.querySelector('#login');
     loginSubmit.addEventListener('click', (e) => {
    		
 		if(id.value == "" || id.value == null) {
-			e.preventDefault();
-            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+			e.preventDefault();s
+            document.querySelector('.front-error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
             return;
 		}
 		
 		if(password.value == "" || password.value == null) {
 			e.preventDefault();
-            document.querySelector('.error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
+            document.querySelector('.front-error').innerHtml = "아이디 비밀번호가 맞지 않습니다."
             return;
 		}
 	});
