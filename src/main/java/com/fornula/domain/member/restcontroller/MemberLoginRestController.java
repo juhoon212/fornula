@@ -40,7 +40,7 @@ public class MemberLoginRestController {
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
 		HttpSession session = request.getSession();
-		session.setAttribute(SessionConst.Login_member, loginMember);
+		session.setAttribute(SessionConst.Login_Member, loginMember);
 		
 		log.info("member = {}",loginMember.getId());
 		
