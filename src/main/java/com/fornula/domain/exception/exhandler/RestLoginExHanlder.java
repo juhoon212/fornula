@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice(basePackages = "com.fornula.domain")
 @Slf4j
-public class LoginExHanlder {
+public class RestLoginExHanlder {
 	
 	@ExceptionHandler(LoginFailException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -26,13 +26,9 @@ public class LoginExHanlder {
 		return new ErrorResult("Bad", e.getMessage());
 	}
 	
-	@ExceptionHandler(LoginUserCheckException.class)
-	public String loginUserCheckException(LoginUserCheckException e) {
-		
-		log.info("REQUEST URL = {}", e.getMessage()); // 들어온 요청 URL
-		
-		return "redirect:/" + e.getMessage();
-	}
+	
+	
+	
 	
 	
 }
