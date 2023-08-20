@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
+import com.fornula.domain.exception.custom.LoginUserCheckException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +24,14 @@ public class LoginExHanlder {
 	public ErrorResult LoginFailExHandle(LoginFailException e) {
 		log.info("[LoginFailException] ", e);
 		return new ErrorResult("Bad", e.getMessage());
+	}
+	
+	@ExceptionHandler(LoginUserCheckException.class)
+	public String loginUserCheckException(LoginUserCheckException e) {
+		
+		log.info("REQUEST URL = {}", e.getMessage()); // 들어온 요청 URL
+		
+		return "redirect:/" + e.getMessage();
 	}
 	
 	

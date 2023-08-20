@@ -974,6 +974,8 @@ p #logo{
 	    document.querySelector('.black-bg').classList.remove('show-modal');
 	})
 	
+	let submitCheck = false;
+	
 	loginSubmit.addEventListener('click', (e) => {
 		
 		
@@ -993,6 +995,8 @@ p #logo{
             return;
 		}
 		
+		
+		
 		fetch("<c:url value="/member/login"/>", {
 			  method: "POST", 
 			  headers: { 
@@ -1005,13 +1009,17 @@ p #logo{
 			})
 			  .then((response) => response.json())
               .then((data) => {
-                let html = `<div class="error">${message}</div>`
-                frontError.insertAdjacentElement(html);
-              })
-              .then(() => {
-            	  e.preventDefault();
+            	  
+            	  if(data.errorCode === "Bad") {
+            		  console.log(data.message);
+            		  frontError.innerHTML = data.message;
+            		  frontError.style = "color : red";
+            	  } else {
+            		  location.href = "<c:url value="/home"/>";
+            	  } 
               })
               
+              e.preventDefault();
 	});
 	
 	
