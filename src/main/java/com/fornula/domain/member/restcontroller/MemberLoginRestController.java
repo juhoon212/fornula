@@ -44,7 +44,6 @@ public class MemberLoginRestController {
 		
 		log.info("member = {}",loginMember.getId());
 		
-		
 		return loginMember;
 	}
 	
