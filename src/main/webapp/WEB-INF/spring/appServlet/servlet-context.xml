@@ -29,6 +29,15 @@
 	
 	<context:component-scan base-package="com.fornula.domain" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path=""/>
+			<!-- exclude-mapping : 인터셉터가 실행되지 않는 페이지의 요청 URL 주소를 설정하는 엘리먼트 -->
+			<exclude-mapping path=""/>
+			<beans:ref bean="loginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	
 	
 </beans:beans>

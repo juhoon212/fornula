@@ -2,6 +2,8 @@ package com.fornula.domain.member.service;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +38,9 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		
 		if(!isCheckedPassword) {
 			throw new LoginFailException("비밀번호 인증오류");
-		} else {
-			return loginMember;
 		}
+		
+		return loginMember;
 	}
 	
 	
