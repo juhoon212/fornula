@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.expert.mapper.java.ExpertJoinMapper">
+	<insert id="insertExpert">
+		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+			select member_seq.nextval from dual 
+		</selectKey>
+		insert into expert values 
+			(#{expertIdx}, #{memberIdx}, #{phone},
+			 #{interest}, #{introduce}, #{career}, 
+			 #{company_one), #{company_two), #{company_three),
+			 #{expertfile_name})
+	</insert>
+</mapper>

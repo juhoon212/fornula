@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com"  crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
 	rel="stylesheet">
