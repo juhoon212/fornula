@@ -47,8 +47,6 @@ public class MemberLoginRestController {
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionConst.Login_Member, loginMember);
 		
-		
-		
 		log.info("member = {}",loginMember.getId());
 		
 		
