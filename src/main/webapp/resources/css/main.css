@@ -150,6 +150,20 @@ button#submit {
   font-size: 13px;
 }
 
+.front-error {
+	display: none;
+	color : red;
+	font-size : 15px;
+	justify-content: center;
+}
+
+.error {
+	color : red;
+	font-size : 15px;
+	justify-content: center;
+	
+}
+
 
 
 
@@ -166,3 +180,4 @@ button#submit {
 .my_btn:active{
  background-color: #f68e0f;
 }
+
