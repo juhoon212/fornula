@@ -27,7 +27,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 			
 			log.info("비로그인 사용자 요청");
 			
-			throw new LoginUserCheckException(requestURI);
+			return false;
 		}
 		
 		return true;
