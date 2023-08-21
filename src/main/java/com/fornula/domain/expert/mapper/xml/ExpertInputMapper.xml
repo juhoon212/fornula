@@ -14,6 +14,13 @@
 	</insert>
 	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가 가입 시 받은 정보, 전문가 정보 수정/등록 페이지에서 추가한 정보들을 수정할 때 사용할 SQL문 -->
 	<update id="updateExpert">
-		
+		update expert set phone=#{phone}
+			,interest=#{interest}
+			,introduce=#{introduce}
+			,career=#{career}
+			,compnay_one=#{company_one}
+			,compnay_two=#{company_two}
+			,compnay_three=#{company_three}
+			,expertfile_name=#{expertfile_name}
 	</update>
 </mapper>

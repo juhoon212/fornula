@@ -11,7 +11,19 @@
 			,item_content
 			,price
 			,item_date
-		from item
-		where item_status=1 and item_name=#{item_name}  
+			,photo_idx
+			,itemfile_name
+		from item,photo
+		where item_status=1 
+			and ITEM.item_idx=PHOTO.item_idx 
+			and item_idx=#{item_idx} 
+	</select>
+	
+	<!-- expert_idx를 활용해서 전문가의 ID(member 테이블의), phone 가져오기 -->
+	<select id="selectItemExpert">
+		select id
+			,phone 
+			from member,expert
+			where MEMBER.member_idx=EXPERT.member_idx
 	</select>
 </mapper>
