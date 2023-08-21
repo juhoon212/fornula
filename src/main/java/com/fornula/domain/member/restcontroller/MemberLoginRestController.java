@@ -40,15 +40,12 @@ public class MemberLoginRestController {
 		
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
-		if(loginMember == null) {
-			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
-		}
-		
 		HttpSession session = request.getSession();
 		
 		log.info("isNewSession? = {}", session.isNew());
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
+		
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
 		log.info("member = {}",loginMember.getId());
