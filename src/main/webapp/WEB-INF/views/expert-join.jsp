@@ -143,20 +143,7 @@ h3 {
 					<div class="widget">
 						<section id="profile">
 							<div class="row">
-								<div class="col-4">
-									<div class="widget-sidebar story-sidebar">
-										<div id="button">
-											<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-												class="rounded-circle" alt="Author" width="200" height="200">
-										</div>
-										<div class="tagcloud">
-											<div id="button">
-												<a href="#" class="tag-cloud-link"
-													aria-label="admin change button">프로필 변경</a>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 								<div class="col-8">
 									<h3>아이디</h3>
 									<div class="info" id="info__id">
