@@ -70,35 +70,34 @@
       
       <header>
       	<div class="name-header">
-      		<h2 class="name">아이디 찾기</h2>
+      		<h2 class="name">비밀번호 찾기</h2>
       	</div>
         
       </header>
 
       <section>
-        
-        <form>
+        <form action="" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" placeholder="가입하신 이메일을 입력해주세요"/>
+	            <input class="box" type="text" placeholder="가입하신 아이디를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="phone-box"></label>
-	            <input class="box" type="text" placeholder="핸드폰 번호를 입력해주세요"/>
+	            <input class="box" type="text" placeholder="가입하신 핸드폰 번호를 입력해주세요"/>
 	          </div>
 	        </div>
 	
-	      	<button id="submit">아이디 찾기</button>
+	      	<button id="submit">비밀번호 찾기</button>
+      	</form>
       	
-     	</form>
-     	
-     	<div class="find-pw-box">
- 			<a id="find-pw" href="<c:url value="/member/findPw"/>">비밀번호 찾기</a>    		
+      	<div class="find-pw-box">
+ 			<div></div>   		
      	</div>
+     
       
     </section>
     </div>
