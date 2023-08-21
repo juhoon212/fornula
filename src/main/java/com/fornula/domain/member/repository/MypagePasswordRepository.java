@@ -8,5 +8,5 @@ import com.fornula.domain.member.dto.Member;
 @Repository
 public interface MypagePasswordRepository {
  
-  Member selectMypagePassword(String password);
+
 }

@@ -344,7 +344,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="secessionForm" method="post">
+   <form name="secessionForm" method="post" action="/mypageSession">
         <h3>
         크몽을 떠나는 이유를 알려주세요.
         </h3>
@@ -360,7 +360,7 @@ h3 {
         <h3>아이디 확인</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" name="idcheck" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
+            <input class="box" type="text" name="id" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
             
           </div>
           <p align="left" style="color= red;">${message }</p>
@@ -485,9 +485,9 @@ h3 {
  function submitCheck() {
 	
 	
-	if(secessionForm.idcheck.value==""){
+	if(secessionForm.id.value==""){
 		alert("체크해주세요")
-		secessionForm.idcheck.focus();
+		secessionForm.id.focus();
 		return;
 	}
 	

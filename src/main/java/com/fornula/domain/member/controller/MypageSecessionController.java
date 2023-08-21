@@ -35,6 +35,7 @@ public class MypageSecessionController {
 	   
 	   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 	  
+	   
 	   if( member.getId()!=joinMember.getId()) {
 		   return "mypage-secession";
 	   }
