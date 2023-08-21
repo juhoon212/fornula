@@ -34,6 +34,6 @@ public class ItemBoardDAOImpl implements ItemBoardDAO{
 	
 	@Override
 	public int selectItemBoardCount() {
-		return sqlSession.getMapper(ItemBoardMapper.class).selectCountItemBoard();
+		return sqlSession.getMapper(ItemBoardMapper.class).selectItemBoardCount();
 	}
 }
