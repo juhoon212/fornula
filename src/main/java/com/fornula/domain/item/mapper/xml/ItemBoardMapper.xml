@@ -50,12 +50,14 @@
 			,item_date
 			,itemfile_name
 		from item, photo
-		where item status=1
+		where item_status=1
 			and PHOTO.photo_idx=ITEM.photo_idx 
 			and item_name like '#{item_name}'
 	</select>
 	
 	<select id="selectItemBoardCount" resultType="int">
-		select count(*) from item
+		select count(*) 
+		from item
+		where item_status=1
 	</select>
 </mapper>
