@@ -12,4 +12,9 @@ public class MemberController {
 	public String home() {
 		return "main";
 	}
+	
+	@GetMapping("/mypagePurchase")
+	public String mypagePurchase() {
+		return "mypage-purchase";
+	}
 }

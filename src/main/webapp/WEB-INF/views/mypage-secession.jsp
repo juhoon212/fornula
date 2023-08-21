@@ -344,6 +344,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
+   <form name="secessionForm" method="post">
         <h3>
         크몽을 떠나는 이유를 알려주세요.
         </h3>
@@ -356,14 +357,15 @@ h3 {
          </div>
         </div>
    
-        <h3>이메일 확인</h3>
+        <h3>아이디 확인</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" placeholder="크몽에 가입하신 이메일을 적어주세요."/>
+            <input class="box" type="text" name="idcheck" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
             
           </div>
-          
+          <p align="left" style="color= red;">${message }</p>
         </div>
+        
          <div class="info">
           <p>* 현재 사용중인 계정 정보는 회원 탈퇴 후 복구가 불가능합니다.</p>
         </div>
@@ -373,11 +375,11 @@ h3 {
           <label><input type="checkbox" name="caution" value="cautioncheck"> 주의사항을 모두 입력하였습니다.</label><br>
            </div>
           
-     
-      <button type="submit" id="secession">탈퇴하기</button>
-      
-</section>
-        
+      <div>
+      <input type="button" value="회원탈퇴" onclick="submitCheck();">
+      </div>
+ 
+    </form>     
                   </div>
             
             </div>
@@ -478,5 +480,29 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+ <script type="text/javascript">
+ 
+ function submitCheck() {
+	
+	
+	if(secessionForm.idcheck.value==""){
+		alert("체크해주세요")
+		secessionForm.idcheck.focus();
+		return;
+	}
+	
+
+	
+	secessionForm.submit();
+}
+
+
+
+
+
+
+
+
+ </script>
 </body>
 </html>
