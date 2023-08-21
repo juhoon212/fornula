@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.item.mapper.xml.ItemInsertMapper">
 	<!-- 상품 등록페이지에서 사용할 SQL문 -->
-	<!-- 우리 근데 각 테이블의 pk인 idx 들은 Oracle에서 seq 만들었자나, 근데 그럼 여기서 처럼 idx를 #{~_idx}로 받으면 안되는거 아님? -->
 	<!-- PHOTO,CATEGORY,EXPERT 테이블도 조인해서 작성해야 함 -->
 	<insert id="insertItem">
 		<selectKey resultType="int" keyProperty="item_idx" order="BEFORE">
@@ -16,6 +15,6 @@
 			,#{price}
 			<!-- 등록완료 버튼을 클릭 시 item_status의 컬럼값이 1(존재)로 입력되도록 설정 -->
 			,#{item_status}
-			,sysdate)
+			,SYSDATE)
 	</insert>
 </mapper>
