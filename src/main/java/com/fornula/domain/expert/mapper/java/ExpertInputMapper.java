@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.mapper.java;
 
-public interface ExpertInputMapper {
+import com.fornula.domain.expert.dto.Expert;
 
+public interface ExpertInputMapper {
+	int updateExpert(Expert expert);
 }

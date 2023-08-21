@@ -23,7 +23,8 @@
 	<select id="selectItemExpert">
 		select id
 			,phone 
-			from member,expert
-			where MEMBER.member_idx=EXPERT.member_idx
+		from member,expert
+		where MEMBER.member_idx=EXPERT.member_idx
+			and expert_idx=#{expert_idx}	
 	</select>
 </mapper>

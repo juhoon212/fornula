@@ -2,14 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertOutputMapper">
 	<!-- 전문가 마이페이지 중 전문가 포트폴리오 페이지에서 전문가 등록, 전문가 정보 수정/등록 페이지의 입력내용을 바탕으로 정보를 출력하는 SQL문 -->
-	<select id="selectExpert" resultType="RestBoard">
-		select phone
+	<select id="selectExpert">
+		select expert_idx 
+			,phone
 			,interest
 			,introduce
 			,career
 			,company_one
 			,company_two
 			,company_three
+		from expert
+		where expert_idx=#{expert_idx}
 	</select>
 	
 	<!-- 전문가 마이페이지 중 전문가 포트폴리오 페이지에서 expertfile_name을 활용해서 출력할 포트폴리오(PDF 파일)를 나타나게 하는 SQL문? -->

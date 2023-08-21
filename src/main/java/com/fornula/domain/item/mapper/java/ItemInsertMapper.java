@@ -1,5 +1,7 @@
 package com.fornula.domain.item.mapper.java;
 
-public interface ItemInsertMapper {
+import com.fornula.domain.item.dto.Item;
 
+public interface ItemInsertMapper {
+	int insertItem(Item item);
 }
