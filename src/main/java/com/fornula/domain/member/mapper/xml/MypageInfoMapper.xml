@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.MypageInfoMapper">
+	<update id="updateMypageInfo" >
+	update interest 
+    <set>
+    <if test="categoryIdxOne != null and categoryIdxOne!= ''">
+       categoryIdxOne=#{categoryIdxOne},
+    </if>
+    <if test="categoryIdxTwo != null and categoryIdxTwo ''">
+       categoryIdxTwo=#{categoryIdxTwo},
+    </if>
+    <if test="categoryIdxThree != null and categoryIdxThree ''">
+       categoryIdxThree=#{categoryIdxThree},
+    </if>
+    </set> 
+    where id=#{id}
+	</update>
+
+	
+</mapper>
