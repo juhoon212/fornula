@@ -45,7 +45,11 @@ public class MemberLoginRestController {
 		}
 		
 		HttpSession session = request.getSession();
+		
+		log.info("isNewSession? = {}", session.isNew());
+		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
+		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
 		log.info("member = {}",loginMember.getId());
 		
