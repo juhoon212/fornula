@@ -9,38 +9,38 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class ExpertController {
-	//ì „ë¬¸ê°€ ë“±ë¡
+	//Àü¹®°¡ µî·Ï
 	@RequestMapping(value = "/expertjoin")
 	public String join() {
-		log.info("ExportController í´ë˜ìŠ¤ì˜ join() ë©”ì†Œë“œ ì‹¤í–‰");
+		log.info("ExportController Å¬·¡½ºÀÇ join() ¸Ş¼Òµå ½ÇÇà");
 		return "expert_join";
 	}
 	
-	//ì „ë¬¸ê°€ í˜ì´ì§€ - ì „ë¬¸ê°€ ì •ë³´ ìˆ˜ì •/ë“±ë¡
+	//Àü¹®°¡ ÆäÀÌÁö - Àü¹®°¡ Á¤º¸ ¼öÁ¤/µî·Ï
 	@RequestMapping(value = "/expertinput")
 	public String input() {
-		log.info("ExportController í´ë˜ìŠ¤ì˜ input() ë©”ì†Œë“œ ì‹¤í–‰");
+		log.info("ExportController Å¬·¡½ºÀÇ input() ¸Ş¼Òµå ½ÇÇà");
 		return "expert-input";
 	}
 	
-	//ì „ë¬¸ê°€ í˜ì´ì§€ - ì „ë¬¸ê°€ êµ¬ë§¤ë‚´ì—­
+	//Àü¹®°¡ ÆäÀÌÁö - Àü¹®°¡ ±¸¸Å³»¿ª
 	@RequestMapping(value = "/expertsales")
 	public String sales() {
-		log.info("ExportController í´ë˜ìŠ¤ì˜ sales() ë©”ì†Œë“œ ì‹¤í–‰");
+		log.info("ExportController Å¬·¡½ºÀÇ sales() ¸Ş¼Òµå ½ÇÇà");
 		return "expert-sales";
 	}
 	
-	//ì „ë¬¸ê°€ í˜ì´ì§€ - ì „ë¬¸ê°€ í¬íŠ¸í´ë¦¬ì˜¤
+	//Àü¹®°¡ ÆäÀÌÁö - Àü¹®°¡ Æ÷Æ®Æú¸®¿À
 	@RequestMapping(value = "/expertoutput")
 	public String output() {
-		log.info("ExportController í´ë˜ìŠ¤ì˜ output() ë©”ì†Œë“œ ì‹¤í–‰");
+		log.info("ExportController Å¬·¡½ºÀÇ output() ¸Ş¼Òµå ½ÇÇà");
 		return "expert-output";
 	}
 
-	//ì „ë¬¸ê°€ í˜ì´ì§€ - ì „ë¬¸ê°€ ìƒí’ˆë“±ë¡
+	//Àü¹®°¡ ÆäÀÌÁö - Àü¹®°¡ »óÇ°µî·Ï
 	@RequestMapping(value = "/expertitem")
 	public String item() {
-		log.info("ExportController í´ë˜ìŠ¤ì˜ item() ë©”ì†Œë“œ ì‹¤í–‰");
+		log.info("ExportController Å¬·¡½ºÀÇ item() ¸Ş¼Òµå ½ÇÇà");
 		return "expert-item";
 	}
 }

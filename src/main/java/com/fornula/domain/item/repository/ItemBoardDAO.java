@@ -10,4 +10,6 @@ public interface ItemBoardDAO {
 	List<ItemPhotoCategoryCart> selectItemList(Map<String, Object> map);  
 	List<ItemPhotoCategoryCart> selectCategoryItemList (Map<String, Object> map);
 	List<ItemPhotoCategoryCart> searchItemList (Map<String, Object> map);
+	int updateItem(Item item);
+
 }

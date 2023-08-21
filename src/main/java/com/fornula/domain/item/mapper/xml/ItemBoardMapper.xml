@@ -35,7 +35,9 @@
 	
 	<!-- 우리는 상품 올린다음 수정하는 기능은 따로 안만들었으니 관리자가 상품 게시글을 삭제처리(상품상태 컬럼값을 0으로 변경)할 때 사용할 SQL문 여기다가 작성해 민환아 -->
 	<update id="updateItem">
-		
+		update item 
+		set item_status=#{itemStatus} 
+		where item_idx=#{itemIdx}
 	</update>
 	
 	<!-- 검색창에서 상품 이름 중 일부분을 검색시에 해당 검색어가 상품 이름에 들어가있는 모든 상품을 검색하기 -->

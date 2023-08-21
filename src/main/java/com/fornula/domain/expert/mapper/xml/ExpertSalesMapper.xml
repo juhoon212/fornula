@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertSalesMapper">
+	<!-- 검색필터를 이용한 검색 -->
+	<select id="selectSearch" resultMap="Sales">
+		select sales_idx, intem_idx, sales_date, sales_status
+		from sales
+		where sales_date = #{salesDate} and sales_status=#{salesStatus}
+		order by sales_date
+	</select>
+	
+	<!-- 상태 버튼 클릭시 판매 상태 변경  -->
+	<update id="updateSalesStatus">
+		update sales
+		set sales_status = #{salesStatus}
+		where sales_idx=#{salesIdx}
+		
+	</update>
+	
+</mapper>

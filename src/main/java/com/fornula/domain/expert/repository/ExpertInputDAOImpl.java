@@ -22,4 +22,10 @@ public class ExpertInputDAOImpl implements ExpertInputDAO {
 	public int expertBoard(Expert expert) {
 		return sqlSession.getMapper(ExpertInputMapper.class).expertBoard(expert);
 	}
+
+	@Override
+	public Expert insertExpertInfo(Expert expert) {
+		return sqlSession.getMapper(ExpertInputMapper.class).insertExpertInfo(expert);
+		
+	}
 }
