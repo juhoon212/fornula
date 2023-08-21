@@ -20,7 +20,7 @@
 	</select>
 	
 	<!-- expert_idx를 활용해서 전문가의 ID(member 테이블의), phone 가져오기 -->
-	<select id="selectItemExpert" resultType="int">
+	<select id="selectItemExpert" resultMap="ExpertMember">
 		select id
 			,phone 
 		from member,expert
