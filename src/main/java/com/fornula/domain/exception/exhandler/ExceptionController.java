@@ -1,4 +1,4 @@
-package com.fornula.domain.member.controller;
+package com.fornula.domain.exception.exhandler;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,4 +15,5 @@ public class ExceptionController {
 		
 		return "main";
 	}
+	
 }

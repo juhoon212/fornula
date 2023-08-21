@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
+import com.fornula.domain.exception.custom.LoginUserCheckException;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice(basePackages = "com.fornula.domain")
 @Slf4j
-public class LoginExHanlder {
+public class RestLoginExHanlder {
 	
 	@ExceptionHandler(LoginFailException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -24,6 +25,10 @@ public class LoginExHanlder {
 		log.info("[LoginFailException] ", e);
 		return new ErrorResult("Bad", e.getMessage());
 	}
+	
+	
+	
+	
 	
 	
 }

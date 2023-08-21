@@ -185,7 +185,7 @@ h3 {
 					<hr>
 					<section id="career">
 						<h3>직업</h3>
-						<div class="info" id="career-input">
+						<div class="info" id="career-input" >
 							<div id="category-flex">
 								<select class="box" id="category-big">
 									<optgroup label="디자인"
@@ -279,7 +279,7 @@ h3 {
 		</div>
 	</main>
 
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp"/>
 
 
 	<script type="text/javascript"
