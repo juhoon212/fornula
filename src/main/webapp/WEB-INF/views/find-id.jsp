@@ -21,6 +21,16 @@
 .name-header {
 	display: flex;
 	justify-content: center;
+	height: 20px;
+}
+
+.name {
+	font-size: 25px;
+}
+
+.find-pw a {
+ 	all : unset;
+ 	cursor: pointer;
 }
 .find-pw {
 	display: flex;
@@ -28,6 +38,17 @@
 	justify-content: flex-end;
 	align-items: center;
 }
+#header {
+	padding-bottom: 80px;
+}
+
+#header a {
+	all : unset;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 3.5em;
+}
+
+
 
 </style>
 <body>
@@ -41,7 +62,7 @@
       
       <header>
       	<div class="name-header">
-      		<h2 class="">아이디 찾기</h2>
+      		<h2 class="name">아이디 찾기</h2>
       	</div>
         
       </header>
@@ -75,13 +96,3 @@
   
 </body>
 </html>
-
-<script>
-  function check(){
-    alert('어쩌고');
-  }
-
-  $(".my_btn").click(function(){
-    toggleClass(":active");
-  })
-</script>
