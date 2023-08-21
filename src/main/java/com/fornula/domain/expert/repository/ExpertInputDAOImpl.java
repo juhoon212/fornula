@@ -17,4 +17,9 @@ public class ExpertInputDAOImpl implements ExpertInputDAO {
 	public int updateExpert(Expert expert) {
 		return sqlSession.getMapper(ExpertInputMapper.class).updateExpert(expert);
 	}
+	
+	@Override
+	public int expertBoard(Expert expert) {
+		return sqlSession.getMapper(ExpertInputMapper.class).expertBoard(expert);
+	}
 }
