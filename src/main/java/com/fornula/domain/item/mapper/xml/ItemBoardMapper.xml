@@ -52,4 +52,8 @@
 			and PHOTO.photo_idx=ITEM.photo_idx 
 			and item_name like '#{item_name}'
 	</select>
+	
+	<select id="selectItemBoardCount" resultType="int">
+		select count(*) from item
+	</select>
 </mapper>
