@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
 
 public interface ItemBoardDAO {
-	//여기도 List<> 안에 Item,Photo 두개의 DTO가 들어가야함;;  
-	List<Item> selectItemList(Map<String, Object> map);
-	//여기도 List<> 안에 Item,Category 두개의 DTO가 들어가야함;;  
-	List<Item> selectCategoryItemList (Map<String, Object> map);
-	//여기도 List<> 안에 Item,Photo 두개의 DTO가 들어가야함;;  
-	List<Item> searchItemList (Map<String, Object> map);
+	List<ItemPhotoCategoryCart> selectItemList(Map<String, Object> map);  
+	List<ItemPhotoCategoryCart> selectCategoryItemList (Map<String, Object> map);
+	List<ItemPhotoCategoryCart> searchItemList (Map<String, Object> map);
 }

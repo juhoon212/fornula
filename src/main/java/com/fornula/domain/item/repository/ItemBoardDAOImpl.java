@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
 import com.fornula.domain.item.mapper.java.ItemBoardMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -16,21 +17,18 @@ import lombok.RequiredArgsConstructor;
 public class ItemBoardDAOImpl implements ItemBoardDAO{
 	private final SqlSession sqlSession;
 	
-//	마찬가지로 여기도 수정해야 할듯
 	@Override
-	public List<Item> selectItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).selectItemList(map);
+	public List<ItemPhotoCategoryCart> selectItemList(Map<String, Object> map) {
+		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
 	}
 	
-//	마찬가지로 여기도 수정해야 할듯
 	@Override
-	public List<Item> selectCategoryItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).selectCategoryItemList(map);
+	public List<ItemPhotoCategoryCart> selectCategoryItemList(Map<String, Object> map) {
+		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
 	}
 	
-//	마찬가지로 여기도 수정해야 할듯
 	@Override
-	public List<Item> searchItemList(Map<String, Object> map) {
+	public List<ItemPhotoCategoryCart> searchItemList(Map<String, Object> map) {
 		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
 	}
 }

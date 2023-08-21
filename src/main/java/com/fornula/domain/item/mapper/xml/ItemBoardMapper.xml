@@ -3,8 +3,7 @@
 <mapper namespace="com.fornula.domain.item.mapper.xml.ItemInsertMapper">
 	<!-- 상품 게시판에서 상품 리스트들을 뽑을 때 사용하는 SQL문 -->
 	<!-- PHOTO,EXPERT 테이블도 조인해서 작성해야 함 -->
-	<!-- 아니 이거 DTO 두개 합치면 뭐라 표기함? -->
-	<select id="selectItemList" resultType="Item,Photo">
+	<select id="selectItemList" resultMap="ItemPhotoCategoryCart">
 		select item_idx
 			,expert_idx
 			,item_name
@@ -20,8 +19,7 @@
 	
 	
 	<!-- 카테고리를 입력받아서 해당 카테고리에 포함되어 있는 상품들만 출력하기 -->
-	<!-- 아니 이거 DTO 두개 합치면 뭐라 표기함? -->
-	<select id="selectCategoryItemList" resultType="Item,Category">
+	<select id="selectCategoryItemList" resultMap="ItemPhotoCategoryCart">
 		select item_idx
 			,category_idx
 			,small 
@@ -41,8 +39,7 @@
 	</update>
 	
 	<!-- 검색창에서 상품 이름 중 일부분을 검색시에 해당 검색어가 상품 이름에 들어가있는 모든 상품을 검색하기 -->
-	<!-- 아니 이거 DTO 두개 합치면 뭐라 표기함? -->
-	<select id="searchItemList" resultType="Item,Photo">
+	<select id="searchItemList" resultMap="ItemPhotoCategoryCart">
 		select item_idx
 			,expert_idx
 			,item_name
