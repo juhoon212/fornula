@@ -54,7 +54,6 @@
     right: 20px;
     top: 30px;
     cursor: pointer;
-    
  }
 
  #login, #join {
@@ -82,11 +81,7 @@
  	justify-content: space-between;
  	align-items: center;
  }
- 
 
- 
-
- 
  #exampleInput {
  	margin : 0;
  }

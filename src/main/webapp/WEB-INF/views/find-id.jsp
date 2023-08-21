@@ -77,7 +77,7 @@
 
       <section>
         
-        <form>
+        <form action="" method="Post">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
