@@ -67,6 +67,9 @@ p #logo{
 #lana-navbar{
 	text-align: left;
 }
+.name {
+	 font-family: 'Permanent Marker', cursive;
+}
 </style>
 </head>
 
@@ -92,7 +95,7 @@ p #logo{
             <div class="front-error"></div>
             
             <div class="id-pw-find" >
-            	<a href="<c:url value="/member/findId"/>">아이디 찾기 / </a><br><a href=""> 비밀번호 찾기 </a>
+            	<a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a href="/member/findPw">&nbsp비밀번호 찾기 </a>
             </div>
             <div class="btn-container">
               <button type="submit" id="login" class="btn btn-light" >로그인</button>

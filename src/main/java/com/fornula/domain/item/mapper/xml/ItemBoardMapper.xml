@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.item.mapper.xml.ItemInsertMapper">
+	<!-- 상품 게시판에서 상품 리스트들을 뽑을 때 사용하는 SQL문 -->
+	<!-- PHOTO,EXPERT 테이블도 조인해서 작성해야 함 -->
+	<select id="selectItemList" resultMap="ItemPhotoCategoryCart">
+		select item_idx
+			,expert_idx
+			,item_name
+			,item_content
+			,price
+			,item_date
+			,itemfile_name
+		from item, photo
+		where item_status=1 
+			and PHOTO.photo_idx=ITEM.photo_idx 
+		order by item_date	
+	</select>
+	
+	
+	<!-- 카테고리를 입력받아서 해당 카테고리에 포함되어 있는 상품들만 출력하기 -->
+	<select id="selectCategoryItemList" resultMap="ItemPhotoCategoryCart">
+		select item_idx
+			,category_idx
+			,small 
+			,expert_idx
+			,item_name
+			,item_content
+			,price
+			,item_date
+		from category,item
+		where CATEGORY.category_idx=ITEM.category_idx
+			and category_idx=#{category_idx}
+	</select>
+	
+	<!-- 우리는 상품 올린다음 수정하는 기능은 따로 안만들었으니 관리자가 상품 게시글을 삭제처리(상품상태 컬럼값을 0으로 변경)할 때 사용할 SQL문 여기다가 작성해 민환아 -->
+	<update id="updateItem">
+		update item 
+		set item_status=#{itemStatus} 
+		where item_idx=#{itemIdx}
+	</update>
+	
+	<!-- 검색창에서 상품 이름 중 일부분을 검색시에 해당 검색어가 상품 이름에 들어가있는 모든 상품을 검색하기 -->
+	<select id="searchItemList" resultMap="ItemPhotoCategoryCart">
+		select item_idx
+			,expert_idx
+			,item_name
+			,item_content
+			,price
+			,item_date
+			,itemfile_name
+		from item, photo
+		where item status=1
+			and PHOTO.photo_idx=ITEM.photo_idx 
+			and item_name like '#{item_name}'
+	</select>
+</mapper>

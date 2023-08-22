@@ -22,5 +22,11 @@ public class MemberController {
 		return "find-id";
 	}
 	
+	// 비밀번호 찾기
+		@GetMapping("/findPw")
+		public String findPw() {
+			return "find-pw";
+		}
+	
 	
 }
