@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/member")
@@ -23,10 +25,8 @@ public class MemberController {
 	}
 	
 	// 비밀번호 찾기
-		@GetMapping("/findPw")
-		public String findPw() {
-			return "find-pw";
-		}
-	
-	
+	@GetMapping("/findPw")
+	public String findPw() {
+		return "find-pw";
+	}
 }
