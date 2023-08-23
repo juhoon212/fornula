@@ -137,7 +137,7 @@ h3 {
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="login-header.jsp" />
 	<main class="main container">
-	<form method="post" id="expertjoinForm">
+	<form method="post" id="expertjoinForm" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="story-posts">
@@ -232,7 +232,8 @@ h3 {
 						<h3>포트폴리오</h3>
 						<input class="form-control" type="file" id="formFile" value="${expert.expertfile_name}"> <span
 							style="color: gray; font-size: 15px; padding: 0px 25px;">
-							[PDF 파일로 업로드 해주세요.]</span>
+							[PDF 파일로 업로드 해주세요.]</span><br>
+							<p style="color: red;">${message }</p>
 					</section>
 					<br>
 					<hr>

@@ -1,12 +1,10 @@
 package com.fornula.domain.expert.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.repository.ExpertInputDAO;
-import com.google.common.io.FileBackedOutputStream;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,8 +12,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ExpertJoinServiceImpl implements ExpertJoinService {
 	private final ExpertInputDAO expertInputDAO;
-	private final WebApplicationContext context;
 	
+	//전문가 등록시 파일 업로드 예외처리 - 따로 만들어서 넣을 예정
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addExpertInfo(Expert expert) {
 		expertInputDAO.insertExpertInfo(expert);

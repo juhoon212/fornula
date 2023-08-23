@@ -11,5 +11,5 @@ public interface ExpertSalesMapper {
 	List<ItemSales> selectSearchSalesList();
 	List<ItemSales> selectSalesList();
 	int updateSalesStatus(int salesIdx);
-	int selectPrice(int itemIdx);
+	int selectPrice(int item_status, int sales_status);
 }

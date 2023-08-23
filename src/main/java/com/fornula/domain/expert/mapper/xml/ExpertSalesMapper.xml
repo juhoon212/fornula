@@ -18,7 +18,7 @@
 	
 	<!-- 판매내역 출력 -->
 	<select id="selectSalesList" resultMap="ItemSales">
-			select SALES.sales_idx,	
+		select SALES.sales_idx,	
 			   SALES.sales_date, 
 			   SALES.sales_status,
 			   ITEM.item_name,
@@ -33,16 +33,17 @@
 	<!-- 상태 버튼 클릭시 판매 상태 변경  -->
 	<update id="updateSalesStatus">
 		update sales
-		set sales_status = #{salesStatus}
+		set sales_status =#{salesStatus}
 		where sales_idx=#{salesIdx}
 	</update>
 	
-	<!-- 판매금액 출력 -->
+	<!-- 구매확정된 총 판매금액 출력 -->
 	<select id="selectPrice" resultMap="ItemSales">
 		select SUM(price)
 		from item ITEM
 		join sales SALES
 		on ITEM.item_idx = SALES.item_idx
-		where item_idx=#{itemIdx}
+		where SALES.sales_status between 5 and 7
+		and ITEM.item_status = 1
 	</select>
 </mapper>
