@@ -7,10 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.fornula.domain.member.dto.mypage.InfoInterest;
+import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.dto.mypage.InfoCategory;
+import com.fornula.domain.member.mapper.java.MypageInfoMapper;
+import com.fornula.domain.member.service.MypageInfoService;
+import com.fornula.domain.util.session.SessionConst;
+
+import lombok.RequiredArgsConstructor;
+
 
 @Controller
+@RequiredArgsConstructor
 public class MypageInfoController {
+	
+	public final MypageInfoService service;
   
 	@GetMapping("/mypageInfo")
 	public String info() {
@@ -18,7 +28,21 @@ public class MypageInfoController {
 	}
 	
 	@PostMapping("/mypageInfo")
-	public String info(@ModelAttribute InfoInterest interest, HttpSession session) {
-	return "mypage-info";
+	public String info(@ModelAttribute InfoCategory category, HttpSession session) {
+	
+		
+		
+		Member joinMember = service.mypageInfoService(category);
+		   
+		   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		  
+		   
+		   if( member.getId()!=joinMember.getId()) {
+			   return "mypage-info";
+		   }
+		   
+		   session.invalidate();
+		   
+		   return "mypage-info"; 
 	}
 }

@@ -1,5 +1,8 @@
 package com.fornula.domain.member.service;
 
-public interface MypageInfoService {
+import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.dto.mypage.InfoCategory;
 
+public interface MypageInfoService {
+	Member mypageInfoService(InfoCategory category);
 }

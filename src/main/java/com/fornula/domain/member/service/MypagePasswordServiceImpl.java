@@ -13,12 +13,22 @@ import lombok.RequiredArgsConstructor;
 public class MypagePasswordServiceImpl implements MypagePasswordService {
 
 	private final MypagePasswordRepository mypagePasswordRepository;
-	
+
 	@Override
-	public Member MypagePassword(String password) {
-		Member mypageNewpassword=mypagePasswordRepository.selectMypagePassword(password);
-		
-		return mypageNewpassword;
+	public Member mypagePasswordId(String id) {
+		 Member mypageNewpasswordId = mypagePasswordRepository.selectMypagePassword(id);
+			
+		  
+			return mypageNewpasswordId;
 	}
+
+	@Override
+	public void modifyPassword(String id, String newPassword) {
+		 mypagePasswordRepository.updateMypagePassword(id, newPassword);
+		
+	}
+
+
+
 
 }

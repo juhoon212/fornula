@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class InfoInterest {
+public class InfoCategory {
   private int one;
   private int two;
   private int three;
