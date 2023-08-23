@@ -44,4 +44,11 @@ public class ExpertController {
 		log.info("ExpertController 클래스의 output() 메소드 실행");
 		return "expert-output";
 	}	
+	
+	//메인으로
+	@RequestMapping(value = "/main")
+	public String main() {
+		log.info("ExpertController 클래스의 main() 메소드 실행");
+		return "main";
+	}	
 }

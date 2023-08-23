@@ -7,7 +7,7 @@
 			id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 			id="lana-pet-main-navbar">
 			<p id="logo">
-				<a class="navbar-brand" href="<c:url value="/index.html"/>">
+				<a class="navbar-brand" href="<c:url value="/main"/>">
 					FORNUAL </a>
 			</p>
 
