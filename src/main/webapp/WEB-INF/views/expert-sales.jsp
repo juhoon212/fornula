@@ -248,9 +248,9 @@ tr td{
 									<div class="widget" style="text-align: left;" id="list">
 										<h3 class="widget-title">판매 관리</h3>
 										<ul>
-											<li><a href="#">전문가 정보</a></li>
-											<li><a href="#">포트폴리오</a></li>
-											<li><a href="#">상품 등록</a></li>
+											<li><a href="expertinput" class="expertInput">전문가 정보</a></li>
+											<li><a href="expertoutput" class="expertOutput">포트폴리오</a></li>
+											<li><a href="expertitem" class="expertItem">상품 등록</a></li>
 										</ul>
 									</div>
 								</div>
@@ -260,8 +260,12 @@ tr td{
 				</div>
 			</div>
 		</div>
-	</main>
+		
+		
+<!-- 여기는 AJAX를 활용해서 전문가 정보 수정/등록을 누른 경우 나오는 div태그 -->
 
+
+	</main>
 	<jsp:include page="footer.jsp" />
 
 	<script type="text/javascript"
@@ -296,18 +300,6 @@ tr td{
 	
 	</script>
 	
-	<script src="//code.jquery.com/jquery.min.js"></script>
-<script>
-$(function() {
-  $('#btnmenu').click( function() {
-    if( $(this).html() == '주문 접수' ) {
-      $(this).html('확인');
-    }
-    else {
-      $(this).html('인증번호 받기');
-    }
-  });
-});
-</script>
+
 </body>
 </html>

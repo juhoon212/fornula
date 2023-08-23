@@ -63,7 +63,6 @@ public class ExpertInputRestController {
 	}
 //	자신이 등록했던 게시물(상품)을 출력해주는 메소드
 //	여차하면 ExpertOutputRestController로 이동
-//	Mapper에서 강사님이 알려준 <select> 중 resultMap 속성 사용하였음 -> 에러나면 resultType으로 수정 및 DTO도 확인하기
 	@GetMapping("/list")
 	public Map<String, Object> expertGet(@RequestParam(defaultValue="1")int pageNum){
 		log.info("ExpertInputRestController 클래스의 expertGet() 메소드 실행");

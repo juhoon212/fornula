@@ -33,7 +33,7 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 		log.info("ExpertInputServiceImpl 클래스의 getExpertBoardList()메소드 실행");
 		int totalBoard=expertInputDAO.selectExpertBoardCount();
 		
-		Pager pager=new Pager(pageNum, totalBoard, 5, 3);
+		Pager pager=new Pager(1, totalBoard, 3, 3);
 		
 		Map<String, Object> pageMap=new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());

@@ -126,14 +126,14 @@ h3 {
         <h3>전문가 번호</h3>
         <div class="info" id="info__id">        
           <div id="id-input">
-            <input class="box" type="text" placeholder="0000001"/>            
+            <input class="box" type="text" placeholder="여기다가 로그인한 전문가의 전문가번호" readonly/>            
           </div>          
         </div>
 
         <h3>이메일</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" placeholder="qkrgkdbs@naver.com"/>            
+            <input class="box" type="text" placeholder="여기에 로그인한 전문가의 Email 불러오기"/>            
           </div>
         </div>
       
@@ -214,6 +214,7 @@ h3 {
 			<a class="next" href="#">Next</a>
 		<div class="error-msg"></div>    
       <div id="change-complete"></div>
+      <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 -->
       <button id="submit">수정완료</button> 
 </section>
 </div>
@@ -255,5 +256,10 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+<script type="text/javascript">
+
+let inputButton=document.querySelector('#inputButton');
+
+</script>
 </body>
 </html>
