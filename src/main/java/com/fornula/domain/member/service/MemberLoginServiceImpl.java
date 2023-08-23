@@ -60,27 +60,16 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	}
 
 	@Override
-	public Member findPw(String password) {
+	public Member findPw(String id, String email) {
 		
-		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(null, password);
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberPw(id, email);
 		Member findMember = optionalFindMember.orElse(null);
 		
 		if(findMember == null) {
 			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
 		}
 		
-		boolean isCheckedPassword = BCrypt.checkpw(password, findMember.getPassword());
-		
-		if(!isCheckedPassword) {
-			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
-		}
-		
-		
-		
-		
-		
-		return null;
+		return findMember;
+	
 	}
-	
-	
 }

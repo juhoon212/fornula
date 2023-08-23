@@ -65,14 +65,7 @@ public class MemberLoginRestController {
 		return findMember.getId();
 	}
 	
-	@PostMapping("/findPw")
-	public String findPw(@ModelAttribute FindPasswordForm form) {
-		
-		memberLoginService.findByEmail(null);
-		
-		return "ok";
-		
-	}
+	
 	
 	
 	

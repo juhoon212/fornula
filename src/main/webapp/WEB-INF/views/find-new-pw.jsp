@@ -20,7 +20,7 @@
 <style>
 .name-header {
 	display: flex;
-	justify-content: center;1
+	justify-content: center;
 	height: 20px;
 }
 
@@ -89,23 +89,24 @@
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
+	            <input class="box" type="text" name="id" placeholder="새로운 비밀번호를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="email-box"></label>
-	            <input class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
+	            <input class="box" type="email" name="email" placeholder="새로운 비밀번호를 다시 입력해주세요"/>
 	          </div>
 	        </div>
 	
-	      	<button id="submit">비밀번호 찾기</button>
+	      	<button id="submit">비밀번호 변경</button>
       	</form>
       	
       	<div id="show-message"></div>
       	
       	<div class="find-pw-box">
+      		<a id="find-pw" href="<c:url value="/member/findId"/>">아이디 찾기</a>
  			<div>${message}</div>		
      	</div>
      
@@ -129,7 +130,8 @@
 	  	if(data.errorCode === "Bad") {
 	   		document.querySelector('#show-message').innerHTML = data.message;
 	   } else {
-	   		document.querySelector('#show-message').innerHTML = data;
+		   	alert("비밀번호 변경 완료되었습니다."
+	   		location.href = "<c:url value="/home"/>";
 	   	}
 	 })
 	  	e.preventDefault();
