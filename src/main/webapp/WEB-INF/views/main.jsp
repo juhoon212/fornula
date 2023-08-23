@@ -67,6 +67,9 @@ p #logo{
 #lana-navbar{
 	text-align: left;
 }
+.name {
+	 font-family: 'Permanent Marker', cursive;
+}
 </style>
 </head>
 
@@ -92,7 +95,7 @@ p #logo{
             <div class="front-error"></div>
             
             <div class="id-pw-find" >
-            	<a href="">아이디 / 비밀번호 찾기</a>
+            	<a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a href="/member/findPw">&nbsp비밀번호 찾기 </a>
             </div>
             <div class="btn-container">
               <button type="submit" id="login" class="btn btn-light" >로그인</button>
@@ -1002,24 +1005,20 @@ p #logo{
 			  headers: { 
 			    "Content-Type": "application/json",
 			  },
-			  body: JSON.stringify({
-			   	"id":id.value,
-			   	"password":password.value
-			  }),
 			})
-			  .then((response) => response.json())
-              .then((data) => {
+		.then((response) => response.json())
+        .then((data) => {
             	  
-            	  if(data.errorCode === "Bad") {
-            		  console.log(data.message);
-            		  frontError.innerHTML = data.message;
-            		  frontError.style = "color : red";
-            	  } else {
-            		  location.href = "<c:url value="/home"/>";
-            	  } 
+           	if(data.errorCode === "Bad") {
+            	console.log(data.message);
+            	frontError.innerHTML = data.message;
+            	frontError.style = "color : red";
+            } else {
+            	location.href = "<c:url value="/home"/>";
+            	} 
               })
               
-              e.preventDefault();
+         e.preventDefault();
 	});
 	
 	

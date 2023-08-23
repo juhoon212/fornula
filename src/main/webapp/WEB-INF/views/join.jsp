@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,7 +10,7 @@
   <title>회원가입</title>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
   
   
 </head>
@@ -18,7 +19,7 @@
   <div class="container">
 
     <div id="header">
-      <a href="https://www.google.com" target="_blank" title="수정할거"><img src="./image/text_logo.png" id="logo"></a>
+      <a href="https://www.google.com" target="_blank" title="수정할거"><img src="<c:url value="/img/text_logo.png"/>" id="logo"></a>
     </div>
     <div class="content">
       

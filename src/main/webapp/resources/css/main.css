@@ -137,7 +137,6 @@ button#submit {
   height: 45px;
   border-radius: 3px;
   font-size: 15px;
-  cursor: not-allowed;
 }
 
 /* 가입하기 */
@@ -154,7 +153,7 @@ button#submit {
 	display: none;
 	color : red;
 	font-size : 15px;
-	justify-content: center;
+	justify-content: center;1
 }
 
 .error {

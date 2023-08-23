@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.dto.login.FindPasswordForm;
 import com.fornula.domain.member.dto.login.LoginForm;
 import com.fornula.domain.member.service.MemberLoginService;
 import com.fornula.domain.util.session.SessionConst;
@@ -39,21 +40,39 @@ public class MemberLoginRestController {
 		
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
-		if(loginMember == null) {
-			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
-		}
-		
 		HttpSession session = request.getSession();
 		
 		log.info("isNewSession? = {}", session.isNew());
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
+		
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
 		log.info("member = {}",loginMember.getId());
 		
 		return loginMember;
 	}
+	
+	@PostMapping("/findId")
+	public String findId(@RequestParam(value = "email", required = false) String email) {
+		
+		Member findMember = memberLoginService.findByEmail(email);
+		
+		log.info("findMember = {}", findMember.getId());
+		
+		return findMember.getId();
+	}
+	
+	@PostMapping("/findPw")
+	public String findPw(@ModelAttribute FindPasswordForm form) {
+		
+		memberLoginService.findByEmail(null);
+		
+		return "ok";
+		
+	}
+	
+	
 	
 	
 	
