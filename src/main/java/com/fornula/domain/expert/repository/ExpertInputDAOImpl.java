@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.expertboard.ExpertItemPhoto;
 import com.fornula.domain.expert.mapper.java.ExpertInputMapper;
+import com.fornula.domain.item.dto.Item;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,22 +24,17 @@ public class ExpertInputDAOImpl implements ExpertInputDAO {
 	}
 	
 	@Override
-	public int selectExpertBoardCount() {	
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertBoardCount();
+	public List<Item> selectExpertItemList(Map<String, Object> map) {
+		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertItemList(map);
 	}
 	
 	@Override
-	public List<ExpertItemPhoto> selectexpertBoardList(Map<String, Object> map) {
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertBoardList(map);
-	}
-
-	@Override
-	public Expert insertExpertInfo(Expert expert) {
+	public int insertExpertInfo(Expert expert) {
 		return sqlSession.getMapper(ExpertInputMapper.class).insertExpertInfo(expert);
 	}
 	
 	@Override
-	public int expertBoard(Expert expert) {
-		return sqlSession.getMapper(ExpertInputMapper.class).expertBoard(expert);
+	public int selectExpertBoardCount() {
+		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertBoardCount();
 	}
 }
