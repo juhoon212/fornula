@@ -1005,24 +1005,20 @@ p #logo{
 			  headers: { 
 			    "Content-Type": "application/json",
 			  },
-			  body: JSON.stringify({
-			   	"id":id.value,
-			   	"password":password.value
-			  }),
 			})
-			  .then((response) => response.json())
-              .then((data) => {
+		.then((response) => response.json())
+        .then((data) => {
             	  
-            	  if(data.errorCode === "Bad") {
-            		  console.log(data.message);
-            		  frontError.innerHTML = data.message;
-            		  frontError.style = "color : red";
-            	  } else {
-            		  location.href = "<c:url value="/home"/>";
-            	  } 
+           	if(data.errorCode === "Bad") {
+            	console.log(data.message);
+            	frontError.innerHTML = data.message;
+            	frontError.style = "color : red";
+            } else {
+            	location.href = "<c:url value="/home"/>";
+            	} 
               })
               
-              e.preventDefault();
+         e.preventDefault();
 	});
 	
 	

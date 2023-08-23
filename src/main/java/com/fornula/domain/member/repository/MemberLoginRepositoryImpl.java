@@ -24,4 +24,14 @@ public class MemberLoginRepositoryImpl implements MemberLoginRepository{
 		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberInfo(id, password);
 	}
 	
+	public Optional<Member> selectMemberId(String email) {
+		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberId(email);
+	}
+	
+	public Optional<Member> selectMemberPw(String id, String email) {
+		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberPw(id, email);
+	}
+	
+	
+	
 }
