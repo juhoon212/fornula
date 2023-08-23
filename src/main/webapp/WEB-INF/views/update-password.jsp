@@ -115,29 +115,7 @@
     </div>
   </div>
   
- <script type="text/javascript">
- 
- document.querySelector('#submit').addEventListener('click', (e) => {
-	 fetch("<c:url value="/member/findId"/>", {
-		  method: "POST", 
-		  headers: { 
-		    "Content-Type": "application/json",
-		  },
-		})
-	.then((response) => response.json())
-	.then((data) => {
-	   	  
-	  	if(data.errorCode === "Bad") {
-	   		document.querySelector('#show-message').innerHTML = data.message;
-	   } else {
-		   	alert("비밀번호 변경 완료되었습니다."
-	   		location.href = "<c:url value="/home"/>";
-	   	}
-	 })
-	  	e.preventDefault();
- })
- 	
- 	
+ <script type="text/javascript">	
  	
  </script>
   

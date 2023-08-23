@@ -8,6 +8,13 @@ public interface MemberLoginService {
 	 Member findByEmail(String email); // 아이디 찾기
 	 
 	 Member findPw(String id, String email); // 비밀번호 찾기
+	 
+	 Member findByIdx(int idx);
+	 
+	 Member findMemberPw(String id, String newPassword);
+	 
+	 int updatePassword(String id, String password);
+	
 	
 	
 }

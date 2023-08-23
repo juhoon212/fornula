@@ -1,8 +1,10 @@
 package com.fornula.domain.member.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,11 +44,6 @@ public class MemberController {
 		return "find-pw";
 	}
 	
-	@GetMapping("/findNewPw")
-	public String findNewPw() {
-		return "find-new-pw";
-	}
-	
 	@PostMapping("/findPw")
 	public String findPw(@ModelAttribute FindPasswordForm form, RedirectAttributes redirectAttributes) {
 		
@@ -58,10 +55,34 @@ public class MemberController {
 			return "redirect:/member/findPw";
 		}
 		
-		String memberId = findMember.getId();
+		int memberIdx = findMember.getMemberIdx();
 		
-		return "redirect:/member/find-new-pw/{memberId}";
+		return "/member/findNewPw/{memberIdx}";
 	}
+	
+	@GetMapping("/updatePassword/{memberIdx}")
+	public String findNewPw(@PathVariable int memberIdx, Model model) {
+		
+		model.addAttribute("memberIdx", memberIdx);
+		
+		return "update-password";
+	}
+	
+	@PostMapping("/updatePassword/{memberIdx}")
+	public String updatePassword(@PathVariable int memberIdx, @RequestParam(required = false) String newPassword) {
+		Member findByIdxMember = memberLoginService.findByIdx(memberIdx);
+		
+		int result = memberLoginService.updatePassword(findByIdxMember.getId(), newPassword);
+		
+		if(result == 0) {
+			return "404";
+		}
+		
+		return "redirect:/";
+	}
+	
+	
+	
 	
 	
 }

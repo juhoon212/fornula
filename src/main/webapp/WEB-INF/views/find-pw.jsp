@@ -85,7 +85,7 @@
       </header>
 
       <section>
-        <form action="/member/findPw" method="POST">
+        <form action="/member/updatePassword/{findMember}" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
