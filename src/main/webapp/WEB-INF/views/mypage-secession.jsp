@@ -363,7 +363,7 @@ h3 {
             <input class="box" type="text" name="id" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
             
           </div>
-          <p align="left" style="color= red;">${message }</p>
+          <p align="left" style="color= red;">${member.message }</p>
         </div>
         
          <div class="info">
