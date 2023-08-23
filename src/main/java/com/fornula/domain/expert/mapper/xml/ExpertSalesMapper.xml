@@ -2,14 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertSalesMapper">
 	<!-- 검색필터를 이용한 검색 -->
-	<select id="selectSearch" resultMap="Sales">
-		select sales_idx,	
-			   intem_idx, 
-			   sales_date, 
-			   sales_status
-		from sales
-		where sales_date = #{salesDate} 
-		  and sales_status=#{salesStatus}
+	<select id="selectSearchSalesList" resultMap="ItemSales">
+		select SALES.sales_idx,	
+			   SALES.sales_date, 
+			   SALES.sales_status,
+			   ITEM.item_name,
+			   ITEM.price
+			   ITEM.item_content
+		from item ITEM
+		join sales SALES
+		on ITEM.item_idx = SALES.item_idx
+		where sales_status=#{salesStatus} and sales_date = #{salesDate}
+		order by sales_date
+	</select>
+	
+	<!-- 판매내역 출력 -->
+	<select id="selectSalesList" resultMap="ItemSales">
+			select SALES.sales_idx,	
+			   SALES.sales_date, 
+			   SALES.sales_status,
+			   ITEM.item_name,
+			   ITEM.price
+			   ITEM.item_content
+		from item ITEM
+		join sales SALES
+		on ITEM.item_idx = SALES.item_idx
 		order by sales_date
 	</select>
 	
@@ -21,31 +38,11 @@
 	</update>
 	
 	<!-- 판매금액 출력 -->
-	<resultMap type="ItemSales" id="ItemSalesResultMap">
-		<association property="item" javaType="Item">
-			<id column="item_idx" property="itemIdx"/>
-			<result column="category_idx" property="categoryIdx"/>	
-			<result column="expert_idx" property="expertIdx"/>	
-			<result column="item_name" property="itemName"/>	
-			<result column="item_content" property="itemContent"/>	
-			<result column="price" property="price"/>	
-			<result column="item_status" property="itemStatus"/>	
-			<result column="item_date" property="itemDate"/>	
-			<result column="photo_idx" property="photoIdx"/>	
-		</association>
-		<association property="sales" javaType="Sales">
-			<id column="sales_idx" property="salesIdx"/>
-			<result column="item_idx" property="itemIdx"/>	
-			<result column="sales_date" property="salesDate"/>	
-			<result column="sales_status" property="salesStatus"/>	
-		</association>
-	</resultMap>
-	
-	<select id="selectItemSales" resultMap="ItemSalesResultMap">
+	<select id="selectPrice" resultMap="ItemSales">
 		select SUM(price)
 		from item ITEM
 		join sales SALES
 		on ITEM.item_idx = SALES.item_idx
+		where item_idx=#{itemIdx}
 	</select>
-	
 </mapper>

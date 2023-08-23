@@ -137,6 +137,7 @@ h3 {
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="login-header.jsp" />
 	<main class="main container">
+	<form method="post" id="expertjoinForm">
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="story-posts">
@@ -149,20 +150,20 @@ h3 {
 									<div class="info" id="info__id">
 										<div id="id-input">
 											<input class="box" type="text" placeholder="아이디"
-												readonly="readonly" />
+												readonly="readonly" value="${expert.expertIdx} " />
 										</div>
 									</div>
 									<h3>전화번호</h3>
 									<div class="info">
 										<div id="phone-input">
-											<input class="box" type="tel" placeholder="01012345678" />
+											<input class="box" type="tel" placeholder="01012345678" value="${expert.phone}"/>
 										</div>
 									</div>
 									<h3>자기 소개</h3>
 									<div class="info">
 										<div id="introduce-input">
 											<textarea id="introduce" class="box"
-												placeholder="자기소개를 작성해주세요." maxlength=200></textarea>
+												placeholder="자기소개를 작성해주세요." maxlength=200 value="${expert.introduce}"></textarea>
 										</div>
 									</div>
 								</div>
@@ -204,7 +205,7 @@ h3 {
 						<h3>경력</h3>
 						<div class="info" id="company_category">
 							<div id="career-input">
-								<input class="box" type="text" placeholder="1년 6개월" />
+								<input class="box" type="text" placeholder="1년 6개월" value="${expert.career}" />
 							</div>
 							<div class="error-msg"></div>
 						</div>
@@ -212,15 +213,15 @@ h3 {
 						<h3>근무지</h3>
 						<div class="info" id="info__category">
 							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
+								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." value="${expert.company_one}" />
 							</div>
 							<div class="error-msg"></div>
 							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
+								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." value="${expert.company_two}"/>
 							</div>
 							<div class="error-msg"></div>
 							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
+								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." value="${expert.company_three}" />
 							</div>
 							<div class="error-msg"></div>
 						</div>
@@ -229,7 +230,7 @@ h3 {
 					<hr>
 					<section id="upload">
 						<h3>포트폴리오</h3>
-						<input class="form-control" type="file" id="formFile"> <span
+						<input class="form-control" type="file" id="formFile" value="${expert.expertfile_name}"> <span
 							style="color: gray; font-size: 15px; padding: 0px 25px;">
 							[PDF 파일로 업로드 해주세요.]</span>
 					</section>
@@ -238,7 +239,7 @@ h3 {
 					<section>
 					<br>
 						<div id="join" style="text-align: center;">
-							<button id="submit" type="button" class="btn btn-primary">전문가
+							<button id="submit" type="submit" class="btn btn-primary">전문가
 								등록</button>
 						</div>
 					</section>
@@ -264,6 +265,7 @@ h3 {
 				</div>
 			</div>
 		</div>
+		</form>
 	</main>
 
 	<jsp:include page="footer.jsp"/>
