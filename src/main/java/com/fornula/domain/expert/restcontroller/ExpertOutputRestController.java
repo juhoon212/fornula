@@ -22,5 +22,5 @@ public class ExpertOutputRestController {
 	public Expert expertGet(@PathVariable int expertIdx) {
 		log.info("ExpertOutputRestController 클래스의 expertGet()메소드");
 		return expertOutputService.getExpert(expertIdx);
-	}
+	} 
 }
