@@ -80,14 +80,14 @@
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" placeholder="가입하신 아이디를 입력해주세요"/>
+	            <input class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
-	          	<label for="id-box" class="phone-box"></label>
-	            <input class="box" type="text" placeholder="가입하신 핸드폰 번호를 입력해주세요"/>
+	          	<label for="id-box" class="email-box"></label>
+	            <input class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
 	          </div>
 	        </div>
 	

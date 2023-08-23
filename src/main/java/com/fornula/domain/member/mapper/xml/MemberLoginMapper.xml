@@ -10,8 +10,43 @@
 				member_status,
 				login_date
 		from member
-		where id = #{id} and password = #{password} 
+		<where>
+			<if test="id != null and !id.equals('')">
+				id = #{id}
+			</if>
+			<if test="password != null and !password.equals('')">
+				and password = #{password}
+			</if>
+		</where>
+		<!-- where id = #{id} and password = #{password}  -->
 	</select>
+	
+	<select id="selectMemberId" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where email = #{email}
+	</select>
+	
+	<select id="selectMemberPw" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where id = #{id}
+				and email = #{email}
+	</select>
+	
+	
 	
 	
 	

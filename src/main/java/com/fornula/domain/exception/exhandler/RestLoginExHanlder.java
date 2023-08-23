@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
 import com.fornula.domain.exception.custom.LoginUserCheckException;
+import com.fornula.domain.exception.custom.NotFoundIdException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,11 +22,19 @@ public class RestLoginExHanlder {
 	
 	@ExceptionHandler(LoginFailException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorResult LoginFailExHandle(LoginFailException e) {
+	public ErrorResult loginFailExHandle(LoginFailException e) {
 		log.info("[LoginFailException] ", e);
 		return new ErrorResult("Bad", e.getMessage());
 	}
 	
+	// NotFoundIDException
+	
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorResult notFoundIdException(NotFoundIdException e) {
+		log.info("[NotFoundIdException]", e);
+		return new ErrorResult("Bad", e.getMessage());
+	}
 	
 	
 	

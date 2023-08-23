@@ -56,6 +56,14 @@
 	cursor: pointer;
 }
 
+#show-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding : 10px;
+}
+
 
 
 </style>
@@ -77,24 +85,17 @@
 
       <section>
         
-        <form action="" method="Post">
+        <form action="/member/findId" method="Post">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" placeholder="가입하신 이메일을 입력해주세요"/>
+	            <input class="box" name="email" type="email" placeholder="가입하신 이메일을 입력해주세요"/>
 	          </div>
 	        </div>
-	        
-	        <div class="info" id="info__id">
-	          <div id="id-input">
-	          	<label for="id-box" class="phone-box"></label>
-	            <input class="box" type="text" placeholder="핸드폰 번호를 입력해주세요"/>
-	          </div>
-	        </div>
-	
 	      	<button id="submit">아이디 찾기</button>
-      	
      	</form>
+     	
+     	<div id="show-message"></div>
      	
      	<div class="find-pw-box">
  			<a id="find-pw" href="<c:url value="/member/findPw"/>">비밀번호 찾기</a>    		
@@ -105,7 +106,32 @@
   </div>
   
  <script type="text/javascript">
+ 
+ let emailBox = document.querySelector('.box');
+ 
+ document.querySelector('#submit').addEventListener('click', (e) => {
+	 fetch("<c:url value="/member/findId"/>", {
+		  method: "POST", 
+		  headers: { 
+		    "Content-Type": "application/json",
+		  },
+		})
+	.then((response) => response.json())
+	.then((data) => {
+	   	  
+	  	if(data.errorCode === "Bad") {
+	   		document.querySelector('#show-message').innerHTML = data.message;
+	   } else {
+	   		document.querySelector('#show-message').innerHTML = data;
+	   	}
+	 })
+	  	e.preventDefault();
+ })
  	
+ 
+     
+	
+
  	
  	
  </script>

@@ -4,10 +4,13 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.exception.custom.LoginFailException;
+import com.fornula.domain.exception.custom.NotFoundIdException;
+import com.fornula.domain.exception.custom.NotFoundPwException;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.repository.MemberLoginRepository;
 
@@ -41,6 +44,42 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		}
 		
 		return loginMember;
+	}
+
+	@Override
+	public Member findByEmail(String email) {
+		
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberId(email);
+		Member findMember = optionalFindMember.orElse(null);
+		
+		if(findMember == null) {
+			throw new NotFoundIdException("검색하신 아이디가 없습니다.");
+		}
+		
+		return findMember;
+	}
+
+	@Override
+	public Member findPw(String password) {
+		
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(null, password);
+		Member findMember = optionalFindMember.orElse(null);
+		
+		if(findMember == null) {
+			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
+		}
+		
+		boolean isCheckedPassword = BCrypt.checkpw(password, findMember.getPassword());
+		
+		if(!isCheckedPassword) {
+			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
+		}
+		
+		
+		
+		
+		
+		return null;
 	}
 	
 	
