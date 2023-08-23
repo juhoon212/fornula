@@ -132,7 +132,7 @@ h3::after {
 }
 
 /* 버튼 */
-button #submit {
+button#submit {
   width: 100%;
   height: 45px;
   border-radius: 3px;
