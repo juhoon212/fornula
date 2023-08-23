@@ -17,5 +17,16 @@
     where id=#{id}
 	</update>
 
+    <select id="selectMypagePassword" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where id = #{id}
+	</select>
 	
 </mapper>

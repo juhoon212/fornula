@@ -41,7 +41,7 @@ public class MypagePasswordController {
 		   
 		
 		   
-		  //비번 복호화되있나?
+		  //비번 복호화
 		   
 		   boolean isCheckedPw = BCrypt.checkpw(password.getPassword(), loginMember.getPassword());
 		   

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fornula.domain.exception.custom.MypageIdExcepion;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.member.mapper.java.MypageInfoMapper;
@@ -30,18 +31,16 @@ public class MypageInfoController {
 	@PostMapping("/mypageInfo")
 	public String info(@ModelAttribute InfoCategory category, HttpSession session) {
 	
+		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		
-		
-		Member joinMember = service.mypageInfoService(category);
+	    Member joinMember = service.mypageInfoService(member.getId());
 		   
-		   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-		  
-		   
-		   if( member.getId()!=joinMember.getId()) {
-			   return "mypage-info";
-		   }
-		   
-		   session.invalidate();
+	    //카테고리 값이 null일때 에러처리를 어떻게 한담..
+		   //if(category.getOne()==null) {
+			//   return "mypage-info";
+		   //}
+	   
+		   service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
 		   
 		   return "mypage-info"; 
 	}

@@ -16,11 +16,20 @@ public class MypageInfoServiceImpl implements MypageInfoService{
 
 
 @Override
-public Member mypageInfoService(InfoCategory category) {
-    int update  =mypageInfoRepository.updateMypageInfo(category);
-    
-    
-	return ;
+public Member mypageInfoService(String id) {
+	
+	Member mypageInfoService=mypageInfoRepository.selectMypagePassword(id);
+	
+	return mypageInfoService;
 }
+
+
+@Override
+public void modifyPassword(int One, int Two, int Three, String id) {
+    mypageInfoRepository.updateMypageInfo(One, Two, Three, id);
+	
+}
+
+
    
 }
