@@ -25,6 +25,11 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	
+	@GetMapping("/payment")
+	public String pay() {
+		return "payment";
+	}
+
 	@GetMapping("/expertjoin")
 	public String join() {
 		return "expert-join";

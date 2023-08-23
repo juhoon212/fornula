@@ -44,6 +44,6 @@
 		join sales SALES
 		on ITEM.item_idx = SALES.item_idx
 		where SALES.sales_status between 5 and 7
-		and ITEM.item_status = 1
+		
 	</select>
 </mapper>

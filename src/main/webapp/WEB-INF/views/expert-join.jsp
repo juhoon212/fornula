@@ -179,7 +179,7 @@ h3 {
 									<optgroup label="디자인"
 										style="font-weight: bold; font-size: 20px;"></optgroup>
 									<option selected value="graphic">그래픽 디자인</option>
-									<option value="producy">제품 디자인</option>
+									<option value="product">제품 디자인</option>
 									<optgroup label="번역"
 										style="font-weight: bold; font-size: 20px;"></optgroup>
 									<option value="english">영어</option>

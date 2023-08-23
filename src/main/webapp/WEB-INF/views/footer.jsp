@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<hr>
-<div class="pre-footer footer-grid-3 bg-light-orange text-dark" >
-    <div class="container">
+<div class="footer" style="padding : 0px;">
+<div class="pre-footer footer-grid-3 bg-light-orange text-dark"  style="padding-top: 30px">
+    <div class="container" style="padding: 30px;">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="widget" style="text-align: left;">
                     <img class="footer-logo img-fluid mb-4" src="<c:url value="/pictures/placeholder/logo2.png"/>"
                          alt="Footer Logo">
                     <p style="text-align: left;">
-                        외주 사이트 입니 다.
+                        외주 사이트 입니다.
                     </p>
                     <ul class="social-icons list-inline">
                         <li class="list-inline-item">
@@ -59,4 +59,5 @@
         </div>
     </div>
 </footer>
+</div>
 </div>

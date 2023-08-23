@@ -101,11 +101,6 @@ select {
 	background: #ffff;
 }
 
-.story-posts {
-	width: 100%;
-	height: 85%;
-}
-
 table {
 	width: 100%;
 	padding: 0px 10px;
@@ -128,69 +123,72 @@ tr td {
 	<jsp:include page="header.jsp" />
 
 	<!-- 스타일 태그 끝 -->
-	<main class="main container" style="width: 100%; min-height: 100%;">
-		<div class="sale" style="width: 100%; min-height: 100%;">
-			<div class="row" style="width: 100%; min-height: 100%;">
-				<div class="col-12 col-lg-8">
-					<div class="story-posts" id="post">
-						<div id="post-1"
-							class="lana_story type-lana_story post-1 card story-card">
-							<div class="card-body">
-								<p style="text-align: left; font-size: 35px;">결제하기</p>
-								<div class="blog-posts">
-									<p style="text-align: left;">주문 내역</p>
-									<div id="post-2" class="post type-post post-2 card post-card">
-										<div class="row">
-											<div class="col-md-4">
-												<img class="card-img img-fluid"
-													src="<c:url value="/pictures/placeholder/530x400.svg"/>"
-													alt="Post">
+	<main class="main container" style="min-height: 1000px;">
+		<div class="story-posts" id="post">
+			<div class="row">
+				<div class="col-8">
+					<div id="post-1"
+						class="lana_story type-lana_story post-1 card story-card">
+						<div class="card-body">
+							<p style="text-align: left; font-size: 35px;">결제하기</p>
+							<div class="blog-posts">
+								<p style="text-align: left;">주문 내역</p>
+								<div id="post-2" class="post type-post post-2 card post-card">
+									<div class="row">
+										<div class="col-md-4">
+											<img class="card-img img-fluid"
+												src="<c:url value="/pictures/placeholder/530x400.svg"/>"
+												alt="Post">
 
-											</div>
-											<div class="col-md-8">
+										</div>
+										<div class="col-md-8">
+											<div
+												class="card-body h-100 d-flex align-items-start flex-column">
+												<ul class="post-meta">
+													<li><a href="single.html">판매일자 월, 일, 년도</a></li>
+													<li><a href="#">주문상태</a></li>
+												</ul>
+												<p class="post-text card-text">
+												<h6 class="post-title card-title">판매번호</h6>
+												<h4 class="post-title card-title">
+													<a href="single.html">게시물이름</a>
+												</h4>
+												<p class="subtitle">상품설명</p>
+
 												<div
-													class="card-body h-100 d-flex align-items-start flex-column">
-													<ul class="post-meta">
-														<li><a href="single.html">판매일자 월, 일, 년도</a></li>
-														<li><a href="#">주문상태</a></li>
-													</ul>
-													<p class="post-text card-text">
-													<h6 class="post-title card-title">판매번호</h6>
-													<h4 class="post-title card-title">
-														<a href="single.html">게시물이름</a>
-													</h4>
-													<p class="subtitle">상품설명</p>
-
-													<div
-														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
-													</div>
+													class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
 												</div>
 											</div>
 										</div>
 									</div>
-									<div id="post-3" class="post type-post post-3 card post-card">
-										<div class="row" style="margin: 0 auto;">
-											<p>결제 방법</p>
-											<div class="col" style="padding-left: 50px;">
-												<input type="checkbox" value="none">일반 결제
-												&nbsp;&nbsp; <input type="checkbox" value="card">카드
-												결제 &nbsp;&nbsp; <input type="checkbox" value="account">계좌
-												이체&nbsp;&nbsp; <input type="checkbox" value="noneaccount">무통장
-												입금&nbsp;&nbsp;
-											</div>
+								</div>
+								<div id="post-3" class="post type-post post-3 card post-card">
+									<div class="row" style="margin: 0 auto;">
+										<p>결제 방법</p>
+										<div class="col" style="padding-left: 50px;">
+											<input type="checkbox" name="paymentoption" value="none"
+												onclick="checkOnlyOne(this)" checked>일반 결제
+											&nbsp;&nbsp; <input type="checkbox" name="paymentoption"
+												value="card" onclick="checkOnlyOne(this)">카드 결제
+											&nbsp;&nbsp; <input type="checkbox" name="paymentoption"
+												value="account" onclick="checkOnlyOne(this)">계좌
+											이체&nbsp;&nbsp; <input type="checkbox" name="paymentoption"
+												value="noneaccount" onclick="checkOnlyOne(this)">무통장
+											입금&nbsp;&nbsp;
 										</div>
-										<hr>
-										<br>
-										<div id="post-4" class="post type-post post-4 card post-card">
-											<div class="row">
-												<div class="col" style="text-align: left;">
-													<input type="radio" value="checklist">취소/환불에 대한 규정
-													<br> <br>
-													<p>
-														구매 확정시 취소/환불이 불가합니다.<br> 제품 수정은 최대 2회까지 가능합니다.<br>
-														확인하셨다면 확인 버튼을 눌러주세요.
-													</p>
-												</div>
+									</div>
+									<hr>
+									<br>
+									<div id="post-4" class="post type-post post-4 card post-card">
+										<div class="row">
+											<div class="col" style="text-align: left;">
+												<input class="check" type="checkbox" name="agree"
+													value="checklist" onclick="agreeCheck()">&nbsp;
+												취소/환불에 대한 규정 <br> <br>
+												<p>
+													구매 확정시 취소/환불이 불가합니다.<br> 제품 수정은 최대 2회까지 가능합니다.<br>
+													확인하셨다면 확인 버튼을 눌러주세요.
+												</p>
 											</div>
 										</div>
 									</div>
@@ -198,37 +196,39 @@ tr td {
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-							<div class="widget-sidebar story-sidebar">
-						<form action="#" method="post">
-								<div class="tagcloud">
-									<div class="row">
-										<div class="widget"
-											style="text-align: left; padding-left: 20px;" id="list">
-											<label>총 결제 금액</label>
-											<p>${money}</p>
-											<hr>
+				</div>
+				<div class="col-4">
+					<div class="widget-sidebar story-sidebar">
+						<form action="/member/item" method="post">
+							<div class="tagcloud">
+								<div class="widget"
+									style="text-align: left; padding-left: 20px; margin: 0 auto;"
+									id="list">
+									<label>총 결제 금액</label>
+									<p>${price}</p>
+									<hr>
 
-											<input type="radio">결제 전 안내사항<br> <input
-												type="radio">개인 정보 제 3자 제공
-										</div>
-										<p
-											style="text-align: center; font-size: 15px; color: gray; width: 100%">위
-											내용을 확인하였고, 결제에 동의합니다.</p>
-										<div style="width: 100%;">
-											<button type="submit" class="btn btn-primary"
-												style="text-align: center;">결제하기</button>
-										</div>
-									</div>
+									<input class="check" type="checkbox" name="agree"
+										onclick="agreeCheck()">&nbsp;결제 전 안내사항<br> <input
+										class="check" type="checkbox" name="agree"
+										onclick="agreeCheck()">&nbsp;개인 정보 제 3자 제공
 								</div>
-						</form>
+								<br>
+								<p
+									style="text-align: center; font-size: 15px; color: gray; width: 100%">위
+									내용을 확인하였고, 결제에 동의합니다.</p>
+
+								<div style="width: 100%;">
+									<button id="checkSubmit" type="submit" class="btn btn-primary"
+										style="text-align: center;" name="checkBtn" disabled>결제하기</button>
+								</div>
 							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-
 	<jsp:include page="footer.jsp" />
 
 	<script type="text/javascript"
@@ -250,5 +250,30 @@ tr td {
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+	<script type="text/javascript">
+		function checkOnlyOne(element) {
+			let checkboxes = document.getElementsByName("paymentoption");
+			
+			checkboxes.forEach((cb) => {
+				cb.checked = false;
+			})
+			element.checked=true;
+		
+		}
+	</script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function agreeCheck(element) {
+			const checkedbox = document.querySelectorAll('input[class=check]:checked');
+			const cnt = checkedbox.length;
+			
+			if(cnt ==3 ){
+				document.querySelector('#checkSubmit').disabled=false;
+			}else{
+				document.querySelector('#checkSubmit').disabled=true;
+			}
+		}
+	</script>
 </body>
 </html>
