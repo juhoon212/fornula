@@ -35,6 +35,7 @@ public class MypageInfoController {
 		
 	    Member joinMember = service.mypageInfoService(member.getId());
 		   
+	    session.setAttribute("member", joinMember);
 	    //카테고리 값이 null일때 에러처리를 어떻게 한담..
 		   //if(category.getOne()==null) {
 			//   return "mypage-info";

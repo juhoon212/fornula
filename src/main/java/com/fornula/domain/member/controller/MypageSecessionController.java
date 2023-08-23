@@ -35,6 +35,8 @@ public class MypageSecessionController {
 	   
 	   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 	  
+	   //이거말고 메시지보내는거로 해야함.아니면 자스로 메세지 처리하기
+	   //session.setAttribute("member", joinMember);
 	   
 	   if( member.getId()!=joinMember.getId()) {
 		   return "mypage-secession";

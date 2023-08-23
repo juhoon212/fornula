@@ -24,7 +24,7 @@ public class MypagePasswordServiceImpl implements MypagePasswordService {
 
 	@Override
 	public void modifyPassword(String id, String newPassword) {
-		//이거 int로 저장안해도 되나...
+	
 		 mypagePasswordRepository.updateMypagePassword(id, newPassword);
 		
 	}

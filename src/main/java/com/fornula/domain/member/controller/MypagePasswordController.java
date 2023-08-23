@@ -39,7 +39,6 @@ public class MypagePasswordController {
 		  
 		   Member loginMember = service.mypagePasswordId(member.getId());
 		   
-		
 		   
 		  //비번 복호화
 		   
