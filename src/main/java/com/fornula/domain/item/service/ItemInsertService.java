@@ -5,5 +5,5 @@ import com.fornula.domain.item.dto.Photo;
 
 public interface ItemInsertService {
 	void addItem(Item item);
-	void addPhoto(Photo photo);
+//	void addPhoto(Photo photo);
 }

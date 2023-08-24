@@ -5,5 +5,5 @@ import com.fornula.domain.item.dto.Photo;
 
 public interface ItemInsertDAO {
 	int insertItem(Item item);
-	int insertPhoto(Photo photo);
+//	int insertPhoto(Photo photo);
 }

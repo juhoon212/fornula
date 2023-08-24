@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/output")
+@RequestMapping("/")
 @RequiredArgsConstructor
 @Slf4j
 public class ExpertOutputRestController {

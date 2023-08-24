@@ -18,9 +18,10 @@ public class ItemInsertDAOImpl implements ItemInsertDAO {
 	public int insertItem(Item item) {
 		return sqlSession.getMapper(ItemInsertMapper.class).insertItem(item);
 	}
-	
+	/*
 	@Override
 	public int insertPhoto(Photo photo) {
 		return sqlSession.getMapper(ItemInsertMapper.class).insertPhoto(photo);
 	}
+	*/
 }

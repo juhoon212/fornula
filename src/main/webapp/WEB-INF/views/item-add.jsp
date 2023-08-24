@@ -41,33 +41,28 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-
-                        <form id="contactform" class="contact-form mt-5">
+                     
+                        <form id="Itemform" class="contact-form mt-5" method="post">
                             <div class="form-group row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="가격" aria-required="true"
-                                           required="required" aria-label="Name">
-                                </div>
-                                <div class="col">
-                                    <input type="email" class="form-control" placeholder="이 위치에 사진등록" aria-required="true"
-                                           required="required" aria-label="Email">
+                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${price }" >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
-                                           required="required" aria-label="Subject">
+                                           required="required" aria-label="Subject" name="itemName" value="${itemName }">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col">
                                     <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message"></textarea>
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${itemContent }"></textarea>
                                 </div>
                             </div>
                            	<div class="form-group row">                            
 								<div class="col">
-                            		<p>상품과 연관있는 카테고리를 선택해주세요
                             		<select id="selectCategory" class="form-control">
                             			<option>그래픽</option>
                             			<option>제품</option>
@@ -80,22 +75,21 @@
                             			<option>SNS 홍보</option>
                             			<option>해외 마케팅</option>
                             		</select>
-                            	</div>
-                            	<div class="row text-center">
-                                	<div class="col">
+                           		</div>
+                         	</div>
+                           	<div class="row text-center">
+                               	<div class="col">
                                     	<input name="submit" type="submit" id="submit"  
                                          	  class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           	  value="상품등록">
-                                	</div>
-                            	</div>	
-                          	</div>
-                            </div>
-                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                           	  value="상품등록" onclick="insert();">
+                               	</div>
+                           	</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main> 
 <jsp:include page="footer.jsp"/>
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
@@ -109,15 +103,29 @@
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 <script type="text/javascript">
-	$.ajax({
-		url:""
-		type:'post'
-		data:{
-			가격: "price",
-			이메일: "itemName",
-			상품제목: ""
-		}
-	})
+itemForm.price.focus();
+
+function insert(){
+	if(itemForm.price.value==""){
+		alert("가격을 입력해주세요");
+		itemForm.price.focus();
+		return;
+	}
+	
+	if(itemForm.itemName.value=""){
+		alert("상품 제목을 입력해주세요");
+		itemForm.itemName.focus();
+		return;
+	}
+	
+	if(itemForm.itemContent.value=""){
+		alert("상품 내용을 입력해주세요");
+		itemForm.itemContent.focus();
+		return;
+	}
+		
+	itemForm.insert();
+}
 </script>
 
 </body>

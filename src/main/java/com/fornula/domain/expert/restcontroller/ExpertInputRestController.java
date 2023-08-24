@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/input")
+@RequestMapping("/")
 @RequiredArgsConstructor
 @Slf4j
 public class ExpertInputRestController {
@@ -46,21 +46,7 @@ public class ExpertInputRestController {
 		log.info("ExpertInputRestController 클래스의 expertModify() 메소드 실행");
 		return "수정 성공";
 	}
-//	전문가 등록시에 사용할 메소드
-	@PostMapping("/add")
-	public String expertAdd(@RequestBody Expert expert) {
-		expert.setCareer(HtmlUtils.htmlEscape(expert.getCareer()));
-		expert.setCompanyOne(HtmlUtils.htmlEscape(expert.getCompanyOne()));
-		expert.setCompanyTwo(HtmlUtils.htmlEscape(expert.getCompanyTwo()));
-		expert.setCompanyThree(HtmlUtils.htmlEscape(expert.getCompanyThree()));
-		expert.setExpertfileName(HtmlUtils.htmlEscape(expert.getExpertfileName()));
-		expert.setIntroduce(HtmlUtils.htmlEscape(expert.getIntroduce()));
-		expert.setPhone(HtmlUtils.htmlEscape(expert.getPhone()));
-		expertInputService.addExpert(expert);
-		
-		log.info("ExpertInputRestController 클래스의 expertAdd() 메소드 실행");
-		return "등록 성공";
-	}
+
 //	자신이 등록했던 게시물(상품)을 출력해주는 메소드
 //	여차하면 ExpertOutputRestController로 이동
 	@GetMapping("/list")

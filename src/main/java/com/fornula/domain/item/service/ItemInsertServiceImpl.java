@@ -17,9 +17,10 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 	public void addItem(Item item) {
 		itemInsertDAO.insertItem(item);
 	}
-	
+	/*
 	@Override
 	public void addPhoto(Photo photo) {
 		itemInsertDAO.insertPhoto(photo);	
 	}
+	*/
 }

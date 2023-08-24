@@ -1,8 +1,10 @@
 package com.fornula.domain.expert.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/*ÀÌ¸§              ³Î?       À¯Çü            
+/*ï¿½Ì¸ï¿½              ï¿½ï¿½?       ï¿½ï¿½ï¿½ï¿½            
 --------------- -------- ------------- 
 EXPERT_IDX      NOT NULL NUMBER        
 MEMBER_IDX      NOT NULL NUMBER        
@@ -17,6 +19,8 @@ EXPERTFILE_NAME          VARCHAR2(100)  */
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Expert {
 	private int expertIdx;
 	private int memberIdx;

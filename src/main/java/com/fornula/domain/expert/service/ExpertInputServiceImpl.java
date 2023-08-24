@@ -47,10 +47,4 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 
 		return resultMap;
 	}
-// 전문가 등록시에 사용	
-	@Override
-	public void addExpert(Expert expert) {
-		log.info("ExpertInputServiceImpl 클래스의 addExpert()메소드 실행");
-		expertInputDAO.insertExpertInfo(expert);
-	}
 }
