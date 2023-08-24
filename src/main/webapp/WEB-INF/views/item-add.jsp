@@ -30,79 +30,8 @@
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
-<body class="page page-template-default">
-<jsp:include page="header.jsp" />
-
-<main class="main">
-    <div id="post-1" class="page type-page post-1">
-        <div class="container post-container bg-white">
-            <div class="row justify-content-start post-row no-gutters">
-                <div class="col-12 px-0 px-sm-3 col-md-10 offset-md-1 px-md-0 col-xl-9">
-                    <div class="post-content">
-                        <h4 class="font-weight-bold">상품등록</h4>
-                        <p>규정을 준수하여 상품을 등록해주세요</p>
-                     
-                        <form id="Itemform" class="contact-form mt-5" method="post">
-                            <div class="form-group row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
-                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${price }" >
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemName" value="${itemName }">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col">
-                                    <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${itemContent }"></textarea>
-                                </div>
-                            </div>
-                           	<div class="form-group row">                            
-								<div class="col">
-                            		<select id="selectCategory" class="form-control">
-                            			<option>그래픽</option>
-                            			<option>제품</option>
-                            			<option>영어</option>
-                            			<option>중국어</option>
-                            			<option>헤어 메이크업</option>
-                            			<option>제품 홍보 사진</option>
-                            			<option>사업자</option>
-                            			<option>개인</option>
-                            			<option>SNS 홍보</option>
-                            			<option>해외 마케팅</option>
-                            		</select>
-                           		</div>
-                         	</div>
-                           	<div class="row text-center">
-                               	<div class="col">
-                                    	<input name="submit" type="submit" id="submit"  
-                                         	  class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           	  value="상품등록" onclick="insert();">
-                               	</div>
-                           	</div>
-						</form>	
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</main> 
-<jsp:include page="footer.jsp"/>
-<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
 <script type="text/javascript">
+
 itemForm.price.focus();
 
 function insert(){
@@ -126,7 +55,82 @@ function insert(){
 		
 	itemForm.insert();
 }
-</script>
 
+</script>
+<body class="page page-template-default">
+<jsp:include page="header.jsp" />
+
+<main class="main">
+    <div id="post-1" class="page type-page post-1">
+        <div class="container post-container bg-white">
+            <div class="row justify-content-start post-row no-gutters">
+                <div class="col-12 px-0 px-sm-3 col-md-10 offset-md-1 px-md-0 col-xl-9">
+                    <div class="post-content">
+                        <h4 class="font-weight-bold">상품등록</h4>
+                        <p>규정을 준수하여 상품을 등록해주세요</p>
+                     
+                        <form id="itemform" class="contact-form mt-5" method="post">
+                            <div class="form-group row">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="" aria-required="true"
+                                           required="required" aria-label="Price" name="price" value="${item.price }" readonly>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${item.price }" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
+                                           required="required" aria-label="Subject" name="itemName" value="${item.itemName }">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${item.itemContent }"></textarea>
+                                </div>
+                            </div>
+                           	<div class="form-group row">                            
+								<div class="col">
+                            		<select id="selectCategory" class="form-control">
+                            			<option>그래픽</option>
+                            			<option>제품</option>
+                            			<option>영어</option>
+                            			<option>중국어</option>
+                            			<option>헤어 메이크업</option>
+                            			<option>제품 홍보 사진</option>
+                            			<option>사업자</option>
+                            			<option>개인</option>
+                            			<option>SNS 홍보</option>
+                            			<option>해외 마케팅</option>
+                            		</select>
+                           		</div>
+                         	</div>
+                           	<div class="row text-center">
+                               	<div class="col">
+                                    	<input name="submit" type="submit" id="submit"  
+                                         	  class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
+                                           	  value="상품등록" onclick="insert();" href="item-board">
+                               	</div>
+                           	</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main> 
+<jsp:include page="footer.jsp"/>
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 </body>
 </html>

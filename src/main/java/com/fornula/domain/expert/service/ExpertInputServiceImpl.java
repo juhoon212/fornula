@@ -27,6 +27,7 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 		expertInputDAO.updateExpert(expert);
 	}
 //	전문가가 등록한 상품 게시글을 게시판 형태로 출력할 때 사용 -> ExpertOutputService 쪽으로 빠질수도 있음
+	/*
 	@Override
 	public Map<String, Object> getExpertBoardList(int pageNum) {
 		
@@ -47,4 +48,5 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 
 		return resultMap;
 	}
+	*/
 }
