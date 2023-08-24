@@ -371,10 +371,10 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-    
+    <form name="passwordForm" method="post" action="mypagePwchange">
        <h3>현재 비밀번호</h3>
         <div class="info" id="info__pw">
-          <input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
+          <input class="box" name="password" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
         </div>
         <div class="area">
         	<label class="pwname">
@@ -396,8 +396,8 @@ h3 {
         
         
       <div id="join"></div>
-      <button id="submit">변경하기</button>
-      
+      <input type="button" value="변경하기" onclick="submitCheck();">
+   </form>
 </section>
         
                   </div>
@@ -500,5 +500,37 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+<script type="text/javascript">
+ 
+ function submitCheck() {
+	
+	
+	if(passwordForm.password.value==""){
+		alert("비밀번호 입력해주세요")
+		passwordForm.password.focus();
+		return;
+	}
+	
+	if(passwordForm.password.value==""){
+		alert("비밀번호 입력해주세요")
+		passwordForm.password.focus();
+		return;
+	}
+	
+	
+	
+
+	
+	passwordForm.submit();
+}
+
+
+
+
+
+
+
+
+ </script>
 </body>
 </html>
