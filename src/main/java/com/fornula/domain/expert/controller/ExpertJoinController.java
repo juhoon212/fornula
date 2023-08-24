@@ -29,6 +29,10 @@ public class ExpertJoinController {
 	public String pay() {
 		return "payment";
 	}
+	@GetMapping("/sale")
+	public String sale() {
+		return "expert-sales";
+	}
 
 	@GetMapping("/expertjoin")
 	public String join() {
@@ -36,7 +40,11 @@ public class ExpertJoinController {
 	}
 	
 	@PostMapping("/expertjoin")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model) throws IOException{
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model)
+			throws IllegalStateException, IOException{
+		
+		//삽입 처리시 이미 전문가로 등록된 회원에 대한 예외 처리
+		
 		
 		//pdf 파일이 아닐 경우 메세지 띄움
 		if(!uploadFile.getContentType().equals("upload/pdf")) {

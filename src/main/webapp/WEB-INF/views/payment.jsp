@@ -265,8 +265,8 @@ tr td {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		function agreeCheck(element) {
-			const checkedbox = document.querySelectorAll('input[class=check]:checked');
-			const cnt = checkedbox.length;
+			let checkedbox = document.querySelectorAll('input[class=check]:checked');
+			let cnt = checkedbox.length;
 			
 			if(cnt ==3 ){
 				document.querySelector('#checkSubmit').disabled=false;
