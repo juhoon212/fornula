@@ -52,7 +52,7 @@
     <div class="row">
     <div class="col-12 col-lg-8">
     <div class="widget">     
-    <div class="story-posts">              
+    <form class="story-posts" id="content">              
 <section>
 <!-- my-page style-->
 <style>
@@ -217,7 +217,7 @@ h3 {
       <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 -->
       <button id="submit">수정완료</button> 
 </section>
-</div>
+</form>
 </div>
 </div>  
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">

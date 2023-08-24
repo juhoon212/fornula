@@ -7,11 +7,11 @@
 			,interest=#{interest}
 			,introduce=#{introduce}
 			,career=#{career}
-			,compnay_one=#{company_one}
-			,compnay_two=#{company_two}
-			,compnay_three=#{company_three}
-			,expertfile_name=#{expertfile_name}
-		where expert_idx=#{expert_idx}
+			,compnay_one=#{companyOne}
+			,compnay_two=#{companyTwo}
+			,compnay_three=#{companyThree}
+			,expertfile_name=#{expertfileName}
+		where expert_idx=#{expertIdx}
 	</update>
 	
 	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가가 등록한 상품 게시물의 게시글을 출력하는 SQL문 -->
@@ -34,7 +34,7 @@
 			board)
 		where rn between #{startRow} and #{endRow}
 			and item_status=1
-			and expert_idx=#{expert_idx}
+			and expert_idx=#{expertIdx}
 	</select>
 	
 	<!-- 전문가 등록  -->

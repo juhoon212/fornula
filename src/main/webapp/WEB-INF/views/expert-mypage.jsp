@@ -122,6 +122,9 @@ tr td{
 #list{
 	padding-left: 30px;
 }
+
+/* 여기서부턴 바닐라 스크립트로 탭메뉴(전문가 정보 수정/등록, 판매관리, 포트폴리오 출력)을 AJAX로 활용하기 위해서 작성하는 style 태그 */
+
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
@@ -130,7 +133,7 @@ tr td{
 	<main class="main container">
 		<div class="sale">
 			<div class="row">
-				<div class="col-12 col-lg-8">
+				<form class="col-12 col-lg-8" id="content">
 					<div class="widget">
 						<table>
 							<tr>
@@ -225,7 +228,7 @@ tr td{
 							<a class="next" href="#"> Next </a>
 						</nav>
 					</div>
-				</div>
+				</form>
 
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 					<div class="widget-sidebar story-sidebar">
@@ -241,14 +244,14 @@ tr td{
 
 							<div class="tagcloud">
 								<div id="button">
-									<a href="#" class="tag-cloud-link"
-										aria-label="admin change button">일반인으로 전환</a>
+									<a href="mypage-purchase" class="tag-cloud-link"
+										aria-label="admin change button">일반회원으로 전환</a>
 								</div>
-								<div class="row">
+								<div class="tab_menu">
 									<div class="widget" style="text-align: left;" id="list">
 										<h3 class="widget-title">판매 관리</h3>
 										<ul>
-											<li><a href="expertinput" class="expertInput">전문가 정보</a></li>
+											<li><a type="button" id="expertInput" onclick="inputBtn">전문가 정보 수정</a></li>
 											<li><a href="expertoutput" class="expertOutput">포트폴리오</a></li>
 											<li><a href="expertitem" class="expertItem">상품 등록</a></li>
 										</ul>
@@ -263,8 +266,6 @@ tr td{
 		
 		
 <!-- 여기는 AJAX를 활용해서 전문가 정보 수정/등록을 누른 경우 나오는 div태그 -->
-
-
 	</main>
 	<jsp:include page="footer.jsp" />
 
@@ -286,20 +287,13 @@ tr td{
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<script type="text/javascript">
-	function changeBtn() {
-		let changeBtnOne = document.getElementById("statusone");
-		let changeBtnTwo = document.getElementById("statustwo");
-		
-		changeBtnOne.innerText="제작중";
-		console.log("제작중 ");
-		changeBtnTwo.innerText="제작완료";
-		console.log("제작완료 ");
-	}
 	
-	
-	</script>
-	
-
+<script type="text/javascript">
+var queryString = $('#폼?div 아이디').serialize();
+$.ajax({
+	url:'/expertsales',
+	type:''
+})
+</script>	
 </body>
 </html>

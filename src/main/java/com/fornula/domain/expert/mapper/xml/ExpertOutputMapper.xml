@@ -13,6 +13,6 @@
 			,company_three
 			,expertfile_name
 		from expert
-		where expert_idx=#{expert_idx}
+		where expert_idx=#{expertIdx}
 	</select>
 </mapper>

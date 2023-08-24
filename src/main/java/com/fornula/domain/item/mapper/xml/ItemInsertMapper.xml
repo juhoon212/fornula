@@ -6,15 +6,15 @@
 		<selectKey resultType="int" keyProperty="item_idx" order="BEFORE">
 			select item_seq.nextval from dual
 		</selectKey>
-		insert into item values(#{item_idx}
-			,#{category_idx}
-			,#{expert_idx}
-			,#{item_name}
-			,#{item_content}
+		insert into item values(#{itemIdx}
+			,#{categoryIdx}
+			,#{expertIdx}
+			,#{itemName}
+			,#{itemContent}
 			,#{price}
 			<!-- 등록완료 버튼을 클릭 시 item_status의 컬럼값이 1(존재)로 입력되도록 설정 -->
-			,#{item_status}
-			,#{photo_idx}
+			,#{itemStatus}
+			,#{photoIdx}
 			,SYSDATE)
 	</insert>
 	
@@ -23,8 +23,8 @@
 		<selectKey resultType="int" keyProperty="photo_idx" order="BEFORE">
 			select photo_seq.nextval from dual
 		</selectKey>
-		insert into photo values(#{photo_idx}
-			,#{item_idx}
-			,#{itemfile_name})
+		insert into photo values(#{photoIdx}
+			,#{itemIdx}
+			,#{itemfileName})
 	</insert>
 </mapper>

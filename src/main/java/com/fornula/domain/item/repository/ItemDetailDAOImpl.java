@@ -14,14 +14,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ItemDetailDAOImpl implements ItemDetailDAO {
 	private final SqlSession sqlSession;
-	
+//	상품 상세페이지에서 출력할 하나의 행(상세페이지엔 상품 하나만들어가니까)을 출력하는 용도
 	@Override
-	public Item selectItem(ItemPhoto itemPhoto) {
-		return sqlSession.getMapper(ItemDetailMapper.class).selectItem(itemPhoto);
+	public ItemPhoto selectItem(int itemIdx) {
+		return sqlSession.getMapper(ItemDetailMapper.class).selectItem(itemIdx);
 	}
-	
+//	상품 상세페이지에서 출력하는 전문가(판매자)의 전화번호, id 등을 출력하기 위한 용도
 	@Override
-	public Item selectItemExpert(ExpertMember expertMember) {
-		return sqlSession.getMapper(ItemDetailMapper.class).selectItemExpert(expertMember);
+	public ExpertMember selectItemExpert(int expertIdx) {
+		return sqlSession.getMapper(ItemDetailMapper.class).selectItemExpert(expertIdx);
 	}
 }
