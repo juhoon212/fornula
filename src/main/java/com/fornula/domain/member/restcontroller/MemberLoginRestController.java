@@ -46,6 +46,9 @@ public class MemberLoginRestController {
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
 		
+		Member loginMember2 = (Member)session.getAttribute(SessionConst.Login_Member);
+		
+		
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
 		log.info("member = {}",loginMember.getId());
@@ -63,14 +66,7 @@ public class MemberLoginRestController {
 		return findMember.getId();
 	}
 	
-	@PostMapping("/findPw")
-	public String findPw(@ModelAttribute FindPasswordForm form) {
-		
-		memberLoginService.findByEmail(null);
-		
-		return "ok";
-		
-	}
+	
 	
 	
 	

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
+// 페이지 이동용 컨트롤러
 @Controller
 @Slf4j
 public class ItemController {

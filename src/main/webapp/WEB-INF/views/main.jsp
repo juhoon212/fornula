@@ -1014,6 +1014,7 @@ p #logo{
             	frontError.innerHTML = data.message;
             	frontError.style = "color : red";
             } else {
+         		// 메인페이지 헤더에 로그인한 사용자 이름 추가 예정
             	location.href = "<c:url value="/home"/>";
             	} 
               })

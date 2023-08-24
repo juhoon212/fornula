@@ -25,7 +25,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession(false);
 		if(session == null || session.getAttribute(SessionConst.Login_Member) == null) {
 			
-			log.info("ë¹„ë¡œê·¸ì¸ ì‚¬ìš©ì ìš”ì²­");
+			log.info("ºñ·Î±×ÀÎ »ç¿ëÀÚ ¿äÃ»");
 			
 			return false;
 		}

@@ -20,7 +20,7 @@
 <style>
 .name-header {
 	display: flex;
-	justify-content: center;
+	justify-content: center;1
 	height: 20px;
 }
 
@@ -43,6 +43,14 @@
 	align-items: center;
 }
 
+#message {
+	text-align: center;
+	color : red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 
 
 #header {
@@ -55,6 +63,17 @@
 	font-size: 3.5em;
 	cursor: pointer;
 }
+
+#show-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding : 10px;
+	color : red;
+}
+
+
 
 
 
@@ -76,38 +95,41 @@
       </header>
 
       <section>
-        <form action="" method="POST">
+        <form action="/member/findPw" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
+	            <input id="id-box" class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="email-box"></label>
-	            <input class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
+	            <input id="email-box" class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
 	          </div>
 	        </div>
 	
 	      	<button id="submit">비밀번호 찾기</button>
       	</form>
       	
+      	<div id="show-message"></div>
+      	
       	<div class="find-pw-box">
- 			<div></div>   		
-     	</div>
+      		<a id="find-pw" href="<c:url value="/member/findId"/>">아이디 찾기</a>
+      	</div>
+      	
+      
+ 		<div id="message">${message}</div>		
+     	
      
       
     </section>
     </div>
   </div>
   
- <script type="text/javascript">
- 	
- 	
- 	
- </script>
   
 </body>
 </html>
+
+
