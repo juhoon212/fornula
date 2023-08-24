@@ -45,11 +45,11 @@
                         <form id="contactform" class="contact-form mt-5">
                             <div class="form-group row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="이름" aria-required="true"
+                                    <input type="text" class="form-control" placeholder="가격" aria-required="true"
                                            required="required" aria-label="Name">
                                 </div>
                                 <div class="col">
-                                    <input type="email" class="form-control" placeholder="이메일" aria-required="true"
+                                    <input type="email" class="form-control" placeholder="이 위치에 사진등록" aria-required="true"
                                            required="required" aria-label="Email">
                                 </div>
                             </div>
@@ -65,20 +65,32 @@
                                               aria-required="true" required="required" aria-label="Message"></textarea>
                                 </div>
                             </div>
-                            <div class="item_photo upload">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="여기다가 업로드기능"
-                                              aria-required="true" required="required" aria-label="Photo"></input>
-                                </div>
+                           	<div class="form-group row">                            
+								<div class="col">
+                            		<p>상품과 연관있는 카테고리를 선택해주세요
+                            		<select id="selectCategory" class="form-control">
+                            			<option>그래픽</option>
+                            			<option>제품</option>
+                            			<option>영어</option>
+                            			<option>중국어</option>
+                            			<option>헤어 메이크업</option>
+                            			<option>제품 홍보 사진</option>
+                            			<option>사업자</option>
+                            			<option>개인</option>
+                            			<option>SNS 홍보</option>
+                            			<option>해외 마케팅</option>
+                            		</select>
+                            	</div>
+                            	<div class="row text-center">
+                                	<div class="col">
+                                    	<input name="submit" type="submit" id="submit"  
+                                         	  class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
+                                           	  value="상품등록">
+                                	</div>
+                            	</div>	
+                          	</div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col">
-                                    <input name="submit" type="submit" id="submit"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="상품등록">
-                                </div>
-                            </div>
-                        </form>
+                         </form>
                     </div>
                 </div>
             </div>
@@ -86,7 +98,6 @@
     </div>
 </main> 
 <jsp:include page="footer.jsp"/>
- 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -96,6 +107,18 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+
+<script type="text/javascript">
+	$.ajax({
+		url:""
+		type:'post'
+		data:{
+			가격: "price",
+			이메일: "itemName",
+			상품제목: ""
+		}
+	})
+</script>
 
 </body>
 </html>
