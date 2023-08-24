@@ -1,5 +1,7 @@
 package com.fornula.domain.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,32 +53,39 @@ public class MemberController {
 		
 		// 실패 로직
 		if(findMember == null) {
-			redirectAttributes.addAttribute("message", "맞지 않는 비밀번호 입니다.");
+			redirectAttributes.addAttribute("status", "false");
+			redirectAttributes.addFlashAttribute("message", "맞지 않는 아이디 또는 이메일입니다.");
 			return "redirect:/member/findPw";
 		}
 		
 		int memberIdx = findMember.getMemberIdx();
 		
-		return "/member/findNewPw/{memberIdx}";
+		return "/member/updatePassword/{memberIdx}";
 	}
 	
 	@GetMapping("/updatePassword/{memberIdx}")
-	public String findNewPw(@PathVariable int memberIdx, Model model) {
+	public String findNewPw(@PathVariable String memberIdx, Model model) {
 		
 		model.addAttribute("memberIdx", memberIdx);
 		
 		return "update-password";
 	}
 	
-	@PostMapping("/updatePassword/{memberIdx}")
-	public String updatePassword(@PathVariable int memberIdx, @RequestParam(required = false) String newPassword) {
-		Member findByIdxMember = memberLoginService.findByIdx(memberIdx);
+	@PostMapping("/updatePassword/{memberIdx}") 
+	public String updatePassword(@PathVariable String memberIdx, @RequestParam(required = false) String newPassword, RedirectAttributes redirectAttributes) {
+		Member findByIdxMember = memberLoginService.findByIdx(Integer.parseInt(memberIdx));
+		
+		if(findByIdxMember == null) {
+			redirectAttributes.addFlashAttribute("message", "찾으시는 비밀번호와 동일한 아이디가 없습니다");
+			return "redirect:/member/findPw";
+		}
 		
 		int result = memberLoginService.updatePassword(findByIdxMember.getId(), newPassword);
 		
 		if(result == 0) {
 			return "404";
 		}
+		
 		
 		return "redirect:/";
 	}

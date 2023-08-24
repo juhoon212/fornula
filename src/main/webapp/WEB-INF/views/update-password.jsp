@@ -85,18 +85,18 @@
       </header>
 
       <section>
-        <form action="/member/findPw" method="POST">
+        <form action="/member/updatePassword/${memberIdx}" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
-	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" name="id" placeholder="새로운 비밀번호를 입력해주세요"/>
+	          	<label for="new-box" class="id-box"></label>
+	            <input id="new-box" class="box" type="text" name="newPassword" placeholder="새로운 비밀번호를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
-	          	<label for="id-box" class="email-box"></label>
-	            <input class="box" type="email" name="email" placeholder="새로운 비밀번호를 다시 입력해주세요"/>
+	          	<label for="new-box-2" class="id-box"></label>
+	            <input id="new-box-2" class="new-box-2" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요"/>
 	          </div>
 	        </div>
 	
@@ -115,7 +115,27 @@
     </div>
   </div>
   
- <script type="text/javascript">	
+ 
+ <script type="text/javascript">
+ 
+	let box1 = document.querySelector('#new-box');
+	let box2 = document.querySelector('#new-box-2');
+	let button = document.querySelector('#submit');
+	let message = document.querySelector('#message');
+	
+	button.addEventListener('click', (e) => {
+		
+		if(box1.value != box2.value) {
+			e.preventDefault();
+		} else {
+			return true;
+		}
+		
+		
+	})
+	
+ 	
+ 	
  	
  </script>
   

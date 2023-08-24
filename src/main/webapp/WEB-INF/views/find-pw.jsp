@@ -43,6 +43,14 @@
 	align-items: center;
 }
 
+#message {
+	text-align: center;
+	color : red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 
 
 #header {
@@ -67,6 +75,8 @@
 
 
 
+
+
 </style>
 <body>
  
@@ -85,18 +95,18 @@
       </header>
 
       <section>
-        <form action="/member/updatePassword/{findMember}" method="POST">
+        <form action="/member/findPw" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
-	            <input class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
+	            <input id="id-box" class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="email-box"></label>
-	            <input class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
+	            <input id="email-box" class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
 	          </div>
 	        </div>
 	
@@ -106,38 +116,20 @@
       	<div id="show-message"></div>
       	
       	<div class="find-pw-box">
- 			<div>${message}</div>		
-     	</div>
+      		<a id="find-pw" href="<c:url value="/member/findId"/>">아이디 찾기</a>
+      	</div>
+      	
+      
+ 		<div id="message">${message}</div>		
+     	
      
       
     </section>
     </div>
   </div>
   
- <script type="text/javascript">
- 
- document.querySelector('#submit').addEventListener('click', (e) => {
-	 fetch("<c:url value="/member/findId"/>", {
-		  method: "POST", 
-		  headers: { 
-		    "Content-Type": "application/json",
-		  },
-		})
-	.then((response) => response.json())
-	.then((data) => {
-	   	  
-	  	if(data.errorCode === "Bad") {
-	   		document.querySelector('#show-message').innerHTML = data.message;
-	   } else {
-	   		document.querySelector('#show-message').innerHTML = data;
-	   	}
-	 })
-	  	e.preventDefault();
- })
- 	
- 	
- 	
- </script>
   
 </body>
 </html>
+
+

@@ -12,9 +12,9 @@ public interface MemberLoginMapper {
 	
 	Optional<Member> selectMemberId(String email);
 	
-	Optional<Member> selectMemberPw(@Param("id") String id , @Param("password") String email);
+	Optional<Member> selectMemberPw(@Param("id") String id , @Param("email") String email);
 	
 	Optional<Member> findByIdx(int memberIdx);
 	
-	int updateMemberPassword(String password, String id);
+	int updateMemberPassword(@Param("password" )String password, @Param("id") String id);
 }

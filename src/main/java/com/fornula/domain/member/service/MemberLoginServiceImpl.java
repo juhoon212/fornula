@@ -69,10 +69,6 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		
 		log.info("findMember = {}", findMember);
 		
-		if(findMember == null) {
-			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
-		}
-		
 		return findMember;
 	
 	}
@@ -95,9 +91,6 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		
 		log.info("findMember = {}", findMember);
 		
-		if(findMember == null) {
-			
-		}
 		
 		return findMember;
 	}
@@ -108,6 +101,8 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	public int updatePassword(String id, String password) {
 		String hashpw = BCrypt.hashpw(password, BCrypt.gensalt());
 		int result = memberLoginRepository.updateMemberPassword(hashpw, id);
+		
+		
 		
 		return result;
 	}
