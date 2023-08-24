@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
-import com.fornula.domain.member.dto.Interest;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.login.FindPasswordForm;
 import com.fornula.domain.member.dto.login.LoginForm;
@@ -53,7 +52,6 @@ public class MemberLoginRestController {
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
 		log.info("member = {}",loginMember.getId());
-		
 		
 		return loginMember;
 	}

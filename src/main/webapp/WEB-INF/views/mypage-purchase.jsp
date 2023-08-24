@@ -273,9 +273,7 @@
                         <option>취소</option>
                     </select>
                       <select id="archive" class="form-control">
-                        <option>달력</option>
-                        <option>으로</option>
-                        <option>하고</option>
+                        <option ><input type="date"> </option>
                     </select>
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
