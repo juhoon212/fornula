@@ -5,11 +5,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>마이페이지-나의정보</title>
+<title>마이페이지-나의정 보</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+	rel="stylesheet">
 <link rel="stylesheet" id="montserrat-css"
 	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 <link rel="stylesheet" id="open-sans-css"
@@ -42,10 +51,6 @@
 <link rel="stylesheet" id="lana-pet-print-css"
 	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
 	type="text/css" media="print">
-
-
-
-
 </head>
 <style>
 .info {
@@ -135,151 +140,146 @@ h3 {
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
-	<jsp:include page="login-header.jsp" />
+	<jsp:include page="header.jsp" />
 	<main class="main container">
-		<div class="row">
-			<div class="col-12 col-lg-8">
-				<div class="story-posts">
-					<div class="widget">
-						<section id="profile">
-							<div class="row">
-								<div class="col-4">
-									<div class="widget-sidebar story-sidebar">
-										<div id="button">
-											<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-												class="rounded-circle" alt="Author" width="200" height="200">
-										</div>
-										<div class="tagcloud">
-											<div id="button">
-												<a href="#" class="tag-cloud-link"
-													aria-label="admin change button">프로필 변경</a>
-											</div>
-										</div>
+		<form method="post" id="expertjoinForm" enctype="multipart/form-data" action="expertjoin">
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="story-posts">
+						<div class="widget">
+							<section id="profile">
+								<h3>아이디</h3>
+								<div class="info" id="info__id">
+									<div id="id-input">
+										<input class="box" type="text" placeholder="아이디"
+											readonly="readonly" value="${expert.expertIdx} " />
 									</div>
 								</div>
-								<div class="col-8">
-									<h3>아이디</h3>
-									<div class="info" id="info__id">
-										<div id="id-input">
-											<input class="box" type="text" placeholder="아이디"
-												readonly="readonly" />
-										</div>
-									</div>
-									<h3>전화번호</h3>
-									<div class="info">
-										<div id="phone-input">
-											<input class="box" type="tel" placeholder="01012345678" />
-										</div>
-									</div>
-									<h3>자기 소개</h3>
-									<div class="info">
-										<div id="introduce-input">
-											<textarea id="introduce" class="box"
-												placeholder="자기소개를 작성해주세요." maxlength=200></textarea>
-										</div>
+								<h3>전화번호</h3>
+								<div class="info">
+									<div id="phone-input">
+										<input class="box" type="tel" placeholder="01012345678"
+											value="${expert.phone}" />
 									</div>
 								</div>
+								<h3>자기 소개</h3>
+								<div class="info">
+									<div id="introduce-input">
+										<textarea id="introduce" class="box"
+											placeholder="자기소개를 작성해주세요." maxlength=200
+											value="${expert.introduce}"></textarea>
+									</div>
+								</div>
+							</section>
+						</div>
+						<hr>
+						<section id="career">
+							<h3>직업</h3>
+							<div class="info" id="career-input">
+								<div id="category-flex">
+									<select class="box" id="category-big">
+										<optgroup label="디자인"
+											style="font-weight: bold; font-size: 20px;"></optgroup>
+										<option selected value="1">그래픽 디자인</option>
+										<option value="2">제품 디자인</option>
+										<optgroup label="번역"
+											style="font-weight: bold; font-size: 20px;"></optgroup>
+										<option value="3">영어</option>
+										<option value="4">중국어</option>
+										<optgroup label="사진·편집"
+											style="font-weight: bold; font-size: 20px;"></optgroup>
+										<option value="5">헤어/메이크업</option>
+										<option value="6">제품 홍보 사진</option>
+										<optgroup label="세무"
+											style="font-weight: bold; font-size: 20px;"></optgroup>
+										<option value="7">개인</option>
+										<option value="8">사업</option>
+										<optgroup label="마케팅"
+											style="font-weight: bold; font-size: 20px;"></optgroup>
+										<option value="9">SNS 마케팅</option>
+										<option value="10">해외 마케팅</option>
+									</select>
+								</div>
+								<div class="error-msg"></div>
+							</div>
+
+
+							<h3>경력</h3>
+							<div class="info" id="company_category">
+								<div id="career-input">
+									<input class="box" type="text" placeholder="1년 6개월"
+										value="${expert.career}" />
+								</div>
+								<div class="error-msg"></div>
+							</div>
+
+							<h3>근무지</h3>
+							<div class="info" id="info__category">
+								<div id="category-flex">
+									<input class="box" type="text"
+										placeholder="경력이 있을 경우에만 입력해주세요."
+										value="${expert.company_one}" />
+								</div>
+								<div class="error-msg"></div>
+								<div id="category-flex">
+									<input class="box" type="text"
+										placeholder="경력이 있을 경우에만 입력해주세요."
+										value="${expert.company_two}" />
+								</div>
+								<div class="error-msg"></div>
+								<div id="category-flex">
+									<input class="box" type="text"
+										placeholder="경력이 있을 경우에만 입력해주세요."
+										value="${expert.company_three}" />
+								</div>
+								<div class="error-msg"></div>
+							</div>
+							<br>
+						</section>
+						<hr>
+						<section id="upload">
+							<h3>포트폴리오</h3>
+							<input class="form-control" type="file" id="formFile"
+								value="${expert.expertfile_name}"> <span
+								style="color: gray; font-size: 15px; padding: 0px 25px;">
+								[PDF 파일로 업로드 해주세요.]</span><br>
+							<p style="color: red;">${message }</p>
+						</section>
+						<br>
+						<hr>
+						<section>
+							<br>
+							<div id="join" style="text-align: center;">
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size: 20px;">전문가
+									등록</button>
 							</div>
 						</section>
 					</div>
-					<hr>
-					<section id="career">
-						<h3>직업</h3>
-						<div class="info" id="career-input" >
-							<div id="category-flex">
-								<select class="box" id="category-big">
-									<optgroup label="디자인"
-										style="font-weight: bold; font-size: 20px;"></optgroup>
-									<option selected value="graphic">그래픽 디자인</option>
-									<option value="producy">제품 디자인</option>
-									<optgroup label="번역"
-										style="font-weight: bold; font-size: 20px;"></optgroup>
-									<option value="english">영어</option>
-									<option value="china">중국어</option>
-									<optgroup label="사진·편집"
-										style="font-weight: bold; font-size: 20px;"></optgroup>
-									<option value="hair">헤어/메이크업</option>
-									<option value="photo">제품 홍보 사진</option>
-									<optgroup label="세무"
-										style="font-weight: bold; font-size: 20px;"></optgroup>
-									<option value="individual">개인</option>
-									<option value="business">사업</option>
-									<optgroup label="마케팅"
-										style="font-weight: bold; font-size: 20px;"></optgroup>
-									<option value="sns">SNS 마케팅</option>
-									<option value="overseas">해외 마케팅</option>
-								</select>
-							</div>
-							<div class="error-msg"></div>
-						</div>
-
-
-						<h3>경력</h3>
-						<div class="info" id="company_category">
-							<div id="career-input">
-								<input class="box" type="text" placeholder="1년 6개월" />
-							</div>
-							<div class="error-msg"></div>
-						</div>
-
-						<h3>근무지</h3>
-						<div class="info" id="info__category">
-							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
-							</div>
-							<div class="error-msg"></div>
-							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
-							</div>
-							<div class="error-msg"></div>
-							<div id="category-flex">
-								<input class="box" type="text" placeholder="경력이 있을 경우에만 입력해주세요." />
-							</div>
-							<div class="error-msg"></div>
-						</div>
-						<br>
-					</section>
-					<hr>
-					<section id="upload">
-						<h3>포트폴리오</h3>
-						<input class="form-control" type="file" id="formFile"> <span
-							style="color: gray; font-size: 15px; padding: 0px 25px;">
-							[PDF 파일로 업로드 해주세요.]</span>
-					</section>
-					<br>
-					<hr>
-					<section>
-					<br>
-						<div id="join" style="text-align: center;">
-							<button id="submit" type="button" class="btn btn-primary">전문가
-								등록</button>
-						</div>
-					</section>
 				</div>
-			</div>
 
 
-			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-				<div class="widget-sidebar story-sidebar">
-					<div class="tagcloud">
-						<div class="row">
-							<div class="widget" style="text-align: left; padding-left: 20px;"
-								id="list">
-								<h3 class="widget-title">전문가 등록</h3>
-								<ul>
-									<li><a href="#profile">전문가 정보</a></li>
-									<li><a href="#career">경력 사항</a></li>
-									<li><a href="#upload">포트폴리오</a></li>
-								</ul>
+				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+					<div class="widget-sidebar story-sidebar">
+						<div class="tagcloud">
+							<div class="row">
+								<div class="widget"
+									style="text-align: left; padding-left: 20px;" id="list">
+									<h1 class="widget-title" style="font-size: 28px;">전문가 등록</h1>
+									<ul>
+										<li><a href="#profile">전문가 정보</a></li>
+										<li><a href="#career">경력 사항</a></li>
+										<li><a href="#upload">포트폴리오</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</main>
 
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp" />
 
 
 	<script type="text/javascript"
