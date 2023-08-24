@@ -9,7 +9,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ItemPayment {
+public class ItemPaymentSuccess {
   private Item item;
- 
+  private Purchase purchase;
+  private Sales sales;
+  
+  
 }

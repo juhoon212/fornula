@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fornula.domain.item.dto.itemPayment.ItemPayment;
 import com.fornula.domain.item.service.ItemPaymentService;
+import com.fornula.domain.item.service.ItemPaymentSuccessService;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.util.session.SessionConst;
@@ -17,17 +18,17 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class PaymentController {
+public class PaymentSuccessController {
 
-	 private final ItemPaymentService service;
+	 private final ItemPaymentSuccessService service;
 	 
-		@GetMapping("/payment")
+		@GetMapping("/paymentSuccess")
 		public String payment() {
-		return "payment";
+		return "payment-success";
 		}
 		
 		/*
-		@PostMapping("/payment")
+		@PostMapping("/paymentSuccess")
 		public String payment(@ModelAttribute ItemPayment payment, HttpSession session) {
 		
 			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
@@ -40,9 +41,10 @@ public class PaymentController {
 			
 			  // service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
 			  
-			   return "payment"; 
+			   return "payment-success"; 
 		}
-		*/		
+		*/
+		
 	}
 
 
