@@ -7,14 +7,17 @@ import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.mapper.java.ExpertOutputMapper;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class ExpertOutputImpl implements ExpertOutputDAO{
 	private final SqlSession sqlSession;
-	
+//	전문가 정보를 출력해줄 메소드
 	@Override
-	public Expert selectExpert(int expert_idx) {
-		return sqlSession.getMapper(ExpertOutputMapper.class).selectExpert(expert_idx);
+	public Expert selectExpert(int expertIdx) {
+		log.info("ExpertOutputImpl 클래스의 selectExpert()메소드");
+		return sqlSession.getMapper(ExpertOutputMapper.class).selectExpert(expertIdx);
 	}
 }

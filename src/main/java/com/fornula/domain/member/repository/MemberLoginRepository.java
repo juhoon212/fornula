@@ -15,4 +15,8 @@ public interface MemberLoginRepository {
 	
 	// id , email로 패스웓드 찾기
 	Optional<Member> selectMemberPw(String id, String email);
+	
+	Optional<Member> findByIdx(int memberIdx);
+	
+	int updateMemberPassword(String password, String id);
 }

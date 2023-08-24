@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.item.mapper.xml.ItemDetailMapper">
 	<!-- 상품 상세페이지에서 출력할 내용(하나의 상품)을 위한 SQL문 -->	
-	<!-- PHOTO,CATEGORY,EXPERT 테이블도 조인해서 작성해야 함 -->
-	<select id="selectItem">
+	<select id="selectItem" resultType="ItemPhoto">
 		select item_idx
 			,category_idx
 			,expert_idx
@@ -16,15 +15,15 @@
 		from item,photo
 		where item_status=1 
 			and ITEM.item_idx=PHOTO.item_idx 
-			and item_idx=#{item_idx} 
+			and item_idx=#{itemIdx} 
 	</select>
 	
 	<!-- expert_idx를 활용해서 전문가의 ID(member 테이블의), phone 가져오기 -->
-	<select id="selectItemExpert" resultMap="ExpertMember">
+	<select id="selectItemExpert" resultType="ExpertMember">
 		select id
 			,phone 
 		from member,expert
 		where MEMBER.member_idx=EXPERT.member_idx
-			and expert_idx=#{expert_idx}	
+			and expert_idx=#{expertIdx}	
 	</select>
 </mapper>

@@ -5,14 +5,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>판매관리-전문가</title>
+<title>판매관리-전문가 </title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com"  crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
 	rel="stylesheet">
@@ -115,20 +115,16 @@ tr th {
 	width: 50%;
 	border-right: 1px solid #ff8a00;
 }
-
-tr td {
+tr td{
 	padding: 0px 30px;
-}
 
-#list {
+}
+#list{
 	padding-left: 30px;
 }
 
-a:link{
-color: #212121;}
+/* 여기서부턴 바닐라 스크립트로 탭메뉴(전문가 정보 수정/등록, 판매관리, 포트폴리오 출력)을 AJAX로 활용하기 위해서 작성하는 style 태그 */
 
-a:visited{
-color: #212121;}
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
@@ -137,7 +133,7 @@ color: #212121;}
 	<main class="main container">
 		<div class="sale">
 			<div class="row">
-				<div class="col-12 col-lg-8">
+				<form class="col-12 col-lg-8" id="content">
 					<div class="widget">
 						<table>
 							<tr>
@@ -153,9 +149,11 @@ color: #212121;}
 								<option>주문 접수</option>
 								<option>제작중</option>
 								<option>제작완료</option>
-
-							</select> <input type="date" style="width: 300px;">
-
+							</select> <select id="archive" class="form-control">
+								<option>달력</option>
+								<option>으로</option>
+								<option>하고</option>
+							</select>
 							<button class="btn btn-primary" type="button">
 								<i class="fa fa-search"></i>
 							</button>
@@ -189,11 +187,17 @@ color: #212121;}
 													<div
 														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
 														<div class="author-meta">
-															<select id="archive" class="form-control" class="btn btn-primary" style="font-size: 17px;">
-																<option selected="selected" disabled="disabled">주문 접수</option>
-																<option>제작중</option>
-																<option>제작 완료</option>
-															</select>
+
+															<button class="btn btn-primary btn-sm dropdown-toggle"
+																type="button" data-toggle="dropdown" id="btnmenu">
+																주문 접수 <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu">
+																<li><button type="button" class="dropdown-item"
+																		id="statusone" value="1" onclick="changeBtn()">제작중</button></li>
+																<li><button type="button" class="dropdown-item"
+																		id="statustwo" value="2" onclick="changeBtn()">제작완료</button></li>
+															</ul>
 														</div>
 
 														<a href="single.html"
@@ -224,7 +228,7 @@ color: #212121;}
 							<a class="next" href="#"> Next </a>
 						</nav>
 					</div>
-				</div>
+				</form>
 
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 					<div class="widget-sidebar story-sidebar">
@@ -240,17 +244,16 @@ color: #212121;}
 
 							<div class="tagcloud">
 								<div id="button">
-									<a href="/mypage" class="tag-cloud-link"
-										aria-label="admin change button">일반인으로 전환</a>
+									<a href="mypage-purchase" class="tag-cloud-link"
+										aria-label="admin change button">일반회원으로 전환</a>
 								</div>
-								<div class="row">
+								<div class="tab_menu">
 									<div class="widget" style="text-align: left;" id="list">
-										<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매 관리</h3>
-										<ul style="color: black;">
-											<li><a href="javascript:menuchange();" id="info" class="expertmenu">전문가 정보</a></li>
-											<li><a href="javascript:menuchange();" id="sale" class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-											<li><a href="javascript:menuchange();" id="po" class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-											<li><a href="javascript:menuchange();" id="item" class="expertmenu" onclick="menuchange()">상품 등록</a></li>
+										<h3 class="widget-title">판매 관리</h3>
+										<ul>
+											<li><a type="button" id="expertInput" onclick="inputBtn">전문가 정보 수정</a></li>
+											<li><a href="expertoutput" class="expertOutput">포트폴리오</a></li>
+											<li><a href="expertitem" class="expertItem">상품 등록</a></li>
 										</ul>
 									</div>
 								</div>
@@ -260,32 +263,13 @@ color: #212121;}
 				</div>
 			</div>
 		</div>
+		
+		
+<!-- 여기는 AJAX를 활용해서 전문가 정보 수정/등록을 누른 경우 나오는 div태그 -->
 	</main>
+	<jsp:include page="footer.jsp" />
 
-	<jsp:include page="footer.jsp"  />
-	
-	<script type="text/javascript">
-	function menuchange() {
-		let h3=document.getElementById("expertmain");
-		let info=document.getElementById("info");
-		let po=document.getElementById("po");
-		let sale=document.getElementById("sale");
-		
-		info.addEventListener('click',function(){
-			h3.innerText="전문가 정보";
-		});
-		
-		po.addEventListener('click',function(){
-			h3.innerText="포트 폴리오";
-		});
-		
-		sale.addEventListener('click',function(){
-			h3.innerText="판매 관리";
-		});
-	};
-	
-</script>
-<script type="text/javascript"
+	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
@@ -303,6 +287,13 @@ color: #212121;}
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<script src="//code.jquery.com/jquery.min.js"></script>
+	
+<script type="text/javascript">
+var queryString = $('#폼?div 아이디').serialize();
+$.ajax({
+	url:'/expertsales',
+	type:''
+})
+</script>	
 </body>
 </html>
