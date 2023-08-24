@@ -33,6 +33,8 @@ public class MemberController {
 		return "join";
 	}
 	
+	
+	
 	// 아이디 찾기
 	@GetMapping("/findId")
 	public String showFindId() {
