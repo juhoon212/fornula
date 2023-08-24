@@ -20,7 +20,7 @@
 <style>
 .name-header {
 	display: flex;
-	justify-content: center;1
+	justify-content: center;
 	height: 20px;
 }
 
@@ -40,14 +40,6 @@
 	display: flex;
 	height : 100px;
 	justify-content: flex-end;
-	align-items: center;
-}
-
-#message {
-	text-align: center;
-	color : red;
-	display: flex;
-	justify-content: center;
 	align-items: center;
 }
 
@@ -75,8 +67,6 @@
 
 
 
-
-
 </style>
 <body>
  
@@ -95,41 +85,59 @@
       </header>
 
       <section>
-        <form action="/member/findPw" method="POST">
+        <form action="/member/updatePassword/${memberIdx}" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
-	          	<label for="id-box" class="id-box"></label>
-	            <input id="id-box" class="box" type="text" name="id" placeholder="가입하신 아이디를 입력해주세요"/>
+	          	<label for="new-box" class="id-box"></label>
+	            <input id="new-box" class="box" type="text" name="newPassword" placeholder="새로운 비밀번호를 입력해주세요"/>
 	          </div>
 	        </div>
 	        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
-	          	<label for="id-box" class="email-box"></label>
-	            <input id="email-box" class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
+	          	<label for="new-box-2" class="id-box"></label>
+	            <input id="new-box-2" class="new-box-2" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요"/>
 	          </div>
 	        </div>
 	
-	      	<button id="submit">비밀번호 찾기</button>
+	      	<button id="submit">비밀번호 변경</button>
       	</form>
       	
       	<div id="show-message"></div>
       	
       	<div class="find-pw-box">
       		<a id="find-pw" href="<c:url value="/member/findId"/>">아이디 찾기</a>
-      	</div>
-      	
-      
- 		<div id="message">${message}</div>		
-     	
+ 			<div>${message}</div>		
+     	</div>
      
       
     </section>
     </div>
   </div>
   
+ 
+ <script type="text/javascript">
+ 
+	let box1 = document.querySelector('#new-box');
+	let box2 = document.querySelector('#new-box-2');
+	let button = document.querySelector('#submit');
+	let message = document.querySelector('#message');
+	
+	button.addEventListener('click', (e) => {
+		
+		if(box1.value != box2.value) {
+			e.preventDefault();
+		} else {
+			return true;
+		}
+		
+		
+	})
+	
+ 	
+ 	
+ 	
+ </script>
   
 </body>
 </html>
-
-

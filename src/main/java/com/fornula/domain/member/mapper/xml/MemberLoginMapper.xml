@@ -21,6 +21,18 @@
 		<!-- where id = #{id} and password = #{password}  -->
 	</select>
 	
+	<select id="findByIdx" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where member_idx = #{memberIdx}
+	</select>
+	
 	<select id="selectMemberId" resultType="Member" >
 		select  member_idx,
 				id,
@@ -45,6 +57,16 @@
 		where id = #{id}
 				and email = #{email}
 	</select>
+	
+	<update id="updateMemberPassword">
+		update member
+		<set>
+			<if test="password != null and password=''">
+				set password = #{password}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
 	
 	
 	

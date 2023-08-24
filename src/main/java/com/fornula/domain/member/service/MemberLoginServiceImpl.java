@@ -52,6 +52,8 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberId(email);
 		Member findMember = optionalFindMember.orElse(null);
 		
+		log.info("findMember = {}", findMember);
+		
 		if(findMember == null) {
 			throw new NotFoundIdException("검색하신 아이디가 없습니다.");
 		}
@@ -60,27 +62,56 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	}
 
 	@Override
-	public Member findPw(String password) {
+	public Member findPw(String id, String email) {
 		
-		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(null, password);
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberPw(id, email);
 		Member findMember = optionalFindMember.orElse(null);
 		
-		if(findMember == null) {
-			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
-		}
+		log.info("findMember = {}", findMember);
 		
-		boolean isCheckedPassword = BCrypt.checkpw(password, findMember.getPassword());
-		
-		if(!isCheckedPassword) {
-			throw new NotFoundPwException("비밀번호가 맞지 않습니다");
-		}
-		
-		
-		
-		
-		
-		return null;
+		return findMember;
+	
 	}
 	
+	@Override
+	public Member findMemberPw(String id, String newPassword) {
+		
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(id, newPassword);
+		Member findMember = optionalFindMember.orElse(null);
+		
+		log.info("findMember = {}", findMember);
+		
+		return findMember;
+	}
+	
+	@Override
+	public Member findByIdx(int idx) {
+		Optional<Member> optionalFindByIdxMember = memberLoginRepository.findByIdx(idx);
+		Member findMember = optionalFindByIdxMember.orElse(null);
+		
+		log.info("findMember = {}", findMember);
+		
+		
+		return findMember;
+	}
+	
+	// 비밀번호 수정
+
+	@Override
+	public int updatePassword(String id, String password) {
+		String hashpw = BCrypt.hashpw(password, BCrypt.gensalt());
+		int result = memberLoginRepository.updateMemberPassword(hashpw, id);
+		
+		
+		
+		return result;
+	}
+	
+	
+
+	
+
+	
+
 	
 }
