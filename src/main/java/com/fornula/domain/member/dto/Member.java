@@ -42,4 +42,5 @@ public class Member {
 	private int categoryOne; // 카테고리 1,2,3 추가
 	private int categoryTwo;
 	private int categoryThree;
+
 }
