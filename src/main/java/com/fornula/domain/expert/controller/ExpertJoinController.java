@@ -39,30 +39,30 @@ public class ExpertJoinController {
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model)
 			throws IllegalStateException, IOException{
 		
-		//���� ó���� �̹� �������� ��ϵ� ȸ���� ���� ���� ó��
 		
 		
-		//pdf ������ �ƴ� ��� �޼��� ���
+		
+		
 		if(!uploadFile.getContentType().equals("upload/pdf")) {
 			model.addAttribute("message","pdf ���ϸ� ���ε����ּ���.");
 		}
 		
-		//���ε�� ���� ��� ����
+		
 		String uploadDirectory=context.getServletContext().getRealPath("/resource/upload");
 		
-		//uuid+�����̸����� ����
+		
 		String expertfileName=UUID.randomUUID().toString()+"_"+uploadFile.getOriginalFilename();
 		
-		//expert��ü�� �ʵ尪 ����
+		
 		expert.setExpertfileName(expertfileName);
 		
-		//���� ���ε� ó��
+		
 		uploadFile.transferTo(new File(uploadDirectory,expertfileName));
 		
-		//���̺� �� ���� 
+		 
 		expertJoinService.addExpertInfo(expert);
 
-		//������ ��Ͻ� ������������ �̵�
+		
 		return "main";
 	}
 	

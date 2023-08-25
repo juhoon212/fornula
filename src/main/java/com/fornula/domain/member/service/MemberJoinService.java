@@ -14,6 +14,6 @@ public interface MemberJoinService {
 	
 	int joinMember(Member member);
 	
-	List<Integer> selectCategory(List<String> categoryList);
+//	List<Integer> selectCategory(List<Integer> categoryList);
 	
 }

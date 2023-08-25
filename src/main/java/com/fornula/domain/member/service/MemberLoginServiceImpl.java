@@ -28,7 +28,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member login(String id, String password) {
 		
-		Optional<Member> optionalLoginMember = memberLoginRepository.selectMemberInfo(id, password);
+		Optional<Member> optionalLoginMember = memberLoginRepository.selectMemberInfo(id);
 		Member loginMember = optionalLoginMember.orElse(null);
 		
 		if(loginMember == null) {
@@ -40,7 +40,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 		boolean isCheckedPassword = BCrypt.checkpw(password, loginMember.getPassword());
 		
 		if(!isCheckedPassword) {
-			throw new LoginFailException("비밀번호 인증오류");
+			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
 		}
 		
 		return loginMember;
@@ -76,7 +76,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member findMemberPw(String id, String newPassword) {
 		
-		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(id, newPassword);
+		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberInfo(id);
 		Member findMember = optionalFindMember.orElse(null);
 		
 		log.info("findMember = {}", findMember);
