@@ -1,5 +1,6 @@
 package com.fornula.domain.expert.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /*이름              널?       유형            

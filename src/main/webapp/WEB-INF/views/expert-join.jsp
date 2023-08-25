@@ -142,7 +142,7 @@ h3 {
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
 	<main class="main container">
-		<form method="post" id="expertjoinForm" enctype="multipart/form-data" action="expertjoin">
+		<form method="post" id="expertjoinForm" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -152,22 +152,21 @@ h3 {
 								<div class="info" id="info__id">
 									<div id="id-input">
 										<input class="box" type="text" placeholder="아이디"
-											readonly="readonly" value="${expert.expertIdx} " />
+											readonly="readonly" value="${memberIdx} " />
 									</div>
 								</div>
 								<h3>전화번호</h3>
 								<div class="info">
 									<div id="phone-input">
-										<input class="box" type="tel" placeholder="01012345678"
-											value="${expert.phone}" />
+										<input class="box" type="tel" placeholder="01012345678" name="phone" id="phone"/>
 									</div>
 								</div>
 								<h3>자기 소개</h3>
 								<div class="info">
 									<div id="introduce-input">
 										<textarea id="introduce" class="box"
-											placeholder="자기소개를 작성해주세요." maxlength=200
-											value="${expert.introduce}"></textarea>
+											placeholder="자기소개를 작성해주세요." maxlength=200 name="introduce"
+											></textarea>
 									</div>
 								</div>
 							</section>
@@ -177,7 +176,7 @@ h3 {
 							<h3>직업</h3>
 							<div class="info" id="career-input">
 								<div id="category-flex">
-									<select class="box" id="category-big">
+									<select class="box" id="category-big" name="interest">
 										<optgroup label="디자인"
 											style="font-weight: bold; font-size: 20px;"></optgroup>
 										<option selected value="1">그래픽 디자인</option>
@@ -208,7 +207,7 @@ h3 {
 							<div class="info" id="company_category">
 								<div id="career-input">
 									<input class="box" type="text" placeholder="1년 6개월"
-										value="${expert.career}" />
+										name="career"/>
 								</div>
 								<div class="error-msg"></div>
 							</div>
@@ -218,19 +217,19 @@ h3 {
 								<div id="category-flex">
 									<input class="box" type="text"
 										placeholder="경력이 있을 경우에만 입력해주세요."
-										value="${expert.company_one}" />
+										name="companyOne"/>
 								</div>
 								<div class="error-msg"></div>
 								<div id="category-flex">
 									<input class="box" type="text"
 										placeholder="경력이 있을 경우에만 입력해주세요."
-										value="${expert.company_two}" />
+										name="companyTwo" />
 								</div>
 								<div class="error-msg"></div>
 								<div id="category-flex">
 									<input class="box" type="text"
 										placeholder="경력이 있을 경우에만 입력해주세요."
-										value="${expert.company_three}" />
+										name="companyThree"/>
 								</div>
 								<div class="error-msg"></div>
 							</div>
@@ -239,18 +238,18 @@ h3 {
 						<hr>
 						<section id="upload">
 							<h3>포트폴리오</h3>
-							<input class="form-control" type="file" id="formFile"
-								value="${expert.expertfile_name}"> <span
+							<input class="form-control" type="file" id="formFile" name="uploadFile"
+								> <span
 								style="color: gray; font-size: 15px; padding: 0px 25px;">
 								[PDF 파일로 업로드 해주세요.]</span><br>
-							<p style="color: red;">${message }</p>
+							<p style="color: red; font-size: 17px; text-align: center;">${message }</p>
 						</section>
 						<br>
 						<hr>
 						<section>
 							<br>
 							<div id="join" style="text-align: center;">
-								<button id="submit" type="submit" class="btn btn-primary" style="font-size: 20px;">전문가
+								<button type="submit" class="btn btn-primary" style="font-size: 20px;">전문가
 									등록</button>
 							</div>
 						</section>
@@ -280,7 +279,12 @@ h3 {
 	</main>
 
 	<jsp:include page="footer.jsp" />
-
+	<script type="text/javascript">
+	$("#expertjoinForm").submit(function() {
+		alert($("#phone").val());
+		return false;
+	});
+	</script>
 
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>

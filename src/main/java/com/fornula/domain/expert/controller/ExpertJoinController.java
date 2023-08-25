@@ -1,9 +1,12 @@
 package com.fornula.domain.expert.controller;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,58 +19,84 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
-import lombok.RequiredArgsConstructor;
+import com.fornula.domain.item.dto.Category;
+import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.session.SessionConst;
+import com.google.common.util.concurrent.Service;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
-	
+
 	@GetMapping("/payment")
 	public String pay() {
 		return "payment";
 	}
+
 	@GetMapping("/sale")
 	public String sale() {
 		return "expert-sales";
 	}
 
+	
 	@GetMapping("/expertjoin")
-	public String join() {
-		return "expert-join";
-	}
+	public String join() { return "expert-join"; }
+	
 	
 	@PostMapping("/expertjoin")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model)
-			throws IllegalStateException, IOException{
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException, IOException {
+
+		log.info("ë§¤í•‘ ì‹¤í–‰");
+		System.out.println(uploadFile);
+		System.out.println(expert);
+
 		
-		//»ğÀÔ Ã³¸®½Ã ÀÌ¹Ì Àü¹®°¡·Î µî·ÏµÈ È¸¿ø¿¡ ´ëÇÑ ¿¹¿Ü Ã³¸®
+		//Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		//expert.setMemberIdx(member.getMemberIdx());
+		
+		//log.info("sessionMember = {}", member);
 		
 		
-		//pdf ÆÄÀÏÀÌ ¾Æ´Ò °æ¿ì ¸Ş¼¼Áö ¶ç¿ò
-		if(!uploadFile.getContentType().equals("upload/pdf")) {
-			model.addAttribute("message","pdf ÆÄÀÏ¸¸ ¾÷·ÎµåÇØÁÖ¼¼¿ä.");
+		/*
+		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
+		 * expert.setInterest(interst);
+		 */
+		
+		//ì—…ë¡œë“œëœ íŒŒì¼ì´ pdf íŒŒì¼ì´ ì•„ë‹ ê²½ìš°
+		if (!uploadFile.getContentType().equals("application/pdf")) {
+			log.info("íŒŒì¼ ì—…ë¡œë“œ ê²€ì¦ ì¤‘");
+			model.addAttribute("message","pdf íŒŒì¼ë§Œ ì—…ë¡œë“œí•´ì£¼ì„¸ìš”.");
+			return "expert-join";
+		}else if(uploadFile.isEmpty()) {
+			return "expert-fail";
+		}
+
+		String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
+		log.info("filepath =" +uploadDirectory);
+
+		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+		log.info("filename =" +expertfileName);
+		
+		
+		expert.setExpertfileName(expertfileName);
+
+		try {
+			uploadFile.transferTo(new File(uploadDirectory, expertfileName));
+			System.out.println("íŒŒì¼ ì—…ë¡œë“œ ì„±ê³µ");
+		}catch (IllegalStateException | IOException e) {
+			System.out.println("íŒŒì¼ ì—…ë¡œë“œ ì‹¤íŒ¨");
+			e.printStackTrace();
 		}
 		
-		//¾÷·ÎµåµÈ ÆÄÀÏ °æ·Î ÁöÁ¤
-		String uploadDirectory=context.getServletContext().getRealPath("/resource/upload");
-		
-		//uuid+ÆÄÀÏÀÌ¸§À¸·Î ÀúÀå
-		String expertfileName=UUID.randomUUID().toString()+"_"+uploadFile.getOriginalFilename();
-		
-		//expert°´Ã¼ÀÇ ÇÊµå°ª ÀúÀå
-		expert.setExpertfileName(expertfileName);
-		
-		//ÆÄÀÏ ¾÷·Îµå Ã³¸®
-		uploadFile.transferTo(new File(uploadDirectory,expertfileName));
-		
-		//Å×ÀÌºí¿¡ Çà »ğÀÔ 
 		expertJoinService.addExpertInfo(expert);
 
-		//Àü¹®°¡ µî·Ï½Ã ¸ŞÀÎÆäÀÌÁö·Î ÀÌµ¿
 		return "main";
 	}
-	
+
 }

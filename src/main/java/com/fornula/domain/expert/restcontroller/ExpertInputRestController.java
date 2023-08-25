@@ -31,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExpertInputRestController {
 	private final ExpertInputService expertInputService;
-//	전문가 정보 수정시에 사용할 메소드 
+//	�쟾臾멸� �젙蹂� �닔�젙�떆�뿉 �궗�슜�븷 硫붿냼�뱶 
 	@PutMapping("/modify")
 	public String expertModify(@RequestBody Expert expert) {
 		expert.setCareer(HtmlUtils.htmlEscape(expert.getCareer()));
@@ -43,29 +43,14 @@ public class ExpertInputRestController {
 		expert.setPhone(HtmlUtils.htmlEscape(expert.getPhone()));
 		expertInputService.modifyExpert(expert);
 		
-		log.info("ExpertInputRestController 클래스의 expertModify() 메소드 실행");
-		return "수정 성공";
+		log.info("ExpertInputRestController �겢�옒�뒪�쓽 expertModify() 硫붿냼�뱶 �떎�뻾");
+		return "�닔�젙 �꽦怨�";
 	}
-//	전문가 등록시에 사용할 메소드
-	@PostMapping("/add")
-	public String expertAdd(@RequestBody Expert expert) {
-		expert.setCareer(HtmlUtils.htmlEscape(expert.getCareer()));
-		expert.setCompanyOne(HtmlUtils.htmlEscape(expert.getCompanyOne()));
-		expert.setCompanyTwo(HtmlUtils.htmlEscape(expert.getCompanyTwo()));
-		expert.setCompanyThree(HtmlUtils.htmlEscape(expert.getCompanyThree()));
-		expert.setExpertfileName(HtmlUtils.htmlEscape(expert.getExpertfileName()));
-		expert.setIntroduce(HtmlUtils.htmlEscape(expert.getIntroduce()));
-		expert.setPhone(HtmlUtils.htmlEscape(expert.getPhone()));
-		expertInputService.addExpert(expert);
-		
-		log.info("ExpertInputRestController 클래스의 expertAdd() 메소드 실행");
-		return "등록 성공";
-	}
-//	자신이 등록했던 게시물(상품)을 출력해주는 메소드
-//	여차하면 ExpertOutputRestController로 이동
+//	�옄�떊�씠 �벑濡앺뻽�뜕 寃뚯떆臾�(�긽�뭹)�쓣 異쒕젰�빐二쇰뒗 硫붿냼�뱶
+//	�뿬李⑦븯硫� ExpertOutputRestController濡� �씠�룞
 	@GetMapping("/list")
 	public Map<String, Object> expertGet(@RequestParam(defaultValue="1")int pageNum){
-		log.info("ExpertInputRestController 클래스의 expertGet() 메소드 실행");
+		log.info("ExpertInputRestController �겢�옒�뒪�쓽 expertGet() 硫붿냼�뱶 �떎�뻾");
 		return expertInputService.getExpertBoardList(pageNum);
 	}
 }
