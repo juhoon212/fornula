@@ -12,7 +12,7 @@
 		from item ITEM
 		join sales SALES
 		on ITEM.item_idx = SALES.item_idx
-		where sales_status=#{salesStatus} and sales_date = #{salesDate}
+		where sales_status=#{salesStatus} and sales_date=#{salesDate}
 		order by sales_date
 	</select>
 	
