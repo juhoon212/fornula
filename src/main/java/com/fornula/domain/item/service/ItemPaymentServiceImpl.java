@@ -14,9 +14,9 @@ public class ItemPaymentServiceImpl implements ItemPaymentService{
 	private final ItemPaymentRepository itemPaymentRepository;
 
 	@Override
-	public Item itemPayment(int memberIdx) {
-		// memberIdx 
-		return null;
+	public Item itemPayment(int itemIdx) {
+		Item itemPayment =itemPaymentRepository.selectItemPayment(itemIdx);
+		return itemPayment;
 	}
 	
 	
