@@ -14,18 +14,7 @@ public class ItemPaymentRepositoryImpl implements ItemPaymentRepository{
 
 	private final SqlSession sqlSession;
 	
-	@Override
-	public int insertPurchaseItem(int itemIdx, int memberIdx) {
-		
-		return sqlSession.getMapper(ItemPaymentMapper.class).insertPurchaseItem(itemIdx, memberIdx);
-	}
-
-	@Override
-	public int insertSalesItem(int itemIdx) {
-
-		return sqlSession.getMapper(ItemPaymentMapper.class).insertSalesItem(itemIdx);
-	}
-
+	
 	@Override
 	public Item selectItemPayment(int itemIdx) {
 
