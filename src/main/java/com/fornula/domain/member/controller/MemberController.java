@@ -55,9 +55,6 @@ public class MemberController {
 			 redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
 			 return "redirect:/member/join";
 		 }
-		 
-		 
-		 
 		 return "redirect:/";
 	}
 	
