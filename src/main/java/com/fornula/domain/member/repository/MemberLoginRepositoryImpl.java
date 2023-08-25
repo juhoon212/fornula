@@ -22,8 +22,8 @@ public class MemberLoginRepositoryImpl implements MemberLoginRepository{
 	
 	
 	@Override
-	public Optional<Member> selectMemberInfo(String id, String password) {
-		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberInfo(id, password);
+	public Optional<Member> selectMemberInfo(String id) {
+		return sqlSession.getMapper(MemberLoginMapper.class).selectMemberInfo(id);
 	}
 	@Override
 	public Optional<Member> selectMemberId(String email) {

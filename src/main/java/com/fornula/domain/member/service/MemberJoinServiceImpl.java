@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
@@ -29,6 +30,7 @@ public class MemberJoinServiceImpl implements MemberJoinService{
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int joinMember(Member member) {
 		
 		String hashpw = BCrypt.hashpw(member.getPassword(), BCrypt.gensalt()); // 암호화
@@ -39,18 +41,18 @@ public class MemberJoinServiceImpl implements MemberJoinService{
 		return result;
 	}
 
-	@Override
-	public List<Integer> selectCategory(List<String> categoryList) {
-		
-		List<Integer> returnCategoryList = new ArrayList<>();
-		
-		for (String category : categoryList) {
-			Category selectCategory = memberJoinRepository.selectCategory(category);
-			returnCategoryList.add(selectCategory.getCategoryIdx()); // 관심사 1,2,3 호출 후 반환 값을 list에 저장
-		}
-		
-		return returnCategoryList;
-	}
+//	@Override
+//	public List<Integer> selectCategory(List<Integer> categoryList) {
+//		
+//		List<Integer> returnCategoryList = new ArrayList<>();
+//		
+//		for (Integer category : categoryList) {
+//			Category selectCategory = memberJoinRepository.selectCategory(category);
+//			returnCategoryList.add(selectCategory.getCategoryIdx()); // 관심사 1,2,3 호출 후 반환 값을 list에 저장
+//		}
+//		
+//		return returnCategoryList;
+//	}
 	
 	
 

@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginForm {
+public class IdFindForm {
 	
-	private String id;
-	private String password;
+	private String email;
 }

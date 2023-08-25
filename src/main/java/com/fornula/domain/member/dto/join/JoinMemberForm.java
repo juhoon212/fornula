@@ -17,7 +17,7 @@ public class JoinMemberForm {
 	private int memberStatus;
 	private String memberFileName;
 	private String loginDate;
-	private String categoryOne; 
-	private String categoryTwo;
-	private String categoryThree;
+	private int categoryOne; 
+	private int categoryTwo;
+	private int categoryThree;
 }

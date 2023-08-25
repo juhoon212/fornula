@@ -13,15 +13,18 @@
 			select member_seq.nextval from dual
 		</selectKey>
 		insert into member values(
-			memberIdx = #{memberIdx},
-			id = #{id},
-			password = #{password},
-			email = #{email},
-			memberDate = sysdate,
-			memberStatus = 1,
-			memberFileName = #{memberFileName},
-			loginDate = sysdate
-		)
+			#{memberIdx},
+			#{id},
+			#{password},
+			#{email},
+			sysdate , 
+			1,
+			#{memberFileName},
+			sysdate , 
+			#{categoryOne},
+			#{categoryTwo},
+			#{categoryThree}
+			)
 	</insert>
 	
 	<select id="selectCategory" resultType="Category">
