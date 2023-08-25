@@ -340,13 +340,14 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
+   <form name="infoForm" method="post" action="/mypageInfo">
         <h3>
         아이디
         </h3>
         <div class="info" id="info__id">
         
           <div id="id-input">
-            <input class="box" type="text" placeholder="아이디"/>
+            <p class="box">${member.id }</p> 
             
           </div>
           
@@ -355,15 +356,14 @@ h3 {
         <h3>이메일</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" placeholder="1234@1234"/>
-            
+            <p class="box">${member.email }</p> 
           </div>
           
         </div>
       
         <h3>휴대폰</h3>
         <div class="info">
-          <input class="box" type="text" placeholder="01012345678"/>
+          <input class="box" type="text" placeholder="01012345678" readonly="readonly"/>
           
         </div>
         <h3>관심사 분야</h3>
@@ -404,8 +404,8 @@ h3 {
         
       
       <div id="join"></div>
-      <button id="submit">가입하기</button>
-      
+      <input type="button" value="회원수정" onclick="submitCheck();">
+    </form>
 </section>
         
                   </div>
@@ -507,6 +507,31 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+
+<script type="text/javascript">
+ 
+ function submitCheck() {
+	
+	//관심사받기
+	if(infoForm.id.value==""){
+		alert("체크해주세요")
+		infoForm.id.focus();
+		return;
+	}
+	
+
+	
+	infoForm.submit();
+}
+
+
+
+
+
+
+
+
+ </script>
 
 </body>
 </html>

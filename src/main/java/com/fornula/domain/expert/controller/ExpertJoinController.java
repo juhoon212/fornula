@@ -34,11 +34,6 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 
-	@GetMapping("/payment")
-	public String pay() {
-		return "payment";
-	}
-
 	@GetMapping("/sale")
 	public String sale() {
 		return "expert-sales";
@@ -46,9 +41,11 @@ public class ExpertJoinController {
 
 	
 	@GetMapping("/expertjoin")
-	public String join() { return "expert-join"; }
+	public String join() {
+		return "expert-join"; 
+	}
 	
-	
+
 	@PostMapping("/expertjoin")
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException, IOException {
 
@@ -61,7 +58,6 @@ public class ExpertJoinController {
 		//expert.setMemberIdx(member.getMemberIdx());
 		
 		//log.info("sessionMember = {}", member);
-		
 		
 		/*
 		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
@@ -93,10 +89,11 @@ public class ExpertJoinController {
 			System.out.println("파일 업로드 실패");
 			e.printStackTrace();
 		}
-		
+
+			
 		expertJoinService.addExpertInfo(expert);
-
+		
 		return "main";
-	}
 
+	}
 }
