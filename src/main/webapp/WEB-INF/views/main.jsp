@@ -79,7 +79,7 @@ p #logo{
 
 <div class="black-bg">
     <div class="white-bg">
-        <div>
+        <form action="<c:url value="/member/login"/>" method="post">
             <div class="mb-3">
             <!-- <h1 class="name">ForNula</h1> -->
            	   <div class="name">FORNUAL</div>
@@ -107,12 +107,12 @@ p #logo{
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
           	</div>
-          </div>  
+          </form>  
     </div>
 </div>
 
 		
-<jsp:include page="header.jsp" />
+<jsp:include page="login-header.jsp" />
 
 
 
@@ -1004,10 +1004,7 @@ p #logo{
 			  method: "POST", 
 			  headers: { 
 			    "Content-Type": "application/json",
-			  }, body: JSON.stringify({ 
-				    "id" : id.value,
-				    "password" : password.value
-				  })
+			  },
 			})
 		.then((response) => response.json())
         .then((data) => {
@@ -1018,8 +1015,7 @@ p #logo{
             	frontError.style = "color : red";
             } else {
          		// 메인페이지 헤더에 로그인한 사용자 이름 추가 예정
-         		
-            	location.href = "<c:url value="/"/>";
+            	location.href = "<c:url value="/home"/>";
             	} 
               })
               

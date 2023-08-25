@@ -8,12 +8,17 @@
 				email,
 				member_date,
 				member_status,
-				login_date,
-				category_one,
-				category_two,
-				category_three
+				login_date
 		from member
-		where id = #{id}
+		<where>
+			<if test="id != null and !id.equals('')">
+				id = #{id}
+			</if>
+			<if test="password != null and !password.equals('')">
+				and password = #{password}
+			</if>
+		</where>
+		<!-- where id = #{id} and password = #{password}  -->
 	</select>
 	
 	<select id="findByIdx" resultType="Member" >
@@ -56,8 +61,8 @@
 	<update id="updateMemberPassword">
 		update member
 		<set>
-			<if test="password != null and password !=''">
-				password = #{password}
+			<if test="password != null and password=''">
+				set password = #{password}
 			</if>
 		</set>
 		where id = #{id}

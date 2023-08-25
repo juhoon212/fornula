@@ -71,7 +71,7 @@
         <h3>관심사</h3>
         <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+            <select class="box" id="category-big" onchange = "categorySelect1(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -87,7 +87,7 @@
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big2" onchange = "categorySelect2(this)">
+            <select class="box" id="category-big" onchange = "categorySelect2(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -103,7 +103,7 @@
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big3" onchange = "categorySelect3(this)">
+            <select class="box" id="category-big" onchange = "categorySelect3(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -125,10 +125,9 @@
     </div>
   </div>
   
-  
+  <script defer src="<c:url value="/js/join.js"/>"></script>
   <script type="text/javascript">
   
-  	console.log(document.querySelector('.box').value);
   	let idInput = document.querySelector('#id-input');
   
   	document.querySelector('#id-check').addEventListener('click', () => {
@@ -152,6 +151,5 @@
       	})
   	})
   </script>
-  <script defer src="<c:url value="/js/join.js"/>"></script>
 </body>
 </html>

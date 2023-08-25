@@ -47,8 +47,27 @@ public class MemberController {
 	
 	// 회원가입 
 	@PostMapping("/join")
-	public String joinForm(@ModelAttribute Member member, RedirectAttributes redirectAttributes) {
+	public String joinForm(@ModelAttribute JoinMemberForm form, RedirectAttributes redirectAttributes) {
 		
+		log.info("category1 = {}, category2 = {}, category3={}", form.getCategoryOne(), form.getCategoryTwo(), form.getCategoryThree());
+
+		 List<String> categoryList = new ArrayList<>();
+		 
+		 categoryList.add(form.getCategoryOne());
+		 categoryList.add(form.getCategoryTwo());
+		 categoryList.add(form.getCategoryThree()); // form 데이터 list에 담는다
+		 
+		 List<Integer> resultCategory = memberJoinService.selectCategory(categoryList); // 입력받은 카테고리(ex : 디자인)를 category 테이블에서 조회 후 반환값 -> resultCategory
+		 
+		 Member member = new Member();
+		 
+		 member.setId(form.getId());
+		 member.setPassword(form.getPassword());
+		 member.setEmail(form.getEmail());
+		 member.setCategoryOne(resultCategory.get(0));
+		 member.setCategoryTwo(resultCategory.get(1));
+		 member.setCategoryThree(resultCategory.get(2)); // 멤버에 categoryIdx 값 가져와서 넣기
+		 
 		 int result = memberJoinService.joinMember(member);
 		 
 		 if(result == 0) {
@@ -88,9 +107,9 @@ public class MemberController {
 			return "redirect:/member/findPw";
 		}
 		
-		redirectAttributes.addAttribute("memberIdx", findMember.getMemberIdx());
+		int memberIdx = findMember.getMemberIdx();
 		
-		return "redirect:/member/updatePassword/{memberIdx}";
+		return "/member/updatePassword/{memberIdx}";
 	}
 	
 	@GetMapping("/updatePassword/{memberIdx}")
