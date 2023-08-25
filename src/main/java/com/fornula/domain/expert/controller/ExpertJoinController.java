@@ -38,15 +38,9 @@ public class ExpertJoinController {
 	public String sale() {
 		return "expert-sales";
 	}
-	@GetMapping("/login")
-	public String login() {
-		return "main";
-	}
-
-	
 	@GetMapping("/expertjoin")
 	public String join() {
-		return "expert-join"; 
+		return "expert-join";
 	}
 	
 
