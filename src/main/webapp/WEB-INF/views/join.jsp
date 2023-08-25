@@ -30,9 +30,13 @@
       <header>
         <h2>딱 이것만 체크하면 가입완료!</h2>
       </header>
+      
+      <c:if test="message != null">
+      	<div class="message">${message}</div>
+      </c:if>
 
       <section>
- <form id ="join_form" method="post" action="member/join">
+ <form id ="join_form" method="post" action="/member/join">
         <!-- id -->
         <h3>아이디</h3>
         <div class="info" id="info__id">
@@ -75,7 +79,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory1" name = "category_one">
+            <select class="box" id="mcategory1" name = "categoryOne">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -91,7 +95,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory2" name = "category_two">
+            <select class="box" id="mcategory2" name = "categoryTwo">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -107,7 +111,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory3" name = "category_three">
+            <select class="box" id="mcategory3" name = "categoryThree">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>

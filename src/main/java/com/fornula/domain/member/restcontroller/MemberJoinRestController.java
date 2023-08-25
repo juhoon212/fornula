@@ -36,4 +36,6 @@ public class MemberJoinRestController {
 		
 		return new Message("사용 불가능한 아이디입니다.");
 	}
+	
+	
 }

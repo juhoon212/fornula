@@ -8,6 +8,32 @@
 		where id = #{id}
 	</select>
 	
+	<insert id="joinMember">
+		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+			select member_seq.nextval from dual
+		</selectKey>
+		insert into member values(
+			memberIdx = #{memberIdx},
+			id = #{id},
+			password = #{password},
+			email = #{email},
+			memberDate = sysdate,
+			memberStatus = 1,
+			memberFileName = #{memberFileName},
+			loginDate = sysdate
+		)
+	</insert>
+	
+	<select id="selectCategory" resultType="Category">
+		select category_idx,
+				large,
+				small
+		from member
+		where small = #{small} <!-- 중카테고리만 받는다 -->
+	</select>
+	
+	
+	
 	
 	
 	

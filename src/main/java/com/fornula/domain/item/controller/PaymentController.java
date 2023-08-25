@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fornula.domain.item.dto.itemPayment.ItemPayment;
 import com.fornula.domain.item.service.ItemPaymentService;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/item")
 public class PaymentController {
 
 	 private final ItemPaymentService service;
