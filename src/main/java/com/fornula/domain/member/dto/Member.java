@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -18,12 +19,16 @@ EMAIL           NOT NULL VARCHAR2(40)
 MEMBER_DATE     NOT NULL DATE          
 MEMBER_STATUS   NOT NULL NUMBER        
 MEMBERFILE_NAME          VARCHAR2(100) 
-LOGIN_DATE               DATE          
+LOGIN_DATE               DATE       
+
+ //회원 관심사 테이블 삭제 후
+  * 카테고리 1,2,3, 컬럼 추가
  *
  */
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 	
 	private int memberIdx;
@@ -34,4 +39,7 @@ public class Member {
 	private int memberStatus;
 	private String memberFileName;
 	private String loginDate;
+	private int categoryOne; // 카테고리 1,2,3 추가
+	private int categoryTwo;
+	private int categoryThree;
 }

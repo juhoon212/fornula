@@ -99,7 +99,7 @@ p #logo{
             </div>
             <div class="btn-container">
               <button type="submit" id="login" class="btn btn-light" >로그인</button>
-              <button type="submit" id="join" class="btn btn-light" >회원가입</button>
+              <button type="button" id="join" class="btn btn-light" onclick="location.href='/member/join'">회원가입</button>
             </div>
             <div id="logos">
 	          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>

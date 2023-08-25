@@ -25,10 +25,6 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	
-	@GetMapping("/payment")
-	public String pay() {
-		return "payment";
-	}
 	@GetMapping("/sale")
 	public String sale() {
 		return "expert-sales";
@@ -43,30 +39,30 @@ public class ExpertJoinController {
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model)
 			throws IllegalStateException, IOException{
 		
-		//»ðÀÔ Ã³¸®½Ã ÀÌ¹Ì Àü¹®°¡·Î µî·ÏµÈ È¸¿ø¿¡ ´ëÇÑ ¿¹¿Ü Ã³¸®
+		//ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ïµï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		
 		
-		//pdf ÆÄÀÏÀÌ ¾Æ´Ò °æ¿ì ¸Þ¼¼Áö ¶ç¿ò
+		//pdf ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if(!uploadFile.getContentType().equals("upload/pdf")) {
-			model.addAttribute("message","pdf ÆÄÀÏ¸¸ ¾÷·ÎµåÇØÁÖ¼¼¿ä.");
+			model.addAttribute("message","pdf ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		}
 		
-		//¾÷·ÎµåµÈ ÆÄÀÏ °æ·Î ÁöÁ¤
+		//ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String uploadDirectory=context.getServletContext().getRealPath("/resource/upload");
 		
-		//uuid+ÆÄÀÏÀÌ¸§À¸·Î ÀúÀå
+		//uuid+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String expertfileName=UUID.randomUUID().toString()+"_"+uploadFile.getOriginalFilename();
 		
-		//expert°´Ã¼ÀÇ ÇÊµå°ª ÀúÀå
+		//expertï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Êµå°ª ï¿½ï¿½ï¿½ï¿½
 		expert.setExpertfileName(expertfileName);
 		
-		//ÆÄÀÏ ¾÷·Îµå Ã³¸®
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ Ã³ï¿½ï¿½
 		uploadFile.transferTo(new File(uploadDirectory,expertfileName));
 		
-		//Å×ÀÌºí¿¡ Çà »ðÀÔ 
+		//ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		expertJoinService.addExpertInfo(expert);
 
-		//Àü¹®°¡ µî·Ï½Ã ¸ÞÀÎÆäÀÌÁö·Î ÀÌµ¿
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		return "main";
 	}
 	
