@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.MemberJoinMapper">
+	
+	<select id="idCheck" resultType="Member">
+		select id
+		from member
+		where id = #{id}
+	</select>
+	
+	<insert id="joinMember">
+		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+			select member_seq.nextval from dual
+		</selectKey>
+		insert into member values(
+			memberIdx = #{memberIdx},
+			id = #{id},
+			password = #{password},
+			email = #{email},
+			memberDate = sysdate,
+			memberStatus = 1,
+			memberFileName = #{memberFileName},
+			loginDate = sysdate
+		)
+	</insert>
+	
+	<select id="selectCategory" resultType="Category">
+		select category_idx,
+				large,
+				small
+		from member
+		where small = #{small} <!-- 중카테고리만 받는다 -->
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
