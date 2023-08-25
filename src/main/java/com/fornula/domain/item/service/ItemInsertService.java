@@ -4,6 +4,8 @@ import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 
 public interface ItemInsertService {
-	void addItem(Item item);
-//	void addPhoto(Photo photo);
+	int addItem(Item item);
+	Item getItemIdx(int expertIdx);
+	void modifyItemPhoto(int itemIdx,int newPhotoIdx);
+	int addPhoto(Photo photo);
 }

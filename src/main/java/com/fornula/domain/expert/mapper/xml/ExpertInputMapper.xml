@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertInputMapper">
+<mapper namespace="com.fornula.domain.expert.mapper.java.ExpertInputMapper">
 	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가 가입 시 받은 정보, 전문가 정보 수정/등록 페이지에서 추가한 정보들을 수정할 때 사용할 SQL문 -->
 	<update id="updateExpert">
 		update expert set phone=#{phone}
