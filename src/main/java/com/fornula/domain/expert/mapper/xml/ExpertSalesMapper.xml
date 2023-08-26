@@ -1,49 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertSalesMapper">
-	<!--검색필터를 이용한 검색 
-	<select id="selectSearchSalesList" resultType="ItemSales">
-		select SALES.sales_idx,	
-			   SALES.sales_date, 
-			   SALES.sales_status,
-			   ITEM.item_name,
-			   ITEM.price
-			   ITEM.item_content
-		from item ITEM
-		join sales SALES
-		on ITEM.item_idx = SALES.item_idx
-		where sales_status=#{salesStatus} and sales_date=#{salesDate}
-		order by sales_date
-	</select> -->
-	
-	<!-- 판매내역 출력 -->
-	<select id="selectSalesList" resultType="ItemSales">
-		select SALES.sales_idx,	
-			   SALES.sales_date, 
-			   SALES.sales_status,
-			   ITEM.item_name,
-			   ITEM.price
-			   ITEM.item_content
-		from item ITEM
-		join sales SALES
-		on ITEM.item_idx = SALES.item_idx
-		order by sales_date
+<mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertSalesMapper">
+	<!-- 검색필터를 이용한 검색 -->
+	<select id="selectSearchSalesList" resultMap="ItemSales">
+		SELECT SALES.sales_idx,
+				SALES.sales_date,
+				SALES.sales_status,
+				ITEM.item_name,
+				ITEM.item_idx,
+				ITEM.price,
+				ITEM.item_content
+		FROM item ITEM
+		JOIN sales SALES
+		ON ITEM.item_idx = SALES.item_idx
+		WHERE SALES.sales_status=#{salesStatus} AND SALES.sales_date=#{salesDate} 
+		ORDER BY SALES.sales_date
 	</select>
-	
-<!-- 	 상태 버튼 클릭시 판매 상태 변경 
-	<update id="updateSalesStatus">
-		update sales
-		set sales_status =#{salesStatus}
-		where sales_idx=#{salesIdx}
+
+	<!-- 판매내역 출력 -->
+	<select id="selectSalesList" resultMap="ItemSales">
+		SELECT S.sales_idx,
+				S.sales_date,
+				S.sales_status,
+				I.item_idx,
+				I.item_name,
+				I.price,
+				I.item_content
+		FROM sales S
+		JOIN item I
+		ON S.item_idx = I.item_idx
+		ORDER BY S.sales_date
+	</select>
+
+	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
+	<update id="updateSalesStatus" parameterType="SaleItemExpert">
+		UPDATE sales S
+        SET S.sales_status =
+		<choose>
+			<when test='S.sale_status gt 5 '>
+				#{salesStatus}
+			</when>   
+			<otherwise>
+			     
+         (  SELECT P.purchase_status
+            FROM purchase P
+            JOIN item I ON P.item_idx = I.item_idx
+            WHERE
+                I.item_idx = S.item_idx
+                AND P.purchase_status BETWEEN 5 AND 7
+                AND ROWNUM = 1
+        )
+        WHERE EXISTS (
+            SELECT 1
+            FROM purchase P
+            JOIN item I ON P.item_idx = I.item_idx
+            WHERE
+                I.item_idx = S.item_idx
+                AND P.purchase_status BETWEEN 5 AND 7
+        )
+        </otherwise>
+        </choose>
 	</update>
 	
-	구매확정된 총 판매금액 출력
-	<select id="selectPrice" resultType="ItemSales">
-		select SUM(price)
-		from item ITEM
-		join sales SALES
-		on ITEM.item_idx = SALES.item_idx
-		where SALES.sales_status between 5 and 7
 		
-	</select> -->
+	<!-- 구매확정된 총 판매금액 출력 -->
+	<select id="selectPrice" resultType="int">
+	 	SELECT SUM(I.price) as total_price
+		FROM item ITEM 
+		JOIN sales SALES 
+		ON ITEM.item_idx = SALES.item_idx 
+		WHERE SALES.sales_status BETWEEN 5 AND 7 
+	</select> 
 </mapper>
+
+
+
+
+

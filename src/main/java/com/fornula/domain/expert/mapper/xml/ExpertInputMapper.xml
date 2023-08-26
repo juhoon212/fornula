@@ -60,7 +60,7 @@
  -->	
  
 
-	<select id="selectExpertItemCount" resultType="int">
+	<select id="selectExpertItemCount" resultType="Item">
 		select count(*)
 		from item
 	</select>

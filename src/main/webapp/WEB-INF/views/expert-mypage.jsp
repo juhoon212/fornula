@@ -149,7 +149,8 @@ tr td{
 								<option>주문 접수</option>
 								<option>제작중</option>
 								<option>제작완료</option>
-							</select> <select id="archive" class="form-control">
+							</select> 
+							<select id="archive" class="form-control">
 								<option>달력</option>
 								<option>으로</option>
 								<option>하고</option>

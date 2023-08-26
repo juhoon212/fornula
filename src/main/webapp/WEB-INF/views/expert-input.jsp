@@ -3,37 +3,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>전문가페이지-전문가의정보</title>
- 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>전문가페이지-전문가의정보</title>
 
-    <link rel="stylesheet" id="montserrat-css"
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    <link rel="stylesheet" id="open-sans-css"
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
-          media="print">
+<link rel="stylesheet" id="montserrat-css"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+<link rel="stylesheet" id="open-sans-css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+
+<link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
+      media="all">
+<link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
+<link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
+      type="text/css" media="all">
+<link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
+<link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
+      media="all">
+<link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
+      media="all">
+<link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
+      media="all">
+<link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
+  	  media="print">
   
-          
-
- 
-</head>
 <style>
 #button{
 	display: flex;
@@ -43,10 +39,12 @@
 	
 }
 
-</style>
-<body class="archive post-type-archive post-type-archive-lana_story">
+</style>          
+</head>
 
+<body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
+
 
 <main class="main container">
     <div class="row">
@@ -54,7 +52,7 @@
     <div class="widget">     
     <form class="story-posts" id="content">              
 <section>
-<!-- my-page style-->
+<!-- 전문가 페이지 style-->
 <style>
 	.info {
 	margin-bottom: 22px;
@@ -123,52 +121,59 @@ h3 {
 }
 </style>
 <!-- 스타일 태그 끝 -->
-        <h3>전문가 번호</h3>
-        <div class="info" id="info__id">        
-          <div id="id-input">
-            <input class="box" type="text" placeholder="여기다가 로그인한 전문가의 전문가번호" readonly/>            
+        <!-- 세션에서 불러오는 expertIdx -->
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <input class="box" type="text" placeholder="전문가번호:${expertIdx }" readonly/>
+			<!-- 여백 어케주드라 -->
+            <input class="box" type="text" placeholder="전화번호:${phone }"/>
           </div>          
         </div>
 
-        <h3>이메일</h3>
-        <div class="info">
-          <div id="id-input">
-            <input class="box" type="text" placeholder="여기에 로그인한 전문가의 Email 불러오기"/>            
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <input class="box" type="text" placeholder="기존 카테고리:${interest }"/>
+            <!-- 여백 어케주드라 -->
+            <select class="box" id="category-middle">
+              <option disabled selected>디자인</option>
+              <option>그래픽</option>
+              <option>제품</option>
+              <option disabled selected>번역</option>
+              <option>영어</option>
+              <option>중국어</option>
+              <option disabled selected>사진 편집</option>
+              <option>헤어 메이크업</option>
+              <option>제품 홍보 사진</option>
+              <option disabled selected>세무</option>
+              <option>사업자</option>
+              <option>개인</option>
+              <option disabled selected>마케팅</option>
+              <option>SNS 홍보</option>
+              <option>해외 마케팅</option>              
+            </select>
+			<!-- 여백 어케주드라 -->            
+            <input class="box" type="text" placeholder="연차:${career }"/>
           </div>
         </div>
-      
-        <h3>포트폴리오 수정 / 등록</h3>
-        <div class="info">
-          <input class="box" type="text" placeholder="여기다가 기능 구현"/> 
+
+        <div class="info" id="info__category">
+          <div id="category-flex">
+            <input class="box" type="text" placeholder="회사명1:${companyOne }"/>
+			<!-- 여백 어케주드라 -->            
+            <input class="box" type="text" placeholder="회사명2:${companyTwo }"/>
+            <!-- 여백 어케주드라 -->
+            <input class="box" type="text" placeholder="회사명3:${companyThree }"/>
+          </div>
         </div>
         
-        <h3>관심사 분야</h3>
-        <div class="info" id="info__category">
-          <div id="category-flex">
-            <input class="box" type="text" placeholder="기존의 관심사" readonly/> 
-            <select class="box" id="category-middle">
-              <option disabled selected>변경할 관심사</option>
-            </select>
-          </div>
-          <div class="error-msg"></div>
+        <h3>포트폴리오 파일</h3>
+        <div class="info">
+        	<input class="box" type="text" placeholder="포트폴리오 파일명:${expertfileName }"/> 
         </div>
-        <div class="info" id="info__category">
-          <div id="category-flex">
-            <input class="box" type="text" placeholder="기존의 관심사" readonly/> 
-            <select class="box" id="category-middle">
-              <option disabled selected>변경할 관심사</option>
-            </select>
-          </div>
-          <div class="error-msg"></div>
+        <div>
+        	<input class="box" type="text" placeholder="여기다가 이미지 띄워서 화면 채울거임" style="height:500px"/>
         </div>
-        <div class="info" id="info__category">
-			<div id="category-flex">
-            	<input class="box" type="text" placeholder="기존의 관심사" readonly/> 
-            	<select class="box" id="category-middle">
-              	<option disabled selected>변경할 관심사</option>
-            	</select>
-			</div>
-		</div>
+ 			<!-- 이거는 expert-output으로 빼야할듯 ;         
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
 					<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
@@ -188,11 +193,11 @@ h3 {
 						<div class="card-body">
 							<ul class="post-meta">
 								<li><a href="single.html">2023/8/17</a></li>
-								<li><a href="#">카테고리1</a></li>
+								<li><a href="#">카테고리2</a></li>
 							</ul>
-						<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
+						<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
 							<p class="post-text card-text">
-								우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
+								진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
 							</p>
 						</div>
 				</div>
@@ -201,7 +206,7 @@ h3 {
 						<div class="card-body">
 							<ul class="post-meta">
 								<li><a href="single.html">2023/8/16</a></li>
-								<li><a href="#">카테고리1</a></li>
+								<li><a href="#">카테고리3</a></li>
 							</ul>
 						<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
 							<p class="post-text card-text">
@@ -210,12 +215,17 @@ h3 {
 						</div>
 				</div>
 			</div>
+			
+		<div>
 	 		<a class="prev disabled" href="#">Prev</a>
 			<a class="next" href="#">Next</a>
+		</div>
+		
 		<div class="error-msg"></div>    
       <div id="change-complete"></div>
+      -->
       <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 -->
-      <button id="submit">수정완료</button> 
+      <button type="button" href="expert-output">수정완료</button> 
 </section>
 </form>
 </div>
@@ -243,6 +253,7 @@ h3 {
             </div>
         </div>
     </div>
+ </div>   
 </main>
 <jsp:include page="footer.jsp"/>
 
@@ -257,8 +268,6 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 <script type="text/javascript">
-
-let inputButton=document.querySelector('#inputButton');
 
 </script>
 </body>

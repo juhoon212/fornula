@@ -12,4 +12,7 @@ public interface ExpertInputMapper {
 	//int insertExpertInfo(Expert expert);
 	int selectExpertBoardCount();
 	//int selectExpertCategory(int interest);
+//	List<Item> selectExpertItemList(Map<String, Object> map);
+	int insertExpertInfo(Expert expert);
+//	int selectExpertBoardCount();
 }

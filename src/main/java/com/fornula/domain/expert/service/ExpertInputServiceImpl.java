@@ -27,6 +27,9 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 		expertInputDAO.updateExpert(expert);
 	}
 //	�쟾臾멸�媛� �벑濡앺븳 �긽�뭹 寃뚯떆湲��쓣 寃뚯떆�뙋 �삎�깭濡� 異쒕젰�븷 �븣 �궗�슜 -> ExpertOutputService 履쎌쑝濡� 鍮좎쭏�닔�룄 �엳�쓬
+//	전문가가 등록한 상품 게시글을 게시판 형태로 출력할 때 사용 -> ExpertOutputService 쪽으로 빠질수도 있음
+	/*
+>>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 	@Override
 	public Map<String, Object> getExpertBoardList(int pageNum) {
 		
@@ -46,5 +49,5 @@ public class ExpertInputServiceImpl implements ExpertInputService{
 		resultMap.put("pager", pager);
 
 		return resultMap;
-	}
+	}*/
 }
