@@ -121,60 +121,80 @@ height : vh ;
 <main class="main container">
 <div class="row">
 	<div class="col-12 col-lg-8">
-		 <div>
-        	<div class="box" style="height:800px">
-        		<iframe src="<c:url value="../upload/portfolio/phy.pdf"/>" width="760"></iframe>
-				<div class="form-group row">
-					<div class="col">
-						<input type="text" value="${Member.id }" placeholder="전문가 아이디" readonly>
-						<input type="text" value="${Expert.phone }" placeholder="전문가 전화번호" readonly>
+		<div class="widget">    
+			<form class="story-posts" id="content">              
+	        	<div class="box" style="height:800px">
+	        	<!-- iframe 태그는 유튜브 영상같은거 가져오는데도 좋다고함 -->
+	        	<!-- 아니 왜안되는데 이거 경로 진짜 열받게하네 -->
+	        	<!-- ex. <iframe width='500' height='350' src='https://youtu.be/F6OJslByCYQ?si=dEkTsFqCpZ3CGyvq'></iframe> -->
+	        		<iframe src="${pageContext.request.contextPath }/resources/upload/portfolio/phy.pdf" width="700" height="380"></iframe>
+					<div class="form-group row">
+						<div class="col">
+							<input type="text" value="${Member.id }" placeholder="전문가 아이디" readonly>
+							<input type="text" value="${Expert.phone }" placeholder="전문가 전화번호" readonly>
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col">
-						<input type="text" value="${Expert.interest }" placeholder="전문분야" readonly>
-						<input type="text" value="${Expert.career }" placeholder="전문분야 연차" readonly>
+					<div class="form-group row">
+						<div class="col">
+							<input type="text" value="${Expert.interest }" placeholder="전문분야" readonly>
+							<input type="text" value="${Expert.career }" placeholder="전문분야 연차" readonly>
+						</div>
+					</div>   
+					<div class="form-group row">
+						<div class="col">
+							<input type="text" value="${Expert.companayOne }" placeholder="회사1" readonly>
+							<input type="text" value="${Expert.companyTwo }" placeholder="회사2" readonly>
+							<input type="text" value="${Expert.companyThree }" placeholder="회사3" readonly>
+						</div>
 					</div>
-				</div>   
-				<div class="form-group row">
-					<div class="col">
-						<input type="text" value="${Expert.companayOne }" placeholder="회사1" readonly>
-						<input type="text" value="${Expert.companyTwo }" placeholder="회사2" readonly>
-						<input type="text" value="${Expert.companyThree }" placeholder="회사3" readonly>
-					</div>
-				</div>    		
-        	</div> 
-        </div>
-    </div>
+					<div>
+						<textarea style="width:700px; height:190px;" readonly>
+							자기소개
+							${Expert.introduce }
+						</textarea>
+					</div>    		
+	        	</div>
+        	</form>
+        </div> 
+	</div>   
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">   
+		<div class="widget-sidebar story-sidebar">
+	
 			<div id="button">
-				<img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-					class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+					class="rounded-circle" alt="Author" width="200" height="200">
 			</div>
 			<div id="button">
 				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
 			</div>
 			<div class="widget widget_tag_cloud">
+	
 				<div class="tagcloud">
 					<div id="button">
-						<a href="#" onclick="location.href='membermypage'" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+						<a href="mypage-purchase" class="tag-cloud-link"
+							aria-label="admin change button">일반회원으로 전환</a>
 					</div>
-					<div class="row" >
-						<div class="widget">
-							<h3 class="widget-title">메뉴</h3>
-	               			<ul>
-		                       	<li><a href="#" onclick="location.href='expertinput'">전문가 정보 수정/등록</a></li>
-		                       	<li><a href="#" onclick="location.href='expertmypage'">판매 관리</a></li>
-		                       	<li><a href="#" onclick="location.href='expertoutput'">나의 포트폴리오</a></li>
-	                   		</ul>
+					<div class="tab_menu">
+						<div class="widget" style="text-align: left;" id="list">
+							<h3 class="widget-title">판매 관리</h3>
+							<ul>
+								<li>
+									<a href="expertinput" class="expertInput" href="#" onclick="location.href='expert-input.jsp'">전문가 정보 수정</a>
+								</li>
+								<li>
+									<a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
+								</li>
+								<li>
+									<a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-       	</div>
-    </div>
-</div>	
+		</div>
+	</div>
+</div>
 </main>
 <jsp:include page="footer.jsp"/>
 

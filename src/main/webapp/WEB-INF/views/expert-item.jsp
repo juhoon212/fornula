@@ -12,7 +12,7 @@
     <link rel="stylesheet" id="montserrat-css"
           href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link rel="stylesheet" id="open-sans-css"
-          h"col-12 col-lg-8"ef="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
     <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
     <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
@@ -42,35 +42,23 @@
 	padding-bottom: 2em;
 	
 }
-
-</style>
-<body class="archive post-type-archive post-type-archive-lana_story">
-
-<jsp:include page="header.jsp" />
-
-<main class="main container">
-    <div class="row">
-    <div class="col-12 col-lg-8">
-    <div class="widget">     
-    <div class="story-posts">              
-<section>
-<!-- my-page style-->
-<style>
-	.info {
-	margin-bottom: 22px;
-	}
-	
-	/* 박스*/
-	.box {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 5px 0 5px 15px;
-  border-radius: 4px;
-  border: 1px solid #d9d6d6;
-  color: #383838;
-  font-weight: 400;
+		
+.info {
+margin-bottom: 22px;
 }
+
+/* 박스*/
+.box {
+ width: 100%;
+ height: 50px;
+ box-sizing: border-box;
+ padding: 5px 0 5px 15px;
+ border-radius: 4px;
+ border: 1px solid #d9d6d6;
+ color: #383838;
+ font-weight: 400;
+}
+
 .box::placeholder {
   color: #a0a0a0;
 }
@@ -121,36 +109,66 @@ h3 {
   background-color: #ebe9e9;
   border-radius: 6px;
 }
+
 </style>
-<!-- 스타일 태그 끝 -->
-	
-<!-- 이제 여기 빈칸 채워야 함 -->
-	
+<body class="archive post-type-archive post-type-archive-lana_story">
+
+<jsp:include page="header.jsp"/>
+
+<main class="main container">
+<div class="row">
+	<div class="col-12 col-lg-8">
+		<div class="widget"> 
+			<div class="box" style="height:800px">
+		 		<div>
+					<iframe src="<c:url value="../upload/sellerRule.pdf"/>" width="760" height="550"></iframe>
+	       			<textarea class="box" style="height:200px" readonly>
+        			사이트 이용시 주의 사항
+		        	1. 구매자는 판매자에게 2번의 수정 요청을 제안할 수 있고 판매자는 이를 성실히 응답해야 한다
+		        	2. 판매자가 제작시작 버튼을 누르는 순간부터 판매자는 구매자에게 제품을 완성해서 제공해야하는 의무가 생긴다
+					3. 이 개같은 왼쪽 여백은 도대체 뭔 지랄을 해야 없어지는건지 새벽 4시15분부터 정말 사람을 너무나도 화가나게 한다 
+					4. 얼씨구 이젠 걍 1,2,3번 시작하는 줄도 안맞네 ㅈㄹ났네 ㅈㄹ났어
+					</textarea>
+					<button type="button" onclick="location.href='itemadd'">상품등록</button> 
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 		<div class="widget-sidebar story-sidebar">   
-            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
-				<div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a></div>
-					<div class="widget widget_tag_cloud">
-                    <div class="tagcloud">
-						<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a></div>
-						<div class="row" >
-						<!--  에러메세지 -->
-						<div class="error-message"></div>
-					<div class="widget">
-                    	<h3 class="widget-title">메뉴</h3>
-                    	<ul>
-                        	<li><a href="#">전문가 정보 수정/등록</a></li>
-                        	<li><a href="#">판매 관리</a></li>
-                        	<li><a href="#">나의 포트폴리오</a></li>
-                        	<li><a href="<c:url value="/expert/item/${expertId}"/>">상품 등록</a></li>
-                    	</ul>
+            <div id="button">
+            	<img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
+              	 class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+			</div>
+			<div id="button">
+				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디("${Id }")</a>			
+			</div>
+			<div class="widget widget_tag_cloud">
+				<div class="tagcloud">
+					<div id="button">
+						<a href="#" onclick="location.href='membermyphage'" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
 					</div>
-                  </div>
+					<div class="row" >
+						<div class="widget">
+                    		<h3 class="widget-title">메뉴</h3>
+                   			<ul>
+                       			<li>
+                       				<a href="#" onclick="location.href='expertinput'">전문가 정보 수정</a>
+								</li>
+                       			<li>
+                       				<a href="#" onclick="location.href='expertmypage'">판매 관리</a>
+                       			</li>
+                       			<li>
+                       				<a href="#" onclick="location.href='expertoutput'">나의 포트폴리오</a>
+								</li>
+                   			</ul>
+						</div>
+					</div>
                 </div>
             </div>
-        </div>
-    </div>
+		</div>
+	</div>
+</div>
 </main>
 <jsp:include page="footer.jsp"/>
 
