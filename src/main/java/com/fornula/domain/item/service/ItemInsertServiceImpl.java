@@ -30,9 +30,9 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 	
 //	3.임시 photoIdx를 진짜 photoIdx로 변경하기
 	@Override
-	public void modifyItemPhoto(int itemIdx, int newPhotoIdx) {
-		
-		itemInsertDAO.updateItemPhoto(itemIdx, newPhotoIdx);
+	public int modifyItemPhoto(int itemIdx, int newPhotoIdx) {
+		int result=itemInsertDAO.updateItemPhoto(itemIdx, newPhotoIdx);
+		return result;
 	}
 	
 //	4.PHOTO 테이블에 전문가가 등록하는 사진에 대한 행 추가

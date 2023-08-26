@@ -8,6 +8,6 @@ import com.fornula.domain.item.dto.Photo;
 public interface ItemInsertMapper {
 	int insertItem(Item item);
 	Item selectItemIdx(int expertIdx);
-	int updateItemPhoto(@Param("itemIdx") int itemIdx,@Param("newPhotoIdx") int newPhotoIdx);
 	int insertPhoto(Photo photo);
+	int updateItemPhoto(@Param("itemIdx") int itemIdx,@Param("newPhotoIdx") int newPhotoIdx);
 }
