@@ -1,15 +1,22 @@
 package com.fornula.domain.expert.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-/*이름           널?       유형     
+/*    
 ------------ -------- ------ 
 SALES_IDX    NOT NULL NUMBER 
 ITEM_IDX     NOT NULL NUMBER 
 SALES_DATE   NOT NULL DATE   
 SALES_STATUS NOT NULL NUMBER  
 */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sales {
 	private int salesIdx;
 	private int itemIdx;

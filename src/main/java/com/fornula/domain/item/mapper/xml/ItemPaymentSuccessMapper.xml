@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.item.mapper.xml.ItemPaymentSuccessMapper">
+<mapper namespace="com.fornula.domain.item.mapper.java.ItemPaymentSuccessMapper">
 	<!-- 결제완료페이지에서 사용할 SQL문 -->
 	
 	<insert id="insertPurchaseItem">
@@ -12,18 +12,19 @@
 			,#{memberIdx}
 			,SYSDATE
 			,2)
-		where item_idx = #{itemIdx}
+		<!-- where item_idx = #{itemIdx} -->
 	</insert>
 	
-	<insert id="insertSalesItem">
-		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE">
+	<insert id="insertSalesItem" useGeneratedKeys="true" >
+		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE" >
 			select sales_seq.nextval from dual
 		</selectKey>
-		insert into item values(#{salesIdx}
-			,#{itemIdx}
+		insert into sales values(
+			#{salesIdx},
+			#{itemIdx}
 			,SYSDATE
 			,2)
-		where item_idx = #{itemIdx}
+				<!-- where item_idx = #{itemIdx} -->
 	</insert>
 	
 	
