@@ -1,5 +1,6 @@
 package com.fornula.domain.item.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /*
@@ -17,6 +18,7 @@ PHOTO_IDX	 NOT NULL NUMBER
  */
 
 @Data
+@AllArgsConstructor
 public class Item {
 	private int itemIdx;
 	private int categoryIdx;

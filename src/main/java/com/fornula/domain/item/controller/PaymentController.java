@@ -3,11 +3,15 @@ package com.fornula.domain.item.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.itemPayment.ItemPayment;
 import com.fornula.domain.item.service.ItemPaymentService;
 import com.fornula.domain.member.dto.Member;
@@ -15,53 +19,43 @@ import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/item")
 public class PaymentController {
 
 	 private final ItemPaymentService service;
 	 
 		@GetMapping("/payment")
 		public String payment() {
-		return "payment";
+			
+		    return "payment";
 		}
 		
 		@GetMapping("/payment/{itemIdx}")
-		public String getPayment(@ModelAttribute ItemPayment payment, HttpSession session) {
-		
-			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-			 
-			//itemIdx 받아서 객체만든다음
-		   //Member joinMember = service.mypageInfoService(member.getMemberIdx());
-			//객체로 서비스 메소드 호출
-			   //Member joinMember = service.mypageInfoService(member.getMemberIdx());   
+		public String getPayment(@PathVariable Integer itemIdx, Model model) {
 			
-		   // session.setAttribute("member", joinMember);
-		    //카테고리 값이 null일때 에러처리를 어떻게 한담..
+			Item payment = service.itemPayment(itemIdx);
 			
-			  // service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
-			  
-			   return "payment"; 
+			model.addAttribute("itemIdx", itemIdx);
+			model.addAttribute("payment", payment);
+			
+			
+			
+			
+			return "payment"; 
 		}
 		
 		@PostMapping("/payment/{itemIdx}")
-		public String postPayment(@ModelAttribute ItemPayment payment, HttpSession session) {
+		public String postPayment(@PathVariable Integer itemIdx,
+				RedirectAttributes redirectAttributes) {
 		
-			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-			 
-			//itemIdx 받아서 객체만든다음
-		   //Member joinMember = service.mypageInfoService(member.getMemberIdx());
-			//객체로 서비스 메소드 호출
-			   //Member joinMember = service.mypageInfoService(member.getMemberIdx());   
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
 			
-		   // session.setAttribute("member", joinMember);
-		    //카테고리 값이 null일때 에러처리를 어떻게 한담..
-			
-			  // service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
 			  
-			   return "payment"; 
+			return "redirect:/paymentSuccess/{itemIdx}"; 
 		}
 				
 	}
