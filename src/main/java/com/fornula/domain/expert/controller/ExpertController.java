@@ -27,6 +27,7 @@ public class ExpertController {
 	
 	
 	//전문가 마이페이지(판매관리)
+
 	@RequestMapping(value = "/expertmypage")
 	public String mypage() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
@@ -40,27 +41,7 @@ public class ExpertController {
 		return "expert-input";
 	}
 	
-	//전문가 상품등록전 보여줄 경고문 
-	@RequestMapping(value = "/expertitem")
-	public String item() {
-		log.info("ExpertController 클래스의 item() 메소드 실행");
-		return "expert-item";
-	}
-	
-	//전문가 포폴 출력페이지 
-	@RequestMapping(value = "/expertoutput")
-	public String output() {
-		log.info("ExpertController 클래스의 output() 메소드 실행");
-		return "expert-output";
-	}
-	
-	//마이페이지(구매관리)
-	@RequestMapping(value = "/membermypage")
-	public String memberMypage() {
-		log.info("ExpertController 클래스의 memberMypage() 메소드 실행");
-		return "expert-mypage";
-	}
-		// 전문가 페이지에서 상품 등록 페이지 클릭하면 session에서 로그인멤버의 전문가 번호를 찾아서 반환
+	// 전문가 페이지에서 상품 등록 페이지 클릭하면 session에서 로그인멤버의 전문가 번호를 찾아서 반환
 	@GetMapping("/expert/item")
 	public String expertItem(HttpSession session, Model model) {
 		
