@@ -12,7 +12,7 @@
     <link rel="stylesheet" id="montserrat-css"
           href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link rel="stylesheet" id="open-sans-css"
-          h"col-12 col-lg-8"ef="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
     <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
     <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
@@ -113,15 +113,15 @@ h3 {
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 
 <main class="main container">
 <div class="row">
 	<div class="col-12 col-lg-8">
 		 <div>
         	<input class="box" type="text" style="height:800px"
-        	placeholder="사기치면 지옥 끝까지 쫓아감" readonly/>
-   			<button type="button" onclick="location.href='itemadd'">상품등록</button> 
+        	placeholder="사기치면 지옥 끝까지 쫓아감" readonly>
+        	<button type="button" onclick="location.href='itemadd'">상품등록</button> 
         </div>
     </div>
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
@@ -133,16 +133,15 @@ h3 {
 					</div>
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
-								<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+								<div id="button"><a href="#" onclick="location.href='membermypage'" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
 								</div>
 								<div class="row" >
 									<div class="widget">
 	                    				<h3 class="widget-title">메뉴</h3>
                     					<ul>
-				                        	<li><a href="#">전문가 정보 수정/등록</a></li>
-				                        	<li><a href="#">판매 관리</a></li>
-				                        	<li><a href="#">나의 포트폴리오</a></li>
-				                        	<li><a href="#">상품 등록</a></li>
+				                        	<li><a href="#" onclick="location.href='expertinput'">전문가 정보 수정/등록</a></li>
+				                        	<li><a href="#" onclick="location.href='expertmypage'">판매 관리</a></li>
+				                        	<li><a href="#" onclick="location.href='expertoutput'">나의 포트폴리오</a></li>
 				                    	</ul>
 									</div>
 	                  			</div>

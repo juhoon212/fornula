@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 
 public class ExpertController {
 	//전문가 마이페이지(판매관리)
-
 	@RequestMapping(value = "/expertmypage")
 	public String mypage() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
@@ -36,5 +35,12 @@ public class ExpertController {
 	public String output() {
 		log.info("ExpertController 클래스의 output() 메소드 실행");
 		return "expert-output";
+	}
+	
+	//마이페이지(구매관리)
+	@RequestMapping(value = "/membermypage")
+	public String memberMypage() {
+		log.info("ExpertController 클래스의 memberMypage() 메소드 실행");
+		return "expert-mypage";
 	}
 }

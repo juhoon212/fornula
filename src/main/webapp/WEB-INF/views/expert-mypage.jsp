@@ -252,9 +252,9 @@ tr td{
 									<div class="widget" style="text-align: left;" id="list">
 										<h3 class="widget-title">판매 관리</h3>
 										<ul>
-											<li><a type="button" id="expertInput" onclick="inputBtn">전문가 정보 수정</a></li>
-											<li><a href="expertoutput" class="expertOutput">포트폴리오</a></li>
-											<li><a href="expertitem" onlick="location.href='item-add.jsp'" class="expertItem">상품 등록</a></li>
+											<li><a type="button" id="expertInput" href="#" onclick="location.href='expert-input.jsp'">전문가 정보 수정</a></li>
+											<li><a href="expertoutput" class="expertOutput" href="#" onclick="location.href='expert-output.jsp'">포트폴리오</a></li>
+											<li><a href="expertitem" onlick="location.href='item-add.jsp'" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a></li>
 										</ul>
 									</div>
 								</div>
