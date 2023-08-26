@@ -199,13 +199,13 @@ tr td {
 				</div>
 				<div class="col-4">
 					<div class="widget-sidebar story-sidebar">
-						<form action="/member/item" method="post">
+						<form action="/payment/${itemIdx}" method="post" name="PaymentForm">
 							<div class="tagcloud">
 								<div class="widget"
 									style="text-align: left; padding-left: 20px; margin: 0 auto;"
 									id="list">
 									<label>총 결제 금액</label>
-									<p>${price}</p>
+									<p>${payment.price}</p>
 									<hr>
 
 									<input class="check" type="checkbox" name="agree"
@@ -274,6 +274,15 @@ tr td {
 				document.querySelector('#checkSubmit').disabled=true;
 			}
 		}
+		
+
+		 function checkSubmit() {
+			
+		
+		   
+			 PaymentForm.submit();
+		}
+
 	</script>
 </body>
 </html>

@@ -36,11 +36,11 @@
 </head>
 <style>
 #button{
-	display: flex;
-	justify-content: center;
-	align-items center;
-	padding-bottom: 2em;
-	
+   display: flex;
+   justify-content: center;
+   align-items center;
+   padding-bottom: 2em;
+   
 }
 
 #secession {
@@ -275,12 +275,12 @@
 <section>
 <!-- my-page style-->
 <style>
-	.info {
-	margin-bottom: 22px;
-	}
-	
-	/* 박스*/
-	.box {
+   .info {
+   margin-bottom: 22px;
+   }
+   
+   /* 박스*/
+   .box {
   width: 100%;
   height: 50px;
   box-sizing: border-box;
@@ -311,7 +311,7 @@
 }
 
 h3 {
-	font-size : 20px;
+   font-size : 20px;
 }
 
 /* 카테고리 */
@@ -350,7 +350,7 @@ h3 {
         </h3>
         <div class="info" id="info__id">
          <div>
-            <label><input type="checkbox" name="reason" value="cautionreason1"> 이용하고 싶은 서비스가 없어요.</label><br>
+            <label><input type="checkbox" name="reason" value="cautionreason1" checked> 이용하고 싶은 서비스가 없어요.</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason2"> 서비스 퀄리티가 낮아요.</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason3"> 비매너 회원을 만났어요.</label><br>
             <label><input type="checkbox" name="reason" value="cautionreason4"> 기타</label><br>
@@ -363,7 +363,7 @@ h3 {
             <input class="box" type="text" name="id" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
             
           </div>
-          <p align="left" style="color= red;">${member.message }</p>
+          <p align="left" style="color: red;" id="idMessage">${message }</p>
         </div>
         
          <div class="info">
@@ -372,11 +372,13 @@ h3 {
         
           <h3>관심사 분야</h3>
            <div class="info">
-          <label><input type="checkbox" name="caution" value="cautioncheck"> 주의사항을 모두 입력하였습니다.</label><br>
+          <label><input class="check" type="checkbox" 
+          name="caution" value="cautioncheck" onclick="agreeCheck()"> 주의사항을 모두 입력하였습니다.</label><br>
            </div>
           
       <div>
-      <input type="button" value="회원탈퇴" onclick="submitCheck();">
+      <button id="checkSubmit" type="button" onclick="submitCheck();"
+										style="text-align: center;" name="checkBtn" disabled>회원탈퇴</button>
       </div>
  
     </form>     
@@ -479,25 +481,39 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
- <script type="text/javascript">
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function agreeCheck(element) {
+			let checkedbox = document.querySelectorAll('input[class=check]:checked');
+			let cnt = checkedbox.length;
+			
+			if(cnt ==1 ){
+				document.querySelector('#checkSubmit').disabled=false;
+			}else{
+				document.querySelector('#checkSubmit').disabled=true;
+			}
+		}
+		
+		
+ 
  
  function submitCheck() {
-	
-	
-	if(secessionForm.id.value==""){
-		alert("체크해주세요")
-		secessionForm.id.focus();
-		return;
-	}
-	
+	 let h3=document.getElementById("idMessage");
+   
+   if(secessionForm.id.value==""){
+	  h3.innerText="아이디를 입력해주세요";
+      secessionForm.id.focus();
+      return;
+   }
+   
 
-	
-	secessionForm.submit();
+   
+   secessionForm.submit();
 }
 
 
-
+//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
 
 
 
