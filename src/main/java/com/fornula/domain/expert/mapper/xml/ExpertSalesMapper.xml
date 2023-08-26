@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertSalesMapper">
+<mapper namespace="com.fornula.domain.expert.mapper.java.ExpertSalesMapper">
 	<!-- 검색필터를 이용한 검색 -->
 	<select id="selectSearchSalesList" resultMap="ItemSales">
 		select SALES.sales_idx,	

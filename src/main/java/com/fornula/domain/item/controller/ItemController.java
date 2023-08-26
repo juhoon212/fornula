@@ -29,4 +29,11 @@ public class ItemController {
 		log.info("ItemController 클래스의 itemboard() 메소드 실행");
 		return "item-board";
 	}	
+
+	//상품 게시판
+	@RequestMapping(value = "/itemsales")
+	public String itemsales() {
+		log.info("ItemController 클래스의 itemsales() 메소드 실행");
+		return "item-sales";
+	}	
 }
