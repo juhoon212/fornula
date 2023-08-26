@@ -30,34 +30,6 @@
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
-<!-- 
-<script type="text/javascript">
-
-itemForm.price.focus();
-
-function insert(){
-	if(itemForm.price.value==""){
-		alert("가격을 입력해주세요");
-		itemForm.price.focus();
-		return;
-	}
-	
-	if(itemForm.itemName.value=""){
-		alert("상품 제목을 입력해주세요");
-		itemForm.itemName.focus();
-		return;
-	}
-	
-	if(itemForm.itemContent.value=""){
-		alert("상품 내용을 입력해주세요");
-		itemForm.itemContent.focus();
-		return;
-	}
-		
-	itemForm.insert();
-}
-</script>
- -->
 <body class="page page-template-default">
 <jsp:include page="header.jsp" />
 
@@ -74,65 +46,72 @@ function insert(){
                             <div class="form-group row" id="expertIdx">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="세션에서 받아온 전문가번호" aria-required="true"
-                                           required="required" aria-label="Price" name="price" readonly required/>
+                                           required="required" aria-label="Price" name="price" value="${item.expertIdx }" readonly required/>
                                 </div>
 								<div class = "error-msg"></div>
                                 <div class="col" id="price">
                                     <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
-                                           required="required" aria-label="Price" name="price" pattern="\d*" required>
+                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${item.price }" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
                                 <div class="col" id="itemName">
                                     <input type="text" class="form-control" placeholder="상품제목을 입력해주세요" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemName" required>
+                                           required="required" aria-label="Subject" name="itemName" value="${item.itemName}" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row" id="itemContent">
                                 <div class="col">
                                     <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message" name="itemContent" required></textarea>
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${item.itemContent}" required></textarea>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
                                 <div class="col" id="itemIdx">
                                     <input type="text" class="form-control" placeholder="상품번호" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemIdx" readonly required>
+                                           required="required" aria-label="Subject" name="itemIdx" value="${photo.itemIdx} " readonly required>
                                 </div>
                                 <div class = "error-msg"></div>
                                 <div class="col" id="itemfileName">
                                     <input type="text" class="form-control" placeholder="상품 사진 이름" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemfileName" required>
+                                           required="required" aria-label="Subject" name="itemfileName" value="${photo.itemfileName }" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
+        					<section id="upload">
+								<h3>사진 등록</h3>
+								<input class="form-control" type="file" id="formFile"
+									value="${expert.expertfile_name}"> 
+									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PNG 파일로 업로드 해주세요.]</span><br>
+								<p style="color: red;">${message }</p>
+							</section>
                            	<div class="form-group row" id="categoryIdx">                            
 								<div class="col">
                             		<select id="selectCategory" class="form-control">
             							<!-- disabled selected 는 글자 색을 바꾸든 뭐하든 해서 다르게하기 -->
             							<option disabled selected>디자인</option>
-                            			<option value="a">그래픽</option>
-                            			<option value="b">제품</option>
+                            			<option value="1">그래픽</option>
+                            			<option value="2">제품</option>
             							<option disabled selected>번역</option>                            			
-                            			<option value="c">영어</option>
-                            			<option value="d">중국어</option>
+                            			<option value="3">영어</option>
+                            			<option value="4">중국어</option>
             							<option disabled selected>사진 편집</option>                            			
-                            			<option value="e">헤어 메이크업</option>
-                            			<option value="f">제품 홍보 사진</option>
+                            			<option value="5">헤어 메이크업</option>
+                            			<option value="6">제품 홍보 사진</option>
             							<option disabled selected>세무</option>                            			
-                            			<option value="g">사업자</option>
-                            			<option value="h">개인</option>
+                            			<option value="7">사업자</option>
+                            			<option value="8">개인</option>
             							<option disabled selected>마케팅</option>                            			
-                            			<option value="i">SNS 홍보</option>
-                            			<option value="j">해외 마케팅</option>
+                            			<option value="9">SNS 홍보</option>
+                            			<option value="10">해외 마케팅</option>
                             		</select>
                            		</div>
                            		<div class = "error-msg"></div>
                          	</div>
-								<button type="submit">상품등록</button>
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품등록</button>
 						</form>	
 					</div>
 				</div>
