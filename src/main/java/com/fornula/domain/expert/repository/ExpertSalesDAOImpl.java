@@ -15,17 +15,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	private final SqlSession sqlSession;
-	
+	/*
 	@Override
 	public List<ItemSales> selectSearchSalesList(int salesStatus, String salesDate) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).selectSearchSalesList();
 	}
-
+*/
 	@Override
 	public List<ItemSales> selectSalesList() {
 		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList();
 	}
-
+/*
 	@Override
 	public int updateSalesStatus(int salesIdx) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).updateSalesStatus(salesIdx);
@@ -35,5 +35,5 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	public int selectPrice(int salesStatus) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).selectPrice(salesStatus);
 	}
-
+*/
 }

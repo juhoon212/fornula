@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.expert.mapper.xml.ExpertSalesMapper">
-	<!-- 검색필터를 이용한 검색 -->
+	<!--검색필터를 이용한 검색 
 	<select id="selectSearchSalesList" resultType="ItemSales">
 		select SALES.sales_idx,	
 			   SALES.sales_date, 
@@ -14,7 +14,7 @@
 		on ITEM.item_idx = SALES.item_idx
 		where sales_status=#{salesStatus} and sales_date=#{salesDate}
 		order by sales_date
-	</select>
+	</select> -->
 	
 	<!-- 판매내역 출력 -->
 	<select id="selectSalesList" resultType="ItemSales">
@@ -30,14 +30,14 @@
 		order by sales_date
 	</select>
 	
-	<!-- 상태 버튼 클릭시 판매 상태 변경  -->
+<!-- 	 상태 버튼 클릭시 판매 상태 변경 
 	<update id="updateSalesStatus">
 		update sales
 		set sales_status =#{salesStatus}
 		where sales_idx=#{salesIdx}
 	</update>
 	
-	<!-- 구매확정된 총 판매금액 출력 -->
+	구매확정된 총 판매금액 출력
 	<select id="selectPrice" resultType="ItemSales">
 		select SUM(price)
 		from item ITEM
@@ -45,5 +45,5 @@
 		on ITEM.item_idx = SALES.item_idx
 		where SALES.sales_status between 5 and 7
 		
-	</select>
+	</select> -->
 </mapper>

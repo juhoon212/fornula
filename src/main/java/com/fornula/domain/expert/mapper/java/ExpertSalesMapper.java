@@ -8,8 +8,8 @@ import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.Sales;
 
 public interface ExpertSalesMapper {
-	List<ItemSales> selectSearchSalesList();
+	//List<ItemSales> selectSearchSalesList();
 	List<ItemSales> selectSalesList();
-	int updateSalesStatus(int salesIdx);
-	int selectPrice(int itemStatus);
+	//int updateSalesStatus(int salesIdx);
+	//int selectPrice(int itemStatus);
 }
