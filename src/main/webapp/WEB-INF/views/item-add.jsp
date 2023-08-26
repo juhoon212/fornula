@@ -46,12 +46,12 @@
                             <div class="form-group row" id="expertIdx">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="세션에서 받아온 전문가번호" aria-required="true"
-                                           required="required" aria-label="Price" name="price" value="${item.expertIdx }" readonly required/>
+                                           required="required" aria-label="Price" name="expertIdx" value="${item.expertIdx }" readonly required/>
                                 </div>
 								<div class = "error-msg"></div>
                                 <div class="col" id="price">
-                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
-                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${item.price }" required>
+                                    <input type="number" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" value="${item.price }" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
@@ -111,7 +111,8 @@
                            		</div>
                            		<div class = "error-msg"></div>
                          	</div>
-								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품등록</button>
+                         		<!-- 여기서 방금 등록한 item의 상세페이지로 이동하기 위해서 itemIdx(Max)를 찾는 SELECT문을 만들어야 함-->
+								<a id="submit" class="btn btn-primary" style="font-size:20px;" href="#" onclick="location.href='item'">상품등록</a>
 						</form>	
 					</div>
 				</div>

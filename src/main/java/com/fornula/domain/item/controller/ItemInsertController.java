@@ -74,7 +74,7 @@ public class ItemInsertController {
 			return "redirect:/item-/insert";
 		}
 		
-		return "/board";
+		return "/item";
 	}
 //	임시 photoIdx를 진짜 photoIdx로 바꾸기 위한 준비작업(itemIdx뽑아내기)
 //	-> itemIdx를 뽑아내기 위해서 전문가의 로그인 정보(expertIdx)가 저장된 SessionConst를 사용한 상수가 있어야 하는거아님? 
