@@ -254,7 +254,7 @@ tr td{
 										<ul>
 											<li><a type="button" id="expertInput" onclick="inputBtn">전문가 정보 수정</a></li>
 											<li><a href="expertoutput" class="expertOutput">포트폴리오</a></li>
-											<li><a href="expertitem" class="expertItem">상품 등록</a></li>
+											<li><a href="expertitem" onlick="location.href='item-add.jsp'" class="expertItem">상품 등록</a></li>
 										</ul>
 									</div>
 								</div>

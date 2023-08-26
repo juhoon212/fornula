@@ -23,4 +23,11 @@ public class ExpertController {
 		log.info("ExpertController 클래스의 input() 메소드 실행");
 		return "expert-input";
 	}
+	
+	//전문가 정보수정 페이지 
+	@RequestMapping(value = "/expertitem")
+	public String item() {
+		log.info("ExpertController 클래스의 item() 메소드 실행");
+		return "expert-item";
+	}
 }
