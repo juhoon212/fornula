@@ -1,5 +1,7 @@
 package com.fornula.domain.item.dto;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 
 /*
@@ -17,6 +19,7 @@ PHOTO_IDX	 NOT NULL NUMBER
  */
 
 @Data
+@Component
 public class Item {
 	private int itemIdx;
 	private int categoryIdx;

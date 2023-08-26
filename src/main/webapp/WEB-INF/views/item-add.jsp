@@ -41,52 +41,85 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-
-                        <form id="contactform" class="contact-form mt-5">
-                            <div class="form-group row">
+                     
+                        <form class="contact-form mt-5" method="post">
+                            <div class="form-group row" id="expertIdx">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="이름" aria-required="true"
-                                           required="required" aria-label="Name">
+                                    <input type="text" class="form-control" placeholder="세션에서 받아온 전문가번호" aria-required="true"
+                                           required="required" aria-label="Price" name="price" value="${item.expertIdx }" readonly required/>
                                 </div>
-                                <div class="col">
-                                    <input type="email" class="form-control" placeholder="이메일" aria-required="true"
-                                           required="required" aria-label="Email">
+								<div class = "error-msg"></div>
+                                <div class="col" id="price">
+                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" pattern="\d*" value="${item.price }" required>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
-                                           required="required" aria-label="Subject">
+                                <div class="col" id="itemName">
+                                    <input type="text" class="form-control" placeholder="상품제목을 입력해주세요" aria-required="true"
+                                           required="required" aria-label="Subject" name="itemName" value="${item.itemName}" required>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" id="itemContent">
                                 <div class="col">
                                     <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message"></textarea>
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${item.itemContent}" required></textarea>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
-                            <div class="item_photo upload">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="여기다가 업로드기능"
-                                              aria-required="true" required="required" aria-label="Photo"></input>
+                            <div class="form-group row">
+                                <div class="col" id="itemIdx">
+                                    <input type="text" class="form-control" placeholder="상품번호" aria-required="true"
+                                           required="required" aria-label="Subject" name="itemIdx" value="${photo.itemIdx} " readonly required>
                                 </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col">
-                                    <input name="submit" type="submit" id="submit"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="상품등록">
+                                <div class = "error-msg"></div>
+                                <div class="col" id="itemfileName">
+                                    <input type="text" class="form-control" placeholder="상품 사진 이름" aria-required="true"
+                                           required="required" aria-label="Subject" name="itemfileName" value="${photo.itemfileName }" required>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        					<section id="upload">
+								<h3>사진 등록</h3>
+								<input class="form-control" type="file" id="formFile"
+									value="${expert.expertfile_name}"> 
+									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PNG 파일로 업로드 해주세요.]</span><br>
+								<p style="color: red;">${message }</p>
+							</section>
+                           	<div class="form-group row" id="categoryIdx">                            
+								<div class="col">
+                            		<select id="selectCategory" class="form-control">
+            							<!-- disabled selected 는 글자 색을 바꾸든 뭐하든 해서 다르게하기 -->
+            							<option disabled selected>디자인</option>
+                            			<option value="1">그래픽</option>
+                            			<option value="2">제품</option>
+            							<option disabled selected>번역</option>                            			
+                            			<option value="3">영어</option>
+                            			<option value="4">중국어</option>
+            							<option disabled selected>사진 편집</option>                            			
+                            			<option value="5">헤어 메이크업</option>
+                            			<option value="6">제품 홍보 사진</option>
+            							<option disabled selected>세무</option>                            			
+                            			<option value="7">사업자</option>
+                            			<option value="8">개인</option>
+            							<option disabled selected>마케팅</option>                            			
+                            			<option value="9">SNS 홍보</option>
+                            			<option value="10">해외 마케팅</option>
+                            		</select>
+                           		</div>
+                           		<div class = "error-msg"></div>
+                         	</div>
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품등록</button>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main> 
 <jsp:include page="footer.jsp"/>
- 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -97,5 +130,7 @@
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+<script type="text/javascript">
+</script>
 </body>
 </html>
