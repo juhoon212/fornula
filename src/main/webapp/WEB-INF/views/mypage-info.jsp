@@ -366,13 +366,18 @@ h3 {
           <input class="box" type="text" placeholder="01012345678" readonly="readonly"/>
           
         </div>
-        <h3>관심사 분야</h3>
-       <div class="info" id="info__category">
+            <h3>관심사</h3>
+        <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big">
+            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
               <option disabled selected>대 카테고리</option>
+              <option value = "a">디자인</option>
+              <option value = "b">번역</option>
+              <option value = "c">사진 편집</option>
+              <option value = "d">세무</option>
+              <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="category-middle">
+            <select class="box" id="mcategory1" name = "categoryOne">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -380,10 +385,15 @@ h3 {
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big">
+            <select class="box" id="category-big2" onchange = "categorySelect2(this)">
               <option disabled selected>대 카테고리</option>
+              <option value = "a">디자인</option>
+              <option value = "b">번역</option>
+              <option value = "c">사진 편집</option>
+              <option value = "d">세무</option>
+              <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="category-middle">
+            <select class="box" id="mcategory2" name = "categoryTwo">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -391,14 +401,18 @@ h3 {
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big">
+            <select class="box" id="category-big3" onchange = "categorySelect3(this)">
               <option disabled selected>대 카테고리</option>
+              <option value = "a">디자인</option>
+              <option value = "b">번역</option>
+              <option value = "c">사진 편집</option>
+              <option value = "d">세무</option>
+              <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="category-middle">
+            <select class="box" id="mcategory3" name = "categoryThree">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
-          <div class="error-msg"></div>
         </div>
 
         
@@ -436,10 +450,10 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                        <li><a href="#">전문가 정보</a></li>
-                        <li><a href="#">구매 관리</a></li>
-                        <li><a href="#">비밀번호 변경</a></li>
-                        <li><a href="#">회원 탈퇴</a></li>
+                    <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                        <li><a href="<c:url value="/mypage-purchase"/>">구매 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
                
@@ -510,8 +524,127 @@ h3 {
 
 <script type="text/javascript">
  
+	 /** 카테고리  */
+	 function categorySelect1(e) {
+	     var design = ["그래픽", "제품"];
+	     var language = ["영어", "중국어"];
+	     var hair = ["헤어메이크업", "제품홍보사진"];
+	     var tax = ["사업자", "개인"];
+	     var marketing = ["SNS홍보", "해외마케팅"];
+	     var target = document.getElementById("mcategory1");
+
+	     if(e.value == "a") {
+	       var z = design;
+	       var index=1;
+	    }
+	     else if(e.value == "b") {
+	       var z = language;
+	       var index=3;
+	    }
+	     else if(e.value == "c") {
+	        var z = hair;
+	        var index=5;   
+	    }   
+	     else if(e.value == "d") {
+	       var z = tax;
+	        var index=7;   
+	    }
+	     else if(e.value == "e") {
+	       var z = marketing;
+	        var index=9;   
+	    }
+	     target.options.length = 0;
+
+	     for (x in z) {
+	         var opt = document.createElement("option");        
+	         opt.innerHTML = z[x];
+	         target.appendChild(opt);
+	         opt.value = parseInt(index) + parseInt(x);
+	     }
+	 }
+
+	 /** 카테고리  */
+	 function categorySelect2(e) {
+	     var design = ["그래픽", "제품"];
+	     var language = ["영어", "중국어"];
+	     var hair = ["헤어메이크업", "제품홍보사진"];
+	     var tax = ["사업자", "개인"];
+	     var marketing = ["SNS홍보", "해외마케팅"];
+	     var target = document.getElementById("mcategory2");
+
+	     if(e.value == "a") {
+	       var z = design;
+	       var index=1;
+	    }
+	     else if(e.value == "b") {
+	       var z = language;
+	       var index=3;
+	    }
+	     else if(e.value == "c") {
+	        var z = hair;
+	        var index=5;   
+	    }   
+	     else if(e.value == "d") {
+	       var z = tax;
+	        var index=7;   
+	    }
+	     else if(e.value == "e") {
+	       var z = marketing;
+	        var index=9;   
+	    }
+	     target.options.length = 0;
+
+	     for (x in z) {
+	         var opt = document.createElement("option");        
+	         opt.innerHTML = z[x];
+	         target.appendChild(opt);
+	         opt.value = parseInt(index) + parseInt(x);
+	     }
+	 }
+
+	 /** 카테고리  */
+	 function categorySelect3(e) {
+	     var design = ["그래픽", "제품"];
+	     var language = ["영어", "중국어"];
+	     var hair = ["헤어메이크업", "제품홍보사진"];
+	     var tax = ["사업자", "개인"];
+	     var marketing = ["SNS홍보", "해외마케팅"];
+	     var target = document.getElementById("mcategory3");
+
+	     if(e.value == "a") {
+	       var z = design;
+	       var index=1;
+	    }
+	     else if(e.value == "b") {
+	       var z = language;
+	       var index=3;
+	    }
+	     else if(e.value == "c") {
+	        var z = hair;
+	        var index=5;   
+	    }   
+	     else if(e.value == "d") {
+	       var z = tax;
+	        var index=7;   
+	    }
+	     else if(e.value == "e") {
+	       var z = marketing;
+	        var index=9;   
+	    }
+	     target.options.length = 0;
+
+	     for (x in z) {
+	         var opt = document.createElement("option");
+	         opt.innerHTML = z[x];
+	         target.appendChild(opt);
+	         opt.value = parseInt(index) + parseInt(x);
+	     }
+	 }
+	 
  function submitCheck() {
-	
+
+
+	 
 	//관심사받기
 	if(infoForm.id.value==""){
 		alert("체크해주세요")
@@ -524,8 +657,7 @@ h3 {
 	infoForm.submit();
 }
 
-//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
-//<민환> 회원관심사 드롭다운에 value값 넣어주세요.
+
 
 
 
