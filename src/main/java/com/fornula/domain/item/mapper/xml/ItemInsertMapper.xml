@@ -38,9 +38,10 @@
 	</insert>
 	
 	<!-- 상품 등록 페이지에서 사용할 SQL문(사진 파일 이름만) -->
+	<!-- 컨트롤러에서 가져온 itemIdx랑 비교해야 함 -->
 	<update id="updateItemPhoto">
 		update item set
 			photoIdx=PHOTO.photoIdx
-		where itemIdx=ITEM.itemIdx
+		where itemIdx=#{itemIdx}
 	</update>	 
 </mapper>

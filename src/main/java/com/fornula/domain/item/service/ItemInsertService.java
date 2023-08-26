@@ -1,5 +1,6 @@
 package com.fornula.domain.item.service;
 
+import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 
@@ -7,5 +8,5 @@ public interface ItemInsertService {
 	int addItem(Item item);
 	Item getItemIdx(int expertIdx);
 	int addPhoto(Photo photo);
-	int modifyItemPhoto(int itemIdx,int newPhotoIdx);
+	int modifyItemPhoto(int itemIdx);
 }

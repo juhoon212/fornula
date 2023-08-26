@@ -37,8 +37,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
-	private final Expert expert;
-	private final Item item;
 	private final WebApplicationContext context;
 //	이 필드는 밑 메소드에서 사진 업로드 기능을 사용해 itemFileName을 받은 뒤 PHOTO 테이블에 행을 삽입할 때 사용하기 위해서 저장한 것 -> mapper.xml에서 SQL 수정도 해야함
 	private String itemFileName;
@@ -61,7 +59,6 @@ public class ItemInsertController {
 		item=new Item();
 		
 		item.setExpertIdx(item.getExpertIdx());
-//		ITEM 테이블에 행을 삽입할 때 발급받은 expertIdx와 동일한 expert 
 		item.setPrice(item.getPrice());
 		item.setItemName(item.getItemName());
 		item.setItemContent(item.getItemContent());
@@ -104,14 +101,14 @@ public class ItemInsertController {
 	*/
 	
 //	사진(png 파일)을 받는 기능+PHOTO 테이블에 행 추가, 예외 클래스 필요하면 만들기
-	@PostMapping("/add")
+	@PostMapping("/addphoto")
 	public String addphoto(@ModelAttribute Photo photo, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException,IOException {
 		
 		log.info("아이템등록시 필요한 사진 업로드");
 		log.info("{}",uploadFile);
 		log.info("{}",photo);
 //		uploadFile이 PNG가 아닐 경우 / #/png 이게 맞나?
-		if(!uploadFile.getContentType().equals("#/png")) {
+		if(!uploadFile.getContentType().equals("/png")) {
 			log.info("업로드 파일 검사중...");
 			model.addAttribute("message","PNG 파일만 업로드 해주세요");
 			return "item-add";
@@ -135,7 +132,7 @@ public class ItemInsertController {
 		try {
 			uploadFile.transferTo(new File(uploadDirectory,itemFileName));
 			System.out.println("파일 업로드 성공");
-		} catch (IllegalStateException | IOException e) {
+		} catch (IOException e) {
 			System.out.println("파일 업로드 실패");
 			e.printStackTrace();
 		}
@@ -146,5 +143,15 @@ public class ItemInsertController {
 	}	
 	
 //	임시값으로 줘놓은 ITEM 테이블의 photo_idx를 이제 PHOTO 테이블의 photo_idx로 바꾸기
-//	public int 이거 나 지금 나가야해서 내가 하ㄱ든가 함 modifyItemPhoto에 관한 내용  
+	@PostMapping(value="/addphotoidx")
+	public String modifyItemPhoto(@RequestParam int itemIdx){
+		log.info("ITEM 테이블에 임시값으로 줘 놓은 photoIdx를 진짜 photoIdx로 부여하는 작업");
+		
+		try {
+			itemInsertService.modifyItemPhoto(itemIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "item-board";
+	}	
 }

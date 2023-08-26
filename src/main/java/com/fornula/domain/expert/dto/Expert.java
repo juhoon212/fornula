@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.dto;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,7 @@ EXPERTFILE_NAME          VARCHAR2(100)  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class Expert {
 	private int expertIdx;
 	private int memberIdx;

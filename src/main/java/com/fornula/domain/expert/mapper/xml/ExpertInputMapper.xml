@@ -49,7 +49,7 @@
 			 #{expertfile_name})
 	</insert>
 	
-	<select id="selectExpertItemCount">
+	<select id="selectExpertItemCount" resultType="Item">
 		select count(*)
 		from item
 	</select>
