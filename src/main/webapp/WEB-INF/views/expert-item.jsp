@@ -135,13 +135,15 @@ h3 {
                     <div class="tagcloud">
 						<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a></div>
 						<div class="row" >
+						<!--  에러메세지 -->
+						<div class="error-message"></div>
 					<div class="widget">
                     	<h3 class="widget-title">메뉴</h3>
                     	<ul>
                         	<li><a href="#">전문가 정보 수정/등록</a></li>
                         	<li><a href="#">판매 관리</a></li>
                         	<li><a href="#">나의 포트폴리오</a></li>
-                        	<li><a href="#">상품 등록</a></li>
+                        	<li><a href="<c:url value="/expert/item/${expertId}"/>">상품 등록</a></li>
                     	</ul>
 					</div>
                   </div>

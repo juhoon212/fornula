@@ -26,4 +26,12 @@
 		where MEMBER.member_idx=EXPERT.member_idx
 			and expert_idx=#{expertIdx}	
 	</select>
+	
+	<select id="findByMemberIdx" resultType="Expert">
+		select expert_idx
+		from member join expert on member.member_idx = expert.expert_idx
+		where member.member_idx = #{member_idx}
+	</select>
+	
+	
 </mapper>

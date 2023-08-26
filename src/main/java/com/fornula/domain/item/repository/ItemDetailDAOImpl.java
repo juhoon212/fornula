@@ -3,6 +3,7 @@ package com.fornula.domain.item.repository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.itemdetail.ExpertMember;
 import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
@@ -24,4 +25,9 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public ExpertMember selectItemExpert(int expertIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectItemExpert(expertIdx);
 	}
+	@Override
+	public Expert findByMemberIdx(int memberIdx) {
+		return sqlSession.getMapper(ItemDetailMapper.class).findByMemberIdx(memberIdx);
+	}
+	
 }
