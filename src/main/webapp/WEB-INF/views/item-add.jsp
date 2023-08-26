@@ -42,51 +42,45 @@
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
                      
-                        <form class="contact-form mt-5" method="post">
+                        <form class="contact-form mt-5" method="post" action="/item/add">
                             <div class="form-group row" id="expertIdx">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="세션에서 받아온 전문가번호" aria-required="true"
-                                           required="required" aria-label="Price" name="expertIdx" value="${item.expertIdx }" readonly required/>
+                                           required="required" aria-label="Price" name="expertIdx" value="${expertIdx}" readonly required/>
                                 </div>
 								<div class = "error-msg"></div>
                                 <div class="col" id="price">
-                                    <input type="number" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
-                                           required="required" aria-label="Price" name="price" value="${item.price }" required>
+                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" pattern="\d*" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
                                 <div class="col" id="itemName">
                                     <input type="text" class="form-control" placeholder="상품제목을 입력해주세요" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemName" value="${item.itemName}" required>
+                                           required="required" aria-label="Subject" name="itemName" required>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row" id="itemContent">
                                 <div class="col">
                                     <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message" name="itemContent" value="${item.itemContent}" required></textarea>
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" required></textarea>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
                                 <div class="col" id="itemIdx">
                                     <input type="text" class="form-control" placeholder="상품번호" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemIdx" value="${photo.itemIdx} " readonly required>
+                                           required="required" aria-label="Subject" name="itemIdx" readonly required>
                                 </div>
-                                <div class = "error-msg"></div>
-                                <div class="col" id="itemfileName">
-                                    <input type="text" class="form-control" placeholder="상품 사진 이름" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemfileName" value="${photo.itemfileName }" required>
-                                </div>
-                                <div class = "error-msg"></div>
                             </div>
         					<section id="upload">
 								<h3>사진 등록</h3>
 								<input class="form-control" type="file" id="formFile"
 									value="${expert.expertfile_name}"> 
 									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PNG 파일로 업로드 해주세요.]</span><br>
-								<p style="color: red;">${message }</p>
+								<p style="color: red;">${message}</p>
 							</section>
                            	<div class="form-group row" id="categoryIdx">                            
 								<div class="col">
@@ -111,8 +105,7 @@
                            		</div>
                            		<div class = "error-msg"></div>
                          	</div>
-                         		<!-- 여기서 방금 등록한 item의 상세페이지로 이동하기 위해서 itemIdx(Max)를 찾는 SELECT문을 만들어야 함-->
-								<a id="submit" class="btn btn-primary" style="font-size:20px;" href="#" onclick="location.href='item'">상품등록</a>
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품등록</button>
 						</form>	
 					</div>
 				</div>

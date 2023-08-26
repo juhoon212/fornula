@@ -145,15 +145,12 @@ tr td {
 											<div
 												class="card-body h-100 d-flex align-items-start flex-column">
 												<ul class="post-meta">
-													<li><a href="single.html">판매일자 월, 일, 년도</a></li>
-													<li><a href="#">주문상태</a></li>
 												</ul>
 												<p class="post-text card-text">
-												<h6 class="post-title card-title">판매번호</h6>
 												<h4 class="post-title card-title">
-													<a href="single.html">게시물이름</a>
+													<a href="single.html">${payment.itemName}</a>
 												</h4>
-												<p class="subtitle">상품설명</p>
+												<p class="subtitle">${payment.itemContent}</p>
 
 												<div
 													class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">

@@ -35,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/item")
 public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
 	private final WebApplicationContext context;
@@ -51,18 +52,18 @@ public class ItemInsertController {
 	}
 	
 //	상품등록(photoIdx는 임시값 부여)
-	@RequestMapping(value="/iteminsert", method=RequestMethod.POST)
-	public String insert(@ModelAttribute Item item,RedirectAttributes redirectAttributes) {
+	@PostMapping("/add")
+	public String insert(@ModelAttribute Item itemForm,RedirectAttributes redirectAttributes) {
 		
 		log.info("Item테이블에 행 삽입(photoIdx는 임시값임)");
 		
-		item=new Item();
+		Item item = new Item();
 		
-		item.setExpertIdx(item.getExpertIdx());
-		item.setPrice(item.getPrice());
-		item.setItemName(item.getItemName());
-		item.setItemContent(item.getItemContent());
-		item.setCategoryIdx(item.getCategoryIdx());
+		item.setExpertIdx(itemForm.getExpertIdx());
+		item.setPrice(itemForm.getPrice());
+		item.setItemName(itemForm.getItemName());
+		item.setItemContent(itemForm.getItemContent());
+		item.setCategoryIdx(itemForm.getCategoryIdx());
 		item.setPhotoIdx(item.getPhotoIdx());
 		
 		log.info("Item테이블에 행 삽입된 내용 {}",item);
@@ -71,7 +72,7 @@ public class ItemInsertController {
 		
 		if(result==0) {
 			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
-			return "redirect:/item-/insert";
+			return "redirect:/item/add";
 		}
 		
 		return "/item";
@@ -102,11 +103,11 @@ public class ItemInsertController {
 	
 //	사진(png 파일)을 받는 기능+PHOTO 테이블에 행 추가, 예외 클래스 필요하면 만들기
 	@PostMapping("/addphoto")
-	public String addphoto(@ModelAttribute Photo photo, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException,IOException {
+	public String addphoto(@ModelAttribute Photo photo, @RequestParam MultipartFile uploadFile, Model model) throws IOException {
 		
 		log.info("아이템등록시 필요한 사진 업로드");
-		log.info("{}",uploadFile);
-		log.info("{}",photo);
+		log.info("{uploadFile = {}",uploadFile);
+		log.info("photo = {}",photo);
 //		uploadFile이 PNG가 아닐 경우 / #/png 이게 맞나?
 		if(!uploadFile.getContentType().equals("/png")) {
 			log.info("업로드 파일 검사중...");

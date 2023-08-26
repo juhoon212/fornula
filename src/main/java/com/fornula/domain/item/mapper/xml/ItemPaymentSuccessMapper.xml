@@ -15,6 +15,7 @@
 		<!-- where item_idx = #{itemIdx} -->
 	</insert>
 	
+	<!-- salesIdx에러 -->
 	<insert id="insertSalesItem" useGeneratedKeys="true" >
 		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE" >
 			select sales_seq.nextval from dual

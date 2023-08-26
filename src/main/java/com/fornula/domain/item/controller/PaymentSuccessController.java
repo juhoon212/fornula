@@ -37,7 +37,9 @@ public class PaymentSuccessController {
 			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 			log.info("member.getId() = {}", member.getId());
 			
+			//sales 테이블에서 오류남.
 			//service.itemPaymentSuccess(itemIdx);
+			//nullpointerexcepion 에러 잡기(디비값)
 		    service.itemPaymentSuccess(itemIdx,member.getMemberIdx());
 			 
 		    
