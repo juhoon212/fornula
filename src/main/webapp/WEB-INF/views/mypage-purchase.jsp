@@ -306,8 +306,6 @@
                                 <h4 class="post-title card-title"><a href="single.html">${itemMypage.itemName}</a>
                                 </h4>
                                 <p class="subtitle">${itemMypage.itemContent}</p>
-                                    
-                                </p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
                                    
