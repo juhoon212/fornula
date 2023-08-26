@@ -118,32 +118,36 @@ h3 {
 <main class="main container">
 <div class="row">
 	<div class="col-12 col-lg-8">
-		<div class="widget">     
-			<div class="story-posts">              
-				<section>	
-					<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-						<div class="widget-sidebar story-sidebar">   
-				            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-				               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
-								<div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a></div>
-									<div class="widget widget_tag_cloud">
-				                    <div class="tagcloud">
-										<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a></div>
-										<div class="row" >
-									<div class="widget">
-				                    	<h3 class="widget-title">메뉴</h3>
-				                    	<ul>
-				                        	<li><a href="#">전문가 정보 수정/등록</a></li>
-				                        	<li><a href="#">판매 관리</a></li>
-				                        	<li><a href="#">나의 포트폴리오</a></li>
-				                        	<li><a href="#">상품 등록</a></li>
-				                    	</ul>
-									</div>
-				                  </div>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
+		 <div>
+        	<input class="box" type="text" style="height:800px"
+        	placeholder="사기치면 지옥 끝까지 쫓아감" readonly/>
+   			<button type="button" onclick="location.href='itemadd'">상품등록</button> 
+        </div>
+    </div>
+	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+			<div class="widget-sidebar story-sidebar">   
+	            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
+	               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
+					<div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a></div>
+						<div class="widget widget_tag_cloud">
+	                    <div class="tagcloud">
+							<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a></div>
+							<div class="row" >
+						<div class="widget">
+	                    	<h3 class="widget-title">메뉴</h3>
+	                    	<ul>
+	                        	<li><a href="#">전문가 정보 수정/등록</a></li>
+	                        	<li><a href="#">판매 관리</a></li>
+	                        	<li><a href="#">나의 포트폴리오</a></li>
+	                        	<li><a href="#">상품 등록</a></li>
+	                    	</ul>
+						</div>
+	                  </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
 </main>
 <jsp:include page="footer.jsp"/>
 

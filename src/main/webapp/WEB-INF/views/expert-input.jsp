@@ -222,10 +222,10 @@ h3 {
 		</div>
 		
 		<div class="error-msg"></div>    
-      <div id="change-complete"></div>
+      	<div id="change-complete"></div>
       -->
-      <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 -->
-      <button type="button" href="expert-output">수정완료</button> 
+      <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 근데 이제 조건 덕지덕지 붙여야지-->
+	  <button type="button" onclick="location.href='expertoutput'">상품등록</button> 
 </section>
 </form>
 </div>

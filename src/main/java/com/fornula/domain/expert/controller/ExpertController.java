@@ -24,10 +24,17 @@ public class ExpertController {
 		return "expert-input";
 	}
 	
-	//전문가 정보수정 페이지 
+	//전문가 상품등록전 보여줄 경고문 
 	@RequestMapping(value = "/expertitem")
 	public String item() {
 		log.info("ExpertController 클래스의 item() 메소드 실행");
 		return "expert-item";
+	}
+	
+	//전문가 포폴 출력페이지 
+	@RequestMapping(value = "/expertoutput")
+	public String output() {
+		log.info("ExpertController 클래스의 output() 메소드 실행");
+		return "expert-output";
 	}
 }
