@@ -1,11 +1,11 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-나의정보</title>
+    <title>관리자-회원 관리</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -276,7 +276,7 @@
 	margin-bottom: 22px;
 	}
 	
-	/* 박스* /
+	/* 박스*/
 	.box {
   width: 100%;
   height: 50px;
@@ -310,94 +310,128 @@
 h3 {
 	font-size : 20px;
 }
-/* 비밀번호 설정*/
 
-.area {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-content: stretch;
-    justify-content: space-between;
+/* 카테고리 */
+.info#info__category #category-flex {
+  display: flex;
+}
+.info#info__category select {
+  margin-left : 7px;
+  color: #a0a0a0;
+}
+
+.info#info__category select:first-child {
+  margin-left : 0px;
+}
+
+.info#info__category select::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info#info__category select::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 3px;
+}
+
+.info#info__category select::-webkit-scrollbar-track {
+  background-color: #ebe9e9;
+  border-radius: 6px;
+}
+
+table {
+  width: 680px;
+  text-align: center;
+  border: 1px solid #fff;
+  border-spacing: 1px;
+margin: auto;
 }
 
 
-.pwname {
-    display: flex;
-    margin-bottom: 8px;
-    position: relative;
-    -webkit-box-align: center;
-    align-items: center;
+table td {
+  padding: 10px;
+  background-color: #d9d6d6;
 }
 
-.resetbox {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-content: stretch;
-    justify-content: space-between;
+table th {
+  background-color: #beb9b9bc;
+  color: #fff;
+  padding: 10px;
 }
 
-.pwrb{
-    outline: none;
-    flex: 1 1 0%;
-    width: 100%;
-    background-image: none;
-    box-sizing: border-box;
-    font-size: inherit;
-    border: none;
-    font-weight: inherit;
-    background-color: transparent;
-    text-align: left;
-    color: inherit;
-    padding: 0px;
+
+.delete {
+
+  border: none;
+  padding: 5px 10px;
+  color: #000;
+  font-weight: bold;
 }
-.pwrbt {
-    width: 100%;
-    border: 1px solid rgb(228, 229, 237);
-    border-radius: 8px;
-    transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s;
-    display: inline-flex;
-    column-gap: 8px;
-    flex-direction: row;
-    overflow: hidden;
-    cursor: text;
-    background-color: rgb(255, 255, 255);
-    color: rgb(33, 34, 36);
-    height: 42px;
-    font-size: 14px;
-    padding: 0px 12px;
-    min-width: 64px;
+
+
+
+.delete {
+  background-color: #ffffff;
+  border-radius : 20px;
+  border: 1px solid #ffb32f;
+}
+.tablefoot {
+  padding: 0;
+  border-bottom: 3px solid #d9d6d6;
 }
 
 </style>
 <!-- 스타일 태그 끝 -->
-    <form name="passwordForm" method="post" action="mypagePwchange">
-       <h3>현재 비밀번호</h3>
-        <div class="info" id="info__pw">
-          <input class="box" name="password" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
-        </div>
-        <div class="area">
-        	<label class="pwname">
-        		<span> 변경할 비밀번호</span>
-        	</label>
-        	<label class="pwname">
-        		<span> 한번 더 입력</span>
-        	</label>
-        	<input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
-        	<input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
+   <form name="infoForm" method="post" action="/mypageInfo">
+        <label>
+        회원 관리
+        </label>
         
-        
-        	
-        	
-        </div>
-      
-       
-        
-        
-        
-      <div id="join"></div>
-      <input type="button" value="변경하기" onclick="submitCheck();">
-   </form>
+         <table>
+    
+    <thead>
+        <tr>
+            <th>회원 번호</th>
+            <th>id</th>
+            <th>회원 등급</th>
+            <th>가입 날짜</th>
+            <th>관리</th>
+        </tr>
+    </thead>
+    	
+    		<tr>
+    		<td>1</td>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td><button class="delete">탈퇴</button> </td>
+    		
+    		</tr>
+    	
+  
+    
+    <tfoot>
+        <td colspan="5" class="tablefoot"></td>
+    </tfoot>
+</table>
+    
+    		
+
+						<nav
+							class="navigation pagination justify-content-between text-uppercase"
+							role="navigation">
+							<a class="prev disabled" href="#"> Prev </a>
+							<div class="nav-links">
+								<ul class="page-numbers">
+									<li><span aria-current="page" class="page-numbers current">1</span></li>
+									<li><a class="page-numbers" href="#">2</a></li>
+									<li><span class="page-numbers dots">…</span></li>
+									<li><a class="page-numbers" href="#">4</a></li>
+								</ul>
+							</div>
+							<a class="next" href="#"> Next </a>
+						</nav>
+					
+    </form>
 </section>
         
                   </div>
@@ -412,26 +446,21 @@ h3 {
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">관리자</a>
                        
                   
                </div>
                <div class="widget widget_tag_cloud">
                   
                     <div class="tagcloud">
-                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">전문가로 전환</a>
-                       
                   
-               </div>
             <div class="row" >
                 <div class="widget">
-                    <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                       <li><a href="<c:url value="/"/>">전문가 정보</a></li>
-                        <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
-                        <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
+                    <li><a href="<c:url value="/admin/user"/>">회원 관리</a></li>
+                        <li><a href="<c:url value="/admin/item"/>">상품 관리</a></li>
+                      
                     </ul>
                 </div>
                
@@ -502,35 +531,12 @@ h3 {
 
 <script type="text/javascript">
  
- function submitCheck() {
 	
-	
-	if(passwordForm.password.value==""){
-		alert("비밀번호 입력해주세요")
-		passwordForm.password.focus();
-		return;
-	}
-	
-	if(passwordForm.password.value==""){
-		alert("비밀번호 입력해주세요")
-		passwordForm.password.focus();
-		return;
-	}
-	
-	
-	
-
-	
-	passwordForm.submit();
-}
-
-
-
-
 
 
 
 
  </script>
+
 </body>
 </html>
