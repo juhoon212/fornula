@@ -47,7 +47,7 @@ public class ExpertJoinController {
 	@PostMapping("/expertjoin")
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException, IOException {
 
-		log.info("매핑 실행");
+		log.info("expert:{}",expert);
 		System.out.println(uploadFile);
 		System.out.println(expert);
 
@@ -64,7 +64,7 @@ public class ExpertJoinController {
 		
 		//업로드된 파일이 pdf 파일이 아닐 경우
 		if (!uploadFile.getContentType().equals("application/pdf")) {
-			log.info("파일 업로드 검증 중");
+			log.info("file:{}",uploadFile);
 			model.addAttribute("message","pdf 파일만 업로드해주세요.");
 			return "redirect:/expert-join";
 		}else if(uploadFile.isEmpty()) {

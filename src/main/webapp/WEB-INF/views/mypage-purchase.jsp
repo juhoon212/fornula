@@ -298,23 +298,20 @@
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">구매일자 월 일, 년도</a></li>
-                                    <li><a href="#">주문상태</a></li>
+                                    <li><a href="single.html">${purchaseMypage.purchaseDate}</a></li>
+                                    <li><a href="#">${purchaseMypage.purchaseStatus} </a></li>
                                 </ul>
                                 <p class="post-text card-text">
-                                <h6 class="post-title card-title">구매번호</h6>
-                                <h4 class="post-title card-title"><a href="single.html">게시물이름</a></h4>
-                                <p class="subtitle">
-                  상품설명
-                </p>
-                                    
-                                </p>
+                                <h6 class="post-title card-title">${purchaseMypage.purchaseIdx}</h6>
+                                <h4 class="post-title card-title"><a href="single.html">${itemMypage.itemName}</a>
+                                </h4>
+                                <p class="subtitle">${itemMypage.itemContent}</p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
                                    
                                         <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
                                              class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                                        By: <a href="#" class="author-link card-link">판매자</a>
+                                        By: <a href="#" class="author-link card-link">${member.id}</a>
                                     </div>
                                     
                                     <a href="single.html" class="more-link card-link d-flex align-items-center">
@@ -442,6 +439,8 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+
+
 
 </body>
 </html>

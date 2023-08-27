@@ -1,8 +1,10 @@
 package com.fornula.domain.item.dto;
 
-import org.springframework.stereotype.Component;
+import lombok.AllArgsConstructor;
+
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
   이름           널?       유형             
@@ -19,7 +21,8 @@ PHOTO_IDX	 NOT NULL NUMBER
  */
 
 @Data
-@Component
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 	private int itemIdx;
 	private int categoryIdx;
