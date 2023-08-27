@@ -375,21 +375,21 @@ h3 {
        <h3>현재 비밀번호</h3>
         <div class="info" id="info__pw">
           <input class="box" name="password" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
-          <p align="left" style="color: red;" id="password">${message }</p>
         </div>
-       
+        <div class="area">
         	<label class="pwname">
         		<span> 변경할 비밀번호</span>
         	</label>
-        	<input class="box" type="password" name="newPassword" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/><br>
-        	<p align="left" style="color: red;" id="newPassword">${message }</p>
         	<label class="pwname">
         		<span> 한번 더 입력</span>
         	</label>
-        	<input class="box" type="password" name="reNewPassword" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/><br>
-        	<p align="left" style="color: red;" id="reNewPassword">${message }</p>
-
-      
+        	<input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
+        	<input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)"/>
+        
+        
+        	
+        	
+        </div>
       
        
         
@@ -397,7 +397,6 @@ h3 {
         
       <div id="join"></div>
       <input type="button" value="변경하기" onclick="submitCheck();">
-   
    </form>
 </section>
         
@@ -429,10 +428,10 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                        <li><a href="#">전문가 정보</a></li>
-                        <li><a href="#">구매 관리</a></li>
-                        <li><a href="#">비밀번호 변경</a></li>
-                        <li><a href="#">회원 탈퇴</a></li>
+                       <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                        <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
                
@@ -504,41 +503,29 @@ h3 {
 <script type="text/javascript">
  
  function submitCheck() {
-	 
-	 let h1=document.getElementById("password");
-	 let h2=document.getElementById("newPassword");
-	 let h3=document.getElementById("reNewPassword");
-	 
+	
+	
 	if(passwordForm.password.value==""){
-		h1.innerText="현재 비밀번호를 입력해주세요";
+		alert("비밀번호 입력해주세요")
 		passwordForm.password.focus();
 		return;
 	}
 	
-	if(passwordForm.newPassword.value==""){
-		h2.innerText="변경할 비밀번호를 입력해주세요";
-		passwordForm.newPassword.focus();
+	if(passwordForm.password.value==""){
+		alert("비밀번호 입력해주세요")
+		passwordForm.password.focus();
 		return;
 	}
 	
-	if(passwordForm.reNewPassword.value==""){
-		h3.innerText="변경할 비밀번호를 다시 한번 입력해주세요";
-		passwordForm.reNewPassword.focus();
-		return;
-	}
 	
-	if(passwordForm.reNewPassword.value!=passwordForm.newPassword.value){
-		h3.innerText="변경할 비밀번호가 맞지 않습니다.다시 한번 입력해주세요";
-		passwordForm.newPassword.focus();
-		return;
-	}
+	
 
 	
 	passwordForm.submit();
 }
 
-//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
-//<민환> 변경할 비밀번호 정규표현식 넣어주세요.
+
+
 
 
 

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:tx="http://www.springframework.org/schema/tx"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
    
    <!-- Root Context: defines shared resources visible to all other web components -->
    <!-- root-context.xml : 모든 Front Controller에서 객체로 사용될 클래스를 Spring Bean으로
@@ -13,6 +17,9 @@
    
    <!-- DataSource 관련 클래스(DriverManagerDataSource 클래스)를 Spring Bean으로 등록 -->
    <!-- => 필드에 Connection 객체를 생성하기 위한 값이 저장되도록 주입 - Setting Injection -->
+   
+   
+   
    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
       <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
       <property name="url" value="jdbc:log4jdbc:oracle:thin:@www.itwill.xyz:1521:xe"/>
@@ -48,7 +55,6 @@
          <list>
             <!-- [src/main/java] 폴더의 패키지에 작성된 모든 XML 파일을 매퍼로 등록되도록 처리 -->
             <value>classpath:com/fornula/domain/member/mapper/xml/*.xml</value>
-            <value>classpath:com/fornula/domain/item/mapper/xml/*.xml</value>
          </list>
       </property>
    </bean>

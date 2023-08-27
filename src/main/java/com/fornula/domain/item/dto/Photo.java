@@ -7,11 +7,14 @@ ITEM_IDX      NOT NULL NUMBER
 ITEMFILE_NAME          VARCHAR2(100) 
 */
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Photo {
 	private int photoIdx;
 	private int itemIdx;
-	private String itemfileName;
+	private String itemFileName;
 }
