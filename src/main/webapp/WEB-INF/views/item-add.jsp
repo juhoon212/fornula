@@ -45,7 +45,7 @@
                         <form class="contact-form mt-5" method="post" action="/item/add">
                             <div class="form-group row" id="expertIdx">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="세션에서 받아온 전문가번호" aria-required="true"
+                                    <input type="text" class="form-control" aria-required="true"
                                            required="required" aria-label="Price" name="expertIdx" value="${expertIdx}" readonly required/>
                                 </div>
 								<div class = "error-msg"></div>
@@ -69,22 +69,9 @@
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col" id="itemIdx">
-                                    <input type="text" class="form-control" placeholder="상품번호" aria-required="true"
-                                           required="required" aria-label="Subject" name="itemIdx" readonly required>
-                                </div>
-                            </div>
-        					<section id="upload">
-								<h3>사진 등록</h3>
-								<input class="form-control" type="file" id="formFile"
-									value="${expert.expertfile_name}"> 
-									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PNG 파일로 업로드 해주세요.]</span><br>
-								<p style="color: red;">${message}</p>
-							</section>
                            	<div class="form-group row" id="categoryIdx">                            
 								<div class="col">
-                            		<select id="selectCategory" class="form-control">
+                            		<select id="selectCategory" class="form-control" name="categoryIdx">
             							<!-- disabled selected 는 글자 색을 바꾸든 뭐하든 해서 다르게하기 -->
             							<option disabled selected>디자인</option>
                             			<option value="1">그래픽</option>
@@ -105,7 +92,7 @@
                            		</div>
                            		<div class = "error-msg"></div>
                          	</div>
-								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품등록</button>
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품 사진 등록하러 가기</button>
 						</form>	
 					</div>
 				</div>

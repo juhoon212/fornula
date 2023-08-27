@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -74,7 +75,4 @@
    </bean>
    <!-- annotation-driven: @Transactional 어노테이션을 사용하여 TransactionManager 객체로 트랜젝션 처리 가능 -->
    <tx:annotation-driven/>
-   
-   
-
 </beans>
