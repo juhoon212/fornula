@@ -6,8 +6,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
-import com.fornula.domain.admin.mapper.java.AdminMemberMapper;
+import com.fornula.domain.admin.mapper.java.AdminMapper;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class AdminRepositoryImpl implements AdminRepository{
 
 	private final SqlSession sql;
-
+	/*
 	@Override
 	public int findId(Member member) {
 		return sql.getMapper(AdminMemberMapper.class).findId(member);
@@ -27,11 +28,14 @@ public class AdminRepositoryImpl implements AdminRepository{
 	public int status(Member member) {
 		return sql.getMapper(AdminMemberMapper.class).status(member);
 	}
-
+	*/
 	@Override
 	public List<AdminMember> memberList() {
-		// TODO Auto-generated method stub
-		return sql.getMapper(AdminMemberMapper.class).memberList();
+		return sql.getMapper(AdminMapper.class).memberList();
+	}
+	@Override
+	public List<AdminItem> itemList() {
+		return sql.getMapper(AdminMapper.class).itemList();
 	}
 	
 }
