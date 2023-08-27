@@ -7,6 +7,5 @@ import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 
 public interface ItemDetailService {
 	ItemPhoto getItem(int itemIdx);
-	ExpertMember getItemExpert(int expertIdx);
 	Expert findByMemberIdx(int memerIdx);
 }

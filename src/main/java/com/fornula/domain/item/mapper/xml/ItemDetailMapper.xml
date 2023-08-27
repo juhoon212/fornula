@@ -18,15 +18,7 @@
 			and item_idx=#{itemIdx} 
 	</select>
 	
-	<!-- expert_idx를 활용해서 전문가의 ID(member 테이블의), phone 가져오기 -->
-	<select id="selectItemExpert" resultType="ExpertMember">
-		select id
-			,phone 
-		from member,expert
-		where MEMBER.member_idx=EXPERT.member_idx
-			and expert_idx=#{expertIdx}	
-	</select>
-	
+	<!-- 이건 누가한거죠? -->
 	<select id="findByMemberIdx" resultType="Expert">
 		select expert_idx
 		from member join expert on member.member_idx = expert.expert_idx

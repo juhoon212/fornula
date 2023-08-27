@@ -19,11 +19,7 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	public ItemPhoto getItem(int itemIdx) {
 		return itemDetailDAO.selectItem(itemIdx);
 	}
-//	상품 상세페이지에서 출력하는 전문가(판매자)의 전화번호, id 등을 출력하기 위한 용도
-	@Override
-	public ExpertMember getItemExpert(int expertIdx) {
-		return itemDetailDAO.selectItemExpert(expertIdx);
-	}
+
 	@Override
 	public Expert findByMemberIdx(int memerIdx) {
 		Expert findExpert = itemDetailDAO.findByMemberIdx(memerIdx);

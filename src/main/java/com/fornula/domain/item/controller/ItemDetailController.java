@@ -12,15 +12,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@RequestMapping("/item")
 @RequiredArgsConstructor
 @Slf4j
 public class ItemDetailController {
 	private final ItemDetailService itemDetailService;
-	/* 작업중
-	@GetMapping("/detail")
-	public String detail(@RequestParam int itemIdx,Model model){
-		model.addAttribute("", itemDetailService.getItem(itemIdx));
+	
+	@RequestMapping(value="/detail")
+	public String detail(@RequestParam int itemIdx, Model model) {
+		model.addAttribute("item",itemDetailService.getItem(itemIdx));
+		log.info("전달된 itemIdx = {}",itemIdx);
 		return "item";
 	}
-	*/
 }

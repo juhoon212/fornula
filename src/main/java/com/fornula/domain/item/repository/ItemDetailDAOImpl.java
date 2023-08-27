@@ -20,14 +20,9 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public ItemPhoto selectItem(int itemIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectItem(itemIdx);
 	}
-//	상품 상세페이지에서 출력하는 전문가(판매자)의 전화번호, id 등을 출력하기 위한 용도
-	@Override
-	public ExpertMember selectItemExpert(int expertIdx) {
-		return sqlSession.getMapper(ItemDetailMapper.class).selectItemExpert(expertIdx);
-	}
+//  난 이런 메소드를 만든 기억이없는데.. 누가 만든거야?
 	@Override
 	public Expert findByMemberIdx(int memberIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).findByMemberIdx(memberIdx);
 	}
-	
 }

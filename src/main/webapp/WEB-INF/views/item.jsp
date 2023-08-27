@@ -58,7 +58,7 @@ function disableLink(){
 	    <div class="container post-container bg-white">
 	        <div class="row justify-content-center post-row no-gutters">
 	            <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-					<img class="img-fluid post-thumbnail" src="<c:url value='/upload/itemphoto/"${itemfileName }"'/>" alt="Post">
+					<img class="img-fluid post-thumbnail" src="<c:url value='/pictures/placeholder/1110x520.svg'/>" alt="Post">
 	            </div>
 	            <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
 					<div class="post-content">
