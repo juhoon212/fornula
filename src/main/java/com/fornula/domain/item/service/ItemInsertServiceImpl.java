@@ -16,8 +16,7 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 //	1.상품등록(임시 photoIdx 부여)
 	@Override
 	public int addItem(Item item) {
-		int result=itemInsertDAO.insertItem(item);
-		return result;
+		return itemInsertDAO.insertItem(item);
 	}
 	
 //	2.3번 작업을 위한 준비운동(itemIdx 뽑아내기)
@@ -38,7 +37,6 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 //	4.PHOTO 테이블에 전문가가 등록하는 사진에 대한 행 추가
 	@Override
 	public int addPhoto(Photo photo) {
-		int result=itemInsertDAO.insertPhoto(photo); 
-		return result;
+		return itemInsertDAO.insertPhoto(photo); 
 	}
 }
