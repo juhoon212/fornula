@@ -16,13 +16,15 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 	private final ExpertSalesDAO expertSalesDAO;
 	
 	@Override
-	public List<ItemSales> getSalesList() {
-		return expertSalesDAO.selectSalesList();
+	public List<ItemSales> getSalesList(int memberIdx) {
+		int expertIdx = expertSalesDAO.selectExpertIdxByMemberIdx(memberIdx);
+		return expertSalesDAO.selectSalesList(expertIdx);
 	}
 
 	@Override
-	public List<ItemSales> searchAndSelectSalesList(int salesStatus, String salesDate) {
-		return expertSalesDAO.selectSearchSalesList(salesStatus, salesDate);
+	public List<ItemSales> searchAndSelectSalesList(int memberIdx, int salesStatus, String salesDate) {
+		int expertIdx = expertSalesDAO.selectExpertIdxByMemberIdx(memberIdx);
+		return expertSalesDAO.selectSearchSalesList(expertIdx, salesStatus, salesDate);
 	}
 
 	@Override

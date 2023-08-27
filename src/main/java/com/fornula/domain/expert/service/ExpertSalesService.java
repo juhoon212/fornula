@@ -9,8 +9,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 public interface ExpertSalesService {
-	List<ItemSales> searchAndSelectSalesList(int salesStatus, String salesDate);
-	List<ItemSales> getSalesList();
+	List<ItemSales> searchAndSelectSalesList(int memberIdx, int salesStatus, String salesDate);
+	List<ItemSales> getSalesList(int memberIdx);
 	int modifySalesStatus(int salesIdx);
 	int searchPrice();
 } 

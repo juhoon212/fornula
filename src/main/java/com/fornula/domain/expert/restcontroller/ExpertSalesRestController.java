@@ -3,6 +3,8 @@ package com.fornula.domain.expert.restcontroller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.service.ExpertSalesService;
+import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,10 +32,20 @@ public class ExpertSalesRestController {
 	private final ExpertSalesService expertSalesService;
 	
 	//판매내역을 출력하는 메소드
-	@GetMapping("/list")
-	public List<ItemSales> getSalesList(){
+	@GetMapping("/list/{expertIdx}")
+	public List<ItemSales> getSalesList(HttpSession session, @PathVariable int expertIdx){
+		
+		//세션에 있는 member_idx를 가져오기
+		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		int memberIdx= member.getMemberIdx();
+		/*
+		 * Expert expert = new Expert(); //expert 객체에 세션에서 받은 memberIdx를 expert 객체의
+		 * memberIdx에 저장 expert.setMemberIdx(member.getMemberIdx()); //@pathVariable에 있는
+		 * expertIdx를 expert객체 에서 가져옴 expertIdx = expert.getExpertIdx();
+		 */
+		
 		System.out.println("aaa");
-		List<ItemSales> salesList = expertSalesService.getSalesList();
+		List<ItemSales> salesList = expertSalesService.getSalesList(memberIdx);
 		log.info("list:{}",salesList);//로그출력
 		
 		return salesList;

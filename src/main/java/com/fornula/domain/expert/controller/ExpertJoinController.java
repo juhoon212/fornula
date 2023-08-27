@@ -30,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/expert")
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
@@ -38,24 +39,23 @@ public class ExpertJoinController {
 	public String sale() {
 		return "expert-sales";
 	}
-	@GetMapping("/expertjoin")
+	@GetMapping("/join")
 	public String join() {
 		return "expert-join";
 	}
 	
 
-	@PostMapping("/expertjoin")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model) throws IllegalStateException, IOException {
-
+	@PostMapping("/join")
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model, HttpSession session) throws IllegalStateException, IOException {
 		log.info("expert:{}",expert);
 		System.out.println(uploadFile);
 		System.out.println(expert);
 
 		
-		//Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		//expert.setMemberIdx(member.getMemberIdx());
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		expert.setMemberIdx(member.getMemberIdx());
 		
-		//log.info("sessionMember = {}", member);
+		log.info("sessionMember = {}", member);
 		
 		/*
 		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
@@ -66,9 +66,9 @@ public class ExpertJoinController {
 		if (!uploadFile.getContentType().equals("application/pdf")) {
 			log.info("file:{}",uploadFile);
 			model.addAttribute("message","pdf 파일만 업로드해주세요.");
-			return "redirect:/expert-join";
+			return "expert-join";
 		}else if(uploadFile.isEmpty()) {
-			return "redirect:/expert-fail";
+			return "expert-fail";
 		}
 
 		String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
@@ -83,7 +83,7 @@ public class ExpertJoinController {
 		try {
 			uploadFile.transferTo(new File(uploadDirectory, expertfileName));
 			System.out.println("파일 업로드 성공");
-		}catch (IllegalStateException | IOException e) {
+		}catch (IllegalArgumentException | IOException e) {
 			System.out.println("파일 업로드 실패");
 			e.printStackTrace();
 		}
