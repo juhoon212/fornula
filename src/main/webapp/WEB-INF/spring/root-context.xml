@@ -20,7 +20,7 @@
       <property name="password" value="whoiam212"/>
    </bean>   
    
-   <!-- SqlSessionFactory 관련 클래스(SqlSessionFactoryBean 클래스)를 Spring Bean으로 등록 -->
+   <!-- SqlSessionFa ctory 관련 클래스(SqlSessionFactoryBean 클래스)를 Spring Bean으로 등록 -->
    <!-- => 필드에 SqlSession 객체를 생성하기 위한 값(객체)이 저장되도록 값(객체) 주입 - Setter Injection -->
    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
       <!-- configLocation 필드에 Mybatis 환경설정파일의 경로가 저장되도록 값 주입 -->

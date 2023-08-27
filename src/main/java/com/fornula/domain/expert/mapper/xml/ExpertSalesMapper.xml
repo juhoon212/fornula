@@ -17,7 +17,7 @@
 		ORDER BY SALES.sales_date
 	</select>
 
-	<!-- 판매내역 출력 -->
+	<!-- 판매내역 출력-->
 	<select id="selectSalesList" resultMap="ItemSales">
 		SELECT S.sales_idx,
 				S.sales_date,
