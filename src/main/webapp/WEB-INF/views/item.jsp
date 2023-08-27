@@ -29,6 +29,15 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+
+<style type="text/css">
+h1{
+	font-size:15px;
+}
+a{
+	color: black;
+}
+</style>
 </head>
 <body class="single single-post">
 <jsp:include page="header.jsp" />
@@ -38,46 +47,23 @@
         <div class="container post-container bg-white">
             <div class="row justify-content-center post-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
+                    <a class="prev disabled" href="#">
+                                Prev
+					</a>
                     <img class="img-fluid post-thumbnail" src="<c:url value="/pictures/placeholder/1110x520.svg"/>" alt="Post">
+                    <a class="next" href="#">
+                                Next
+					</a>
                 </div>
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                     <div class="post-content">
-                        <p>
-                            제목<br>
-                            작성자
-                        </p>
-
-                        <p>
-                            내용
-                        </p>
-
+                        <h1>제목 : ${itemName }</h1><br>
+                        <h1><a href="expertoutput">작성자 정보 보기 : ${expertIdx }</a></h1>
+                        <h1>내용 : ${itemContent }</h1>
                     </div>
 
                     <div class="post-tags">
-                        <span class="tags-text">연관 카테고리</span>
-                        <a href="#">카테고리 1</a>
-                        <a href="#">카테고리 2</a>
-                        <a href="#">카테고리 3</a>
-                    </div>
-
-                    <hr/>
-
-                    <div class="post-pages">
-                        <nav class="navigation pagination post-pages-pagination justify-content-between text-uppercase">
-                            <a class="prev disabled" href="#">
-                                Prev
-                            </a>
-                            <div class="nav-links">
-                                <ul class="page-numbers">
-                                    <li><span class="post-page-numbers current">1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                </ul>
-                            </div>
-                            <a class="next" href="#">
-                                Next
-                            </a>
-                        </nav>
+                        <a href="#" onclick="return disableLink()"># ${categoryIdx }</a>
                     </div>
                 </div>
             </div>
