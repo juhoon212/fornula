@@ -80,35 +80,29 @@ public class ItemInsertController {
 		}
 		
 		redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
-		redirectAttributes.addAttribute("photoIdx", item.getPhotoIdx());
 		
-		return "redirect:/photo/add/{itemIdx}/{photoIdx}"; // 등록한 상품 상세페이지로 이동 
+		return "redirect:/item/photo/add/{itemIdx}/"; // 등록한 상품 상세페이지로 이동 
 	}
 	
-	@GetMapping("/photo/add/{itemIdx}/{photoIdx}")
-	public String addPhoto(@PathVariable String itemIdx , @PathVariable String photoIdx, Model model) {
+	@GetMapping("/photo/add/{itemIdx}")
+	public String addPhoto(@PathVariable String itemIdx, Model model) {
 		
 		model.addAttribute("itemIdx", itemIdx);
-		model.addAttribute("photoIdx", photoIdx);
 		
 		return "add-photo";
 	}
 	
 	
-	@PostMapping("/photo/add/{itemIdx}/{photoIdx}")
-	public String addPhotoPost(@ModelAttribute PhotoForm photoForm,
-								@RequestParam List<MultipartFile> uploadFile, 
+	@PostMapping("/photo/add/{itemIdx}")
+	public String addPhotoPost( @RequestParam(required = false) MultipartFile multipartFile,
 								Model model, 
 								@PathVariable Integer itemIdx, 
-								@PathVariable Integer photoIdx,
 								RedirectAttributes redirectAttributes) throws IOException {
 		
-		log.info("{uploadFile = {}",uploadFile);
-	
-		for (MultipartFile multipartFile : uploadFile) {
-			if(multipartFile.isEmpty() ||!multipartFile.getContentType().equals("/png")) {
+			if(multipartFile.isEmpty() ||!multipartFile.getContentType().equals("image/png")) {
 				redirectAttributes.addFlashAttribute("message", "잘못된 파일입니다");
-				return "redirect:/item/photo/add";
+				redirectAttributes.addAttribute("itemIdx", itemIdx);
+				return "redirect:/item/photo/add/{itemIdx}";
 			}
 			
 //			uploadFile의 경로를 저장하기 위한 식
@@ -119,14 +113,13 @@ public class ItemInsertController {
 			
 			Photo itemPhoto = new Photo();
 	
-			itemPhoto.setItemFileName(uploadDirectory);
+			itemPhoto.setItemfileName(uploadFileName);
 			itemPhoto.setItemIdx(itemIdx);
-			itemPhoto.setPhotoIdx(photoIdx);
 			
 			multipartFile.transferTo(new File(uploadDirectory , uploadFileName));
 				
 			itemInsertService.addPhoto(itemPhoto);
-		}
+		
 		
 		redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
