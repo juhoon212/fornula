@@ -26,6 +26,7 @@ public class MemberJoinServiceImpl implements MemberJoinService{
 		Optional<Member> optionalFindMember = memberJoinRepository.idCheck(id);
 		Member findMember = optionalFindMember.orElse(null);
 		
+		
 		return findMember;
 	}
 

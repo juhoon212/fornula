@@ -36,17 +36,22 @@
       </c:if>
 
       <section>
- <form id ="join_form" method="post" action="/member/join">
-        <!-- id -->
-        <h3>아이디</h3>
+      
+       <h3>아이디</h3>
         <div class="info" id="info__id">
           <div id="id-input">
-            <input id="id-input" class="box" type="text" placeholder="아이디 입력해 주세요." name ="id" required/>
-            <button type="button" id="id-check">중복 확인</button>
+            <input class="box" id="id-box" type="text" placeholder="아이디 입력해 주세요." name ="id" required/>
+            <button id="id-check">중복 확인</button>
           </div>
           <div class = "error-msg"></div>
           
         </div>
+        
+ <form id ="join_form" method="post" action="/member/join">
+
+        <!-- id -->
+        <input type="hidden" name="id" id="id-hidden">
+       
         <!-- 이메일 -->
         <h3>이메일</h3>
         <div class="info" id = "info__email">
@@ -129,15 +134,22 @@
   <script type="text/javascript">
   
   	console.log(document.querySelector('.box').value);
-  	let idInput = document.querySelector('#id-input');
-  
+  	
+  	let idInput = document.querySelector('#id-box');
+  	let idHidden = document.querySelector("#id-hidden");
+  	
+  	document.querySelector('#submit').addEventListener('click' , () => {
+  		idHidden.value = idInput.value;
+  	})
+  	
   	document.querySelector('#id-check').addEventListener('click', () => {
   		
   		fetch("<c:url value="/member/idCheck"/>", {
 			  method: "POST", 
 			  headers: { 
 			    "Content-Type": "application/json",
-			  },body: JSON.stringify({ 
+			  },
+			  body: JSON.stringify({ 
 				   "id" : idInput.value
 				  })
 			})
