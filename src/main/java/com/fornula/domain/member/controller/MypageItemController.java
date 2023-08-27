@@ -18,7 +18,7 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@RestController
+@Controller
 @Slf4j
 @RequiredArgsConstructor
 public class MypageItemController {
