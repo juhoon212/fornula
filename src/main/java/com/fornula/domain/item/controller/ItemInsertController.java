@@ -44,17 +44,11 @@ public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
 	private final WebApplicationContext context;
 
-
-
-	
-//	상품등록폼
 	@GetMapping("/add")
 	public String add() {
-		log.info("ItemInsertController 클래스의 add 메소드 실행 -> 상품 등록 페이지로 이동");
 		return "item-add";
 	}
 	
-//	상품등록(photoIdx는 임시값 부여)
 	@PostMapping("/add")
 	public String insert(@ModelAttribute ItemForm itemForm,RedirectAttributes redirectAttributes) {
 		
@@ -117,7 +111,8 @@ public class ItemInsertController {
 			itemPhoto.setItemIdx(itemIdx);
 			
 			multipartFile.transferTo(new File(uploadDirectory , uploadFileName));
-				
+			
+			// DB에 photo 객체 저장
 			itemInsertService.addPhoto(itemPhoto);
 		
 		
