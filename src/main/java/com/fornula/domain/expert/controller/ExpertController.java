@@ -1,6 +1,5 @@
 package com.fornula.domain.expert.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;

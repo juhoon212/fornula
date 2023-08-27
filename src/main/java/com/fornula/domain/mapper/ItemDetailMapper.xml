@@ -3,22 +3,30 @@
 <mapper namespace="com.fornula.domain.item.mapper.java.ItemDetailMapper">
 	<!-- 상품 상세페이지에서 출력할 내용(하나의 상품)을 위한 SQL문 -->	
 	<select id="selectItem" resultType="ItemPhoto">
-	    SELECT i.item_idx
-	           ,i.category_idx
-	           ,i.expert_idx
-	           ,i.item_name
-	           ,i.item_content
-	           ,i.price
-	           ,i.item_date
-	           ,p.photo_idx
-	           ,p.itemfile_name
-	    FROM item i
-	    INNER JOIN photo p ON i.item_idx = p.item_idx
-	    WHERE i.item_status = 1
-	          AND i.item_idx = #{itemIdx}
+		select item_idx
+			,category_idx
+			,expert_idx
+			,item_name
+			,item_content
+			,price
+			,item_date
+			,photo_idx
+			,itemfile_name
+		from item,photo
+		where item_status=1 
+			and ITEM.item_idx=PHOTO.item_idx 
+			and item_idx=#{itemIdx} 
 	</select>
 	
-	<!-- 이건 누가한거죠? -->
+	<!-- expert_idx를 활용해서 전문가의 ID(member 테이블의), phone 가져오기 -->
+	<select id="selectItemExpert" resultType="ExpertMember">
+		select id
+			,phone 
+		from member,expert
+		where MEMBER.member_idx=EXPERT.member_idx
+			and expert_idx=#{expertIdx}	
+	</select>
+	
 	<select id="findByMemberIdx" resultType="Expert">
 		select expert_idx
 		from member join expert on member.member_idx = expert.expert_idx

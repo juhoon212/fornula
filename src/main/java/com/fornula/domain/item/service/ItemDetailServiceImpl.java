@@ -30,6 +30,4 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		
 		return findExpert;
 	}
-	
-	
 }

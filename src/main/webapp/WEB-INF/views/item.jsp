@@ -44,62 +44,73 @@ a{
 }
 </style>
 <script type="text/javascript">
-function disableLink(){
-	return false;
-}
+    function disableLink() {
+        return false;
+    }
 </script>
 </head>
 <body class="single single-post">
 <jsp:include page="header.jsp" />
- 
+
 <main class="main">
-<div class="row">
-    <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
-	    <div class="container post-container bg-white">
-	        <div class="row justify-content-center post-row no-gutters">
-	            <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-					<img class="img-fluid post-thumbnail" src="<c:url value='/pictures/placeholder/1110x520.svg'/>" alt="Post">
-	            </div>
-	            <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-					<div class="post-content">
-	                    <h1>제목 : ${itemName }</h1><br>
-	                    <h1><a href="expertoutput">작성자 정보 보기 : ${expertIdx }</a></h1>
-	                    <h1>등록 날짜 : ${itemDate }</h1>
-	                    <h1>내용 : ${itemContent }</h1>
+    <div class="row">
+        <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
+            <div class="container post-container bg-white">
+                <div class="row justify-content-center post-row no-gutters">
+                    <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/pictures/placeholder/1110x520.svg'/>" alt="Post">
                     </div>
-                    <hr>
-                    <div>
-                        <a href="#" onclick="return disableLink()"># ${categoryIdx }</a>
+                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
+                        <div class="post-content">
+                            <h1>제목 : ${item.itemName }</h1><br>
+                            <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
+                            <h1>등록 날짜 : ${item.itemDate }</h1>
+                            <h1>내용 : ${item.itemContent }</h1>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="#" onclick="return disableLink()">
+					            # ${item.categoryIdx == 1 ? '그래픽' :
+					               item.categoryIdx == 2 ? '제품' :
+					               item.categoryIdx == 3 ? '영어' :
+					               item.categoryIdx == 4 ? '중국어' :
+					               item.categoryIdx == 5 ? '헤어 메이크업' :
+					               item.categoryIdx == 6 ? '제품 홍보 사진' :
+					               item.categoryIdx == 7 ? '사업자' :
+					               item.categoryIdx == 8 ? '개인' :
+					               item.categoryIdx == 9 ? 'SNS홍보' :
+					               item.categoryIdx == 10 ? '해외마케팅ㅋ' : '알 수 없음'}
+					        </a>
+                        </div>
                     </div>
-				</div>
-			</div>
-		</div>    
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+            <div class="widget-sidebar story-sidebar">
+                <div class="phy widget_tag_cloud">
+                    <div class="tagcloud">
+                        <div class="tab_menu">
+                            <div class="widget" style="text-align: left; color:white;" id="list">
+                                <h3 class="widget-title">구매하기</h3>
+                                <ul>
+                                    <li>
+                                        <input placeholder="가격: ${item.price } 원" readonly/>
+                                    </li>
+                                    <li>
+                                        <button onclick="location.href='payment'">결제하기</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">
-			<div class="phy widget_tag_cloud">
-				<div class="tagcloud">
-					<div class="tab_menu">
-						<div class="widget" style="text-align: left; color:white;" id="list">
-							<h3 class="widget-title">구매하기</h3>
-							<ul>
-								<li>
-									<input placeholder="가격: ${price } 원" readonly/>
-								</li>
-								<li>
-									<button onclick="location.href='payment'">결제하기</button>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>	
 </main>
 <jsp:include page="footer.jsp"/>
- 
+
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>

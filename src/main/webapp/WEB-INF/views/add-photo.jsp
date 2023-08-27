@@ -41,13 +41,14 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품사진 등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-                    <form action="item/photo/add/{itemIdx}/{photoIdx}" method="post" enctype="multipart/form-data">
+                    <form action="/item/photo/add/${itemIdx}" method="POST" enctype="multipart/form-data">
                         <section id="upload">
 								<h3>사진 등록</h3>
-								<input class="form-control" type="file" id="formFile" > 
+								<input class="form-control" type="file" id="formFile" multiple="multiple" name="multipartFile"> 
 									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PNG 파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;">${message}</p>
 						</section>
+						<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품 사진 등록하러 가기</button>
 					</form>
 					</div>
 				</div>

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MainController {
 	
-	@GetMapping
+//	main 이동용
+	@GetMapping("/main")
 	public String home() {
 		return "main";
 	}
