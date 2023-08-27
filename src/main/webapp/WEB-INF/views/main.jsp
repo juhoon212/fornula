@@ -153,10 +153,7 @@ p #logo {
 		</div>
 	</div>
 
-
-	<jsp:include page="header.jsp" />
-
-
+	<jsp:include page="${hederPage} "/>
 
 	<!-- 광고 삽입 -->
 	<div class="container-fluid bg-light-orange text-black mt-auto py-5">
@@ -206,8 +203,8 @@ p #logo {
 							<span>
 								<h1>영어? 중국어?</h1> <br>
 								<p style="font-size: 25px;">
-									언어, 자신없어도 괜찮아요.<br><br>
-									FORNUAL에서 추천하는 다양한 번역 전문가들이 기다리고있습니다. <br>
+									언어, 자신없어도 괜찮아요.<br> <br> FORNUAL에서 추천하는 다양한 번역 전문가들이
+									기다리고있습니다. <br>
 								</p>
 							</span>
 						</div>
