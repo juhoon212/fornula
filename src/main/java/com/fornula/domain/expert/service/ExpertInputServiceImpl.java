@@ -1,16 +1,10 @@
 package com.fornula.domain.expert.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.expert.dto.expertboard.ExpertItemPhoto;
 import com.fornula.domain.expert.repository.ExpertInputDAO;
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.util.pager.Pager;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

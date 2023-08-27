@@ -39,36 +39,22 @@
 	
 }
 
-</style>          
-</head>
-
-<body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
-
-
-<main class="main container">
-    <div class="row">
-    <div class="col-12 col-lg-8">
-    <div class="widget">     
-    <form class="story-posts" id="content">              
-<section>
-<!-- 전문가 페이지 style-->
-<style>
-	.info {
-	margin-bottom: 22px;
-	}
-	
-	/* 박스*/
-	.box {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 5px 0 5px 15px;
-  border-radius: 4px;
-  border: 1px solid #d9d6d6;
-  color: #383838;
-  font-weight: 400;
+.info {
+margin-bottom: 22px;
 }
+
+/* 박스*/
+.box {
+ width: 100%;
+ height: 50px;
+ box-sizing: border-box;
+ padding: 5px 0 5px 15px;
+ border-radius: 4px;
+ border: 1px solid #d9d6d6;
+ color: #383838;
+ font-weight: 400;
+}
+
 .box::placeholder {
   color: #a0a0a0;
 }
@@ -97,6 +83,7 @@ h3 {
 .info#info__category #category-flex {
   display: flex;
 }
+
 .info#info__category select {
   margin-left : 7px;
   color: #a0a0a0;
@@ -119,140 +106,157 @@ h3 {
   background-color: #ebe9e9;
   border-radius: 6px;
 }
-</style>
-<!-- 스타일 태그 끝 -->
-        <!-- 세션에서 불러오는 expertIdx -->
-        <div class="info" id="info__category">
-          <div id="category-flex">
-            <input class="box" type="text" placeholder="전문가번호:${expertIdx }" readonly/>
-			<!-- 여백 어케주드라 -->
-            <input class="box" type="text" placeholder="전화번호:${phone }"/>
-          </div>          
-        </div>
+</style>          
+</head>
+<body class="archive post-type-archive post-type-archive-lana_story">
+<jsp:include page="header.jsp" />
 
-        <div class="info" id="info__category">
-          <div id="category-flex">
-            <input class="box" type="text" placeholder="기존 카테고리:${interest }"/>
-            <!-- 여백 어케주드라 -->
-            <select class="box" id="category-middle">
-              <option disabled selected>디자인</option>
-              <option>그래픽</option>
-              <option>제품</option>
-              <option disabled selected>번역</option>
-              <option>영어</option>
-              <option>중국어</option>
-              <option disabled selected>사진 편집</option>
-              <option>헤어 메이크업</option>
-              <option>제품 홍보 사진</option>
-              <option disabled selected>세무</option>
-              <option>사업자</option>
-              <option>개인</option>
-              <option disabled selected>마케팅</option>
-              <option>SNS 홍보</option>
-              <option>해외 마케팅</option>              
-            </select>
-			<!-- 여백 어케주드라 -->            
-            <input class="box" type="text" placeholder="연차:${career }"/>
-          </div>
-        </div>
-
-        <div class="info" id="info__category">
-          <div id="category-flex">
-            <input class="box" type="text" placeholder="회사명1:${companyOne }"/>
-			<!-- 여백 어케주드라 -->            
-            <input class="box" type="text" placeholder="회사명2:${companyTwo }"/>
-            <!-- 여백 어케주드라 -->
-            <input class="box" type="text" placeholder="회사명3:${companyThree }"/>
-          </div>
-        </div>
-        
-        <h3>포트폴리오 파일</h3>
-        <div class="info">
-        	<input class="box" type="text" placeholder="포트폴리오 파일명:${expertfileName }"/> 
-        </div>
-        <div>
-        	<input class="box" type="text" placeholder="여기다가 이미지 띄워서 화면 채울거임" style="height:500px"/>
-        </div>
- 			<!-- 이거는 expert-output으로 빼야할듯 ;         
-			<div class="row row-cols-1 row-cols-md-3 g-4">
-				<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-					<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-						<div class="card-body">
-							<ul class="post-meta">
-								<li><a href="single.html">2023/8/17</a></li>
-								<li><a href="#">카테고리1</a></li>
+<main class="main container">
+<div class="row">
+	<div class="col-12 col-lg-8">
+		<div class="widget">     
+			<form class="story-posts" id="content">              
+				<div class="info" id="info__category">
+					<div id="category-flex">
+						<input class="box" type="text" placeholder="전문가번호:${expertIdx }" readonly/>
+						<!-- 여백 어케주드라 -->
+			            <input class="box" type="text" placeholder="전화번호:${phone }"/>
+          			</div>          
+        		</div>
+		        <div class="info" id="info__category">
+		          <div id="category-flex">
+		            <input class="box" type="text" placeholder="기존 카테고리:${interest }"/>
+		            <!-- 여백 어케주드라 -->
+		            <select class="box" id="category-middle">
+		              <option disabled selected>디자인</option>
+		              <option>그래픽</option>
+		              <option>제품</option>
+		              <option disabled selected>번역</option>
+		              <option>영어</option>
+		              <option>중국어</option>
+		              <option disabled selected>사진 편집</option>
+		              <option>헤어 메이크업</option>
+		              <option>제품 홍보 사진</option>
+		              <option disabled selected>세무</option>
+		              <option>사업자</option>
+		              <option>개인</option>
+		              <option disabled selected>마케팅</option>
+		              <option>SNS 홍보</option>
+		              <option>해외 마케팅</option>              
+		            </select>
+					<!-- 여백 어케주드라 -->            
+		            <input class="box" type="text" placeholder="연차:${career }"/>
+		          </div>
+		        </div>
+		        <div class="info" id="info__category">
+		          <div id="category-flex">
+		            <input class="box" type="text" placeholder="회사명1:${companyOne }"/>
+					<!-- 여백 어케주드라 -->            
+		            <input class="box" type="text" placeholder="회사명2:${companyTwo }"/>
+		            <!-- 여백 어케주드라 -->
+		            <input class="box" type="text" placeholder="회사명3:${companyThree }"/>
+		          </div>
+		        </div>
+		        <div>
+		        	<input class="box" type="text" placeholder="자기소개:${introduce }" style="height:300px"/>
+		        	<section id="upload">
+						<h3>포트폴리오 등록</h3>
+						<input class="form-control" type="file" id="formFile" value="${expert.expertfile_name}"> 
+						<input class="box" type="text" placeholder="포트폴리오 파일명:${expertfileName }"/> 
+						<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
+						<p style="color: red;">${message}</p>
+					</section>
+		        </div>
+	 			<!-- 이거는 expert-output으로 빼야할듯 ;         
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
+						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+							<div class="card-body">
+								<ul class="post-meta">
+									<li><a href="single.html">2023/8/17</a></li>
+									<li><a href="#">카테고리1</a></li>
+								</ul>
+							<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
+								<p class="post-text card-text">
+									우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
+								</p>
+							</div>
+					</div>
+					<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
+						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+							<div class="card-body">
+								<ul class="post-meta">
+									<li><a href="single.html">2023/8/17</a></li>
+									<li><a href="#">카테고리2</a></li>
+								</ul>
+							<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
+								<p class="post-text card-text">
+									진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
+								</p>
+							</div>
+					</div>
+					<div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
+						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+							<div class="card-body">
+								<ul class="post-meta">
+									<li><a href="single.html">2023/8/16</a></li>
+									<li><a href="#">카테고리3</a></li>
+								</ul>
+							<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
+								<p class="post-text card-text">
+									개굴개굴개굴개꿀깨꿀꺠루럐루꺠루꺠루ㅒ꾸럐ㅜ럐꾸ㅒ루ㅒ루ㅒ루럐
+								</p>
+							</div>
+					</div>
+				</div>	
+				<div>
+			 		<a class="prev disabled" href="#">Prev</a>
+					<a class="next" href="#">Next</a>
+				</div>	
+				<div class="error-msg"></div>    
+		      	<div id="change-complete"></div>
+		      -->
+				<!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 근데 이제 조건 덕지덕지 붙여야지-->
+				<button type="button" onclick="location.href='expertoutput'">수정완료</button> 
+			</form>
+		</div>
+	</div>  
+	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+		<div class="widget-sidebar story-sidebar">
+			<div id="button">
+				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+					class="rounded-circle" alt="Author" width="200" height="200">
+			</div>
+			<div id="button">
+				<a href="#" class="tag-cloud-link" aria-label="idbutton">전문가번호:${expertIdx }</a>
+			</div>
+			<div class="widget widget_tag_cloud">
+				<div class="tagcloud">
+					<div id="button">
+					<!-- 여기는 수연누나가 마이페이지 url 확실하게 정해놓으면 href 속성 변경하기 -->
+						<a href="mypage-purchase" class="tag-cloud-link"
+							aria-label="admin change button">일반회원으로 전환</a>
+					</div>
+					<div class="tab_menu">
+						<div class="widget" style="text-align: left;" id="list">
+							<h3 class="widget-title">판매 관리</h3>
+							<ul>
+								<li>
+									<a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
+								</li>
+								<li>
+									<a href="expertoutput" class="expertOutput" href="#" onclick="location.href='expert-output.jsp'">포트폴리오</a>
+								</li>
+								<li>
+									<a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
+								</li>
 							</ul>
-						<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
-							<p class="post-text card-text">
-								우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
-							</p>
 						</div>
-				</div>
-				<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-					<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-						<div class="card-body">
-							<ul class="post-meta">
-								<li><a href="single.html">2023/8/17</a></li>
-								<li><a href="#">카테고리2</a></li>
-							</ul>
-						<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
-							<p class="post-text card-text">
-								진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
-							</p>
-						</div>
-				</div>
-				<div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-					<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-						<div class="card-body">
-							<ul class="post-meta">
-								<li><a href="single.html">2023/8/16</a></li>
-								<li><a href="#">카테고리3</a></li>
-							</ul>
-						<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
-							<p class="post-text card-text">
-								개굴개굴개굴개꿀깨꿀꺠루럐루꺠루꺠루ㅒ꾸럐ㅜ럐꾸ㅒ루ㅒ루ㅒ루럐
-							</p>
-						</div>
+					</div>
 				</div>
 			</div>
-			
-		<div>
-	 		<a class="prev disabled" href="#">Prev</a>
-			<a class="next" href="#">Next</a>
 		</div>
-		
-		<div class="error-msg"></div>    
-      <div id="change-complete"></div>
-      -->
-      <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 -->
-      <button type="button" href="expert-output">수정완료</button> 
-</section>
-</form>
-</div>
-</div>  
-	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">   
-            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
-				<div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a></div>
-					<div class="widget widget_tag_cloud">
-                    <div class="tagcloud">
-						<div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a></div>
-						<div class="row" >
-					<div class="widget">
-                    	<h3 class="widget-title">메뉴</h3>
-                    	<ul>
-                        	<li><a href="#">전문가 정보 수정/등록</a></li>
-                        	<li><a href="#">판매 관리</a></li>
-                        	<li><a href="#">나의 포트폴리오</a></li>
-                        	<li><a href="#">상품 등록</a></li>
-                    	</ul>
-					</div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	</div>
  </div>   
 </main>
 <jsp:include page="footer.jsp"/>
@@ -267,8 +271,5 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
-<script type="text/javascript">
-
-</script>
 </body>
 </html>
