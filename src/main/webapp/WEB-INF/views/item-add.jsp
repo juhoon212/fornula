@@ -64,31 +64,30 @@
                             </div>
                             <div class="form-group row" id="itemContent">
                                 <div class="col">
-                                    <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
+                                    <textarea class="form-control" rows="20" placeholder="상품설명"
                                               aria-required="true" required="required" aria-label="Message" name="itemContent" required></textarea>
                                 </div>
                                 <div class = "error-msg"></div>
                             </div>
                            	<div class="form-group row" id="categoryIdx">                            
 								<div class="col">
-                            		<select id="selectCategory" class="form-control" name="categoryIdx">
-            							<!-- disabled selected 는 글자 색을 바꾸든 뭐하든 해서 다르게하기 -->
-            							<option disabled selected>디자인</option>
-                            			<option value="1">그래픽</option>
-                            			<option value="2">제품</option>
-            							<option disabled selected>번역</option>                            			
-                            			<option value="3">영어</option>
-                            			<option value="4">중국어</option>
-            							<option disabled selected>사진 편집</option>                            			
-                            			<option value="5">헤어 메이크업</option>
-                            			<option value="6">제품 홍보 사진</option>
-            							<option disabled selected>세무</option>                            			
-                            			<option value="7">사업자</option>
-                            			<option value="8">개인</option>
-            							<option disabled selected>마케팅</option>                            			
-                            			<option value="9">SNS 홍보</option>
-                            			<option value="10">해외 마케팅</option>
-                            		</select>
+								<h3>관심사</h3>
+					        <div class="info" id="info__category" >
+					          <div id="category-flex">
+					            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+					              <option disabled selected>대 카테고리</option>
+					              <option value = "a">디자인</option>
+					              <option value = "b">번역</option>
+					              <option value = "c">사진 편집</option>
+					              <option value = "d">세무</option>
+					              <option value = "e">마케팅</option>
+					            </select>
+					            <select class="box" id="mcategory1" name = "categoryIdx">
+					              <option disabled selected>중 카테고리</option>
+					            </select>
+					          </div>
+					          <div class="error-msg"></div>
+					        </div>  		
                            		</div>
                            		<div class = "error-msg"></div>
                          	</div>
@@ -110,8 +109,12 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script defer src="<c:url value="/js/join.js"/>"></script>
 
 <script type="text/javascript">
+
+
+
 </script>
 </body>
 </html>

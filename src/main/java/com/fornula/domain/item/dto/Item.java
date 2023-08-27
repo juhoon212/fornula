@@ -32,5 +32,4 @@ public class Item {
 	private int price;
 	private int itemStatus;
 	private String itemDate;
-	private int photoIdx;
 }
