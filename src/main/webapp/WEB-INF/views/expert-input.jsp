@@ -223,18 +223,17 @@ h3 {
 	</div>  
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 		<div class="widget-sidebar story-sidebar">
-	
 			<div id="button">
 				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
 					class="rounded-circle" alt="Author" width="200" height="200">
 			</div>
 			<div id="button">
-				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+				<a href="#" class="tag-cloud-link" aria-label="idbutton">전문가번호:${expertIdx }</a>
 			</div>
 			<div class="widget widget_tag_cloud">
-	
 				<div class="tagcloud">
 					<div id="button">
+					<!-- 여기는 수연누나가 마이페이지 url 확실하게 정해놓으면 href 속성 변경하기 -->
 						<a href="mypage-purchase" class="tag-cloud-link"
 							aria-label="admin change button">일반회원으로 전환</a>
 					</div>
@@ -272,8 +271,5 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
-<script type="text/javascript">
-
-</script>
 </body>
 </html>

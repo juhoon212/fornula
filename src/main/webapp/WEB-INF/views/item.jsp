@@ -37,38 +37,66 @@ h1{
 a{
 	color: black;
 }
+.phy {
+	border: 1px solid white; /* 테두리 스타일 및 색상 설정 */
+	padding: 10px; /* 내부 여백 설정 */
+    background-color: green; /* 배경색 설정 */
+}
 </style>
+<script type="text/javascript">
+function disableLink(){
+	return false;
+}
+</script>
 </head>
 <body class="single single-post">
 <jsp:include page="header.jsp" />
  
 <main class="main">
+<div class="row">
     <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
-        <div class="container post-container bg-white">
-            <div class="row justify-content-center post-row no-gutters">
-                <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                    <a class="prev disabled" href="#">
-                                Prev
-					</a>
-                    <img class="img-fluid post-thumbnail" src="<c:url value="/pictures/placeholder/1110x520.svg"/>" alt="Post">
-                    <a class="next" href="#">
-                                Next
-					</a>
-                </div>
-                <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-                    <div class="post-content">
-                        <h1>제목 : ${itemName }</h1><br>
-                        <h1><a href="expertoutput">작성자 정보 보기 : ${expertIdx }</a></h1>
-                        <h1>내용 : ${itemContent }</h1>
+	    <div class="container post-container bg-white">
+	        <div class="row justify-content-center post-row no-gutters">
+	            <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
+					<img class="img-fluid post-thumbnail" src="<c:url value='/upload/itemphoto/"${itemfileName }"'/>" alt="Post">
+	            </div>
+	            <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
+					<div class="post-content">
+	                    <h1>제목 : ${itemName }</h1><br>
+	                    <h1><a href="expertoutput">작성자 정보 보기 : ${expertIdx }</a></h1>
+	                    <h1>등록 날짜 : ${itemDate }</h1>
+	                    <h1>내용 : ${itemContent }</h1>
                     </div>
-
-                    <div class="post-tags">
+                    <hr>
+                    <div>
                         <a href="#" onclick="return disableLink()"># ${categoryIdx }</a>
                     </div>
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
+		</div>    
     </div>
+    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+		<div class="widget-sidebar story-sidebar">
+			<div class="phy widget_tag_cloud">
+				<div class="tagcloud">
+					<div class="tab_menu">
+						<div class="widget" style="text-align: left; color:white;" id="list">
+							<h3 class="widget-title">구매하기</h3>
+							<ul>
+								<li>
+									<input placeholder="가격: ${price } 원" readonly/>
+								</li>
+								<li>
+									<button onclick="location.href='payment'">결제하기</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
 </main>
 <jsp:include page="footer.jsp"/>
  
@@ -81,6 +109,5 @@ a{
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
 </body>
 </html>

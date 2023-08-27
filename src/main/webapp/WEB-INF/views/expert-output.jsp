@@ -123,11 +123,11 @@ height : vh ;
 	<div class="col-12 col-lg-8">
 		<div class="widget">    
 			<form class="story-posts" id="content">              
-	        	<div class="box" style="height:800px">
+	        	<div class="box" style="height:1200px">
 	        	<!-- iframe 태그는 유튜브 영상같은거 가져오는데도 좋다고함 -->
 	        	<!-- 아니 왜안되는데 이거 경로 진짜 열받게하네 -->
 	        	<!-- ex. <iframe width='500' height='350' src='https://youtu.be/F6OJslByCYQ?si=dEkTsFqCpZ3CGyvq'></iframe> -->
-	        		<iframe src="${pageContext.request.contextPath }/resources/upload/portfolio/phy.pdf" width="700" height="380"></iframe>
+	        		<iframe src="$/resources/upload/portfolio/phy.pdf" width="700" height="380"></iframe>
 					<div class="form-group row">
 						<div class="col">
 							<input type="text" value="${Member.id }" placeholder="전문가 아이디" readonly>
@@ -148,18 +148,60 @@ height : vh ;
 						</div>
 					</div>
 					<div>
-						<textarea style="width:700px; height:190px;" readonly>
+						<textarea style="width:650px; height:190px;" readonly>
 							자기소개
 							${Expert.introduce }
 						</textarea>
-					</div>    		
+					</div>    
+					<div>
+						<div class="row row-cols-1 row-cols-md-3 g-4" style="width:">
+							<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
+								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+									<div class="card-body">
+										<ul class="post-meta">
+											<li><a href="single.html">2023/8/17</a></li>
+											<li><a href="#">카테고리1</a></li>
+										</ul>
+									<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
+										<p class="post-text card-text">
+											우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함ddddddddd
+										</p>
+									</div>
+							</div>
+							<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
+								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+									<div class="card-body">
+										<ul class="post-meta">
+											<li><a href="single.html">2023/8/17</a></li>
+											<li><a href="#">카테고리2</a></li>
+										</ul>
+									<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
+										<p class="post-text card-text">
+											진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
+										</p>
+									</div>
+							</div>
+							<div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
+								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+									<div class="card-body">
+										<ul class="post-meta">
+											<li><a href="single.html">2023/8/16</a></li>
+											<li><a href="#">카테고리3</a></li>
+										</ul>
+										<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
+										<p class="post-text card-text">
+											개굴개굴개굴개꿀깨꿀꺠루럐루꺠루꺠루ㅒ꾸럐ㅜ럐꾸ㅒ루ㅒ루ㅒ루럐
+										</p>
+									</div>
+							</div>
+						</div>	
+					</div>		
 	        	</div>
         	</form>
         </div> 
 	</div>   
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 		<div class="widget-sidebar story-sidebar">
-	
 			<div id="button">
 				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
 					class="rounded-circle" alt="Author" width="200" height="200">
@@ -168,7 +210,6 @@ height : vh ;
 				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
 			</div>
 			<div class="widget widget_tag_cloud">
-	
 				<div class="tagcloud">
 					<div id="button">
 						<a href="mypage-purchase" class="tag-cloud-link"
