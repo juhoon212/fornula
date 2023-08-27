@@ -20,9 +20,8 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	private final SqlSession sqlSession;
 	
 	@Override
-	public List<ItemSales> selectSearchSalesList(int expertIdx, int salesStatus, String salesDate) {
+	public List<ItemSales> selectSearchSalesList(int salesStatus, String salesDate) {
 		Map<String, Object> searchList = new HashMap<>();
-		searchList.put("expertIdx", salesDate);
 		searchList.put("salesDate", salesDate);
 		searchList.put("salesStatus", salesStatus);
 		
@@ -34,8 +33,8 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	}
 
 	@Override
-	public List<ItemSales> selectSalesList(int expertIdx) {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList(expertIdx);
+	public List<ItemSales> selectSalesList() {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList();
 	}
 	
 	@Override

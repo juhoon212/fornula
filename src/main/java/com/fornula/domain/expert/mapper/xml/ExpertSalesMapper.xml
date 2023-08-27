@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertSalesMapper">
 	<!-- 검색필터를 이용한 검색 -->
-	<!-- <select id="selectSearchSalesList" resultMap="ItemSales">
+	<select id="selectSearchSalesList" resultType="ItemSales">
 		SELECT SALES.sales_idx,
 				SALES.sales_date,
 				SALES.sales_status,
@@ -11,13 +11,12 @@
 				ITEM.price,
 				ITEM.item_content
 		FROM sales SALES
-   		JOIN item ITEM ON SALES.item_idx = ITEM.item_idx
-   		JOIN expert E ON ITEM.expert_idx = E.expert_idx
-   		WHERE E.member_idx = #{memberIdx}
-     	AND SALES.sales_status = #{salesStatus}
+   		JOIN item ITEM 
+   		ON SALES.item_idx = ITEM.item_idx
+   		WHERE SALES.sales_status = #{salesStatus}
     	AND SALES.sales_date = #{salesDate}
         ORDER BY SALES.sales_date
-	</select> -->
+	</select>
 	<!-- 세션에 저장된 memberIdx를 통해 expertIdx를 가져오는 mapper -->
 	<select id="selectExpertIdxByMemberIdx" parameterType="int" resultType="int">
 		SELECT expert_idx
@@ -26,8 +25,7 @@
 	</select>
 
 	<!-- 판매내역 출력-->
-	<
-	<select id="selectSalesList" resultMap="ItemSales">
+	<select id="selectSalesList" resultType="ItemSales">
 		SELECT S.sales_idx,
 				S.sales_date,
 				S.sales_status,
@@ -38,7 +36,6 @@
 		FROM sales S
 		JOIN item I
 		ON S.item_idx = I.item_idx
-		WHERE I.expertIdx = #{expertIdx}
 		ORDER BY S.sales_date
 	</select>
  
