@@ -13,4 +13,11 @@
 			 #{companyOne}, #{companyTwo}, #{companyThree},
 			 #{expertfileName})
 	</insert>
+	
+	<!-- 전문가 등록시 상태 변경 -->
+	<update id="updateExpertStatus" parameterType="com.fornula.domain.member.dto.Member">
+		update member
+		set member_status = 2
+		where member_idx = #{memberIdx}
+	</update>
 </mapper>

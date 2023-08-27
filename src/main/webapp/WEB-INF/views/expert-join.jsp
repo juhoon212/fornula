@@ -151,8 +151,8 @@ h3 {
 								<h3>아이디</h3>
 								<div class="info" id="info__id">
 									<div id="id-input">
-										<input class="box" type="text" placeholder="아이디"
-											readonly="readonly" value="${memberIdx} " />
+										<input class="box" type="text"
+											readonly="readonly" value="${member.id} " />
 									</div>
 								</div>
 								<h3>전화번호</h3>

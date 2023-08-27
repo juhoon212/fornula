@@ -12,21 +12,19 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class ExpertJoinServiceImpl implements ExpertJoinService {
 	private final ExpertJoinDAO expertJoinDAO;
 	
-	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addExpertInfo(Expert expert) {
 		expertJoinDAO.insertExpertInfo(expert);
 		
 	}
 
-	/*
-	 * @Override public int searchExpertCategory(int interest) { return
-	 * expertInputDAO.selectExpertCategory(interest);
-	 * 
-	 * }
-	 * 
-	 */
+	@Override
+	public void updateExpertStatus(Member member) {
+		expertJoinDAO.updateExpertStatus(member);
+		
+	}
 }

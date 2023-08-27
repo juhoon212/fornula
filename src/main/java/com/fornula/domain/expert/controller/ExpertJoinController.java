@@ -48,12 +48,12 @@ public class ExpertJoinController {
 	@PostMapping("/join")
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model, HttpSession session) throws IllegalStateException, IOException {
 		log.info("expert:{}",expert);
-		System.out.println(uploadFile);
-		System.out.println(expert);
 
 		
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		session.setAttribute("member", member);
 		expert.setMemberIdx(member.getMemberIdx());
+		
 		
 		log.info("sessionMember = {}", member);
 		
@@ -90,6 +90,10 @@ public class ExpertJoinController {
 
 			
 		expertJoinService.addExpertInfo(expert);
+		
+		//등록처리에 성공하였을때 memberIdx 변경
+		member.setMemberStatus(2);
+		expertJoinService.updateExpertStatus(member);
 		
 		return "main";
 
