@@ -5,5 +5,5 @@ import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 
 public interface ItemDetailDAO {
 	ItemPhoto selectItem(int itemIdx);
-//	Expert findByMemberIdx(int memberIdx);;
+	Expert findByMemberIdx(int memberIdx);
 }

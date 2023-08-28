@@ -44,10 +44,9 @@
                      
                         <form class="contact-form mt-5" method="post" action="/item/add">
                             <div class="form-group row" id="expertIdx">
-                                <div class="col">
-                                    <input type="text" class="form-control" aria-required="true"
-                                           required="required" aria-label="Price" name="expertIdx" value="${expertIdx}" readonly required/>
-                                </div>
+                            
+                            	<input type="hidden" value="${expertIdx}">
+                                
 								<div class = "error-msg"></div>
                                 <div class="col" id="price">
                                     <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"

@@ -19,7 +19,7 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	public ItemPhoto getItem(int itemIdx) {
 		return itemDetailDAO.selectItem(itemIdx);
 	}
-/*
+
 	@Override
 	public Expert findByMemberIdx(int memerIdx) {
 		Expert findExpert = itemDetailDAO.findByMemberIdx(memerIdx);
@@ -30,5 +30,5 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		
 		return findExpert;
 	}
-*/
+
 }

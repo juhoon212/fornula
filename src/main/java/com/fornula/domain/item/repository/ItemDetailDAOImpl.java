@@ -18,11 +18,10 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public ItemPhoto selectItem(int itemIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectItem(itemIdx);
 	}
-//  난 이런 메소드를 만든 기억이없는데.. 누가 만든거야?
-	/*
+
+	
 	@Override
 	public Expert findByMemberIdx(int memberIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).findByMemberIdx(memberIdx);
 	}
-	*/
 }

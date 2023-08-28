@@ -16,21 +16,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fornula.domain.exception.custom.MypageIdExcepion;
-import com.fornula.domain.expert.dto.Expert;
+
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.ItemForm;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.PhotoForm;
+
 import com.fornula.domain.item.service.ItemInsertService;
-import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.util.session.SessionConst;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
