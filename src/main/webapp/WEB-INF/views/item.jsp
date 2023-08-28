@@ -29,55 +29,80 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+
+<style type="text/css">
+h1{
+	font-size:15px;
+}
+a{
+	color: black;
+}
+.phy {
+	border: 1px solid white; /* 테두리 스타일 및 색상 설정 */
+	padding: 10px; /* 내부 여백 설정 */
+    background-color: green; /* 배경색 설정 */
+}
+</style>
+<script type="text/javascript">
+    function disableLink() {
+        return false;
+    }
+</script>
 </head>
 <body class="single single-post">
 <jsp:include page="header.jsp" />
- 
+
 <main class="main">
-    <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
-        <div class="container post-container bg-white">
-            <div class="row justify-content-center post-row no-gutters">
-                <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                    <img class="img-fluid post-thumbnail" src="<c:url value="/pictures/placeholder/1110x520.svg"/>" alt="Post">
+    <div class="row">
+        <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
+            <div class="container post-container bg-white">
+                <div class="row justify-content-center post-row no-gutters">
+                    <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/pictures/placeholder/1110x520.svg'/>" alt="Post">
+                    </div>
+                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
+                        <div class="post-content">
+                            <h1>제목 : ${item.itemName }</h1><br>
+                            <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
+                            <h1>등록 날짜 : ${item.itemDate }</h1>
+                            <h1>내용 : ${item.itemContent }</h1>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="#" onclick="return disableLink()">
+					            # ${item.categoryIdx == 1 ? '그래픽' :
+					               item.categoryIdx == 2 ? '제품' :
+					               item.categoryIdx == 3 ? '영어' :
+					               item.categoryIdx == 4 ? '중국어' :
+					               item.categoryIdx == 5 ? '헤어 메이크업' :
+					               item.categoryIdx == 6 ? '제품 홍보 사진' :
+					               item.categoryIdx == 7 ? '사업자' :
+					               item.categoryIdx == 8 ? '개인' :
+					               item.categoryIdx == 9 ? 'SNS홍보' :
+					               item.categoryIdx == 10 ? '해외마케팅ㅋ' : '알 수 없음'}
+					        </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-                    <div class="post-content">
-                        <p>
-                            제목<br>
-                            작성자
-                        </p>
-
-                        <p>
-                            내용
-                        </p>
-
-                    </div>
-
-                    <div class="post-tags">
-                        <span class="tags-text">연관 카테고리</span>
-                        <a href="#">카테고리 1</a>
-                        <a href="#">카테고리 2</a>
-                        <a href="#">카테고리 3</a>
-                    </div>
-
-                    <hr/>
-
-                    <div class="post-pages">
-                        <nav class="navigation pagination post-pages-pagination justify-content-between text-uppercase">
-                            <a class="prev disabled" href="#">
-                                Prev
-                            </a>
-                            <div class="nav-links">
-                                <ul class="page-numbers">
-                                    <li><span class="post-page-numbers current">1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+            <div class="widget-sidebar story-sidebar">
+                <div class="phy widget_tag_cloud">
+                    <div class="tagcloud">
+                        <div class="tab_menu">
+                            <div class="widget" style="text-align: left; color:white;" id="list">
+                                <h3 class="widget-title">구매하기</h3>
+                                <ul>
+                                    <li>
+                                        <input placeholder="가격: ${item.price } 원" readonly/>
+                                    </li>
+                                    <li>
+                                        <button onclick="location.href='payment'">결제하기</button>
+                                    </li>
                                 </ul>
                             </div>
-                            <a class="next" href="#">
-                                Next
-                            </a>
-                        </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,7 +110,7 @@
     </div>
 </main>
 <jsp:include page="footer.jsp"/>
- 
+
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -95,6 +120,5 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
 </body>
 </html>
