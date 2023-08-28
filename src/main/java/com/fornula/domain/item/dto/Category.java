@@ -1,10 +1,11 @@
 package com.fornula.domain.item.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
  * 
- * 이름           널?       유형           
+ * �씠由�           �꼸?       �쑀�삎           
 ------------ -------- ------------ 
 CATEGORY_IDX NOT NULL NUMBER       
 LARGE        NOT NULL VARCHAR2(50) 
@@ -14,6 +15,7 @@ SMALL        NOT NULL VARCHAR2(50)
 
 
 @Data
+@AllArgsConstructor
 public class Category {
 	
 	private int categoryIdx;

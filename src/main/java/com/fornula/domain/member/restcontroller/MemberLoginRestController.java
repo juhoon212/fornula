@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
 import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.member.dto.login.IdFindForm;
 import com.fornula.domain.member.dto.login.FindPasswordForm;
 import com.fornula.domain.member.dto.login.LoginForm;
 import com.fornula.domain.member.service.MemberLoginService;
@@ -37,12 +36,7 @@ public class MemberLoginRestController {
 	
 	
 	@PostMapping("/login")
-	public Member login(@RequestBody LoginForm form, HttpServletRequest request) {
-		
-		log.info("input id = {}", form.getId());
-		
-		log.info("loginSession = {}",request.getSession().getAttribute(SessionConst.Login_Member));
-		
+	public Member login(@ModelAttribute LoginForm form,HttpServletRequest request) {
 		
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
@@ -52,9 +46,10 @@ public class MemberLoginRestController {
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
 		
+		Member loginMember2 = (Member)session.getAttribute(SessionConst.Login_Member);
+		
+		
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
-		
-		
 		
 		log.info("member = {}",loginMember.getId());
 		
@@ -62,13 +57,13 @@ public class MemberLoginRestController {
 	}
 	
 	@PostMapping("/findId")
-	public Member findId(@RequestBody IdFindForm form) {
+	public String findId(@RequestParam(value = "email", required = false) String email) {
 		
-		Member findMember = memberLoginService.findByEmail(form.getEmail());
+		Member findMember = memberLoginService.findByEmail(email);
 		
 		log.info("findMember = {}", findMember.getId());
 		
-		return findMember;
+		return findMember.getId();
 	}
 	
 	

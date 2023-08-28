@@ -29,28 +29,40 @@
 			,item_name
 			,item_content
 			,item_date
-			from item
+			from item 
 			order by item_idx) 
 			board)
 		where rn between #{startRow} and #{endRow}
 			and item_status=1
 			and expert_idx=#{expertIdx}
-	</select>
-	
-	<!-- 전문가 등록  -->
+	</select> 
+	 
+	<!-- 전문가 등록
 	<insert id="insertExpertInfo">
-		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
-			select member_seq.nextval from dual 
+		<selectKey resultType="int" keyProperty="expertIdx" order="BEFORE">
+			select expert_seq.nextval from dual 
 		</selectKey>
 		insert into expert values 
 			(#{expertIdx}, #{memberIdx}, #{phone},
-			 #{interest}, #{introduce}, #{career}, 
-			 #{company_one), #{company_two), #{company_three),
-			 #{expertfile_name})
-	</insert>
+			 #{interest}, #{introduce},  #{career}, 
+			 #{companyOne}, #{companyTwo}, #{companyThree},
+			 #{expertfileName})
+	</insert> -->
 	
+	<!-- 
+	<select id="selectExpertCategory" resultType="ExpertCategory">
+		select category_idx 
+		from category C join expert E
+		on C.category_idx=E.interest
+		where interest = #{interest}
+	</select>
+	
+ -->	
+ 
+
 	<select id="selectExpertItemCount" resultType="Item">
 		select count(*)
 		from item
 	</select>
+
 </mapper>

@@ -22,8 +22,8 @@ public class MypageSecessionServiceImpl implements MypageSecessionService{
 	public Member mypageSecession(String id) throws MypageIdExcepion {
 		Member mypageSession=mypageSessionRepository.selectMypageSecession(id);
 		
-		if(mypageSession==null || mypageSession.getId()==null || mypageSession.getId().equals("") 
-				|| mypageSession.getId().equals(id) ) {
+		
+		if(mypageSession==null || mypageSession.getId()==null || mypageSession.getId().equals("")) {
 			throw new MypageIdExcepion("올바른 아이디를 입력해주세요.");
 		}
 		

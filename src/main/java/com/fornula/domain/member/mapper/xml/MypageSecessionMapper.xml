@@ -3,7 +3,7 @@
 <mapper namespace="com.fornula.domain.member.mapper.java.MypageSecessionMapper">
 	<update id="updateMypageSecession" >
 	update member 
-    set status=0 
+    set member_status=0 
     where id=#{id}
 	</update>
 	
