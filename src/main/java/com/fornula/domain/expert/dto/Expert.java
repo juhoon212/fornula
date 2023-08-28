@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
