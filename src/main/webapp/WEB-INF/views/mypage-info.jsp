@@ -377,7 +377,7 @@ h3 {
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory1" name = "categoryOne">
+            <select class="box" id="mcategory1" name = "One">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -393,7 +393,7 @@ h3 {
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory2" name = "categoryTwo">
+            <select class="box" id="mcategory2" name = "Two">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -409,16 +409,17 @@ h3 {
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory3" name = "categoryThree">
+            <select class="box" id="mcategory3" name = "Three">
               <option disabled selected>중 카테고리</option>
             </select>
           </div>
         </div>
-
         
       
       <div id="join"></div>
-      <input type="button" value="회원수정" onclick="submitCheck();">
+       <button id="checkSubmit" type="button" onclick="submitCheck();"
+										style="text-align: center;" name="checkBtn" >회원수정</button>
+   
     </form>
 </section>
         
@@ -521,141 +522,16 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script defer src="<c:url value="/js/join.js"/>"></script>
 <script type="text/javascript">
  
-	 /** 카테고리  */
-	 function categorySelect1(e) {
-	     var design = ["그래픽", "제품"];
-	     var language = ["영어", "중국어"];
-	     var hair = ["헤어메이크업", "제품홍보사진"];
-	     var tax = ["사업자", "개인"];
-	     var marketing = ["SNS홍보", "해외마케팅"];
-	     var target = document.getElementById("mcategory1");
-
-	     if(e.value == "a") {
-	       var z = design;
-	       var index=1;
-	    }
-	     else if(e.value == "b") {
-	       var z = language;
-	       var index=3;
-	    }
-	     else if(e.value == "c") {
-	        var z = hair;
-	        var index=5;   
-	    }   
-	     else if(e.value == "d") {
-	       var z = tax;
-	        var index=7;   
-	    }
-	     else if(e.value == "e") {
-	       var z = marketing;
-	        var index=9;   
-	    }
-	     target.options.length = 0;
-
-	     for (x in z) {
-	         var opt = document.createElement("option");        
-	         opt.innerHTML = z[x];
-	         target.appendChild(opt);
-	         opt.value = parseInt(index) + parseInt(x);
-	     }
-	 }
-
-	 /** 카테고리  */
-	 function categorySelect2(e) {
-	     var design = ["그래픽", "제품"];
-	     var language = ["영어", "중국어"];
-	     var hair = ["헤어메이크업", "제품홍보사진"];
-	     var tax = ["사업자", "개인"];
-	     var marketing = ["SNS홍보", "해외마케팅"];
-	     var target = document.getElementById("mcategory2");
-
-	     if(e.value == "a") {
-	       var z = design;
-	       var index=1;
-	    }
-	     else if(e.value == "b") {
-	       var z = language;
-	       var index=3;
-	    }
-	     else if(e.value == "c") {
-	        var z = hair;
-	        var index=5;   
-	    }   
-	     else if(e.value == "d") {
-	       var z = tax;
-	        var index=7;   
-	    }
-	     else if(e.value == "e") {
-	       var z = marketing;
-	        var index=9;   
-	    }
-	     target.options.length = 0;
-
-	     for (x in z) {
-	         var opt = document.createElement("option");        
-	         opt.innerHTML = z[x];
-	         target.appendChild(opt);
-	         opt.value = parseInt(index) + parseInt(x);
-	     }
-	 }
-
-	 /** 카테고리  */
-	 function categorySelect3(e) {
-	     var design = ["그래픽", "제품"];
-	     var language = ["영어", "중국어"];
-	     var hair = ["헤어메이크업", "제품홍보사진"];
-	     var tax = ["사업자", "개인"];
-	     var marketing = ["SNS홍보", "해외마케팅"];
-	     var target = document.getElementById("mcategory3");
-
-	     if(e.value == "a") {
-	       var z = design;
-	       var index=1;
-	    }
-	     else if(e.value == "b") {
-	       var z = language;
-	       var index=3;
-	    }
-	     else if(e.value == "c") {
-	        var z = hair;
-	        var index=5;   
-	    }   
-	     else if(e.value == "d") {
-	       var z = tax;
-	        var index=7;   
-	    }
-	     else if(e.value == "e") {
-	       var z = marketing;
-	        var index=9;   
-	    }
-	     target.options.length = 0;
-
-	     for (x in z) {
-	         var opt = document.createElement("option");
-	         opt.innerHTML = z[x];
-	         target.appendChild(opt);
-	         opt.value = parseInt(index) + parseInt(x);
-	     }
-	 }
+	
 	 
  function submitCheck() {
 
-
-	 
-	//관심사받기
-	if(infoForm.id.value==""){
-		alert("체크해주세요")
-		infoForm.id.focus();
-		return;
-	}
-	
-
-	
 	infoForm.submit();
-}
 
 
 
