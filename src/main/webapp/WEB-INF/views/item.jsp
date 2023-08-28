@@ -108,6 +108,249 @@ a{
             </div>
         </div>
     </div>
+    
+    <div class="container comments-container bg-white">
+            <div class="row justify-content-center comments-row no-gutters">
+                <div class="col-12 col-sm-11 col-md-10 col-lg-8">
+                    <h4 class="comments-title font-weight-bold">
+                        Comments <span class="comments-number">(5)</span>
+                    </h4>
+
+                    <ul class="comment-list list-unstyled">
+                        <li class="media">
+                            <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                            <div class="media-body">
+                                <div class="d-bock d-md-flex w-100 justify-content-between">
+                                    <h5 class="comment-title">
+                                        <a href="#">Commenter</a>
+                                    </h5>
+                                    <div class="comment-date">
+                                        <a href="#">May 24, 2017 at 11:47 am</a>
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    <p>
+                                        주훈아 이거는 그냥 댓글이 각 ul 태그에다가 ID=1 / ID=2 ... 이렇게 붙여놓고 해당 댓글로 이동하고
+                                        싶으면 그냥 #ID값을 사용해서 이동하게 하면 된단다
+                                    </p>
+                                </div>
+                                <ul class="comment-meta">
+                                    <li>
+                                        <a href="#" class="comment-edit">
+                                            <i class="fa fa-pencil-alt"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="comment-reply">
+                                            <i class="fas fa-reply fa-flip-horizontal"></i> Reply
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                            <div class="media-body">
+                                <div class="d-bock d-md-flex w-100 justify-content-between">
+                                    <h5 class="comment-title">
+                                        <a href="#">Commenter</a>
+                                    </h5>
+                                    <div class="comment-date">
+                                        <a href="#">May 24, 2017 at 11:47 am</a>
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    <p>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra
+                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                                        felis in faucibus.
+                                    </p>
+                                </div>
+                                <ul class="comment-meta">
+                                    <li>
+                                        <a href="#" class="comment-edit">
+                                            <i class="fa fa-pencil-alt"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="comment-reply">
+                                            <i class="fas fa-reply fa-flip-horizontal"></i> Reply
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul class="comment-children list-unstyled">
+                                    <li class="media">
+                                        <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                             src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                                        <div class="media-body">
+                                            <div class="d-bock d-md-flex w-100 justify-content-between">
+                                                <h5 class="comment-title">
+                                                    <a href="#">Commenter</a>
+                                                </h5>
+                                                <div class="comment-date"> 
+                                                    <a href="#">May 24, 2017 at 11:47 am</a>
+                                                </div>
+                                            </div>
+                                            <div class="comment-text">
+                                                <p>
+                                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                                                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                                                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                                    vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                                </p>
+                                            </div>
+                                            <ul class="comment-meta">
+                                                <li>
+                                                    <a href="#" class="comment-edit">
+                                                        <i class="fa fa-pencil-alt"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="comment-reply">
+                                                        <i class="fas fa-reply fa-flip-horizontal"></i> Reply
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="comment-children list-unstyled">
+                                                <li class="media">
+                                                    <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                                         src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                                                    <div class="media-body">
+                                                        <div class="d-bock d-md-flex w-100 justify-content-between">
+                                                            <h5 class="comment-title">
+                                                                <a href="#">Commenter</a>
+                                                            </h5>
+                                                            <div class="comment-date">
+                                                                <a href="#">May 24, 2017 at 11:47 am</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <p>
+                                                                Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                                                                metus scelerisque ante sollicitudin. Cras purus odio,
+                                                                vestibulum in vulputate at, tempus viverra turpis. Fusce
+                                                                condimentum nunc ac nisi vulputate fringilla. Donec
+                                                                lacinia congue felis in faucibus.
+                                                            </p>
+                                                        </div>
+                                                        <ul class="comment-meta">
+                                                            <li>
+                                                                <a href="#" class="comment-edit">
+                                                                    <i class="fa fa-pencil-alt"></i> Edit
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="comment-reply">
+                                                                    <i class="fas fa-reply fa-flip-horizontal"></i>
+                                                                    Reply
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                            <div class="media-body">
+                                <div class="d-bock d-md-flex w-100 justify-content-between">
+                                    <h5 class="comment-title">
+                                        <a href="#">Commenter</a>
+                                    </h5>
+                                    <div class="comment-date">
+                                        <a href="#">May 24, 2017 at 11:47 am</a>
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    <p>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra
+                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                                        felis in faucibus.
+                                    </p>
+                                </div>
+                                <ul class="comment-meta">
+                                    <li>
+                                        <a href="#" class="comment-edit">
+                                            <i class="fa fa-pencil-alt"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="comment-reply">
+                                            <i class="fas fa-reply fa-flip-horizontal"></i> Reply
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <hr/>
+                    <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
+                         role="navigation">
+                        <a class="prev disabled" href="#">
+                            Prev
+                        </a>
+                        <div class="nav-links">
+                            <ul class="page-numbers">
+                                <li><span aria-current="page" class="page-numbers current">1</span></li>
+                                <li><a class="page-numbers" href="#">2</a></li>
+                                <li><a class="page-numbers" href="#">3</a></li>
+                            </ul>
+                        </div>
+                        <a class="next" href="#">
+                            Next
+                        </a>
+                    </nav>
+
+                    <div id="respond" class="comment-respond">
+                        <h4 id="reply-title" class="comment-reply-title font-weight-bold">
+                            Leave a Reply
+                        </h4>
+                        <form id="commentform" class="comment-form form-horizontal">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" placeholder="Name (required)"
+                                           aria-required="true" required="required" aria-label="Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email (required)"
+                                           aria-required="true" required="required" aria-label="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Website" aria-label="Website">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <textarea class="form-control" name="comment" rows="8" title="Comment"
+                                              placeholder="Comment" aria-required="true" required="required"></textarea>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col">
+                                    <input name="submit" type="submit" id="submit"
+                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
+                                           value="Post Comment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    
+    
 </main>
 <jsp:include page="footer.jsp"/>
 
