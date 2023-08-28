@@ -112,7 +112,7 @@ p #logo{
 </div>
 
 		
-<jsp:include page="header.jsp" />
+<jsp:include page="${headerPage}" />
 
 
 

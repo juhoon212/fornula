@@ -136,9 +136,9 @@ a:visited {
 	<jsp:include page="header.jsp" />
 
 	<!-- 스타일 태그 끝 -->
+			<main class="main container" id="main-content">
 	<div class="row">
 		<div class="col-12 col-lg-8">
-			<main class="main container" id="main-content">
 				<div class="sale" id="salecontent">
 					<div class="widget">
 						<table>
@@ -151,14 +151,13 @@ a:visited {
 
 					<div class="story-posts">
 						<div class="input-group">
-							<select id="archive" class="form-control">
-								<option>주문 접수</option>
-								<option>제작중</option>
-								<option>제작완료</option>
-
-							</select> <input type="date" style="width: 300px;">
-
-							<button class="btn btn-primary" type="button">
+							<select id="archive" class="form-control" name="salesStatus">
+								<option value="3">주문 접수</option>
+								<option value="4">제작중</option>
+								<option value="5">제작완료</option>
+							</select> 
+							<input type="date" style="width: 300px;" name="salesDate">
+							<button class="btn btn-primary" type="button" id="searchBtn">
 								<i class="fa fa-search"></i>
 							</button>
 						</div>
@@ -178,13 +177,13 @@ a:visited {
 												<div
 													class="card-body h-100 d-flex align-items-start flex-column">
 													<ul class="post-meta">
-														<li><a href="single.html">판매일자 월, 일, 년도</a></li>
-														<li><a href="#">주문상태</a></li>
+														<li><p name="salesDate">${sales.salesDate}</li>
+														<li><p name="salesStatus">${sales.salesDate}</li>
 													</ul>
 													<p class="post-text card-text">
-													<h6 class="post-title card-title">판매번호</h6>
+													<h6 class="post-title card-title" name="salesIdx">${sales.salesIdx }</h6>
 													<h4 class="post-title card-title">
-														<a href="single.html">게시물이름</a>
+														<a href="single.html" name="itemName">${item.itemName }</a>
 													</h4>
 													<p class="subtitle">상품설명</p>
 
@@ -230,7 +229,6 @@ a:visited {
 						</nav>
 					</div>
 				</div>
-			</main>
 		</div>
 
 		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
@@ -240,12 +238,12 @@ a:visited {
 					<img src="<c:url value="/pictures/placeholder/logo.png"/>"
 						class="rounded-circle" alt="Author" width="200" height="200">
 				</div>
-				<div id="button">
-					<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+				<div id="button" style="text-align: center;">
+					<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
 				</div>
 				<div class="widget widget_tag_cloud">
 					<div class="tagcloud">
-						<div id="changBtn">
+						<div id="changBtn" style="text-align: center;">
 							<a href="/mypage" class="tag-cloud-link"
 								aria-label="admin change button">일반인으로 전환</a>
 						</div>
@@ -260,7 +258,7 @@ a:visited {
 										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
 									<li><a href="javascript:menuchange();" id="po"
 										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="javascript:menuchange();" id="item"
+									<li><a href="item/add" id="item"
 										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
 								</ul>
 							</div>
@@ -270,7 +268,30 @@ a:visited {
 			</div>
 		</div>
 	</div>
+			</main>
 	<jsp:include page="footer.jsp" />
+
+	<script type="text/javascript">
+		function menuchange(url) {
+			let h3 = document.getElementById("expertmain");
+			let info = document.getElementById("info");
+			let po = document.getElementById("po");
+			let sale = document.getElementById("sale");
+
+			info.addEventListener('click', function() {
+				h3.innerText = "전문가 정보";
+			});
+
+			po.addEventListener('click', function() {
+				h3.innerText = "포트 폴리오";
+			});
+
+			sale.addEventListener('click', function() {
+				h3.innerText = "판매 관리";
+			});
+		};
+	</script>
+
 	<!-- 
 //상태 update를 위해 saleIdx값을 백으로 보냄
 <script type="text/javascript">
@@ -308,47 +329,7 @@ a:visited {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 
-	<script type="text/javascript">
-		function menuchange(url) {
-			let h3 = document.getElementById("expertmain");
-			let info = document.getElementById("info");
-			let po = document.getElementById("po");
-			let sale = document.getElementById("sale");
-
-			info.addEventListener('click', function() {
-				h3.innerText = "전문가 정보";
-			});
-
-			po.addEventListener('click', function() {
-				h3.innerText = "포트 폴리오";
-			});
-
-			sale.addEventListener('click', function() {
-				h3.innerText = "판매 관리";
-			});
-		};
-	</script>
-
-	    <script type="text/javascript">
-        $(document).ready(function() {
-            function loadContent(url) {
-                $.ajax({
-                    url: "/expertoutput",
-                    type: "GET",
-                    dataType: "html", // 받아오는 데이터 타입을 html로 지정
-                    success: function(result) {
-                        var mainContent = $(result).find("main").html();
-                        $("main").html(mainContent);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("AJAX Error:", error);
-                    }
-                });
-            }
-        });
-
-    </script>
+       
 </body>
 </html>

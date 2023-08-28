@@ -1,13 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
+	type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+	rel="stylesheet">
+    <style type="text/css">
+	
+.profile {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+p #logo{
+	width:400px;
+	height: 70px;
+
+}
+#logo a{
+	font-family: 'Permanent Marker', cursive;
+	padding-left: 30px;
+	padding-bottom:0px;
+	padding-top: 0px;
+	margin: 0 auto;
+	font-size: 2.5em;
+	text-align: center;
+}
+.navbar{
+	text-align: center;
+}
+
+#lana-navbar{
+	text-align: left;
+}
+.name {
+	 font-family: 'Permanent Marker', cursive;
+}
+</style>
+</head>
+
+<body class="home page page-template-template-lana-editor">
+
+<!--로그인 팝업창 by J  uho on-->
+
+<div class="black-bg">
+    <div class="white-bg">
+        <div>
+            <div class="mb-3">
+            <!-- <h1 class="name">ForNula</h1> -->
+           	   <div class="name">FORNUAL</div>
+               <p class="close"><img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>" alt="close"></p>
+               <label for="exampleInputEmail1" class="form-label"></label>
+               <input type="text" id="id-input" class="form-control" placeholder="아이디" name="id">
+               <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"></label>
+              <input type="password" class="form-control" id="password-input" placeholder="Password" name="password">
+            </div>
+            <div class="front-error"></div>
+            
+            <div class="id-pw-find" >
+            	<a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a href="/member/findPw">&nbsp비밀번호 찾기 </a>
+            </div>
+            <div class="btn-container">
+              <button type="submit" id="login" class="btn btn-light" >로그인</button>
+              <button type="button" id="join" class="btn btn-light" onclick="location.href='/member/join'">회원가입</button>
+            </div>
+            <div id="logos">
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/social.png"/>" alt="google"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/instagram.png"/>" alt="instagram"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/facebook.png"/>" alt="facebook"></a>
+	          	<a href=""><img src="<c:url value="/pictures/placeholder/kakao-talk.png"/>" alt="kakao"></a>
+          	</div>
+          </div>  
+    </div>
+</div>
+
+		
 <header class="header position-relative">
 	<div class="header-navbar border-bottom border-white">
 		<nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 			id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 			id="lana-pet-main-navbar">
 			<p id="logo">
-				<a class="navbar-brand" href="<c:url value="/main"/>">
+				<a class="navbar-brand" href="<c:url value="/"/>">
 					FORNUAL </a>
 			</p>
 
@@ -148,3 +239,86 @@
 		</nav>
 	</div>
 </header>
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+
+ <script>
+	let loginButton = document.querySelector('#loginButton');
+	let close = document.querySelector('.close');
+	let id = document.querySelector('#id-input');
+	let password = document.querySelector('#password-input');
+	let loginSubmit = document.querySelector('#login');
+	let frontError = document.querySelector('.front-error');
+	
+	
+	loginButton.addEventListener('click', () => {
+	    document.querySelector('.black-bg').classList.add('show-modal');
+	    console.log(1);
+	})
+	
+	close.addEventListener('click', () => {
+	    document.querySelector('.black-bg').classList.remove('show-modal');
+	})
+	
+	let submitCheck = false;
+	
+	loginSubmit.addEventListener('click', (e) => {
+		
+		
+		if(id.value == "" || id.value == null) {
+			frontError.style.display = 'flex';
+			frontError.innerHTML = "아이디 또는 비밀번호가 맞지 않습니다."
+			frontError.style = 'color : red';
+            e.preventDefault();
+            return;
+		}
+		
+		if(password.value == "" || password.value == null) {
+			frontError.style.display = 'flex';
+			frontError.innerHTML = "아이디 또는 비밀번호가 맞지 않습니다."
+			frontError.style = 'color : red';
+           	e.preventDefault();
+            return;
+		}
+		
+		
+		
+		fetch("<c:url value="/member/login"/>", {
+			  method: "POST", 
+			  headers: { 
+			    "Content-Type": "application/json",
+			  }, body: JSON.stringify({ 
+				    "id" : id.value,
+				    "password" : password.value
+				  })
+			})
+		.then((response) => response.json())
+        .then((data) => {
+            	  
+           	if(data.errorCode === "Bad") {
+            	console.log(data.message);
+            	frontError.innerHTML = data.message;
+            	frontError.style = "color : red";
+            } else {
+         		// 메인페이지 헤더에 로그인한 사용자 이름 추가 예정
+         		
+            	location.href = "<c:url value="/"/>";
+            	} 
+              })
+              
+         e.preventDefault();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+</script>

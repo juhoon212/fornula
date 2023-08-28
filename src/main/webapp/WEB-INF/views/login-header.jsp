@@ -8,7 +8,7 @@
 			id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 			id="lana-pet-main-navbar">
 			<p id="logo">
-				<a class="navbar-brand" href="<c:url value="/main"/>">
+				<a class="navbar-brand" href="<c:url value="/"/>">
 					FORNUAL </a>
 			</p>
 
@@ -17,10 +17,6 @@
 
 
 			<div class="toggler-buttons d-flex flex-fill justify-content-end">
-				<!-- 화면 크기 조정시 로  그인 버튼 -->
-				<a href="#" class="btn my-auto" aria-controls="lana-navbar"
-					aria-expanded="false" aria-label="Toggle navigation"> <i
-					class="fas fa-user-circle fa-2x" style="color: #ff8a00;"></i></a>
 				<!-- 화면크기 조정시 검색 토글 버튼  -->
 				<button class="search-toggler" type="button" data-toggle="collapse"
 					data-target="#lana-search" aria-controls="lana-search"
@@ -120,15 +116,15 @@
 						<div class="profile">
 							<a class="dropdown-toggle" href="my-page" role="button"
 								data-bs-toggle="dropdown" aria-expanded="false"> <img
-								src="<c:url value="/pictures/placeholder/65x65.svg"/>"
+								src="<c:url value="/pictures/placeholder/logo.png"/>"
 								class="rounded-circle" alt="profilephoto" width="60" height="60">
 							</a>
 
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">내 정보 관리</a>
-								<li><a class="dropdown-item" href="#">전문가 등록</a>
-								<li><a class="dropdown-item" href="#">장바구니</a>
-								<li><a class="dropdown-item" href="#">로그아웃</a>
+								<li><a class="dropdown-item" href="/mypageInfo">내 정보 관리</a>
+								<li><a class="dropdown-item" href="/expert/join">전문가 등록</a>
+								<!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
+								<li><a class="dropdown-item" href="/">로그아웃</a>
 							</ul>
 						</div>
 					</div>
