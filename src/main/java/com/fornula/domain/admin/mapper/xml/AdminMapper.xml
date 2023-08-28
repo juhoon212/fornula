@@ -1,44 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.admin.mapper.java.AdminMapper">
-
-<!--  
-	<update id = "status">
-		UPDATE MEMBER 
-		SET MEMBER_STATUS = 0
-		WHERE MEMBER_STATUS = 1 
-		OR member_status = 2
-	</update>
-	-->
-	
-	<!-- 아이디로 찾기 -->
-	<!--  
-	<select id = "findId">
-		select * from member 
-		where id = #{id}
-	</select>
-	-->
-		<!-- 01. 회원록록 -->
-	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember" >
-		select  member_idx,
-				id,
-				member_status,
-				member_date
-		from member
-		order by member_idx
-	</select>
-	
-	<!-- 상품 목록 -->
-	
-	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem" >
-		select  item_idx,
-				item_name,
-				category_idx,
-				item_date
-		from item
-		order by item_idx
-		</select>
-		
 	<!-- 관리자 상품 수정(삭제 처리)-->
 	<update id="updateItem" parameterType="com.fornula.domain.item.dto.Item">
 		update item 
@@ -52,4 +14,26 @@
 		select item_idx 
 		from item
 	</select>
+		<!-- 01. 회원록록 -->
+	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember">
+		select  member_idx,
+				id,
+				member_status,
+				member_date
+		from member
+		order by member_idx
+	</select>
+	
+	<!-- 상품 목록 -->
+	
+	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem">
+		select  item_idx,
+				item_name,
+				category_idx,
+				item_date
+		from item
+		order by item_idx
+		</select>
+		
+	
 </mapper>

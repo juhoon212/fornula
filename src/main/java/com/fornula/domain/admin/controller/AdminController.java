@@ -20,26 +20,37 @@ public class AdminController {
 
 	private final AdminService adminService;
 	
+	
 	@GetMapping ("/user")
-	public String AdminMemberForm () {
+	public String AdminMemberForm (Model model) {
+		List<AdminMember> memberList = adminService.memberList();
+		model.addAttribute("memberList", memberList);
 		return "admin-user";
 	}
+	
+	/*
 	@PostMapping("/user")
 	public String memberList(Model model) {
 		List<AdminMember> memberList = adminService.memberList();
 		model.addAttribute("memberList", memberList);
 		return "admin-user";
 	}
+	*/
+
 	
 	@GetMapping ("/item")
-	public String adminItemForm () {
+	public String adminItemForm (Model model) {
+		List<AdminItem> itemList = adminService.itemList();
+		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
+	/*
 	@PostMapping("/item")
 	public String itemList(Model model) {
 		List<AdminItem> itemList = adminService.itemList();
 		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
+	*/
 	
 }

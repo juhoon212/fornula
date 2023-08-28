@@ -9,8 +9,9 @@ import com.fornula.domain.member.dto.Member;
 
 public interface AdminMapper {
 	
-	int findId(Member member); 
-	int status(Member member);
+//	int findId(Member member); 
+//	int status(Member member);
+	
 	List<AdminMember> memberList();
 	List<AdminItem> itemList();
 	
