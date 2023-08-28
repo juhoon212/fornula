@@ -9,7 +9,7 @@ import com.fornula.domain.item.dto.Item;
 
 public interface ExpertInputDAO {
 	int updateExpert(Expert expert);
-	List<Item> selectExpertItemList(Map<String, Object> map);
+//	List<Item> selectExpertItemList(Map<String, Object> map);
 	int insertExpertInfo(Expert expert);
-	int selectExpertBoardCount();
+//	int selectExpertBoardCount();
 }

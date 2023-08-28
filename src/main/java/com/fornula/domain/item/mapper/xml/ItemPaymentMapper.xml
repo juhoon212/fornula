@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.item.mapper.xml.ItemPaymentMapper">
+<mapper namespace="com.fornula.domain.item.mapper.java.ItemPaymentMapper">
+
 	<!-- 결제페이지에서 사용할 SQL문 -->
 	<!-- 상품 사진 뽑는 쿼리 수정해야함 -->
 
@@ -8,7 +9,7 @@
 		select  item_name,
 				item_content,
 				price,
-				photo_idx,
+				photo_idx
 		from item
 		where item_idx = #{itemIdx}
 	</select>

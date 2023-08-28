@@ -41,52 +41,65 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-
-                        <form id="contactform" class="contact-form mt-5">
-                            <div class="form-group row">
+                     
+                        <form class="contact-form mt-5" method="post" action="/item/add">
+                            <div class="form-group row" id="expertIdx">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="이름" aria-required="true"
-                                           required="required" aria-label="Name">
+                                    <input type="text" class="form-control" aria-required="true"
+                                           required="required" aria-label="Price" name="expertIdx" value="${expertIdx}" readonly required/>
                                 </div>
-                                <div class="col">
-                                    <input type="email" class="form-control" placeholder="이메일" aria-required="true"
-                                           required="required" aria-label="Email">
+								<div class = "error-msg"></div>
+                                <div class="col" id="price">
+                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
+                                           required="required" aria-label="Price" name="price" pattern="\d*" required>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
                             <div class="form-group row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="상품제목" aria-required="true"
-                                           required="required" aria-label="Subject">
+                                <div class="col" id="itemName">
+                                    <input type="text" class="form-control" placeholder="상품제목을 입력해주세요" aria-required="true"
+                                           required="required" aria-label="Subject" name="itemName" required>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" id="itemContent">
                                 <div class="col">
-                                    <textarea class="form-control" name="message" rows="20" placeholder="상품설명"
-                                              aria-required="true" required="required" aria-label="Message"></textarea>
+                                    <textarea class="form-control" rows="20" placeholder="상품설명"
+                                              aria-required="true" required="required" aria-label="Message" name="itemContent" required></textarea>
                                 </div>
+                                <div class = "error-msg"></div>
                             </div>
-                            <div class="item_photo upload">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="여기다가 업로드기능"
-                                              aria-required="true" required="required" aria-label="Photo"></input>
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col">
-                                    <input name="submit" type="submit" id="submit"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="상품등록">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                           	<div class="form-group row" id="categoryIdx">                            
+								<div class="col">
+								<h3>관심사</h3>
+					        <div class="info" id="info__category" >
+					          <div id="category-flex">
+					            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+					              <option disabled selected>대 카테고리</option>
+					              <option value = "a">디자인</option>
+					              <option value = "b">번역</option>
+					              <option value = "c">사진 편집</option>
+					              <option value = "d">세무</option>
+					              <option value = "e">마케팅</option>
+					            </select>
+					            <select class="box" id="mcategory1" name = "categoryIdx">
+					              <option disabled selected>중 카테고리</option>
+					            </select>
+					          </div>
+					          <div class="error-msg"></div>
+					        </div>  		
+                           		</div>
+                           		<div class = "error-msg"></div>
+                         	</div>
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품 사진 등록하러 가기</button>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main> 
 <jsp:include page="footer.jsp"/>
- 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -96,6 +109,12 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script defer src="<c:url value="/js/join.js"/>"></script>
 
+<script type="text/javascript">
+
+
+
+</script>
 </body>
 </html>

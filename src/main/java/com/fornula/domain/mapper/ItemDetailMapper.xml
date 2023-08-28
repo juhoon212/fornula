@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.item.mapper.xml.ItemDetailMapper">
+<mapper namespace="com.fornula.domain.item.mapper.java.ItemDetailMapper">
 	<!-- 상품 상세페이지에서 출력할 내용(하나의 상품)을 위한 SQL문 -->	
 	<select id="selectItem" resultType="ItemPhoto">
 		select item_idx
@@ -26,4 +26,12 @@
 		where MEMBER.member_idx=EXPERT.member_idx
 			and expert_idx=#{expertIdx}	
 	</select>
+	
+	<select id="findByMemberIdx" resultType="Expert">
+		select expert_idx
+		from member join expert on member.member_idx = expert.expert_idx
+		where member.member_idx = #{member_idx}
+	</select>
+	
+	
 </mapper>

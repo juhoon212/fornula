@@ -8,8 +8,10 @@ ITEMFILE_NAME          VARCHAR2(100)
 */
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Photo {
 	private int photoIdx;
 	private int itemIdx;

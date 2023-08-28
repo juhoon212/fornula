@@ -1,6 +1,10 @@
 package com.fornula.domain.item.dto;
 
+import lombok.AllArgsConstructor;
+
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
   이름           널?       유형             
@@ -17,6 +21,8 @@ PHOTO_IDX	 NOT NULL NUMBER
  */
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 	private int itemIdx;
 	private int categoryIdx;
@@ -26,5 +32,4 @@ public class Item {
 	private int price;
 	private int itemStatus;
 	private String itemDate;
-	private int photoIdx;
 }

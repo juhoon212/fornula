@@ -428,10 +428,10 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                        <li><a href="#">전문가 정보</a></li>
-                        <li><a href="#">구매 관리</a></li>
-                        <li><a href="#">비밀번호 변경</a></li>
-                        <li><a href="#">회원 탈퇴</a></li>
+                       <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                        <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
                
