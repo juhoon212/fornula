@@ -363,54 +363,39 @@ h3 {
       
         <h3>휴대폰</h3>
         <div class="info">
-          <input class="box" type="text" placeholder="01012345678" readonly="readonly"/>
+          <input class="box" type="text" placeholder="휴대폰 인증해주세요." readonly="readonly"/>
           
         </div>
             <h3>관심사</h3>
         <div class="info" id="info__category" >
           <div id="category-flex">
             <select class="box" id="category-big1" onchange = "categorySelect1(this)">
-              <option disabled selected>대 카테고리</option>
-              <option value = "a">디자인</option>
-              <option value = "b">번역</option>
-              <option value = "c">사진 편집</option>
-              <option value = "d">세무</option>
-              <option value = "e">마케팅</option>
+               <p class="box">${member.email }</p> 
             </select>
             <select class="box" id="mcategory1" name = "One">
-              <option disabled selected>중 카테고리</option>
+              <p class="box">${member.email }</p> 
             </select>
           </div>
           <div class="error-msg"></div>
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big2" onchange = "categorySelect2(this)">
-              <option disabled selected>대 카테고리</option>
-              <option value = "a">디자인</option>
-              <option value = "b">번역</option>
-              <option value = "c">사진 편집</option>
-              <option value = "d">세무</option>
-              <option value = "e">마케팅</option>
+             <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+               <p class="box">${member.email }</p> 
             </select>
-            <select class="box" id="mcategory2" name = "Two">
-              <option disabled selected>중 카테고리</option>
+            <select class="box" id="mcategory1" name = "One">
+              <p class="box">${member.email }</p> 
             </select>
           </div>
           <div class="error-msg"></div>
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big3" onchange = "categorySelect3(this)">
-              <option disabled selected>대 카테고리</option>
-              <option value = "a">디자인</option>
-              <option value = "b">번역</option>
-              <option value = "c">사진 편집</option>
-              <option value = "d">세무</option>
-              <option value = "e">마케팅</option>
+            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+               <p class="box">${member.email }</p> 
             </select>
-            <select class="box" id="mcategory3" name = "Three">
-              <option disabled selected>중 카테고리</option>
+            <select class="box" id="mcategory1" name = "One">
+              <p class="box">${member.email }</p> 
             </select>
           </div>
         </div>
