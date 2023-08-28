@@ -31,10 +31,10 @@ function categorySelect1(e) {
     target.options.length = 0;
 
     for (x in z) {
-        var opt = document.createElement("option");        
+        var opt = document.createElement("option");
+        opt.value = index+x;
         opt.innerHTML = z[x];
         target.appendChild(opt);
-        opt.value = parseInt(index) + parseInt(x);
     }
 }
 
@@ -70,10 +70,10 @@ function categorySelect2(e) {
     target.options.length = 0;
 
     for (x in z) {
-        var opt = document.createElement("option");        
+        var opt = document.createElement("option");
+        opt.value = index+x;
         opt.innerHTML = z[x];
         target.appendChild(opt);
-        opt.value = parseInt(index) + parseInt(x);
     }
 }
 
@@ -110,9 +110,9 @@ function categorySelect3(e) {
 
     for (x in z) {
         var opt = document.createElement("option");
+        opt.value = index+x;
         opt.innerHTML = z[x];
         target.appendChild(opt);
-        opt.value = parseInt(index) + parseInt(x);
     }
 }
 

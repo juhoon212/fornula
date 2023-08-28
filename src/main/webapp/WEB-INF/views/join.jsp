@@ -36,17 +36,22 @@
       </c:if>
 
       <section>
- <form id ="join_form" method="post" action="/member/join">
-        <!-- id -->
-        <h3>아이디</h3>
+      
+       <h3>아이디</h3>
         <div class="info" id="info__id">
           <div id="id-input">
-            <input id="id-input" class="box" type="text" placeholder="아이디 입력해 주세요." name ="id" required/>
-            <button type="button" id="id-check">중복 확인</button>
+            <input class="box" id="id-box" type="text" placeholder="아이디 입력해 주세요." name ="id" required/>
+            <button id="id-check">중복 확인</button>
           </div>
           <div class = "error-msg"></div>
           
         </div>
+        
+ <form id ="join_form" method="post" action="/member/join">
+
+        <!-- id -->
+        <input type="hidden" name="id" id="id-hidden">
+       
         <!-- 이메일 -->
         <h3>이메일</h3>
         <div class="info" id = "info__email">
@@ -71,7 +76,7 @@
         <h3>관심사</h3>
         <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+            <select class="box" id="category-big" onchange = "categorySelect1(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -87,7 +92,7 @@
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big2" onchange = "categorySelect2(this)">
+            <select class="box" id="category-big" onchange = "categorySelect2(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -103,7 +108,7 @@
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big3" onchange = "categorySelect3(this)">
+            <select class="box" id="category-big" onchange = "categorySelect3(this)">
               <option disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -125,19 +130,28 @@
     </div>
   </div>
   
-  
+  <script defer src="<c:url value="/js/join.js"/>"></script>
   <script type="text/javascript">
   
-  	console.log(document.querySelector('.box').value);
   	let idInput = document.querySelector('#id-input');
   
+  	console.log(document.querySelector('.box').value);
+  	
+  	let idInput = document.querySelector('#id-box');
+  	let idHidden = document.querySelector("#id-hidden");
+  	
+  	document.querySelector('#submit').addEventListener('click' , () => {
+  		idHidden.value = idInput.value;
+  	})
+  	
   	document.querySelector('#id-check').addEventListener('click', () => {
   		
   		fetch("<c:url value="/member/idCheck"/>", {
 			  method: "POST", 
 			  headers: { 
 			    "Content-Type": "application/json",
-			  },body: JSON.stringify({ 
+			  },
+			  body: JSON.stringify({ 
 				   "id" : idInput.value
 				  })
 			})
@@ -152,6 +166,5 @@
       	})
   	})
   </script>
-  <script defer src="<c:url value="/js/join.js"/>"></script>
 </body>
 </html>

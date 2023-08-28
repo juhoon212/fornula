@@ -26,6 +26,8 @@ public class MemberJoinRestController {
 	@PostMapping("/idCheck")
 	public Message idCheck(@RequestBody IdCheckForm form) {
 		
+		log.info("Id 중복검사 id = {}", form.getId());
+		
 		Member idCheck = memberJoinService.idCheck(form.getId());
 		
 		log.info("idCheck isNull? = {}", idCheck);

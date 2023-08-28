@@ -1,9 +1,12 @@
 package com.fornula.domain.expert.controller;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,54 +19,83 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
-import lombok.RequiredArgsConstructor;
+import com.fornula.domain.item.dto.Category;
+import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.session.SessionConst;
+import com.google.common.util.concurrent.Service;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
+@RequestMapping("/expert")
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
-	
+
 	@GetMapping("/sale")
 	public String sale() {
 		return "expert-sales";
 	}
-
-	@GetMapping("/expertjoin")
+	@GetMapping("/join")
 	public String join() {
 		return "expert-join";
 	}
 	
-	@PostMapping("/expertjoin")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model)
-			throws IllegalStateException, IOException{
+
+	@PostMapping("/join")
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model, HttpSession session) throws IllegalStateException, IOException {
+		log.info("expert:{}",expert);
+
+		
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		session.setAttribute("member", member);
+		expert.setMemberIdx(member.getMemberIdx());
 		
 		
+		log.info("sessionMember = {}", member);
 		
+		/*
+		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
+		 * expert.setInterest(interst);
+		 */
 		
-		
-		if(!uploadFile.getContentType().equals("upload/pdf")) {
-			model.addAttribute("message","pdf ���ϸ� ���ε����ּ���.");
+		//업로드된 파일이 pdf 파일이 아닐 경우
+		if (!uploadFile.getContentType().equals("application/pdf")) {
+			log.info("file:{}",uploadFile);
+			model.addAttribute("message","pdf 파일만 업로드해주세요.");
+			return "expert-join";
+		}else if(uploadFile.isEmpty()) {
+			return "expert-fail";
 		}
-		
-		
-		String uploadDirectory=context.getServletContext().getRealPath("/resource/upload");
-		
-		
-		String expertfileName=UUID.randomUUID().toString()+"_"+uploadFile.getOriginalFilename();
+
+		String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
+		log.info("filepath =" +uploadDirectory);
+
+		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+		log.info("filename =" +expertfileName);
 		
 		
 		expert.setExpertfileName(expertfileName);
-		
-		
-		uploadFile.transferTo(new File(uploadDirectory,expertfileName));
-		
-		 
-		expertJoinService.addExpertInfo(expert);
 
+		try {
+			uploadFile.transferTo(new File(uploadDirectory, expertfileName));
+			System.out.println("파일 업로드 성공");
+		}catch (IllegalArgumentException | IOException e) {
+			System.out.println("파일 업로드 실패");
+			e.printStackTrace();
+		}
+
+			
+		expertJoinService.addExpertInfo(expert);
+		
+		//등록처리에 성공하였을때 memberIdx 변경
+		member.setMemberStatus(2);
+		expertJoinService.updateExpertStatus(member);
 		
 		return "main";
+
 	}
-	
 }

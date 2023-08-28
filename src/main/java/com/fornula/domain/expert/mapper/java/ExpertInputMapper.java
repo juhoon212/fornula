@@ -8,6 +8,10 @@ import com.fornula.domain.item.dto.Item;
 
 public interface ExpertInputMapper {
 	int updateExpert(Expert expert);
+	List<Item> selectExpertItemList(Map<String, Object> map);
+	//int insertExpertInfo(Expert expert);
+	int selectExpertBoardCount();
+	//int selectExpertCategory(int interest);
 //	List<Item> selectExpertItemList(Map<String, Object> map);
 	int insertExpertInfo(Expert expert);
 //	int selectExpertBoardCount();

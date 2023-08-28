@@ -245,7 +245,7 @@
         <div class="row">
             <div class="col-12 col-md-9 col-lg-8 col-xl-7">
                 <h2 class="error404-title title">
-                    It look like you didn’t find what are you’re looking for...
+                    It look like you didnât find what are youâre looking for...
                 </h2>
                 <p class="subtitle">
                     But maybe someone will find a new home.
