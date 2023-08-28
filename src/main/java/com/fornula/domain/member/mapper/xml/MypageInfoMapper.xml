@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.MypageInfoMapper">
+	<!-- 마이페이지의 나의 정보 보기에서 사용할 SQL문 -->
+	
+	<!-- 카테고리 수정 쿼리 -->
+	<update id="updateMypageInfo" >
+	update member 
+    <set>
+    <if test="One != null and One ''">
+       category_one=#{One},
+    </if>
+    <if test="Two != null and Two ''">
+       categoryt_two=#{Two},
+    </if>
+    <if test="Three != null and Three ''">
+       category_three=#{Three}
+    </if>
+    </set> 
+    where id=#{id}
+	</update>
+
+	<!-- 회원정보 뽑는 쿼리 -->
+    <select id="selectMypagePassword" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where id = #{id}
+	</select>
+	
+	<!-- 회원세션에서 categortyone int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
+    <select id="selectMypageCategoryOne" resultType="Category" >
+		select  
+		        small, large
+		from category
+		where category_idx = #{categoryOne}
+	</select>
+
+	<!-- 회원세션에서 categortyTwo int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
+    <select id="selectMypageCategoryTwo" resultType="Category" >
+		select  small, large
+		from category
+		where category_idx = #{categoryTwo}
+	</select>
+	
+		<!-- 회원세션에서 categortyone int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
+    <select id="selectMypageCategoryThree" resultType="Category" >
+		select  small, large
+		from category
+		where category_idx = #{categoryThree}
+	</select>
+
+</mapper>
