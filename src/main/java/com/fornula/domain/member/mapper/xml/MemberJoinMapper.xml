@@ -31,7 +31,7 @@
       select category_idx,
             large,
             small
-      from category
+      from member
       where small = #{small} <!-- 중카테고리만 받는다 -->
    </select>
    
