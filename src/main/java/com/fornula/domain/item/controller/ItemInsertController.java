@@ -28,7 +28,6 @@ import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.ItemForm;
 import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.PhotoForm;
-import com.fornula.domain.item.dto.iteminsert.ChangePhotoIdx;
 import com.fornula.domain.item.service.ItemInsertService;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.util.session.SessionConst;

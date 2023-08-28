@@ -403,7 +403,9 @@ table th {
 			<td >${item.itemIdx}</td>
 			<td >${item.itemName }</td>
 			<td>${item.categoryIdx}</td>
-			<td>${item.itemDate}</td>
+			<td>
+			<fmt:formatDate pattern="yyyy-MM-dd" value ="${item.itemDate}"/>
+			</td>
 			<td >
 				<button class="delete">탈퇴</button>
 			</td>

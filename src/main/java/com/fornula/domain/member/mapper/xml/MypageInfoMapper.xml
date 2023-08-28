@@ -11,7 +11,7 @@
        categoryIdxTwo=#{Two},
     </if>
     <if test="Three != null and Three ''">
-       categoryIdxThree=#{Three},
+       categoryIdxThree=#{Three}
     </if>
     </set> 
     where id=#{id}

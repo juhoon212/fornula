@@ -400,11 +400,13 @@ table th {
     	
     			<c:forEach var="member" items="${memberList}">
 		<tr>
-			<td >${member.memberIdx}</td>
-			<td >${member.id }</td>
+			<td>${member.memberIdx}</td>
+			<td>${member.id }</td>
 			<td>${member.memberStatus}</td>
-			<td><${member.memberDate}</td>
-			<td >
+			<td>
+			<fmt:formatDate pattern="yyyy-MM-dd" value ="${member.memberDate}"/>
+			</td>
+			<td>
 				<button class="delete">탈퇴</button>
 			</td>
 			

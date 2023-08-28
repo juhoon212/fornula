@@ -18,17 +18,7 @@ import com.fornula.domain.util.session.SessionConst;
 public class MainController {
 	
 	@GetMapping
-	public String home(HttpSession session, Model model) {
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		/*
-		 * int memberStatus = member.getMemberStatus();
-		 * 
-		 * 
-		 * if(memberStatus == 1 || memberStatus == 2) { model.addAttribute("headerPage",
-		 * "login-header.jsp"); return "main"; } else { model.addAttribute("headerPage",
-		 * "header.jsp"); return "main"; }
-		 */
-		
+	public String home() {
 		return "main";
 	}
 }
