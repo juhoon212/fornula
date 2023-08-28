@@ -3,6 +3,7 @@ package com.fornula.domain.member.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,9 @@ import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MypageInfoController {
@@ -24,25 +26,38 @@ public class MypageInfoController {
 	public final MypageInfoService service;
   
 	@GetMapping("/mypageInfo")
-	public String info() {
-	return "mypage-info";
+	public String info(HttpSession session, Model model) {
+	
+		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		log.info("getsessionMember = {}", member);
+		
+	    Member joinMember = service.mypageInfoService(member.getId());
+	    log.info("getmodelJoinMember = {}", joinMember);
+	    
+	    model.addAttribute("member", joinMember);
+		   
+		return "mypage-info"; 
+		  
 	}
 	
 	@PostMapping("/mypageInfo")
-	public String info(@ModelAttribute InfoCategory category, HttpSession session) {
+	public String info(@ModelAttribute InfoCategory category, HttpSession session, Model model) {
 	
-		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-		
+        Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+        log.info("sessionMember = {}", member);
+        
 	    Member joinMember = service.mypageInfoService(member.getId());
+	    log.info("modelJoinMember = {}", joinMember);
+	    
+	    model.addAttribute("member", joinMember);
 		   
-	    session.setAttribute("member", joinMember);
 	    //카테고리 값이 null일때 에러처리를 어떻게 한담..
 		   //if(category.getOne()==null) {
 			//   return "mypage-info";
 		   //}
 	   
-		   service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
+		 service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
 		   
-		   return "mypage-info"; 
+		 return "main"; 
 	}
 }

@@ -7,11 +7,12 @@
 		<nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 			id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 			id="lana-pet-main-navbar">
-			<a class="navbar-brand" href="<c:url value="/index.html"/>"> <img
-				class="navbar-logo"
-				src="<c:url value="/pictures/placeholder/logo_label.png"/>"
-				alt="Navbar Logo">
-			</a>
+			<p id="logo">
+				<a class="navbar-brand" href="<c:url value="/main"/>">
+					FORNUAL </a>
+			</p>
+
+
 
 
 

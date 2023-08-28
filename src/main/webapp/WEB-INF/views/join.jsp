@@ -133,12 +133,7 @@
   <script defer src="<c:url value="/js/join.js"/>"></script>
   <script type="text/javascript">
   
-<<<<<<< juhoon
-  
-=======
-  	let idInput = document.querySelector('#id-input');
->>>>>>> main
-  
+
   	console.log(document.querySelector('.box').value);
   	
   	let idInput = document.querySelector('#id-box');
