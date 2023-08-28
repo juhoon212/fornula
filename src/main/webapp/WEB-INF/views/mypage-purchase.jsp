@@ -286,6 +286,7 @@
                 </div>
                 
             <div class="story-posts">
+            <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">구매 관리</label>
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
                     <div class="card-body">
                        <div class="blog-posts">
@@ -368,9 +369,9 @@
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                          <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                      <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>

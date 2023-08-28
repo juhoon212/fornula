@@ -18,23 +18,25 @@
 	</select>
 	-->
 		<!-- 01. 회원록록 -->
-	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember">
+	<select id="memberList" resultType="AdminMember">
 		select  member_idx,
 				id,
 				member_status,
 				member_date
 		from member
+        where member_status in (1,2)
 		order by member_idx
 	</select>
 	
 	<!-- 상품 목록 -->
 	
 	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem">
-		select  item_idx,
+			select  item_idx,
 				item_name,
 				category_idx,
 				item_date
 		from item
+		where item_status = 1
 		order by item_idx
 		</select>
 		

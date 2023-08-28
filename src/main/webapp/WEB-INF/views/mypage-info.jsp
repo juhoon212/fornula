@@ -305,6 +305,18 @@
   border-radius: 3px;
   font-size: 15px; 
 }
+.changeBtn {
+	border: none;
+	padding: 5px 10px;
+	color: #000;
+}
+
+.changeBtn {
+	background-color: #ffffff;
+	border-radius: 20px;
+	border: 1px solid #ffb32f;
+}
+
 
 h3 {
 	font-size : 20px;
@@ -341,6 +353,7 @@ h3 {
 </style>
 <!-- 스타일 태그 끝 -->
    <form name="infoForm" method="post" action="/mypageInfo">
+   <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
         </h3>
@@ -401,9 +414,10 @@ h3 {
         </div>
         
       
-      <div id="join"></div>
-       <button id="checkSubmit" type="button" onclick="submitCheck();"
+      <div id="join" style = "float : right;">
+       <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
 										style="text-align: center;" name="checkBtn" >회원수정</button>
+										</div>
    
     </form>
 </section>
@@ -436,9 +450,9 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                    <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                    <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
