@@ -13,7 +13,7 @@ public class ExceptionController {
 	public String existsUserinfoExceptionHander(MypageIdExcepion exception, Model model) {
 		model.addAttribute("message", exception.getMessage());
 		
-		return "main";
+		return "mypage-secession";
 	}
 	
 }

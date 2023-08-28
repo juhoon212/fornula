@@ -146,7 +146,7 @@ h3 {
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
-						<div class="widget">
+						<div class="widget">	
 							<section id="profile">
 								<h3>아이디</h3>
 								<div class="info" id="info__id">
@@ -278,12 +278,7 @@ h3 {
 	</main>
 
 	<jsp:include page="footer.jsp" />
-	<script type="text/javascript">
-	$("#expertjoinForm").submit(function() {
-		alert($("#phone").val());
-		return false;
-	});
-	</script>
+	
 
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>

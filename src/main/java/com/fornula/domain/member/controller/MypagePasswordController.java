@@ -48,7 +48,11 @@ public class MypagePasswordController {
 			   return "mypage-pwchange";
 		   }
 		   
-		   service.modifyPassword(loginMember.getId(), password.getNewPassword());
+		   //비번 암호화
+		   String hashPassword=BCrypt.hashpw( password.getNewPassword(), BCrypt.gensalt());
+		  
+		   
+		   service.modifyPassword(loginMember.getId(), hashPassword);
 		   
 		   return "mypage-purchase";
 	   }

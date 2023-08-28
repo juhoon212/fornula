@@ -133,8 +133,7 @@
   <script defer src="<c:url value="/js/join.js"/>"></script>
   <script type="text/javascript">
   
-  	let idInput = document.querySelector('#id-input');
-  
+
   	console.log(document.querySelector('.box').value);
   	
   	let idInput = document.querySelector('#id-box');
