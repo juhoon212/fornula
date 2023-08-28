@@ -1,6 +1,5 @@
 package com.fornula.domain.item.service;
 
-import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 

@@ -1,5 +1,7 @@
 package com.fornula.domain.admin.dto;
 
+import java.util.Date;
+
 import lombok.Data;
 
 // member 출력리스트
@@ -8,6 +10,6 @@ import lombok.Data;
 public class AdminMember {
 	private int memberIdx;
 	private String id;
-	private String memberDate;
+	private Date memberDate;
 	private int memberStatus;
 }

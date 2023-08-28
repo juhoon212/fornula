@@ -38,12 +38,7 @@ public class MemberController {
 	
 	
 	
-	
-	// 회원가입 폼
-	@GetMapping("/home")
-	public String home() {
-		return "main";
-	}
+
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
