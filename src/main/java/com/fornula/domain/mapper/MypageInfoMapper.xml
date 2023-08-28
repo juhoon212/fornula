@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.MypageInfoMapper">
+	<update id="updateMypageInfo" >
+	update member 
+    <set>
+    <if test="One != null and One ''">
+       categoryIdxOne=#{One},
+    </if>
+    <if test="Two != null and Two ''">
+       categoryIdxTwo=#{Two},
+    </if>
+    <if test="Three != null and Three ''">
+       categoryIdxThree=#{Three}
+    </if>
+    </set> 
+    where id=#{id}
+	</update>
+
+    <select id="selectMypagePassword" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where id = #{id}
+	</select>
+	
+</mapper>
