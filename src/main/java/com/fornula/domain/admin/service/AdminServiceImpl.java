@@ -3,10 +3,13 @@ package com.fornula.domain.admin.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 import com.fornula.domain.admin.repository.AdminRepository;
+import com.fornula.domain.exception.custom.ItemNotFoundException;
+import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.RequiredArgsConstructor;
@@ -34,6 +37,19 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<AdminItem> itemList() {
 		return adminRepository.itemList();
+	}
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	//관리자가 상품의 상태를 변경
+	@Override
+	public void updateItemStatus(int itemIdx)throws ItemNotFoundException {
+		if(adminRepository.selectItemIdx()==null) {
+			throw new ItemNotFoundException("상품이 존재하지 않습니다.");
+		}
+		adminRepository.updateItemStatus(itemIdx);
+			
+		
 	}
 	
 	

@@ -32,14 +32,19 @@ public class AdminController {
 	}
 	
 	@GetMapping ("/item")
-	public String adminItemForm () {
-		return "admin-item";
-	}
-	@PostMapping("/item")
+	/*
+	 * public String adminItemForm () { return "admin-item"; }
+	 * 
+	 * 
+	 * @PostMapping("/item")
+	 */
 	public String itemList(Model model) {
 		List<AdminItem> itemList = adminService.itemList();
 		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
+	
+	
+	
 	
 }

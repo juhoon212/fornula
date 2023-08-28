@@ -39,5 +39,17 @@
 		order by item_idx
 		</select>
 		
+	<!-- 관리자 상품 수정(삭제 처리)-->
+	<update id="updateItem" parameterType="com.fornula.domain.item.dto.Item">
+		update item 
+		set item_status=0
+		where item_idx=#{itemIdx}
+	</update>
 	
+	
+	<!-- itemIdx 검색  -->
+	<select id="selectItemIdx" resultType="com.fornula.domain.item.dto.Item">
+		select item_idx 
+		from item
+	</select>
 </mapper>

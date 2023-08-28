@@ -50,6 +50,7 @@
             <value>classpath:com/fornula/domain/member/mapper/xml/*.xml</value>
             <value>classpath:com/fornula/domain/item/mapper/xml/*.xml</value>
             <value>classpath:com/fornula/domain/expert/mapper/xml/*.xml</value>
+            <value>classpath:com/fornula/domain/admin/mapper/xml/*.xml</value>
          </list>
       </property>
    </bean>

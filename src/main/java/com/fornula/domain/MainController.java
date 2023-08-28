@@ -17,7 +17,7 @@ import com.fornula.domain.util.session.SessionConst;
 @RequestMapping("/")
 public class MainController {
 	
-	@GetMapping
+	@GetMapping("/home")
 	public String home(HttpSession session, Model model) {
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		int memberStatus = member.getMemberStatus();

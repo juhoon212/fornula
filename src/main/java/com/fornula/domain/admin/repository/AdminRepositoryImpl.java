@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 import com.fornula.domain.admin.mapper.java.AdminMapper;
+import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,17 @@ public class AdminRepositoryImpl implements AdminRepository{
 	@Override
 	public List<AdminItem> itemList() {
 		return sql.getMapper(AdminMapper.class).itemList();
+	}
+	
+	//관리자가 상품의 상태를 변경
+	@Override
+	public int updateItemStatus(int itemIdx) {
+		return sql.getMapper(AdminMapper.class).updateItemStatus(itemIdx);
+	}
+	//관리자가 상품의 상태를 변경
+	@Override
+	public Item selectItemIdx() {
+		return sql.getMapper(AdminMapper.class).selectItemIdx();
 	}
 	
 }

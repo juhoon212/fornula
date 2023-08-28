@@ -74,10 +74,4 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		
 		return resultMap;
 	}
-//	관리자가 상품게시글 삭제처리(상태변경)하는 메소드임 이거 담당자가 채워놓기
-	@Override
-	public void modifyItem(Item item) {
-		// TODO Auto-generated method stub
-		
-	}
 }
