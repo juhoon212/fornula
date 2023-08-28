@@ -32,7 +32,7 @@ function categorySelect1(e) {
 
     for (x in z) {
         var opt = document.createElement("option");
-        opt.value = index+x;
+        opt.value = parseInt(index)+parseInt(x);
         opt.innerHTML = z[x];
         target.appendChild(opt);
     }
@@ -71,7 +71,7 @@ function categorySelect2(e) {
 
     for (x in z) {
         var opt = document.createElement("option");
-        opt.value = index+x;
+        opt.value = parseInt(index)+parseInt(x);
         opt.innerHTML = z[x];
         target.appendChild(opt);
     }
@@ -110,7 +110,7 @@ function categorySelect3(e) {
 
     for (x in z) {
         var opt = document.createElement("option");
-        opt.value = index+x;
+        opt.value = parseInt(index)+parseInt(x);
         opt.innerHTML = z[x];
         target.appendChild(opt);
     }

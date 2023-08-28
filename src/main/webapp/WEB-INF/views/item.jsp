@@ -58,7 +58,7 @@ a{
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        <img class="img-fluid post-thumbnail" src="<c:url value='/pictures/placeholder/1110x520.svg'/>" alt="Post">
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName} }'/>" alt="Post">
                     </div>
                     <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                         <div class="post-content">
@@ -66,6 +66,8 @@ a{
                             <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
                             <h1>등록 날짜 : ${item.itemDate }</h1>
                             <h1>내용 : ${item.itemContent }</h1>
+                            <h1>가격 : ${item.price }</h1>
+                            <button onclick="location.href='payment'">결제하기</button>
                         </div>
                         <hr>
                         <div>
@@ -86,31 +88,10 @@ a{
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-            <div class="widget-sidebar story-sidebar">
-                <div class="phy widget_tag_cloud">
-                    <div class="tagcloud">
-                        <div class="tab_menu">
-                            <div class="widget" style="text-align: left; color:white;" id="list">
-                                <h3 class="widget-title">구매하기</h3>
-                                <ul>
-                                    <li>
-                                        <input placeholder="가격: ${item.price } 원" readonly/>
-                                    </li>
-                                    <li>
-                                        <button onclick="location.href='payment'">결제하기</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
     
-    <div class="container comments-container bg-white">
-            <div class="row justify-content-center comments-row no-gutters">
+	    <div class="container comments-container bg-white">
+	            <div class="row justify-content-center comments-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8">
                     <h4 class="comments-title font-weight-bold">
                         Comments <span class="comments-number">(5)</span>

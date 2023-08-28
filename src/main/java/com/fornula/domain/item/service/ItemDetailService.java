@@ -2,9 +2,11 @@ package com.fornula.domain.item.service;
 
 
 import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
+import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.Photo;
 
 public interface ItemDetailService {
-	ItemPhoto getItem(int itemIdx);
-//	Expert findByMemberIdx(int memerIdx);
+	Item getItem(int itemIdx);
+	Expert findByMemberIdx(int memerIdx);
+	Photo selectPhoto(int itemIdx);
 }

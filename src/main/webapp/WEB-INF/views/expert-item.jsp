@@ -129,7 +129,7 @@ h3 {
 					3. 이 개같은 왼쪽 여백은 도대체 뭔 지랄을 해야 없어지는건지 새벽 4시15분부터 정말 사람을 너무나도 화가나게 한다 
 					4. 얼씨구 이젠 걍 1,2,3번 시작하는 줄도 안맞네 ㅈㄹ났네 ㅈㄹ났어
 					</textarea>
-					<button type="button" onclick="location.href='itemadd'">상품등록</button> 
+					<button type="button" onclick="location.href='<c:url value="/item/add/${expertIdx}"/>'">상품등록</button> 
 				</div>
 			</div>
 		</div>
