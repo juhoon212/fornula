@@ -367,26 +367,47 @@ h3 {
           
         </div>
             <h3>관심사</h3>
-        <div class="info" id="info__category" >
-          <div id="category-flex">
-            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
-               <p class="box">${member.email }</p> 
-            </select>
-            <select class="box" id="mcategory1" name = "One">
-              <p class="box">${member.email }</p> 
-            </select>
+            
+                <h3>관심사1-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryOne.large }</p> 
           </div>
-          <div class="error-msg"></div>
+          
         </div>
-        <div class="info" id="info__category">
-          <div id="category-flex">
-             <select class="box" id="category-big1" onchange = "categorySelect1(this)">
-               <p class="box">${member.email }</p> 
-            </select>
-            <select class="box" id="mcategory1" name = "One">
-              <p class="box">${member.email }</p> 
-            </select>
+            <h3>관심사1-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryOne.small }</p> 
           </div>
+                    <h3>관심사2-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryTwo.large }</p> 
+          </div>
+          
+        </div>
+            <h3>관심사2-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryTwo.small }</p> 
+          </div>
+                    <h3>관심사3-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryThree.large }</p> 
+          </div>
+          
+        </div>
+            <h3>관심사3-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryThree.small }</p> 
+          </div>
+          
+      
+          
+       
           <div class="error-msg"></div>
         </div>
         <div class="info" id="info__category">
