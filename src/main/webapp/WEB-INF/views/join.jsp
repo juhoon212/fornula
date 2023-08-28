@@ -133,6 +133,8 @@
   
   <script type="text/javascript">
   
+  
+  
   	console.log(document.querySelector('.box').value);
   	
   	let idInput = document.querySelector('#id-box');
