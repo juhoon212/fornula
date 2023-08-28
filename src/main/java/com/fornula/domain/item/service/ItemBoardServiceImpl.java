@@ -59,7 +59,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
     @Override
     public Map<String, Object> getSearchItemList(int pageNum, String searchKeyword) {
         int totalBoard = itemBoardDAO.selectItemBoardCount();
-
+        
         Pager pager = new Pager(pageNum, totalBoard, 5, 6);
 
         Map<String, Object> pageMap = new HashMap<>();

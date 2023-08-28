@@ -1,5 +1,6 @@
 package com.fornula.domain.item.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
 import com.fornula.domain.item.service.ItemBoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,9 +27,16 @@ public class ItemBoardController {
     @GetMapping("/itemBoardList")
     public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
         Map<String, Object> resultMap = itemBoardService.getItemList(pageNum);
-        model.addAttribute("itemBoardList", resultMap.get("itemBoardList"));
+        
+        List<ItemPhotoCategoryCart> itemBoardList = (List<ItemPhotoCategoryCart>) resultMap.get("itemBoardList");
+        for (ItemPhotoCategoryCart itemPhotoCategoryCart : itemBoardList) {
+			int itemIdx = itemPhotoCategoryCart.getItem().getItemIdx();
+			model.addAttribute("itemIdx", itemIdx);
+		}
+        
+        model.addAttribute("itemBoardList", itemBoardList);
         model.addAttribute("pager", resultMap.get("pager"));
-        return "itemBoard";
+        return "item-board";
     }
 
 //  카테고리를 입력하여 검색하는 메소드
