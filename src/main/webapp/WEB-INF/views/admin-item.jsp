@@ -159,7 +159,7 @@ table th {
 <script type="text/javascript">
 	function updateItemIdx(itemIdx) {
 		if(confirm("삭제 하시겠습니까?")){
-			location.href='<c:url value="/admin/item"/>?itemIdx='+itemIdx;
+			location.href='<c:url value="/admin/update"/>?itemIdx='+itemIdx;
 	}
 	}
 

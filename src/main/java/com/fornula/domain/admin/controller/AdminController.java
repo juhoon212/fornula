@@ -55,7 +55,7 @@ public class AdminController {
 		return "admin-item";
 	}
 	
-	@PostMapping("/item")
+	@GetMapping("/update")
 	public String update(@RequestParam int itemIdx) throws ItemNotFoundException {
 		adminService.updateItemStatus(itemIdx);
 		
@@ -63,7 +63,7 @@ public class AdminController {
 		/*
 		 * if(itemIdx) { throw new ItemNotFoundException("상품이 존재하지 않습니다."); }
 		 */
-		return "admin-item";
+		return "redirect:/admin/item";
 	}
 	
 	

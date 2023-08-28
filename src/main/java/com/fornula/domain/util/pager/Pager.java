@@ -20,7 +20,6 @@ public class Pager {
 	private int nextPage;//다음 블럭에 출력될 시작 페이지 번호
 	
 	public Pager(int pageNum, int totalBoard, int pageSize, int blockSize) {
-		super();
 		this.pageNum = pageNum;
 		this.totalBoard = totalBoard;
 		this.pageSize = pageSize;

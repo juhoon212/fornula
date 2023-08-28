@@ -124,25 +124,27 @@ tr td {
 	padding-left: 30px;
 }
 
-a:link{
-color: #212121;}
+a:link {
+	color: #212121;
+}
 
-a:visited{
-color: #212121;}
+a:visited {
+	color: #212121;
+}
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
 
 	<!-- 스타일 태그 끝 -->
-	<main class="main container">
-		<div class="sale">
-			<div class="row">
-				<div class="col-12 col-lg-8">
+	<div class="row">
+		<div class="col-12 col-lg-8">
+			<main class="main container" id="main-content">
+				<div class="sale" id="salecontent">
 					<div class="widget">
 						<table>
 							<tr>
 								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;" name="price">원</td>
+								<td scope="col" style="text-align: right;" name="price">${price}원</td>
 							</tr>
 						</table>
 					</div>
@@ -189,8 +191,11 @@ color: #212121;}
 													<div
 														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
 														<div class="author-meta">
-															<select name="salesStatus" id="archive" class="form-control" class="btn btn-primary" style="font-size: 17px;">
-																<option selected="selected" disabled="disabled">주문 접수</option>
+															<select name="salesStatus" id="archive"
+																class="form-control" class="btn btn-primary"
+																style="font-size: 17px;">
+																<option selected="selected" disabled="disabled">주문
+																	접수</option>
 																<option value="3">제작중</option>
 																<option value="4">제작 완료</option>
 															</select>
@@ -225,67 +230,48 @@ color: #212121;}
 						</nav>
 					</div>
 				</div>
+			</main>
+		</div>
 
-				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-					<div class="widget-sidebar story-sidebar">
+		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+			<div class="widget-sidebar story-sidebar">
 
-						<div id="button">
-							<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-								class="rounded-circle" alt="Author" width="200" height="200">
+				<div id="img">
+					<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+						class="rounded-circle" alt="Author" width="200" height="200">
+				</div>
+				<div id="button">
+					<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+				</div>
+				<div class="widget widget_tag_cloud">
+					<div class="tagcloud">
+						<div id="changBtn">
+							<a href="/mypage" class="tag-cloud-link"
+								aria-label="admin change button">일반인으로 전환</a>
 						</div>
-						<div id="button">
-							<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
-						</div>
-						<div class="widget widget_tag_cloud">
-
-							<div class="tagcloud">
-								<div id="button">
-									<a href="/mypage" class="tag-cloud-link"
-										aria-label="admin change button">일반인으로 전환</a>
-								</div>
-								<div class="row">
-									<div class="widget" style="text-align: left;" id="list">
-										<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매 관리</h3>
-										<ul style="color: black;">
-											<li><a href="javascript:menuchange();" id="info" class="expertmenu">전문가 정보</a></li>
-											<li><a href="javascript:menuchange();" id="sale" class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-											<li><a href="javascript:menuchange();" id="po" class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-											<li><a href="javascript:menuchange();" id="item" class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-										</ul>
-									</div>
-								</div>
+						<div class="row">
+							<div class="widget" style="text-align: left;" id="list">
+								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
+									관리</h3>
+								<ul style="color: black;">
+									<li><a href="javascript:menuchange();" id="info"
+										class="expertmenu">전문가 정보</a></li>
+									<li><a href="javascript:menuchange();" id="sale"
+										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
+									<li><a href="javascript:menuchange();" id="po"
+										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
+									<li><a href="javascript:menuchange();" id="item"
+										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</main>
-
+	</div>
 	<jsp:include page="footer.jsp" />
-	
-	<script type="text/javascript">
-	function menuchange() {
-		let h3=document.getElementById("expertmain");
-		let info=document.getElementById("info");
-		let po=document.getElementById("po");
-		let sale=document.getElementById("sale");
-		
-		info.addEventListener('click',function(){
-			h3.innerText="전문가 정보";
-		});
-		
-		po.addEventListener('click',function(){
-			h3.innerText="포트 폴리오";
-		});
-		
-		sale.addEventListener('click',function(){
-			h3.innerText="판매 관리";
-		});
-	};
-	
-</script>
-<!-- 
+	<!-- 
 //상태 update를 위해 saleIdx값을 백으로 보냄
 <script type="text/javascript">
 	function updateSalesStatus(saleIdx) {
@@ -304,7 +290,7 @@ color: #212121;}
 }
 </script>
  -->
-<script type="text/javascript"
+	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
@@ -322,6 +308,47 @@ color: #212121;}
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+
+	<script type="text/javascript">
+		function menuchange(url) {
+			let h3 = document.getElementById("expertmain");
+			let info = document.getElementById("info");
+			let po = document.getElementById("po");
+			let sale = document.getElementById("sale");
+
+			info.addEventListener('click', function() {
+				h3.innerText = "전문가 정보";
+			});
+
+			po.addEventListener('click', function() {
+				h3.innerText = "포트 폴리오";
+			});
+
+			sale.addEventListener('click', function() {
+				h3.innerText = "판매 관리";
+			});
+		};
+	</script>
+
+	    <script type="text/javascript">
+        $(document).ready(function() {
+            function loadContent(url) {
+                $.ajax({
+                    url: "/expertoutput",
+                    type: "GET",
+                    dataType: "html", // 받아오는 데이터 타입을 html로 지정
+                    success: function(result) {
+                        var mainContent = $(result).find("main").html();
+                        $("main").html(mainContent);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", error);
+                    }
+                });
+            }
+        });
+
+    </script>
 </body>
 </html>

@@ -38,41 +38,49 @@
         <div class="col-12">
             <div class="blog-grid-posts">
                 <div class="row">
+					<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
+					<div class="blog-grid-col col-12 col-md-6 col-lg-4">
+						<div id="post-1" class="post type-post card post-card post-grid-card h-100">
+							<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
+							<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+							<div class="card-body">
+								<ul class="post-meta">
+									<li>
+										<a href="single.html">${itemPhotoCategoryCart.item.itemDate}</a>
+									</li>
+									<li>
+										<a href="#">${itemPhotoCategoryCart.category.categoryIdx}</a>
+									</li>
+								</ul>
+								<h5 class="post-title card-title"><a href="single.html">${itemPhotoCategoryCart.item.itemName}</a></h5>
+								<p class="post-text card-text">
+									${itemPhotoCategoryCart.item.itemContent}
+								</p>
+							</div>
+							<div class="card-footer">
+                          	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+								<a href="/item/${itemIdx}" class="more-link card-link">
+									더 보기 <i class="lana-icon-arrow-right text-primary"></i>
+								</a>
+							</div>
+						</div>
+					</div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                        <div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
+                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/17</a></li>
-                                    <li><a href="#">카테고리1</a></li>
+                                    <li><a href="single.html">${itemDate }</a></li>
+                                    <li><a href="#">${categoryIdx }</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
                                 <p class="post-text card-text">
-                                   우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
+                                   ${itemContent }
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="single.html" class="more-link card-link">
-                                    더 보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/16</a></li>
-                                    <li><a href="#">카테고리1</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
-                                <p class="post-text card-text">
-                                   개굴개굴개굴
-                                </p>
-                            </div>
-                            <div class="card-footer"> 
-                                <a href="single.html" class="more-link card-link">
+                           	 	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+                                <a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
@@ -80,19 +88,20 @@
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-3" class="post type-post post-3 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/15</a></li>
-                                    <li><a href="#">카테고리1</a></li>
+                                    <li><a href="#">${itemDate }</a></li>
+                                    <li><a href="#">${categoryIdx }</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">광복절</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
                                 <p class="post-text card-text">
-                                    1945/8/15
+                                   ${itemContent }
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="single.html" class="more-link card-link">
+                            	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
@@ -100,19 +109,20 @@
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-4" class="post type-post post-4 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/14</a></li>
-                                    <li><a href="#">카테고리1</a></li>
+                                    <li><a href="single.html">${itemDate }</a></li>
+                                    <li><a href="#">${categoryIdx }</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">카테고리1이란?</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
                                 <p class="post-text card-text">
-                                    상품등록시 연관 카테고리를 고르는데 그 중에서 첫번쨰로 받는 카테고리임!
+                                   ${itemContent }
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="single.html" class="more-link card-link">
+                            	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
@@ -120,19 +130,20 @@
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-5" class="post type-post post-5 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/13</a></li>
-                                    <li><a href="#">카테고리1</a></li>
+                                    <li><a href="single.html">${itemDate }</a></li>
+                                    <li><a href="#">${categoryIdx }</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">이게 버튼을</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
                                 <p class="post-text card-text">
-                                    이 게시글을 클릭하면 이제 해당 상품 상세페이지로 이동하는 메소드를 작성해야함
+                                   ${itemContent }
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="single.html" class="more-link card-link">
+                            <!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
@@ -140,19 +151,20 @@
                     </div>
                     <div class="blog-grid-col col-12 col-md-6 col-lg-4">
                         <div id="post-6" class="post type-post post-6 card post-card post-grid-card h-100">
-                            <img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
                             <div class="card-body">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">2023/8/12</a></li>
-                                    <li><a href="#">카테고리1</a></li>
+                                    <li><a href="single.html">${itemDate }</a></li>
+                                    <li><a href="#">${categoryIdx }</a></li>
                                 </ul>
-                                <h5 class="post-title card-title"><a href="single.html">게시글들은</a></h5>
+                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
                                 <p class="post-text card-text">
-                                    최신순일수록 좌측 상단에 오도록 배치하였음
+                                   ${itemContent }
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="single.html" class="more-link card-link">
+                            <!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
                                     더보기 <i class="lana-icon-arrow-right text-primary"></i>
                                 </a>
                             </div>
@@ -162,7 +174,7 @@
 
                 <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
                      role="navigation">
-                    <a class="prev disabled" href="#">
+   					<a class="prev disabled" href="#" id="prevBtn">
                         Prev
                     </a>
                     <div class="nav-links">
@@ -173,13 +185,13 @@
                             <li><a class="page-numbers" href="#">4</a></li>
                         </ul>
                     </div>
-                    <a class="next" href="#">
+   					<a class="next" href="#" id="nextBtn">
                         Next
                     </a>
                 </nav>
-            </div>
-        </div>
-    </div>
+			</div>                
+		</div>
+	</div>
 </main>
 <jsp:include page="footer.jsp"/>
  
@@ -192,6 +204,53 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script>
+    // 현재 페이지 번호
+    var currentPage = 1;
+    var totalPages = 4; // 전체 페이지 수, 실제 데이터에 맞게 수정해야 합니다.
 
+    // Prev 버튼 클릭 시 이벤트 처리
+    document.getElementById("prevBtn").addEventListener("click", function() {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePage();
+        }
+    });
+
+    // Next 버튼 클릭 시 이벤트 처리
+    document.getElementById("nextBtn").addEventListener("click", function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePage();
+        }
+    });
+
+    // 페이지 업데이트 함수
+    function updatePage() {
+
+        // 현재 페이지 번호 업데이트
+        var currentPageElement = document.querySelector(".page-numbers.current");
+        currentPageElement.textContent = currentPage;
+
+        // Prev, Next 버튼 활성화/비활성화 처리
+        var prevBtn = document.getElementById("prevBtn");
+        var nextBtn = document.getElementById("nextBtn");
+
+        if (currentPage === 1) {
+            prevBtn.classList.add("disabled");
+        } else {
+            prevBtn.classList.remove("disabled");
+        }
+
+        if (currentPage === totalPages) {
+            nextBtn.classList.add("disabled");
+        } else {
+            nextBtn.classList.remove("disabled");
+        }
+    }
+
+    // 초기 페이지 로딩 시 페이지 업데이트 호출
+    updatePage();
+</script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.item.mapper.java.ItemDetailMapper">
+	<!-- 상품 상세페이지에서 출력할 내용(하나의 상품)을 위한 SQL문 -->	
+	<select id="selectItem" resultType="ItemPhoto">
+	    SELECT i.item_idx
+	           ,i.category_idx
+	           ,i.expert_idx
+	           ,i.item_name
+	           ,i.item_content
+	           ,i.price
+	           ,i.item_date
+	           ,p.photo_idx
+	           ,p.itemfile_name
+	    FROM item i
+	    INNER JOIN photo p ON i.item_idx = p.item_idx
+	    WHERE i.item_status = 1
+	          AND i.item_idx = #{itemIdx}
+	</select>
+	
+	<!--  
+	<select id="findByMemberIdx" resultType="Expert">
+		select expert_idx
+		from member join expert on member.member_idx = expert.expert_idx
+		where member.member_idx = #{member_idx}
+	</select>
+	-->
+	
+</mapper>

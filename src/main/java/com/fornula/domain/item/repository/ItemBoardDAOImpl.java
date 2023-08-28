@@ -19,12 +19,12 @@ public class ItemBoardDAOImpl implements ItemBoardDAO{
 	
 	@Override
 	public List<ItemPhotoCategoryCart> selectItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
+		return sqlSession.getMapper(ItemBoardMapper.class).selectItemList(map);
 	}
 	
 	@Override
 	public List<ItemPhotoCategoryCart> selectCategoryItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
+		return sqlSession.getMapper(ItemBoardMapper.class).selectCategoryItemList(map);
 	}
 	
 	@Override
@@ -32,6 +32,10 @@ public class ItemBoardDAOImpl implements ItemBoardDAO{
 		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
 	}
 	
+	@Override
+	public int updateItem(Item item) {
+		return sqlSession.getMapper(ItemBoardMapper.class).updateItem(item);
+	}	
 	@Override
 	public int selectItemBoardCount() {
 		return sqlSession.getMapper(ItemBoardMapper.class).selectItemBoardCount();

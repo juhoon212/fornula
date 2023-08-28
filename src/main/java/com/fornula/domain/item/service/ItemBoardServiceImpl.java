@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ItemBoardServiceImpl implements ItemBoardService{
 	private final ItemBoardDAO itemBoardDAO;
-//	상품 리스트(6개씩 있는 그거) 출력 용도
+//	상품 리스트(6개씩 출력되게 할거야) 출력 용도
 	@Override
 	public Map<String, Object> getItemList(int pageNum) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
@@ -56,22 +56,37 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		return resultMap;
 	}
 //	검색창에서 상품 검색하는 용도
+    @Override
+    public Map<String, Object> getSearchItemList(int pageNum, String searchKeyword) {
+        int totalBoard = itemBoardDAO.selectItemBoardCount();
+        
+        Pager pager = new Pager(pageNum, totalBoard, 5, 6);
+
+        Map<String, Object> pageMap = new HashMap<>();
+        pageMap.put("startRow", pager.getStartRow());
+        pageMap.put("endRow", pager.getEndRow());
+        pageMap.put("searchKeyword", "%" + searchKeyword + "%"); // 검색어 조합
+
+        List<ItemPhotoCategoryCart> searchItemBoardList = itemBoardDAO.searchItemList(pageMap);
+
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("searchItemCategoryBoardList", searchItemBoardList);
+        resultMap.put("pager", pager);
+
+        return resultMap;
+    }
+//	관리자가 상품게시글 삭제처리(상태변경)하는 메소드임 이거 담당자가 채워놓기
+	/*
 	@Override
-	public Map<String, Object> getSearchItemList(int pageNum) {
-		int totalBoard=itemBoardDAO.selectItemBoardCount();
+	public void modifyItem(Item item) {
+		// TODO Auto-generated method stub
 		
-		Pager pager=new Pager(pageNum, totalBoard, 5, 6);
-		
-		Map<String, Object> pageMap=new HashMap<String, Object>();
-		pageMap.put("startRow", pager.getStartRow());
-		pageMap.put("endRow", pager.getEndRow());
-	
-		List<ItemPhotoCategoryCart> searchItemBoardList=itemBoardDAO.searchItemList(pageMap);
-		
-		Map<String, Object> resultMap=new HashMap<String, Object>();
-		resultMap.put("searcgItemCategoryBoardList", searchItemBoardList);
-		resultMap.put("pager", pager);
-		
-		return resultMap;
 	}
+	*/
+    
+//   상품 갯수를 검색하는 용도(상품 게시글의 갯수를 샌 다음 1,2,...,4 같은 페이지 처리에 사용할 것
+    @Override
+    public int getItemBoardCount() {
+        return itemBoardDAO.selectItemBoardCount();
+    }
 }
