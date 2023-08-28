@@ -5,10 +5,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>마이페이지-나의정 보</title>
+<title>전문가페이지-나의정보</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link

@@ -19,5 +19,4 @@ public interface AdminRepository {
 	//관리자가 상품의 상태 수정(삭제처리)
 	int updateItemStatus(int itemIdx);
 	
-	Item selectItemIdx();
 }

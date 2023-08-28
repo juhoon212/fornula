@@ -9,11 +9,6 @@
 	</update>
 	
 	
-	<!-- itemIdx 검색  -->
-	<select id="selectItemIdx" resultType="com.fornula.domain.item.dto.Item">
-		select item_idx 
-		from item
-	</select>
 		<!-- 01. 회원록록 -->
 	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember">
 		select  member_idx,

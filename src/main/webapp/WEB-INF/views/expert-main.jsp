@@ -302,8 +302,8 @@ color: #212121;}
         console.error('Error updating sales status:', error);
     });
 }
- -->
 </script>
+ -->
 <script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 	<script type="text/javascript"

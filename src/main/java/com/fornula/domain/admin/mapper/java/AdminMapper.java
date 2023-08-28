@@ -18,5 +18,4 @@ public interface AdminMapper {
 	//관리자가 상품의 상태를 변경
 	int updateItemStatus(int itemIdx);
 	
-	Item selectItemIdx();
 }

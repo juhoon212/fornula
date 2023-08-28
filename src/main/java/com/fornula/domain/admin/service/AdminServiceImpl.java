@@ -43,10 +43,7 @@ public class AdminServiceImpl implements AdminService{
 	@Transactional(rollbackFor = Exception.class)
 	//관리자가 상품의 상태를 변경
 	@Override
-	public void updateItemStatus(int itemIdx)throws ItemNotFoundException {
-		if(adminRepository.selectItemIdx()==null) {
-			throw new ItemNotFoundException("상품이 존재하지 않습니다.");
-		}
+	public void updateItemStatus(int itemIdx) {
 		adminRepository.updateItemStatus(itemIdx);
 			
 		

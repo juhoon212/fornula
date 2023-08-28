@@ -44,10 +44,5 @@ public class AdminRepositoryImpl implements AdminRepository{
 	public int updateItemStatus(int itemIdx) {
 		return sql.getMapper(AdminMapper.class).updateItemStatus(itemIdx);
 	}
-	//관리자가 상품의 상태를 변경
-	@Override
-	public Item selectItemIdx() {
-		return sql.getMapper(AdminMapper.class).selectItemIdx();
-	}
 	
 }
