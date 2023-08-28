@@ -18,6 +18,7 @@
 	</select>
 	-->
 		<!-- 01. 회원록록 -->
+		<!-- 
 	<select id="memberList" resultType="AdminMember">
 		select  member_idx,
 				id,
@@ -27,9 +28,20 @@
         where member_status in (1,2)
 		order by member_idx
 	</select>
+	 -->
+	
+		<!-- 01. 회원록록 페이지 -->
+	<select id="memberList" resultType="AdminMember">
+		select * from (select rownum rn, board.* from (select member_idx, id, member_status, member_date 
+			from member order by member_idx ) board) where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="memberListCount" resultType="int">
+		select count(*) from member
+	</select>
 	
 	<!-- 상품 목록 -->
-	
+	<!-- 
 	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem">
 			select  item_idx,
 				item_name,
@@ -39,6 +51,17 @@
 		where item_status = 1
 		order by item_idx
 		</select>
+		 -->
+	<!-- 상품 목록 -->
+			<select id="itemList" resultType="AdminItem">
+		select * from (select rownum rn, board.* from (select item_idx, item_name, category_idx, item_date 
+			from item order by item_idx ) board) where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="itemListCount" resultType="int">
+		select count(*) from item
+	</select>
+		
 		
 	
 </mapper>

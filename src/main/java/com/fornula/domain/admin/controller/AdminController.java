@@ -1,12 +1,14 @@
 package com.fornula.domain.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
@@ -21,36 +23,40 @@ public class AdminController {
 	private final AdminService adminService;
 	
 	
-	@GetMapping ("/user")
-	public String AdminMemberForm (Model model) {
-		List<AdminMember> memberList = adminService.memberList();
-		model.addAttribute("memberList", memberList);
+	@RequestMapping("/user")
+	public String memberList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+		
+		Map<String, Object> map=adminService.memberList(pageNum);
+		
+		model.addAttribute("pager", map.get("pager"));
+		model.addAttribute("memberList", map.get("memberList"));
+		
 		return "admin-user";
 	}
 	
-	/*
-	@PostMapping("/user")
-	public String memberList(Model model) {
-		List<AdminMember> memberList = adminService.memberList();
-		model.addAttribute("memberList", memberList);
-		return "admin-user";
-	}
-	*/
 
-	
+
+	/*
 	@GetMapping ("/item")
 	public String adminItemForm (Model model) {
 		List<AdminItem> itemList = adminService.itemList();
 		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
-	/*
-	@PostMapping("/item")
-	public String itemList(Model model) {
-		List<AdminItem> itemList = adminService.itemList();
-		model.addAttribute("itemList", itemList);
+	*/
+	
+	@RequestMapping("/item")
+	public String itemList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+		
+		Map<String, Object> map=adminService.itemList(pageNum);
+		
+		model.addAttribute("pager", map.get("pager"));
+		model.addAttribute("itemList", map.get("itemList"));
+		
 		return "admin-item";
 	}
-	*/
+	
+
+
 	
 }
