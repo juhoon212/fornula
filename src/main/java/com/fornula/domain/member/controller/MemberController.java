@@ -38,7 +38,7 @@ public class MemberController {
 	
 	
 	
-	
+
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
@@ -58,14 +58,11 @@ public class MemberController {
 		 return "redirect:/";
 	}
 	
-	
-	
 	// 아이디 찾기
 	@GetMapping("/findId")
 	public String showFindId() {
 		return "find-id";
 	}
-	
 	
 	// 비밀번호 찾기
 	@GetMapping("/findPw")

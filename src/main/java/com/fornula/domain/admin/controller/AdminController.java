@@ -36,20 +36,21 @@ public class AdminController {
 		return "admin-user";
 	}
 	*/
-	
-	
-	
+
 	
 	@GetMapping ("/item")
-	public String adminItemForm () {
+	public String adminItemForm (Model model) {
+		List<AdminItem> itemList = adminService.itemList();
+		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
-	
+	/*
 	@PostMapping("/item")
 	public String itemList(Model model) {
 		List<AdminItem> itemList = adminService.itemList();
 		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
+	*/
 	
 }

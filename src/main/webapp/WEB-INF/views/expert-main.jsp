@@ -142,7 +142,7 @@ color: #212121;}
 						<table>
 							<tr>
 								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;">원</td>
+								<td scope="col" style="text-align: right;" name="price">원</td>
 							</tr>
 						</table>
 					</div>
@@ -189,10 +189,10 @@ color: #212121;}
 													<div
 														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
 														<div class="author-meta">
-															<select id="archive" class="form-control" class="btn btn-primary" style="font-size: 17px;">
+															<select name="salesStatus" id="archive" class="form-control" class="btn btn-primary" style="font-size: 17px;">
 																<option selected="selected" disabled="disabled">주문 접수</option>
-																<option>제작중</option>
-																<option>제작 완료</option>
+																<option value="3">제작중</option>
+																<option value="4">제작 완료</option>
 															</select>
 														</div>
 
@@ -284,6 +284,25 @@ color: #212121;}
 		});
 	};
 	
+</script>
+<!-- 
+//상태 update를 위해 saleIdx값을 백으로 보냄
+<script type="text/javascript">
+	function updateSalesStatus(saleIdx) {
+    fetch('/expert/update/${saleIdx}', {
+        method: 'PUT'
+    })
+    .then(response => response.json())
+    .then(updatedStatus => {
+        // 데이터의 상태를 변경할 수 있는 로직
+        console.log('Updated status for saleIdx ${saleIdx}: ${updatedStatus}');
+        // 변경된 상태를 출력하는 등의 동작 수행
+    })
+    .catch(error => {
+        console.error('Error updating sales status:', error);
+    });
+}
+ -->
 </script>
 <script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>

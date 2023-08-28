@@ -403,7 +403,7 @@ table th {
 			<td >${member.memberIdx}</td>
 			<td >${member.id }</td>
 			<td>${member.memberStatus}</td>
-			<td>${member.memberDate}</td>
+			<td><${member.memberDate}</td>
 			<td >
 				<button class="delete">탈퇴</button>
 			</td>
@@ -543,4 +543,5 @@ table th {
  </script>
 
 </body>
+
 </html>

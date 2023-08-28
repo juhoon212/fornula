@@ -62,6 +62,7 @@
 	align-items: center;
 	text-align: center;
 	padding : 10px;
+	color : red;
 }
 
 
@@ -85,7 +86,7 @@
 
       <section>
         
-        <div>
+        <form action="/member/findId" method="Post">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
@@ -93,7 +94,7 @@
 	          </div>
 	        </div>
 	      	<button id="submit">아이디 찾기</button>
-     	<div>
+     	</form>
      	
      	<div id="show-message"></div>
      	
@@ -108,7 +109,6 @@
  <script type="text/javascript">
  
  let emailBox = document.querySelector('.box');
- let showMessage = document.querySelector('#show-message')
  
  document.querySelector('#submit').addEventListener('click', (e) => {
 	 fetch("<c:url value="/member/findId"/>", {
@@ -116,19 +116,14 @@
 		  headers: { 
 		    "Content-Type": "application/json",
 		  },
-		  body: JSON.stringify({ 
-			    "email" : emailBox.value
-			  })
 		})
 	.then((response) => response.json())
 	.then((data) => {
 	   	  
 	  	if(data.errorCode === "Bad") {
-	  		showMessage.style = "color : red";
 	   		document.querySelector('#show-message').innerHTML = data.message;
 	   } else {
-		   	showMessage.style = "color : green";
-	   		document.querySelector('#show-message').innerHTML = "아이디 = " + data.id;
+	   		document.querySelector('#show-message').innerHTML = data;
 	   	}
 	 })
 	  	e.preventDefault();
