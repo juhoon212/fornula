@@ -6,8 +6,7 @@
 	<update id = "status">
 		UPDATE MEMBER 
 		SET MEMBER_STATUS = 0
-		WHERE MEMBER_STATUS = 1 
-		OR member_status = 2
+		WHERE id = #{id}
 	</update>
 	-->
 	
@@ -19,7 +18,7 @@
 	</select>
 	-->
 		<!-- 01. 회원록록 -->
-	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember" >
+	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember">
 		select  member_idx,
 				id,
 				member_status,
@@ -30,7 +29,7 @@
 	
 	<!-- 상품 목록 -->
 	
-	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem" >
+	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem">
 		select  item_idx,
 				item_name,
 				category_idx,
