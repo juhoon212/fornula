@@ -142,7 +142,7 @@ h3 {
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
 	<main class="main container">
-		<form method="post" id="expertjoinForm" enctype="multipart/form-data">
+		<form method="post" id="expertjoinForm" enctype="multipart/form-data" action="/expert/join">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -151,8 +151,7 @@ h3 {
 								<h3>아이디</h3>
 								<div class="info" id="info__id">
 									<div id="id-input">
-										<input class="box" type="text"
-											readonly="readonly" value="${member.id} " />
+										<p class="box">${member.id } </p>
 									</div>
 								</div>
 								<h3>전화번호</h3>

@@ -21,6 +21,7 @@ import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.session.SessionConst;
 import com.google.common.util.concurrent.Service;
 
@@ -34,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
+	private final MypageInfoService service;
 
 	@GetMapping("/sale")
 	public String sale() {
@@ -48,14 +50,19 @@ public class ExpertJoinController {
 	@PostMapping("/join")
 	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model, HttpSession session) throws IllegalStateException, IOException {
 		log.info("expert:{}",expert);
+		log.info("file:{}",uploadFile);
 
 		
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		session.setAttribute("member", member);
 		expert.setMemberIdx(member.getMemberIdx());
 		
+		Member joinMember  = service.mypageInfoService(member.getId());
 		
-		log.info("sessionMember = {}", member);
+		session.setAttribute("member", joinMember);
+		
+		
+		
+		log.info("sessionMember = {}", joinMember);
 		
 		/*
 		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
