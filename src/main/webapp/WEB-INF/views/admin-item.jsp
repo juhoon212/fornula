@@ -398,12 +398,18 @@ table th {
         </tr>
     </thead>
     	
-    		<tr>
-    		<td>1</td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td><button class="delete">탈퇴</button> </td>
+    				<c:forEach var="item" items="${itemList}">
+		<tr>
+			<td >${item.itemIdx}</td>
+			<td >${item.itemName }</td>
+			<td>${item.categoryIdx}</td>
+			<td>${item.itemDate}</td>
+			<td >
+				<button class="delete">탈퇴</button>
+			</td>
+			
+		</tr>
+		</c:forEach>
     		
     		</tr>
     	

@@ -381,7 +381,7 @@ table th {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="infoForm" method="post" action="/mypageInfo">
+   <form name="userForm" method="post" action="/admin/user">
         <label>
         회원 관리
         </label>
@@ -398,15 +398,19 @@ table th {
         </tr>
     </thead>
     	
-    		<tr>
-    		<td>1</td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td><button class="delete">탈퇴</button> </td>
-    		
-    		</tr>
-    	
+    			<c:forEach var="member" items="${memberList}">
+		<tr>
+			<td >${member.memberIdx}</td>
+			<td >${member.id }</td>
+			<td>${member.memberStatus}</td>
+			<td>${member.memberDate}</td>
+			<td >
+				<button class="delete">탈퇴</button>
+			</td>
+			
+		</tr>
+		</c:forEach>
+	</table>
   
     
     <tfoot>
