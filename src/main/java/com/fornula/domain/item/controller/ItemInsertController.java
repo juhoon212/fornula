@@ -40,17 +40,18 @@ public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
 	private final WebApplicationContext context;
 
-	@GetMapping("/add")
-	public String add() {
+	@GetMapping("/add/{expertIdx}")
+	public String add(@PathVariable Integer expertIdx, Model model) {
+		
+		model.addAttribute("expertIdx", expertIdx);
+		
 		return "item-add";
 	}
 	
-	@PostMapping("/add")
-	public String insert(@ModelAttribute ItemForm itemForm,RedirectAttributes redirectAttributes) {
-		
-		
-		
-		log.info("Item테이블에 행 삽입(photoIdx는 임시값임)");
+	@PostMapping("/add/{expertIdx}")
+	public String insert(	@ModelAttribute ItemForm itemForm,
+							@PathVariable Integer expertIdx,
+							RedirectAttributes redirectAttributes) {
 		
 		Item item = new Item();
 		
@@ -59,8 +60,6 @@ public class ItemInsertController {
 		item.setItemName(itemForm.getItemName());
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
-		
-		log.info("Item테이블에 행 삽입된 내용 {}",item);
 		
 		int result=itemInsertService.addItem(item);
 		
@@ -115,6 +114,6 @@ public class ItemInsertController {
 		redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
 		
-		return "redirect:/board/{itemIdx}";
+		return "redirect:/item/detail/{itemIdx}";
 	}	
 }

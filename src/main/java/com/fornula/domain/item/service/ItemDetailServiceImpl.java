@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.exception.custom.NotFoundExpertException;
 import com.fornula.domain.expert.dto.Expert;
+import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.itemdetail.ExpertMember;
 import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 import com.fornula.domain.item.repository.ItemDetailDAO;
@@ -16,7 +18,7 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	private final ItemDetailDAO itemDetailDAO;
 //	상품 상세페이지에서 출력할 하나의 행(상세페이지엔 상품 하나만들어가니까)을 출력하는 용도
 	@Override
-	public ItemPhoto getItem(int itemIdx) {
+	public Item getItem(int itemIdx) {
 		return itemDetailDAO.selectItem(itemIdx);
 	}
 
@@ -30,5 +32,15 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		
 		return findExpert;
 	}
+
+	@Override
+	public Photo selectPhoto(int itemIdx) {
+		Photo selectPhoto = itemDetailDAO.selectPhoto(itemIdx);
+		return selectPhoto;
+	}
+
+	
+	
+	
 
 }

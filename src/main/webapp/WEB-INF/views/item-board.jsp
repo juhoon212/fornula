@@ -39,140 +39,65 @@
             <div class="blog-grid-posts">
                 <div class="row">
 					<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
-					<div class="blog-grid-col col-12 col-md-6 col-lg-4">
-						<div id="post-1" class="post type-post card post-card post-grid-card h-100">
-							<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-							<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-							<div class="card-body">
-								<ul class="post-meta">
-									<li>
-										<a href="single.html">${itemPhotoCategoryCart.item.itemDate}</a>
-									</li>
-									<li>
-										<a href="#">${itemPhotoCategoryCart.category.categoryIdx}</a>
-									</li>
-								</ul>
-								<h5 class="post-title card-title"><a href="single.html">${itemPhotoCategoryCart.item.itemName}</a></h5>
-								<p class="post-text card-text">
-									${itemPhotoCategoryCart.item.itemContent}
-								</p>
-							</div>
-							<div class="card-footer">
-                          	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="/item/${itemIdx}" class="more-link card-link">
-									더 보기 <i class="lana-icon-arrow-right text-primary"></i>
-								</a>
+					<c:forEach var="itemList"  items="${itemBoardList}">
+						<div class="blog-grid-col col-12 col-md-6 col-lg-4">
+							<div id="post-1" class="post type-post card post-card post-grid-card h-100">
+								<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
+								<img class="card-img-top img-fluid" src="<c:url value="/images/upload/${itemList.photo.itemfileName}"/>">
+								<div class="card-body">
+									<ul class="post-meta">
+										<li>
+											<a href="single.html">${itemList.item.itemDate}</a>
+										</li>
+									</ul>
+									<h5 class="post-title card-title">${itemList.item.itemName}</h5>
+									<p class="post-text card-text">
+										${itemList.item.itemContent}
+									</p>
+								</div>
+								<div class="card-footer">
+	                          	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+									<a href="/item/${itemList.item.itemIdx}" class="more-link card-link">
+										더 보기 <i class="lana-icon-arrow-right text-primary"></i>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">${itemDate }</a></li>
-                                    <li><a href="#">${categoryIdx }</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
-                                <p class="post-text card-text">
-                                   ${itemContent }
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                           	 	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-                                <a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
-                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-3" class="post type-post post-3 card post-card post-grid-card h-100">
-                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="#">${itemDate }</a></li>
-                                    <li><a href="#">${categoryIdx }</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
-                                <p class="post-text card-text">
-                                   ${itemContent }
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                            	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
-                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-4" class="post type-post post-4 card post-card post-grid-card h-100">
-                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">${itemDate }</a></li>
-                                    <li><a href="#">${categoryIdx }</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
-                                <p class="post-text card-text">
-                                   ${itemContent }
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                            	<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
-                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-5" class="post type-post post-5 card post-card post-grid-card h-100">
-								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">${itemDate }</a></li>
-                                    <li><a href="#">${categoryIdx }</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
-                                <p class="post-text card-text">
-                                   ${itemContent }
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                            <!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
-                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-grid-col col-12 col-md-6 col-lg-4">
-                        <div id="post-6" class="post type-post post-6 card post-card post-grid-card h-100">
-                            	<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-                            <div class="card-body">
-                                <ul class="post-meta">
-                                    <li><a href="single.html">${itemDate }</a></li>
-                                    <li><a href="#">${categoryIdx }</a></li>
-                                </ul>
-                                <h5 class="post-title card-title"><a href="single.html">${itemName }</a></h5>
-                                <p class="post-text card-text">
-                                   ${itemContent }
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                            <!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
-                                    더보기 <i class="lana-icon-arrow-right text-primary"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					</c:forEach>
+					
+                    <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
+                     role="navigation">
+                    <c:choose>
+						<c:when test="${pager.startPage > pager.blockSize }">
+							<a class="prev disabled" id="prevBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}">Prev</a>
+						</c:when>
+						<c:otherwise>
+							Prev
+						</c:otherwise>
+					</c:choose>	
+					
+					<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+						<c:choose>
+							<c:when test="${pager.pageNum != i  }">
+								<a class="page-numbers" href="<c:url value="/item/boardList"/>?pageNum=${i}">[${i }]</a>
+							</c:when>
+							<c:otherwise>
+								[${i }]
+							</c:otherwise>
+						</c:choose>	
+					</c:forEach>
+				
+					<c:choose>
+						<c:when test="${pager.endPage != pager.totalPage }">
+							<a class="next" id="nextBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">Next</a>
+						</c:when>
+						<c:otherwise>
+							Next
+						</c:otherwise>
+					</c:choose>
+					</nav>
 
-                <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
+               <!--  <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
                      role="navigation">
    					<a class="prev disabled" href="#" id="prevBtn">
                         Prev
@@ -188,7 +113,7 @@
    					<a class="next" href="#" id="nextBtn">
                         Next
                     </a>
-                </nav>
+                </nav> -->
 			</div>                
 		</div>
 	</div>
