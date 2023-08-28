@@ -36,7 +36,7 @@ public class MemberLoginRestController {
 	
 	
 	@PostMapping("/login")
-	public Member login(@ModelAttribute LoginForm form,HttpServletRequest request) {
+	public Member login(@RequestBody LoginForm form,HttpServletRequest request) {
 		
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
@@ -45,9 +45,6 @@ public class MemberLoginRestController {
 		log.info("isNewSession? = {}", session.isNew());
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
-		
-		Member loginMember2 = (Member)session.getAttribute(SessionConst.Login_Member);
-		
 		
 		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
 		
