@@ -2,6 +2,7 @@ package com.fornula.domain.member.dto.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 /*
@@ -10,6 +11,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class LoginForm {
 	
 	private String id;

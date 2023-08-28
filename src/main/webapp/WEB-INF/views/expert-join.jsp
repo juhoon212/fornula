@@ -138,7 +138,7 @@ h3 {
 #join {
 	
 }
-</style>
+</style  >
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
 	<main class="main container">

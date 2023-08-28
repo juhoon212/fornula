@@ -17,16 +17,16 @@ import com.fornula.domain.util.session.SessionConst;
 @RequestMapping("/")
 public class MainController {
 	
-	@GetMapping("/home")
+	@GetMapping
 	public String home(HttpSession session, Model model) {
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		int memberStatus = member.getMemberStatus();
-		
-		if(memberStatus == 1 || memberStatus == 2)  {
-			 model.addAttribute("headerPage", "login-header.jsp");
-        } else {
-            model.addAttribute("headerPage", "header.jsp");
-		}
+		/*
+		 * Member member = (Member) session.getAttribute(SessionConst.Login_Member); int
+		 * memberStatus = member.getMemberStatus();
+		 * 
+		 * if(memberStatus == 1 || memberStatus == 2) { model.addAttribute("headerPage",
+		 * "login-header.jsp"); } else { model.addAttribute("headerPage", "header.jsp");
+		 * }
+		 */
 		
 		return "main";
 	}

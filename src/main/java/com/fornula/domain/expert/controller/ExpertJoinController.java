@@ -66,7 +66,7 @@ public class ExpertJoinController {
 		
 		/*
 		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
-		 * expert.setInterest(interst);
+		 * expert.setInterest (interst);
 		 */
 		
 		//업로드된 파일이 pdf 파일이 아닐 경우
