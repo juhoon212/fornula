@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -60,7 +59,7 @@
 							</div>
 							<div class="card-footer">
                           	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-								<a href="${itemPhotoCategoryCart.item.itemIdx}" class="more-link card-link">
+								<a href="/item/${itemIdx}" class="more-link card-link">
 									더 보기 <i class="lana-icon-arrow-right text-primary"></i>
 								</a>
 							</div>

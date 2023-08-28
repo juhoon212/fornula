@@ -79,7 +79,7 @@ a{
 					               item.categoryIdx == 7 ? '사업자' :
 					               item.categoryIdx == 8 ? '개인' :
 					               item.categoryIdx == 9 ? 'SNS홍보' :
-					               item.categoryIdx == 10 ? '해외마케팅ㅋ' : '알 수 없음'}
+					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
 					        </a>
                         </div>
                     </div>
