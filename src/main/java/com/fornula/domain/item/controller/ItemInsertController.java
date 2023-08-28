@@ -95,7 +95,7 @@ public class ItemInsertController {
 			}
 			
 //			uploadFile의 경로를 저장하기 위한 식
-			String uploadDirectory=context.getServletContext().getRealPath("/resources/upload");
+			String uploadDirectory=context.getServletContext().getRealPath("/resources/images");
 			log.info("filepath = {}", uploadDirectory);
 //			uploadFile의 파일이름(PHOTO 테이블의 itemFileName)을 저장하기 위한 식
 			String uploadFileName = UUID.randomUUID().toString()+"_"+ multipartFile.getOriginalFilename();

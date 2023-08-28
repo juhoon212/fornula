@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
 import com.fornula.domain.item.service.ItemBoardService;
@@ -23,7 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ItemBoardController {
     
-	@Autowired
 	private final ItemBoardService itemBoardService;
 	
 //  상품 전체를 출력하는 메소드  
@@ -45,7 +45,7 @@ public class ItemBoardController {
         model.addAttribute("pager", resultMap.get("pager"));
         
         log.info("originalFileName = {}", originalFileName);
-//        model.addAttribute("originalFileName", originalFileName);
+        model.addAttribute("originalFileName", originalFileName);
    
         return "item-board";
     }

@@ -58,7 +58,7 @@ a{
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName} }'/>" >
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName} }'/>" alt="Post">
                     </div>
                     <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                         <div class="post-content">
@@ -88,9 +88,10 @@ a{
                 </div>
             </div>
         </div>
+        </div>
     
-    <div class="container comments-container bg-white">
-            <div class="row justify-content-center comments-row no-gutters">
+	    <div class="container comments-container bg-white">
+	            <div class="row justify-content-center comments-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8">
                     <h4 class="comments-title font-weight-bold">
                         Comments <span class="comments-number">(5)</span>
