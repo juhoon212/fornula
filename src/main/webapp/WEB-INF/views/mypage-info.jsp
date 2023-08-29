@@ -36,11 +36,11 @@
 </head>
 <style>
 #button{
-   display: flex;
-   justify-content: center;
-   align-items center;
-   padding-bottom: 2em;
-   
+	display: flex;
+	justify-content: center;
+	align-items center;
+	padding-bottom: 2em;
+	
 }
 
 </style>
@@ -271,22 +271,12 @@
 <section>
 <!-- my-page style-->
 <style>
-   .info {
-   margin-bottom: 22px;
-   }
-   
-   .infoEmail {
-   margin-bottom: 22px;
-   }
-   
-   .infoEmail .error-msg {
-   position: absolute;
-   font-size: 14px;
-   color: red;
-   margin: 4px 0 0 10px;
-}
-   /* 박스*/
-   .box {
+	.info {
+	margin-bottom: 22px;
+	}
+	
+	/* 박스*/
+	.box {
   width: 100%;
   height: 50px;
   box-sizing: border-box;
@@ -297,21 +287,6 @@
   font-weight: 400;
 }
 .box::placeholder {
-  color: #a0a0a0;
-}
-
-   /* 이메일 박스*/
-   .boxEmail {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 5px 0 5px 15px;
-  border-radius: 4px;
-  border: 1px solid #d9d6d6;
-  color: #383838;
-  font-weight: 400;
-}
-.boxEmail::placeholder {
   color: #a0a0a0;
 }
 
@@ -331,69 +306,8 @@
   font-size: 15px; 
 }
 
-.infoEmail#info__email #email-input {
-  position: relative;
-}
-
-/* 이메일 버튼*/
-.infoEmail#info__email button {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  border-radius: 20px;
-  font-size: 15px; 
-}
-/* 핸드폰 버튼*/
-.info#info__phone #phone-input {
-  position: relative;
-}
-
-.info#info__phone button {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  border-radius: 20px;
-  font-size: 15px; 
-}
-
-.changeEmail {
-   border: none;
-   padding: 5px 10px;
-   color: #000;
-}
-
-.changeEmail {
-   background-color: #ffffff;
-   border-radius: 20px;
-   border: 1px solid #ffb32f;
-}
-
-
-
-
-.changeBtn {
-   border: none;
-   padding: 5px 10px;
-   color: #000;
-}
-
-.changeBtn {
-   background-color: #ffffff;
-   border-radius: 20px;
-   border: 1px solid #ffb32f;
-}
-
-
 h3 {
-   font-size : 20px;
+	font-size : 20px;
 }
 
 /* 카테고리 */
@@ -427,7 +341,6 @@ h3 {
 </style>
 <!-- 스타일 태그 끝 -->
    <form name="infoForm" method="post" action="/mypageInfo">
-   <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
         </h3>
@@ -441,54 +354,78 @@ h3 {
         </div>
 
         <h3>이메일</h3>
-        <div class="infoEmail" id =info__email>
-          <div id="email-input">
-            <input class="boxEmail" value = "${member.email }" readonly></input>
-             <button class="changeEmail" id=changeEmail  onclick="submitCheck();">수정</button> 
-             <div class="error-msg"></div>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${member.email }</p> 
           </div>
           
         </div>
       
         <h3>휴대폰</h3>
-        <div class="info" id = info__phone>
-           <div id= "phone-input">
+        <div class="info">
           <input class="box" type="text" placeholder="휴대폰 인증해주세요." readonly="readonly"/>
-           <button class="changeBtn" id="">인증</button>
-           </div>
+          
         </div>
             <h3>관심사</h3>
-            <hr>
             
-                <h3>관심사1</h3>
-           <div class="info" id="info__category" >
-          <div id="category-flex">
-             <p class="box" style = "margin-right :10px;">${categoryOne.large }</p>
-          <p class="box" style = "margin-left :10px;">${categoryOne.small }</p>           
-            </div>
+                <h3>관심사1-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryOne.large }</p> 
+          </div>
+          
         </div>
-            <h3>관심사2</h3>
-               <div class="info" id="info__category" >
-          <div id="category-flex">
-             <p class="box" style = "margin-right :10px;">${categoryTwo.large }</p>
-          <p class="box" style = "margin-left :10px;">${categoryTwo.small }</p>           
-            </div>
+            <h3>관심사1-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryOne.small }</p> 
+          </div>
+                    <h3>관심사2-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryTwo.large }</p> 
+          </div>
+          
         </div>
-        
-         <h3>관심사3</h3>
-               <div class="info" id="info__category" >
+            <h3>관심사2-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryTwo.small }</p> 
+          </div>
+                    <h3>관심사3-대분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryThree.large }</p> 
+          </div>
+          
+        </div>
+            <h3>관심사3-중분류</h3>
+        <div class="info">
+          <div id="id-input">
+            <p class="box">${categoryThree.small }</p> 
+          </div>
+          
+      
+          
+       
+          <div class="error-msg"></div>
+        </div>
+        <div class="info" id="info__category">
           <div id="category-flex">
-             <p class="box" style = "margin-right :10px;">${categoryThree.large }</p>
-          <p class="box" style = "margin-left :10px;">${categoryThree.small }</p>           
-            </div>
+            <select class="box" id="category-big1" onchange = "categorySelect1(this)">
+               <p class="box">${member.email }</p> 
+            </select>
+            <select class="box" id="mcategory1" name = "One">
+              <p class="box">${member.email }</p> 
+            </select>
+          </div>
         </div>
         
       
-     <!-- <div id="join" style = "float : right;">
-       <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
-                              style="text-align: center;" name="checkBtn" >회원수정</button>
-                              </div>
-      <span>&nbsp</span>--> 
+      <div id="join"></div>
+       <button id="checkSubmit" type="button" onclick="submitCheck();"
+										style="text-align: center;" name="checkBtn" >회원수정</button>
+   
     </form>
 </section>
         
@@ -504,7 +441,7 @@ h3 {
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
                        
                   
                </div>
@@ -520,9 +457,9 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                    <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
+                    <li><a href="<c:url value="/"/>">전문가 정보</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
@@ -582,7 +519,6 @@ h3 {
 </footer>
 
 
-      <script defer src="<c:url value="/js/mypage-info.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -593,24 +529,24 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-      
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script defer src="<c:url value="/js/join.js"/>"></script>
 <script type="text/javascript">
  
-function enableEmailEditing() {
-    const emailInput = document.querySelector('.boxEmail');
-    emailInput.removeAttribute('readonly');
-  }
- 
- 
+	
+	 
  function submitCheck() {
 
-   infoForm.submit();
+	infoForm.submit();
+
+
+
+
+
 
 
 
  </script>
-
 
 </body>
 </html>
