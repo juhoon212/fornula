@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ExpertInputDAOImpl implements ExpertInputDAO {
     private final SqlSession sqlSession;
-    private final ExpertInputMapper expertInputMapper;
     
     @Override
     public void updateExpert(Expert expert) {
