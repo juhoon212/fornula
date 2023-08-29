@@ -12,9 +12,11 @@ import com.fornula.domain.item.repository.ItemBoardDAO;
 import com.fornula.domain.util.pager.Pager;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ItemBoardServiceImpl implements ItemBoardService{
 	private final ItemBoardDAO itemBoardDAO;
 //	상품 리스트(6개씩 출력되게 할거야) 출력 용도

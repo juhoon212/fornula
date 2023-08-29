@@ -16,21 +16,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fornula.domain.exception.custom.MypageIdExcepion;
-import com.fornula.domain.expert.dto.Expert;
+
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.ItemForm;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.PhotoForm;
+
 import com.fornula.domain.item.service.ItemInsertService;
-import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.util.session.SessionConst;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,17 +40,18 @@ public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
 	private final WebApplicationContext context;
 
-	@GetMapping("/add")
-	public String add() {
+	@GetMapping("/add/{expertIdx}")
+	public String add(@PathVariable Integer expertIdx, Model model) {
+		
+		model.addAttribute("expertIdx", expertIdx);
+		
 		return "item-add";
 	}
 	
-	@PostMapping("/add")
-	public String insert(@ModelAttribute ItemForm itemForm,RedirectAttributes redirectAttributes) {
-		
-		
-		
-		log.info("Item테이블에 행 삽입(photoIdx는 임시값임)");
+	@PostMapping("/add/{expertIdx}")
+	public String insert(	@ModelAttribute ItemForm itemForm,
+							@PathVariable Integer expertIdx,
+							RedirectAttributes redirectAttributes) {
 		
 		Item item = new Item();
 		
@@ -62,8 +60,6 @@ public class ItemInsertController {
 		item.setItemName(itemForm.getItemName());
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
-		
-		log.info("Item테이블에 행 삽입된 내용 {}",item);
 		
 		int result=itemInsertService.addItem(item);
 		
@@ -99,7 +95,7 @@ public class ItemInsertController {
 			}
 			
 //			uploadFile의 경로를 저장하기 위한 식
-			String uploadDirectory=context.getServletContext().getRealPath("/resources/upload");
+			String uploadDirectory=context.getServletContext().getRealPath("/resources/images");
 			log.info("filepath = {}", uploadDirectory);
 //			uploadFile의 파일이름(PHOTO 테이블의 itemFileName)을 저장하기 위한 식
 			String uploadFileName = UUID.randomUUID().toString()+"_"+ multipartFile.getOriginalFilename();
@@ -118,6 +114,6 @@ public class ItemInsertController {
 		redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
 		
-		return "redirect:/board/{itemIdx}";
+		return "redirect:/item/detail/{itemIdx}";
 	}	
 }
