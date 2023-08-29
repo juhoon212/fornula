@@ -51,6 +51,8 @@ public class ItemBoardController {
    
         return "item-board";
     }
+    
+    
 
 ////  카테고리를 입력하여 검색하는 메소드
 //    @GetMapping("/categoryItemList")

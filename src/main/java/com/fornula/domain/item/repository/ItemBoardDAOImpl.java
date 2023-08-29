@@ -40,4 +40,10 @@ public class ItemBoardDAOImpl implements ItemBoardDAO{
 	public int selectItemBoardCount() {
 		return sqlSession.getMapper(ItemBoardMapper.class).selectItemBoardCount();
 	}
+
+	//메인페이지 상품 출력
+	@Override
+	public List<ItemPhotoCategoryCart> mainItemList() {
+		return sqlSession.getMapper(ItemBoardMapper.class).mainItemList();
+	}
 }

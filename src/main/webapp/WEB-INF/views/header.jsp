@@ -135,10 +135,10 @@ p #logo {
 					<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
 					<div class="collapse navbar-collapse" id="lana-navbar">
 						<ul class="navbar-nav ml-lg-auto">
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="/item/boardList"
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="/item/boardList"
 								id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">카테고리</a>
+								aria-expanded="false" style="width:150px; ">카테고리</a>
 								<ul class="dropdown-menu" aria-labelledby="page-dropdown">
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
