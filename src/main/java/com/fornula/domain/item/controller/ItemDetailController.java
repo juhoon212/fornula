@@ -47,4 +47,3 @@ public class ItemDetailController {
     	return "item";
     }
 }
-
