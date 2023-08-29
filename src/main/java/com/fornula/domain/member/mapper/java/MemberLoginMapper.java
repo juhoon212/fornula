@@ -8,7 +8,7 @@ import com.fornula.domain.member.dto.Member;
 
 public interface MemberLoginMapper {
 	
-	Optional<Member> selectMemberInfo(@Param("id") String id , @Param("password") String password);
+	Optional<Member> selectMemberInfo(String id);
 	
 	Optional<Member> selectMemberId(String email);
 	
