@@ -3,17 +3,30 @@
 <mapper namespace="com.fornula.domain.item.mapper.java.ItemPaymentMapper">
 
 	<!-- 결제페이지에서 사용할 SQL문 -->
-	<!-- 상품 사진 뽑는 쿼리 수정해야함 -->
 
-	<select id="selectItemPayment" resultType="Item" >
-		select  item_name,
-				item_content,
-				price,
-				photo_idx
-		from item
-		where item_idx = #{itemIdx}
+
+	<select id="selectItemPayment" resultType="ItemPayment" >
+		select  item.item_name,
+				item.price,
+				photo.photo_idx,
+				photo.itemfile_name
+		from item join photo 
+		on item.item_idx=photo.item_idx
+		where item.item_idx = #{itemIdx}
 	</select>
-	
-	
+	<!--
+	<resultMap type="ItemPayment" id="ItemPayment">
+	<association property="photo" javaType="Photo">
+			<id column="photo_idx" property="photoIdx"/>	
+			<result column="itemfile_name" property="itemfileName"/>		
+		</association>
+		<association property="item" javaType="Item">
+			<id column="item_idx" property="itemIdx"/>
+			<result column="item_name" property="itemName"/>
+			<result column="price" property="price"/>
+		</association>
+		
+	</resultMap>
+	-->
 	
 </mapper>
