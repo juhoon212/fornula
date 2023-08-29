@@ -1,8 +1,7 @@
 package com.fornula.domain.admin.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +14,7 @@ import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 import com.fornula.domain.admin.service.AdminService;
 import com.fornula.domain.exception.custom.ItemNotFoundException;
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.util.session.SessionConst;
+import com.fornula.domain.exception.custom.MemberNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,31 +28,48 @@ public class AdminController {
 	private final AdminService adminService;
 	
 	
-	@GetMapping ("/user")
-	public String AdminMemberForm (Model model) {
-		List<AdminMember> memberList = adminService.memberList();
-		model.addAttribute("memberList", memberList);
+	@RequestMapping("/user")
+	public String memberList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+		
+		Map<String, Object> map=adminService.memberList(pageNum);
+		
+		model.addAttribute("pager", map.get("pager"));
+		model.addAttribute("memberList", map.get("memberList"));
+		
 		return "admin-user";
 	}
 	
-	/*
-	@PostMapping("/user")
-	public String memberList(Model model) {
-		List<AdminMember> memberList = adminService.memberList();
-		model.addAttribute("memberList", memberList);
-		return "admin-user";
-	}
-	*/
 
-	
+	@RequestMapping("/memberupdate")
+	public String memberUpdate(@RequestParam int memberIdx) throws MemberNotFoundException {
+		adminService.updateMemberStatus(memberIdx);
+		
+		log.info("memberIdx:{}",memberIdx);
+		
+		return "redirect:/admin/user";
+	}
+
+	/*
 	@GetMapping ("/item")
 	public String adminItemForm (Model model) {
 		List<AdminItem> itemList = adminService.itemList();
 		model.addAttribute("itemList", itemList);
 		return "admin-item";
 	}
+	*/
 	
-	@GetMapping("/update")
+	@RequestMapping("/item")
+	public String itemList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+		
+		Map<String, Object> map=adminService.itemList(pageNum);
+		
+		model.addAttribute("pager", map.get("pager"));
+		model.addAttribute("itemList", map.get("itemList"));
+		
+		return "admin-item";
+	}
+	
+	@RequestMapping("/itemupdate")
 	public String update(@RequestParam int itemIdx) throws ItemNotFoundException {
 		adminService.updateItemStatus(itemIdx);
 		
@@ -65,6 +79,7 @@ public class AdminController {
 		 */
 		return "redirect:/admin/item";
 	}
-	
+
+
 	
 }

@@ -2,6 +2,7 @@ package com.fornula.domain.admin.repository;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 import com.fornula.domain.admin.mapper.java.AdminMapper;
-import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.RequiredArgsConstructor;
@@ -29,20 +29,41 @@ public class AdminRepositoryImpl implements AdminRepository{
 	public int status(Member member) {
 		return sql.getMapper(AdminMemberMapper.class).status(member);
 	}
-	*/
+
+	 */
+	
 	@Override
-	public List<AdminMember> memberList() {
-		return sql.getMapper(AdminMapper.class).memberList();
-	}
-	@Override
-	public List<AdminItem> itemList() {
-		return sql.getMapper(AdminMapper.class).itemList();
+	public List<AdminMember> memberList(Map<String, Object> map) {
+		return sql.getMapper(AdminMapper.class).memberList(map);
 	}
 	
-	//관리자가 상품의 상태를 변경
+	@Override
+	public int memberListCount() {
+		return sql.getMapper(AdminMapper.class).memberListCount();
+	}
+
+	@Override
+	public int updateMemberStatus(int memberIdx) {
+		return sql.getMapper(AdminMapper.class).updateMemberStatus(memberIdx);
+	}
+	
+	@Override
+	public List<AdminItem> itemList(Map<String, Object> map) {
+		return sql.getMapper(AdminMapper.class).itemList(map);
+	}
+
+	@Override
+	public int itemListCount() {
+		return sql.getMapper(AdminMapper.class).itemListCount();
+	}
+
+
 	@Override
 	public int updateItemStatus(int itemIdx) {
 		return sql.getMapper(AdminMapper.class).updateItemStatus(itemIdx);
 	}
 	
+	
+
+
 }
