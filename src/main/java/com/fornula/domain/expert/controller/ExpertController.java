@@ -27,11 +27,10 @@ public class ExpertController{
 	
 	
 	//전문가 마이페이지(판매관리)
-
 	@RequestMapping(value = "/expertmypage")
 	public String mypage() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
-		return "expert-mypage";
+		return "expert-main";
 	}	
 	
 	//전문가 정보수정 페이지 

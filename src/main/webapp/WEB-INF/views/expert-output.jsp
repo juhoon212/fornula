@@ -119,6 +119,7 @@ height : vh ;
 <jsp:include page="header.jsp" />
 
 <main class="main container">
+<div id="info">
 <div class="row">
 	<div class="col-12 col-lg-8">
 		<div class="widget">    

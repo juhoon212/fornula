@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,6 @@ public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
 	private final MemberJoinService memberJoinService;
-
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
@@ -55,11 +55,14 @@ public class MemberController {
 		 return "redirect:/";
 	}
 	
+	
+	
 	// 아이디 찾기
 	@GetMapping("/findId")
 	public String showFindId() {
 		return "find-id";
 	}
+	
 	
 	// 비밀번호 찾기
 	@GetMapping("/findPw")
@@ -116,8 +119,13 @@ public class MemberController {
 		return "common-success";
 	}
 	
-	
-	
+	//로그아웃
+	@PostMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+		
+	}
 	
 	
 }
