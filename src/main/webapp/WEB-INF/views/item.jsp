@@ -66,7 +66,7 @@ a{
                             <h1>등록 날짜 : ${item.itemDate }</h1>
                             <h1>내용 : ${item.itemContent }</h1>
                             <h1>가격 : ${item.price }</h1>
-                            <button onclick="location.href='payment'">결제하기</button>
+                            <button onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
                         </div>
                         <hr>
                         <div>
