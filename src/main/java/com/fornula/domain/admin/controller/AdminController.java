@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 import com.fornula.domain.admin.service.AdminService;
-import lombok.RequiredArgsConstructor;
+import com.fornula.domain.exception.custom.ItemNotFoundException;
+import com.fornula.domain.exception.custom.MemberNotFoundException;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
@@ -35,6 +40,14 @@ public class AdminController {
 	}
 	
 
+	@RequestMapping("/memberupdate")
+	public String memberUpdate(@RequestParam int memberIdx) throws MemberNotFoundException {
+		adminService.updateItemStatus(memberIdx);
+		
+		log.info("memberIdx:{}",memberIdx);
+		
+		return "redirect:/admin/user";
+	}
 
 	/*
 	@GetMapping ("/item")
@@ -56,6 +69,16 @@ public class AdminController {
 		return "admin-item";
 	}
 	
+	@RequestMapping("/itemupdate")
+	public String update(@RequestParam int itemIdx) throws ItemNotFoundException {
+		adminService.updateItemStatus(itemIdx);
+		
+		log.info("itemIdx:{}",itemIdx);
+		/*
+		 * if(itemIdx) { throw new ItemNotFoundException("상품이 존재하지 않습니다."); }
+		 */
+		return "redirect:/admin/item";
+	}
 
 
 	

@@ -258,6 +258,16 @@
         </div>
     </nav>
 </header>
+
+<script type="text/javascript">
+	function updateMemberIdx(memberIdx) {
+		if(confirm("삭제 하시겠습니까?")){
+			location.href="<c:url value="/admin/memberupdate"/>?memberIdx="+memberIdx;
+	}
+	}
+</script>
+ 
+ 
  
 
 <main class="main container">
@@ -427,7 +437,7 @@ table th {
 			<fmt:formatDate pattern="yyyy-MM-dd" value ="${member.memberDate}"/>
 			</td>
 			<td>
-				<button class="delete">탈퇴</button>
+			<button class="delete" type="button" onclick="updateMemberIdx(${member.memberIdx});">삭제</button>
 			</td>
 			
 		</tr>
@@ -577,14 +587,7 @@ table th {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
-<script type="text/javascript">
- 
-	
 
-
-
-
- </script>
 
 </body>
 

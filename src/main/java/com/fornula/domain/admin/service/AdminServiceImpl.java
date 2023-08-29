@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
@@ -62,6 +63,12 @@ public class AdminServiceImpl implements AdminService{
 		return resultMap;
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void updateMemberStatus(int memberIdx) {
+		adminRepository.updateMemberStatus(memberIdx);
+	}
+	
 	
 	@Override
 	public Map<String, Object> itemList(int pageNum) {
@@ -84,12 +91,14 @@ public class AdminServiceImpl implements AdminService{
 		
 		return resultMap;
 	}
-	
-	
-	
 
 
-
+	@Transactional (rollbackFor = Exception.class)
+	@Override
+	public void updateItemStatus(int itemIdx) {
+		adminRepository.updateItemStatus(itemIdx);
+	}
 	
+
 
 }

@@ -1,5 +1,6 @@
 package com.fornula.domain.item.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,12 +32,13 @@ public class ItemBoardController {
     public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
         Map<String, Object> resultMap = itemBoardService.getItemList(pageNum);
         int filePos; // UUID로 된 파일이름 추출
-        String originalFileName = null;
+        
         
         List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>)resultMap.get("itemBoardList");
         for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
 			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
-			originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
 		}
         
         log.info("pager = {}", resultMap.get("pager"));
@@ -44,8 +46,8 @@ public class ItemBoardController {
         model.addAttribute("itemBoardList", resultMap.get("itemBoardList"));
         model.addAttribute("pager", resultMap.get("pager"));
         
-        log.info("originalFileName = {}", originalFileName);
-        model.addAttribute("originalFileName", originalFileName);
+       
+        
    
         return "item-board";
     }

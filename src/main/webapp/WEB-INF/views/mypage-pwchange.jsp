@@ -304,7 +304,7 @@
 
 .box::placeholder {
 	color: #a0a0a0;
-	font-siz : 17px;
+	font-size : 17px;
 }
 
 .info#info__id #id-input {
@@ -410,18 +410,18 @@ h3 {
 								<div class="info" id="info__pw">
 									<input class="box" name="password" type="password"
 										placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
-									<p align="left" style="color: red; font-size : 14px;" id="password">${message }</p>
+									<p align="right" style="color: red; font-size : 14px;" id="password">${message }</p>
 								</div>
 
 								<div class="area">
 									<label> 변경할 비밀번호</label> <label> 한번 더 입력</label>
 									<div class="info" id="info__newPassword">
-										<input class="box" type="password"
+										<input class="box" name = "newPassword" type="password"
 											placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
 										<div class="error-msg" style = "width:250px;"></div>
 									</div>
 									<div class="info" id="info__reNewPassword">
-										<input class="box" type="password"
+										<input class="box" name = "reNewPassword" type="password"
 											placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
 										<div class="error-msg"></div>
 									</div>
@@ -553,50 +553,6 @@ h3 {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<script type="text/javascript">
- 
- function submitCheck() {
-	 
-	 let h1=document.getElementById("password");
-	 let h2=document.getElementById("newPassword");
-	 let h3=document.getElementById("reNewPassword");
-	 
-	if(passwordForm.password.value==""){
-		h1.innerText="현재 비밀번호를 입력해주세요";
-		passwordForm.password.focus();
-		return;
-	}
 	
-	if(passwordForm.newPassword.value==""){
-		h2.innerText="변경할 비밀번호를 입력해주세요";
-		passwordForm.newPassword.focus();
-		return;
-	}
-	
-	if(passwordForm.reNewPassword.value==""){
-		h3.innerText="변경할 비밀번호를 다시 한번 입력해주세요";
-		passwordForm.reNewPassword.focus();
-		return;
-	}
-	
-	if(passwordForm.reNewPassword.value!=passwordForm.newPassword.value){
-		h3.innerText="변경할 비밀번호가 맞지 않습니다.다시 한번 입력해주세요";
-		passwordForm.newPassword.focus();
-		return;
-	}
-
-
-	
-	passwordForm.submit();
-}
-
-//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
-//<민환> 변경할 비밀번호 정규표현식 넣어주세요.
-
-
-
-
-
- </script>
 </body>
 </html>

@@ -15,7 +15,8 @@ public interface AdminService {
 //	List<AdminItem> itemList();
 	
 	Map<String, Object> memberList(int pageNum);
+	void updateMemberStatus(int memberIdx);
+	
 	Map<String, Object> itemList(int pageNum);
-	
-	
+	void updateItemStatus(int itemIdx);
 }

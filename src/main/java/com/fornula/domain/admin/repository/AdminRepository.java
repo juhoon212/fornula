@@ -6,6 +6,7 @@ import java.util.Map;
 import com.fornula.domain.admin.dto.AdminItem;
 import com.fornula.domain.admin.dto.AdminMember;
 
+
 public interface AdminRepository {
 
 
@@ -15,7 +16,9 @@ public interface AdminRepository {
 //	List<AdminMember> memberList();
 	List<AdminMember> memberList(Map<String, Object> map);
 	int memberListCount();
+	int updateMemberStatus(int memberIdx);
 
 	List<AdminItem> itemList(Map<String, Object> map);
 	int itemListCount();
+	int updateItemStatus(int itemIdx);
 }

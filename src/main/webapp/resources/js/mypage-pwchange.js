@@ -62,3 +62,41 @@ reNewPasswordInputEl.addEventListener('change', () => {
     checkPwValid()
     console.log(pwVal, reNewPasswordVal, isPwValid, account)
 });
+
+function submitCheck() {
+	 
+	let h1=document.getElementById("password");
+    let h2=document.getElementById("newPassword");
+    let h3=document.getElementById("reNewPassword");
+
+	
+	if(passwordForm.password.value==""){
+		h1.innerText="현재 비밀번호를 입력해주세요";
+		passwordForm.password.focus();
+	} else if(passwordForm.password.value == "1"){
+		h1.innerText="확인되었습니다";
+	} 
+	
+	if(passwordForm.newPassword.value==""){
+		passwordForm.newPassword.focus();
+		return;
+	}
+	
+	if(passwordForm.reNewPassword.value==""){
+		passwordForm.reNewPassword.focus();
+		return;
+	}
+	
+	if(passwordForm.reNewPassword.value!=passwordForm.newPassword.value){
+		passwordForm.newPassword.focus();
+		return;
+	}
+
+	passwordForm.submit();
+	alret("변경 성공");
+}
+
+
+
+
+

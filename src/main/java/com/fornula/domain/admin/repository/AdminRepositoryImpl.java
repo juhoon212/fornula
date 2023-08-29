@@ -29,14 +29,7 @@ public class AdminRepositoryImpl implements AdminRepository{
 	public int status(Member member) {
 		return sql.getMapper(AdminMemberMapper.class).status(member);
 	}
-	@Override
-	public List<AdminMember> memberList() {
-		return sql.getMapper(AdminMapper.class).memberList();
-	}
-	@Override
-	public List<AdminItem> itemList() {
-		return sql.getMapper(AdminMapper.class).itemList();
-	}
+
 	 */
 	
 	@Override
@@ -50,6 +43,11 @@ public class AdminRepositoryImpl implements AdminRepository{
 	}
 
 	@Override
+	public int updateMemberStatus(int memberIdx) {
+		return sql.getMapper(AdminMapper.class).updateMemberStatus(memberIdx);
+	}
+	
+	@Override
 	public List<AdminItem> itemList(Map<String, Object> map) {
 		return sql.getMapper(AdminMapper.class).itemList(map);
 	}
@@ -58,6 +56,13 @@ public class AdminRepositoryImpl implements AdminRepository{
 	public int itemListCount() {
 		return sql.getMapper(AdminMapper.class).itemListCount();
 	}
+
+
+	@Override
+	public int updateItemStatus(int itemIdx) {
+		return sql.getMapper(AdminMapper.class).updateItemStatus(itemIdx);
+	}
+	
 	
 
 

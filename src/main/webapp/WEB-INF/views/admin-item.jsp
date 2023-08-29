@@ -400,6 +400,7 @@ table th {
         color: gray;
     }
 
+
 </style>
 <!-- 스타일 태그 끝 -->
    <form name="itemForm" method="post" action="/admin/item">
@@ -426,7 +427,7 @@ table th {
 			<fmt:formatDate pattern="yyyy-MM-dd" value ="${item.itemDate}"/>
 			</td>
 			<td >
-				<button class="delete">탈퇴</button>
+			<button class="delete" type="button" onclick="updateItemIdx('${item.itemIdx}');">삭제</button>
 			</td>
 			
 		</tr>
@@ -578,13 +579,14 @@ table th {
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 <script type="text/javascript">
- 
-	
+	function updateItemIdx(itemIdx) {
+		if(confirm("삭제 하시겠습니까?")){
+			location.href='<c:url value="/admin/itemupdate"/>?itemIdx='+itemIdx;
+	}
+	}
 
 
-
-
- </script>
+</script>
 
 </body>
 
