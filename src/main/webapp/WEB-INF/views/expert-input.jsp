@@ -128,20 +128,20 @@ h3 {
                 <!-- 여백 어케주드라 -->
 				<select class="box" id="interestSelect" name="interest">
                   <option disabled selected>디자인</option>
-                  <option value="1">그래픽</option>
-                  <option value="2">제품</option>
+                  <option value="그래픽">그래픽</option>
+                  <option value="제품">제품</option>
                   <option disabled selected>번역</option>
-                  <option value="3">영어</option>
-                  <option value="4">중국어</option>
+                  <option value="영어">영어</option>
+                  <option value="중국어">중국어</option>
                   <option disabled selected>사진 편집</option>
-                  <option value="5">헤어 메이크업</option>
-                  <option value="6">제품 홍보 사진</option>
+                  <option value="헤어메이크업">헤어 메이크업</option>
+                  <option value="제품홍보사진">제품 홍보 사진</option>
                   <option disabled selected>세무</option>
-                  <option value="7">사업자</option>
-                  <option value="8">개인</option>
+                  <option value="사업자">사업자</option>
+                  <option value="개인">개인</option>
                   <option disabled selected>마케팅</option>
-                  <option value="9">SNS 홍보</option>
-                  <option value="10">해외 마케팅</option>              
+                  <option value="SNS홍보">SNS 홍보</option>
+                  <option value="해외마케팅">해외 마케팅</option>              
                 </select>
              	<!-- 여백 어케주드라 -->            
                 <input class="box" type="text" placeholder="연차:${career }"/>
@@ -279,7 +279,6 @@ $(document).ready(function() {
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({
-                expertIdx: expertIdx,
                 phone: phone,
                 interest: interest,
                 career: career,
@@ -296,7 +295,7 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 // 오류 시 동작
-                alert("수정에 실패했습니다. 오류: " + error);
+                alert("정보 수정에 실패하였습니다: " + error);
             }
         });
     });

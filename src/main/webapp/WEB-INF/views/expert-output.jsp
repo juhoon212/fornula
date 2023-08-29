@@ -127,7 +127,7 @@ height : vh ;
 	        	<!-- iframe 태그는 유튜브 영상같은거 가져오는데도 좋다고함 -->
 	        	<!-- 아니 왜안되는데 이거 경로 진짜 열받게하네 -->
 	        	<!-- ex. <iframe width='500' height='350' src='https://youtu.be/F6OJslByCYQ?si=dEkTsFqCpZ3CGyvq'></iframe> -->
-	        		<iframe src="$/resources/upload/portfolio/phy.pdf" width="700" height="380"></iframe>
+					<iframe src="/resources/images/profolio/phy.pdf" width="100%" height="500px"></iframe>
 					<div class="form-group row">
 						<div class="col">
 							<input type="text" value="${Member.id }" placeholder="전문가 아이디" readonly>
