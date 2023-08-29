@@ -437,7 +437,7 @@ h3 {
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
             
-            <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
+            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   
