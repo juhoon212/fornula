@@ -259,7 +259,7 @@ p #logo{
                     <div class="lana_service type-lana_service card service-card bg-transparent text-center">
                         <div class="card-img-top img-fluid" data-scroll-animate="zoomIn">
                             <span class="lpi lpi-5x"><i class="bi bi-camera" style="color: #ffff;"></i></span>
-                        </div>
+                        </div>  
                         <div class="card-body" data-scroll-animate="fadeIn">
                             <h5 class="post-title card-title">
                                 사진/편집

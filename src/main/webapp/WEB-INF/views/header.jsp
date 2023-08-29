@@ -116,8 +116,6 @@ p #logo {
 					<a class="navbar-brand" href="<c:url value="/"/>"> FORNUAL </a>
 				</p>
 
-
-
 				<div class="toggler-buttons d-flex flex-fill justify-content-end">
 					<!-- 화면크기 조정시 검색 토글  버튼  -->
 					<button class="search-toggler" type="button" data-toggle="collapse"

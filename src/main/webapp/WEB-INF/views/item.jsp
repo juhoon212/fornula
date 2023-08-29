@@ -29,6 +29,10 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
 <style type="text/css">
 h1{
@@ -53,12 +57,11 @@ a{
 <jsp:include page="header.jsp" />
 
 <main class="main">
-    <div class="row">
         <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName} }'/>" alt="Post">
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                     </div>
                     <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                         <div class="post-content">
@@ -67,7 +70,7 @@ a{
                             <h1>등록 날짜 : ${item.itemDate }</h1>
                             <h1>내용 : ${item.itemContent }</h1>
                             <h1>가격 : ${item.price }</h1>
-                            <button onclick="location.href='payment'">결제하기</button>
+                            <button onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
                         </div>
                         <hr>
                         <div>
@@ -88,7 +91,7 @@ a{
                 </div>
             </div>
         </div>
-        </div>
+       
     
 	    <div class="container comments-container bg-white">
 	            <div class="row justify-content-center comments-row no-gutters">
