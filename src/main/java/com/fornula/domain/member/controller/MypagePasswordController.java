@@ -34,7 +34,7 @@ public class MypagePasswordController {
 		 
 		 session.setAttribute("member", member);
 		 
-		   return "mypage-pwchange2";
+		   return "mypage-pwchange";
 	   }
 	   
 	   @PostMapping("/mypagePwchange")
