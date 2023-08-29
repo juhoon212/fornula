@@ -138,69 +138,59 @@ p #logo {
 					<div class="collapse navbar-collapse" id="lana-navbar">
 						<ul class="navbar-nav ml-lg-auto">
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="item-board.jsp"
+								class="nav-link dropdown-toggle" href="/item/boardList"
 								id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">카테고리</a>
 								<ul class="dropdown-menu" aria-labelledby="page-dropdown">
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
 									</li>
-									<li><a class="dropdown-item"
-										href="template-our-services.html">그래픽 디자인</a></li>
-									<li><a class="dropdown-item"
-										href="template-our-partners.html">제품 디자인</a></li>
+									<li><a class="dropdown-item" href="/item/boardList">그래픽
+											디자인</a></li>
+									<li><a class="dropdown-item" href="/item/boardList">제품
+											디자인</a></li>
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
 									</li>
-									<li><a class="dropdown-item" href="template-contact.html">영어
+									<li><a class="dropdown-item" href="/item/boardList">영어
 											번역</a></li>
-									<li><a class="dropdown-item" href="template-contact.html">중국어
+									<li><a class="dropdown-item" href="/item/boardList">중국어
 											번역</a></li>
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
 									</li>
-									<li><a class="dropdown-item" href="template-contact.html">헤어
+									<li><a class="dropdown-item" href="/item/boardList">헤어
 											메이크업</a></li>
-									<li><a class="dropdown-item" href="template-contact.html">제품·홍보
+									<li><a class="dropdown-item" href="/item/boardList">제품·홍보
 											사진</a></li>
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
 									</li>
-									<li><a class="dropdown-item" href="template-contact.html">사업자
+									<li><a class="dropdown-item" href="/item/boardList">사업자
 											세무</a></li>
-									<li><a class="dropdown-item" href="404.html">개인 세무</a></li>
+									<li><a class="dropdown-item" href="/item/boardList">개인
+											세무</a></li>
 									<li>
 										<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
 									</li>
-									<li><a class="dropdown-item" href="template-contact.html">SNS
+									<li><a class="dropdown-item" href="/item/boardList">SNS
 											홍보</a></li>
-									<li><a class="dropdown-item" href="404.html">해외 마케팅</a></li>
+									<li><a class="dropdown-item" href="/item/boardList">해외
+											마케팅</a></li>
 								</ul>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="archive.html"
-								id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">디자인</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">디자인</a></li>
 
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="archive-lana_pet.html"
-								id="pet-dropdown" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">번역</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">번역</a></li>
 
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="archive-lana_story.html"
-								id="story-dropdown" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">사진·편집</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">사진·편집</a></li>
 
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle"
-								href="archive-lana_fundraiser.html" id="fundraiser-dropdown"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">세무</a></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle"
-								href="archive-lana_fundraiser.html" id="fundraiser-dropdown"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">마케팅</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">세무</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">마케팅</a></li>
 						</ul>
 
 
@@ -230,69 +220,59 @@ p #logo {
 						<div class="collapse navbar-collapse" id="lana-navbar">
 							<ul class="navbar-nav ml-lg-auto">
 								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="item-board.jsp"
+									class="nav-link dropdown-toggle" href="/item/boardList"
 									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">카테고리</a>
 									<ul class="dropdown-menu" aria-labelledby="page-dropdown">
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
 										</li>
-										<li><a class="dropdown-item"
-											href="template-our-services.html">그래픽 디자인</a></li>
-										<li><a class="dropdown-item"
-											href="template-our-partners.html">제품 디자인</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">그래픽
+												디자인</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">제품
+												디자인</a></li>
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
 										</li>
-										<li><a class="dropdown-item" href="template-contact.html">영어
+										<li><a class="dropdown-item" href="/item/boardList">영어
 												번역</a></li>
-										<li><a class="dropdown-item" href="template-contact.html">중국어
+										<li><a class="dropdown-item" href="/item/boardList">중국어
 												번역</a></li>
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
 										</li>
-										<li><a class="dropdown-item" href="template-contact.html">헤어
+										<li><a class="dropdown-item" href="/item/boardList">헤어
 												메이크업</a></li>
-										<li><a class="dropdown-item" href="template-contact.html">제품·홍보
+										<li><a class="dropdown-item" href="/item/boardList">제품·홍보
 												사진</a></li>
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
 										</li>
-										<li><a class="dropdown-item" href="template-contact.html">사업자
+										<li><a class="dropdown-item" href="/item/boardList">사업자
 												세무</a></li>
-										<li><a class="dropdown-item" href="404.html">개인 세무</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">개인
+												세무</a></li>
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
 										</li>
-										<li><a class="dropdown-item" href="template-contact.html">SNS
+										<li><a class="dropdown-item" href="/item/boardList">SNS
 												홍보</a></li>
-										<li><a class="dropdown-item" href="404.html">해외 마케팅</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">해외
+												마케팅</a></li>
 									</ul>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="archive.html"
-									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">디자인</a></li>
+								<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">디자인</a></li>
 
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="archive-lana_pet.html"
-									id="pet-dropdown" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">번역</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">번역</a></li>
 
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="archive-lana_story.html"
-									id="story-dropdown" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">사진·편집</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">사진·편집</a></li>
 
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle"
-									href="archive-lana_fundraiser.html" id="fundraiser-dropdown"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">세무</a></li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle"
-									href="archive-lana_fundraiser.html" id="fundraiser-dropdown"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">마케팅</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">세무</a></li>
+							<li><a class="nav-link dropdown-toggle"
+								href="/item/boardList">마케팅</a></li>
 							</ul>
 							<form action="/member/logout" method="post">
 								<!-- 프로필 사진 삽입 -->
@@ -311,9 +291,11 @@ p #logo {
 											<li><a class="dropdown-item" href="/expert/join">전문가
 													등록</a> <!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
 
-												<button
-													style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
+											<div style="padding-left: 18px;">
+												<button style="border:none; background-color: white; color: black; "
+													
 													type="submit" id="logout">로그아웃</button>
+													</div>
 										</ul>
 									</div>
 								</div>

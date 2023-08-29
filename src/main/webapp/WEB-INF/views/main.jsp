@@ -4,6 +4,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 	<link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,14 +196,14 @@ p #logo{
 	</div>
 
 <main class="main">
-    <div id="who-we-are-container" class="container-fluid bg-light-orange section-py--large">
+    <div id="who-we-are-container" class="container-fluid bg-white section-py--large">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-6 text-center">
-                    <h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">Who we are</h1>
+                    <h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown" style="letter-spacing : 5px;">FORNUAL</h1>
                     <p data-scroll-animate="fadeInUp">
-                        We are non-profit organization devoted to fastening discarded and homeless pets with the goal of
-                        re-homing them to their home forever.
+                       사용자는 내게 필요한 모든 전문가를 직접 보고 선택할 수 있고<br>
+                       판매는 자신의 기술을 파는 서비스 중개 플랫폼 
                     </p>
                     <div class="lana-hr lana-hr-4 border-primary mt-4" data-scroll-animate="zoomIn"></div>
                 </div>
@@ -210,12 +212,12 @@ p #logo{
     </div>
 
     <div id="our-services-container"
-         class="container-fluid bg-dark text-white lana-bg-image-white-large-staring-cat-body-indoor section-py--large">
+         class="container-flui	d bg-dark text-light lana-bg-image-white-large-staring-cat-body-indoor section-py--large">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-6 text-center">
                     <h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">Our Services</h1>
-                    <p data-scroll-animate="fadeInUp">We have following services for help animals.</p>
+                    <p data-scroll-animate="fadeInUp"></p>
                     <div class="lana-hr lana-hr-4 border-primary mt-4 mb-5" data-scroll-animate="zoomIn"></div>
                 </div>
             </div>
@@ -223,15 +225,16 @@ p #logo{
                 <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
                     <div class="lana_service type-lana_service card service-card bg-transparent text-center">
                         <div class="card-img-top img-fluid" data-scroll-animate="zoomIn">
-                            <span class="lpi lpi-dog lpi-5x"></span>
+                            <span class="lpi lpi-5x">
+                           <i class="bi bi-instagram" style="color: #ffff ;"></i></span>
                         </div>
                         <div class="card-body" data-scroll-animate="fadeIn">
                             <h5 class="post-title card-title">
-                                Adoption
+                                 마케팅
                             </h5>
                             <p class="post-text card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies dui,
-                                et posuere lacus. Vestibulum accumsan justo eget justo rhoncus convallis.
+                            	최적화 육성, <br>
+                            	게시물 관리 및 활성화 관리 
                             </p>
                         </div>
                     </div>
@@ -239,15 +242,15 @@ p #logo{
                 <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
                     <div class="lana_service type-lana_service card service-card bg-transparent text-center">
                         <div class="card-img-top img-fluid" data-scroll-animate="zoomIn">
-                            <span class="lpi lpi-pet lpi-5x"></span>
+                            <span class="lpi lpi-5x"><i class="bi bi-cash-coin" style="color: #ffff;"></i></span>
                         </div>
                         <div class="card-body" data-scroll-animate="fadeIn">
                             <h5 class="post-title card-title">
-                                Dog walking
+                                세무
                             </h5>
                             <p class="post-text card-text">
-                                Nullam in malesuada turpis. Phasellus eget consectetur odio. Donec aliquam ac felis vel
-                                fermentum. Proin at vestibulum lacus.
+                               개인 및 기업의 <br>
+                               알뜰한 세무관리
                             </p>
                         </div>
                     </div>
@@ -255,15 +258,15 @@ p #logo{
                 <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
                     <div class="lana_service type-lana_service card service-card bg-transparent text-center">
                         <div class="card-img-top img-fluid" data-scroll-animate="zoomIn">
-                            <span class="lpi lpi-paw lpi-5x"></span>
+                            <span class="lpi lpi-5x"><i class="bi bi-camera" style="color: #ffff;"></i></span>
                         </div>
                         <div class="card-body" data-scroll-animate="fadeIn">
                             <h5 class="post-title card-title">
-                                Dog training
+                                사진/편집
                             </h5>
                             <p class="post-text card-text">
-                                Suspendisse porta eget odio eu faucibus. Vestibulum ullamcorper nulla sapien, ac
-                                pulvinar elit ultrices quis. Sed at ante eget nisi congue tristique.
+                            	감성컷, 제품 촬영 및
+                            	<br>뷰티, 룩북 화보 촬영
                             </p>
                         </div>
                     </div>
@@ -271,15 +274,15 @@ p #logo{
                 <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
                     <div class="lana_service type-lana_service card service-card bg-transparent text-center">
                         <div class="card-img-top img-fluid" data-scroll-animate="zoomIn">
-                            <span class="lpi lpi-healthy lpi-5x"></span>
+                            <span class="lpi lpi-5x"><i class="bi bi-translate" style="color: #ffff;"></i></span>
                         </div>
                         <div class="card-body" data-scroll-animate="fadeIn">
                             <h5 class="post-title card-title">
-                                Volunteer
+                                번역
                             </h5>
                             <p class="post-text card-text">
-                                Aenean sapien lectus, viverra ut auctor quis, tempus eget erat. Sed ut bibendum diam, ac
-                                fringilla turpis. Aenean finibus feugiat elit at accumsan.
+								IT, 기술, 과학분야 논문 번역 및 <br>
+								유튜브, 영화 등 영상 번역 
                             </p>
                         </div>
                     </div>
