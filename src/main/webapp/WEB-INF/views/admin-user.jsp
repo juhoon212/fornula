@@ -258,6 +258,16 @@
         </div>
     </nav>
 </header>
+
+<script type="text/javascript">
+	function updateMemberIdx(memberIdx) {
+		if(confirm("삭제 하시겠습니까?")){
+			location.href="<c:url value="/admin/memberupdate"/>?memberIdx="+memberIdx;
+	}
+	}
+</script>
+ 
+ 
  
 
 <main class="main container">
@@ -379,12 +389,32 @@ table th {
   border-bottom: 3px solid #d9d6d6;
 }
 
+.pagination {
+	margin-top : 20px;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    justify-content: space-around;
+}
+
+   .pagination a, .pagination span {
+        margin: 0 5px;
+        text-decoration: none;
+        color: black;
+    }
+    .pagination .current {
+        color: orange;
+    }
+    .pagination .disabled {
+        color: gray;
+    }
+
+
 </style>
 <!-- 스타일 태그 끝 -->
    <form name="userForm" method="post" action="/admin/user">
-        <label>
-        회원 관리
-        </label>
+      <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 관리</label>
         
          <table>
     
@@ -407,36 +437,59 @@ table th {
 			<fmt:formatDate pattern="yyyy-MM-dd" value ="${member.memberDate}"/>
 			</td>
 			<td>
-				<button class="delete">탈퇴</button>
+			<button class="delete" type="button" onclick="updateMemberIdx(${member.memberIdx});">삭제</button>
 			</td>
 			
 		</tr>
 		</c:forEach>
-	</table>
-  
-    
     <tfoot>
         <td colspan="5" class="tablefoot"></td>
     </tfoot>
-</table>
-    
-    		
+	</table>
+	
+<div class="pagination">
+    <div class="prev">
+        <c:choose>
+            <c:when test="${pager.startPage > pager.blockSize}">
+                <a href="<c:url value="/admin/user"/>?pageNum=${pager.prevPage}">PREV</a>
+            </c:when>
+            <c:when test="${pager.pageNum > 1}">
+                <a href="<c:url value="/admin/user"/>?pageNum=${pager.pageNum - 1}">PREV</a>
+            </c:when>
+            <c:otherwise>
+                <span class="disabled">PREV</span>
+            </c:otherwise>
+        </c:choose>
+    </div>
 
-						<nav
-							class="navigation pagination justify-content-between text-uppercase"
-							role="navigation">
-							<a class="prev disabled" href="#"> Prev </a>
-							<div class="nav-links">
-								<ul class="page-numbers">
-									<li><span aria-current="page" class="page-numbers current">1</span></li>
-									<li><a class="page-numbers" href="#">2</a></li>
-									<li><span class="page-numbers dots">…</span></li>
-									<li><a class="page-numbers" href="#">4</a></li>
-								</ul>
-							</div>
-							<a class="next" href="#"> Next </a>
-						</nav>
-					
+    <div class="pages">
+        <c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+            <c:choose>
+                <c:when test="${pager.pageNum != i}">
+                    <a href="<c:url value="/admin/user"/>?pageNum=${i}">${i}</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="current">${i}</span>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </div>
+
+    <div class="next">
+        <c:choose>
+            <c:when test="${pager.endPage != pager.totalPage}">
+                <a href="<c:url value="/admin/user"/>?pageNum=${pager.nextPage}">NEXT</a>
+            </c:when>
+            <c:when test="${pager.pageNum < pager.totalPage}">
+                <a href="<c:url value="/admin/user"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
+            </c:when>
+            <c:otherwise>
+                <span class="disabled">NEXT</span>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</div>	
+
     </form>
 </section>
         
@@ -535,14 +588,7 @@ table th {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
-<script type="text/javascript">
- 
-	
 
-
-
-
- </script>
 
 </body>
 
