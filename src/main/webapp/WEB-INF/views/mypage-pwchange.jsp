@@ -416,12 +416,12 @@ h3 {
                         <div class="area">
                            <label> 변경할 비밀번호</label> <label> 한번 더 입력</label>
                            <div class="info" id="info__newPassword">
-                              <input class="box" type="password"
+                              <input class="box" type="password" name="newPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
                               <div class="error-msg" style = "width:250px;"></div>
                            </div>
                            <div class="info" id="info__reNewPassword">
-                              <input class="box" type="password"
+                              <input class="box" type="password" name="reNewPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
                               <div class="error-msg"></div>
                            </div>
@@ -445,13 +445,13 @@ h3 {
             <div class="widget-sidebar story-sidebar">
 
                <div id="button">
-                  <img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
+                  <img src="<c:url value="/pictures/placeholder/profile.png"/>"
                      class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
                </div>
 
 
                <div id="button">
-                  <a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+                  <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
 
 
                </div>

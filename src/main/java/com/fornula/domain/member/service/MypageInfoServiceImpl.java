@@ -19,37 +19,46 @@ public class MypageInfoServiceImpl implements MypageInfoService{
 @Override
 public Member mypageInfoService(String id) {
 	
-	Member mypageInfoService=mypageInfoRepository.selectMypagePassword(id);
+	Member mypageInfoService = mypageInfoRepository.selectMypagePassword(id);
 	
 	return mypageInfoService;
 }
 
 
 @Override
-public void modifyPassword(int One, int Two, int Three, String id) {
-    mypageInfoRepository.updateMypageInfo(One, Two, Three, id);
-	
-}
-
-
-@Override
 public Category mypageCategoryOne(int categoryOne) {
+	
 	Category mypageCategoryOne = mypageInfoRepository.selectMypageCategoryOne(categoryOne);
+	
 	return mypageCategoryOne;
 }
 
 
 @Override
 public Category mypageCategoryTwo(int categoryTwo) {
-	Category mypageCategoryTwo=mypageInfoRepository.selectMypageCategoryTwo(categoryTwo);
+	
+	Category mypageCategoryTwo = mypageInfoRepository.selectMypageCategoryTwo(categoryTwo);
+	
 	return mypageCategoryTwo;
 }
 
 
 @Override
 public Category mypageCategoryThree(int categoryThree) {
-	Category mypageCategoryThree=mypageInfoRepository.selectMypageCategoryThree(categoryThree);
+	
+	Category mypageCategoryThree = mypageInfoRepository.selectMypageCategoryThree(categoryThree);
+	
 	return mypageCategoryThree;
+}
+
+
+
+
+@Override
+public void modifyEmail(String id, String email) {
+	
+	mypageInfoRepository.updateMypageInfo(id, email);
+	
 }
 
 

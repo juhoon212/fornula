@@ -48,24 +48,73 @@ public class MypageInfoController {
 		  
 	}
 	
-	@PostMapping("/mypageInfo")
-	public String info(@ModelAttribute InfoCategory category, HttpSession session, Model model) {
+	//@PostMapping("/mypageInfo")
+	//public String info(@ModelAttribute InfoCategory category, HttpSession session, Model model) {
 	
-        Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-        log.info("sessionMember = {}", member);
+     //   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+      //  log.info("sessionMember = {}", member);
         
-	    Member joinMember = service.mypageInfoService(member.getId());
-	    log.info("modelJoinMember = {}", joinMember);
+	 //   Member joinMember = service.mypageInfoService(member.getId());
+	 //   log.info("modelJoinMember = {}", joinMember);
 	    
-	    model.addAttribute("member", joinMember);
+	 //   model.addAttribute("member", joinMember);
 		   
 	    //카테고리 값이 null일때 에러처리를 어떻게 한담..
 		   //if(category.getOne()==null) {
 			//   return "mypage-info";
 		   //}
 	   
-		 service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
+	//	 service.modifyPassword(category.getOne(), category.getTwo(), category.getThree(), member.getId());
 		   
-		 return "main"; 
+	//	 return "mypage-infoChange"; 
+//	}
+	
+	@GetMapping("/mypageInfoChange")
+	public String infoChange(HttpSession session, Model model) {
+	
+		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		log.info("getsessionMember = {}", member);
+		
+	    Member joinMember = service.mypageInfoService(member.getId());
+	    Category categoryOne=service.mypageCategoryOne(member.getCategoryOne());
+	    Category categoryTwo=service.mypageCategoryTwo(member.getCategoryTwo());
+	    Category categoryThree=service.mypageCategoryThree(member.getCategoryThree());
+	    
+	    log.info("infoChange = { ", joinMember);
+	    
+	    model.addAttribute("member", joinMember);
+	    model.addAttribute("categoryOne", categoryOne);
+	    model.addAttribute("categoryTwo", categoryTwo);
+	    model.addAttribute("categoryThree", categoryThree);
+		   
+		return "mypage-infoChange"; 
+		  
 	}
+	
+	@PostMapping("/mypageInfoChange")
+	public String infoChange(@ModelAttribute Member email, HttpSession session, Model model) {
+	
+		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		
+		if(email.getEmail()==null) {
+			return "mypage-infoChange"; 
+		}
+		service.modifyEmail(member.getId(),email.getEmail());
+		
+	    Member joinMember = service.mypageInfoService(member.getId());
+	    Category categoryOne=service.mypageCategoryOne(member.getCategoryOne());
+	    Category categoryTwo=service.mypageCategoryTwo(member.getCategoryTwo());
+	    Category categoryThree=service.mypageCategoryThree(member.getCategoryThree());
+	    
+	    log.info("mypageInfoChange = { ", joinMember);
+	    
+	    model.addAttribute("member", joinMember);
+	    model.addAttribute("categoryOne", categoryOne);
+	    model.addAttribute("categoryTwo", categoryTwo);
+	    model.addAttribute("categoryThree", categoryThree);
+		   
+		return "mypage-info"; 
+		  
+	}
+	
 }

@@ -426,7 +426,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="infoForm" method="post" action="/mypageInfo">
+   <form name="infoFormChange" method="post" action="/mypageInfoChange">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
@@ -443,9 +443,8 @@ h3 {
         <h3>이메일</h3>
         <div class="infoEmail" id =info__email>
           <div id="email-input">
-         <span>
-            <input class="boxEmail" value = "${member.email }" readonly> 
-             <a style="display: inline-block;" class="changeEmail" id=changeEmail href="<c:url value="/mypageInfoChange"/>">수정</a> </input></span>
+            <input class="boxEmail" name="email"></input>
+            <!-- <button class="changeEmail" id=changeEmail>수정</button> -->
              <div class="error-msg"></div>
           </div>
           
@@ -455,7 +454,7 @@ h3 {
         <div class="info" id = info__phone>
            <div id= "phone-input">
           <input class="box" type="text" placeholder="휴대폰 인증해주세요." readonly="readonly"/>
-           <button class="changeBtn" id="">인증</button>
+           <!--  <button class="changeBtn" id="">인증</button> -->
            </div>
         </div>
             <h3>관심사</h3>
@@ -485,11 +484,11 @@ h3 {
         </div>
         
       
-     <!-- <div id="join" style = "float : right;">
-       <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
-                              style="text-align: center;" name="checkBtn" >회원수정</button>
+      <div id="join" style = "float : right;">
+          <input type="button" class="changeBtn" value="회원수정"
+                              onclick="submitCheck();">
                               </div>
-      <span>&nbsp</span>--> 
+      <span>&nbsp</span>
     </form>
 </section>
         
@@ -606,9 +605,9 @@ function enableEmailEditing() {
  
  function submitCheck() {
 
-   infoForm.submit();
+	 infoFormChange.submit();
 
-
+ }
 
  </script>
 

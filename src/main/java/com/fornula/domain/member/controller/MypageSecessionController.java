@@ -25,7 +25,10 @@ public class MypageSecessionController {
 	private final MypageSecessionService service;
 	
    @GetMapping("/mypageSession")
-   public String Session() {
+   public String Session(HttpSession session) {
+	   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		  
+	   session.setAttribute("member", member);
 	   return "mypage-secession";
    }
    
@@ -34,9 +37,6 @@ public class MypageSecessionController {
 	   Member joinMember = service.mypageSecession(secession.getId());
 	   
 	   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-	  
-	   //이거말고 메시지보내는거로 해야함.아니면 자스로 메세지 처리하기
-	   //session.setAttribute("member", joinMember);
 	   
 	   if( member.getId()!=joinMember.getId()) {
 		   return "mypage-secession";
