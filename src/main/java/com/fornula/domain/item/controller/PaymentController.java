@@ -28,12 +28,6 @@ public class PaymentController {
 
 	 private final ItemPaymentService service;
 	 
-		@GetMapping("/payment")
-		public String payment() {
-			
-		    return "payment";
-		}
-		
 		@GetMapping("/payment/{itemIdx}")
 		public String getPayment(@PathVariable Integer itemIdx, Model model) {
 			
