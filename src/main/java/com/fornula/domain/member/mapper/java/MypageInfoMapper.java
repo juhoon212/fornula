@@ -7,7 +7,7 @@ import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 
 public interface MypageInfoMapper {
-   int updateMypageInfo(@Param("One") int One,@Param("Two")int Two,@Param("Three")int Three,@Param("id")String id);
+   int updateMypageInfo(@Param("id") String id ,@Param("email") String email);
    Member selectMypagePassword(String id);
    Category selectMypageCategoryOne(int categoryOne);
    Category selectMypageCategoryTwo(int categoryTwo);
