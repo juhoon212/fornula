@@ -570,7 +570,7 @@ p #logo{
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <a href="#" class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x">Show More</a>
+                <a href="/item/add" class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x">Show More</a>
             </div>
         </div>
     </div>
