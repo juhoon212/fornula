@@ -3,23 +3,13 @@
 <mapper namespace="com.fornula.domain.member.mapper.java.MypageInfoMapper">
    <!-- 마이페이지의 나의 정보 보기에서 사용할 SQL문 -->
    
-   <!-- 카테고리 수정 쿼리 -->
+   <!-- 이메일 수정 쿼리 -->
    <update id="updateMypageInfo" >
    update member 
-    <set>
-    <if test="One != null and One ''">
-       category_one=#{One},
-    </if>
-    <if test="Two != null and Two ''">
-       categoryt_two=#{Two},
-    </if>
-    <if test="Three != null and Three ''">
-       category_three=#{Three}
-    </if>
-    </set> 
+    set email=#{email}
     where id=#{id}
    </update>
-
+ 
    <!-- 회원정보 뽑는 쿼리 -->
     <select id="selectMypagePassword" resultType="Member" >
       select  member_idx,

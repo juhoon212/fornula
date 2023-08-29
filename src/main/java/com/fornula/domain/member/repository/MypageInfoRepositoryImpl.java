@@ -18,13 +18,6 @@ public class MypageInfoRepositoryImpl implements MypageInfoRepository{
 
 
 	@Override
-	public int updateMypageInfo(int One, int Two, int Three, String id) {
-		
-		return sqlSession.getMapper(MypageInfoMapper.class).updateMypageInfo(One, Two, Three, id);
-	}
-
-
-	@Override
 	public Member selectMypagePassword(String id) {
 		
 		return sqlSession.getMapper(MypageInfoMapper.class).selectMypagePassword(id);
@@ -49,6 +42,13 @@ public class MypageInfoRepositoryImpl implements MypageInfoRepository{
 	public Category selectMypageCategoryThree(int categoryThree) {
 	
 		return sqlSession.getMapper(MypageInfoMapper.class).selectMypageCategoryThree(categoryThree);
+	}
+
+
+	@Override
+	public int updateMypageInfo(String id, String email) {
+		
+		return sqlSession.getMapper(MypageInfoMapper.class).updateMypageInfo(id, email);
 	}
   
 }
