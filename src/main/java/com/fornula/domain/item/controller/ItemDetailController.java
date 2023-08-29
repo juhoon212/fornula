@@ -12,6 +12,7 @@ import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.item.service.ItemDetailServiceImpl;
+import com.fornula.domain.util.pager.Pager;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,26 +26,23 @@ public class ItemDetailController {
 	
     private final ItemDetailService itemDetailService;
    
-//    @GetMapping("/detail/{itemIdx}")
-//    public String detail(@PathVariable Integer itemIdx, Model model) {
-//        Item item = itemDetailService.getItem(itemIdx);
-//        model.addAttribute("item", item);
-//        
-//        log.info("전달된 itemIdx = {}", itemIdx);
-//        
-//        return "item"; // 뷰 이름
-//    }
-    
    @GetMapping("/{itemIdx}")
    public String itemIdx(@PathVariable Integer itemIdx, Model model) {
     	
     	Item findItem = itemDetailService.getItem(itemIdx);
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
+    	
     	int pos = selectPhoto.getItemfileName().lastIndexOf("_");
-    	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1);
+    	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1); // 사진 로직
+    	
+    	
+    	
+    	
     	
     	model.addAttribute("item", findItem);
     	model.addAttribute("originalFileName", originalFileName);
+    	
+    	
     	
     	return "item";
     }
