@@ -3,27 +3,29 @@
 <mapper namespace="com.fornula.domain.expert.mapper.java.ExpertInputMapper">
 	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가 가입 시 받은 정보, 전문가 정보 수정/등록 페이지에서 추가한 정보들을 수정할 때 사용할 SQL문 -->
 	<update id="updateExpert">
-	    update expert set phone=#{phone}
-	        ,interest=#{interest}
-	        ,introduce=#{introduce}
-	        ,career=#{career}
-	        ,compnay_one=#{companyOne}
-	        ,compnay_two=#{companyTwo}
-	        ,compnay_three=#{companyThree}
-	        ,expertfile_name=#{expertfileName}
-	    where expert_idx=#{expertIdx}
+	    UPDATE expert SET
+	        phone = #{phone},
+	        interest = #{interest},
+	        introduce = #{introduce},
+	        career = #{career},
+	        company_one = #{companyOne},
+	        company_two = #{companyTwo},
+	        company_three = #{companyThree},
+	        expertfile_name = #{expertfileName}
+	    WHERE expert_idx = #{expertIdx}
 	</update>
-
-	<!-- 기존의 전문가 정보를 불러오기 위한 매퍼 -->
-	<select id="selectOriginalExpert" resultType="expert">
-		select phone
-			,interest
-			,career
-			,company_one
-			,company_two
-			,company_three
-			,introduce
-		from expert
-		where expert_idx=#{expertIdx}
+	
+	<!-- 기존에 작성된 전문가의 정보를 출력하는 용도의 SQL문 -->
+	<select id="originalExpert" resultType="Expert">
+	    SELECT phone
+	        ,interest
+	        ,introduce
+	        ,career
+	        ,company_one
+	        ,company_two
+	        ,company_three
+	        ,expertfile_name
+	    FROM EXPERT
+	    WHERE expert_idx=#{expertIdx}
 	</select>
 </mapper>

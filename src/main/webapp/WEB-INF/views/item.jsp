@@ -42,37 +42,6 @@ a{
 	padding: 10px; /* 내부 여백 설정 */
     background-color: green; /* 배경색 설정 */
 }
-.post-content {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.post-content h1 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.post-content a {
-    color: #333;
-    text-decoration: none;
-}
-
-.post-content button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.post-content button:hover {
-    background-color: #0056b3;
-}
 </style>
 <script type="text/javascript">
     function disableLink() {
@@ -84,46 +53,40 @@ a{
 <jsp:include page="header.jsp" />
 
 <main class="main">
-    <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
-        <div class="row justify-content-center comments-row no-gutters">
-            <div class="row justify-content-center post-row no-gutters">
-                <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                    <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="post">
-                </div>
-                <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-                    <div class="post-content">
-                        <h1>제목 : ${item.itemName }</h1><br>
-                        <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
-                        <h1>등록 날짜 : ${item.itemDate }</h1>
-                        <h1>내용 : ${item.itemContent }</h1>
-                        <h1>가격 : ${item.price }</h1>
-                        <button onclick="location.href='payment'">결제하기</button>
         <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
                         <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                     </div>
-                    <hr>
-                    <div>
-                        <a href="#" onclick="return disableLink()">
-	            # ${item.categoryIdx == 1 ? '그래픽' :
-	               item.categoryIdx == 2 ? '제품' :
-	               item.categoryIdx == 3 ? '영어' :
-	               item.categoryIdx == 4 ? '중국어' :
-	               item.categoryIdx == 5 ? '헤어 메이크업' :
-	               item.categoryIdx == 6 ? '제품 홍보 사진' :
-	               item.categoryIdx == 7 ? '사업자' :
-	               item.categoryIdx == 8 ? '개인' :
-	               item.categoryIdx == 9 ? 'SNS홍보' :
-	               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
-	        </a>
+                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
+                        <div class="post-content">
+                            <h1>제목 : ${item.itemName }</h1><br>
+                            <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
+                            <h1>등록 날짜 : ${item.itemDate }</h1>
+                            <h1>내용 : ${item.itemContent }</h1>
+                            <h1>가격 : ${item.price }</h1>
+                            <button onclick="location.href='payment'">결제하기</button>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="#" onclick="return disableLink()">
+					            # ${item.categoryIdx == 1 ? '그래픽' :
+					               item.categoryIdx == 2 ? '제품' :
+					               item.categoryIdx == 3 ? '영어' :
+					               item.categoryIdx == 4 ? '중국어' :
+					               item.categoryIdx == 5 ? '헤어 메이크업' :
+					               item.categoryIdx == 6 ? '제품 홍보 사진' :
+					               item.categoryIdx == 7 ? '사업자' :
+					               item.categoryIdx == 8 ? '개인' :
+					               item.categoryIdx == 9 ? 'SNS홍보' :
+					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
+					        </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- 댓글 -->
        
     
 	    <div class="container comments-container bg-white">
@@ -366,8 +329,8 @@ a{
                         </form>
                     </div>
                 </div>
-    		</div>
-    	</div>
+    
+    
 </main>
 <jsp:include page="footer.jsp"/>
 

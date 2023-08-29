@@ -28,7 +28,8 @@ import lombok.extern.slf4j.Slf4j;
 public class ExpertInputRestController{
    private final ExpertInputService expertInputService;
    private final ItemDetailService itemDetailService;
-//  전문가 정보 수정시에 사용할 메소드
+/*
+   //  전문가 정보 수정시에 사용할 메소드
 //   ResponseEntity를 사용하여 클라이언트에게 응답 데이터랑 상태코드, 헤더 등을 포함하여 응답을 구성할 수 있게 해준다고함
     @PutMapping("/modify")
     public ResponseEntity<String> expertModify(@RequestBody Expert expert) {
@@ -57,4 +58,5 @@ public class ExpertInputRestController{
         Category category = expertInputService.getExpertOriginalCategory(expertIdx);
         return ResponseEntity.ok(category);
     }
+    언젠가 다시 쓰겟지...*/ 
 }

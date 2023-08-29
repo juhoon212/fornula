@@ -5,5 +5,5 @@ import com.fornula.domain.item.dto.Category;
 
 public interface ExpertInputDAO {
     void updateExpert(Expert expert);
-    Category selectOriginalCategory(int expertIdx);
+    Expert selectOriginalExpert(int expertIdx);
 }

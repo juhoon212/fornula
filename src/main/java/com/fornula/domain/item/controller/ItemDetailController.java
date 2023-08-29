@@ -25,15 +25,13 @@ public class ItemDetailController {
 	
     private final ItemDetailService itemDetailService;
    
-//    @GetMapping("/detail/{itemIdx}")
-//    public String detail(@PathVariable Integer itemIdx, Model model) {
-//        Item item = itemDetailService.getItem(itemIdx);
-//        model.addAttribute("item", item);
-//        
-//        log.info("전달된 itemIdx = {}", itemIdx);
-//        
-//        return "item"; // 뷰 이름
-//    }
+    @GetMapping("/detail/{itemIdx}")
+    public String detail(@PathVariable Integer itemIdx, Model model) {
+        Item item = itemDetailService.getItem(itemIdx);
+        model.addAttribute("item", item);
+        log.info("전달된 itemIdx = {}", itemIdx);
+        return "item"; // 뷰 이름
+    }
     
    @GetMapping("/{itemIdx}")
    public String itemIdx(@PathVariable Integer itemIdx, Model model) {
@@ -49,4 +47,3 @@ public class ItemDetailController {
     	return "item";
     }
 }
-

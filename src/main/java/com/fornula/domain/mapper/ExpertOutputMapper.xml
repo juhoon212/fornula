@@ -38,9 +38,4 @@
 			and item_status=1
 			and expert_idx=#{expertIdx}
 	</select>
-	
-	<select id="selectExpertItemCount" resultType="Item">
-		select count(*)
-		from item
-	</select>
 </mapper>
