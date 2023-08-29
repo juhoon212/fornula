@@ -57,7 +57,7 @@
 								</div>
 								<div class="card-footer">
 	                          	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-									<a href="/item/${itemList.item.itemIdx}" class="more-link card-link">
+									<a href= "<c:url value="/item/${itemList.item.itemIdx}"/>" class="more-link card-link">
 										더 보기 <i class="lana-icon-arrow-right text-primary"></i>
 									</a>
 								</div>
