@@ -244,9 +244,12 @@ a:visited {
 				<div class="widget widget_tag_cloud">
 					<div class="tagcloud">
 						<div id="changBtn" style="text-align: center;">
-							<a href="/mypage" class="tag-cloud-link"
+							<a href="/mypagePurchase" class="tag-cloud-link"
 								aria-label="admin change button">일반인으로 전환</a>
+								<br>
+								
 						</div>
+								<br>
 						<div class="row">
 							<div class="widget" style="text-align: left;" id="list">
 								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
@@ -258,7 +261,7 @@ a:visited {
 										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
 									<li><a href="javascript:menuchange();" id="po"
 										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="item/add" id="item"
+									<li><a href="/expertitem" id="item"
 										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
 								</ul>
 							</div>

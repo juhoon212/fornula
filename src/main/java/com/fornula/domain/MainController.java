@@ -24,15 +24,18 @@ public class MainController {
 		 
 			if (member == null) {
 				model.addAttribute("headerPage", "header.jsp");
-			} else {
+			} else if(member !=null) {
 				int memberStatus = member.getMemberStatus();
 				
 				if (memberStatus == 1 || memberStatus == 2) { 
 					model.addAttribute("headerPage", "login-header.jsp"); 
-				} else { 
-					model.addAttribute("headerPage", "header.jsp");
+				} else if(memberStatus == 9){ 
+					return "redirect:/admin/user";
+				} else {
+				model.addAttribute("headerPage", "header.jsp");
+			
 				}
-			}
+				}
 			
 			return "main";
 	}

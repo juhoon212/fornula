@@ -73,12 +73,12 @@ public class ExpertJoinController {
 		 */
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
-		if (!uploadFile.getContentType().equals("application/pdf")) {
+		if (uploadFile.isEmpty()) {
+			return "expert-fail";
+		}else if (!uploadFile.getContentType().equals("application/pdf")) {
 			log.info("file:{}", uploadFile);
 			model.addAttribute("message", "pdf 파일만 업로드해주세요.");
 			return "expert-join";
-		} else if (uploadFile.isEmpty()) {
-			return "expert-fail";
 		}
 
 		String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
