@@ -11,27 +11,15 @@ import lombok.RequiredArgsConstructor;
 @Repository
 @RequiredArgsConstructor
 public class ExpertInputDAOImpl implements ExpertInputDAO {
-	private final SqlSession sqlSession;
-	
-	@Override
-	public int updateExpert(Expert expert) {
-		return sqlSession.getMapper(ExpertInputMapper.class).updateExpert(expert);
-	}
-	/* output으로 이동
-	@Override
-	public List<Item> selectExpertItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertItemList(map);
-	}
-	*/
-	
-	@Override
-	public int insertExpertInfo(Expert expert) {
-		return sqlSession.getMapper(ExpertInputMapper.class).insertExpertInfo(expert);
-	}
-	/* output 으로 이동
-	@Override
-	public int selectExpertBoardCount() {
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertBoardCount();
-	}
-	*/
+    private final SqlSession sqlSession;
+
+    @Override
+    public void updateExpert(Expert expert) {
+    	sqlSession.getMapper(ExpertInputMapper.class).updateExpert(expert);
+    }
+
+    @Override
+    public Expert selectOriginalExpert(int expertIdx) {
+        return sqlSession.getMapper(ExpertInputMapper.class).selectOriginalExpert(expertIdx);
+    }
 }
