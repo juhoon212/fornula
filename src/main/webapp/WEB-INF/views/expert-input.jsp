@@ -114,12 +114,12 @@ h3 {
 <div class="row">
    <div class="col-12 col-lg-8">
       <div class="widget">     
-         <form class="story-posts" id="content" action="expertoutput" method="post">              
+         <form class="story-posts" id="content" action="/modify" method="post">              
             <div class="info" id="info__category">
 				<div id="category-flex">
 					<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
-					<input class="box" type="text" id="expertIdx" readonly/>
-					<input class="box" type="text" id="phoneInput" placeholder="전화번호"/>
+					<input class="box" type="text" id="expertIdx" placeholder="전문가번호"${expertIdx } readonly/>
+					<input class="box" type="text" id="phoneInput" placeholder="전화번호:${phone }" value="${phone }"/>
 				</div>          
 			</div>
 			<div class="info" id="info__category">
@@ -128,36 +128,36 @@ h3 {
                 <!-- 여백 어케주드라 -->
 				<select class="box" id="interestSelect" name="interest">
                   <option disabled selected>디자인</option>
-                  <option value="그래픽">그래픽</option>
-                  <option value="제품">제품</option>
+                  <option value="1">그래픽</option>
+                  <option value="2">제품</option>
                   <option disabled selected>번역</option>
-                  <option value="영어">영어</option>
-                  <option value="중국어">중국어</option>
+                  <option value="3">영어</option>
+                  <option value="4">중국어</option>
                   <option disabled selected>사진 편집</option>
-                  <option value="헤어메이크업">헤어 메이크업</option>
-                  <option value="제품홍보사진">제품 홍보 사진</option>
+                  <option value="5">헤어 메이크업</option>
+                  <option value="6">제품 홍보 사진</option>
                   <option disabled selected>세무</option>
-                  <option value="사업자">사업자</option>
-                  <option value="개인">개인</option>
+                  <option value="7">사업자</option>
+                  <option value="8">개인</option>
                   <option disabled selected>마케팅</option>
-                  <option value="SNS홍보">SNS 홍보</option>
-                  <option value="해외마케팅">해외 마케팅</option>              
+                  <option value="9">SNS 홍보</option>
+                  <option value="10">해외 마케팅</option>              
                 </select>
              	<!-- 여백 어케주드라 -->            
-                <input class="box" type="text" placeholder="연차:${career }"/>
+                <input class="box" type="text" placeholder="연차:${career }" value="${career }"/>
               </div>
             </div>
             <div class="info" id="info__category">
 				<div id="category-flex">
-        			<input class="box" type="text" id="companyOneInput" placeholder="회사명1"/>
+        			<input class="box" type="text" id="companyOneInput" placeholder="${companyOne }" />
 					<!-- 여백 어케주드라 -->            
-					<input class="box" type="text" id="companyTwoInput" placeholder="회사명2"/>
+					<input class="box" type="text" id="companyTwoInput" placeholder="${companyTwo }"/>
 					<!-- 여백 어케주드라 -->
-					<input class="box" type="text" id="companyThreeInput" placeholder="회사명3"/>
+					<input class="box" type="text" id="companyThreeInput" placeholder="${companyThree }"/>
 				</div>
 			</div>
 			<div>
-    			<textarea class="box" id="introduceInput" placeholder="자기소개">${introduce}</textarea>
+    			<textarea class="box" id="introduceInput" placeholder="자기소개:${introduce }">${introduce}</textarea>
 				<section id="upload">
 				    <h3>포트폴리오 등록</h3>
 				    <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf">
@@ -173,6 +173,7 @@ h3 {
          </form>
       </div>
    </div>  
+   <!-- 혜민아 이거 복붙 너가한다했나? 나 그럼 괜히 깝치지말고 걍 이대로 방치해? -->
    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
       <div class="widget-sidebar story-sidebar">
          <div id="button">
@@ -223,8 +224,10 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 <script>
-$(document).ready(function() {
-    // 전문가의 expertIdx를 가져오는 AJAX 요청
+/* 
+나중에 이거는 RestController 써서 AJAX 놀음 할 때 사용
+$(document).ready(function() {   
+	// 전문가의 expertIdx를 가져오는 AJAX 요청
     $.ajax({
         url: '/getExpertIdx',
         method: 'GET',  
@@ -251,13 +254,13 @@ $(document).ready(function() {
             console.error("전문가의 expertIdx 데이터를 가져오는 중 오류 발생: " + error);
         }
     });
-
+	
     // 포트폴리오 파일 선택 시 파일명 표시
     $("#formFile").change(function() {
         var fileName = $(this).val().split('\\').pop();
         $("#portfolioFileNameInput").val(fileName);
     });
-
+	
     // 수정 완료 버튼 클릭 시 AJAX 요청 등록
     $("#submitButton").click(function(e) {
         e.preventDefault();
@@ -300,6 +303,7 @@ $(document).ready(function() {
         });
     });
 });
+	*/
 </script>
 </body>
 </html>
