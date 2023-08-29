@@ -30,23 +30,19 @@ public class ItemBoardController {
     @GetMapping("/boardList")
     public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
         Map<String, Object> resultMap = itemBoardService.getItemList(pageNum);
-        int filePos; // UUID로 된 파일이름 추출
+        int filePos;
         String originalFileName = null;
-        
-        List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>)resultMap.get("itemBoardList");
+
+        List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>) resultMap.get("itemBoardList");
         for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
-			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
-			originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
-		}
-        
-        log.info("pager = {}", resultMap.get("pager"));
-        
+            filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
+            originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+        }
+
         model.addAttribute("itemBoardList", resultMap.get("itemBoardList"));
         model.addAttribute("pager", resultMap.get("pager"));
-        
-        log.info("originalFileName = {}", originalFileName);
         model.addAttribute("originalFileName", originalFileName);
-   
+
         return "item-board";
     }
 
