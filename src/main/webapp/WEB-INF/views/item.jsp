@@ -98,6 +98,11 @@ a{
                         <h1>내용 : ${item.itemContent }</h1>
                         <h1>가격 : ${item.price }</h1>
                         <button onclick="location.href='payment'">결제하기</button>
+        <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
+            <div class="container post-container bg-white">
+                <div class="row justify-content-center post-row no-gutters">
+                    <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                     </div>
                     <hr>
                     <div>
@@ -119,6 +124,8 @@ a{
         </div>
     </div>
     <!-- 댓글 -->
+       
+    
 	    <div class="container comments-container bg-white">
 	            <div class="row justify-content-center comments-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8">

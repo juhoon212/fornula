@@ -44,6 +44,7 @@
 							<div id="post-1" class="post type-post card post-card post-grid-card h-100">
 								<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
 								<img src="<c:url value="/images/upload/${originalFileName}"/>" class="card-img-top img-fluid">
+								<img src="<c:url value="/images/upload/${itemList.photo.itemfileName}"/>"class="card-img-top img-fluid">
 								<div class="card-body">
 									<ul class="post-meta">
 										<li>
@@ -57,7 +58,7 @@
 								</div>
 								<div class="card-footer">
 	                          	 		<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-									<a href="/item/${itemList.item.itemIdx}" class="more-link card-link">
+									<a href= "<c:url value="/item/${itemList.item.itemIdx}"/>" class="more-link card-link">
 										더 보기 <i class="lana-icon-arrow-right text-primary"></i>
 									</a>
 								</div>
