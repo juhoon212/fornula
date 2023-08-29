@@ -108,8 +108,7 @@ p #logo {
 
 	<header class="header position-relative">
 		<div class="header-navbar border-bottom border-white">
-			<nav
-				class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
+			<nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 				id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 				id="lana-pet-main-navbar">
 				<p id="logo">
@@ -130,7 +129,7 @@ p #logo {
 						<i class="fas fa-bars fa-lg fa-fw text-dark"></i>
 					</button>
 				</div>
-				<c:if test="${sessionScope.loginMember ==null }">
+				<c:if test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
 
 					<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
 					<div class="collapse navbar-collapse" id="lana-navbar">
@@ -276,6 +275,7 @@ p #logo {
 								<!-- 프로필 사진 삽입 -->
 								<div class="dropdown">
 									<div class="profile">
+										<c:if test="${sessionScope.loginMember.memberStatus == 1}">			
 										<a class="dropdown-toggle" href="/mypageInfo" role="button"
 											data-bs-toggle="dropdown" aria-expanded="false"> <img
 											src="<c:url value="/pictures/placeholder/profile.png"/>"
@@ -284,16 +284,33 @@ p #logo {
 										</a>
 
 										<ul class="dropdown-menu" id="loginDropDown">
-											<li><a class="dropdown-item" href="/mypageInfo">내 정보
-													관리</a>
-											<li><a class="dropdown-item" href="/expert/join">전문가
-													등록</a> <!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
+											<li>
+												<a class="dropdown-item" href="/mypageInfo">내 정보 관리</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="/expert/join">전문가 등록</a> 
+											</li>
+										</c:if>
+											
+										<c:if test="${sessionScope.loginMember.memberStatus == 2}">			
+										<a class="dropdown-toggle" href="<c:url value="/expert/output "/>" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false"> <img
+											src="<c:url value="/pictures/placeholder/profile.png"/>"
+											class="rounded-circle" alt="profilephoto" width="60"
+											height="60">
+										</a>
+										<ul class="dropdown-menu" id="loginDropDown">
+											<li>
+												<a class="dropdown-item" href="<c:url value="/expert/output "/>">전문가 정보</a> 
+											</li>
+										</c:if>
+													<!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
 
 											<div style="padding-left: 18px;">
 												<button style="border:none; background-color: white; color: black; "
 													
 													type="submit" id="logout">로그아웃</button>
-													</div>
+											</div>
 										</ul>
 									</div>
 								</div>

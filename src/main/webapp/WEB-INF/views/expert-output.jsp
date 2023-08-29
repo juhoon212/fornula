@@ -114,6 +114,83 @@ iframe [ src $ = ′ . pdf ′ ] {
 width : 100 % ;
 height : vh ;
 }
+
+#button {
+	display: flex;
+	justify-content: center; align-items center;
+	padding-bottom: 2em;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	border: 30px;
+}
+
+.container {
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 40px;
+}
+
+p #logo {
+	width: 400px;
+	height: 70px;
+}
+
+#logo a {
+	font-family: 'Permanent Marker', cursive;
+	padding-left: 20px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	margin: 0 auto;
+	font-size: 2.5em;
+	text-align: center;
+}
+
+.navbar {
+	text-align: center;
+}
+
+#lana-navbar {
+	text-align: left;
+}
+
+select {
+	background: #ffff;
+}
+
+.story-posts {
+	width: 100%;
+	height: 85%;
+}
+
+table {
+	width: 100%;
+	padding: 0px 10px;
+}
+
+tr th {
+	width: 50%;
+	border-right: 1px solid #ff8a00;
+}
+
+tr td {
+	padding: 0px 30px;
+}
+
+#list {
+	padding-left: 30px;
+}
+
+a:link {
+	color: #212121;
+}
+
+a:visited {
+	color: #212121;
+}
+
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
@@ -202,40 +279,59 @@ height : vh ;
         </div> 
 	</div>   
 	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">
-			<div id="button">
-				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-					class="rounded-circle" alt="Author" width="200" height="200">
-			</div>
-			<div id="button">
-				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
-			</div>
-			<div class="widget widget_tag_cloud">
-				<div class="tagcloud">
-					<div id="button">
-						<a href="mypage-purchase" class="tag-cloud-link"
-							aria-label="admin change button">일반회원으로 전환</a>
-					</div>
-					<div class="tab_menu">
-						<div class="widget" style="text-align: left;" id="list">
-							<h3 class="widget-title">판매 관리</h3>
-							<ul>
-								<li>
-									<a href="expertinput" class="expertInput" href="#" onclick="location.href='expert-input.jsp'">전문가 정보 수정</a>
-								</li>
-								<li>
-									<a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
-								</li>
-								<li>
-									<a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
-								</li>
-							</ul>
+			<div class="widget-sidebar story-sidebar">
+
+				<div id="img">
+					<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+						class="rounded-circle" alt="Author" width="200" height="200">
+				</div>
+				<div id="button" style="text-align: center;">
+					<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+				</div>
+				<div class="widget widget_tag_cloud">
+					<div class="tagcloud">
+						<div id="changBtn" style="text-align: center;">
+							<a href="/mypagePurchase" class="tag-cloud-link"
+								aria-label="admin change button">일반인으로 전환</a>
+								<br>
+								
 						</div>
+								<br>
+						<div class="row">
+							<div class="widget" style="text-align: left;" id="list">
+								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">포트폴리오</h3>
+								<ul style="color: black;">
+									<li><a href="<c:url value="/expert/input"/>" id="info"
+										class="expertmenu">전문가 정보</a></li>
+									<li><a href="<c:url value="/expert/sales"/>" id="sale"
+										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
+									<li><a href="<c:url value="/expert/output "/>" id="po"
+										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
+									<li><a href="<c:url value="/expert/item"/>" id="item"
+										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
+								</ul>
+							</div>
+						</div>
+			<!-- 			<div class="row">
+							<div class="widget" style="text-align: left;" id="list">
+								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
+									관리</h3>
+								<ul style="color: black;">
+									<li><a href="javascript:menuchange();" id="info"
+										class="expertmenu">전문가 정보</a></li>
+									<li><a href="javascript:menuchange();" id="sale"
+										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
+									<li><a href="javascript:menuchange();" id="po"
+										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
+									<li><a href="/expertitem" id="item"
+										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
+								</ul>
+							</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 </main>
 <jsp:include page="footer.jsp"/>

@@ -2,38 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.fornula.domain.item.mapper.java.ItemBoardMapper">
-		<!-- 메인페이지에 상품 출력 -->
-  
-	<select id="mainItemList" resultMap="ItemPhotoCategoryCartMain">
-		SELECT I.item_idx,
-		I.item_category_idx,
-		I.item_name,
-		I.item_content,
-		I.price,
-		P.photo_idx,
-		P.itemfile_name
-		FROM item I
-		JOIN photo P
-		ON I.item_idx = P.item_idx
-		WHERE ROWNUM &lt;= 3
-		ORDER BY I.item_idx DESC;
-	</select> 
- 	
-	<resultMap type="ItemPhotoCategoryCart"
-		id="ItemPhotoCategoryCartMain">
-		<association property="item" javaType="Item">
-			<id column="item_idx" property="itemIdx" />
-			<result column="category_idx" property="categoryIdx" />
-			<result column="expert_idx" property="expertIdx" />
-			<result column="item_name" property="itemName" />
-			<result column="item_content" property="itemContent" />
-			<result column="price" property="price" />
-		</association>
-		<association property="photo" javaType="Photo">
-			<id column="photo_idx" property="photoIdx" />
-			<result column="itemfile_name" property="itemfileName" />
-		</association>
-	</resultMap>
+	
 	<!-- 상품 게시판에서 상품 리스트들을 뽑을 때 사용하는 SQL문 -->
 	<select id="selectItemList" resultMap="ItemPhotoCategoryCart">
 		SELECT * from(

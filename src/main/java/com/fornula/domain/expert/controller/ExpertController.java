@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/")
+@RequestMapping("/expert")
 @RequiredArgsConstructor
 public class ExpertController{
 	
@@ -27,20 +27,21 @@ public class ExpertController{
 	
 	
 	//전문가 마이페이지(판매관리)
-	@RequestMapping(value = "/expertmypage")
+	@RequestMapping(value = "/sales")
 	public String mypage() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
-		return "expert-main";
+		return "expert-sales";
 	}	
 	
 	//전문가 정보수정 페이지 
-	@RequestMapping(value = "/expertinput")
+	@RequestMapping(value = "/input")
 	public String input() {
 		log.info("ExpertController 클래스의 input() 메소드 실행");
 		return "expert-input";
 	}
 	
 	// 전문가 페이지에서 상품 등록 페이지 클릭하면 session에서 로그인멤버의 전문가 번호를 찾아서 반환
+	/*
 	@GetMapping("/expert/item")
 	public String expertItem(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
 			
@@ -50,7 +51,7 @@ public class ExpertController{
 		model.addAttribute("expertIdx", findExpert.getExpertIdx());
 			
 		return"expert-item";
-	}
+	}*/
 		
 	@GetMapping("/expert/item/{expertIdx}")
 	public String expertItem(@PathVariable Integer expertIdx, Model model) {
@@ -61,15 +62,15 @@ public class ExpertController{
 	}
 		
 //	포트폴리오로 이동하는 메소드
-	@RequestMapping(value = "/expertoutput")
+	@RequestMapping(value = "/output")
 	public String output() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
 		return "expert-output";
 	}
-//	상품등록시 주의사항으로 넘어가는 메소드
-	@RequestMapping(value = "/expertitem")
-	public String item() {
-		log.info("ExpertController 클래스의 mypage() 메소드 실행");
-		return "expert-item";
-	}
+	
+	 // 상품등록시 주의사항으로 넘어가는 메소드
+	 
+	 @RequestMapping(value = "/expertitem") public String item() {
+	  log.info("ExpertController 클래스의 mypage() 메소드 실행"); return "expert-item"; }
+	 
 }

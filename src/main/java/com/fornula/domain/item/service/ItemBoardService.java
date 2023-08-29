@@ -11,7 +11,5 @@ public interface ItemBoardService {
     Map<String, Object> getSearchItemList(int pageNum, String searchKeyword);
 //	void modifyItem(Item item);
     int getItemBoardCount();
-    
-    //메인페이지 상품 출력
-    List<ItemPhotoCategoryCart> getMainItemList();
+ 
 }

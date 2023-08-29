@@ -92,10 +92,5 @@ public class ItemBoardServiceImpl implements ItemBoardService{
         return itemBoardDAO.selectItemBoardCount();
     }
     
-    
-    //메인페이지 상품 출력
-	@Override
-	public List<ItemPhotoCategoryCart> getMainItemList() {
-	return itemBoardDAO.mainItemList();
-	}
+   
 }
