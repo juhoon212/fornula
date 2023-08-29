@@ -21,6 +21,7 @@ import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.session.SessionConst;
 import com.google.common.util.concurrent.Service;
 
@@ -34,67 +35,70 @@ import lombok.extern.slf4j.Slf4j;
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
+	private final MypageInfoService service;
 
 	@GetMapping("/sale")
 	public String sale() {
 		return "expert-sales";
 	}
+
 	@GetMapping("/join")
-	public String join() {
+	public String join(HttpSession session) {
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+
+		session.setAttribute("member", member.getId());
+
 		return "expert-join";
 	}
-	
 
 	@PostMapping("/join")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model, HttpSession session) throws IllegalStateException, IOException {
-		log.info("expert:{}",expert);
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model,
+			HttpSession session) throws IllegalStateException, IOException {
+		log.info("expert:{}", expert);
+		log.info("file:{}", uploadFile);
 
-		
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		session.setAttribute("member", member);
 		expert.setMemberIdx(member.getMemberIdx());
-		
-		
-		log.info("sessionMember = {}", member);
-		
+
 		/*
 		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
-		 * expert.setInterest(interst);
+		 * expert.setInterest (interst);
 		 */
-		
-		//업로드된 파일이 pdf 파일이 아닐 경우
-		if (!uploadFile.getContentType().equals("application/pdf")) {
-			log.info("file:{}",uploadFile);
-			model.addAttribute("message","pdf 파일만 업로드해주세요.");
+
+		// 업로드된 파일이 pdf 파일이 아닐 경우
+		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {
+			log.info("file:{}", uploadFile);
+			model.addAttribute("message", "pdf 파일만 업로드해주세요.");
 			return "expert-join";
-		}else if(uploadFile.isEmpty()) {
-			return "expert-fail";
 		}
 
-		String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
-		log.info("filepath =" +uploadDirectory);
-
-		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
-		log.info("filename =" +expertfileName);
 		
-		
-		expert.setExpertfileName(expertfileName);
+		if(!uploadFile.isEmpty()) {
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
+			log.info("filepath =" + uploadDirectory);
+	
+			String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+			log.info("filename =" + expertfileName);
+	
+			expert.setExpertfileName(expertfileName);
 
-		try {
-			uploadFile.transferTo(new File(uploadDirectory, expertfileName));
-			System.out.println("파일 업로드 성공");
-		}catch (IllegalArgumentException | IOException e) {
-			System.out.println("파일 업로드 실패");
-			e.printStackTrace();
+			try {
+				uploadFile.transferTo(new File(uploadDirectory, expertfileName));
+				System.out.println("파일 업로드 성공");
+			} catch (IllegalArgumentException | IOException e) {
+				System.out.println("파일 업로드 실패");
+				e.printStackTrace();
+			}
 		}
+		
 
-			
 		expertJoinService.addExpertInfo(expert);
-		
-		//등록처리에 성공하였을때 memberIdx 변경
+
+		// 등록처리에 성공하였을때 memberIdx 변경
 		member.setMemberStatus(2);
 		expertJoinService.updateExpertStatus(member);
-		
+		session.setAttribute("loginMember", member);
+
 		return "main";
 
 	}

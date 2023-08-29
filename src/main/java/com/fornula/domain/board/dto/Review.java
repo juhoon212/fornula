@@ -1,4 +1,4 @@
-package com.fornula.domain.member.dto;
+package com.fornula.domain.board.dto;
 /*
 이름              널?       유형             
 --------------- -------- -------------- 
@@ -14,9 +14,14 @@ ANSWER_CONTENT           VARCHAR2(2000)
 ANSWER_DATE              DATE       
  */
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Review {
 	private int reviewIdx;
 	private int purchaseIdx;

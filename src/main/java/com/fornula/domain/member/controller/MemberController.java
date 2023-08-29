@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,10 +36,6 @@ public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
 	private final MemberJoinService memberJoinService;
-	
-	
-	
-
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
@@ -58,11 +55,14 @@ public class MemberController {
 		 return "redirect:/";
 	}
 	
+	
+	
 	// 아이디 찾기
 	@GetMapping("/findId")
 	public String showFindId() {
 		return "find-id";
 	}
+	
 	
 	// 비밀번호 찾기
 	@GetMapping("/findPw")
@@ -96,7 +96,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/updatePassword/{memberIdx}") 
-	public String updatePassword(@PathVariable String memberIdx, @RequestParam(required = false) String newPassword, RedirectAttributes redirectAttributes) {
+	public String updatePassword(@PathVariable String memberIdx, 
+								@RequestParam(required = false) String newPassword, 
+								RedirectAttributes redirectAttributes, 
+								Model model
+								) {
+		
 		Member findByIdxMember = memberLoginService.findByIdx(Integer.parseInt(memberIdx));
 		
 		if(findByIdxMember == null) {
@@ -110,12 +115,17 @@ public class MemberController {
 			return "404";
 		}
 		
-		redirectAttributes.addAttribute("message", "비밀번호가 변경되었습니다.");
-		return "redirect:/common-success";
+		model.addAttribute("message", "비밀번호가 변경되었습니다.");
+		return "common-success";
 	}
 	
-	
-	
+	//로그아웃
+	@PostMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+		
+	}
 	
 	
 }
