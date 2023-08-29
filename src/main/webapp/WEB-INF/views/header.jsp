@@ -108,7 +108,8 @@ p #logo {
 
 	<header class="header position-relative">
 		<div class="header-navbar border-bottom border-white">
-			<nav class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
+			<nav
+				class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 				id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
 				id="lana-pet-main-navbar">
 				<p id="logo">
@@ -129,72 +130,75 @@ p #logo {
 						<i class="fas fa-bars fa-lg fa-fw text-dark"></i>
 					</button>
 				</div>
-				<c:if test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
-
-					<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-					<div class="collapse navbar-collapse" id="lana-navbar">
-						<ul class="navbar-nav ml-lg-auto">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="/item/boardList"
-								id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false" style="width:150px; ">카테고리</a>
-								<ul class="dropdown-menu" aria-labelledby="page-dropdown">
-									<li>
-										<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
-									</li>
-									<li><a class="dropdown-item" href="/item/boardList">그래픽
-											디자인</a></li>
-									<li><a class="dropdown-item" href="/item/boardList">제품
-											디자인</a></li>
-									<li>
-										<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
-									</li>
-									<li><a class="dropdown-item" href="/item/boardList">영어
-											번역</a></li>
-									<li><a class="dropdown-item" href="/item/boardList">중국어
-											번역</a></li>
-									<li>
-										<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
-									</li>
-									<li><a class="dropdown-item" href="/item/boardList">헤어
-											메이크업</a></li>
-									<li><a class="dropdown-item" href="/item/boardList">제품·홍보
-											사진</a></li>
-									<li>
-										<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
-									</li>
-									<li><a class="dropdown-item" href="/item/boardList">사업자
-											세무</a></li>
-									<li><a class="dropdown-item" href="/item/boardList">개인
-											세무</a></li>
-									<li>
-										<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
-									</li>
-									<li><a class="dropdown-item" href="/item/boardList">SNS
-											홍보</a></li>
-									<li><a class="dropdown-item" href="/item/boardList">해외
-											마케팅</a></li>
-								</ul>
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">디자인</a></li>
-
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">번역</a></li>
-
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">사진·편집</a></li>
-
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">세무</a></li>
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">마케팅</a></li>
-						</ul>
+				<c:if
+					test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
 
 
-						<!-- 토글, 검색 버튼  -->
-						<div class="d-none d-xl-inline-flex ml-xl-4">
-							<!-- 검색 기능 주석 처리 -->
-							<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
+						<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
+						<div class="collapse navbar-collapse" id="lana-navbar">
+							<ul class="navbar-nav ml-lg-auto">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="/item/boardList"
+									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">카테고리</a>
+									<ul class="dropdown-menu" aria-labelledby="page-dropdown">
+										<li>
+											<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
+										</li>
+										<li><a class="dropdown-item" href="/item/boardList">그래픽
+												디자인</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">제품
+												디자인</a></li>
+										<li>
+											<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
+										</li>
+										<li><a class="dropdown-item" href="/item/boardList">영어
+												번역</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">중국어
+												번역</a></li>
+										<li>
+											<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
+										</li>
+										<li><a class="dropdown-item" href="/item/boardList">헤어
+												메이크업</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">제품·홍보
+												사진</a></li>
+										<li>
+											<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
+										</li>
+										<li><a class="dropdown-item" href="/item/boardList">사업자
+												세무</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">개인
+												세무</a></li>
+										<li>
+											<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
+										</li>
+										<li><a class="dropdown-item" href="/item/boardList">SNS
+												홍보</a></li>
+										<li><a class="dropdown-item" href="/item/boardList">해외
+												마케팅</a></li>
+									</ul>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">디자인</a></li>
+
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">번역</a></li>
+
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">사진·편집</a></li>
+
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">세무</a></li>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">마케팅</a></li>
+							</ul>
+						</div>
+
+
+					<!-- 토글, 검색 버튼  -->
+					<div class="d-none d-xl-inline-flex ml-xl-4">
+						<!-- 검색 기능 주석 처리 -->
+						<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
 						<button class="search-toggler" type="button"
 							data-toggle="collapse" data-target="#lana-search"
 							aria-controls="lana-search" aria-expanded="false"
@@ -202,14 +206,14 @@ p #logo {
 							<i class="fas fa-search fa-2x fa-fw text-dark"></i>
 						</button>
 					</form> -->
-							<!-- 로그인버튼 삽입 -->
-							<div class="button-nav-widget d-none d-xl-inline-flex">
-								<ul class="nav button-nav">
-									<li class="nav-item"><a href="#"
-										class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
-										id="loginButton"> Login </a></li>
-								</ul>
-							</div>
+						<!-- 로그인버튼 삽입 -->
+						<div class="button-nav-widget d-none d-xl-inline-flex">
+							<ul class="nav button-nav">
+								<li class="nav-item"><a href="#"
+									class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
+									id="loginButton"> Login </a></li>
+							</ul>
+						</div>
 				</c:if>
 				<c:if test="${sessionScope.loginMember !=null}">
 					<c:if
@@ -258,59 +262,57 @@ p #logo {
 												마케팅</a></li>
 									</ul>
 								<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">디자인</a></li>
+									href="/item/boardList">디자인</a></li>
 
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">번역</a></li>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">번역</a></li>
 
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">사진·편집</a></li>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">사진·편집</a></li>
 
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">세무</a></li>
-							<li><a class="nav-link dropdown-toggle"
-								href="/item/boardList">마케팅</a></li>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">세무</a></li>
+								<li><a class="nav-link dropdown-toggle"
+									href="/item/boardList">마케팅</a></li>
 							</ul>
 							<form action="/member/logout" method="post">
 								<!-- 프로필 사진 삽입 -->
 								<div class="dropdown">
 									<div class="profile">
-										<c:if test="${sessionScope.loginMember.memberStatus == 1}">			
-										<a class="dropdown-toggle" href="/mypageInfo" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false"> <img
-											src="<c:url value="/pictures/placeholder/profile.png"/>"
-											class="rounded-circle" alt="profilephoto" width="60"
-											height="60">
-										</a>
+										<c:if test="${sessionScope.loginMember.memberStatus == 1}">
+											<a class="dropdown-toggle" href="/mypageInfo" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> <img
+												src="<c:url value="/pictures/placeholder/profile.png"/>"
+												class="rounded-circle" alt="profilephoto" width="60"
+												height="60">
+											</a>
 
-										<ul class="dropdown-menu" id="loginDropDown">
-											<li>
-												<a class="dropdown-item" href="/mypageInfo">내 정보 관리</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="/expert/join">전문가 등록</a> 
-											</li>
+											<ul class="dropdown-menu" id="loginDropDown">
+												<li><a class="dropdown-item" href="/mypageInfo">내
+														정보 관리</a></li>
+												<li><a class="dropdown-item" href="/expert/join">전문가
+														등록</a></li>
 										</c:if>
-											
-										<c:if test="${sessionScope.loginMember.memberStatus == 2}">			
-										<a class="dropdown-toggle" href="<c:url value="/expert/output "/>" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false"> <img
-											src="<c:url value="/pictures/placeholder/profile.png"/>"
-											class="rounded-circle" alt="profilephoto" width="60"
-											height="60">
-										</a>
-										<ul class="dropdown-menu" id="loginDropDown">
-											<li>
-												<a class="dropdown-item" href="<c:url value="/expert/output "/>">전문가 정보</a> 
-											</li>
-										</c:if>
-													<!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
 
-											<div style="padding-left: 18px;">
-												<button style="border:none; background-color: white; color: black; "
-													
-													type="submit" id="logout">로그아웃</button>
-											</div>
+										<c:if test="${sessionScope.loginMember.memberStatus == 2}">
+											<a class="dropdown-toggle"
+												href="<c:url value="/expert/output "/>" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false"> <img
+												src="<c:url value="/pictures/placeholder/profile.png"/>"
+												class="rounded-circle" alt="profilephoto" width="60"
+												height="60">
+											</a>
+											<ul class="dropdown-menu" id="loginDropDown">
+												<li><a class="dropdown-item"
+													href="<c:url value="/expert/output "/>">전문가 정보</a></li>
+										</c:if>
+										<!-- <li><a class="dropdown-item" href="#">장바구니</a> -->
+
+										<div style="padding-left: 18px;">
+											<button
+												style="border: none; background-color: white; color: black;"
+												type="submit" id="logout">로그아웃</button>
+										</div>
 										</ul>
 									</div>
 								</div>
@@ -365,6 +367,7 @@ p #logo {
 	</header>
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+
 	<script>
 	let loginButton = document.querySelector('#loginButton');
 	let close = document.querySelector('.close');

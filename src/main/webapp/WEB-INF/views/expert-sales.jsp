@@ -146,7 +146,7 @@ a:visited {
 						<table>
 							<tr>
 								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;" name="price">${price}원</td>
+								<td scope="col" style="text-align: right;" id="price"></td>
 							</tr>
 						</table>
 						<!-- <div class="input-group">
@@ -233,7 +233,7 @@ a:visited {
 			<div class="widget-sidebar story-sidebar">
 
 				<div id="img">
-					<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 						class="rounded-circle" alt="Author" width="200" height="200">
 				</div>
 				<div id="button" style="text-align: center;">
@@ -346,6 +346,28 @@ a:visited {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+
+	<script type="text/javascript">
+	 $(document).ready(function() {
+		 function fetchPrice() {
+             $.ajax({
+                 type: 'GET',
+                 url: '/price/' + expertIdx,
+                 dataType: 'json',
+                 success: function(data) {
+                     // JSON 데이터를 화면에 출력
+                     $('#price').text(data);
+                     
+                 },
+                 error: function(xhr) {
+                     console.log('Error fetching JSON data='+xhr.status);
+                 }
+             });
+         }
+		 var expertIdx= <%= request.getAttribute("expertIdx") %>;
+		 fetchPrice(expertIdx);
+     });
+ </script>
 
        
 </body>

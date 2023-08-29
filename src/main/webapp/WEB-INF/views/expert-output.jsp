@@ -282,7 +282,7 @@ a:visited {
 			<div class="widget-sidebar story-sidebar">
 
 				<div id="img">
-					<img src="<c:url value="/pictures/placeholder/logo.png"/>"
+					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 						class="rounded-circle" alt="Author" width="200" height="200">
 				</div>
 				<div id="button" style="text-align: center;">
