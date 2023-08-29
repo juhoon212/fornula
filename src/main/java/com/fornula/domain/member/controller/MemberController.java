@@ -110,8 +110,8 @@ public class MemberController {
 			return "404";
 		}
 		
-		
-		return "redirect:/";
+		redirectAttributes.addAttribute("message", "비밀번호가 변경되었습니다.");
+		return "redirect:/common-success";
 	}
 	
 	
