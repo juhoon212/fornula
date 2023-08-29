@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.MemberLoginMapper">
+	<select id="selectMemberInfo" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date,
+				category_one,
+				category_two,
+				category_three
+		from member
+		where id = #{id}
+	</select>
+	
+	<select id="findByIdx" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where member_idx = #{memberIdx}
+	</select>
+	
+	<select id="selectMemberId" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where email = #{email}
+	</select>
+	
+	<select id="selectMemberPw" resultType="Member" >
+		select  member_idx,
+				id,
+				password,
+				email,
+				member_date,
+				member_status,
+				login_date
+		from member
+		where id = #{id}
+				and email = #{email}
+	</select>
+	
+	<update id="updateMemberPassword">
+		update member
+		<set>
+			<if test="password != null and password !=''">
+				password = #{password}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+	
+	
+	
+	
+</mapper>
