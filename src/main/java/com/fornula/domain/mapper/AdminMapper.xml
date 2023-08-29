@@ -15,7 +15,7 @@
 		set item_status=0
 		where item_idx=#{itemIdx}
 	</update>
-
+ 
 	
 		<!-- 01. 회원록록 페이지 -->
 	<select id="memberList" resultType="AdminMember">
