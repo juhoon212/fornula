@@ -510,7 +510,7 @@ h3 {
             </div>
             <div class="col-md-6">
                 <ul class="nav justify-content-center justify-content-md-end">
-                    <li class="nav-item"><a href="#" class="nav-link">Terms of Use</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"> Terms of Use</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Privacy Policy</a></li>
                 </ul>
             </div>
