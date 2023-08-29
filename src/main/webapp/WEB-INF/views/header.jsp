@@ -278,7 +278,7 @@ p #logo {
 									<div class="profile">
 										<a class="dropdown-toggle" href="/mypageInfo" role="button"
 											data-bs-toggle="dropdown" aria-expanded="false"> <img
-											src="<c:url value="/pictures/placeholder/logo.png"/>"
+											src="<c:url value="/pictures/placeholder/profile.png"/>"
 											class="rounded-circle" alt="profilephoto" width="60"
 											height="60">
 										</a>

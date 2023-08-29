@@ -84,8 +84,8 @@
 	
 	<!-- 메인페이지에 상품 출력 -->
 	<select id="mainItemList" resultMap="ItemPhotoCategoryCart">
-			SELECT item.item_idx, item.category_idx, item.EXPERT_IDX, item_name, item_content, item.PRICE ,
-						 photo.PHOTO_IDX , photo.ITEMFILE_NAME 
-				FROM item JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+			select MAX (ELECT item.item_idx, item.category_idx, item.EXPERT_IDX, item_name, item_content, item.PRICE ,
+						 photo.PHOTO_IDX , photo.ITEMFILE_NAME )
+			FROM item JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
 	</select>
 </mapper>
