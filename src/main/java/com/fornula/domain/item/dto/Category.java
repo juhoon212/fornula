@@ -2,6 +2,7 @@ package com.fornula.domain.item.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -16,6 +17,7 @@ SMALL        NOT NULL VARCHAR2(50)
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 	
 	private int categoryIdx;

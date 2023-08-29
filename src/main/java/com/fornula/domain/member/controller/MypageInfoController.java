@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fornula.domain.exception.custom.MypageIdExcepion;
+import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.member.mapper.java.MypageInfoMapper;
@@ -32,9 +33,16 @@ public class MypageInfoController {
 		log.info("getsessionMember = {}", member);
 		
 	    Member joinMember = service.mypageInfoService(member.getId());
-	    log.info("getmodelJoinMember = {}", joinMember);
+	    Category categoryOne=service.mypageCategoryOne(member.getCategoryOne());
+	    Category categoryTwo=service.mypageCategoryTwo(member.getCategoryTwo());
+	    Category categoryThree=service.mypageCategoryThree(member.getCategoryThree());
+	    
+	    log.info("getmodelJoinMember = { ", joinMember);
 	    
 	    model.addAttribute("member", joinMember);
+	    model.addAttribute("categoryOne", categoryOne);
+	    model.addAttribute("categoryTwo", categoryTwo);
+	    model.addAttribute("categoryThree", categoryThree);
 		   
 		return "mypage-info"; 
 		  
