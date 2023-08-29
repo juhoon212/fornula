@@ -29,6 +29,10 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
 <style type="text/css">
 h1{
@@ -66,7 +70,7 @@ a{
                             <h1>등록 날짜 : ${item.itemDate }</h1>
                             <h1>내용 : ${item.itemContent }</h1>
                             <h1>가격 : ${item.price }</h1>
-                            <button onclick="location.href='payment'">결제하기</button>
+                            <button onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
                         </div>
                         <hr>
                         <div>
