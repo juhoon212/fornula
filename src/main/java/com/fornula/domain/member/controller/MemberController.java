@@ -36,6 +36,7 @@ public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
 	private final MemberJoinService memberJoinService;
+	
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
