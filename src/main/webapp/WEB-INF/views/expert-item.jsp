@@ -121,13 +121,15 @@ h3 {
 		<div class="widget"> 
 			<div class="box" style="height:800px">
 		 		<div>
-					<iframe src="<c:url value="../upload/sellerRule.pdf"/>" width="760" height="550"></iframe>
-	       			<textarea class="box" style="height:200px" readonly>
-        			사이트 이용시 주의 사항
-		        	1. 구매자는 판매자에게 2번의 수정 요청을 제안할 수 있고 판매자는 이를 성실히 응답해야 한다
-		        	2. 판매자가 제작시작 버튼을 누르는 순간부터 판매자는 구매자에게 제품을 완성해서 제공해야하는 의무가 생긴다
-					3. 이 개같은 왼쪽 여백은 도대체 뭔 지랄을 해야 없어지는건지 새벽 4시15분부터 정말 사람을 너무나도 화가나게 한다 
-					4. 얼씨구 이젠 걍 1,2,3번 시작하는 줄도 안맞네 ㅈㄹ났네 ㅈㄹ났어
+		 			<img class="img-fluid post-thumbnail" src="<c:url value='/img/expertitem-icon.png'/>" alt="Post">
+					<textarea class="box" style="height: 600px; resize: none; font-size: 16px; font-family: 'Open Sans', sans-serif;" readonly>
+<span style="font-size:25px;">사이트 이용시 주의 사항</span>
+1. 구매자는 판매자에게 2번의 수정 요청을 제안할 수 있다
+1-1. 판매자는 이를 성실히 응답해야 할 의무가 있다
+1-2. 구매자와의 의견조율에 있어 불성실한 태도를 보이거나, 구매자와의 의견조율이 불가능한 상황이 온다면 구매자는 구매 취소를 선택할 수 있다
+2. 상품의 상태를 제작시작 상태로 바꾼 순간부터 판매자는 구매자와의 의사 소통이 가능해지며 제작기간이 길어진다거나 주문이 누락된 경우 
+   구매자는 구매 취소가 가능하다
+3. 판매자가 제품을 구매자에게 전달한 이후 일정기간이 지나면 판매한 상품의 상태는 자동으로 구매확정이 이루어진다      			
 					</textarea>
 					<button type="button" onclick="location.href='<c:url value="/item/add/${expertIdx}"/>'">상품등록</button> 
 				</div>
