@@ -488,7 +488,8 @@ table th {
             </c:otherwise>
         </c:choose>
     </div>
-</div>
+</div>	
+
     </form>
 </section>
         

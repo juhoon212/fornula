@@ -21,4 +21,9 @@ public class MainController {
 	public String home() {
 		return "main";
 	}
+	
+	@GetMapping("/success")
+	public String test() {
+		return "common-success";
+	}
 }

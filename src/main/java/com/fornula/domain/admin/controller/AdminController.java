@@ -42,7 +42,7 @@ public class AdminController {
 
 	@RequestMapping("/memberupdate")
 	public String memberUpdate(@RequestParam int memberIdx) throws MemberNotFoundException {
-		adminService.updateItemStatus(memberIdx);
+		adminService.updateMemberStatus(memberIdx);
 		
 		log.info("memberIdx:{}",memberIdx);
 		

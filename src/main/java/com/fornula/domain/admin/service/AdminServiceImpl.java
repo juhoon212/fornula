@@ -46,7 +46,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Map<String, Object> memberList(int pageNum) {
 		int totalBoard=adminRepository.memberListCount();
-		int pageSize=10; // 출력 갯수
+		int pageSize=2; // 출력 갯수
 		int blockSize=10;
 		
 		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
@@ -73,7 +73,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Map<String, Object> itemList(int pageNum) {
 		int totalBoard=adminRepository.itemListCount();
-		int pageSize=10;
+		int pageSize=2;
 		int blockSize=10;
 		
 		
