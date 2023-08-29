@@ -15,4 +15,32 @@
 		from expert
 		where expert_idx=#{expertIdx}
 	</select>
+	
+	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가가 등록한 상품 게시물의 게시글을 출력하는 SQL문 -->
+	<select id="selectExpertItemList" resultType="Item">
+		select item_idx 
+			,expert_idx
+			,photo_idx
+			,item_name
+			,item_content
+			,item_date
+		from (select ROWNUM rn, board.* from(select 
+			,item_idx
+			,expert_idx
+			,photo_idx
+			,item_name
+			,item_content
+			,item_date
+			from item
+			order by item_idx) 
+			board)
+		where rn between #{startRow} and #{endRow}
+			and item_status=1
+			and expert_idx=#{expertIdx}
+	</select>
+	
+	<select id="selectExpertItemCount" resultType="Item">
+		select count(*)
+		from item
+	</select>
 </mapper>

@@ -28,15 +28,14 @@
 <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
       media="all">
 <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
-  	  media="print">
+       media="print">
   
 <style>
 #button{
-	display: flex;
-	justify-content: center;
-	align-items center;
-	padding-bottom: 2em;
-	
+   display: flex;
+   justify-content: center;
+   align-items center;
+   padding-bottom: 2em;
 }
 
 .info {
@@ -76,7 +75,7 @@ margin-bottom: 22px;
 }
 
 h3 {
-	font-size : 20px;
+   font-size : 20px;
 }
 
 /* 카테고리 */
@@ -113,150 +112,103 @@ h3 {
 
 <main class="main container">
 <div class="row">
-	<div class="col-12 col-lg-8">
-		<div class="widget">     
-			<form class="story-posts" id="content">              
-				<div class="info" id="info__category">
-					<div id="category-flex">
-						<input class="box" type="text" placeholder="전문가번호:${expertIdx }" readonly/>
-						<!-- 여백 어케주드라 -->
-			            <input class="box" type="text" placeholder="전화번호:${phone }"/>
-          			</div>          
-        		</div>
-		        <div class="info" id="info__category">
-		          <div id="category-flex">
-		            <input class="box" type="text" placeholder="기존 카테고리:${interest }"/>
-		            <!-- 여백 어케주드라 -->
-		            <select class="box" id="category-middle">
-		              <option disabled selected>디자인</option>
-		              <option>그래픽</option>
-		              <option>제품</option>
-		              <option disabled selected>번역</option>
-		              <option>영어</option>
-		              <option>중국어</option>
-		              <option disabled selected>사진 편집</option>
-		              <option>헤어 메이크업</option>
-		              <option>제품 홍보 사진</option>
-		              <option disabled selected>세무</option>
-		              <option>사업자</option>
-		              <option>개인</option>
-		              <option disabled selected>마케팅</option>
-		              <option>SNS 홍보</option>
-		              <option>해외 마케팅</option>              
-		            </select>
-					<!-- 여백 어케주드라 -->            
-		            <input class="box" type="text" placeholder="연차:${career }"/>
-		          </div>
-		        </div>
-		        <div class="info" id="info__category">
-		          <div id="category-flex">
-		            <input class="box" type="text" placeholder="회사명1:${companyOne }"/>
-					<!-- 여백 어케주드라 -->            
-		            <input class="box" type="text" placeholder="회사명2:${companyTwo }"/>
-		            <!-- 여백 어케주드라 -->
-		            <input class="box" type="text" placeholder="회사명3:${companyThree }"/>
-		          </div>
-		        </div>
-		        <div>
-		        	<input class="box" type="text" placeholder="자기소개:${introduce }" style="height:300px"/>
-		        	<section id="upload">
-						<h3>포트폴리오 등록</h3>
-						<input class="form-control" type="file" id="formFile" value="${expert.expertfile_name}"> 
-						<input class="box" type="text" placeholder="포트폴리오 파일명:${expertfileName }"/> 
-						<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
-						<p style="color: red;">${message}</p>
-					</section>
-		        </div>
-	 			<!-- 이거는 expert-output으로 빼야할듯 ;         
-				<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-							<div class="card-body">
-								<ul class="post-meta">
-									<li><a href="single.html">2023/8/17</a></li>
-									<li><a href="#">카테고리1</a></li>
-								</ul>
-							<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
-								<p class="post-text card-text">
-									우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함
-								</p>
-							</div>
-					</div>
-					<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-							<div class="card-body">
-								<ul class="post-meta">
-									<li><a href="single.html">2023/8/17</a></li>
-									<li><a href="#">카테고리2</a></li>
-								</ul>
-							<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
-								<p class="post-text card-text">
-									진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
-								</p>
-							</div>
-					</div>
-					<div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-						<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-							<div class="card-body">
-								<ul class="post-meta">
-									<li><a href="single.html">2023/8/16</a></li>
-									<li><a href="#">카테고리3</a></li>
-								</ul>
-							<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
-								<p class="post-text card-text">
-									개굴개굴개굴개꿀깨꿀꺠루럐루꺠루꺠루ㅒ꾸럐ㅜ럐꾸ㅒ루ㅒ루ㅒ루럐
-								</p>
-							</div>
-					</div>
-				</div>	
-				<div>
-			 		<a class="prev disabled" href="#">Prev</a>
-					<a class="next" href="#">Next</a>
-				</div>	
-				<div class="error-msg"></div>    
-		      	<div id="change-complete"></div>
-		      -->
-				<!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 근데 이제 조건 덕지덕지 붙여야지-->
-				<button type="button" onclick="location.href='expertoutput'">수정완료</button> 
-			</form>
-		</div>
-	</div>  
-	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">
-			<div id="button">
-				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-					class="rounded-circle" alt="Author" width="200" height="200">
+   <div class="col-12 col-lg-8">
+      <div class="widget">     
+         <form class="story-posts" id="content" action="expertoutput" method="post">              
+            <div class="info" id="info__category">
+				<div id="category-flex">
+					<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
+					<input class="box" type="text" id="expertIdx" readonly/>
+					<input class="box" type="text" id="phoneInput" placeholder="전화번호"/>
+				</div>          
 			</div>
-			<div id="button">
-				<a href="#" class="tag-cloud-link" aria-label="idbutton">전문가번호:${expertIdx }</a>
-			</div>
-			<div class="widget widget_tag_cloud">
-				<div class="tagcloud">
-					<div id="button">
-					<!-- 여기는 수연누나가 마이페이지 url 확실하게 정해놓으면 href 속성 변경하기 -->
-						<a href="mypage-purchase" class="tag-cloud-link"
-							aria-label="admin change button">일반회원으로 전환</a>
-					</div>
-					<div class="tab_menu">
-						<div class="widget" style="text-align: left;" id="list">
-							<h3 class="widget-title">판매 관리</h3>
-							<ul>
-								<li>
-									<a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
-								</li>
-								<li>
-									<a href="expertoutput" class="expertOutput" href="#" onclick="location.href='expert-output.jsp'">포트폴리오</a>
-								</li>
-								<li>
-									<a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+			<div class="info" id="info__category">
+              <div id="category-flex">
+                <input class="box" type="text" placeholder="기존 카테고리:${interest }" readonly/>
+                <!-- 여백 어케주드라 -->
+				<select class="box" id="interestSelect" name="interest">
+                  <option disabled selected>디자인</option>
+                  <option value="1">그래픽</option>
+                  <option value="2">제품</option>
+                  <option disabled selected>번역</option>
+                  <option value="3">영어</option>
+                  <option value="4">중국어</option>
+                  <option disabled selected>사진 편집</option>
+                  <option value="5">헤어 메이크업</option>
+                  <option value="6">제품 홍보 사진</option>
+                  <option disabled selected>세무</option>
+                  <option value="7">사업자</option>
+                  <option value="8">개인</option>
+                  <option disabled selected>마케팅</option>
+                  <option value="9">SNS 홍보</option>
+                  <option value="10">해외 마케팅</option>              
+                </select>
+             	<!-- 여백 어케주드라 -->            
+                <input class="box" type="text" placeholder="연차:${career }"/>
+              </div>
+            </div>
+            <div class="info" id="info__category">
+				<div id="category-flex">
+        			<input class="box" type="text" id="companyOneInput" placeholder="회사명1"/>
+					<!-- 여백 어케주드라 -->            
+					<input class="box" type="text" id="companyTwoInput" placeholder="회사명2"/>
+					<!-- 여백 어케주드라 -->
+					<input class="box" type="text" id="companyThreeInput" placeholder="회사명3"/>
 				</div>
 			</div>
-		</div>
-	</div>
+			<div>
+    			<textarea class="box" id="introduceInput" placeholder="자기소개">${introduce}</textarea>
+				<section id="upload">
+				    <h3>포트폴리오 등록</h3>
+				    <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf">
+				    <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly>
+				    <span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
+				    <p style="color: red;" id="errorMessage">${message}</p>
+				</section>
+              </div>
+            <!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 근데 이제 조건 덕지덕지 붙여야지-->
+			<div id="button">
+			    <button id="submitButton" type="submit">수정완료</button>
+			</div>
+         </form>
+      </div>
+   </div>  
+   <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+      <div class="widget-sidebar story-sidebar">
+         <div id="button">
+            <img src="<c:url value="/pictures/placeholder/logo.png"/>"
+               class="rounded-circle" alt="Author" width="200" height="200">
+         </div>
+         <div id="button">
+            <a href="#" class="tag-cloud-link" aria-label="idbutton">${expertIdx }</a>
+         </div>
+         <div class="widget widget_tag_cloud">
+            <div class="tagcloud">
+               <div id="button">
+               <!-- 여기는 수연누나가 마이페이지 url 확실하게 정해놓으면 href 속성 변경하기 -->
+                  <a href="mypage-purchase" class="tag-cloud-link"
+                     aria-label="admin change button">일반회원으로 전환</a>
+               </div>
+               <div class="tab_menu">
+                  <div class="widget" style="text-align: left;" id="list">
+                     <h3 class="widget-title">판매 관리</h3>
+                     <ul>
+                        <li>
+                           <a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expertmain'">판매 관리</a>
+                        </li>
+                        <li>
+                           <a href="expertoutput" class="expertOutput" href="#" onclick="location.href='expertoutput'">포트폴리오</a>
+                        </li>
+                        <li>
+                           <a href="expertitem" class="expertItem" href="#" onclick="location.href='expertitem'">상품 등록</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
  </div>   
 </main>
 <jsp:include page="footer.jsp"/>
@@ -270,6 +222,85 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script>
+$(document).ready(function() {
+    // 전문가의 expertIdx를 가져오는 AJAX 요청
+    $.ajax({
+        url: '/getExpertIdx',
+        method: 'GET',  
+        dataType: 'json', 
+        success: function(data) {
+            // 가져온 expertIdx를 이용하여 HTML 요소를 업데이트
+            $("#expertIdx").val(data.expertIdx);
+            
+            // 기존 카테고리를 가져오는 AJAX 요청
+            $.ajax({
+                url: '/getExpertCategory', 
+                method: 'GET',  
+                dataType: 'json', 
+                success: function(categoryData) {
+                    // 가져온 데이터를 이용하여 HTML 요소를 업데이트
+                    $("#originalCategory").val(categoryData.categoryName);
+                },
+                error: function(xhr, status, error) {
+                    console.error("기존 카테고리 데이터를 가져오는 중 오류 발생: " + error);
+                }
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("전문가의 expertIdx 데이터를 가져오는 중 오류 발생: " + error);
+        }
+    });
 
+    // 포트폴리오 파일 선택 시 파일명 표시
+    $("#formFile").change(function() {
+        var fileName = $(this).val().split('\\').pop();
+        $("#portfolioFileNameInput").val(fileName);
+    });
+
+    // 수정 완료 버튼 클릭 시 AJAX 요청 등록
+    $("#submitButton").click(function(e) {
+        e.preventDefault();
+        
+        // 전달할 데이터 준비 (expertIdx, 수정된 정보 등)
+        var expertIdx = $("#expertIdx").val();
+        var phone = $("#phone").val();
+        var interest = $("#category-middle").val();
+        var career = $("#career").val();
+        var companyOne = $("#companyOne").val();
+        var companyTwo = $("#companyTwo").val();
+        var companyThree = $("#companyThree").val();
+        var introduce = $("#introduce").val();
+        var expertfileName = $("#portfolioFileNameInput").val();
+        
+        // AJAX 요청 보내기
+        $.ajax({
+            url: '/modify',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                expertIdx: expertIdx,
+                phone: phone,
+                interest: interest,
+                career: career,
+                companyOne: companyOne,
+                companyTwo: companyTwo,
+                companyThree: companyThree,
+                introduce: introduce,
+                expertfileName: expertfileName
+            }),
+            success: function(response) {
+                // 성공 시 동작
+                alert("수정이 완료되었습니다.");
+                // 페이지 리로드 등 원하는 동작 수행
+            },
+            error: function(xhr, status, error) {
+                // 오류 시 동작
+                alert("수정에 실패했습니다. 오류: " + error);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 						<div class="blog-grid-col col-12 col-md-6 col-lg-4">
 							<div id="post-1" class="post type-post card post-card post-grid-card h-100">
 								<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-								<img src="<c:url value="/images/upload/${originalFileName}"/>"class="card-img-top img-fluid">
+								<img src="<c:url value="/images/upload/${originalFileName}"/>" class="card-img-top img-fluid">
 								<div class="card-body">
 									<ul class="post-meta">
 										<li>
@@ -65,37 +65,52 @@
 						</div>
 					</c:forEach>
 					
-                    <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
-                     role="navigation">
-                    <c:choose>
-						<c:when test="${pager.startPage > pager.blockSize }">
-							<a class="prev disabled" id="prevBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}">Prev</a>
-						</c:when>
-						<c:otherwise>
-							Prev
-						</c:otherwise>
-					</c:choose>	
-					
-					<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
-						<c:choose>
-							<c:when test="${pager.pageNum != i  }">
-								<a class="page-numbers" href="<c:url value="/item/boardList"/>?pageNum=${i}">[${i }]</a>
-							</c:when>
-							<c:otherwise>
-								[${i }]
-							</c:otherwise>
-						</c:choose>	
-					</c:forEach>
-				
-					<c:choose>
-						<c:when test="${pager.endPage != pager.totalPage }">
-							<a class="next" id="nextBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">Next</a>
-						</c:when>
-						<c:otherwise>
-							Next
-						</c:otherwise>
-					</c:choose>
-					</nav>
+				<nav class="navigation pagination justify-content-between bg-transparent text-uppercase d-flex" role="navigation" style="width: 797px;">
+				    <div class="prev">
+				        <c:choose>
+				            <c:when test="${pager.startPage > pager.blockSize }">
+			                	<a class="prev disabled" id="prevBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}">
+		                    		Prev
+			                	</a>
+				            </c:when>
+				            <c:otherwise>
+				            	Prev
+				            </c:otherwise>
+			        	</c:choose>
+		    		</div>
+		    
+				    <div class="d-flex align-items-center"> <!-- 중앙 정렬을 위한 d-flex와 align-items-center 추가 -->
+				        <div class="nav-links d-flex justify-content-center">
+				            <ul class="page-numbers list-unstyled d-flex">
+				                <c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+				                    <li class="page-item">
+				                        <c:choose>
+				                            <c:when test="${pager.pageNum != i}">
+				                                <a class="page-link" href="<c:url value="/item/boardList"/>?pageNum=${i}">${i}</a>
+				                            </c:when>
+				                            <c:otherwise>
+				                                <span class="page-link current">${i}</span>
+				                            </c:otherwise>
+				                        </c:choose>
+				                    </li>
+				                </c:forEach>
+				            </ul>
+				        </div>
+				    </div>
+		    
+		   			<div class="next ml-auto">
+		        		<c:choose>
+				            <c:when test="${pager.endPage != pager.totalPage}">
+			                	<a class="next" id="nextBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">
+	                    			Next
+			                	</a>
+				            </c:when>
+				            <c:otherwise>
+		               			Next
+				            </c:otherwise>
+				        </c:choose>
+				    </div>
+				</nav>
 
                <!--  <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
                      role="navigation">
@@ -117,6 +132,7 @@
 			</div>                
 		</div>
 	</div>
+</div>
 </main>
 <jsp:include page="footer.jsp"/>
  

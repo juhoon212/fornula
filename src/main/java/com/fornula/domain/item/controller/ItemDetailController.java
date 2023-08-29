@@ -40,7 +40,7 @@ public class ItemDetailController {
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
     	int pos = selectPhoto.getItemfileName().lastIndexOf("_");
     	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1);
-    	
+    	System.out.println("originalFileName = "+originalFileName);
     	model.addAttribute("item", findItem);
     	model.addAttribute("originalFileName", originalFileName);
     	

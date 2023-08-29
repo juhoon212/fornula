@@ -22,4 +22,9 @@
 	</select>
 	-->
 	
+	<select id="selectPhoto" resultType="Photo">
+		select itemfile_name
+		from photo
+		where item_idx = #{itemIdx}
+	</select>
 </mapper>

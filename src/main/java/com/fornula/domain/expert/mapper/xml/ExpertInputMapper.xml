@@ -3,54 +3,27 @@
 <mapper namespace="com.fornula.domain.expert.mapper.java.ExpertInputMapper">
 	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가 가입 시 받은 정보, 전문가 정보 수정/등록 페이지에서 추가한 정보들을 수정할 때 사용할 SQL문 -->
 	<update id="updateExpert">
-		update expert set phone=#{phone}
-			,interest=#{interest}
-			,introduce=#{introduce}
-			,career=#{career}
-			,compnay_one=#{companyOne}
-			,compnay_two=#{companyTwo}
-			,compnay_three=#{companyThree}
-			,expertfile_name=#{expertfileName}
-		where expert_idx=#{expertIdx}
+	    update expert set phone=#{phone}
+	        ,interest=#{interest}
+	        ,introduce=#{introduce}
+	        ,career=#{career}
+	        ,compnay_one=#{companyOne}
+	        ,compnay_two=#{companyTwo}
+	        ,compnay_three=#{companyThree}
+	        ,expertfile_name=#{expertfileName}
+	    where expert_idx=#{expertIdx}
 	</update>
-	
-	<!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가가 등록한 상품 게시물의 게시글을 출력하는 SQL문 -->
-	<select id="selectExpertItemList" resultType="Item">
-		select item_idx 
-			,expert_idx
-			,photo_idx
-			,item_name
-			,item_content
-			,item_date
-		from (select ROWNUM rn, board.* from(select 
-			,item_idx
-			,expert_idx
-			,photo_idx
-			,item_name
-			,item_content
-			,item_date
-			from item
-			order by item_idx) 
-			board)
-		where rn between #{startRow} and #{endRow}
-			and item_status=1
-			and expert_idx=#{expertIdx}
-	</select>
-	
-	<!-- 전문가 등록  -->
-	<insert id="insertExpertInfo">
-		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
-			select member_seq.nextval from dual 
-		</selectKey>
-		insert into expert values 
-			(#{expertIdx}, #{memberIdx}, #{phone},
-			 #{interest}, #{introduce}, #{career}, 
-			 #{company_one), #{company_two), #{company_three),
-			 #{expertfile_name})
-	</insert>
-	
-	<select id="selectExpertItemCount" resultType="Item">
-		select count(*)
-		from item
+
+	<!-- 기존의 전문가 정보를 불러오기 위한 매퍼 -->
+	<select id="selectOriginalExpert" resultType="expert">
+		select phone
+			,interest
+			,career
+			,company_one
+			,company_two
+			,company_three
+			,introduce
+		from expert
+		where expert_idx=#{expertIdx}
 	</select>
 </mapper>

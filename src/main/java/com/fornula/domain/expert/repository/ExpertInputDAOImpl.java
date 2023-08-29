@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.mapper.java.ExpertInputMapper;
+import com.fornula.domain.item.dto.Category;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,24 +15,12 @@ public class ExpertInputDAOImpl implements ExpertInputDAO {
 	private final SqlSession sqlSession;
 	
 	@Override
-	public int updateExpert(Expert expert) {
-		return sqlSession.getMapper(ExpertInputMapper.class).updateExpert(expert);
+	public void updateExpert(Expert expert) {
+        sqlSession.getMapper(ExpertInputMapper.class).updateExpert(expert);
 	}
-	/* output으로 이동
-	@Override
-	public List<Item> selectExpertItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertItemList(map);
-	}
-	*/
 	
 	@Override
-	public int insertExpertInfo(Expert expert) {
-		return sqlSession.getMapper(ExpertInputMapper.class).insertExpertInfo(expert);
+	public Category selectOriginalCategory(int expertIdx) {
+		return sqlSession.getMapper(ExpertInputMapper.class).selectOriginalCategory(expertIdx);
 	}
-	/* output 으로 이동
-	@Override
-	public int selectExpertBoardCount() {
-		return sqlSession.getMapper(ExpertInputMapper.class).selectExpertBoardCount();
-	}
-	*/
 }
