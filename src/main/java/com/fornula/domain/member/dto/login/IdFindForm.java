@@ -1,0 +1,18 @@
+package com.fornula.domain.member.dto.login;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+/*
+ * 로그인 폼 받기 
+ */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class IdFindForm {
+	
+	private String email;
+}
