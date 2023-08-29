@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-구매페이지</title>
+    <title>마이페이지 - 구매페이지</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +61,7 @@
         <div class="collapse navbar-collapse" id="lana-navbar">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="front-page.html">Front Page</a>
+                    <a class="nav-link" href="front-page.html">Front Page  </a>
                 </li>
 
                 <li class="nav-item dropdown">

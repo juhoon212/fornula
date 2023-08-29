@@ -310,6 +310,18 @@
   font-size: 15px; 
 }
 
+.changeBtn {
+   border: none;
+   padding: 5px 10px;
+   color: #000;
+}
+
+.changeBtn {
+   background-color: #ffffff;
+   border-radius: 20px;
+   border: 1px solid #ffb32f;
+}
+
 h3 {
    font-size : 20px;
 }
@@ -345,6 +357,7 @@ h3 {
 </style>
 <!-- 스타일 태그 끝 -->
    <form name="secessionForm" method="post" action="/mypageSession">
+   <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 탈퇴</label>
         <h3>
         크몽을 떠나는 이유를 알려주세요.
         </h3>
@@ -376,10 +389,11 @@ h3 {
           name="caution" value="cautioncheck" onclick="agreeCheck()"> 주의사항을 모두 입력하였습니다.</label><br>
            </div>
           
-      <div>
-      <button id="checkSubmit" type="button" onclick="submitCheck();"
-										style="text-align: center;" name="checkBtn" disabled>회원탈퇴</button>
+      <div style = "float : right;">
+      <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
+                              style="text-align: center;" name="checkBtn" disabled>회원탈퇴</button>
       </div>
+      <span>&nbsp</span>
  
     </form>     
                   </div>
@@ -410,9 +424,9 @@ h3 {
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                        <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                      <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
@@ -482,27 +496,27 @@ h3 {
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 <script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		function agreeCheck(element) {
-			let checkedbox = document.querySelectorAll('input[class=check]:checked');
-			let cnt = checkedbox.length;
-			
-			if(cnt ==1 ){
-				document.querySelector('#checkSubmit').disabled=false;
-			}else{
-				document.querySelector('#checkSubmit').disabled=true;
-			}
-		}
-		
-		
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+   <script type="text/javascript">
+      function agreeCheck(element) {
+         let checkedbox = document.querySelectorAll('input[class=check]:checked');
+         let cnt = checkedbox.length;
+         
+         if(cnt ==1 ){
+            document.querySelector('#checkSubmit').disabled=false;
+         }else{
+            document.querySelector('#checkSubmit').disabled=true;
+         }
+      }
+      
+      
  
  
  function submitCheck() {
-	 let h3=document.getElementById("idMessage");
+    let h3=document.getElementById("idMessage");
    
    if(secessionForm.id.value==""){
-	  h3.innerText="아이디를 입력해주세요";
+     h3.innerText="아이디를 입력해주세요";
       secessionForm.id.focus();
       return;
    }

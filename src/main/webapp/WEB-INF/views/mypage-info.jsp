@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-나의정보</title>
+    <title>마이페이지 - 나의정보</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -504,7 +504,7 @@ h3 {
         <div class="row">
             <div class="col-md-6">
                 <p class="footer-text text-center text-md-left">
-                    Lana Pet theme by <a href="http://lana.codes/" target="_blank">Lana Codes</a> © 2020 All Rights
+                    Lana Pet theme by <a href="http://lana.codes/" target="_blank">Lana Codes </a> © 2020 All Rights
                     Reserved.
                 </p>
             </div>
