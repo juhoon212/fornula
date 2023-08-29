@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -272,70 +273,9 @@
 <section>
 <!-- my-page style-->
 <style>
-	.info {
-	margin-bottom: 22px;
-	}
-	
-	/* 박스*/
-	.box {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 5px 0 5px 15px;
-  border-radius: 4px;
-  border: 1px solid #d9d6d6;
-  color: #383838;
-  font-weight: 400;
-}
-.box::placeholder {
-  color: #a0a0a0;
-}
-
-.info#info__id #id-input {
-  position: relative;
-}
-
-.info#info__id button {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  border-radius: 3px;
-  font-size: 15px; 
-}
 
 h3 {
 	font-size : 20px;
-}
-
-/* 카테고리 */
-.info#info__category #category-flex {
-  display: flex;
-}
-.info#info__category select {
-  margin-left : 7px;
-  color: #a0a0a0;
-}
-
-.info#info__category select:first-child {
-  margin-left : 0px;
-}
-
-.info#info__category select::-webkit-scrollbar {
-  width: 10px;
-}
-
-.info#info__category select::-webkit-scrollbar-thumb {
-  background-color: #b6b6b6;
-  border-radius: 3px;
-}
-
-.info#info__category select::-webkit-scrollbar-track {
-  background-color: #ebe9e9;
-  border-radius: 6px;
 }
 
 table {
@@ -400,9 +340,9 @@ table th {
         color: gray;
     }
 
-
 </style>
 <!-- 스타일 태그 끝 -->
+
    <form name="itemForm" method="post" action="/admin/item">
       <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">상품 관리</label>
         
@@ -421,7 +361,21 @@ table th {
     				<c:forEach var="item" items="${itemList}">
 		<tr>
 			<td >${item.itemIdx}</td>
-			<td >${item.itemName }</td>
+			
+			
+		  <td>
+            <c:choose>
+                <c:when test="${item.itemName.length() > 10}">
+                    <c:set var="trimmedText" value="${fn:substring(item.itemName, 0, 10)}" />
+                    <c:set var="lastSpaceIndex" value="${trimmedText.lastIndexOf(' ')}" />
+                    ${fn:substring(item.itemName, 0, lastSpaceIndex)}
+                </c:when>
+                <c:otherwise>
+                    ${item.itemName}
+                </c:otherwise>
+            </c:choose>
+        </td>
+			
 			<td>${item.categoryIdx}</td>
 			<td>
 			<fmt:formatDate pattern="yyyy-MM-dd" value ="${item.itemDate}"/>
@@ -519,55 +473,7 @@ table th {
         </div>
     </div>
 </main>
-
-<div class="pre-footer footer-grid-1 bg-dark text-white">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-6 text-center">
-                <div class="widget widget_lana_pet_subscribe">
-                    <h3 class="widget-title">Subscribe</h3>
-                    <p>Your weekly updates on the Pethome</p>
-                    <div class="lana-hr lana-hr-4 border-primary mt-4 mb-3"></div>
-                    <form class="mt-5">
-                        <div class="input-group input-group-lg">
-                            <input type="email"
-                                   class="form-control bg-transparent border-primary text-white text-uppercase"
-                                   placeholder="Email" aria-label="Email" aria-describedby="subscribe">
-                            <div class="input-group-append">
-                                <button type="submit" id="subscribe"
-                                        class="btn btn-primary text-uppercase font-weight-bold">
-                                    <span class="d-none d-sm-inline">Subscribe</span>
-                                    <i class="fas fa-paper-plane d-inline d-sm-none"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer class="footer bg-dark text-white">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <p class="footer-text text-center text-md-left">
-                    Lana Pet theme by <a href="http://lana.codes/" target="_blank">Lana Codes</a> © 2020 All Rights
-                    Reserved.
-                </p>
-            </div>
-            <div class="col-md-6">
-                <ul class="nav justify-content-center justify-content-md-end">
-                    <li class="nav-item"><a href="#" class="nav-link">Terms of Use</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
+	<jsp:include page="footer.jsp" />
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -579,12 +485,26 @@ table th {
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 <script type="text/javascript">
+	
+<script>
+const item = {
+    itemName: "YourLongItemNameHere"
+};
+
+const truncatedName = item.itemName.length > 10 ? item.itemName.substring(0, 10) + '...' : item.itemName;
+document.getElementById("itemNameSpan").textContent = truncatedName;
+</script>
+
 	function updateItemIdx(itemIdx) {
 		if(confirm("삭제 하시겠습니까?")){
 			location.href='<c:url value="/admin/itemupdate"/>?itemIdx='+itemIdx;
 	}
 	}
 
+	
+	
+	
+	
 
 </script>
 

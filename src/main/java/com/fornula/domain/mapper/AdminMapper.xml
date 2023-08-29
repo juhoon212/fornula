@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="memberListCount" resultType="int">
-		select count(*) from member
+		select count(*) from member where member_status in (1,2)
 	</select>
 	
 	<!-- 상품 목록 -->
@@ -46,7 +46,7 @@
 	</select>
 	
 	<select id="itemListCount" resultType="int">
-		select count(*) from item
+		select count(*) from item where item_status = 1
 	</select>
 		
 		

@@ -282,70 +282,9 @@
 <section>
 <!-- my-page style-->
 <style>
-	.info {
-	margin-bottom: 22px;
-	}
-	
-	/* 박스*/
-	.box {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 5px 0 5px 15px;
-  border-radius: 4px;
-  border: 1px solid #d9d6d6;
-  color: #383838;
-  font-weight: 400;
-}
-.box::placeholder {
-  color: #a0a0a0;
-}
-
-.info#info__id #id-input {
-  position: relative;
-}
-
-.info#info__id button {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  border-radius: 3px;
-  font-size: 15px; 
-}
 
 h3 {
 	font-size : 20px;
-}
-
-/* 카테고리 */
-.info#info__category #category-flex {
-  display: flex;
-}
-.info#info__category select {
-  margin-left : 7px;
-  color: #a0a0a0;
-}
-
-.info#info__category select:first-child {
-  margin-left : 0px;
-}
-
-.info#info__category select::-webkit-scrollbar {
-  width: 10px;
-}
-
-.info#info__category select::-webkit-scrollbar-thumb {
-  background-color: #b6b6b6;
-  border-radius: 3px;
-}
-
-.info#info__category select::-webkit-scrollbar-track {
-  background-color: #ebe9e9;
-  border-radius: 6px;
 }
 
 table {
@@ -437,7 +376,7 @@ table th {
 			<fmt:formatDate pattern="yyyy-MM-dd" value ="${member.memberDate}"/>
 			</td>
 			<td>
-			<button class="delete" type="button" onclick="updateMemberIdx(${member.memberIdx});">삭제</button>
+			<button class="delete" type="button" onclick="updateMemberIdx(${member.memberIdx});">탈퇴</button>
 			</td>
 			
 		</tr>

@@ -582,7 +582,6 @@ h3 {
 </footer>
 
 
-      <script defer src="<c:url value="/js/mypage-info.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -597,11 +596,7 @@ h3 {
       
 <script type="text/javascript">
  
-function enableEmailEditing() {
-    const emailInput = document.querySelector('.boxEmail');
-    emailInput.removeAttribute('readonly');
-  }
- 
+
  
  function submitCheck() {
 

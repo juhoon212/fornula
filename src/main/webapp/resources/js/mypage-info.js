@@ -1,37 +1,33 @@
+  function toggleEditMode() {
+    const emailInput = document.getElementById("email-box");
+    const changeEmailBtn = document.getElementById("changeEmailBtn");
+    const saveEmailBtn = document.getElementById("saveEmailBtn");
+    const errorMsg = document.querySelector(".error-msg");
 
-
-  const emailInput = document.querySelector('.boxEmail');
-  const changeEmailBtn = document.getElementById('changeEmail');
-  const errorMsg = document.querySelector('.error-msg');
-  let originalEmail = emailInput.value; // 원래 이메일 값을 저장
-
-  function enableEmailEditing() {
-    emailInput.removeAttribute('readonly');
-    changeEmailBtn.textContent = '저장'; // 버튼 텍스트 변경
-    changeEmailBtn.removeEventListener('click', enableEmailEditing); // 클릭 이벤트 제거
-    changeEmailBtn.addEventListener('click', saveEmail); // 저장 함수 등록
+    emailInput.value = ""; 
+    emailInput.removeAttribute("readonly");
+    changeEmailBtn.style.display = "none";
+    saveEmailBtn.style.display = "block";
+    errorMsg.style.display = "none"; 
   }
 
   function saveEmail() {
-    const newEmail = emailInput.value; // 편집된 이메일 값
+    const emailInput = document.getElementById("email-box");
+    const changeEmailBtn = document.getElementById("changeEmailBtn");
+    const saveEmailBtn = document.getElementById("saveEmailBtn");
+    const errorMsg = document.querySelector(".error-msg");
+
+    const newEmail = emailInput.value;
     const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 
     if (!emailPattern.test(newEmail)) {
-      errorMsg.textContent = '유효한 이메일 주소 형식이 아닙니다.';
+      errorMsg.textContent = "유효한 이메일 주소를 입력해주세요.";
+      errorMsg.style.display = "block";
       return;
-    } else {
-      errorMsg.textContent = '가능한 이메일입니다.'
-      errorMsg.style.color = "green";
     }
 
-    // 여기에 수정한 값을 저장하는 로직 추가 가능
-
-    errorMsg.textContent = ''; // 이전 오류 메시지 제거
-    emailInput.setAttribute('readonly', true); // 읽기 전용으로 변경
-    originalEmail = newEmail; // 원래 값 업데이트
-    changeEmailBtn.textContent = '수정'; // 버튼 텍스트 변경
-    changeEmailBtn.removeEventListener('click', saveEmail); // 클릭 이벤트 제거
-    changeEmailBtn.addEventListener('click', enableEmailEditing); // 수정 함수 등록
+    errorMsg.style.display = "none";
+    emailInput.setAttribute("readonly", "readonly");
+    changeEmailBtn.style.display = "block";
+    saveEmailBtn.style.display = "none";
   }
-
-  changeEmailBtn.addEventListener('click', enableEmailEditing);
