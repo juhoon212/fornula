@@ -38,9 +38,4 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		Photo selectPhoto = itemDetailDAO.selectPhoto(itemIdx);
 		return selectPhoto;
 	}
-
-	
-	
-	
-
 }
