@@ -379,12 +379,31 @@ table th {
   border-bottom: 3px solid #d9d6d6;
 }
 
+.pagination {
+	margin-top : 20px;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    justify-content: space-around;
+}
+
+   .pagination a, .pagination span {
+        margin: 0 5px;
+        text-decoration: none;
+        color: black;
+    }
+    .pagination .current {
+        color: orange;
+    }
+    .pagination .disabled {
+        color: gray;
+    }
+
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="infoForm" method="post" action="/mypageInfo">
-        <label>
-        상품 관리
-        </label>
+   <form name="itemForm" method="post" action="/admin/item">
+      <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">상품 관리</label>
         
          <table>
     
@@ -413,32 +432,53 @@ table th {
 		</tr>
 		</c:forEach>
     		
-    		</tr>
-    	
-  
-    
     <tfoot>
         <td colspan="5" class="tablefoot"></td>
     </tfoot>
 </table>
     
-    		
+<div class="pagination">
+    <div class="prev">
+        <c:choose>
+            <c:when test="${pager.startPage > pager.blockSize}">
+                <a href="<c:url value="/admin/item"/>?pageNum=${pager.prevPage}">PREV</a>
+            </c:when>
+            <c:when test="${pager.pageNum > 1}">
+                <a href="<c:url value="/admin/item"/>?pageNum=${pager.pageNum - 1}">PREV</a>
+            </c:when>
+            <c:otherwise>
+                <span class="disabled">PREV</span>
+            </c:otherwise>
+        </c:choose>
+    </div>
 
-						<nav
-							class="navigation pagination justify-content-between text-uppercase"
-							role="navigation">
-							<a class="prev disabled" href="#"> Prev </a>
-							<div class="nav-links">
-								<ul class="page-numbers">
-									<li><span aria-current="page" class="page-numbers current">1</span></li>
-									<li><a class="page-numbers" href="#">2</a></li>
-									<li><span class="page-numbers dots">…</span></li>
-									<li><a class="page-numbers" href="#">4</a></li>
-								</ul>
-							</div>
-							<a class="next" href="#"> Next </a>
-						</nav>
-					
+    <div class="pages">
+        <c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+            <c:choose>
+                <c:when test="${pager.pageNum != i}">
+                    <a href="<c:url value="/admin/item"/>?pageNum=${i}">${i}</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="current">${i}</span>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </div>
+
+    <div class="next">
+        <c:choose>
+            <c:when test="${pager.endPage != pager.totalPage}">
+                <a href="<c:url value="/admin/item"/>?pageNum=${pager.nextPage}">NEXT</a>
+            </c:when>
+            <c:when test="${pager.pageNum < pager.totalPage}">
+                <a href="<c:url value="/admin/item"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
+            </c:when>
+            <c:otherwise>
+                <span class="disabled">NEXT</span>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</div>	
     </form>
 </section>
         
