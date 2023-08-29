@@ -36,8 +36,6 @@ public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
 	private final MemberJoinService memberJoinService;
-	
-	
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
@@ -98,7 +96,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/updatePassword/{memberIdx}") 
-	public String updatePassword(@PathVariable String memberIdx, @RequestParam(required = false) String newPassword, RedirectAttributes redirectAttributes) {
+	public String updatePassword(@PathVariable String memberIdx, 
+								@RequestParam(required = false) String newPassword, 
+								RedirectAttributes redirectAttributes, 
+								Model model
+								) {
+		
 		Member findByIdxMember = memberLoginService.findByIdx(Integer.parseInt(memberIdx));
 		
 		if(findByIdxMember == null) {
@@ -112,8 +115,8 @@ public class MemberController {
 			return "404";
 		}
 		
-		redirectAttributes.addAttribute("message", "비밀번호가 변경되었습니다.");
-		return "redirect:/common-success";
+		model.addAttribute("message", "비밀번호가 변경되었습니다.");
+		return "common-success";
 	}
 	
 	//로그아웃

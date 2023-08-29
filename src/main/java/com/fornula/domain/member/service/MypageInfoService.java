@@ -6,7 +6,7 @@ import com.fornula.domain.member.dto.mypage.InfoCategory;
 
 public interface MypageInfoService {
 	Member mypageInfoService(String id);
-	void modifyPassword(int One,int Two,int Three,String id );
+	void modifyEmail(String id, String email );
 	Category mypageCategoryOne(int categoryOne);
 	Category mypageCategoryTwo(int categoryTwo);
 	Category mypageCategoryThree(int categoryThree);

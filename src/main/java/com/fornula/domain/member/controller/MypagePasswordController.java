@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fornula.domain.exception.custom.MypageIdExcepion;
+import com.fornula.domain.exception.custom.MypagePwException;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.Password;
 import com.fornula.domain.member.dto.mypage.Secession;
@@ -27,12 +28,17 @@ public class MypagePasswordController {
 	public final MypagePasswordService service;
 	
 	 @GetMapping("/mypagePwchange")
-	   public String Pwchange() {
+	   public String Pwchange(HttpSession session) {
+		 
+		 Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		 
+		 session.setAttribute("member", member);
+		 
 		   return "mypage-pwchange";
 	   }
 	   
 	   @PostMapping("/mypagePwchange")
-	   public String Pwchange(@ModelAttribute Password password, HttpSession session) throws MypageIdExcepion{
+	   public String Pwchange(@ModelAttribute Password password, HttpSession session) throws MypagePwException{
 		   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		   
 		   log.info("sessionMember = {}", member); // 세션멤버조회
@@ -45,7 +51,7 @@ public class MypagePasswordController {
 		   boolean isCheckedPw = BCrypt.checkpw(password.getPassword(), loginMember.getPassword());
 		   
 		   if(!isCheckedPw) {
-			   return "mypage-pwchange";
+			   throw new MypagePwException("올바른 비밀번호를 입력해주세요.");
 		   }
 		   
 		   //비번 암호화

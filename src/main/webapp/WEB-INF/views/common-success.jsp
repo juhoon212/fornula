@@ -71,7 +71,7 @@
 	align-items: center;
 	text-align: center;
 	padding : 10px;
-	color : red;
+	color : green;
 }
 
 
