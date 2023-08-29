@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.util.session.SessionConst;
 
+import lombok.extern.slf4j.Slf4j;
+
 /*
  * 홈으로만 가는 컨트롤러 다른 것 작성 x
  */
+@Slf4j
 @Controller
 @RequestMapping("/")
 public class MainController {
@@ -27,10 +30,12 @@ public class MainController {
 			} else if(member !=null) {
 				int memberStatus = member.getMemberStatus();
 				
+				log.info("memberStatus: {}",memberStatus);
+				
 				if (memberStatus == 1 || memberStatus == 2) { 
 					model.addAttribute("headerPage", "login-header.jsp"); 
-				} else if(memberStatus == 9){ 
-					return "redirect:/admin/user";
+				} else if(memberStatus ==9 ){ 
+					return "admin-user";
 				} else {
 				model.addAttribute("headerPage", "header.jsp");
 			

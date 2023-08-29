@@ -155,7 +155,7 @@ h3 {
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
-	<jsp:include page="header.jsp" />
+<jsp:include page="${headerPage}" />
 	<main class="main container">
 		<form method="post" id="expertjoinForm" enctype="multipart/form-data"
 			action="/expert/join">

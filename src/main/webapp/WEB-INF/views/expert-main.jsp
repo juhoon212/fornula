@@ -133,8 +133,7 @@ a:visited {
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
-	<jsp:include page="header.jsp" />
-
+<jsp:include page="${headerPage}" />
 	<!-- 스타일 태그 끝 -->
 			<main class="main container" id="main-content">
 	<div class="row">
