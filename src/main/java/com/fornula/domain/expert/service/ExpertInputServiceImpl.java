@@ -22,6 +22,6 @@ public class ExpertInputServiceImpl implements ExpertInputService {
     // EXPERT 테이블에서 수정하기 이전, 기존의 정보를 출력하는 메소드
     @Override
     public Expert getOriginalExpert(int expertIdx) {
-        return expertInputDAO.selectOriginalExpert(expertIdx);
+        return expertInputDAO.originalExpert(expertIdx);
     }
 }

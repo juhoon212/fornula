@@ -114,18 +114,22 @@ h3 {
 <div class="row">
    <div class="col-12 col-lg-8">
       <div class="widget">     
-         <form class="story-posts" id="content" action="/modify" method="post">              
+		<form class="story-posts" id="content" action="/expert/input" method="post">
             <div class="info" id="info__category">
 				<div id="category-flex">
 					<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
-					<input class="box" type="text" id="expertIdx" placeholder="전문가번호"${expertIdx } readonly/>
-					<input class="box" type="text" id="phoneInput" placeholder="전화번호:${phone }" value="${phone }"/>
+					<input class="box" type="text" name="expertIdx" placeholder="전문가번호"value="${originalExpert.expertIdx }" readonly/>
+					<input class="box" type="text" name="phone" placeholder="전화번호" value="${originalExpert.phone }" value="${originalExpert.phone }"/>
 				</div>          
 			</div>
 			<div class="info" id="info__category">
               <div id="category-flex">
-                <input class="box" type="text" placeholder="기존 카테고리:${interest }" readonly/>
+              <%--   
+                <input class="box" type="text" name="interest" placeholder="기존 카테고리:"
+                	value="${originalExpert.interest}" readonly/>
+                 --%>
                 <!-- 여백 어케주드라 -->
+                <!-- 
 				<select class="box" id="interestSelect" name="interest">
                   <option disabled selected>디자인</option>
                   <option value="1">그래픽</option>
@@ -143,25 +147,26 @@ h3 {
                   <option value="9">SNS 홍보</option>
                   <option value="10">해외 마케팅</option>              
                 </select>
+                 -->
              	<!-- 여백 어케주드라 -->            
-                <input class="box" type="text" placeholder="연차:${career }" value="${career }"/>
+                <input class="box" name=career type="text" placeholder="연차:"value="${originalExpert.career }" value="${career }"/>
               </div>
             </div>
             <div class="info" id="info__category">
 				<div id="category-flex">
-        			<input class="box" type="text" id="companyOneInput" placeholder="${companyOne }" />
+        			<input class="box" type="text" id="companyOneInput" name="companyOne" placeholder="근무지1" value="${originalExpert.companyOne }" />
 					<!-- 여백 어케주드라 -->            
-					<input class="box" type="text" id="companyTwoInput" placeholder="${companyTwo }"/>
+					<input class="box" type="text" id="companyTwoInput" name="companyTwo" placeholder="근무지2" value="${originalExpert.companyTwo }"/>
 					<!-- 여백 어케주드라 -->
-					<input class="box" type="text" id="companyThreeInput" placeholder="${companyThree }"/>
+					<input class="box" type="text" id="companyThreeInput" name="companyThree" placeholder="근무지3" value="${originalExpert.companyThree }"/>
 				</div>
 			</div>
 			<div>
-    			<textarea class="box" id="introduceInput" placeholder="자기소개:${introduce }">${introduce}</textarea>
+    			<textarea class="box" id="introduceInput" name="introduce" placeholder="자기소개" value="${originalExpert.introduce }"></textarea>
 				<section id="upload">
 				    <h3>포트폴리오 등록</h3>
-				    <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf">
-				    <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly>
+				    <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf" name=itemfileName>
+				    <!-- <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly> -->
 				    <span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
 				    <p style="color: red;" id="errorMessage">${message}</p>
 				</section>
@@ -181,7 +186,7 @@ h3 {
                class="rounded-circle" alt="Author" width="200" height="200">
          </div>
          <div id="button">
-            <a href="#" class="tag-cloud-link" aria-label="idbutton">${expertIdx }</a>
+            <a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id }</a>
          </div>
          <div class="widget widget_tag_cloud">
             <div class="tagcloud">
@@ -303,7 +308,7 @@ $(document).ready(function() {
         });
     });
 });
-	*/
+*/
 </script>
 </body>
 </html>

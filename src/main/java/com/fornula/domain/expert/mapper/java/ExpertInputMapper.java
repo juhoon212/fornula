@@ -4,5 +4,5 @@ import com.fornula.domain.expert.dto.Expert;
 
 public interface ExpertInputMapper {
     void updateExpert(Expert expert);
-    Expert selectOriginalExpert(int expertIdx);
+    Expert originalExpert(int expertIdx);
 }

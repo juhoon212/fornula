@@ -19,7 +19,7 @@ public class ExpertInputDAOImpl implements ExpertInputDAO {
     }
 
     @Override
-    public Expert selectOriginalExpert(int expertIdx) {
-        return sqlSession.getMapper(ExpertInputMapper.class).selectOriginalExpert(expertIdx);
+    public Expert originalExpert(int expertIdx) {
+        return sqlSession.getMapper(ExpertInputMapper.class).originalExpert(expertIdx);
     }
 }
