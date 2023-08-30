@@ -16,13 +16,12 @@
 	</insert>
 	
 	<!-- salesIdx에러 -->
-	<insert id="insertSalesItem" useGeneratedKeys="true" >
-		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE" >
+	<insert id="insertSalesItem"  >
+		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE">
 			select sales_seq.nextval from dual
 		</selectKey>
-		insert into sales values(
-			#{salesIdx},
-			#{itemIdx}
+		insert into sales values(#{salesIdx}
+			,#{itemIdx}
 			,SYSDATE
 			,2)
 				<!-- where item_idx = #{itemIdx} -->

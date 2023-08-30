@@ -38,12 +38,12 @@ public class PaymentSuccessController {
 			log.info("member.getId() = {}", member.getId());
 			
 			//sales 테이블에서 오류남.
-			//service.itemPaymentSuccess(itemIdx);
-			//nullpointerexcepion 에러 잡기(디비값)
-		    service.itemPaymentSuccess(itemIdx,member.getMemberIdx());
+			service.PaymentSalesSuccess(itemIdx);
+			
+		    //service.itemPaymentSuccess(itemIdx,member.getMemberIdx());
 			 
 		    
-		    return "redirect:/payment-success"; 
+		    return "payment-success"; 
 		}
 		
 		

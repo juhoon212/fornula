@@ -28,15 +28,15 @@ public class ItemDetailController {
 	
     private final ItemDetailService itemDetailService;
    
-   @GetMapping("/{itemIdx}/{pageNum}")
+   @GetMapping("/{itemIdx}")
    public String itemIdx(@PathVariable Integer itemIdx, 
-		   				@PathVariable Integer pageNum,
+		   				
 		   				Model model
 		   				) {
 	   
-	   	if(pageNum == null) {
-	   		pageNum = 1;
-	   	}
+	   	//if(pageNum == null) {
+	   	//	pageNum = 1;
+	   	//}
 
     	Item findItem = itemDetailService.getItem(itemIdx);
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
