@@ -76,7 +76,7 @@
 	<update id="addReply" >
 		update review
 		set answer_content = #{answerContent}, answer_date = sysdate
-		where review_idx = #{review_idx}
+		where review_idx = #{reviewIdx}
 	</update>
 	
 	<select id="selectPurchase" resultType="Purchase">

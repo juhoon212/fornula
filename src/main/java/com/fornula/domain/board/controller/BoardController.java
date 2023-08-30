@@ -82,9 +82,12 @@ public class BoardController {
 		return "reply";
 	}
 	
-	@PostMapping("/add/reply/{itemIdx}/{reviewIdx}")
-	public String addReply() {
-		return null;
+	@PostMapping("/add/reply/{itemIdx}")
+	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes) {
+		
+		reviewService.addReply(review);
+
+		return "redirect:/item/{itemIdx}/1";
 	}
 	
 }

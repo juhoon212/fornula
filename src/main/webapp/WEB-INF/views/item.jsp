@@ -213,6 +213,22 @@ a{
                                         ${reviewList.review.content}
                                     </p>
                                 </div>
+                                
+                                	<div style="padding-left : 10px" class="d-bock d-md-flex w-100 justify-content-between">                        
+                                		<h5 class="comment-title">
+                                       <span style="color : blue;, font-size: 10px;, padding-left: 10px;">판매자</span>
+	                                    </h5>
+	                                    <div class="comment-date">
+	                                         <span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
+	                                    </div>
+	                                	</div>
+	                                	<div class="comment-text">
+	                                    <p>
+	                                        ${reviewList.review.answerContent}
+                                    	</p>
+                                	</div>
+                                
+                                    
                                 <ul class="comment-meta">
                                
                                     <li id="replyButton">
