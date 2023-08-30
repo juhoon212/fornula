@@ -28,17 +28,16 @@ public class ItemDetailController {
 	
     private final ItemDetailService itemDetailService;
    
-   @GetMapping("/{itemIdx}/{pageNum}")
+   @GetMapping("/{itemIdx}")
    public String itemIdx(@PathVariable Integer itemIdx, 
-		   				@PathVariable Integer pageNum,
+		   	
 		   				Model model
 		   				) {
 	   
-	   	if(pageNum == null) {
-	   		pageNum = 1;
-	   	}
+	   
 
     	Item findItem = itemDetailService.getItem(itemIdx);
+    	findItem.setItemDate(findItem.getItemDate().substring(0,10));
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
     	
     	int pos = selectPhoto.getItemfileName().lastIndexOf("_");

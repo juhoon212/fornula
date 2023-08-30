@@ -153,7 +153,7 @@ table th {
 		  <td>
             <c:choose>
                 <c:when test="${item.itemName.length() > 10}">
-                    <c:set var="trimmedText" value="${fn:substring(item.itemName, 0, 10)}" />
+                    <c:set var="trimmedText" value="${fn:substring(item.itemName, 0, 15)}" />
                     <c:set var="lastSpaceIndex" value="${trimmedText.lastIndexOf(' ')}" />
                     ${fn:substring(item.itemName, 0, lastSpaceIndex)}
                 </c:when>

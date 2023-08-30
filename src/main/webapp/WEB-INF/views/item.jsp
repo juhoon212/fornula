@@ -64,34 +64,60 @@ a{
     max-width: 83.3333%;
 }
 .post-content {
+	margin-top : 43px;
 	font-family : "Noto+Sans+KR:wght@200";
 }
 
 .post-content#detailbox {
    width: 100%;
-   height: 150px;   
+   height: 115px;   
    display : flex;
   flex-direction: column;
   align-items: flex-end;
-  border-bottom : solid 1px gray;
-  padding-top : 37px
+ /* border-bottom : solid 1px gray; */
+  margin-top : 80px;
 }
 
 .post-content#detailbox button {
-	float : right;
+	background-color: #ffb32f;
+  color: #f8f8f8;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  font-weight: 400;
+  border-radius: 5px;
+  transition: .1s;
+	
 }
+
+.post-content#detailbox button:focus-visible {
+	 outline: 0px solid;
+  background-color: #da8a00;
+	
+}
+
+.post-content#detailbox button:hover {
+	
+	outline: 0px solid;
+  background-color: #da8a00;
+}
+
+
 
 
 
 
 .gongback {
-	 margin-top : -5px;
-  margin-bottom: -5px;
+	 margin-top : 43px;
+  margin-bottom: -14px;
+  display :flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 #jul {
 	margin-bottom : 20px;
-	border-bottom : solid 1px gray;
+	/*border-bottom : solid 1px gray;*/
 }
 
 </style>
@@ -110,7 +136,7 @@ a{
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
                         
-                         <h1>제목 : ${item.itemName }</h1>
+                         <h1>${item.itemName }</h1>
                         
                         <div>
                             <a href="#" onclick="return disableLink()">
@@ -126,22 +152,31 @@ a{
 					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
 					        </a>
                         </div>
-                        <div class="gongback">&nbsp</div>
-                            <h4 style = "float : right;">등록 날짜 : ${item.itemDate }</h4>
+                        
+                       
+                          
+                            
+                        <div class="gongback">
+							  <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>                        
+                            <h4 >${item.itemDate }</h4>
+                        </div>
+                        <hr>
                         <div id ="jul">&nbsp</div>    
                         <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                     </div>
                     <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
                         <div class="post-content">
                            
-                            <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>
-                            <h4>내용 : ${item.itemContent }</h4>
+                            <h4>${item.itemContent }</h4>
                            <div class = "post-content" id = "detailbox">
-                            <h4 style = "float :right;">가격 : ${item.price }</h4>
+                            <h4 style = "float :right;">₩${item.price }</h4>
                             <button style = "float : right;"onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
                             </div>
+                            
+                            
                         </div>
                         
+                            <hr>
                     </div>
                 </div>
             </div>

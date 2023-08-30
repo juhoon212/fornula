@@ -202,11 +202,13 @@ h3 {
                            <div class="info" id="info__newPassword">
                               <input class="box" type="password" name="newPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
+                           <p align="left" style="color: red; font-size : 14px;" id="newPassword">${message }</p>
                               <div class="error-msg" style = "width:250px;"></div>
                            </div>
                            <div class="info" id="info__reNewPassword">
                               <input class="box" type="password" name="reNewPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
+                           <p align="left" style="color: red; font-size : 14px;" id="reNewPassword">${message }</p>
                               <div class="error-msg"></div>
                            </div>
 
