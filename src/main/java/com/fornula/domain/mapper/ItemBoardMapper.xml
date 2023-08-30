@@ -16,6 +16,7 @@
 		photo.ITEMFILE_NAME
 		FROM item JOIN PHOTO ON item.ITEM_IDX =
 		photo.ITEM_IDX
+		order by item.item_idx desc
 		) itemlist)
 		WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>

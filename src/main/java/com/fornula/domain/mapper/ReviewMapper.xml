@@ -18,8 +18,10 @@
 								on review.purchase_idx = purchase.purchase_idx
 								join member 
 								on purchase.member_idx = member.member_idx
-			where purchase.item_idx = #{itemIdx}) reviewList)
+			where purchase.item_idx = #{itemIdx}
+			order by review_idx desc) reviewList)
 		where rn between #{startRow} and #{endRow}
+		
 	</select>
 	
 	<resultMap type="Reviews" id="Reviews">

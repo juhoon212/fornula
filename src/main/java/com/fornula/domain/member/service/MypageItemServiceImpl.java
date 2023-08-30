@@ -14,11 +14,11 @@ public class MypageItemServiceImpl implements MypageItemService{
 	
 	private final MypageItemRepository mypageItemRepository;
 	
-	@Override
-	public Purchase mypageItemPurchase(int memberIdx) {
-		Purchase mypageItemPurchase = mypageItemRepository.selectPurchaseMypage(memberIdx);
-		return mypageItemPurchase;
-	}
+//	@Override
+//	public Purchase mypageItemPurchase(int memberIdx) {
+//		Purchase mypageItemPurchase = mypageItemRepository.selectPurchaseMypage(memberIdx);
+//		return mypageItemPurchase;
+//	}
 
 	
   

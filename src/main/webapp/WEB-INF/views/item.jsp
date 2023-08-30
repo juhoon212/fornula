@@ -128,6 +128,26 @@ a{
 </script>
 </head>
 <body class="single single-post">
+
+<div class="black-bg">
+		<div class="white-bg">
+			<div>
+				<div class="mb-3">
+					<!-- <h1 class="name">ForNula</h1> -->
+					<div class="name">FORNUAL</div>
+					<p class="close">
+						<img src="<c:url value="/pictures/placeholder/cancel_96921.svg"/>"
+							alt="close">
+					</p>
+					<label for="exampleInputEmail1" class="form-label"></label> <input
+						type="text" id="id-input" class="form-control" placeholder="답글을 입력하세요"
+						name="id">
+					<div id="emailHelp" class="form-text"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <jsp:include page="header.jsp" />
 
 <main class="main">
@@ -136,26 +156,7 @@ a{
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
                         
-                         <h1>${item.itemName }</h1>
-                        
-                        <div>
-                            <a href="#" onclick="return disableLink()">
-					            # ${item.categoryIdx == 1 ? '그래픽' :
-					               item.categoryIdx == 2 ? '제품' :
-					               item.categoryIdx == 3 ? '영어' :
-					               item.categoryIdx == 4 ? '중국어' :
-					               item.categoryIdx == 5 ? '헤어 메이크업' :
-					               item.categoryIdx == 6 ? '제품 홍보 사진' :
-					               item.categoryIdx == 7 ? '사업자' :
-					               item.categoryIdx == 8 ? '개인' :
-					               item.categoryIdx == 9 ? 'SNS홍보' :
-					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
-					        </a>
-                        </div>
-                        
-                       
-                          
-                            
+                         <h1>${item.itemName }</h1>          
                         <div class="gongback">
 							  <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>                        
                             <h4 >${item.itemDate }</h4>
@@ -224,6 +225,27 @@ a{
                         </li>
                         
                       </ul>
+                      
+                      <ul class="comment-children list-unstyled">
+                                    <li class="media">
+                                        <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+                                             src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+                                        <div class="media-body">
+                                            <div class="d-bock d-md-flex w-100 justify-content-between">
+                                                <h5 class="comment-title">                                             
+                                                </h5>
+                                                <div class="comment-date">                                    
+                                                </div>
+                                            </div>
+                                            <div class="comment-text">
+                                                <p>
+                                                    
+                                                </p>
+                                            </div>
+                               		</div>
+                               		</li>
+                               		</ul>
+                                      		
 					</c:forEach>
                     
                                 </div>
@@ -285,5 +307,19 @@ a{
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+
+<script type="text/javascript">
+
+let replyButton = document.querySelector('.reply');
+
+.addEventListener('click', () => {
+    document.querySelector('.black-bg').classList.add('show-modal');
+    console.log(1);
+})
+
+close.addEventListener('click', () => {
+    document.querySelector('.black-bg').classList.remove('show-modal');
+})
+</script>
 </body>
 </html>

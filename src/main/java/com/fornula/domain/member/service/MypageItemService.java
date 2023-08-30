@@ -5,6 +5,6 @@ import com.fornula.domain.member.dto.mypage.ItemExpert;
 
 
 public interface MypageItemService {
-  Purchase mypageItemPurchase (int memberIdx);
+//  Purchase mypageItemPurchase (int memberIdx);
   //ItemExpert mypageItemExpert (int memberIdx);
 }

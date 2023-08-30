@@ -32,7 +32,7 @@ public class MypageItemController {
 		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		
 		
-	  Purchase purchaseMypage =itemService.mypageItemPurchase(member.getMemberIdx());
+//	  Purchase purchaseMypage =itemService.mypageItemPurchase(member.getMemberIdx());
 	 
 	   // ItemExpert itemMypage =service.mypageItemExpert(member.getMemberIdx());
 		   

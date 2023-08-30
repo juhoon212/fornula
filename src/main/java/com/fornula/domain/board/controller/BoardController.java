@@ -41,7 +41,14 @@ public class BoardController {
 		
 		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
 		
+		if(loginMember == null) {
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			return "redirect:/item/{itemIdx}/1";
+		}
+		
 		log.info("loginMember 번호 = {}", loginMember.getMemberIdx());
+		// 비로그인 사용자
+		
 		
 		Purchase purchase = reviewService.selectPurchase(loginMember.getMemberIdx(), itemIdx);
 		
