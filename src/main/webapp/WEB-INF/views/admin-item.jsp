@@ -272,15 +272,6 @@ table th {
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 <script type="text/javascript">
-	
-<script>
-const item = {
-    itemName: "YourLongItemNameHere"
-};
-
-const truncatedName = item.itemName.length > 10 ? item.itemName.substring(0, 10) + '...' : item.itemName;
-document.getElementById("itemNameSpan").textContent = truncatedName;
-</script>
 
 	function updateItemIdx(itemIdx) {
 		if(confirm("삭제 하시겠습니까?")){
@@ -288,10 +279,6 @@ document.getElementById("itemNameSpan").textContent = truncatedName;
 	}
 	}
 
-	
-	
-	
-	
 
 </script>
 
