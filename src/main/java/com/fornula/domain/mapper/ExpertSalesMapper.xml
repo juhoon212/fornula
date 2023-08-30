@@ -43,7 +43,7 @@
 
 
 	<!-- 판매내역 출력-->
-	<select id="selectSalesList" resultType="ItemSales">
+	<select id="selectSalesList" resultMap="ItemSales">
 		SELECT S.sales_idx,
 				S.sales_date,
 				S.sales_status,
@@ -54,10 +54,12 @@
 		FROM sales S
 		JOIN item I
 		ON S.item_idx = I.item_idx
+		WHERE expert_idx = ${expertIdx}
 		ORDER BY S.sales_date
 	</select>
  
 	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
+	<!-- 
 	<update id="updateSalesStatus" parameterType="SaleItemExpert">
 		UPDATE sales S
         SET S.sales_status =
@@ -86,17 +88,20 @@
         </otherwise>
         </choose>
 	</update>
-	
-		
+ -->
+ 
+ 		
 	<!-- 구매확정된 총 판매금액 출력 -->
+<!-- 
 	<select id="selectPrice" resultType="int">
 	 	SELECT SUM(I.price) as total_price
 		FROM item ITEM 
 		JOIN sales SALES 
 		ON ITEM.item_idx = SALES.item_idx 
-		<!-- WHERE SALES.sales_status BETWEEN 5 AND 7 --> 
+		WHERE SALES.sales_status BETWEEN 5 AND 7 
 	</select> 
-</mapper>
+ -->
+ </mapper>
 
 
 

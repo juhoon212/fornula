@@ -6,19 +6,19 @@
 <html lang="en">
 <head>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+	href="<c:url value="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>">
 
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	href="<c:url value="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"/>"
 	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+	href="<c:url value="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"/>
 	rel="stylesheet">
 
 <meta charset="utf-8">
@@ -28,21 +28,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	href="<c:url value="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>"
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 
 <link rel="stylesheet" id="montserrat-css"
-	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+	href="<c:url value="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"/>">
 <link rel="stylesheet" id="open-sans-css"
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+	href="<c:url value="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i"/>">
 
 <link rel="stylesheet" id="animate-css"
-	href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
+	href="<c:url value="/css/animate.min.css?ver=3.7.2"/> type="text/css"
 	media="all">
 <link rel="stylesheet" id="font-awesome-css"
-	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
+	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>
 	type="text/css" media="all">
 <link rel="stylesheet" id="bootstrap-css"
 	href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>"
@@ -65,6 +65,7 @@
 <link rel="stylesheet" id="lana-pet-print-css"
 	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
 	type="text/css" media="print">
+
 <style type="text/css">
 .profile {
 	display: block;
@@ -135,21 +136,26 @@ p #logo {
 
 				<div class="id-pw-find">
 					<a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a
-						href="/member/findPw">&nbsp비밀번호 찾기 </a>
+						href="<c:url value="/member/findPw"/>">&nbsp;비밀번호 찾기 </a>
 				</div>
 				<div class="btn-container">
 					<button type="submit" id="login" class="btn btn-light">로그인</button>
 					<button type="button" id="join" class="btn btn-light"
-						onclick="location.href='/member/join'">회원가입</button>
+						onclick="location.href="<c:url value='/member/join'/>">회원가입</button>
 				</div>
 				<div id="logos">
-					<a href=""><img
+					<a href="<c:url value=""/>">
+					</a>
+					<img
 						src="<c:url value="/pictures/placeholder/social.png"/>"
-						alt="google"></a> <a href=""><img
+						alt="google"></a>
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/instagram.png"/>"
-						alt="instagram"></a> <a href=""><img
+						alt="instagram"></a> 
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/facebook.png"/>"
-						alt="facebook"></a> <a href=""><img
+						alt="facebook"></a> 
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
 						alt="kakao"></a>
 				</div>
@@ -334,267 +340,54 @@ p #logo {
 			</div>
 		</div>
 
-<<<<<<< HEAD
 		<div id="our-pets-container"
 			class="container-fluid bg-white section-py--large">
-			<div class="container">
+			<div class="container mt-5">
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-10 col-lg-6 text-center">
-						<h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">오늘의 추천 게시글</h1>
+						<h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">오늘의
+							추천 게시글</h1>
 						<p data-scroll-animate="fadeInUp">이런 전문가는 어떤가요?</p>
 						<div class="lana-hr lana-hr-4 border-primary mt-4"
 							data-scroll-animate="zoomIn"></div>
 					</div>
 				</div>
-				<div class="row mt-5">
-					<div class="col-12 px-0">
-						<div class="pets-carousel swiper-container swiper-container-items h-100">
-							<div class="swiper-wrapper">
-								<c:forEach var="itemList" items="${itemMainList}">
-									<div class="swiper-slide">
-										<div class="lana_pet type-lana_pet card pet-grid-card mx-0 mx-md-3 h-100" data-scroll-animate="fadeIn">
-											<div class="blog-grid-col col-12 col-md-6 col-lg-4">
-												<div id="post-1" class="post type-post card post-card post-grid-card h-100">
+				<div class="row">
+					<div class="col-12">
+						<div class="blog-grid-posts">
+							<div class="row">
+								<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
+								<c:forEach var="itemList" items="${itemList}">
+									<div class="blog-grid-col col-12 col-md-6 col-lg-4">
+										<div id="post-1"
+											class="post type-post card post-card post-grid-card h-100">
 											<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-											<div class="lana-img-zoom">
-												<img
-													src="<c:url value="/images/upload/${itemList.photo.itemfileName}"/>"
-													class="card-img-top img-fluid">
-												<div class="card-body">
-													<ul class="post-meta">
-														<li><a href="single.html">${itemList.item.itemDate}</a>
-														</li>
-													</ul>
-													<h5 class="post-title card-title">${itemList.item.itemName}</h5>
-													<p class="post-text card-text">
-														${itemList.item.itemContent}</p>
-												</div>
-												<div class="card-footer">
-													<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-													<a href="<c:url value="/item/${itemList.item.itemIdx}"/>"
-														class="more-link card-link"> 더 보기 <i
-														class="lana-icon-arrow-right text-primary"></i>
-													</a>
-												</div>
+											<img
+												src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
+												class="card-img-top img-fluid">
+											<div class="card-body">
+												<ul class="post-meta">
+													<li><a href="<c:url value="single.html"/>">${itemList.item.itemDate}</a>
+													</li>
+												</ul>
+												<h5 class="post-title card-title">${itemList.item.itemName}</h5>
+												<p class="post-text card-text">
+													${itemList.item.itemContent}</p>
+											</div>
+											<div class="card-footer">
+												<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
+												<a href="<c:url value="/item/${itemList.item.itemIdx}/1"/>"
+													class="more-link card-link"> 더 보기 <i
+													class="lana-icon-arrow-right text-primary"></i>
+												</a>
 											</div>
 										</div>
 									</div>
 								</c:forEach>
 							</div>
-							<div class="swiper-pagination" data-scroll-animate="fadeInDown"></div>
-							<div class="swiper-button-next swiper-button-arrow"
-								data-scroll-animate="fadeInLeft"></div>
-							<div class="swiper-button-prev swiper-button-arrow"
-								data-scroll-animate="fadeInRight"></div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-
-
-		<div id="our-team-container"
-			class="container-fluid bg-light-blue section-py--large">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-12 col-md-10 col-lg-6 text-center">
-						<h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">Meet
-							Our Team</h1>
-						<p data-scroll-animate="fadeInUp">We have a team that takes
-							care about pets, help then find new family. We treat and
-							domesticate pets.</p>
-						<div class="lana-hr lana-hr-4 border-primary mt-4"
-							data-scroll-animate="zoomIn"></div>
-					</div>
-				</div>
-
-				<div class="row mt-5">
-					<div class="col-12 col-md-4 col-lg-4">
-						<div
-							class="lana_member type-lana_member card member-card bg-transparent">
-							<div class="card-body">
-								<img src="../pictures/placeholder/250x250.svg"
-									class="card-img-top img-fluid rounded-circle" alt="Team Member"
-									data-scroll-animate="zoomIn">
-								<h5 class="post-title card-title"
-									data-scroll-animate="fadeInDown">Natalia Scrilsen</h5>
-								<h6 class="card-subtitle" data-scroll-animate="fadeInUp">
-									Vaterian</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn">
-									Quisque sit amet ex id lacus ullamcorper consectetur. Phasellus
-									cursus arcu quam, vel porttitor magna efficitur ac.</p>
-								<ul class="social-icons list-inline"
-									data-scroll-animate="fadeInUp">
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-facebook"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-linkedin"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-4 col-lg-4">
-						<div
-							class="lana_member type-lana_member card member-card bg-transparent">
-							<div class="card-body">
-								<img src="../pictures/placeholder/250x250.svg"
-									class="card-img-top img-fluid rounded-circle" alt="Team Member"
-									data-scroll-animate="zoomIn">
-								<h5 class="post-title card-title"
-									data-scroll-animate="fadeInDown">Natalia Scrilsen</h5>
-								<h6 class="card-subtitle" data-scroll-animate="fadeInUp">
-									Vaterian</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn">
-									Ut hendrerit nec neque nec porttitor. Ut semper, lacus posuere
-									mollis ultricies, purus quam fringilla quam, quis imperdiet
-									nisl lacus eget libero.</p>
-								<ul class="social-icons list-inline"
-									data-scroll-animate="fadeInUp">
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-facebook"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-linkedin"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-4 col-lg-4">
-						<div
-							class="lana_member type-lana_member card member-card bg-transparent">
-							<div class="card-body">
-								<img src="../pictures/placeholder/250x250.svg"
-									class="card-img-top img-fluid rounded-circle" alt="Team Member"
-									data-scroll-animate="zoomIn">
-								<h5 class="post-title card-title"
-									data-scroll-animate="fadeInDown">Natalia Scrilsen</h5>
-								<h6 class="card-subtitle" data-scroll-animate="fadeInUp">
-									Vaterian</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn">
-									Mauris lacinia gravida ex, eget porta massa pellentesque non.
-									Vivamus id libero imperdiet, imperdiet enim id, pretium sem.</p>
-								<ul class="social-icons list-inline"
-									data-scroll-animate="fadeInUp">
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-facebook"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"
-										class="social-icon"><i class="fab fa-linkedin"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="stories-container"
-			class="container-fluid bg-dark lana-bg-image-brown-and-white-small-staring-dog-face-indoor section-py--large">
-			<div class="container">
-				<div class="row justify-content-center text-white">
-					<div class="col-12 col-md-10 col-lg-6 text-center">
-						<h1 class="mb-4 font-weight-bold" data-scroll-animate="fadeInDown">Happy
-							Stories</h1>
-						<p data-scroll-animate="fadeInUp">We are happy that we help
-							families find a new family member for themselves.</p>
-						<div class="lana-hr lana-hr-4 border-primary mt-4"
-							data-scroll-animate="zoomIn"></div>
-					</div>
-				</div>
-				<div class="row mt-5">
-					<div class="col-12 px-0">
-						<div
-							class="stories-carousel swiper-container swiper-container-items h-100">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<div
-										class="lana_story type-lana_story card story-slide-card mx-0 mx-md-3 h-100"
-										data-scroll-animate="fadeIn">
-										<div class="card-body">
-											<div class="media">
-												<img src="../pictures/placeholder/100x100.svg"
-													class="img-fluid rounded-circle" alt="Pet">
-												<div class="media-body align-self-center">
-													<h5 class="post-title card-title">Jumbo</h5>
-													<h6 class="card-subtitle">Anastasia</h6>
-												</div>
-											</div>
-											<p class="post-text card-text">How did we live without a
-												cat? This is an indescribable happiness! Thank you Pethome
-												for allowing us adopt him!</p>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div
-										class="lana_story type-lana_story card story-slide-card mx-0 mx-md-3 h-100"
-										data-scroll-animate="fadeIn">
-										<div class="card-body">
-											<div class="media">
-												<img src="../pictures/placeholder/100x100.svg"
-													class="img-fluid rounded-circle" alt="Pet">
-												<div class="media-body align-self-center">
-													<h5 class="post-title card-title">Jack</h5>
-													<h6 class="card-subtitle">Lana</h6>
-												</div>
-											</div>
-											<p class="post-text card-text">How did we live without a
-												cat? This is an indescribable happiness!</p>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div
-										class="lana_story type-lana_story card story-slide-card mx-0 mx-md-3 h-100"
-										data-scroll-animate="fadeIn">
-										<div class="card-body">
-											<div class="media">
-												<img src="../pictures/placeholder/100x100.svg"
-													class="img-fluid rounded-circle" alt="Pet">
-												<div class="media-body align-self-center">
-													<h5 class="post-title card-title">Bo</h5>
-													<h6 class="card-subtitle">Anna</h6>
-												</div>
-											</div>
-											<p class="post-text card-text">How did we live without a
-												cat?</p>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div
-										class="lana_story type-lana_story card story-slide-card mx-0 mx-md-3 h-100"
-										data-scroll-animate="fadeIn">
-										<div class="card-body">
-											<div class="media">
-												<img src="../pictures/placeholder/100x100.svg"
-													class="img-fluid rounded-circle" alt="Pet">
-												<div class="media-body align-self-center">
-													<h5 class="post-title card-title">Rusty</h5>
-													<h6 class="card-subtitle">Svetlana</h6>
-												</div>
-											</div>
-											<p class="post-text card-text">How did we live without a
-												cat? This is an indescribable happiness! Thank you Pethome
-												for allowing us adopt him!</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-pagination" data-scroll-animate="fadeInDown"></div>
-							<div class="swiper-button-next swiper-button-arrow"
-								data-scroll-animate="fadeInLeft"></div>
-							<div class="swiper-button-prev swiper-button-arrow"
-								data-scroll-animate="fadeInRight"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</main>
 
 	<jsp:include page="footer.jsp" />
@@ -687,18 +480,9 @@ p #logo {
          e.preventDefault();
 	});
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	</script>
 
 
-</script>
+
+
 </body>

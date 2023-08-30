@@ -215,11 +215,13 @@ a:visited {
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
+					
 						<div class="widget">
-							<div class="info" id="info__category">
+							<div class="info" id="info__category" >
+								<div style="text-align: left;">
 								<br>
-								<p style="font-size: 28px; text-align: left;">[전문가 정보]</p>
-
+							 <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">전문가 정보</label>
+</div>
 								<div id="category-flex">
 									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 									<input class="box" type="text" name="expertIdx"
@@ -322,22 +324,23 @@ a:visited {
 
 								</div>
 								<br>
-								<div class="row">
-									<div class="widget" style="text-align: left;" id="list">
-										<h3 class="widget-title" id="expertmain"
-											style="color: #ff8a00;">전문가 정보</h3>
-										<ul style="color: black;">
-											<li><a href="<c:url value="/expert/input"/>" id="info"
-												class="expertmenu">전문가 정보</a></li>
-											<li><a href="<c:url value="/expert/sales"/>" id="sale"
-												class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-											<li><a href="<c:url value="/expert/output "/>" id="po"
-												class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-											<li><a href="<c:url value="/expert/item"/>" id="item"
-												class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-										</ul>
-									</div>
+								<div class="row" style="padding-left: 15px;">
+								<div class="widget" style="text-align: left; pa">
+									<h3 class="widget-title">판매 관리</h3>
+
+									<ul>
+										<li><a href="<c:url value="/expert/input"/>" id="info"
+											>전문가 정보</a></li>
+										<li><a href="<c:url value="/expert/sales"/>" id="sale"
+											>판매 관리</a></li>
+										<li><a href="<c:url value="/expert/output"/>" id="po"
+											>포트폴리오</a></li>
+										<li><a href="<c:url value="/expert/item"/>" id="item"
+											>상품 등록</a></li>
+									</ul>
 								</div>
+
+							</div>
 
 								<!-- 			<div class="row">
 							<div class="widget" style="text-align: left;" id="list">

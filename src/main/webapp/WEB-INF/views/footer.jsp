@@ -13,10 +13,10 @@
                     </p>
                     <ul class="social-icons list-inline">
                         <li class="list-inline-item">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="#"/>" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="#"/>" class="social-icon"><i class="fab fa-twitter"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -25,11 +25,11 @@
                 <div class="widget">
                     <h3 class="widget-title">Page</h3>
                     <ul>
-                        <li><a href="/#">메인 페이지</a></li>
-                        <li><a href="page.html">디자인</a></li>
-                        <li><a href="template-contact.html">마케팅</a></li>
-                        <li><a href="template-our-services.html">IT·프로그래밍</a></li>
-                        <li><a href="template-our-partners.html">투잡·재태크</a></li>
+                        <li><a href="<c:url value="/#"/>">메인 페이지</a></li>
+                        <li><a href="<c:url value="/item/boardList"/>">디자인</a></li>
+                        <li><a href="<c:url value="item/boardList"/>">마케팅</a></li>
+                        <li><a href="<c:url value="item/boardList"/>">IT·프로그래밍</a></li>
+                        <li><a href="<c:url value="item/boardList"/>">투잡·재태크</a></li>
                     </ul>
                 </div>
             </div>
