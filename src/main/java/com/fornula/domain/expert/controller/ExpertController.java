@@ -32,15 +32,14 @@ public class ExpertController{
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
 		return "expert-main";
 	}	
-	
-	//전문가 정보수정 페이지 
-	@GetMapping(value = "/input")
-	public String input() {
-		log.info("ExpertController 클래스의 input() 메소드 실행");
-		return "expert-input";
-	}
-	
-	
+
+	/*
+	 * //전문가 정보수정 페이지
+	 * 
+	 * @GetMapping(value = "/expert/input") public String input() {
+	 * log.info("ExpertController 클래스의 input() 메소드 실행"); return "expert-input"; }
+	 * 
+	 */
 	// 전문가 페이지에서 상품 등록 페이지 클릭하면 session에서 로그인멤버의 전문가 번호를 찾아서 반환
 	@GetMapping("/expert/item")
 	public String expertItem(HttpSession session, Model model, RedirectAttributes redirectAttributes) {

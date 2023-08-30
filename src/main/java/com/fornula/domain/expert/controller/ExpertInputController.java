@@ -28,31 +28,34 @@ public class ExpertInputController {
     private final ItemDetailService itemDetailService;
     private final HttpSession session; // HttpSession 추가
 
-    @GetMapping("/readModify")
-    public String getOriginalExpert(Model model) {
+    @GetMapping("/input")
+    public String getOriginalExpert(@ModelAttribute Expert originalExpert, Model model) {
         Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
-        
-        // Expert 객체로 expertIdx 가져오기
         Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
         int expertIdx = expert.getExpertIdx();
         
-        // 기존 전문가 정보 조회
-        Expert originalExpert = expertInputService.getOriginalExpert(expertIdx);
-
+        log.info("Expert Info: expertIdx={}, phone={}, interest={}, career={}, companyOne={}, companyTwo={}, companyThree={}, introduce={}",
+                expert.getExpertIdx(), expert.getPhone(), expert.getInterest(), expert.getCareer(),
+                expert.getCompanyOne(), expert.getCompanyTwo(), expert.getCompanyThree(), expert.getIntroduce());
+        
+//      기존 전문가 정보 조회
+        originalExpert = expertInputService.getOriginalExpert(expertIdx);
         model.addAttribute("loginMember", loginMember);
         model.addAttribute("originalExpert", originalExpert);
-
+        
         log.info("Showing modify form for expertIdx: {}", expertIdx);
-
-        return "expert/modify"; 
+        log.info("Showing modify form for originalExpert: {}", originalExpert);
+        
+        return "expert-input"; 
     }
+    
 
-    @PostMapping("/modify")
-    public String modifyExpert(@ModelAttribute Expert modifiedExpert) {
-        log.info("Modifying expert information for expertIdx: {}", modifiedExpert.getExpertIdx());
-
-        expertInputService.modifyExpert(modifiedExpert);
-
-        return "redirect:/expert/modify";
+    @PostMapping("/input")
+    public String modifyExpert(@ModelAttribute Expert expert, Model model) {
+        log.info("Modifying expert information for expertIdx: {}", expert.getExpertIdx());
+        expertInputService.modifyExpert(expert);
+        model.addAttribute("message", "전문가 수정을 완료하였습니다.");
+                
+        return "expertupdate-success";
     }
 }
