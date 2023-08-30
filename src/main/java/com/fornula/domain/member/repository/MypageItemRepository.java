@@ -1,12 +1,9 @@
 package com.fornula.domain.member.repository;
 
-import com.fornula.domain.item.dto.Category;
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.item.dto.Purchase;
-import com.fornula.domain.member.dto.mypage.ItemExpert;
+import java.util.List;
+import com.fornula.domain.member.dto.mypage.Itempurchase;
 
 public interface MypageItemRepository {
 
-	Purchase selectPurchaseMypage (int memberIdx);
-	//ItemExpert selectItemMypage (int memberIdx);
+	  List<Itempurchase> selectPurchaseMypage (int memberIdx);
 }
