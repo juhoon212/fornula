@@ -164,10 +164,10 @@ a{
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
                             게시글 쓰기
                         </h4>
-                        <form id="commentform" class="comment-form form-horizontal">          
+                        <form id="commentform" class="comment-form form-horizontal" action="/board/add">          
                             <div class="form-group row">
                                 <div class="col">
-                                    <textarea class="form-control" name="comment" rows="8" title="Comment"
+                                    <textarea class="form-control" name="content" rows="8" title="Comment"
                                               placeholder="Comment" aria-required="true" required="required"></textarea>
                                 </div>
                             </div>

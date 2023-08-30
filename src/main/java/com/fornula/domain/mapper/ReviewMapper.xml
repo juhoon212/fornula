@@ -21,7 +21,8 @@
 									on review.purchase_idx = purchase.purchase_idx
 								join item
 									on purchase.item_idx = item.item_idx
-			where item.item_idx = #{itemIdx}) reviewList)
+			where item.item_idx = #{itemIdx}
+			order by desc) reviewList)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
@@ -56,13 +57,27 @@
 			where item.item_idx = #{itemIdx}
 	</select>
 	
-	<!-- SELECT * from(
-			SELECT rownum rn, itemlist.*
-			FROM (
-				SELECT item.item_idx, item.category_idx, item.EXPERT_IDX, item_name, item_content, item.PRICE ,
-						 photo.PHOTO_IDX , photo.ITEMFILE_NAME 
-				FROM item JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
-				) itemlist)
-			WHERE rn BETWEEN #{startRow} AND #{endRow} -->
+	<insert id="addReview" >
+		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+			select review_seq.nextval from dual
+		</selectKey>
+		
+		insert into review values(
+			#{memberIdx},
+			#{purchaseIdx},
+			#{memberIdx},
+			5,
+			#{content},
+			sysdate,
+			1,
+			null,
+			null,
+			null		
+		)
+		
+	
+	</insert>
+	
+	
 
 </mapper>
