@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.admin.mapper.java.AdminMapper">
-	<!-- 관리자 상품 수정(삭제 처리)-->
+
+
+
+	<update id="updateMemberStatus" parameterType="AdminMember">
+		update member 
+		set member_status=0
+		where member_idx=#{memberIdx}
+	</update>
+
 	<update id="updateItemStatus" parameterType="com.fornula.domain.item.dto.Item">
 		update item 
 		set item_status=0
 		where item_idx=#{itemIdx}
 	</update>
+ 
 	
+		<!-- 01. 회원록록 페이지 -->
+	<select id="memberList" resultType="AdminMember">
+		select * from (select rownum rn, board.* from (select member_idx, id, member_status, member_date 
+			from member where member_status in (1,2) order by member_idx ) board) where rn between #{startRow} and #{endRow} 
+	</select>
 	
-		<!-- 01. 회원록록 -->
-	<select id="memberList" resultType="com.fornula.domain.admin.dto.AdminMember">
-		select  member_idx,
-				id,
-				member_status,
-				member_date
-		from member
-		order by member_idx
+	<select id="memberListCount" resultType="int">
+		select count(*) from member
 	</select>
 	
 	<!-- 상품 목록 -->
-	
+	<!-- 
 	<select id="itemList" resultType="com.fornula.domain.admin.dto.AdminItem">
-		select  item_idx,
+			select  item_idx,
 				item_name,
 				category_idx,
 				item_date
 		from item
+		where item_status = 1
 		order by item_idx
 		</select>
+		 -->
+	<!-- 상품 목록 -->
+			<select id="itemList" resultType="AdminItem">
+		select * from (select rownum rn, board.* from (select item_idx, item_name, category_idx, item_date 
+			from item where item_status = 1 order by item_idx ) board) where rn between #{startRow} and #{endRow} 
+	</select>
+	
+	<select id="itemListCount" resultType="int">
+		select count(*) from item
+	</select>
+		
 		
 	
 </mapper>

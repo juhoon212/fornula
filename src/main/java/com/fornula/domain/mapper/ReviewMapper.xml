@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.board.mapper.java.ReviewMapper">
+
+	<select id="selectReview" resultType="Reviews" >
+		select 	review_idx,
+				review.member_idx,
+				review.content,
+				review_date,
+				review_status,
+				reviewfile_name,
+				answer_content,
+				answer_date,
+				item.item_idx
+		from review join purchase 
+						on review.purchase_idx = purchase.purchase_idx
+					join item
+						on purchase.item_idx = item.item_idx
+		where item.item_idx = #{itemIdx}
+	</select>
+
+</mapper>

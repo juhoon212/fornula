@@ -2,6 +2,7 @@ package com.fornula.domain.item.service;
 
 import org.springframework.stereotype.Service;
 
+import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.exception.custom.NotFoundExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
@@ -39,8 +40,9 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		return selectPhoto;
 	}
 
-	
-	
-	
+	@Override
+	public Reviews getReviewList(int pageNum) {
 
+		return itemDetailDAO.getReviewList(pageNum);
+	}
 }

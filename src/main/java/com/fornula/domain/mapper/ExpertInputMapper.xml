@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.expert.mapper.java.ExpertInputMapper">
+   <!-- 전문가 마이페이지 중 전문가 정보 수정/등록 페이지에서 전문가 가입 시 받은 정보, 전문가 정보 수정/등록 페이지에서 추가한 정보들을 수정할 때 사용할 SQL문 -->
+	<update id="updateExpert">
+		UPDATE expert SET
+			phone = #{phone},
+			interest = #{interest},
+			introduce = #{introduce},
+			career = #{career},
+			company_one = #{companyOne},
+			company_two = #{companyTwo},
+			company_three = #{companyThree},
+			expertfile_name = #{expertfileName}
+		WHERE expert_idx = #{expertIdx}
+	</update>
+   
+   <!-- 기존에 작성된 전문가의 정보를 출력하는 용도의 SQL문 -->
+	<select id="originalExpert" resultType="Expert">
+       SELECT expert_idx 
+       	   ,phone
+           ,interest
+           ,introduce
+           ,career
+           ,company_one
+           ,company_two
+           ,company_three
+           ,expertfile_name
+       FROM EXPERT
+       WHERE expert_idx=#{expertIdx}
+   </select>
+</mapper>

@@ -118,126 +118,67 @@ height : vh ;
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
 
-<main class="main container">
-<div id="info">
-<div class="row">
-	<div class="col-12 col-lg-8">
-		<div class="widget">    
-			<form class="story-posts" id="content">              
-	        	<div class="box" style="height:1200px">
-	        	<!-- iframe 태그는 유튜브 영상같은거 가져오는데도 좋다고함 -->
-	        	<!-- 아니 왜안되는데 이거 경로 진짜 열받게하네 -->
-	        	<!-- ex. <iframe width='500' height='350' src='https://youtu.be/F6OJslByCYQ?si=dEkTsFqCpZ3CGyvq'></iframe> -->
-	        		<iframe src="$/resources/upload/portfolio/phy.pdf" width="700" height="380"></iframe>
-					<div class="form-group row">
-						<div class="col">
-							<input type="text" value="${Member.id }" placeholder="전문가 아이디" readonly>
-							<input type="text" value="${Expert.phone }" placeholder="전문가 전화번호" readonly>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col">
-							<input type="text" value="${Expert.interest }" placeholder="전문분야" readonly>
-							<input type="text" value="${Expert.career }" placeholder="전문분야 연차" readonly>
-						</div>
-					</div>   
-					<div class="form-group row">
-						<div class="col">
-							<input type="text" value="${Expert.companayOne }" placeholder="회사1" readonly>
-							<input type="text" value="${Expert.companyTwo }" placeholder="회사2" readonly>
-							<input type="text" value="${Expert.companyThree }" placeholder="회사3" readonly>
-						</div>
-					</div>
-					<div>
-						<textarea style="width:650px; height:190px;" readonly>
-							자기소개
-							${Expert.introduce }
-						</textarea>
-					</div>    
-					<div>
-						<div class="row row-cols-1 row-cols-md-3 g-4" style="width:">
-							<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-									<div class="card-body">
-										<ul class="post-meta">
-											<li><a href="single.html">2023/8/17</a></li>
-											<li><a href="#">카테고리1</a></li>
-										</ul>
-									<h5 class="post-title card-title"><a href="single.html">코인 투자 분석</a></h5>
-										<p class="post-text card-text">
-											우리가 소제목을 안받으니까 여기다간 내용이 오도록 해야 함ddddddddd
-										</p>
-									</div>
-							</div>
-							<div id="post-1" class="post type-post post-1 card post-card post-grid-card h-100">
-								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-									<div class="card-body">
-										<ul class="post-meta">
-											<li><a href="single.html">2023/8/17</a></li>
-											<li><a href="#">카테고리2</a></li>
-										</ul>
-									<h5 class="post-title card-title"><a href="single.html">뭘봐</a></h5>
-										<p class="post-text card-text">
-											진짜 이건 또 어케 띄우냐 하 개열받네 진짜 또 이거 칸도 염병을하네
-										</p>
-									</div>
-							</div>
-							<div id="post-2" class="post type-post post-2 card post-card post-grid-card h-100">
-								<img class="card-img-top img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
-									<div class="card-body">
-										<ul class="post-meta">
-											<li><a href="single.html">2023/8/16</a></li>
-											<li><a href="#">카테고리3</a></li>
-										</ul>
-										<h5 class="post-title card-title"><a href="single.html">개구리</a></h5>
-										<p class="post-text card-text">
-											개굴개굴개굴개꿀깨꿀꺠루럐루꺠루꺠루ㅒ꾸럐ㅜ럐꾸ㅒ루ㅒ루ㅒ루럐
-										</p>
-									</div>
-							</div>
-						</div>	
-					</div>		
-	        	</div>
-        	</form>
-        </div> 
-	</div>   
-	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">
-			<div id="button">
-				<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-					class="rounded-circle" alt="Author" width="200" height="200">
-			</div>
-			<div id="button">
-				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
-			</div>
-			<div class="widget widget_tag_cloud">
-				<div class="tagcloud">
-					<div id="button">
-						<a href="mypage-purchase" class="tag-cloud-link"
-							aria-label="admin change button">일반회원으로 전환</a>
-					</div>
-					<div class="tab_menu">
-						<div class="widget" style="text-align: left;" id="list">
-							<h3 class="widget-title">판매 관리</h3>
-							<ul>
-								<li>
-									<a href="expertinput" class="expertInput" href="#" onclick="location.href='expert-input.jsp'">전문가 정보 수정</a>
-								</li>
-								<li>
-									<a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
-								</li>
-								<li>
-									<a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</main>
+    <main class="main container">
+        <div id="info">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="widget">
+                        <form class="story-posts" id="content">
+                            <div class="box" style="height:1200px">
+								<!-- <iframe src="/resources/images/profolio/phy.pdf" width="100%" height="500px"></iframe> -->
+								<a href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">PDF 보기</a>
+                                <!-- 나머지 폼 요소들... -->
+                                <div>
+                                    <textarea style="width:650px; height:190px;" readonly>
+                                        자기소개
+                                        ${Expert.introduce}
+                                    </textarea>
+                                </div>
+                                <div>
+                                    <div class="row row-cols-1 row-cols-md-3 g-4" style="width:">
+                                        <!-- 나머지 포스트 요소들... -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+                    <div class="widget-sidebar story-sidebar">
+                        <div id="button">
+                            <img src="<c:url value="/pictures/placeholder/logo.png"/>" class="rounded-circle" alt="Author" width="200" height="200">
+                        </div>
+                        <div id="button">
+                            <a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
+                        </div>
+                        <div class="widget widget_tag_cloud">
+                            <div class="tagcloud">
+                                <div id="button">
+                                    <a href="mypage-purchase" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+                                </div>
+                                <div class="tab_menu">
+                                    <div class="widget" style="text-align: left;" id="list">
+                                        <h3 class="widget-title">판매 관리</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="expertinput" class="expertInput" href="#" onclick="location.href='expert-input.jsp'">전문가 정보 수정</a>
+                                            </li>
+                                            <li>
+                                                <a href="expertmypage" class="expertMypage" href="#" onclick="location.href='expert-mypage.jsp'">판매 관리</a>
+                                            </li>
+                                            <li>
+                                                <a href="expertitem" class="expertItem" href="#" onclick="location.href='expert-item.jsp'">상품 등록</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 <jsp:include page="footer.jsp"/>
 
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>

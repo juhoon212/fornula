@@ -1,5 +1,7 @@
 package com.fornula.domain.item.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,16 @@ public class ItemDetailController {
 	
     private final ItemDetailService itemDetailService;
    
-   @GetMapping("/{itemIdx}")
-   public String itemIdx(@PathVariable Integer itemIdx, Model model) {
-    	
+   @GetMapping("/{itemIdx}/{pageNum}")
+   public String itemIdx(@PathVariable Integer itemIdx, 
+		   				@PathVariable Integer pageNum,
+		   				Model model
+		   				) {
+	   
+	   	if(pageNum == null) {
+	   		pageNum = 1;
+	   	}
+
     	Item findItem = itemDetailService.getItem(itemIdx);
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
     	
@@ -36,6 +45,10 @@ public class ItemDetailController {
     	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1); // 사진 로직
     	
     	
+//    	Map<String, Object> map = itemDetailService.getReviewList(pageNum); // 후기 로직
+		
+//		model.addAttribute("pager", map.get("pager"));
+//		model.addAttribute("fileBoardList", map.get("fileBoardList"));
     	
     	
     	
@@ -47,4 +60,3 @@ public class ItemDetailController {
     	return "item";
     }
 }
-

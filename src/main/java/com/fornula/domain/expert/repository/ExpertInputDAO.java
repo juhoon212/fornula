@@ -1,10 +1,9 @@
 package com.fornula.domain.expert.repository;
 
 import com.fornula.domain.expert.dto.Expert;
+import com.fornula.domain.item.dto.Category;
 
 public interface ExpertInputDAO {
-	int updateExpert(Expert expert);
-//	List<Item> selectExpertItemList(Map<String, Object> map);
-	int insertExpertInfo(Expert expert);
-//	int selectExpertBoardCount();
+    void updateExpert(Expert expert);
+    Expert originalExpert(int expertIdx);
 }
