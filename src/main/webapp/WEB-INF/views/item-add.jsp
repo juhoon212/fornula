@@ -42,7 +42,7 @@
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
                      
-                        <form class="contact-form mt-5" method="post" action="/item/add/${expertIdx}">
+                        <form class="contact-form mt-5" method="post" action="<c:url value="/item/add/${expertIdx}"/>">
                             <div class="form-group row" id="expertIdx">
 								<div class = "error-msg"></div>
                                 <div class="col" id="price">

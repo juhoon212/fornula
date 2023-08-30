@@ -41,7 +41,7 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품사진 등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-                    <form action="/item/photo/add/${itemIdx}" method="POST" enctype="multipart/form-data">
+                    <form action="<c:url value="/item/photo/add/${itemIdx}"/>" method="POST" enctype="multipart/form-data">
                         <section id="upload">
 								<h3>사진 등록</h3>
 								<input class="form-control" type="file" id="formFile" multiple="multiple" name="multipartFile"> 
