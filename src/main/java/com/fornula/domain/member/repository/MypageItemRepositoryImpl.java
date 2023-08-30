@@ -22,10 +22,5 @@ public class MypageItemRepositoryImpl implements MypageItemRepository{
 		return sqlSession.getMapper(MypageItemMapper.class).selectPurchaseMypage(memberIdx);
 	}
 
-	@Override
-	public ItemExpert selectItemMypage(int memberIdx) {
-		
-		return sqlSession.getMapper(MypageItemMapper.class).selectItemMypage(memberIdx);
-	}
 
 }
