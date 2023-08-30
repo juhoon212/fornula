@@ -85,12 +85,12 @@
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">${purchaseMypage.purchaseDate}</a></li>
-                                    <li><a href="#">${purchaseMypage.purchaseStatus} </a></li>
+                                    <li><a href="single.html"></a></li>
+                                    <li><a href="#"></a></li>
                                 </ul>
                                 <p class="post-text card-text">
-                                <h6 class="post-title card-title">${purchaseMypage.purchaseIdx}</h6>
-                                <h4 class="post-title card-title"><a href="single.html">${purchaseMypage.itemName}</a>
+                                <h6 class="post-title card-title"></h6>
+                                <h4 class="post-title card-title"><a href="single.html"></a>
                                 </h4>
                                 <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
@@ -98,7 +98,7 @@
                                    
                                         <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
                                              class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                                        By: <a href="#" class="author-link card-link">${member.id}</a>
+                                        By: <a href="#" class="author-link card-link"></a>
                                     </div>
                                     
                                     <a href="single.html" class="more-link card-link d-flex align-items-center">

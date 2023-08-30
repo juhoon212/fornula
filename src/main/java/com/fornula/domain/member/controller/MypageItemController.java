@@ -3,6 +3,7 @@ package com.fornula.domain.member.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,28 +23,25 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class MypageItemController {
 
-	private final MypageItemService service;
+	private final MypageItemService itemService;
+	
 	
 	@GetMapping("/mypagePurchase")
-	   public String mypagePurchase() {
-		   return "mypage-purchase";
-	   }
-	
-	@PostMapping("/mypagePurchase")
-	public String mypagePurchase(@ModelAttribute InfoCategory category, HttpSession session) {
+	public String mypagePurchase(HttpSession session, Model model) {
 	
 		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		
 		
-	    Purchase purchaseMypage =service.mypageItemPurchase(member.getMemberIdx());
-	    ItemExpert itemMypage =service.mypageItemExpert(member.getMemberIdx());
+	  Purchase purchaseMypage =itemService.mypageItemPurchase(member.getMemberIdx());
+	 
+	   // ItemExpert itemMypage =service.mypageItemExpert(member.getMemberIdx());
 		   
-	    session.setAttribute("member", member);
-	    session.setAttribute("purchaseMypage", purchaseMypage);
-	    session.setAttribute("itemMypage", itemMypage);
-	   
+	    //model.addAttribute("member", member);
+	    //model.addAttribute("purchaseMypage", purchaseMypage);
+	   // session.setAttribute("itemMypage", itemMypage);
+	    
 		
 		   
-		   return "mypage-info"; 
+		return "mypage-purchase"; 
 	}
 }

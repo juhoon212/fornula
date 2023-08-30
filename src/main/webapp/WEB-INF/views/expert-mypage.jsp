@@ -236,7 +236,7 @@ tr td{
 
 						<div id="button">
 							<img src="<c:url value="/pictures/placeholder/logo.png"/>"
-								class="rounded-circle" alt="Author" width="200" height="200">
+								class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
 						</div>
 						<div id="button">
 							<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
@@ -245,7 +245,7 @@ tr td{
 
 							<div class="tagcloud">
 								<div id="button">
-									<a href="mypage-purchase" class="tag-cloud-link"
+									<a href="/mypageInfo" class="tag-cloud-link"
 										aria-label="admin change button">일반회원으로 전환</a>
 								</div>
 								<div class="tab_menu">
