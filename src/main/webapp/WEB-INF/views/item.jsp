@@ -33,10 +33,22 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap" rel="stylesheet">
+	
+	
+	
+	
+	
 
 <style type="text/css">
 h1{
-	font-size:15px;
+	font-size:35px;
+}
+
+h4{
+	font-size:20px;
 }
 a{
 	color: black;
@@ -46,6 +58,68 @@ a{
 	padding: 10px; /* 내부 여백 설정 */
     background-color: green; /* 배경색 설정 */
 }
+
+.col-lg-8 {
+    flex: 0 0 83.66667%;
+    max-width: 83.3333%;
+}
+.post-content {
+	margin-top : 43px;
+	font-family : "Noto+Sans+KR:wght@200";
+}
+
+.post-content#detailbox {
+   width: 100%;
+   height: 115px;   
+   display : flex;
+  flex-direction: column;
+  align-items: flex-end;
+ /* border-bottom : solid 1px gray; */
+  margin-top : 80px;
+}
+
+.post-content#detailbox button {
+	background-color: #ffb32f;
+  color: #f8f8f8;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  font-weight: 400;
+  border-radius: 5px;
+  transition: .1s;
+	
+}
+
+.post-content#detailbox button:focus-visible {
+	 outline: 0px solid;
+  background-color: #da8a00;
+	
+}
+
+.post-content#detailbox button:hover {
+	
+	outline: 0px solid;
+  background-color: #da8a00;
+}
+
+
+
+
+
+
+.gongback {
+	 margin-top : 43px;
+  margin-bottom: -14px;
+  display :flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#jul {
+	margin-bottom : 20px;
+	/*border-bottom : solid 1px gray;*/
+}
+
 </style>
 <script type="text/javascript">
     function disableLink() {
@@ -61,18 +135,9 @@ a{
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
-                    </div>
-                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-                        <div class="post-content">
-                            <h1>제목 : ${item.itemName }</h1><br>
-                            <h1><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h1>
-                            <h1>등록 날짜 : ${item.itemDate }</h1>
-                            <h1>내용 : ${item.itemContent }</h1>
-                            <h1>가격 : ${item.price }</h1>
-                            <button onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
-                        </div>
-                        <hr>
+                        
+                         <h1>${item.itemName }</h1>
+                        
                         <div>
                             <a href="#" onclick="return disableLink()">
 					            # ${item.categoryIdx == 1 ? '그래픽' :
@@ -87,6 +152,31 @@ a{
 					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
 					        </a>
                         </div>
+                        
+                       
+                          
+                            
+                        <div class="gongback">
+							  <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>                        
+                            <h4 >${item.itemDate }</h4>
+                        </div>
+                        <hr>
+                        <div id ="jul">&nbsp</div>    
+                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
+                    </div>
+                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
+                        <div class="post-content">
+                           
+                            <h4>${item.itemContent }</h4>
+                           <div class = "post-content" id = "detailbox">
+                            <h4 style = "float :right;">₩${item.price }</h4>
+                            <button style = "float : right;"onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                            <hr>
                     </div>
                 </div>
             </div>
@@ -97,26 +187,25 @@ a{
 	            <div class="row justify-content-center comments-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8">
                     <h4 class="comments-title font-weight-bold">
-                        Comments <span class="comments-number">(5)</span>
+                        Comments
                     </h4>
-
-                    <ul class="comment-list list-unstyled">
+					<c:forEach var="reviewList" items="${reviewList}">
+						<ul class="comment-list list-unstyled">
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
                                  src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
-                                        <a href="#">Commenter</a>
+                                       <span>${reviewList.member.id}</span>
                                     </h5>
                                     <div class="comment-date">
-                                        <a href="#">May 24, 2017 at 11:47 am</a>
+                                         <span>${reviewList.review.reviewDate}</span>
                                     </div>
                                 </div>
                                 <div class="comment-text">
                                     <p>
-                                        주훈아 이거는 그냥 댓글이 각 ul 태그에다가 ID=1 / ID=2 ... 이렇게 붙여놓고 해당 댓글로 이동하고
-                                        싶으면 그냥 #ID값을 사용해서 이동하게 하면 된단다
+                                        ${reviewList.review.content}
                                     </p>
                                 </div>
                                 <ul class="comment-meta">
@@ -134,7 +223,9 @@ a{
                             </div>
                         </li>
                         
-                                </ul>
+                      </ul>
+					</c:forEach>
+                    
                                 </div>
                                 </div>
 
@@ -163,10 +254,10 @@ a{
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
                             게시글 쓰기
                         </h4>
-                        <form id="commentform" class="comment-form form-horizontal">          
+                        <form id="commentform" class="comment-form form-horizontal" action="/board/add">          
                             <div class="form-group row">
                                 <div class="col">
-                                    <textarea class="form-control" name="comment" rows="8" title="Comment"
+                                    <textarea class="form-control" name="content" rows="8" title="Comment"
                                               placeholder="Comment" aria-required="true" required="required"></textarea>
                                 </div>
                             </div>

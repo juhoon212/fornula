@@ -1,6 +1,7 @@
 package com.fornula.domain.board.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -17,14 +18,14 @@ public class ReviewRepositoryImpl implements ReviewRepository{
 	private final SqlSession sqlSession;
 
 	@Override
-	public List<Reviews> selectReviews(int pageNum, int itemIdx) {
-		return sqlSession.getMapper(ReviewMapper.class).selectReivewList(pageNum, itemIdx);
+	public List<Reviews> selectReviews(Map<String, Object> map) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReview(map);
 	}
 
+
 	@Override
-	public int countReview() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int countReview(int itemIdx) {
+		return sqlSession.getMapper(ReviewMapper.class).countReview(itemIdx);
 	}
 
 }

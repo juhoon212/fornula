@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.ItemPayment;
 import com.fornula.domain.item.mapper.java.ItemPaymentMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,14 @@ import lombok.RequiredArgsConstructor;
 public class ItemPaymentRepositoryImpl implements ItemPaymentRepository{
 
 	private final SqlSession sqlSession;
-	
-	
-	@Override
-	public Item selectItemPayment(int itemIdx) {
 
+	@Override
+	public ItemPayment selectItemPayment(int itemIdx) {
+		
 		return sqlSession.getMapper(ItemPaymentMapper.class).selectItemPayment(itemIdx);
 	}
+	
+	
+	
 
 }

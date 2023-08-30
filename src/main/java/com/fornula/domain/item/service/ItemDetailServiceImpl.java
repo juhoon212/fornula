@@ -43,18 +43,6 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		Photo selectPhoto = itemDetailDAO.selectPhoto(itemIdx);
 		return selectPhoto;
 	}
-
-	@Override
-	public Map<String, Object> getReviewList(int pageNum, int itemIdx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int countReview() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 
 	

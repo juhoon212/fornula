@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fornula.domain.board.service.ReviewService;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
@@ -27,9 +29,10 @@ public class ItemDetailController {
 	
 	
     private final ItemDetailService itemDetailService;
+    private final ReviewService reviewService;
    
    @GetMapping("/{itemIdx}/{pageNum}")
-   public String itemIdx(@PathVariable Integer itemIdx, 
+   public String showItemsAndReviews(@PathVariable Integer itemIdx, 
 		   				@PathVariable Integer pageNum,
 		   				Model model
 		   				) {
@@ -39,23 +42,27 @@ public class ItemDetailController {
 	   	}
 
     	Item findItem = itemDetailService.getItem(itemIdx);
+    	findItem.setItemDate(findItem.getItemDate().substring(0,10));
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
+    	
+    	
     	
     	int pos = selectPhoto.getItemfileName().lastIndexOf("_");
     	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1); // 사진 로직
-    	
-    	
-//    	Map<String, Object> map = itemDetailService.getReviewList(pageNum); // 후기 로직
-		
-//		model.addAttribute("pager", map.get("pager"));
-//		model.addAttribute("fileBoardList", map.get("fileBoardList"));
-    	
-    	
     	
     	model.addAttribute("item", findItem);
     	model.addAttribute("originalFileName", originalFileName);
     	
     	
+    	Map<String, Object> selectReviews = reviewService.selectReviews(pageNum, itemIdx); // 게시판 로직
+    	
+    	if(selectReviews.get("reviewList") == null) {
+    		
+    		return "redirect:/404";
+    	}
+		
+		model.addAttribute("pager", selectReviews.get("pager"));
+		model.addAttribute("reviewList", selectReviews.get("reviewList"));
     	
     	return "item";
     }

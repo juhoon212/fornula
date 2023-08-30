@@ -130,6 +130,7 @@ p #logo {
 						<i class="fas fa-bars fa-lg fa-fw text-dark"></i>
 					</button>
 				</div>
+
 				<c:if
 					test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
 

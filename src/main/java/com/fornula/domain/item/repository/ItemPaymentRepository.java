@@ -1,9 +1,9 @@
 package com.fornula.domain.item.repository;
 
 
-import com.fornula.domain.item.dto.Item;
+import com.fornula.domain.item.dto.ItemPayment;
 
 public interface ItemPaymentRepository {
 	
-	Item selectItemPayment(int itemIdx);
+	ItemPayment selectItemPayment(int itemIdx);
 }
