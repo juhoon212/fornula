@@ -33,6 +33,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap" rel="stylesheet">
+	
+	
+	
+	
+	
 
 <style type="text/css">
 h1{
@@ -55,6 +63,26 @@ a{
     flex: 0 0 83.66667%;
     max-width: 83.3333%;
 }
+.post-content {
+	font-family : "Noto+Sans+KR:wght@200";
+}
+
+.post-content#detailbox {
+   width: 100%;
+   height: 150px;   
+   display : flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-bottom : solid 1px gray;
+  padding-top : 37px
+}
+
+.post-content#detailbox button {
+	float : right;
+}
+
+
+
 
 .gongback {
 	 margin-top : -5px;
@@ -108,8 +136,8 @@ a{
                            
                             <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>
                             <h4>내용 : ${item.itemContent }</h4>
-                            <div class= "gongback" id = "jul" style = "float :right;">
-                            <h4>가격 : ${item.price }</h4>
+                           <div class = "post-content" id = "detailbox">
+                            <h4 style = "float :right;">가격 : ${item.price }</h4>
                             <button style = "float : right;"onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
                             </div>
                         </div>

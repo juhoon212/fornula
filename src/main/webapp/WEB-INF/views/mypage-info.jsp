@@ -169,9 +169,8 @@
 
 /* 이메일 버튼 안 a태그 속성*/
 .changeEmail {
-padding : 6px;
    border: none;
-   padding: 5px 10px;
+   padding: 7px;
    color: #000;
    text-align : center;
 }
