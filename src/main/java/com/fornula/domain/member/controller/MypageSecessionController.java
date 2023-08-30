@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,7 @@ public class MypageSecessionController {
    }
    
    @PostMapping("/mypageSession")                                                  //Custom 예외 처리
-   public String Session(@ModelAttribute Secession secession, HttpSession session) throws MypageIdExcepion{
+   public String Session(@ModelAttribute Secession secession, HttpSession session,Model model) throws MypageIdExcepion{
 	   Member joinMember = service.mypageSecession(secession.getId());
 	   
 	   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
@@ -44,7 +45,8 @@ public class MypageSecessionController {
 	   //회원 탈퇴 세션없앰
 	   session.invalidate();
 	   
+	   model.addAttribute("message", "그동안 이용해주셔서 감사합니다.");
 	   
-	   return "main";
+	   return "common-success";
    }
 }

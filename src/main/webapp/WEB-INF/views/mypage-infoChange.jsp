@@ -274,7 +274,7 @@ h3 {
       
       <div id="join" style = "float : right; margin-top : -10px;">
           <input type="button" class="changeBtn" style = "float:right;" value="회원수정"
-                              onclick="submitCheck();">
+                              onclick="infoChangeCheck();">
                               </div>
       <span>&nbsp</span>
     </form>
@@ -341,7 +341,7 @@ h3 {
  
 
  
- function submitCheck() {
+ function infoChangeCheck() {
 
 	 infoFormChange.submit();
 

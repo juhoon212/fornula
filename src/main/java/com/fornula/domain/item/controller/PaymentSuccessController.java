@@ -30,20 +30,21 @@ public class PaymentSuccessController {
 	 
 		
 		@GetMapping("/paymentSuccess/{itemIdx}")
-		public String postPayment(@PathVariable Integer itemIdx, HttpSession session) {
+		public String postPayment(@PathVariable Integer itemIdx, HttpSession session, Model model) {
 			
 			log.info("itemIdx = {}", itemIdx);
 			
 			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 			log.info("member.getId() = {}", member.getId());
 			
-			//sales 테이블에서 오류남.
+			
 			service.PaymentSalesSuccess(itemIdx);
 			
-		    //service.itemPaymentSuccess(itemIdx,member.getMemberIdx());
+		    service.PaymentPurchaseSuccess(itemIdx,member.getMemberIdx());
 			 
+		    model.addAttribute("message", "결제 성공하였습니다.");
 		    
-		    return "payment-success"; 
+		    return "common-success"; 
 		}
 		
 		
