@@ -1,9 +1,9 @@
 package com.fornula.domain.item.service;
 
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.item.dto.ItemPayment;
+
 
 public interface ItemPaymentService {
-   Item itemPayment(int memberIdx);
+	ItemPayment itemPayment(int memberIdx);
   
 }

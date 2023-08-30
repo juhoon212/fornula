@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.item.dto.itemPayment.ItemPayment;
+import com.fornula.domain.item.dto.ItemPayment;
 import com.fornula.domain.item.service.ItemPaymentService;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
@@ -31,7 +31,7 @@ public class PaymentController {
 		@GetMapping("/payment/{itemIdx}")
 		public String getPayment(@PathVariable Integer itemIdx, Model model) {
 			
-			Item payment = service.itemPayment(itemIdx);
+			ItemPayment payment = service.itemPayment(itemIdx);
 			
 			model.addAttribute("itemIdx", itemIdx);
 			model.addAttribute("payment", payment);

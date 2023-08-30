@@ -42,6 +42,7 @@ public class ItemDetailController {
 	   	}
 
     	Item findItem = itemDetailService.getItem(itemIdx);
+    	findItem.setItemDate(findItem.getItemDate().substring(0,10));
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
     	
     	

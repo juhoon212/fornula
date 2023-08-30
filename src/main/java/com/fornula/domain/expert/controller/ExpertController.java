@@ -25,13 +25,12 @@ public class ExpertController{
 	
 	private final ItemDetailService itemDetailService;
 	
-	
-	//전문가 마이페이지(판매관리)
-	@RequestMapping(value = "/mypage")
-	public String mypage() {
-		log.info("ExpertController 클래스의 mypage() 메소드 실행");
-		return "expert-main";
-	}	
+	/*
+	 * //전문가 마이페이지(판매관리)
+	 * 
+	 * @RequestMapping(value = "/mypage") public String mypage() {
+	 * log.info("ExpertController 클래스의 mypage() 메소드 실행"); return "expert-main"; }
+	 */
 
 	/*
 	 * //전문가 정보수정 페이지
@@ -59,13 +58,19 @@ public class ExpertController{
 			
 		return"item-add/{expertIdx}";
 	}
+	@GetMapping("/expert/sales")
+	public String expertsales() {
 		
-//	포트폴리오로 이동하는 메소드
-	@RequestMapping(value = "/expertoutput")
-	public String output() {
-		log.info("ExpertController 클래스의 mypage() 메소드 실행");
-		return "expert-output";
+		
+		return"expert-sales";
 	}
+
+	/*
+	 * // 포트폴리오로 이동하는 메소드
+	 * 
+	 * @RequestMapping(value = "/expertoutput") public String output() {
+	 * log.info("ExpertController 클래스의 mypage() 메소드 실행"); return "expert-output"; }
+	 */
 //	상품등록시 주의사항으로 넘어가는 메소드
 	@RequestMapping(value = "/expertitem")
 	public String item() {

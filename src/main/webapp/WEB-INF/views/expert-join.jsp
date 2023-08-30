@@ -181,7 +181,7 @@ h3 {
 								<div class="info">
 									<div id="introduce-input">
 										<textarea id="introduce" class="box"
-											placeholder="자기소개를 작성해주세요." maxlength=200 name="introduce"></textarea>
+											placeholder="자기소개를 500자 이내로 작성해주세요." maxlength=500 name="introduce"></textarea>
 									</div>
 								</div>
 							</section>
