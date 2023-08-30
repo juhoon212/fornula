@@ -202,13 +202,13 @@ h3 {
                            <div class="info" id="info__newPassword">
                               <input class="box" type="password" name="newPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
-                           <p align="left" style="color: red; font-size : 14px;" id="newPassword">${message }</p>
-                              <div class="error-msg" style = "width:250px;"></div>
+                           <p align="left" style="color: red; font-size : 14px;" id="newPassword"></p>
+                              <div class="error-msg" style = "width:210px;"></div>
                            </div>
                            <div class="info" id="info__reNewPassword">
                               <input class="box" type="password" name="reNewPassword"
                                  placeholder="비밀번호를 입력해 주세요.(8자리 이상)" />
-                           <p align="left" style="color: red; font-size : 14px;" id="reNewPassword">${message }</p>
+                           <p align="left" style="color: red; font-size : 14px;" id="reNewPassword"></p>
                               <div class="error-msg"></div>
                            </div>
 
@@ -244,12 +244,20 @@ h3 {
                <div class="widget widget_tag_cloud">
 
                   <div class="tagcloud">
-                     <div id="button">
-                        <a href="#" class="tag-cloud-link"
-                           aria-label="admin change button">전문가로 전환</a>
+                     
+
+							<div id="button">
+								<c:if test="${member.memberStatus == 1}">
+									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 등록</a>
+								</c:if>
+								<c:if test="${member.memberStatus == 2}">
+									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 전환</a>
+								</c:if>
+							</div>
 
 
-                     </div>
                      <div class="row">
                         <div class="widget">
                            <h3 class="widget-title">나의 정보</h3>
