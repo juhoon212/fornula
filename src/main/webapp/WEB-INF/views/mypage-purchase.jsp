@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-구매페이지</title>
+    <title>마이페이지 - 구매페이지</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,23 +32,21 @@
 </head>
 <style>
 #button{
-   display: flex;
-   justify-content: center;
-   align-items center;
-   padding-bottom: 2em;
-   
+	display: flex;
+	justify-content: center;
+	align-items center;
+	padding-bottom: 2em;
+	
 }
 
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
  
 <main class="main container">
- 
     <div class="row">
         <div class="col-12 col-lg-8">
         
-         <!-- 
+        
               <div class="widget">
                     <div class="input-group">
                          <select id="archive" class="form-control">
@@ -73,9 +71,8 @@
                         </div>
                     </div>
                 </div>
-                -->
+                
             <div class="story-posts">
-            <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">구매 관리</label>
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
                     <div class="card-body">
                        <div class="blog-posts">
@@ -93,9 +90,9 @@
                                 </ul>
                                 <p class="post-text card-text">
                                 <h6 class="post-title card-title">${purchaseMypage.purchaseIdx}</h6>
-                                <h4 class="post-title card-title"><a href="single.html">${itemMypage.itemName}</a>
+                                <h4 class="post-title card-title"><a href="single.html">${purchaseMypage.itemName}</a>
                                 </h4>
-                                <p class="subtitle">${itemMypage.itemContent}</p>
+                                <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
                                    
@@ -138,11 +135,11 @@
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
             
-            <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
+            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
                        
                   
                </div>
@@ -158,9 +155,9 @@
                     <h3 class="widget-title">나의 정보</h3>
                
                     <ul>
-                      <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
+                          <li><a href="<c:url value="/"/>">전문가 정보</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>

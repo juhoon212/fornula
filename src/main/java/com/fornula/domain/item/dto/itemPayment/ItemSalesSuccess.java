@@ -10,9 +10,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ItemPaymentSuccess {
-  private Item item;
-  private Member member;
-  
-  
+public class ItemSalesSuccess {
+	private int salesIdx;
+	private int itemIdx;
+	private String salesDate;
+	private int salesStatus;
 }

@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.dto;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -13,13 +15,11 @@ ITEM_IDX     NOT NULL NUMBER
 SALES_DATE   NOT NULL DATE   
 SALES_STATUS NOT NULL NUMBER  
 */
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Sales {
-	private int salesIdx;
+	private int salesIdx; 
 	private int itemIdx;
-	private String salesDate;
+	private Date salesDate;
 	private int salesStatus;
 }
