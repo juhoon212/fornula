@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.board.mapper.java.ReviewMapper">
 
-	<select id="selectReview" resultType="Reviews" >
+	<select id="selectReview" resultMap="Reviews">
 		select * from (
 			select rownum rn, reviewList.*
 			from (  select review_idx,
@@ -13,8 +13,11 @@
 							reviewfile_name,
 							answer_content,
 							answer_date,
-							item.item_idx
-					from review join purchase 
+							item.item_idx,
+							member.id
+					from member join review
+								on member.member_idx = review.member_idx
+								join purchase 
 									on review.purchase_idx = purchase.purchase_idx
 								join item
 									on purchase.item_idx = item.item_idx
@@ -22,11 +25,35 @@
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
+	<resultMap type="Reviews" id="Reviews">
+		<association property="review" javaType="Review">
+			<id column="review_idx" property="reviewIdx"/>
+			<result column="member_idx" property="memberIdx"/>
+			<result column="content" property="content"/>
+			<result column="review_date" property="reviewDate"/>
+			<result column="review_status" property="reviewStatus"/>
+			<result column="reviewfile_name" property="reviewfileName"/>
+			<result column="answer_content" property="answerContent"/>
+			<result column="answer_date" property="answerDate"/>
+		</association>
+		<association property="item" javaType="Item">
+			<id column="item_idx" property="itemIdx"/>			
+		</association>
+		<association property="member" javaType="Member">
+			<id column="member_idx" property="memberIdx"/>
+			<result column="id" property="id"/>		
+		</association>
+		
+	</resultMap>
+	
 	
 	<select id="countReview" resultType="int">
-		select count(*)
-		from review
-		where review_status = 1;
+		select count(review_idx)
+					from review join purchase 
+									on review.purchase_idx = purchase.purchase_idx
+								join item
+									on purchase.item_idx = item.item_idx
+			where item.item_idx = #{itemIdx}
 	</select>
 	
 	<!-- SELECT * from(
