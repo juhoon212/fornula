@@ -23,11 +23,33 @@ import com.fornula.domain.item.service.ItemDetailService;
 @RequiredArgsConstructor
 @RequestMapping("/expert")
 @Slf4j
-public class ExpertInputController {
+public class ExpertInfoController {
     private final ExpertInputService expertInputService;
     private final ItemDetailService itemDetailService;
     private final HttpSession session; // HttpSession 추가
 
+    //전문가 포트폴리오에서 정보 출력
+    @GetMapping("/output")
+    public String getExpert(@ModelAttribute Expert originalExpert, Model model) {
+    	Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
+    	int expertIdx = expert.getExpertIdx();
+    	
+    	log.info("Expert Info: expertIdx={}, phone={}, interest={}, career={}, companyOne={}, companyTwo={}, companyThree={}, introduce={}",
+    			expert.getExpertIdx(), expert.getPhone(), expert.getInterest(), expert.getCareer(),
+    			expert.getCompanyOne(), expert.getCompanyTwo(), expert.getCompanyThree(), expert.getIntroduce());
+    	
+//      기존 전문가 정보 조회
+    	originalExpert = expertInputService.getOriginalExpert(expertIdx);
+    	model.addAttribute("loginMember", loginMember);
+    	model.addAttribute("originalExpert", originalExpert);
+    	
+    	log.info("Showing modify form for expertIdx: {}", expertIdx);
+    	log.info("Showing modify form for originalExpert: {}", originalExpert);
+    	
+    	return "expert-output"; 
+    }
+    
     @GetMapping("/input")
     public String getOriginalExpert(@ModelAttribute Expert originalExpert, Model model) {
         Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
@@ -59,3 +81,5 @@ public class ExpertInputController {
         return "expertupdate-success";
     }
 }
+
+

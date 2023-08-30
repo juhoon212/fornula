@@ -91,4 +91,6 @@ public class ItemBoardServiceImpl implements ItemBoardService{
     public int getItemBoardCount() {
         return itemBoardDAO.selectItemBoardCount();
     }
+    
+   
 }
