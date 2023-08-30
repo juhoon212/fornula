@@ -32,7 +32,7 @@ public class MypageSecessionController {
 	   return "mypage-secession";
    }
    
-   @PostMapping("/mypageSession")
+   @PostMapping("/mypageSession")                                                  //Custom 예외 처리
    public String Session(@ModelAttribute Secession secession, HttpSession session) throws MypageIdExcepion{
 	   Member joinMember = service.mypageSecession(secession.getId());
 	   
@@ -41,7 +41,7 @@ public class MypageSecessionController {
 	   if( member.getId()!=joinMember.getId()) {
 		   return "mypage-secession";
 	   }
-	   
+	   //회원 탈퇴 세션없앰
 	   session.invalidate();
 	   
 	   

@@ -150,7 +150,7 @@ tr td {
 												<h4 class="post-title card-title">
 													<a href="single.html">${payment.itemName}</a>
 												</h4>
-												<p class="subtitle">${payment.itemContent}</p>
+												<p class="subtitle"></p>
 
 												<div
 													class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
@@ -202,7 +202,7 @@ tr td {
 									style="text-align: left; padding-left: 20px; margin: 0 auto;"
 									id="list">
 									<label>총 결제 금액</label>
-									<p>${payment.price}</p>
+									<p>₩ ${payment.price}</p>
 									<hr>
 
 									<input class="check" type="checkbox" name="agree"
