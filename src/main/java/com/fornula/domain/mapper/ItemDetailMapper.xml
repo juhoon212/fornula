@@ -26,7 +26,7 @@
 	<select id="findByMemberIdx" resultType="Expert">
 		select expert_idx
 		from member join expert on member.member_idx = expert.member_idx
-		where member.member_idx = #{member_idx}
+		where member.member_idx = #{memberIdx}
 	</select>
 	
 	<select id="selectPhoto" resultType="Photo">
@@ -34,6 +34,8 @@
 		from photo
 		where item_idx = #{itemIdx}
 	</select>
+	
+	
 	
 	
 	

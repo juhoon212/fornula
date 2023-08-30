@@ -3,20 +3,39 @@
 <mapper namespace="com.fornula.domain.board.mapper.java.ReviewMapper">
 
 	<select id="selectReview" resultType="Reviews" >
-		select 	review_idx,
-				review.member_idx,
-				review.content,
-				review_date,
-				review_status,
-				reviewfile_name,
-				answer_content,
-				answer_date,
-				item.item_idx
-		from review join purchase 
-						on review.purchase_idx = purchase.purchase_idx
-					join item
-						on purchase.item_idx = item.item_idx
-		where item.item_idx = #{itemIdx}
+		select * from (
+			select rownum rn, reviewList.*
+			from (  select review_idx,
+							review.member_idx,
+							review.content,
+							review_date,
+							review_status,
+							reviewfile_name,
+							answer_content,
+							answer_date,
+							item.item_idx
+					from review join purchase 
+									on review.purchase_idx = purchase.purchase_idx
+								join item
+									on purchase.item_idx = item.item_idx
+			where item.item_idx = #{itemIdx}) reviewList)
+		where rn between #{startRow} and #{endRow}
 	</select>
+	
+	
+	<select id="countReview" resultType="int">
+		select count(*)
+		from review
+		where review_status = 1;
+	</select>
+	
+	<!-- SELECT * from(
+			SELECT rownum rn, itemlist.*
+			FROM (
+				SELECT item.item_idx, item.category_idx, item.EXPERT_IDX, item_name, item_content, item.PRICE ,
+						 photo.PHOTO_IDX , photo.ITEMFILE_NAME 
+				FROM item JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+				) itemlist)
+			WHERE rn BETWEEN #{startRow} AND #{endRow} -->
 
 </mapper>

@@ -1,8 +1,11 @@
 package com.fornula.domain.item.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.board.dto.Reviews;
+import com.fornula.domain.board.repository.ReviewRepository;
 import com.fornula.domain.exception.custom.NotFoundExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ItemDetailServiceImpl implements ItemDetailService{
 	private final ItemDetailDAO itemDetailDAO;
+	private final ReviewRepository reviewRepository;
 //	상품 상세페이지에서 출력할 하나의 행(상세페이지엔 상품 하나만들어가니까)을 출력하는 용도
 	@Override
 	public Item getItem(int itemIdx) {
@@ -41,8 +45,17 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	}
 
 	@Override
-	public Reviews getReviewList(int pageNum) {
-
-		return itemDetailDAO.getReviewList(pageNum);
+	public Map<String, Object> getReviewList(int pageNum, int itemIdx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public int countReview() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+	
 }
