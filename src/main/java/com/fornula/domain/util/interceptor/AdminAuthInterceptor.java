@@ -12,7 +12,7 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//°ü¸®ÀÚ ÀÎÅÍ¼ÁÅÍ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½
 public class AdminAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
@@ -21,19 +21,18 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
 
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+		String requestURI = request.getRequestURI();
+		log.info("requestURI= {}",requestURI);
 
-		if (loginMember.getMemberStatus() != 9) {
-			log.info("°ü¸®ÀÚ°¡ ¾Æ´Ñ °æ¿ì ¿äÃ»");
+		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 9) {
+			log.info("admin interceptor");
 
-			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect("/");
 
 			return false;
 
 		}
-		String requestURI = request.getRequestURI();
-		log.info("requestURI= {}",requestURI);
 
-		response.sendRedirect(requestURI);
 		return true;
 	}
 }
