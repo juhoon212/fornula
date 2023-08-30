@@ -8,6 +8,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>">
 
     <link rel="stylesheet" id="montserrat-css"
           href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -128,6 +130,9 @@ a{
 </script>
 </head>
 <body class="single single-post">
+
+
+
 <jsp:include page="header.jsp" />
 
 <main class="main">
@@ -208,31 +213,43 @@ a{
                                         ${reviewList.review.content}
                                     </p>
                                 </div>
+                                
+                                	<div style="padding-left : 10px" class="d-bock d-md-flex w-100 justify-content-between">                        
+                                		<h5 class="comment-title">
+                                       <span style="color : blue;, font-size: 10px;, padding-left: 10px;">판매자</span>
+	                                    </h5>
+	                                    <div class="comment-date">
+	                                         <span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
+	                                    </div>
+	                                	</div>
+	                                	<div class="comment-text">
+	                                    <p>
+	                                        ${reviewList.review.answerContent}
+                                    	</p>
+                                	</div>
+                                
+                                    
                                 <ul class="comment-meta">
-                                    <li>
-                                        <a href="#" class="comment-edit">
-                                            <i class="fa fa-pencil-alt"></i> Edit
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="comment-reply">
+                               
+                                    <li id="replyButton">
+                                        <a id="reply-btn" href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>" class="comment-reply" >
                                             <i class="fas fa-reply fa-flip-horizontal"></i> Reply
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        	</li>
                         
-                      </ul>
+                     	 </ul>
 					</c:forEach>
                     
-                                </div>
-                                </div>
+                       </div>
+                    </div>
 
                                 
 
                     <hr/>
-                    <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
+                    <!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
                          role="navigation">
                         <a class="prev disabled" href="#">
                             Prev
@@ -247,7 +264,7 @@ a{
                         <a class="next" href="#">
                             Next
                         </a>
-                    </nav>
+                    </nav> -->
 					
 					<div style="height: 100px"></div>
                     <div id="respond" class="comment-respond">
@@ -285,5 +302,8 @@ a{
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

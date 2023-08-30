@@ -233,12 +233,7 @@ table th {
             <div class="widget-sidebar story-sidebar">
             
             <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
-              
-                  
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">관리자</a>
-                       
-                  
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>       
                </div>
                <div class="widget widget_tag_cloud">
                   

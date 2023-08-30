@@ -32,11 +32,11 @@
 </head>
 <style>
 #button{
-	display: flex;
-	justify-content: center;
-	align-items center;
-	padding-bottom: 2em;
-	
+   display: flex;
+   justify-content: center;
+   align-items center;
+   padding-bottom: 2em;
+   
 }
 
 </style>
@@ -48,34 +48,15 @@
         
         
               <div class="widget">
-                    <div class="input-group">
-                         <select id="archive" class="form-control">
-                        <option>전체상품</option>
-                        <option>이건뭘넣나</option>
-                        <option>?</option>
-                    </select>
-                      <select id="archive" class="form-control">
-                        <option>전체상태</option>
-                        <option>구매확정</option>
-                        <option>취소</option>
-                    </select>
-                      <select id="archive" class="form-control">
-                        <option ><input type="date"> </option>
-                    </select>
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                       
-                        </div>
-                    </div>
-                </div>
-                
+               </div>
+         
             <div class="story-posts">
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
+                <c:forEach var="Itempurchase" items="${Itempurchase}">
                     <div class="card-body">
+                      
                        <div class="blog-posts">
+                     
                 <div id="post-2" class="post type-post post-2 card post-card">
                     <div class="row">
                         <div class="col-md-4">
@@ -85,34 +66,32 @@
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
                                 <ul class="post-meta">
-                                    <li><a href="single.html"></a></li>
-                                    <li><a href="#"></a></li>
+                                    <li><a href="single.html">${Itempurchase.purchaseDate}</a></li>
+                                    <li><a href="#">₩ ${Itempurchase.price} </a></li>
                                 </ul>
                                 <p class="post-text card-text">
-                                <h6 class="post-title card-title"></h6>
-                                <h4 class="post-title card-title"><a href="single.html"></a>
+                                <h6 class="post-title card-title">${Itempurchase.purchaseIdx}</h6>
+                                <h4 class="post-title card-title"><a href="single.html">${Itempurchase.itemName}</a>
                                 </h4>
                                 <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
-                                   
-                                        <img src="<c:url value="/pictures/placeholder/32x32.svg"/>"
-                                             class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                                        By: <a href="#" class="author-link card-link"></a>
-                                    </div>
                                     
                                     <a href="single.html" class="more-link card-link d-flex align-items-center">
                                         리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
                                     </a>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                         </div>
+                        
                     </div>
+                    
                 </div>
-               
+               </c:forEach>
                 <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
                     <a class="prev disabled" href="#">
                         Prev
@@ -130,12 +109,13 @@
                     </a>
                 </nav>
             </div>
+        
         </div>
       
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
             
-            <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
+            <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
               
                   

@@ -1,9 +1,9 @@
 package com.fornula.domain.member.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import com.fornula.domain.item.dto.Purchase;
-import com.fornula.domain.member.dto.mypage.ItemExpert;
+import org.springframework.stereotype.Service;
+import com.fornula.domain.member.dto.mypage.Itempurchase;
 import com.fornula.domain.member.repository.MypageItemRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,8 +15,8 @@ public class MypageItemServiceImpl implements MypageItemService{
 	private final MypageItemRepository mypageItemRepository;
 	
 	@Override
-	public Purchase mypageItemPurchase(int memberIdx) {
-		Purchase mypageItemPurchase = mypageItemRepository.selectPurchaseMypage(memberIdx);
+	public   List<Itempurchase>  mypageItemPurchase(int memberIdx) {
+		List<Itempurchase> mypageItemPurchase = mypageItemRepository.selectPurchaseMypage(memberIdx);
 		return mypageItemPurchase;
 	}
 
