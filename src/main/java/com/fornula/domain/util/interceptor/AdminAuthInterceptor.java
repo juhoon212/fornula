@@ -24,7 +24,7 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
 		String requestURI = request.getRequestURI();
 		log.info("requestURI= {}",requestURI);
 
-		if (loginMember == null || loginMember.getMemberStatus() != 9) {
+		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 9) {
 			log.info("admin interceptor");
 
 			response.sendRedirect("/");
