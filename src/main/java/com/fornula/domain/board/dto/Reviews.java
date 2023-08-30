@@ -2,6 +2,7 @@ package com.fornula.domain.board.dto;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Purchase;
+import com.fornula.domain.member.dto.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class Reviews {
 	private Review review;
 	private Item item;
 	private Purchase purchase;
+	private Member member;
 }
