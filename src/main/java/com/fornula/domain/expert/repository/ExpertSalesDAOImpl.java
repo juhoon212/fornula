@@ -33,8 +33,8 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	}
 
 	@Override
-	public List<ItemSales> selectSalesList() {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList();
+	public List<ItemSales> selectSalesList(int expertIdx) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList(expertIdx);
 	}
 	
 	@Override

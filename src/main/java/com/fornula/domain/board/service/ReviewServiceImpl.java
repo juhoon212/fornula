@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.repository.ReviewRepository;
+import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.util.pager.Pager;
 
 import lombok.RequiredArgsConstructor;
@@ -42,5 +44,23 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return resultMap;
 	}
+
+	@Override
+	public int addReview(Review review) {
+		
+		int addResult = reviewRepository.addReview(review);
+		
+		return addResult;
+	}
+
+	@Override
+	public Purchase selectPurchase(int memberIdx, int itemIdx) {
+		
+		Purchase purchase = reviewRepository.selectPurchase(memberIdx, itemIdx);
+		
+		return purchase;
+	}
+	
+	
 
 }

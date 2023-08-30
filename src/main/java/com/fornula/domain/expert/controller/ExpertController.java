@@ -58,12 +58,7 @@ public class ExpertController{
 			
 		return"item-add/{expertIdx}";
 	}
-	@GetMapping("/expert/sales")
-	public String expertsales() {
-		
-		
-		return"expert-sales";
-	}
+	
 
 	/*
 	 * // 포트폴리오로 이동하는 메소드
@@ -76,5 +71,11 @@ public class ExpertController{
 	public String item() {
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
 		return "expert-item";
+	}
+	
+	@GetMapping(value = "/parkhayun")
+	public String test() {
+	    log.info("ExpertController 클래스의 test() 메소드 실행");
+	    return "redirect:/resources/images/phy.pdf";
 	}
 }

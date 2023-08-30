@@ -88,7 +88,7 @@ p #logo {
 				<div class="btn-container">
 					<button type="submit" id="login" class="btn btn-light">로그인</button>
 					<button type="button" id="join" class="btn btn-light"
-						onclick="location.href="<c:url value='/member/join'/>">회원가입</button>
+						onclick="location.href='/member/join'">회원가입</button>
 				</div>
 				<div id="logos">
 					<a href="<c:url value=""/>">

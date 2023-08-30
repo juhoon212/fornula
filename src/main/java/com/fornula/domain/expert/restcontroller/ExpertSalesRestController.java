@@ -29,6 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @RequestMapping("/expert")
 public class ExpertSalesRestController {
+	/*
 	private final ExpertSalesService expertSalesService;
 	
 	//판매내역을 출력하는 메소드
@@ -79,5 +80,5 @@ public class ExpertSalesRestController {
 		log.info("updateSalesStatus: {}",updateSalesStatus);
 		return ResponseEntity.ok(updateSalesStatus);
 	}
-	
+	*/
  }

@@ -16,8 +16,8 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 	private final ExpertSalesDAO expertSalesDAO;
 	
 	@Override
-	public List<ItemSales> getSalesList() {
-		return expertSalesDAO.selectSalesList();
+	public List<ItemSales> getSalesList(int expertIdx) {
+		return expertSalesDAO.selectSalesList(expertIdx);
 	}
 
 	@Override

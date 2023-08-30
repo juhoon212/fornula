@@ -254,7 +254,7 @@ a{
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
                             게시글 쓰기
                         </h4>
-                        <form id="commentform" class="comment-form form-horizontal" action="/board/add">          
+                        <form method="Post" id="commentform" class="comment-form form-horizontal" action="<c:url value="/board/add/${item.itemIdx}"/>">          
                             <div class="form-group row">
                                 <div class="col">
                                     <textarea class="form-control" name="content" rows="8" title="Comment"

@@ -30,7 +30,7 @@ public class ExpertSalesController {
     private final ItemDetailService itemDetailService;
 
 	//판매내역을 출력하는 메소드
-		@GetMapping("/list")
+		@GetMapping("/sales")
 		public String getSalesList(@ModelAttribute Expert originalExpert, HttpSession session, Model model){
 			
 			//세션에 있는 member_idx를 가져오기
@@ -38,14 +38,24 @@ public class ExpertSalesController {
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 	    	int expertIdx = expert.getExpertIdx();
 			log.info("expertIdx:{}",expertIdx);//로그출력
-			
-			
+
 			System.out.println("aaa");
-			List<ItemSales> salesList = expertSalesService.getSalesList();
-			log.info("list:{}",salesList);//로그출력
+			List<ItemSales> salesList = expertSalesService.getSalesList(expertIdx);
+			log.info("list:{}", salesList);// 로그출력
 			
+			int price = expertSalesService.searchPrice();
+
+			model.addAttribute("salesList", salesList);
+			model.addAttribute("price", price);
+			log.info("salesList:{}", salesList);
+			log.info("price:{}", price);
+
+			if (salesList.isEmpty()) {
+				model.addAttribute("message", "판매내역이 존재하지 않습니다.");
+				log.info("salesList:{}", salesList);
+			}
 			return "expert-sales";
-			
+
 		}
 
-}
+	}

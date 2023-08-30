@@ -37,10 +37,7 @@ public class ExpertJoinController {
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
 
-	@GetMapping("/sale")
-	public String sale() {
-		return "expert-sales";
-	}
+	
 
 	@GetMapping("/join")
 	public String join(HttpSession session) {

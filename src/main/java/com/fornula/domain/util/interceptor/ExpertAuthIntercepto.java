@@ -12,7 +12,7 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//Àü¹®°¡ ÀÎÅÍ¼ÁÅÍ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½
 public class ExpertAuthIntercepto implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
@@ -22,8 +22,8 @@ public class ExpertAuthIntercepto implements HandlerInterceptor {
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
 
-		if (loginMember.getMemberStatus() != 1) {
-			log.info("Àü¹®°¡°¡ ¾Æ´Ñ °æ¿ì ¿äÃ»");
+		if (loginMember.getMemberStatus() != 2) {
+			log.info("loginMember{}",loginMember);
 
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 

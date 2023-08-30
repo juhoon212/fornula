@@ -44,6 +44,7 @@ public class ExpertInfoController {
     	model.addAttribute("loginMember", loginMember);
     	model.addAttribute("originalExpert", originalExpert);
     	
+    	log.info("Showing modify form for memberIdx: {}",loginMember.getMemberIdx());
     	log.info("Showing modify form for expertIdx: {}", expertIdx);
     	log.info("Showing modify form for originalExpert: {}", originalExpert);
     	

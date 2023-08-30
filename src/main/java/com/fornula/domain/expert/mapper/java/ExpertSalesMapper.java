@@ -6,7 +6,7 @@ import java.util.Map;
 import com.fornula.domain.expert.dto.ItemSales;
 
 public interface ExpertSalesMapper {
-	List<ItemSales> selectSalesList();
+	List<ItemSales> selectSalesList(int expertIdx);
 	int updateSalesStatus(int salesIdx);
 	int selectPrice();
 	List<ItemSales> selectSearchSalesList(Map<String, Object> searchList);

@@ -140,7 +140,7 @@ tr td {
 						<table>
 							<tr>
 								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;" id="price"></td>
+								<td scope="col" style="text-align: right;" id="price">${price }</td>
 							</tr>
 						</table>
 						<!-- <div class="input-group">
@@ -160,56 +160,58 @@ tr td {
 								<div class="blog-posts">
 									<div id="post-2" class="post type-post post-2 card post-card">
 										<div class="row">
-											<div class="col-md-4">
-												<img class="card-img img-fluid"
-													src="<c:url value="/pictures/placeholder/530x400.svg"/>"
-													alt="Post">
+											<c:forEach var="salesList" items="${salesList}">
+												<h3 style="text-align: center;">${message }</h3>
+												<div class="col-md-4">
+													<img class="card-img img-fluid"
+														src="<c:url value='/images/upload/${salesList.itemfileName}'/>"
+														alt="Post">
 
-											</div>
-											<div class="col-md-8">
-												<div
-													class="card-body h-100 d-flex align-items-start flex-column">
-													<ul class="post-meta">
-														<li><p name="salesDate">${sales.salesDate}</li>
-														<li><p name="salesStatus">${sales.salesDate}</li>
-													</ul>
-													<p class="post-text card-text">
-													<h6 class="post-title card-title" name="salesIdx">${sales.salesIdx }</h6>
-													<h4 class="post-title card-title">
-														<a href="single.html" name="itemName">${item.itemName }</a>
-													</h4>
-													<p class="subtitle">상품설명</p>
-
+												</div>
+												<div class="col-md-8">
 													<div
-														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
-														<div class="author-meta">
-															<select name="salesStatus" id="archive"
-																class="form-control" class="btn btn-primary"
-																style="font-size: 17px;">
-																<option selected="selected" disabled="disabled">주문
-																	접수</option>
-																<option value="3">제작중</option>
-																<option value="4">제작 완료</option>
-															</select>
-														</div>
+														class="card-body h-100 d-flex align-items-start flex-column">
+														<ul class="post-meta">
+															<li><p name="salesDate">${salesList.salesDate}</li>
+														</ul>
+														<p class="post-text card-text">
+														<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
+														<h4 class="post-title card-title">
+															<a href="single.html" name="itemName">${salesList.itemName }</a>
+														</h4>
+														<p class="subtitle" name="itemContent">${salesList.itemContent }</p>
 
-														<a href="single.html"
-															class="more-link card-link d-flex align-items-center">
-															답글보기 <i class="lana-icon-arrow-right text-primary"></i>
-														</a>
+														<div
+															class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
+															<div class="author-meta">
+																<select name="salesStatus" id="archive"
+																	class="form-control" class="btn btn-primary"
+																	style="font-size: 17px;">
+																	<option selected="selected" disabled="disabled" value="2">주문
+																		접수</option>
+																	<option value="3" disabled="disabled">제작중</option>
+																	<option value="4" disabled="disabled">제작 완료</option>
+																</select>
+															</div>
+
+															<a href="<c:url value="/item"/>"
+																class="more-link card-link d-flex align-items-center">
+																답글보기 <i class="lana-icon-arrow-right text-primary"></i>
+															</a>
+														</div>
 													</div>
 												</div>
-											</div>
+											</c:forEach>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
+						<%-- 
 						<nav style="padding: 5px;"
 							class="navigation pagination justify-content-between text-uppercase"
 							role="navigation">
-							<a class="prev disabled" href="#"> Prev </a>
+							<a class="prev disabled" href="<c:url value="#"/>"> Prev </a>
 							<div class="nav-links">
 								<ul class="page-numbers">
 									<li><span aria-current="page" class="page-numbers current">1</span></li>
@@ -218,48 +220,70 @@ tr td {
 									<li><a class="page-numbers" href="#">4</a></li>
 								</ul>
 							</div>
-							<a class="next" href="#"> Next </a>
+							<a class="next" href="<c:url value="#"/>"> Next </a>
 						</nav>
+						 --%>
 					</div>
 				</div>
 			</div>
-
 			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 				<div class="widget-sidebar story-sidebar">
-
-					<div id="img" style="text-align: center;">
-						<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-							class="rounded-circle" alt="Author" width="200" height="200">
-					</div>
-					<div id="button" style="text-align: center;">
-						<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+					<div id="button">
+		            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+							class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+		            </div>
+					<div id="button">
+						<a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
 					</div>
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
-							<div id="changBtn" style="text-align: center;">
+							<div id="button">
 								<a href="/mypageInfo" class="tag-cloud-link"
-									aria-label="admin change button">일반인으로 전환</a> <br>
-
+									aria-label="admin change button">일반회원으로 전환</a> 
 							</div>
-							<br>
-							<div class="row" style="padding-left: 15px;">
-								<div class="widget" style="text-align: left; pa">
-									<h3 class="widget-title">판매 관리</h3>
-
-									<ul>
-										<li><a href="<c:url value="/expert/input"/>" id="info"
-											>전문가 정보</a></li>
-										<li><a href="<c:url value="/expert/sales"/>" id="sale"
-											>판매 관리</a></li>
-										<li><a href="<c:url value="/expert/output"/>" id="po"
-											>포트폴리오</a></li>
-										<li><a href="<c:url value="/expert/item"/>" id="item"
-											>상품 등록</a></li>
-									</ul>
-								</div>
-
-							</div>
-							<!-- 			<div class="row">
+							<div class="row" >
+                				<div class="widget" style="text-align: left; padding-left: 20px;">
+                    				<h3 class="widget-title">판매 관리</h3>
+                                    <ul>
+                   						<li>
+                   							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
+               							</li>
+                       					 
+                       					<li>
+                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
+                   						</li>
+                        				
+                        				<li>
+                        					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
+                       					</li>
+                        				<li>
+                        					<a href="<c:url value="/expert/item"/>">상품 등록</a>
+                       					</li>
+                    				</ul>
+                				</div>
+               				</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- 기존의 사이드바 양식
+		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+			<div class="widget-sidebar story-sidebar">
+			<div id="img" style="text-align: center;" >
+					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+						class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
+				</div>
+				<div id="button" style="text-align: center;">
+					<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+				</div>
+				<div class="widget widget_tag_cloud">
+					<div class="tagcloud">
+						<div id="changBtn" style="text-align: center;">
+							<a href="/mypageInfo" class="tag-cloud-link"
+								aria-label="admin change button">일반인으로 전환</a>
+								<br>
+								
+						</div>
 							<div class="widget" style="text-align: left;" id="list">
 								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
 									관리</h3>
