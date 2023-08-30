@@ -114,32 +114,7 @@ h3 {
    font-size : 20px;
 }
 
-/* 카테고리 */
-.info#info__category #category-flex {
-  display: flex;
-}
-.info#info__category select {
-  margin-left : 7px;
-  color: #a0a0a0;
-}
 
-.info#info__category select:first-child {
-  margin-left : 0px;
-}
-
-.info#info__category select::-webkit-scrollbar {
-  width: 10px;
-}
-
-.info#info__category select::-webkit-scrollbar-thumb {
-  background-color: #b6b6b6;
-  border-radius: 3px;
-}
-
-.info#info__category select::-webkit-scrollbar-track {
-  background-color: #ebe9e9;
-  border-radius: 6px;
-}
 
 
 </style>
@@ -200,27 +175,35 @@ h3 {
                        
                   
                </div>
-               <div class="widget widget_tag_cloud">
-                  
-                    <div class="tagcloud">
-                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">전문가로 전환</a>
-                       
-                  
-               </div>
-            <div class="row" >
-                <div class="widget">
-                    <h3 class="widget-title">나의 정보</h3>
-               
-                    <ul>
-                      <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
-                        <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
-                        <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
-                    </ul>
-                </div>
-               
+               <div class="tagcloud">
+                     
+
+							<div id="button">
+								<c:if test="${member.memberStatus == 1}">
+									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 등록</a>
+								</c:if>
+								<c:if test="${member.memberStatus == 2}">
+									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 전환</a>
+								</c:if>
+							</div>
+
+
+                     <div class="row">
+                        <div class="widget">
+                           <h3 class="widget-title">나의 정보</h3>
+
+                           <ul>
+                              <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
+                              <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
+                              <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
+                              <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
+                           </ul>
+                        </div>
+
+                     </div>
                   </div>
-                </div>
             </div>
         </div>
     </div>

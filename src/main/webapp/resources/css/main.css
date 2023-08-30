@@ -1,10 +1,17 @@
 
 #header {
-  background-color: #fff;
   padding-top: 6px;
   padding-bottom: 20px;
   text-align: center;
 }
+
+#header .navbar-brand a {
+	all : unset;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 3.5em;
+	cursor: pointer;
+}
+
 #logo {
   width: 190px;
   height: 60px;
