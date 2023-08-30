@@ -24,7 +24,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 	public Map<String, Object> getItemList(int pageNum) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
 		
-		Pager pager=new Pager(pageNum, totalBoard, 5, 6);
+		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
 		
 		Map<String, Object> pageMap=new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
@@ -43,7 +43,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 	public Map<String, Object> getCategoryItemList(int pageNum) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
 		
-		Pager pager=new Pager(pageNum, totalBoard, 5, 6);
+		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
 		
 		Map<String, Object> pageMap=new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
@@ -62,7 +62,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
     public Map<String, Object> getSearchItemList(int pageNum, String searchKeyword) {
         int totalBoard = itemBoardDAO.selectItemBoardCount();
         
-        Pager pager = new Pager(pageNum, totalBoard, 5, 6);
+        Pager pager = new Pager(pageNum, totalBoard, 6, 6);
 
         Map<String, Object> pageMap = new HashMap<>();
         pageMap.put("startRow", pager.getStartRow());

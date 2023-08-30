@@ -30,6 +30,18 @@
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
+<style>
+	.pages {
+		display: flex;
+	}
+	li {
+		list-style-type: none;
+	}
+	li a {
+		padding : 10px;
+	}
+	
+</style>
 <body class="archive grid-3-columns">
 <jsp:include page="header.jsp" />
   
@@ -43,7 +55,7 @@
 						<div class="blog-grid-col col-12 col-md-6 col-lg-4">
 							<div id="post-1" class="post type-post card post-card post-grid-card h-100">
 								<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-								<img src="<c:url value="/images/upload/${itemList.photo.itemfileName}"/>"class="card-img-top img-fluid">
+								<img src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>" class="card-img-top img-fluid">
 								<div class="card-body">
 									<ul class="post-meta">
 										<li>
@@ -62,40 +74,47 @@
 									</a>
 								</div>
 							</div>
-						</div>
+						</div>	
 					</c:forEach>
-					
-                    <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
-                     role="navigation">
-                    <c:choose>
-						<c:when test="${pager.startPage > pager.blockSize }">
-							<a class="prev disabled" id="prevBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}">Prev</a>
-						</c:when>
-						<c:otherwise>
-							Prev
-						</c:otherwise>
-					</c:choose>	
-					
-					<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
-						<c:choose>
-							<c:when test="${pager.pageNum != i  }">
-								<a class="page-numbers" href="<c:url value="/item/boardList"/>?pageNum=${i}">[${i }]</a>
+				</div>
+					<div class="pages">
+	                    <c:choose>
+							<c:when test="${pager.startPage > pager.blockSize }">
+								<a href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}">
+								Prev
+								</a>			
+								
 							</c:when>
 							<c:otherwise>
-								[${i }]
+								Prev
 							</c:otherwise>
 						</c:choose>	
-					</c:forEach>
+						<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+							<c:choose>
+								<c:when test="${pager.pageNum != i}">	
+										<li><a href="<c:url value="/item/boardList"/>?pageNum=${i}">${i}</a><li>	
+								</c:when>
+								<c:otherwise>
+									${i}
+								</c:otherwise>
+							</c:choose>	
+						</c:forEach>
+						
+						<c:choose>
+							<c:when test="${pager.endPage != pager.totalPage }">
+								<div>
+									<a  href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">Next</a>
+								</div>
+							</c:when>
+							<c:otherwise>
+								Next
+							</c:otherwise>
+						</c:choose>
+					</div>
+					
+					
 				
-					<c:choose>
-						<c:when test="${pager.endPage != pager.totalPage }">
-							<a class="next" id="nextBtn" href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">Next</a>
-						</c:when>
-						<c:otherwise>
-							Next
-						</c:otherwise>
-					</c:choose>
-					</nav>
+					
 
                <!--  <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
                      role="navigation">
@@ -114,7 +133,8 @@
                         Next
                     </a>
                 </nav> -->
-			</div>                
+                
+			</div>             
 		</div>
 	</div>
 </main>

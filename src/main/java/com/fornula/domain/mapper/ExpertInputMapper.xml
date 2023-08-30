@@ -17,7 +17,8 @@
    
    <!-- 기존에 작성된 전문가의 정보를 출력하는 용도의 SQL문 -->
 	<select id="originalExpert" resultType="Expert">
-       SELECT phone
+       SELECT expert_idx 
+       	   ,phone
            ,interest
            ,introduce
            ,career
