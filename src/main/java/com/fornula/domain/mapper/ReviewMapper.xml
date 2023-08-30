@@ -21,8 +21,7 @@
 									on review.purchase_idx = purchase.purchase_idx
 								join item
 									on purchase.item_idx = item.item_idx
-			where item.item_idx = #{itemIdx}
-			order by desc) reviewList)
+			where item.item_idx = #{itemIdx}) reviewList)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
