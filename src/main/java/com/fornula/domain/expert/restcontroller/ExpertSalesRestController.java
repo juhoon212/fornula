@@ -55,7 +55,7 @@ public class ExpertSalesRestController {
 	//날짜와 상태를 받아 판매내역을 출력하는 메소드
 	@GetMapping("/search/{expertIdx}")
 	public List<ItemSales> getSearchSalesList
-	(@RequestParam("salesStatus") int salesStatus, @RequestParam("salesDate") String salesDate){
+	(@PathVariable int expertIdx, @RequestParam("salesStatus") int salesStatus, @RequestParam("salesDate") String salesDate){
 		List<ItemSales> searchSalesList= expertSalesService.searchAndSelectSalesList(salesStatus, salesDate);
 		log.info("searchSalesList:{}",searchSalesList );
 		
@@ -65,7 +65,7 @@ public class ExpertSalesRestController {
 	
 	//구매확정된 총 판매금액을 출력하는 메소드
 	@GetMapping("/price/{expertIdx}")
-	public ResponseEntity<Integer> getPrice(){
+	public ResponseEntity<Integer> getPrice(@PathVariable int expertIdx){
 		int price= expertSalesService.searchPrice();
 		log.info("price: {}",price);
 		return ResponseEntity.ok(price);

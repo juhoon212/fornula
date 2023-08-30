@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.fornula.domain.item.mapper.java.ItemMainMapper">
+		<!-- 메인페이지에 상품 출력 -->
+		
+<resultMap type="ItemPhoto" id="ItemPhoto">
+		<association property="item" javaType="Item">
+			<id column="item_idx" property="itemIdx" />
+			<result column="category_idx" property="categoryIdx" />
+			<result column="expert_idx" property="expertIdx" />
+			<result column="item_name" property="itemName" />
+			<result column="item_content" property="itemContent" />
+			<result column="price" property="price" />
+			<result column="item_status" property="itemStatus" />
+			<result column="item_date" property="itemDate" />
+		</association>
+		<association property="photo" javaType="Photo">
+			<id column="photo_idx" property="photoIdx" />
+			<result column="item_idx" property="itemIdx" />
+			<result column="itemfile_name" property="itemfileName" />
+		</association>
+	</resultMap>
+	<select id="mainItemList" resultType="ItemPhoto">
+		SELECT I.item_idx,
+		I.category_idx,
+		I.item_name,
+		I.item_content,
+		I.price,
+		P.photo_idx,
+		P.itemfile_name
+		FROM item I
+		JOIN photo P
+		ON I.item_idx = P.item_idx
+		; 
+		
+	</select> 
+</mapper>
+ 	

@@ -53,4 +53,3 @@ public class ItemBoardController {
         return "item-board";
     }
 }
-
