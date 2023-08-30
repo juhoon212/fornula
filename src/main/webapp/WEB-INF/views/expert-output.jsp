@@ -125,8 +125,7 @@ height : vh ;
                     <div class="widget">
                         <form class="story-posts" id="content">
                             <div class="box" style="height:1200px">
-								<!-- <iframe src="/resources/images/profolio/phy.pdf" width="100%" height="500px"></iframe> -->
-								<a href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">PDF 보기</a>
+    							<iframe src="/parkhayun" width="100%" height="500px"></iframe>
                                 <!-- 나머지 폼 요소들... -->
                                 <div>
                                     <textarea style="width:650px; height:190px;" readonly>

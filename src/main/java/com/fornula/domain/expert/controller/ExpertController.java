@@ -72,4 +72,10 @@ public class ExpertController{
 		log.info("ExpertController 클래스의 mypage() 메소드 실행");
 		return "expert-item";
 	}
+	
+	@GetMapping(value = "/parkhayun")
+	public String test() {
+	    log.info("ExpertController 클래스의 test() 메소드 실행");
+	    return "redirect:/resources/images/phy.pdf";
+	}
 }
