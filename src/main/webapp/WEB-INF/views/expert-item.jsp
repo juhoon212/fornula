@@ -9,29 +9,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" id="montserrat-css"
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    <link rel="stylesheet" id="open-sans-css"
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+<link rel="stylesheet" id="montserrat-css"
+	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+<link rel="stylesheet" id="open-sans-css"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-    <link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
-          type="text/css" media="all">
-    <link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
-    <link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css"
-          media="all">
-    <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
-          media="print">
-  
-          
-
+<link rel="stylesheet" id="animate-css"
+	href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="font-awesome-css"
+	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css"
+	href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="smartmenus-bootstrap-css"
+	href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="swiper-css"
+	href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="magnific-popup-css"
+	href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-icon-css"
+	href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-theme-css"
+	href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-print-css"
+	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
+	type="text/css" media="print">       
  
 </head>
 <style>
@@ -308,32 +317,57 @@ h3 {
 			</div>
 		</div>
 	</div>
-	<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-		<div class="widget-sidebar story-sidebar">
-			<div id="button">
-				<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-					class="rounded-circle" alt="Author" width="200" height="200">
-			</div>
-			<div id="button">
-				<a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
-			</div>
-			<div class="widget widget_tag_cloud">
-				<div class="tagcloud">
-					<div id="button">
-						<a href="/mypage" class="tag-cloud-link"
-							aria-label="admin change button">일반인으로 전환</a>
-					</div>
-					<div class="row">
-						<div class="widget" style="text-align: left;" id="list">
-							<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">상품 등록</h3>
-							<ul style="color: black;">
-								<li><a href="javascript:menuchange();" id="info" class="expertmenu">전문가 정보</a></li>
-								<li><a href="javascript:menuchange();" id="sale" class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-								<li><a href="javascript:menuchange();" id="po" class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-								<li><a href="javascript:menuchange();" id="item" class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-							</ul>
+		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+			<div class="widget-sidebar story-sidebar">
+				<div id="button">
+	            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+						class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+	            </div>
+				<div id="button">
+					<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+				</div>
+				<div class="widget widget_tag_cloud">
+					<div class="tagcloud">
+						<div id="button">
+							<a href="/mypageInfo" class="tag-cloud-link"
+								aria-label="admin change button">일반회원으로 전환</a> 
 						</div>
-					</div>
+						<div class="row" >
+              				<div class="widget">
+								<h3 class="widget-title">포트폴리오</h3>
+								<ul>
+               						<li>
+               							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
+           							</li>
+                   					<li>
+                   						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
+               						</li>
+                      				<li>
+                      					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
+                   					</li>
+                      				<li>
+                      					<a href="<c:url value="/expert/item"/>">상품 등록</a>
+                   					</li>
+                  				</ul>
+              				</div>
+           				</div>
+
+					<!-- 			<div class="row">
+				<div class="widget" style="text-align: left;" id="list">
+					<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
+						관리</h3>
+					<ul style="color: black;">
+						<li><a href="javascript:menuchange();" id="info"
+							class="expertmenu">전문가 정보</a></li>
+						<li><a href="javascript:menuchange();" id="sale"
+							class="expertmenu" onclick="menuchange()">판매 관리</a></li>
+						<li><a href="javascript:menuchange();" id="po"
+							class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
+						<li><a href="/expertitem" id="item"
+							class="expertmenu" onclick="menuchange()">상품 등록</a></li>
+					</ul>
+				</div>
+			</div> -->
 				</div>
 			</div>
 		</div>
