@@ -305,14 +305,7 @@ a:visited {
 
 				</div>
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-					<div class="widget-sidebar story-sidebar">
-						<div id="button">
-							<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-								class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
-						</div>
-						<div id="button">
-							<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
-						</div>
+					<div class="widget-sidebar story-sidebar">>
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
 								<div id="button">
