@@ -13,4 +13,5 @@ public interface ItemBoardMapper {
     List<ItemPhotoCategoryCart> searchItemList(Map<String, Object> map);
 	int updateItem(Item item);
     int selectItemBoardCount();
+   
 }
