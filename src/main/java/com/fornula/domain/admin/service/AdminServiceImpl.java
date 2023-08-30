@@ -20,34 +20,12 @@ import lombok.RequiredArgsConstructor;
 public class AdminServiceImpl implements AdminService{
 
 	private final AdminRepository adminRepository;
-/*	
-	@Override
-	public int findId(Member member) {
-		return adminRepository.findId(member);
-	}
-
-	@Override
-	public int status(Member member) {
-		return adminRepository.status(member);
-	}
-	@Override
-	public List<AdminMember> memberList() {
-		return adminRepository.memberList();
-	}
-	@Override
-	public List<AdminItem> itemList() {
-		return adminRepository.itemList();
-	}
 	
- */
-	
-
-
 	@Override
 	public Map<String, Object> memberList(int pageNum) {
 		int totalBoard=adminRepository.memberListCount();
-		int pageSize=2; // 출력 갯수
-		int blockSize=10;
+		int pageSize=5; // 출력 갯수
+		int blockSize=5;
 		
 		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
 		
@@ -73,8 +51,8 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Map<String, Object> itemList(int pageNum) {
 		int totalBoard=adminRepository.itemListCount();
-		int pageSize=2;
-		int blockSize=10;
+		int pageSize=5;
+		int blockSize=5;
 		
 		
 		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
