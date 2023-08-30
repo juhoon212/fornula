@@ -114,6 +114,6 @@ public class ItemInsertController {
 		redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
 		
-		return "redirect:/item/detail/{itemIdx}";
+		return "redirect:/item/{itemIdx}";
 	}	
 }

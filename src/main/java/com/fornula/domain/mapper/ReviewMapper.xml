@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.board.mapper.java.ReviewMapper">
 
-	<select id="selectReview" resultType="" >
+	<select id="selectReview" resultType="Reviews" >
 		select 	review_idx,
 				review.member_idx,
 				review.content,
@@ -16,8 +16,7 @@
 						on review.purchase_idx = purchase.purchase_idx
 					join item
 						on purchase.item_idx = item.item_idx
-		where item.item_idx = #{itemIdx};
-				
+		where item.item_idx = #{itemIdx}
 	</select>
 
 </mapper>
