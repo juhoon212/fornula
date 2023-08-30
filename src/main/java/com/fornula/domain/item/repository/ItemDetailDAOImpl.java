@@ -3,6 +3,8 @@ package com.fornula.domain.item.repository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fornula.domain.board.dto.Reviews;
+import com.fornula.domain.board.mapper.java.ReviewMapper;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
@@ -27,5 +29,9 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	
 	public Photo selectPhoto(int memberIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectPhoto(memberIdx);
+	}
+	@Override
+	public Reviews getReviewList(int itemIdx) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReivewList(itemIdx);
 	}
 }
