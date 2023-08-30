@@ -98,8 +98,9 @@ public class ExpertJoinController {
 		member.setMemberStatus(2);
 		expertJoinService.updateExpertStatus(member);
 		session.setAttribute("loginMember", member);
-
-		return "main";
+		model.addAttribute("message","전문가 등록이 완료되었습니다");
+		
+		return "expertjoin-success";
 
 	}
 }
