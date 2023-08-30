@@ -20,10 +20,6 @@ public class MypageItemServiceImpl implements MypageItemService{
 		return mypageItemPurchase;
 	}
 
-	@Override
-	public ItemExpert mypageItemExpert(int memberIdx) {
-		ItemExpert mypageItemExpert = mypageItemRepository.selectItemMypage(memberIdx);
-		return mypageItemExpert;
-	}
+	
   
 }

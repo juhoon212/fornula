@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class MypagePasswordController {
 	   }
 	   
 	   @PostMapping("/mypagePwchange")
-	   public String Pwchange(@ModelAttribute Password password, HttpSession session) throws MypagePwException{
+	   public String Pwchange(@ModelAttribute Password password, HttpSession session,Model model) throws MypagePwException{
 		   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		   
 		   log.info("sessionMember = {}", member); // 세션멤버조회
@@ -60,6 +61,8 @@ public class MypagePasswordController {
 		   
 		   service.modifyPassword(loginMember.getId(), hashPassword);
 		   
-		   return "mypage-purchase";
+		   model.addAttribute("message", "비밀번호가 변경되었습니다.");
+		   
+		   return "common-success";
 	   }
 }

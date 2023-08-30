@@ -147,7 +147,7 @@ h3 {
    <form name="secessionForm" method="post" action="/mypageSession">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 탈퇴</label>
         <h3>
-        크몽을 떠나는 이유를 알려주세요.
+        fornual을 떠나는 이유를 알려주세요.
         </h3>
         <div class="info" id="info__id">
          <div>
@@ -161,7 +161,7 @@ h3 {
         <h3>아이디 확인</h3>
         <div class="info">
           <div id="id-input">
-            <input class="box" type="text" name="id" placeholder="크몽에 가입하신 아이디를 적어주세요."/>
+            <input class="box" type="text" name="id" placeholder="fornual에 가입하신 아이디를 적어주세요."/>
             
           </div>
           <p align="left" style="color: red;" id="idMessage">${message }</p>
@@ -178,7 +178,7 @@ h3 {
            </div>
           
       <div style = "float : right;">
-      <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
+      <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitSecessionCheck();"
                               style="text-align: center;" name="checkBtn" disabled>회원탈퇴</button>
       </div>
       <span>&nbsp</span>
@@ -253,7 +253,7 @@ h3 {
       
  
  
- function submitCheck() {
+ function submitSecessionCheck() {
     let h3=document.getElementById("idMessage");
    
    if(secessionForm.id.value==""){
