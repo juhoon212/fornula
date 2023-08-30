@@ -33,8 +33,12 @@ public class PaymentController {
 			
 			ItemPayment payment = service.itemPayment(itemIdx);
 			
+			int pos = payment.getItemfileName().lastIndexOf("_");
+			String originalFileName = payment.getItemfileName().substring(pos+1);
+			
 			model.addAttribute("itemIdx", itemIdx);
 			model.addAttribute("payment", payment);
+			model.addAttribute("originalFileName", originalFileName);
 			
 			
 			

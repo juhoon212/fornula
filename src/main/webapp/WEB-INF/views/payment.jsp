@@ -137,7 +137,7 @@ tr td {
 									<div class="row">
 										<div class="col-md-4">
 											<img class="card-img img-fluid"
-												src="<c:url value="/pictures/placeholder/530x400.svg"/>"
+												src="<c:url value='/images/upload/${originalFileName}'/>"
 												alt="Post">
 
 										</div>

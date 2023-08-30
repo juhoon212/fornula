@@ -19,5 +19,6 @@ public class Itempurchase {
 	private String itemName;
 	private String itemContent;
 	private int price;
+	private String itemfileName;
 	
 }

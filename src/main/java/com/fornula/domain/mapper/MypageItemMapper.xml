@@ -6,7 +6,7 @@
 	
 	<!-- 상품 뽑는 쿼리 -->
 	<!-- 상품 사진 뽑는 쿼리 수정해야함 -->
-	<!-- 구매테이블에서 구매번호,구매날짜,구매상태를 현재세션의 회원idx로 뽑는 쿼리 -->
+	<!-- 구매테이블에서 구매번호,구매날짜,구매상태를 현재세션의 회원idx로 뽑는 쿼리
 	<select id="selectPurchaseMypage" resultType="Itempurchase" >
 		select   purchase.purchase_idx
                 ,purchase.purchase_date
@@ -18,15 +18,31 @@
 		from purchase join item
 		on purchase.item_idx=item.item_idx
 		where purchase.member_idx = #{memberIdx}
-	</select>
+	</select> -->
 	
-	<!-- 상품테이블과 전문가테이블에서 상품이름, 상품설명, 상품사진을 현재세션의 회원idx로 뽑는 쿼리 
-	<select id="selectItemMypage" resultType="ItemExpert" >
-		select   item_name
-		from item,export
-		where item.expert_idx=expert.expert_idx
-		and member_idx = #{memberIdx}
-	</select>-->
+	<select id="selectPurchaseMypage" resultType="Itempurchase" >
+		select itempurchase.purchase_idx
+                ,itempurchase.purchase_date
+                ,itempurchase.purchase_status
+                ,itempurchase.item_idx
+                ,itempurchase.item_name
+                ,itempurchase.item_content
+                ,itempurchase.price
+                ,photo.itemfile_name
+		from (select   purchase.purchase_idx
+                ,purchase.purchase_date
+                ,purchase.purchase_status
+                ,item.item_idx
+                ,item.item_name
+                ,item.item_content
+                ,item.price
+		from purchase join item
+		on purchase.item_idx=item.item_idx
+		where purchase.member_idx = #{memberIdx}) itempurchase join photo
+		on itempurchase.item_idx=photo.item_idx
+
+	</select>
+
 	
 	
 </mapper>

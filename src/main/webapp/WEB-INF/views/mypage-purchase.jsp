@@ -60,7 +60,7 @@
                 <div id="post-2" class="post type-post post-2 card post-card">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                             
                         </div>
                         <div class="col-md-8">
