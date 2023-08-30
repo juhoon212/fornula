@@ -9,5 +9,4 @@ public interface ItemDetailDAO {
 	Item selectItem(int itemIdx);
 	Expert findByMemberIdx(int memberIdx);
 	Photo selectPhoto(int itemIdx);
-	Reviews getReviewList(int pageNum);
 }
