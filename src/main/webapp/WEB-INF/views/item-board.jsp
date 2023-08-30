@@ -52,7 +52,7 @@
 						<div class="blog-grid-col col-12 col-md-6 col-lg-4">
 							<div id="post-1" class="post type-post card post-card post-grid-card h-100">
 								<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-								<img src="<c:url value="/images/upload/${itemList.photo.itemfileName}"/>"class="card-img-top img-fluid">
+								<img src="<c:url value='/images/upload/${originalFileName}'/>" class="card-img-top img-fluid">
 								<div class="card-body">
 									<ul class="post-meta">
 										<li>
