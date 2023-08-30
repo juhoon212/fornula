@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import com.fornula.domain.item.dto.Item;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +27,6 @@ EXPERTFILE_NAME          VARCHAR2(100)  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Component
 public class Expert {
 	private int expertIdx;
 	private int memberIdx;

@@ -36,6 +36,7 @@ public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
 	private final MemberJoinService memberJoinService;
+	
 	// 회원가입 폼
 	@GetMapping("/join")
 	public String join() {
@@ -52,6 +53,8 @@ public class MemberController {
 			 redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
 			 return "redirect:/member/join";
 		 }
+		 
+		 redirectAttributes.addFlashAttribute("message", "회원가입 성공");
 		 return "redirect:/";
 	}
 	
