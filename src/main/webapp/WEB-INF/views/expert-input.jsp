@@ -306,38 +306,38 @@ a:visited {
 				</div>
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 					<div class="widget-sidebar story-sidebar">
-
-					<div id="img" style="text-align: center;" >
+						<div id="button">
 							<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-								class="rounded-circle" alt="Author" width="200" height="200">
+								class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
 						</div>
-						<div id="button" style="text-align: center;">
+						<div id="button">
 							<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
 						</div>
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
-								<div id="changBtn" style="text-align: center;">
-									<a href="/mypagePurchase" class="tag-cloud-link"
-										aria-label="admin change button">일반인으로 전환</a> <br>
-
-								</div>
-								<br>
-								<div class="row">
-									<div class="widget" style="text-align: left;" id="list">
-										<h3 class="widget-title" id="expertmain"
-											style="color: #ff8a00;">전문가 정보</h3>
-										<ul style="color: black;">
-											<li><a href="<c:url value="/expert/input"/>" id="info"
-												class="expertmenu">전문가 정보</a></li>
-											<li><a href="<c:url value="/expert/sales"/>" id="sale"
-												class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-											<li><a href="<c:url value="/expert/output "/>" id="po"
-												class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-											<li><a href="<c:url value="/expert/item"/>" id="item"
-												class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-										</ul>
-									</div>
-								</div>
+								<div id="button">
+					            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+					               		class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+					            </div>
+								<div class="row" >
+	                				<div class="widget">
+	                    				<h3 class="widget-title">전문가 정보</h3>
+	                                    <ul>
+	                   						<li>
+	                   							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
+	               							</li>
+	                       					<li>
+	                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
+	                   						</li>
+	                        				<li>
+	                        					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
+	                       					</li>
+	                        				<li>
+	                        					<a href="<c:url value="/expert/item"/>">상품 등록</a>
+	                       					</li>
+	                    				</ul>
+	                				</div>
+	               				</div>
 
 								<!-- 			<div class="row">
 							<div class="widget" style="text-align: left;" id="list">
