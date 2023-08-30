@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,6 +50,7 @@ public class ItemInsertController {
 	}
 	
 	@PostMapping("/add/{expertIdx}")
+	@Transactional(rollbackFor = Exception.class)
 	public String insert(	@ModelAttribute ItemForm itemForm,
 							@PathVariable Integer expertIdx,
 							RedirectAttributes redirectAttributes) {
@@ -83,6 +85,7 @@ public class ItemInsertController {
 	
 	
 	@PostMapping("/photo/add/{itemIdx}")
+	@Transactional(rollbackFor = Exception.class)
 	public String addPhotoPost( @RequestParam(required = false) MultipartFile multipartFile,
 								Model model, 
 								@PathVariable Integer itemIdx, 
