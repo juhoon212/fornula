@@ -334,7 +334,6 @@ p #logo {
 			</div>
 		</div>
 
-<<<<<<< HEAD
 		<div id="our-pets-container"
 			class="container-fluid bg-white section-py--large">
 			<div class="container">
