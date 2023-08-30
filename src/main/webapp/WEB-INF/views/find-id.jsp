@@ -86,7 +86,7 @@
 
       <section>
         
-        <form action="/member/findId" method="Post">
+        
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="id-box" class="id-box"></label>
@@ -94,7 +94,7 @@
 	          </div>
 	        </div>
 	      	<button id="submit">아이디 찾기</button>
-     	</form>
+     	
      	
      	<div id="show-message"></div>
      	
@@ -115,7 +115,9 @@
 		  method: "POST", 
 		  headers: { 
 		    "Content-Type": "application/json",
-		  },
+		  },body: JSON.stringify({ 
+			    "email" : emailBox.value		    
+			  })
 		})
 	.then((response) => response.json())
 	.then((data) => {
@@ -123,7 +125,8 @@
 	  	if(data.errorCode === "Bad") {
 	   		document.querySelector('#show-message').innerHTML = data.message;
 	   } else {
-	   		document.querySelector('#show-message').innerHTML = data;
+	   		document.querySelector('#show-message').innerHTML = data.id;
+	   		document.querySelector('#show-message').style = 'color : green';
 	   	}
 	 })
 	  	e.preventDefault();
