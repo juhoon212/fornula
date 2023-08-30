@@ -299,11 +299,21 @@ h3 {
                <div class="widget widget_tag_cloud">
                   
                     <div class="tagcloud">
-                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">전문가로 전환</a>
-                       
-                  
-               </div>
-            <div class="row" >
+
+
+							<div id="button">
+								<c:if test="${member.memberStatus == 1}">
+									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 등록</a>
+								</c:if>
+								<c:if test="${member.memberStatus == 2}">
+									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 전환</a>
+								</c:if>
+							</div>
+
+
+							<div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
                

@@ -16,7 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
-  
+  <link
+	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+	rel="stylesheet">
   
 </head>
 <body>
@@ -76,53 +78,53 @@
         <h3>관심사</h3>
         <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect1(this)">
-              <option disabled selected>대 카테고리</option>
+            <select class="box" id="category-big" onchange = "categorySelect1(this)" required>
+              <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
               <option value = "c">사진 편집</option>
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory1" name = "categoryOne">
-              <option disabled selected>중 카테고리</option>
+            <select class="box" id="mcategory1" name = "categoryOne" required>
+              <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
           <div class="error-msg"></div>
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect2(this)">
-              <option disabled selected>대 카테고리</option>
+            <select class="box" id="category-big" onchange = "categorySelect2(this)" required>
+              <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
               <option value = "c">사진 편집</option>
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory2" name = "categoryTwo">
-              <option disabled selected>중 카테고리</option>
+            <select class="box" id="mcategory2" name = "categoryTwo" required>
+              <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
           <div class="error-msg"></div>
         </div>
-        <div class="info" id="info__category">
+        <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect3(this)">
-              <option disabled selected>대 카테고리</option>
+            <select class="box" id="category-big" onchange = "categorySelect3(this)" required>
+              <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
               <option value = "c">사진 편집</option>
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory3" name = "categoryThree">
-              <option disabled selected>중 카테고리</option>
+            <select class="box" id="mcategory3" name = "categoryThree" required>
+              <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
           <div class="error-msg"></div>
         </div>
-       <div id="result-fail"></div>
+       
       <button id="submit">가입하기</button>
 </form>
       
