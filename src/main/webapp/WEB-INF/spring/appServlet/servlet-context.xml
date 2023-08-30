@@ -45,6 +45,8 @@
 	
 	<!-- <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
 	
+	
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
@@ -58,6 +60,14 @@
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 	</interceptors> -->
+	
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"></mapping>
+			<beans:bean id ="AdminAuthInterceptor" class = "com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean> 
+		</interceptor>
+	</interceptors>
 	
 	
 	
