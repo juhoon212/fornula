@@ -41,6 +41,12 @@ public class ReviewRepositoryImpl implements ReviewRepository{
 	}
 
 
+	@Override
+	public int addReply(Review review) {
+		return sqlSession.getMapper(ReviewMapper.class).addReply(review);
+	}
+
+
 	
 
 }

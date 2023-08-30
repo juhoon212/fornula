@@ -73,4 +73,18 @@ public class BoardController {
 		return "redirect:/item/{itemIdx}/1";
 	}
 	
+	@GetMapping("/add/reply/{itemIdx}/{reviewIdx}")
+	public String showReplyForm(@PathVariable Integer itemIdx, @PathVariable Integer reviewIdx, Model model) {
+		
+		model.addAttribute("itemIdx", itemIdx);
+		model.addAttribute("reviewIdx", reviewIdx);
+		
+		return "reply";
+	}
+	
+	@PostMapping("/add/reply/{itemIdx}/{reviewIdx}")
+	public String addReply() {
+		return null;
+	}
+	
 }

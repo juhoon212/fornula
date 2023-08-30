@@ -6,7 +6,7 @@ import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.member.dto.mypage.ItemExpert;
 
 public interface MypageItemMapper {
-  List<Purchase> selectPurchaseMypage (int memberIdx);
+  Purchase selectPurchaseMypage (int memberIdx);
   //ItemExpert selectItemMypage (int memberIdx);
   
 }

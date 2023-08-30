@@ -16,16 +16,11 @@ public class MypageItemRepositoryImpl implements MypageItemRepository{
 
 	private final SqlSession sqlSession;
 	
-//	@Override
-//	public Purchase selectPurchaseMypage(int memberIdx) {
-//		
-//		return sqlSession.getMapper(MypageItemMapper.class).selectPurchaseMypage(memberIdx);
-//	}
-//
-//	@Override
-//	public ItemExpert selectItemMypage(int memberIdx) {
-//		
-//		return sqlSession.getMapper(MypageItemMapper.class).selectItemMypage(memberIdx);
-//	}
+	@Override
+	public Purchase selectPurchaseMypage(int memberIdx) {
+		
+		return sqlSession.getMapper(MypageItemMapper.class).selectPurchaseMypage(memberIdx);
+	}
+
 
 }

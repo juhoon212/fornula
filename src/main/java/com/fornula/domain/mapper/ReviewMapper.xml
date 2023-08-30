@@ -73,6 +73,12 @@
 		)
 	</insert>
 	
+	<update id="addReply" >
+		update review
+		set answer_content = #{answerContent}, answer_date = sysdate
+		where review_idx = #{review_idx}
+	</update>
+	
 	<select id="selectPurchase" resultType="Purchase">
 		select purchase_idx
 		from purchase join item on purchase.item_idx = item.item_idx
