@@ -232,7 +232,7 @@ a:visited {
 		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 			<div class="widget-sidebar story-sidebar">
 
-				<div id="img">
+			<div id="img" style="text-align: center;" >
 					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 						class="rounded-circle" alt="Author" width="200" height="200">
 				</div>

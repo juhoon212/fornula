@@ -212,7 +212,7 @@ a:visited {
 			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 				<div class="widget-sidebar story-sidebar">
 
-					<div id="img">
+					<div id="img" style="text-align: center;" >
 						<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 							class="rounded-circle" alt="Author" width="200" height="200">
 					</div>
@@ -221,14 +221,14 @@ a:visited {
 					</div>
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
-							<!-- 
+							
 							<div id="changBtn" style="text-align: center;">
 								<a href="/mypagePurchase" class="tag-cloud-link"
 									aria-label="admin change button">일반인으로 전환</a> <br>
 
 							</div>
 							
- -->							<br>
+ 							<br>
 							<div class="row">
 								<div class="widget" style="text-align: left;" id="list">
 									<h3 class="widget-title" id="expertmain"
@@ -236,14 +236,13 @@ a:visited {
 									<ul style="color: black;">
 										<li><a href="<c:url value="/expert/input"/>" id="info"
 											class="expertmenu">전문가 정보</a></li>
-										<%-- 
 										<li><a href="<c:url value="/expert/sales"/>" id="sale"
 											class="expertmenu" onclick="menuchange()">판매 관리</a></li>
 										<li><a href="<c:url value="/expert/output "/>" id="po"
 											class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
 										<li><a href="<c:url value="/expert/item"/>" id="item"
 											class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-										 --%>	
+											
 									</ul>
 								</div>
 							</div>
