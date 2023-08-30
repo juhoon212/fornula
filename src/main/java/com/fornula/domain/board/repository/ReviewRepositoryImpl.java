@@ -6,8 +6,10 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.mapper.java.ReviewMapper;
+import com.fornula.domain.item.dto.Purchase;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,5 +29,18 @@ public class ReviewRepositoryImpl implements ReviewRepository{
 	public int countReview(int itemIdx) {
 		return sqlSession.getMapper(ReviewMapper.class).countReview(itemIdx);
 	}
+	
+	@Override
+	public Purchase selectPurchase(int memberIdx, int itemIdx) {
+		return sqlSession.getMapper(ReviewMapper.class).selectPurchase(memberIdx, itemIdx);
+	}
+	
+	@Override
+	public int addReview(Review review) {
+		return sqlSession.getMapper(ReviewMapper.class).addReview(review);
+	}
+
+
+	
 
 }

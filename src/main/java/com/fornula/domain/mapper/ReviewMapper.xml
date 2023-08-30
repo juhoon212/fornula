@@ -6,30 +6,25 @@
 		select * from (
 			select rownum rn, reviewList.*
 			from (  select review_idx,
-							review.member_idx,
 							review.content,
 							review_date,
 							review_status,
 							reviewfile_name,
 							answer_content,
 							answer_date,
-							item.item_idx,
+							purchase.item_idx,
 							member.id
-					from member join review
-								on member.member_idx = review.member_idx
-								join purchase 
-									on review.purchase_idx = purchase.purchase_idx
-								join item
-									on purchase.item_idx = item.item_idx
-			where item.item_idx = #{itemIdx}
-			order by desc) reviewList)
+					from review join purchase
+								on review.purchase_idx = purchase.purchase_idx
+								join member 
+								on purchase.member_idx = member.member_idx
+			where purchase.item_idx = #{itemIdx}) reviewList)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<resultMap type="Reviews" id="Reviews">
 		<association property="review" javaType="Review">
 			<id column="review_idx" property="reviewIdx"/>
-			<result column="member_idx" property="memberIdx"/>
 			<result column="content" property="content"/>
 			<result column="review_date" property="reviewDate"/>
 			<result column="review_status" property="reviewStatus"/>
@@ -37,12 +32,13 @@
 			<result column="answer_content" property="answerContent"/>
 			<result column="answer_date" property="answerDate"/>
 		</association>
-		<association property="item" javaType="Item">
-			<id column="item_idx" property="itemIdx"/>			
-		</association>
 		<association property="member" javaType="Member">
 			<id column="member_idx" property="memberIdx"/>
 			<result column="id" property="id"/>		
+		</association>
+		<association property="purchase" javaType="Purchase">
+			<id column="purchase_idx" property="purchaseIdx"/>
+			<result column="item_idx" property="itemIdx"/>		
 		</association>
 		
 	</resultMap>
@@ -58,14 +54,13 @@
 	</select>
 	
 	<insert id="addReview" >
-		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+		<selectKey resultType="int" keyProperty="reviewIdx" order="BEFORE">
 			select review_seq.nextval from dual
 		</selectKey>
 		
 		insert into review values(
-			#{memberIdx},
+			#{reviewIdx},
 			#{purchaseIdx},
-			#{memberIdx},
 			5,
 			#{content},
 			sysdate,
@@ -74,9 +69,14 @@
 			null,
 			null		
 		)
-		
-	
 	</insert>
+	
+	<select id="selectPurchase" resultType="Purchase">
+		select purchase_idx
+		from purchase join item on purchase.item_idx = item.item_idx
+		where purchase.member_idx = #{memberIdx} and item.item_idx = #{itemIdx} 
+	</select>
+	
 	
 	
 

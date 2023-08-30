@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 public class Review {
 	private int reviewIdx;
 	private int purchaseIdx;
-	private int memberIdx;
 	private int score;
 	private String content;
 	private String reviewDate;

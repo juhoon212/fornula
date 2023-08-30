@@ -135,12 +135,12 @@ p #logo {
 
 				<div class="id-pw-find">
 					<a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a
-						href="/member/findPw">&nbsp비밀번호 찾기 </a>
+						href="<c:url value="/member/findPw"/>">&nbsp비밀번호 찾기 </a>
 				</div>
 				<div class="btn-container">
 					<button type="submit" id="login" class="btn btn-light">로그인</button>
 					<button type="button" id="join" class="btn btn-light"
-						onclick="location.href='/member/join'">회원가입</button>
+						onclick="location.href='<c:url value="/member/join"/>'">회원가입</button>
 				</div>
 				<div id="logos">
 					<a href=""><img

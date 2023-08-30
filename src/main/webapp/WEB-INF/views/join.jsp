@@ -47,7 +47,7 @@
           
         </div>
         
- <form id ="join_form" method="post" action="/member/join">
+ <form id ="join_form" method="post" action="<c:url value="/member/join"/>">
 
         <!-- id -->
         <input type="hidden" name="id" id="id-hidden">
