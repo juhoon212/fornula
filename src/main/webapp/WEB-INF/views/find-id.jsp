@@ -109,6 +109,7 @@
  <script type="text/javascript">
  
  let emailBox = document.querySelector('.box');
+ let messageBox = document.querySelector('#show-message');
  
  document.querySelector('#submit').addEventListener('click', (e) => {
 	 fetch("<c:url value="/member/findId"/>", {
@@ -123,10 +124,10 @@
 	.then((data) => {
 	   	  
 	  	if(data.errorCode === "Bad") {
-	   		document.querySelector('#show-message').innerHTML = data.message;
+	   		messageBox.innerHTML = data.message;
 	   } else {
-	   		document.querySelector('#show-message').innerHTML = data.id;
-	   		document.querySelector('#show-message').style = 'color : green';
+		   	messageBox.innerHTML = '아이디 = ' + data.id;
+		   	messageBox.style = 'color : green';
 	   	}
 	 })
 	  	e.preventDefault();

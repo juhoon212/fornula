@@ -8,4 +8,5 @@ public interface ItemDetailMapper {
 	Item selectItem(int itemIdx);
 	Expert findByMemberIdx(int memberIdx);
 	Photo selectPhoto(int itemIdx);
+	
 }

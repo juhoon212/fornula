@@ -30,8 +30,4 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public Photo selectPhoto(int memberIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectPhoto(memberIdx);
 	}
-	@Override
-	public Reviews getReviewList(int itemIdx) {
-		return sqlSession.getMapper(ReviewMapper.class).selectReivewList(itemIdx);
-	}
 }
