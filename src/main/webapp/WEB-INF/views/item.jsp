@@ -97,26 +97,25 @@ a{
 	            <div class="row justify-content-center comments-row no-gutters">
                 <div class="col-12 col-sm-11 col-md-10 col-lg-8">
                     <h4 class="comments-title font-weight-bold">
-                        Comments <span class="comments-number">(5)</span>
+                        Comments
                     </h4>
-
-                    <ul class="comment-list list-unstyled">
+					<c:forEach var="reviewList" items="${reviewList}">
+						<ul class="comment-list list-unstyled">
                         <li class="media">
                             <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
                                  src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
                             <div class="media-body">
                                 <div class="d-bock d-md-flex w-100 justify-content-between">
                                     <h5 class="comment-title">
-                                        <a href="#">Commenter</a>
+                                       <span>${reviewList.member.id}</span>
                                     </h5>
                                     <div class="comment-date">
-                                        <a href="#">May 24, 2017 at 11:47 am</a>
+                                         <span>${reviewList.review.reviewDate}</span>
                                     </div>
                                 </div>
                                 <div class="comment-text">
                                     <p>
-                                        주훈아 이거는 그냥 댓글이 각 ul 태그에다가 ID=1 / ID=2 ... 이렇게 붙여놓고 해당 댓글로 이동하고
-                                        싶으면 그냥 #ID값을 사용해서 이동하게 하면 된단다
+                                        ${reviewList.review.content}
                                     </p>
                                 </div>
                                 <ul class="comment-meta">
@@ -134,7 +133,9 @@ a{
                             </div>
                         </li>
                         
-                                </ul>
+                      </ul>
+					</c:forEach>
+                    
                                 </div>
                                 </div>
 
@@ -163,10 +164,10 @@ a{
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
                             게시글 쓰기
                         </h4>
-                        <form id="commentform" class="comment-form form-horizontal">          
+                        <form id="commentform" class="comment-form form-horizontal" action="/board/add">          
                             <div class="form-group row">
                                 <div class="col">
-                                    <textarea class="form-control" name="comment" rows="8" title="Comment"
+                                    <textarea class="form-control" name="content" rows="8" title="Comment"
                                               placeholder="Comment" aria-required="true" required="required"></textarea>
                                 </div>
                             </div>

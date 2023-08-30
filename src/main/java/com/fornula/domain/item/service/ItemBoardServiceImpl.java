@@ -26,13 +26,13 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		
 		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
 		
-		Map<String, Object> pageMap=new HashMap<String, Object>();
+		Map<String, Object> pageMap=new HashMap<>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
 	
 		List<ItemPhotoCategoryCart> itemBoardList=itemBoardDAO.selectItemList(pageMap);
 		
-		Map<String, Object> resultMap=new HashMap<String, Object>();
+		Map<String, Object> resultMap=new HashMap<>();
 		resultMap.put("itemBoardList", itemBoardList);
 		resultMap.put("pager", pager);
 		
