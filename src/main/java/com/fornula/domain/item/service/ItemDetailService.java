@@ -12,8 +12,6 @@ public interface ItemDetailService {
 	Item getItem(int itemIdx);
 	Expert findByMemberIdx(int memerIdx);
 	Photo selectPhoto(int itemIdx);
-	Map<String, Object> getReviewList(int pageNum, int itemIdx);
-	int countReview();
 }
 
 
