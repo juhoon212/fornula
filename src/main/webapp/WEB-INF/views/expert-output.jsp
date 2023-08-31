@@ -254,8 +254,7 @@ a:visited {
 									<ul>
 										<li><a href="<c:url value="/expert/input"/>" id="info"
 											>전문가 정보</a></li>
-										<li><a href="<c:url value="/expert/sales"/>" id="sale"
-											>판매 관리</a></li>
+										<!--<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li> -->
 										<li><a href="<c:url value="/expert/output"/>" id="po"
 											>포트폴리오</a></li>
 										<li><a href="<c:url value="/expert/item"/>" id="item"

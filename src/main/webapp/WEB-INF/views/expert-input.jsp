@@ -356,7 +356,7 @@ a:visited {
 								<h3 class="widget-title">전문가 정보</h3>
 								<ul>
 									<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
-									<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
+									<!--<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li> -->
 									<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
 									<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
 								</ul>
