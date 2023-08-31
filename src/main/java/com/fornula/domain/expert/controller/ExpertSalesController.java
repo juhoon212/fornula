@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.ItemSales;
+import com.fornula.domain.expert.dto.SaleItemExpert;
 import com.fornula.domain.expert.service.ExpertSalesService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
@@ -33,6 +34,9 @@ public class ExpertSalesController {
 		@GetMapping("/sales")
 		public String getSalesList(@ModelAttribute Expert originalExpert, HttpSession session, Model model){
 			
+			String originalFileName; // 원본 파일 이름
+			int pos;
+			
 			//세션에 있는 member_idx를 가져오기
 			Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
@@ -40,12 +44,17 @@ public class ExpertSalesController {
 			log.info("expertIdx:{}",expertIdx);//로그출력
 
 			System.out.println("aaa");
-			List<ItemSales> salesList = expertSalesService.getSalesList(expertIdx);//판매내역 리스트
+			List<SaleItemExpert> salesList = expertSalesService.getSalesList(expertIdx);//판매내역 리스트
 			log.info("list:{}", salesList);// 로그출력
 			
 			int price = 0;//총금액 출력
-			for(ItemSales itemSales : salesList) {
-				price+=itemSales.getItem().getPrice();
+			for(SaleItemExpert itemSales : salesList) {
+				price+=itemSales.getPrice();
+				
+				pos = itemSales.getItemfileName().lastIndexOf("_");
+				originalFileName = itemSales.getItemfileName().substring(pos + 1);
+				
+				itemSales.setItemfileName(originalFileName);
 			}
 
 			model.addAttribute("salesList", salesList);

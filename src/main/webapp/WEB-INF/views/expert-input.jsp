@@ -326,7 +326,7 @@ a:visited {
                      <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
                  </div>
                  <div id="button">
-                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
                  </div>
                  <div class="widget widget_tag_cloud">
                      <div class="tagcloud">

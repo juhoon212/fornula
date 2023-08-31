@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.fornula.domain.expert.dto.ItemSales;
+import com.fornula.domain.expert.dto.SaleItemExpert;
 
 public interface ExpertSalesMapper {
-	List<ItemSales> selectSalesList(int expertIdx);
+	List<SaleItemExpert> selectSalesList(int expertIdx);
 	int updateSalesStatus(int salesIdx);
-	int selectPrice(int expertIdx);
 	List<ItemSales> selectSearchSalesList(Map<String, Object> searchList);
 	int selectExpertIdxByMemberIdx(int memberIdx);
 
