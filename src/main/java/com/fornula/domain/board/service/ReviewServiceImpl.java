@@ -3,6 +3,7 @@ package com.fornula.domain.board.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -56,7 +57,9 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public Purchase selectPurchase(int memberIdx, int itemIdx) {
 		
-		Purchase purchase = reviewRepository.selectPurchase(memberIdx, itemIdx);
+		List<Purchase> selectPurchase = reviewRepository.selectPurchase(memberIdx, itemIdx);
+		Optional<Purchase> getPurchase = selectPurchase.stream().findFirst();
+		Purchase purchase = getPurchase.orElse(null);
 		
 		return purchase;
 	}

@@ -31,7 +31,7 @@ public class ReviewRepositoryImpl implements ReviewRepository{
 	}
 	
 	@Override
-	public Purchase selectPurchase(int memberIdx, int itemIdx) {
+	public List<Purchase> selectPurchase(int memberIdx, int itemIdx) {
 		return sqlSession.getMapper(ReviewMapper.class).selectPurchase(memberIdx, itemIdx);
 	}
 	
