@@ -38,6 +38,7 @@ public class ItemBoardController {
         List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>)resultMap.get("itemBoardList");
         for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
 			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
+			
 			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
 			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
 		}

@@ -58,7 +58,7 @@ public class ItemDetailController {
     	
     	if(selectReviews.get("reviewList") == null) {
     		
-    		return "redirect:/404";
+    		return "redirect:/400";
     	}
 		
 		model.addAttribute("pager", selectReviews.get("pager"));
