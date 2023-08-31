@@ -66,6 +66,11 @@
 			<exclude-mapping path="/item/*/**"/>
 			<exclude-mapping path="/board/**"/>
 			<exclude-mapping path="/board/add/*"/>
+			<exclude-mapping path="/admin/**"/>
+			<exclude-mapping path="/error"/>
+			<exclude-mapping path="/404"/>
+			<exclude-mapping path="/500"/>
+			
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 		<interceptor>
