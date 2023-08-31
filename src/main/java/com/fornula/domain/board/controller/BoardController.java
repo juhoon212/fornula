@@ -55,6 +55,7 @@ public class BoardController {
 		if(purchase == null) {
 			redirectAttributes.addAttribute("status", false);
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			redirectAttributes.addFlashAttribute("message", "상품 구매자만 후기를 달 수 있습니다.");
 			return "redirect:/item/{itemIdx}/1";
 		}
 		
