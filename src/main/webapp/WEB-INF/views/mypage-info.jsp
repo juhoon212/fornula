@@ -284,15 +284,16 @@ h3 {
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
             
-            <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
+            <div id="button">
+            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+            </div>
               
                   
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
-                       
-                  
-               </div>
-               <div class="widget widget_tag_cloud">
+                       <div id="button">
+                       <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       </div>
+            <div class="widget widget_tag_cloud">
                   
                     <div class="tagcloud">
            
