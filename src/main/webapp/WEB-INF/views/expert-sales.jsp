@@ -160,8 +160,8 @@ tr td {
 								<div class="blog-posts">
 									<div id="post-2" class="post type-post post-2 card post-card">
 										<div class="row">
-												<div style="text-align: center;">
-												<h3 >${message }</h3></div>
+												<div style="text-align: center; " class="col" >
+												<h3 style="font-size: 24px;">[${message }]</h3></div>
 											<c:forEach var="salesList" items="${salesList}">
 												<div class="col-md-4">
 													<img class="card-img img-fluid"
@@ -251,7 +251,7 @@ tr td {
                							</li>
                        					 
                        					<li>
-                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
+                       						<a href="<c:url value="/expert/sales"/>">판매 관리</a>
                    						</li>
                         				
                         				<li>

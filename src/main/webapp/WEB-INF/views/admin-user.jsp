@@ -234,7 +234,7 @@ table th {
                 <div class="widget">
                
                     <ul>
-                    <li><a href="<c:url value="/admin/user"/>">회원 관리</a></li>
+                    <li><a style="color : #fdbb42;" href="<c:url value="/admin/user"/>">회원 관리</a></li>
                         <li><a href="<c:url value="/admin/item"/>">상품 관리</a></li>
                       
                     </ul>

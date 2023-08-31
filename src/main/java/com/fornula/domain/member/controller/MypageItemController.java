@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.Itempurchase;
 import com.fornula.domain.member.service.MypageItemService;
@@ -30,14 +32,23 @@ public class MypageItemController {
    
       Member member = (Member)session.getAttribute(SessionConst.Login_Member);
       int filePos;
+    
       
       List<Itempurchase> itempurchase =itemService.mypageItemPurchase(member.getMemberIdx());
+      
+      
        for(Itempurchase itempurchasePhoto : itempurchase) {
+    	   
+    	   if(itempurchasePhoto.getItemName() == null) {
+    		   return "mypage-info";
+    	   }
           filePos = itempurchasePhoto.getItemfileName().lastIndexOf("_");
           String originalFileName = itempurchasePhoto.getItemfileName().substring(filePos+1);
           itempurchasePhoto.setItemfileName(originalFileName);
        }
          
+      
+       
        model.addAttribute("member", member);
        model.addAttribute("Itempurchase", itempurchase);
         

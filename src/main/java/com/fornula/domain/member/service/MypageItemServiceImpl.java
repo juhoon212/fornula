@@ -15,7 +15,7 @@ public class MypageItemServiceImpl implements MypageItemService{
 	private final MypageItemRepository mypageItemRepository;
 	
 	@Override
-	public   List<Itempurchase>  mypageItemPurchase(int memberIdx) {
+	public List<Itempurchase>  mypageItemPurchase(int memberIdx) {
 		List<Itempurchase> mypageItemPurchase = mypageItemRepository.selectPurchaseMypage(memberIdx);
 		return mypageItemPurchase;
 	}

@@ -79,5 +79,4 @@
 				class="com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
-
 </beans:beans>
