@@ -61,7 +61,7 @@
                 <div id="post-2" class="post type-post post-2 card post-card">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
+                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${Itempurchase.itemfileName}'/>" alt="Post">
                             
                         </div>
                         <div class="col-md-8">
@@ -78,7 +78,7 @@
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
                                     
-                                    <a href="single.html" class="more-link card-link d-flex align-items-center">
+                                    <a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>" class="more-link card-link d-flex align-items-center">
                                         리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
                                     </a>
 
