@@ -53,30 +53,53 @@
 	</beans:bean>
 
 	<!-- 로그인 인터셉터 -->
-	<!-- <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" 
-		id="loginCheckInterceptor"/> <interceptors> <interceptor> <mapping path="/**"/> 
-		<exclude-mapping path="/home"/> <exclude-mapping path="/css/**"/> <exclude-mapping 
-		path="/js/**"/> <exclude-mapping path="/ico/**"/> <exclude-mapping path="/img/**"/> 
-		<exclude-mapping path="/pictures/**"/> <exclude-mapping path="/member/login"/> 
-		<beans:ref bean="loginCheckInterceptor"/> </interceptor> </interceptors> -->
-
-
-
-	<!-- 전문가 인터셉터 -->
+	
+	 <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
+	 <beans:bean id ="AdminAuthInterceptor" class = "com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean> 
+	 <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor" />
+	
+	
+	
 	<interceptors>
 		<interceptor>
-			<mapping path="/expert/input"></mapping>
-			<mapping path="/expert/sales"></mapping>
-			<mapping path="/expert/item"></mapping>
-			<beans:bean id="ExpertAuthInterceptor"
-				class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor" />
+			<mapping path="/**"/>
+			<exclude-mapping path="/images/upload/**"/>
+			<exclude-mapping path="/"/>
+			<exclude-mapping path="/item/**"/>
+			<exclude-mapping path="/css/**"/>
+			<exclude-mapping path="/js/**"/>
+			<exclude-mapping path="/ico/**"/>
+			<exclude-mapping path="/img/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/pictures/**"/>
+			<exclude-mapping path="/member/login"/>
+			<exclude-mapping path="/member/**"/>
+			<exclude-mapping path="/item/boardList"/>
+			<exclude-mapping path="/item/*/**"/>
+			<exclude-mapping path="/board/**"/>
+			<exclude-mapping path="/board/add/*"/>
+			<exclude-mapping path="/admin/**"/>
+			<exclude-mapping path="/error"/>
+			<exclude-mapping path="/404"/>
+			<exclude-mapping path="/500"/>
+			
+			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
-
 
 		<interceptor>
 			<mapping path="/admin/**"></mapping>
-			<beans:bean id="AdminAuthInterceptor"
-				class="com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean>
+			<beans:ref bean="AdminAuthInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/expert/input"/>
+			<mapping path="/expert/sales"/>
+			<mapping path="/expert/item"/>
+			<beans:ref bean="ExpertAuthInterceptor"/>
 		</interceptor>
 	</interceptors>
 </beans:beans>
+		
+
+	
+	
+	

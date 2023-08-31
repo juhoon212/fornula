@@ -142,25 +142,7 @@ a{
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
                         
                          <h1>${item.itemName }</h1>
-                        
-                        <div>
-                            <a href="#" onclick="return disableLink()">
-					            # ${item.categoryIdx == 1 ? '그래픽' :
-					               item.categoryIdx == 2 ? '제품' :
-					               item.categoryIdx == 3 ? '영어' :
-					               item.categoryIdx == 4 ? '중국어' :
-					               item.categoryIdx == 5 ? '헤어 메이크업' :
-					               item.categoryIdx == 6 ? '제품 홍보 사진' :
-					               item.categoryIdx == 7 ? '사업자' :
-					               item.categoryIdx == 8 ? '개인' :
-					               item.categoryIdx == 9 ? 'SNS홍보' :
-					               item.categoryIdx == 10 ? '해외마케팅' : '알 수 없음'}
-					        </a>
-                        </div>
-                        
-                       
-                          
-                            
+         
                         <div class="gongback">
 							  <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>                        
                             <h4 >${item.itemDate }</h4>
@@ -265,7 +247,7 @@ a{
                             Next
                         </a>
                     </nav> -->
-					
+					<div>${message}</div>
 					<div style="height: 100px"></div>
                     <div id="respond" class="comment-respond">
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
