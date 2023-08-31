@@ -1,8 +1,5 @@
 package com.fornula.domain.member.dto.mypage;
 
-import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.item.dto.Purchase;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

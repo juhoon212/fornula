@@ -151,7 +151,6 @@ tr td {
 													<a href="single.html">${payment.itemName}</a>
 												</h4>
 												<p class="subtitle"></p>
-
 												<div
 													class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
 												</div>

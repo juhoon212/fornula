@@ -40,9 +40,6 @@ public class PaymentController {
 			model.addAttribute("payment", payment);
 			model.addAttribute("originalFileName", originalFileName);
 			
-			
-			
-			
 			return "payment"; 
 		}
 		
