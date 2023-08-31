@@ -5,6 +5,7 @@ import com.fornula.domain.member.dto.mypage.Itempurchase;
 
 
 public interface MypageItemService {
+
 	  List<Itempurchase> mypageItemPurchase (int memberIdx);
 
 }
