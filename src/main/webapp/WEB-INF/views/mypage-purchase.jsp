@@ -53,12 +53,19 @@
             <div class="story-posts">
             <section>
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
+                <c:if test="${empty Itempurchase}">
+	                 <div style="text-align: center;" class="col">
+	                           <h3 style="font-size: 24px;">${message }</h3>
+	                 </div>
+	                 </c:if>
+               
                 <c:forEach var="Itempurchase" items="${Itempurchase}">
                     <div class="card-body">
                       
                        <div class="blog-posts">
                      
                 <div id="post-2" class="post type-post post-2 card post-card">
+              
                     <div class="row">
                         <div class="col-md-4">
                             <img class="card-img img-fluid" src="<c:url value='/images/upload/${Itempurchase.itemfileName}'/>" alt="Post">
