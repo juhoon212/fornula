@@ -12,7 +12,6 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//������ ���ͼ���
 public class AdminAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
