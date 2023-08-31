@@ -43,24 +43,31 @@
 	</beans:bean>	
 	<!-- 로그인 인터셉터 -->
 	
- <!-- <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
+	<!-- <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
 	
-	 <interceptors>
+	
+	
+	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
-			<exclude-mapping path="/"/>
+			<exclude-mapping path="/home"/>
 			<exclude-mapping path="/css/**"/>
 			<exclude-mapping path="/js/**"/>
 			<exclude-mapping path="/ico/**"/>
 			<exclude-mapping path="/img/**"/>
 			<exclude-mapping path="/pictures/**"/>
 			<exclude-mapping path="/member/login"/>
-			<exclude-mapping path="/member/**"/>
-			<exclude-mapping path="/item/boardList"/>
-			<exclude-mapping path="/item/boardList"/>
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
-	</interceptors>  -->
+	</interceptors> -->
+	
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"></mapping>
+			<beans:bean id ="AdminAuthInterceptor" class = "com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean> 
+		</interceptor>
+	</interceptors>
 	
 	
 	

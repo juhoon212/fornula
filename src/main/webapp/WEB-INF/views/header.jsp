@@ -52,6 +52,13 @@ p #logo {
 .name {
 	font-family: 'Permanent Marker', cursive;
 }
+
+.admin{
+	text-align : right;
+	float : right;
+	margin-left :auto;
+}
+
 </style>
 </head>
 
@@ -138,7 +145,7 @@ p #logo {
 						<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
 						<div class="collapse navbar-collapse" id="lana-navbar">
 							<ul class="navbar-nav ml-lg-auto">
-								<li class="nav-item dropdown"><a
+								<li class="nav-item dropdown"><a 
 									class="nav-link dropdown-toggle" href="/item/boardList"
 									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">카테고리</a>
@@ -321,7 +328,7 @@ p #logo {
 							</form>
 					</c:if>
 					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
-						<div style="text-align: right;">
+						<div class = "admin">
 							<form action="/member/logout" method="post">
 								<a href="/admin/user">&nbsp;&nbsp;회원 관리&nbsp;&nbsp;|</a>&nbsp;&nbsp;
 								<a href="/admin/item">상품 관리</a>
