@@ -160,13 +160,13 @@ a:visited {
 								<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 								<input class="box" type="text" name="expertIdx"
 									placeholder="전문가번호"
-									value="전문가 번호 : ${originalExpert.expertIdx }" readonly />
+									value="${originalExpert.expertIdx }" readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
 							<div id="category-flex">
 								<input class="box" type="text" name="phone" placeholder="전화번호"
-									value="전화번호 : ${originalExpert.phone }" readonly/>
+									value="${originalExpert.phone }" readonly/>
 							</div>
 						</div>
 						<div class="info" id="info__category">
@@ -182,7 +182,7 @@ a:visited {
                  -->
 								<!-- 여백 어케주드라 -->
 								<input class="box" name=career type="text" placeholder="연차:"
-									value="경력 : ${originalExpert.career }" readonly/>
+									value="${originalExpert.career }" readonly/>
 							</div>
 						</div>
 						<div class="info" id="info__category">
@@ -201,8 +201,7 @@ a:visited {
 							</div>
 						</div>
 						<div>
-							<textarea class="box" id="introduceInput" name="introduce"
-								placeholder="자기소개" value="${originalExpert.introduce }"readonly>
+							<textarea class="box" id="introduceInput" name="introduce" style="height:300px;" placeholder="자기소개" readonly>
 							</textarea>
 						</div>
 						
@@ -368,6 +367,11 @@ a:visited {
 		 });
 		 });
 		 */
+		 
+document.getElementById('introduceInput').value = '${originalExpert.introduce}';
+textarea.value = '자기소개';
+textarea.removeAttribute('readonly');
+
 	</script>
 </body>
 </html>
