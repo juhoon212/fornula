@@ -1,6 +1,7 @@
 package com.fornula.domain.expert.service;
 
 import com.fornula.domain.expert.dto.ItemSales;
+import com.fornula.domain.expert.dto.SaleItemExpert;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 public interface ExpertSalesService {
 	List<ItemSales> searchAndSelectSalesList(int salesStatus, String salesDate);
-	List<ItemSales> getSalesList();
+	List<SaleItemExpert> getSalesList(int expertIdx);
 	int modifySalesStatus(int salesIdx);
-	int searchPrice();
 } 

@@ -29,17 +29,13 @@ public class MainController {
 	//메인페이지 상품 출력
 	@GetMapping
 	public String home(Model model) {
-		//List<ItemPhotoCategoryCart> itemList = itemMainService.getMainItemList();
-		//model.addAttribute("itemList",itemList );
+		List<ItemPhotoCategoryCart> itemList = itemMainService.getMainItemList();
+		model.addAttribute("itemList",itemList );
 		
-		//log.info("itemList: {}",itemList);
+		log.info("itemList: {}",itemList);
 		return "main";
 	}
-	 
-	
-	
-	
-	
+
 	@GetMapping("/success")
 	public String test() {
 		return "common-success";

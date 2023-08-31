@@ -58,12 +58,7 @@ public class ExpertController{
 			
 		return"item-add/{expertIdx}";
 	}
-	@GetMapping("/expert/sales")
-	public String expertsales() {
-		
-		
-		return"expert-sales";
-	}
+	
 
 	/*
 	 * // 포트폴리오로 이동하는 메소드

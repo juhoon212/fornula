@@ -117,6 +117,7 @@ h3 {
 	background-color: #ebe9e9;
 	border-radius: 6px;
 }
+
 a:link {
 	color: #212121;
 }
@@ -135,6 +136,8 @@ a:visited {
 				<div class="widget">
 					<form class="story-posts" id="content" action="/expert/input"
 						method="post">
+						<label
+							style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">포트폴리오</label>
 						<!-- 
 						<a style="font-size: 28px;"
 							href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">[PDF
@@ -142,6 +145,10 @@ a:visited {
 						<!-- <div class="box" style="height: 1200px"> -->
 						<!-- 
 						<iframe src="/resources/images/profolio/phy.pdf" width="100%"
+							height="500px"></iframe>
+						<a
+							href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">[PDF
+							보기]</a>
 							height="500px"></iframe> -->
 						<!-- 나머지 폼 요소들... -->
 						<div>
@@ -155,116 +162,99 @@ a:visited {
 
 						<div class="info" id="info__category">
 							<br>
-							<p style="font-size: 28px;">[전문가 정보]</p>
+							<p style="font-size: 20px;">전문가 정보</p>
 							<div id="category-flex">
 								<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 								<input class="box" type="text" name="expertIdx"
 									placeholder="전문가번호"
-									value="전문가 번호 : ${originalExpert.expertIdx }" readonly />
+									value="${originalExpert.expertIdx }" readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
 							<div id="category-flex">
 								<input class="box" type="text" name="phone" placeholder="전화번호"
-									value="전화번호 : ${originalExpert.phone }" readonly/>
+									value="${originalExpert.phone }" readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
 							<div id="category-flex">
-								<%--   
-                <input class="box" type="text" name="interest" placeholder="기존 카테고리:"
+								
+              <input class="box" type="text" name="interest" placeholder="기존 카테고리:"
                 	value="${originalExpert.interest}" readonly/>
-                 --%>
-								<!-- 여백 어케주드라 -->
-								<!-- 
 				<select class="box" id="interestSelect" name="interest">
+                  <option disabled selected>디자인</option>
+                  <option value="1">그래픽</option>
+                  <option value="2">제품</option>
+                  <option disabled selected>번역</option>
+                  <option value="3">영어</option>
+                  <option value="4">중국어</option>
+                  <option disabled selected>사진 편집</option>
+                  <option value="5">헤어 메이크업</option>
+                  <option value="6">제품 홍보 사진</option>
+                  <option disabled selected>세무</option>
+                  <option value="7">사업자</option>
+                  <option value="8">개인</option>
+                  <option disabled selected>마케팅</option>
+                  <option value="9">SNS 홍보</option>
+                  <option value="10">해외 마케팅</option>              
                 </select>
-                 -->
 								<!-- 여백 어케주드라 -->
 								<input class="box" name=career type="text" placeholder="연차:"
-									value="경력 : ${originalExpert.career }" readonly/>
+									value="경력 : ${originalExpert.career }" readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
 							<div id="category-flex">
 								<input class="box" type="text" id="companyOneInput"
 									name="companyOne" placeholder="근무지1"
-									value="${originalExpert.companyOne }" readonly/>
+									value="${originalExpert.companyOne }" readonly />
 								<!-- 여백 어케주드라 -->
 								<input class="box" type="text" id="companyTwoInput"
 									name="companyTwo" placeholder="근무지2"
-									value="${originalExpert.companyTwo }" readonly/>
+									value="${originalExpert.companyTwo }" readonly />
 								<!-- 여백 어케주드라 -->
 								<input class="box" type="text" id="companyThreeInput"
 									name="companyThree" placeholder="근무지3"
-									value="${originalExpert.companyThree }" readonly/>
+									value="${originalExpert.companyThree }" readonly />
 							</div>
 						</div>
 						<div>
-							<textarea class="box" id="introduceInput" name="introduce"
-								placeholder="자기소개" value="${originalExpert.introduce }"readonly>
-							</textarea>
+							<input class="box" id="introduceInput" name="introduce"
+								placeholder="자기소개" value="${originalExpert.introduce }" readonly></input>
 						</div>
-						
 						<!-- </div> -->
 				</div>
 				</form>
 			</div>
 
-			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-				<div class="widget-sidebar story-sidebar">
-					<div id="button">
-		            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-							class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-		            </div>
-					<div id="button">
-						<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
-					</div>
-					<div class="widget widget_tag_cloud">
-						<div class="tagcloud">
-							<div id="button">
-								<a href="/mypageInfo" class="tag-cloud-link"
-									aria-label="admin change button">일반회원으로 전환</a> 
-							</div>
-							<div class="row" >
-                				<div class="widget">
-                    				<h3 class="widget-title">포트폴리오</h3>
-                                    <ul>
-                   						<li>
-                   							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
-               							</li>
-                       					<li>
-                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
-                   						</li>
-                        				<li>
-                        					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
-                       					</li>
-                        				<li>
-                        					<a href="<c:url value="/expert/item"/>">상품 등록</a>
-                       					</li>
-                    				</ul>
-                				</div>
-               				</div>
-							<!-- 			<div class="row">
-							<div class="widget" style="text-align: left;" id="list">
-								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
-									관리</h3>
-								<ul style="color: black;">
-									<li><a href="javascript:menuchange();" id="info"
-										class="expertmenu">전문가 정보</a></li>
-									<li><a href="javascript:menuchange();" id="sale"
-										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-									<li><a href="javascript:menuchange();" id="po"
-										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="/expertitem" id="item"
-										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-								</ul>
-							</div>
-						</div> -->
-						</div>
-					</div>
-				</div>
-			</div>
+			  <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+             <div class="widget-sidebar story-sidebar">
+                 <div id="button">
+                     <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+                 </div>
+                 <div id="button">
+                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+                 </div>
+                 <div class="widget widget_tag_cloud">
+                     <div class="tagcloud">
+                         <div id="button">
+                             <a href="/mypageInfo" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+                         </div>
+                         <div class="row">
+                             <div class="widget" style="text-align: left;">
+                                 <h3 class="widget-title">포트폴리오</h3>
+                                 <ul class="list-unstyled">
+                                     <li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
+                                     <li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
+                                     <li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
+                                     <li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp" />

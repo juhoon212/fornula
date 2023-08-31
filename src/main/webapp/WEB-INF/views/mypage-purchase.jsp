@@ -67,12 +67,12 @@
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
                                 <ul class="post-meta">
-                                    <li><a href="single.html">${Itempurchase.purchaseDate}</a></li>
-                                    <li><a href="#">₩ ${Itempurchase.price} </a></li>
+                                    <li>${Itempurchase.purchaseDate}</li>
+                                    <li>₩ ${Itempurchase.price} </li>
                                 </ul>
                                 <p class="post-text card-text">
                                 <h6 class="post-title card-title">${Itempurchase.purchaseIdx}</h6>
-                                <h4 class="post-title card-title"><a href="single.html">${Itempurchase.itemName}</a>
+                                <h4 class="post-title card-title"><a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>${Itempurchase.itemName}"></a>
                                 </h4>
                                 <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
@@ -94,18 +94,18 @@
                 </div>
                </c:forEach>
                 <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
-                    <a class="prev disabled" href="#">
+                    <a class="prev disabled" href="<c:url value="#"/>">
                         Prev
                     </a>
                     <div class="nav-links">
                         <ul class="page-numbers">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
-                            <li><a class="page-numbers" href="#">2</a></li>
+                            <li><a class="page-numbers" href="<c:url value="#"/>">2</a></li>
                             <li><span class="page-numbers dots">…</span></li>
-                            <li><a class="page-numbers" href="#">4</a></li>
+                            <li><a class="page-numbers" href="<c:url value="#"/>">4</a></li>
                         </ul>
                     </div>
-                    <a class="next" href="#">
+                    <a class="next" href="<c:url value="#"/>">
                         Next
                     </a>
                 </nav>
@@ -126,7 +126,7 @@
               
                   
                        <div id="button">
-                       <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       <a href="<c:url value="#"/>" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
                        </div>
             <div class="widget widget_tag_cloud">
                   

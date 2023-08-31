@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.expert.dto.ItemSales;
+import com.fornula.domain.expert.dto.SaleItemExpert;
 import com.fornula.domain.expert.repository.ExpertSalesDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 	private final ExpertSalesDAO expertSalesDAO;
 	
 	@Override
-	public List<ItemSales> getSalesList() {
-		return expertSalesDAO.selectSalesList();
+	public List<SaleItemExpert> getSalesList(int expertIdx) {
+		return expertSalesDAO.selectSalesList(expertIdx);
 	}
 
 	@Override
@@ -25,10 +26,6 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 		return expertSalesDAO.selectSearchSalesList(salesStatus, salesDate);
 	}
 
-	@Override
-	public int searchPrice() {
-		return expertSalesDAO.selectPrice();
-	}
 
 	@Override
 	public int modifySalesStatus(int salesIdx) {

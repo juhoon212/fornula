@@ -198,6 +198,7 @@ h3 {
 	width: 100%;
 	height: 100%;
 }
+
 a:link {
 	color: #212121;
 }
@@ -215,53 +216,63 @@ a:visited {
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
+
 						<div class="widget">
 							<div class="info" id="info__category">
-								<br>
-								<p style="font-size: 28px; text-align: left;">[전문가 정보]</p>
-
+								<div style="text-align: left;">
+									<br> <label
+										style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">전문가
+										정보</label>
+								</div>
 								<div id="category-flex">
 									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 									<input class="box" type="text" name="expertIdx"
-										placeholder="전문가번호"
-										value="전문가 번호 : ${originalExpert.expertIdx }" readonly />
+										placeholder="전문가번호" value="${originalExpert.expertIdx }"
+										readonly />
 								</div>
 							</div>
 							<div class="info" id="info__category">
 								<div id="category-flex">
 									<input class="box" type="text" name="phone" placeholder="전화번호"
-										value="전화번호 : ${originalExpert.phone }" />
+										value="${originalExpert.phone}" />
 								</div>
 							</div>
 							<div class="info" id="info__category">
 								<div id="category-flex">
-									<%--   
-                <input class="box" type="text" name="interest" placeholder="기존 카테고리:"
-                	value="${originalExpert.interest}" readonly/>
-                 --%>
+									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
+									<textarea class="box" type="text" name="introduce"
+										placeholder="자기소개" value="${originalExpert.introduce }"></textarea>
+								</div>
+							</div>
+							<div class="info" id="info__category">
+								<div id="category-flex">
+									<input class="box" type="text" name="interest"
+										placeholder="기존 카테고리:" value="${originalExpert.interest}"
+										readonly />
+
 									<!-- 여백 어케주드라 -->
-									<!-- 
-				<select class="box" id="interestSelect" name="interest">
-                  <option disabled selected>디자인</option>
-                  <option value="1">그래픽</option>
-                  <option value="2">제품</option>
-                  <option disabled selected>번역</option>
-                  <option value="3">영어</option>
-                  <option value="4">중국어</option>
-                  <option disabled selected>사진 편집</option>
-                  <option value="5">헤어 메이크업</option>
-                  <option value="6">제품 홍보 사진</option>
-                  <option disabled selected>세무</option>
-                  <option value="7">사업자</option>
-                  <option value="8">개인</option>
-                  <option disabled selected>마케팅</option>
-                  <option value="9">SNS 홍보</option>
-                  <option value="10">해외 마케팅</option>              
-                </select>
-                 -->
+
+									<select class="box" id="interestSelect" name="interest">
+										<option disabled selected>디자인</option>
+										<option value="1">그래픽</option>
+										<option value="2">제품</option>
+										<option disabled selected>번역</option>
+										<option value="3">영어</option>
+										<option value="4">중국어</option>
+										<option disabled selected>사진 편집</option>
+										<option value="5">헤어 메이크업</option>
+										<option value="6">제품 홍보 사진</option>
+										<option disabled selected>세무</option>
+										<option value="7">사업자</option>
+										<option value="8">개인</option>
+										<option disabled selected>마케팅</option>
+										<option value="9">SNS 홍보</option>
+										<option value="10">해외 마케팅</option>
+									</select>
+
 									<!-- 여백 어케주드라 -->
 									<input class="box" name=career type="text" placeholder="연차:"
-										value="경력 : ${originalExpert.career }" />
+										value="${originalExpert.career }" />
 								</div>
 							</div>
 							<div class="info" id="info__category">
@@ -282,7 +293,7 @@ a:visited {
 						</div>
 						<div>
 							<section id="upload">
-								<h3 style="text-align: left;">[포트폴리오 등록]</h3>
+								<!-- <h3 style="text-align: left;">포트폴리오 등록</h3> -->
 								<input class="form-control" type="file" id="portfolioFileInput"
 									accept=".pdf" name=itemfileName>
 								<!-- <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly> -->
@@ -290,11 +301,11 @@ a:visited {
 									파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;" id="errorMessage">${message}</p>
 							</section>
-							<div>
+							<%-- <div>
 								<textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
 									placeholder="자기소개" value="${originalExpert.introduce }">
 								</textarea>
-							</div>
+							</div> --%>
 						</div>
 						<br>
 
@@ -309,37 +320,39 @@ a:visited {
 
 
 				</div>
-				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-					<div class="widget-sidebar story-sidebar">>
-						<div class="widget widget_tag_cloud">
-							<div class="tagcloud">
-								<div id="button">
-					            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-					               		class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-					            </div>
-								<div class="row" >
-	                				<div class="widget">
-	                    				<h3 class="widget-title">전문가 정보</h3>
-	                                    <ul>
-	                   						<li>
-	                   							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
-	               							</li>
-	                       					<li>
-	                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
-	                   						</li>
-	                        				<li>
-	                        					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
-	                       					</li>
-	                        				<li>
-	                        					<a href="<c:url value="/expert/item"/>">상품 등록</a>
-	                       					</li>
-	                    				</ul>
-	                				</div>
-	               				</div>
-							</div>
-						</div>
+				         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+             <div class="widget-sidebar story-sidebar" >
+                 <div id="button">
+                     <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+                 </div>
+                 <div id="button">
+                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
+                 </div>
+                 <div class="widget widget_tag_cloud">
+                     <div class="tagcloud">
+                         <div id="button">
+                             <a href="/mypageInfo" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+                         </div>
+                         <div class="row">
+                             <div class="widget" style="text-align: left;">
+                                 <h3 class="widget-title">전문가 정보</h3>
+                                 <ul class="list-unstyled">
+                                     <li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
+                                     <li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
+                                     <li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
+                                     <li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
 					</div>
 				</div>
+			</div>
+			</div>
+			</div>
 			</div>
 		</form>
 	</main>

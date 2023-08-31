@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.ItemSales;
+import com.fornula.domain.expert.dto.SaleItemExpert;
 import com.fornula.domain.expert.mapper.java.ExpertJoinMapper;
 import com.fornula.domain.expert.mapper.java.ExpertSalesMapper;
 
@@ -33,19 +34,12 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	}
 
 	@Override
-	public List<ItemSales> selectSalesList() {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList();
+	public List<SaleItemExpert> selectSalesList(int expertIdx) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList(expertIdx);
 	}
 	
 	@Override
 	public int updateSalesStatus(int salesIdx) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).updateSalesStatus(salesIdx);
 	}
-	
-
-	@Override
-	public int selectPrice() {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectPrice();
-	}
-
 }
