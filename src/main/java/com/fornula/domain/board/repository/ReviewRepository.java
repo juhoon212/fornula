@@ -15,5 +15,7 @@ public interface ReviewRepository {
 	
 	int addReview(Review review);
 	
+	int addReply(Review review);
+	
 	Purchase selectPurchase(int memberIdx, int itemIdx);
 }

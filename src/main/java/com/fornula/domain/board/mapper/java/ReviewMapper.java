@@ -13,5 +13,6 @@ public interface ReviewMapper {
 	List<Reviews> selectReview(Map<String, Object> map);
 	int countReview(int itemIdx);
 	int addReview(Review review);
+	int addReply(Review review);
 	Purchase selectPurchase(@Param("memberIdx")int memberIdx, @Param("itemIdx")int itemIdx);
 }

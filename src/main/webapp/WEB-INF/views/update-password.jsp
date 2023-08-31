@@ -85,7 +85,7 @@
       </header>
 
       <section>
-        <form action="/member/updatePassword/${memberIdx}" method="POST">
+        <form action="<c:url value="/member/updatePassword/${memberIdx}"/>" method="POST">
 	        <div class="info" id="info__id">
 	          <div id="id-input">
 	          	<label for="new-box" class="id-box"></label>
