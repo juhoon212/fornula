@@ -92,7 +92,24 @@
       	</div>
         
       </header>
+      
+      <form id ="join_form" method="post" action="<c:url value="/board/add/reply/${itemIdx}"/>">
 
+        <!-- id -->
+        <input type="hidden" name="reviewIdx" id="id-hidden" value="${reviewIdx}">
+        
+       
+        <!-- 이메일 -->
+        <h3>답글</h3>
+        <div class="info" id = "info__email">
+        
+            <textarea class="box" placeholder="답글을 입력해주세요" name = "answerContent" required/></textarea>
+          
+          <div class = "error-msg"></div>
+        </div>
+        <!-- 비밀번호 -->
+       	<button id="submit">등록하기</button>
+	</form>
       <section>
         
      	<div id="show-message">${message}</div>

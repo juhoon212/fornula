@@ -52,6 +52,13 @@ p #logo {
 .name {
 	font-family: 'Permanent Marker', cursive;
 }
+
+.admin{
+	text-align : right;
+	float : right;
+	margin-left :auto;
+}
+
 </style>
 </head>
 
@@ -321,7 +328,7 @@ p #logo {
 							</form>
 					</c:if>
 					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
-						<div style="text-align: right;">
+						<div class = "admin">
 							<form action="/member/logout" method="post">
 								<a href="/admin/user">&nbsp;&nbsp;회원 관리&nbsp;&nbsp;|</a>&nbsp;&nbsp;
 								<a href="/admin/item">상품 관리</a>

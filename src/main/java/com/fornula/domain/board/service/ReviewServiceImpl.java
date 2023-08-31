@@ -60,6 +60,12 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return purchase;
 	}
+
+	@Override
+	public int addReply(Review review) {
+		int result = reviewRepository.addReply(review);
+		return result;
+	}
 	
 	
 

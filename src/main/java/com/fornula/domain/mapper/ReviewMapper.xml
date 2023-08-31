@@ -18,8 +18,10 @@
 								on review.purchase_idx = purchase.purchase_idx
 								join member 
 								on purchase.member_idx = member.member_idx
-			where purchase.item_idx = #{itemIdx}) reviewList)
+			where purchase.item_idx = #{itemIdx}
+			order by review_idx desc) reviewList)
 		where rn between #{startRow} and #{endRow}
+		
 	</select>
 	
 	<resultMap type="Reviews" id="Reviews">
@@ -70,6 +72,12 @@
 			null		
 		)
 	</insert>
+	
+	<update id="addReply" >
+		update review
+		set answer_content = #{answerContent}, answer_date = sysdate
+		where review_idx = #{reviewIdx}
+	</update>
 	
 	<select id="selectPurchase" resultType="Purchase">
 		select purchase_idx

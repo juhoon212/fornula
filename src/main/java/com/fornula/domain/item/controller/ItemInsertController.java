@@ -110,13 +110,13 @@ public class ItemInsertController {
 			
 			multipartFile.transferTo(new File(uploadDirectory , uploadFileName));
 			
-			// DB에 photo 객체 저장
+			// DB에 photo 객체 저장å
 			itemInsertService.addPhoto(itemPhoto);
 		
 		
 		redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
 		
-		return "redirect:/item/{itemIdx}";
+		return "redirect:/item/{itemIdx}/1";
 	}	
 }
