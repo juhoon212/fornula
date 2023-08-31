@@ -14,7 +14,7 @@ public interface ExpertSalesDAO {
 	//상태 버튼 클릭시 판매 상태 변경
 	int updateSalesStatus(int salesIdx);
 	//구매 확정된 총 판매금액 출력
-	int selectPrice();
+	Integer selectPrice(int expertIdx);
 	//세션의 memberIdx를 통해 expertIdx 를 가져오는 DAo
 	int selectExpertIdxByMemberIdx(int memberIdx);
 

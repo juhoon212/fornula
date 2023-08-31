@@ -12,5 +12,5 @@ public interface ExpertSalesService {
 	List<ItemSales> searchAndSelectSalesList(int salesStatus, String salesDate);
 	List<ItemSales> getSalesList(int expertIdx);
 	int modifySalesStatus(int salesIdx);
-	int searchPrice();
+	Integer searchPrice(int expertIdx);
 } 

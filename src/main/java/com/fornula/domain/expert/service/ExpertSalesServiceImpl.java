@@ -25,14 +25,16 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 		return expertSalesDAO.selectSearchSalesList(salesStatus, salesDate);
 	}
 
-	@Override
-	public int searchPrice() {
-		return expertSalesDAO.selectPrice();
-	}
 
 	@Override
 	public int modifySalesStatus(int salesIdx) {
 		return expertSalesDAO.updateSalesStatus(salesIdx);
+	}
+
+	@Override
+	public Integer searchPrice(int expertIdx) {
+		Integer price = (Integer)expertSalesDAO.selectPrice(expertIdx);
+		return price;
 	}
 
 }

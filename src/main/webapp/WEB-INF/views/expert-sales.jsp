@@ -140,7 +140,7 @@ tr td {
 						<table>
 							<tr>
 								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;" id="price">${price }</td>
+								<td scope="col" style="text-align: right;" id="price">${price } &nbsp;&nbsp;원</td>
 							</tr>
 						</table>
 						<!-- <div class="input-group">
@@ -154,14 +154,15 @@ tr td {
 								<i class="fa fa-search"></i>
 							</button>
 						</div> -->
-						<div id="post-1"
+						<div id="post-1" 
 							class="lana_story type-lana_story post-1 card story-card">
 							<div class="card-body">
 								<div class="blog-posts">
 									<div id="post-2" class="post type-post post-2 card post-card">
 										<div class="row">
+												<div style="text-align: center;">
+												<h3 >${message }</h3></div>
 											<c:forEach var="salesList" items="${salesList}">
-												<h3 style="text-align: center;">${message }</h3>
 												<div class="col-md-4">
 													<img class="card-img img-fluid"
 														src="<c:url value='/images/upload/${salesList.itemfileName}'/>"

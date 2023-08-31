@@ -95,18 +95,14 @@
         </choose>
 	</update>
  -->
- 
- 		
 	<!-- 구매확정된 총 판매금액 출력 -->
-
-	<select id="selectPrice" resultType="ExpertSalesItem">
+	<select id="selectPrice" resultType="Integer">
 	 	SELECT SUM(ITEM.price) as total_price
-		FROM item ITEM 
-		JOIN sales SALES 
+		FROM item 
+		JOIN sales 
 		ON ITEM.item_idx = SALES.item_idx 
-		WHERE SALES.sales_status =2
+		WHERE SALES.sales_status =2 and ITEM.expert_idx=#{expertIdx}
 	</select> 
-
  </mapper>
 
 

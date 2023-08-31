@@ -44,8 +44,8 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	
 
 	@Override
-	public int selectPrice() {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectPrice();
+	public Integer selectPrice(int expertIdx) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectPrice(expertIdx);
 	}
 
 }

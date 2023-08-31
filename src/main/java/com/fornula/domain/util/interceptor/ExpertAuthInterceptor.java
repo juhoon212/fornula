@@ -28,8 +28,8 @@ public class ExpertAuthInterceptor implements HandlerInterceptor {
 		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 2) {
 			log.info("loginMember{}",loginMember);
 
-			response.sendError(HttpServletResponse.SC_FORBIDDEN);
-
+			response.sendRedirect("/");
+			
 			return false;
 
 		}
