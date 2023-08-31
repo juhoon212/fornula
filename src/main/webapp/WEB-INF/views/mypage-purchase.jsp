@@ -60,7 +60,7 @@
                 <div id="post-2" class="post type-post post-2 card post-card">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="<c:url value="/pictures/placeholder/530x400.svg"/>" alt="Post">
+                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
                             
                         </div>
                         <div class="col-md-8">
@@ -133,7 +133,6 @@
             <div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
-               
                     <ul>
                           <li><a href="<c:url value="/"/>">전문가 정보</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
