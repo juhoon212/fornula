@@ -115,7 +115,7 @@ public class MemberController {
 		int result = memberLoginService.updatePassword(findByIdxMember.getId(), newPassword);
 		
 		if(result == 0) {
-			return "404";
+			return "400";
 		}
 		
 		model.addAttribute("message", "비밀번호가 변경되었습니다.");
