@@ -290,6 +290,11 @@ a:visited {
 									파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;" id="errorMessage">${message}</p>
 							</section>
+							<div>
+								<textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
+									placeholder="자기소개" value="${originalExpert.introduce }">
+								</textarea>
+							</div>
 						</div>
 						<br>
 

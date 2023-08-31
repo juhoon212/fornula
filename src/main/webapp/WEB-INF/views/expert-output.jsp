@@ -202,8 +202,8 @@ a:visited {
 						</div>
 						<div>
 							<textarea class="box" id="introduceInput" name="introduce"
-								placeholder="자기소개" value="${originalExpert.introduce }"readonly></textarea>
-
+								placeholder="자기소개" value="${originalExpert.introduce }"readonly>
+							</textarea>
 						</div>
 						
 						<!-- </div> -->
