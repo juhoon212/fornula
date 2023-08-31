@@ -290,6 +290,11 @@ a:visited {
 									파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;" id="errorMessage">${message}</p>
 							</section>
+							<div>
+								<textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
+									placeholder="자기소개" value="${originalExpert.introduce }">
+								</textarea>
+							</div>
 						</div>
 						<br>
 
@@ -305,14 +310,7 @@ a:visited {
 
 				</div>
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-					<div class="widget-sidebar story-sidebar">
-						<div id="button">
-							<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-								class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
-						</div>
-						<div id="button">
-							<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
-						</div>
+					<div class="widget-sidebar story-sidebar">>
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
 								<div id="button">
@@ -338,23 +336,6 @@ a:visited {
 	                    				</ul>
 	                				</div>
 	               				</div>
-
-								<!-- 			<div class="row">
-							<div class="widget" style="text-align: left;" id="list">
-								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
-									관리</h3>
-								<ul style="color: black;">
-									<li><a href="javascript:menuchange();" id="info"
-										class="expertmenu">전문가 정보</a></li>
-									<li><a href="javascript:menuchange();" id="sale"
-										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-									<li><a href="javascript:menuchange();" id="po"
-										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="/expertitem" id="item"
-										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-								</ul>
-							</div>
-						</div> -->
 							</div>
 						</div>
 					</div>

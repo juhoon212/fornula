@@ -24,9 +24,9 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 		
 		HttpSession session = request.getSession(false);
 		if(session == null || session.getAttribute(SessionConst.Login_Member) == null) {
+						
 			
-			log.info("비로그인 사용자 요청");
-			
+			response.sendRedirect("/");
 			return false;
 		}
 		

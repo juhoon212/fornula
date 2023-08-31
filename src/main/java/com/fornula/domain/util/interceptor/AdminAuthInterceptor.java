@@ -27,7 +27,7 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
 		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 9) {
 			log.info("admin interceptor");
 
-			response.sendRedirect("/");
+			response.sendRedirect("/error");
 
 			return false;
 
