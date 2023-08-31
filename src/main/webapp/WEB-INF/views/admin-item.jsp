@@ -233,7 +233,12 @@ table th {
             <div class="widget-sidebar story-sidebar">
             
             <div id="button"><img src="<c:url value="/pictures/placeholder/250x250.svg"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>       
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
+              
+                  
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">관리자</a>
+                       
+                  
                </div>
                <div class="widget widget_tag_cloud">
                   
@@ -244,7 +249,7 @@ table th {
                
                     <ul>
                     <li><a href="<c:url value="/admin/user"/>">회원 관리</a></li>
-                        <li><a href="<c:url value="/admin/item"/>">상품 관리</a></li>
+                        <li><a style="color : #fdbb42;" href="<c:url value="/admin/item"/>">상품 관리</a></li>
                       
                     </ul>
                 </div>
