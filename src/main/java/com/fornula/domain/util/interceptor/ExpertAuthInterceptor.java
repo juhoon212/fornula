@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 //전문가 인터셉터
-public class ExpertAuthIntercepto implements HandlerInterceptor {
+public class ExpertAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
 			)

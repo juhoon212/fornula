@@ -40,10 +40,10 @@ public class ExpertSalesController {
 			log.info("expertIdx:{}",expertIdx);//로그출력
 
 			System.out.println("aaa");
-			List<ItemSales> salesList = expertSalesService.getSalesList(expertIdx);
+			List<ItemSales> salesList = expertSalesService.getSalesList(expertIdx);//판매내역 리스트
 			log.info("list:{}", salesList);// 로그출력
 			
-			int price = expertSalesService.searchPrice();
+			int price = expertSalesService.searchPrice();//총금액 출력
 
 			model.addAttribute("salesList", salesList);
 			model.addAttribute("price", price);
