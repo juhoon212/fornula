@@ -39,19 +39,20 @@ public class MypageItemController {
       
        for(Itempurchase itempurchasePhoto : itempurchase) {
     	   
-    	   if(itempurchasePhoto.getItemName() == null) {
-    		   return "mypage-info";
-    	   }
+    	   
           filePos = itempurchasePhoto.getItemfileName().lastIndexOf("_");
           String originalFileName = itempurchasePhoto.getItemfileName().substring(filePos+1);
           itempurchasePhoto.setItemfileName(originalFileName);
        }
-         
-      
+        
+       if(itempurchase.isEmpty()) {
+    	   model.addAttribute("message", "구매내역이 존재하지 않습니다.");
+       }
        
        model.addAttribute("member", member);
        model.addAttribute("Itempurchase", itempurchase);
-        
+       
+       
       return "mypage-purchase"; 
    }
 }
