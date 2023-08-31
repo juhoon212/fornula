@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,9 +59,10 @@
     
     <div class = "ca">
         <a href="<c:url value="/"/>">FORNUAL </a>
-        <span>잘못된 접근입니다</span>
+        <span>접속 에러</span>
         <div>${message}</div>
         <button onclick="history.back()">Back</button>
     </div>
 </body>
 </html>
+
