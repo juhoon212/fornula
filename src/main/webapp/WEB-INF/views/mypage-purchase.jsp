@@ -41,16 +41,17 @@
 
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
- 
+<jsp:include page="header.jsp" /> 
 <main class="main container">
     <div class="row">
         <div class="col-12 col-lg-8">
         
         
               <div class="widget">
-               </div>
+               
          
             <div class="story-posts">
+            <section>
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
                 <c:forEach var="Itempurchase" items="${Itempurchase}">
                     <div class="card-body">
@@ -108,35 +109,50 @@
                         Next
                     </a>
                 </nav>
+                </div>
+                </section>
+                </div>
             </div>
         
         </div>
       
-        <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+     <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
             
-            <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
+            <div id="button">
+            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+            </div>
               
                   
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">아이디</a>
-                       
-                  
-               </div>
-               <div class="widget widget_tag_cloud">
+                       <div id="button">
+                       <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       </div>
+            <div class="widget widget_tag_cloud">
                   
                     <div class="tagcloud">
-                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="admin change button">전문가로 전환</a>
-                       
-                  
-               </div>
+           
+
+							<div id="button">
+								<c:if test="${member.memberStatus == 1}">
+									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 등록</a>
+								</c:if>
+								<c:if test="${member.memberStatus == 2}">
+									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+										aria-label="admin change button">전문가로 전환</a>
+								</c:if>
+							</div>
+
+
             <div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
+               
                     <ul>
-                          <li><a href="<c:url value="/"/>">전문가 정보</a></li>
+                    <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 관리</a></li>
+                        <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
                 </div>
@@ -145,6 +161,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 <jsp:include page="footer.jsp" />
