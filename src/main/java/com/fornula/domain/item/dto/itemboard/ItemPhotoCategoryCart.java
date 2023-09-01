@@ -1,6 +1,5 @@
 package com.fornula.domain.item.dto.itemboard;
 
-import com.fornula.domain.item.dto.Cart;
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;

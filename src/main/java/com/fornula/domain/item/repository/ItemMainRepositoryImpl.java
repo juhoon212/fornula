@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
+import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 import com.fornula.domain.item.mapper.java.ItemBoardMapper;
 import com.fornula.domain.item.mapper.java.ItemMainMapper;
 
@@ -19,7 +20,7 @@ public class ItemMainRepositoryImpl implements ItemMainRepository{
 	
 	//메인페이지 상품 출력
 		@Override
-		public List<ItemPhotoCategoryCart> mainItemList() {
+		public List<ItemPhoto> mainItemList() {
 			return sqlSession.getMapper(ItemMainMapper.class).mainItemList();
 		}
 }
