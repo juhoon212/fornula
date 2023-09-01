@@ -148,7 +148,7 @@ tr td {
 												</ul>
 												<p class="post-text card-text">
 												<h4 class="post-title card-title">
-													<a href="single.html">${payment.itemName}</a>
+													<a href= "">${payment.itemName}</a>
 												</h4>
 												<p class="subtitle"></p>
 												<div
@@ -195,7 +195,7 @@ tr td {
 				</div>
 				<div class="col-4">
 					<div class="widget-sidebar story-sidebar">
-						<form action="/payment/${itemIdx}" method="post" name="PaymentForm">
+						<form action="<c:url value="/payment/${itemIdx}"/>" method="post" name="PaymentForm">
 							<div class="tagcloud">
 								<div class="widget"
 									style="text-align: left; padding-left: 20px; margin: 0 auto;"

@@ -158,7 +158,7 @@ h3 {
 <jsp:include page="header.jsp" />
 	<main class="main container">
 		<form method="post" id="expertjoinForm" enctype="multipart/form-data"
-			action="/expert/join">
+			action="<c:url value="/expert/join"/>">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">

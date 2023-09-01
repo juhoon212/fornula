@@ -95,7 +95,7 @@ p #logo {
 				<div class="btn-container">
 					<button type="submit" id="login" class="btn btn-light">로그인</button>
 					<button type="button" id="join" class="btn btn-light"
-						onclick="location.href='/member/join'">회원가입</button>
+						onclick="location.href="<c:url value="/member/join"/>">회원가입</button>
 				</div>
 				<div id="logos">
 					<a href="<c:url value=""/>">
@@ -288,7 +288,7 @@ p #logo {
 								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">마케팅</a></li>
 							</ul>
-							<form action="/member/logout" method="post">
+							<form action="<c:url value="/member/logout"/>" method="post">
 								<!-- 프로필 사진 삽입 -->
 								<div class="dropdown">
 									<div class="profile">
