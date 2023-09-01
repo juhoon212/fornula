@@ -237,12 +237,10 @@ a:visited {
                               value="${originalExpert.phone}" />
                         </div>
                      </div>
-                     <div class="info" id="info__category">
+					 <div id="category-flex">
                         <div id="category-flex">
-                           <!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
-                           <textarea class="box" type="text" name="introduce"
-                              placeholder="자기소개" value="${originalExpert.introduce }"></textarea>
-                        </div>
+    						<textarea class="box" name="introduce" style="height: 300px;" id="introduceTextarea">${originalExpert.introduce}</textarea>
+						</div>
                      </div>
                      <div class="info" id="info__category">
                         <div id="category-flex">
@@ -295,7 +293,7 @@ a:visited {
                      <section id="upload">
                         <!-- <h3 style="text-align: left;">포트폴리오 등록</h3> -->
                         <input class="form-control" type="file" id="portfolioFileInput"
-                           accept=".pdf" name=itemfileName>
+                           accept=".pdf" name=expertfileName>
                         <!-- <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly> -->
                         <span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
                            파일로 업로드 해주세요.]</span><br>
@@ -457,6 +455,19 @@ a:visited {
        });
        });
        */
+       var introduceTextarea = document.getElementById('introduceTextarea');
+
+       // textarea에 기본 텍스트로 "자기소개"를 표시합니다.
+       introduceTextarea.value = "자기소개";
+       introduceTextarea.style.color = '#000';
+
+       introduceTextarea.addEventListener('focus', function() {
+           // 포커스를 받으면 텍스트를 지워줍니다.
+           if (this.value === "자기소개") {
+               this.value = '';
+               this.style.color = '#000';
+           }
+       });
    </script>
 </body>
 </html>
