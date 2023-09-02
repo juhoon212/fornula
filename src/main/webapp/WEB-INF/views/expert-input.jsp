@@ -227,23 +227,15 @@ a:visited {
 								<div id="category-flex">
 									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 									<input class="box" type="text" name="expertIdx"
-<<<<<<< HEAD
 										placeholder="전문가번호"
 										value="${originalExpert.expertIdx }" readonly />
-=======
-										placeholder="전문가번호" value="${originalExpert.expertIdx }"
-										readonly />
->>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
+
 								</div>
 							</div>
 							<div class="info" id="info__category">
 								<div id="category-flex">
 									<input class="box" type="text" name="phone" placeholder="전화번호"
-<<<<<<< HEAD
 										value="${originalExpert.phone }" />
-=======
-										value="${originalExpert.phone}" />
->>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 								</div>
 							</div>
 							<div class="info" id="info__category">

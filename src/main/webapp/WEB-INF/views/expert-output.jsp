@@ -173,11 +173,7 @@ a:visited {
 						<div class="info" id="info__category">
 							<div id="category-flex">
 								<input class="box" type="text" name="phone" placeholder="전화번호"
-<<<<<<< HEAD
 									value="${originalExpert.phone }" readonly/>
-=======
-									value="${originalExpert.phone }" readonly />
->>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 							</div>
 						</div>
 						<div class="info" id="info__category">
@@ -224,13 +220,10 @@ a:visited {
 							</div>
 						</div>
 						<div>
-<<<<<<< HEAD
 							<textarea class="box" id="introduceInput" name="introduce" style="height:300px;" placeholder="자기소개" readonly>
 							</textarea>
-=======
 							<input class="box" id="introduceInput" name="introduce"
 								placeholder="자기소개" value="${originalExpert.introduce }" readonly></input>
->>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 						</div>
 						<!-- </div> -->
 				</div>
