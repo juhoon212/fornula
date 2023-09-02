@@ -26,7 +26,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 		if(session == null || session.getAttribute(SessionConst.Login_Member) == null) {
 						
 			
-			response.sendRedirect("/");
+			response.sendRedirect(request.getContextPath() + "/");
 			return false;
 		}
 		

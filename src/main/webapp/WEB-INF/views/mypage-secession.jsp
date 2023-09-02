@@ -119,7 +119,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="secessionForm" method="post" action="/mypageSession">
+   <form name="secessionForm" method="post" action="<c:url value="/mypageSession"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 탈퇴</label>
         <h3>
         fornual을 떠나는 이유를 알려주세요.

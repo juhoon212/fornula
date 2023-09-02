@@ -212,7 +212,7 @@ a:visited {
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
-		<form id="content" action="/expert/input" method="post">
+		<form id="content" action="<c:url value="/expert/input"/>" method="post">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -331,14 +331,14 @@ a:visited {
                  <div class="widget widget_tag_cloud">
                      <div class="tagcloud">
                          <div id="button">
-                             <a href="/mypageInfo" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+                             <a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
                          </div>
                          <div class="row">
                              <div class="widget" style="text-align: left;">
                                  <h3 class="widget-title">전문가 정보</h3>
                                  <ul class="list-unstyled">
                                      <li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
-                                     <li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
+                                     <li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
                                      <li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
                                      <li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
                                  </ul>
