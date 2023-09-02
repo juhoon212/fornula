@@ -28,7 +28,7 @@ public class ExpertAuthInterceptor implements HandlerInterceptor {
 		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 2) {
 			log.info("loginMember{}",loginMember);
 
-			response.sendRedirect("/");
+			response.sendRedirect(request.getContextPath() + "/");
 			
 			return false;
 
