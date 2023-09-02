@@ -201,7 +201,6 @@ a:visited {
 								<!-- 여백 어케주드라 -->
 								<input class="box" name=career type="text" placeholder="연차:"
 									value="${originalExpert.career }" readonly/>
-									value="경력 : ${originalExpert.career }" readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
@@ -222,15 +221,17 @@ a:visited {
 						<div>
 							<textarea class="box" id="introduceInput" name="introduce" style="height:300px;" placeholder="자기소개" readonly>
 							</textarea>
-							<input class="box" id="introduceInput" name="introduce"
-								placeholder="자기소개" value="${originalExpert.introduce }" readonly></input>
 						</div>
-						<!-- </div> -->
+						<div>
+							<br>
+							<p>전문가의 포트폴리오</p>
+							<br>
+						    <embed src="<c:url value="/images/upload/${originalExpert.expertfileName }"/>" width="100%" height="500px" type="application/pdf">
+						</div>
 				</div>
 				</form>
 			</div>
-
-			  <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
              <div class="widget-sidebar story-sidebar">
                  <div id="button">
                      <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
@@ -258,8 +259,8 @@ a:visited {
                  </div>
              </div>
          </div>
-		</div>
-	</main>
+	</div>
+</main>
 	<jsp:include page="footer.jsp" />
 
 	<script type="text/javascript"
