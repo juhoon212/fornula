@@ -31,7 +31,7 @@ public class ExpertSalesController {
     private final ItemDetailService itemDetailService;
 
 	//판매내역을 출력하는 메소드
-		@GetMapping("/sales")
+		@GetMapping("/sale")
 		public String getSalesList(@ModelAttribute Expert originalExpert, HttpSession session, Model model){
 			
 			String originalFileName; // 원본 파일 이름

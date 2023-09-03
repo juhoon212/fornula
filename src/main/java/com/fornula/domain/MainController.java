@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fornula.domain.expert.dto.SaleItemExpert;
 import com.fornula.domain.item.controller.ItemBoardController;
 import com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart;
+import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 import com.fornula.domain.item.service.ItemBoardService;
 import com.fornula.domain.item.service.ItemMainService;
 
@@ -29,8 +31,23 @@ public class MainController {
 	//메인페이지 상품 출력
 	@GetMapping
 	public String home(Model model) {
-		List<ItemPhotoCategoryCart> itemList = itemMainService.getMainItemList();
+		
+		String originalFileName;
+		int pos; 
+		
+		
+		List<ItemPhoto> itemList = itemMainService.getMainItemList();
+		
+		for(ItemPhoto list : itemList) {
+			
+			pos = list.getPhoto().getItemfileName().lastIndexOf("_");
+			originalFileName = list.getPhoto().getItemfileName().substring(pos + 1);
+			
+			list.getPhoto().setItemfileName(originalFileName);
+		}
+		
 		model.addAttribute("itemList",itemList );
+		
 		
 		log.info("itemList: {}",itemList);
 		return "main";
