@@ -324,6 +324,7 @@ h3 {
 							<button id="checkSubmit" type="submit"
 								onclick="location.href='<c:url value="/item/add/${expertIdx}"/>'"
 								style="text-align: center;" name="checkBtn"
+								onclick="location.href='<c:url value="/item/add/${expertIdx}"/>'"
 								disabled>상품등록</button>
 						</div>
 					</div>
@@ -346,10 +347,10 @@ h3 {
 							</div>
 							<div class="row">
 								<div class="widget" style="text-align: left;">
-									<h3 class="widget-title">전문가 정보</h3>
+									<h3 class="widget-title">상품 등록</h3>
 									<ul class="list-unstyled">
 										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
-										<li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
+										<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
 										<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
 										<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
 									</ul>

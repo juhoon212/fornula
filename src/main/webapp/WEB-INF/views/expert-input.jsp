@@ -209,12 +209,14 @@ a:visited {
 </style>
 </head>
 <body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
+
 	<main class="main container">
 		<form id="content" action="/expert/input" method="post">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
+
 						<div class="widget">
 							<div class="info" id="info__category">
 								<div style="text-align: left;">
@@ -298,8 +300,16 @@ a:visited {
 									파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;" id="errorMessage">${message}</p>
 							</section>
+							<%-- <div>
+                        <textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
+                           placeholder="자기소개" value="${originalExpert.introduce }">
+                        </textarea>
+                     </div> --%>
 						</div>
+						<br>
+
 						<hr>
+						<br>
 						<!-- 버튼 없얘야하는거아님? -->
 						<!-- 수정완료 버튼을 클릭하면 updateExpert 메소드가 실행되도록 설계 근데 이제 조건 덕지덕지 붙여야지-->
 						<div id="button" style="padding: 5px 10px;">
@@ -321,7 +331,7 @@ a:visited {
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
 								<div id="button">
-									<a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link"
+									<a href="/mypageInfo" class="tag-cloud-link"
 										aria-label="admin change button">일반회원으로 전환</a>
 								</div>
 								<div class="row">

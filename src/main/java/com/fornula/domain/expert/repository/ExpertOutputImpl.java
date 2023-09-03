@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.mapper.java.ExpertInputMapper;
-import com.fornula.domain.expert.mapper.java.ExpertOutputMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
