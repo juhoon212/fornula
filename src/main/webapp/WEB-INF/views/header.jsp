@@ -59,6 +59,27 @@ p #logo {
 	margin-left :auto;
 }
 
+.dropdown-menu{
+	padding:10px;
+	border: 0px;
+	margin:0 auto;
+	font-size: 	18px;
+	/* font-family: 'HakgyoansimWoojuR'; */
+}
+.dropdown-menu li h6{
+	padding:10px;
+	border: 0px;
+	margin:0 auto;
+	font-size: 	20px;
+	font-weight: bold;
+	/* font-family: 'HakgyoansimWoojuR'; */
+}
+
+.nav-link{
+	font-size: 	20px;
+}
+
+
 </style>
 </head>
 
@@ -119,11 +140,11 @@ p #logo {
 
 
 	<header class="header position-relative">
-		<div class="header-navbar border-bottom border-white">
+		<div class="header-navbar border-bottom border-white" >
 			<nav
 				class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 				id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
-				id="lana-pet-main-navbar">
+				id="lana-pet-main-navbar" style="padding: 0px 16px !important; height: 100px;">
 				<p id="logo">
 					<a class="navbar-brand" href="<c:url value="/"/>"> FORNUAL </a>
 				</p>
@@ -148,9 +169,9 @@ p #logo {
 
 
 						<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-						<div class="collapse navbar-collapse" id="lana-navbar">
-							<ul class="navbar-nav ml-lg-auto">
-								<li class="nav-item dropdown"><a 
+						<div class="collapse navbar-collapse" id="lana-navbar" >
+							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
+								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="<c:url value="/item/boardList"/>"
 									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">카테고리</a>
@@ -191,18 +212,18 @@ p #logo {
 										<li><a class="dropdown-item" href="<c:url value="/item/boardList"/>">해외
 												마케팅</a></li>
 									</ul>
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">디자인</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">번역</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">사진·편집</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">세무</a></li>
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">마케팅</a></li>
 							</ul>
 						</div>
@@ -227,6 +248,7 @@ p #logo {
 									id="loginButton"> Login </a></li>
 							</ul>
 						</div>
+						
 				</c:if>
 				<c:if test="${sessionScope.loginMember !=null}">
 					<c:if
@@ -348,6 +370,7 @@ p #logo {
 					</c:if>
 				</c:if>
 		</div>
+		</nav>
 
 		<!-- <div class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
@@ -377,7 +400,6 @@ p #logo {
 				</form>
 		</div> -->
 
-		</nav>
 		</div>
 	</header>
 	<script type="text/javascript"
