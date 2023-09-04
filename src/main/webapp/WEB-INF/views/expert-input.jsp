@@ -212,7 +212,7 @@ a:visited {
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
-		<form id="content" action="<c:url value="/expert/input"/>" method="post">
+		<form id="content" action="/expert/input" method="post">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -237,11 +237,10 @@ a:visited {
 										value="${originalExpert.phone}" />
 								</div>
 							</div>
-							<div class="info" id="info__category">
+							<div id="category-flex">
 								<div id="category-flex">
-									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
-									<textarea class="box" type="text" name="introduce"
-										placeholder="자기소개" value="${originalExpert.introduce }"></textarea>
+									<textarea class="box" name="introduce" style="height: 300px;"
+										id="introduceTextarea">${originalExpert.introduce}</textarea>
 								</div>
 							</div>
 							<div class="info" id="info__category">
@@ -295,17 +294,17 @@ a:visited {
 							<section id="upload">
 								<!-- <h3 style="text-align: left;">포트폴리오 등록</h3> -->
 								<input class="form-control" type="file" id="portfolioFileInput"
-									accept=".pdf" name=itemfileName>
+									accept=".pdf" name=expertfileName>
 								<!-- <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly> -->
 								<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
 									파일로 업로드 해주세요.]</span><br>
 								<p style="color: red;" id="errorMessage">${message}</p>
 							</section>
 							<%-- <div>
-								<textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
-									placeholder="자기소개" value="${originalExpert.introduce }">
-								</textarea>
-							</div> --%>
+                        <textarea class="box" id="introduceInput" name="introduce" style="height:300px;"
+                           placeholder="자기소개" value="${originalExpert.introduce }">
+                        </textarea>
+                     </div> --%>
 						</div>
 						<br>
 
@@ -320,39 +319,36 @@ a:visited {
 
 
 				</div>
-				         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-             <div class="widget-sidebar story-sidebar" >
-                 <div id="button">
-                     <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                 </div>
-                 <div id="button">
-                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
-                 </div>
-                 <div class="widget widget_tag_cloud">
-                     <div class="tagcloud">
-                         <div id="button">
-                             <a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
-                         </div>
-                         <div class="row">
-                             <div class="widget" style="text-align: left;">
-                                 <h3 class="widget-title">전문가 정보</h3>
-                                 <ul class="list-unstyled">
-                                     <li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
-                                     <li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
-                                     <li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
-                                     <li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
+				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+					<div class="widget-sidebar story-sidebar">
+						<div id="button">
+							<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+								class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+						</div>
+						<div id="button">
+							<a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
+						</div>
+						<div class="widget widget_tag_cloud">
+							<div class="tagcloud">
+								<div id="button">
+									<a href="/mypageInfo" class="tag-cloud-link"
+										aria-label="admin change button">일반회원으로 전환</a>
+								</div>
+								<div class="row">
+									<div class="widget" style="text-align: left;">
+										<h3 class="widget-title">전문가 정보</h3>
+										<ul class="list-unstyled">
+											<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
+											<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
+											<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
+											<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			</div>
-			</div>
 			</div>
 		</form>
 	</main>
@@ -457,6 +453,19 @@ a:visited {
 		 });
 		 });
 		 */
+		var introduceTextarea = document.getElementById('introduceTextarea');
+
+		// textarea에 기본 텍스트로 "자기소개"를 표시합니다.
+		introduceTextarea.value = "자기소개";
+		introduceTextarea.style.color = '#000';
+
+		introduceTextarea.addEventListener('focus', function() {
+			// 포커스를 받으면 텍스트를 지워줍니다.
+			if (this.value === "자기소개") {
+				this.value = '';
+				this.style.color = '#000';
+			}
+		});
 	</script>
 </body>
 </html>

@@ -74,18 +74,6 @@
 	position: relative;
 }
 
-.info#info__id button {
-	position: absolute;
-	width: 90px;
-	height: 40px;
-	top: 0;
-	bottom: 0;
-	right: 5px;
-	margin: auto 0;
-	border-radius: 3px;
-	font-size: 15px;
-}
-
 h3 {
 	font-size: 20px;
 }
@@ -125,6 +113,12 @@ a:link {
 a:visited {
 	color: #212121;
 }
+
+a {
+	color: #ff8a00;
+	text-decoration: none;
+	background-color: transparent;
+}
 </style>
 </head>
 <body class="archive post-type-archive post-type-archive-lana_story">
@@ -134,40 +128,23 @@ a:visited {
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="widget">
-					<form class="story-posts" id="content" action="<c:url value="/expert/input"/>"
+					<form class="story-posts" id="content" action="/expert/input"
 						method="post">
 						<label
 							style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">포트폴리오</label>
-						<!-- 
-						<a style="font-size: 28px;"
-							href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">[PDF
-							보기]</a> -->
-						<!-- <div class="box" style="height: 1200px"> -->
-						<!-- 
-						<iframe src="/resources/images/profolio/phy.pdf" width="100%"
-							height="500px"></iframe>
-						<a
-							href="${pageContext.request.contextPath}/resources/images/profolio/phy.pdf">[PDF
-							보기]</a>
-							height="500px"></iframe> -->
-						<!-- 나머지 폼 요소들... -->
 						<div>
 							<div class="row row-cols-1 row-cols-md-3 g-4" style="width:">
 								<!-- 나머지 포스트 요소들... -->
 							</div>
 						</div>
-
-
-
-
 						<div class="info" id="info__category">
 							<br>
 							<p style="font-size: 20px;">전문가 정보</p>
 							<div id="category-flex">
 								<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
 								<input class="box" type="text" name="expertIdx"
-									placeholder="전문가번호"
-									value="${originalExpert.expertIdx }" readonly />
+									placeholder="전문가번호" value="${originalExpert.expertIdx }"
+									readonly />
 							</div>
 						</div>
 						<div class="info" id="info__category">
@@ -178,26 +155,27 @@ a:visited {
 						</div>
 						<div class="info" id="info__category">
 							<div id="category-flex">
-								
-              <input class="box" type="text" name="interest" placeholder="기존 카테고리:"
-                	value="${originalExpert.interest}" readonly/>
-				<select class="box" id="interestSelect" name="interest">
-                  <option disabled selected>디자인</option>
-                  <option value="1">그래픽</option>
-                  <option value="2">제품</option>
-                  <option disabled selected>번역</option>
-                  <option value="3">영어</option>
-                  <option value="4">중국어</option>
-                  <option disabled selected>사진 편집</option>
-                  <option value="5">헤어 메이크업</option>
-                  <option value="6">제품 홍보 사진</option>
-                  <option disabled selected>세무</option>
-                  <option value="7">사업자</option>
-                  <option value="8">개인</option>
-                  <option disabled selected>마케팅</option>
-                  <option value="9">SNS 홍보</option>
-                  <option value="10">해외 마케팅</option>              
-                </select>
+
+								<input class="box" type="text" name="interest"
+									placeholder="기존 카테고리:" value="${originalExpert.interest}"
+									readonly /> <select class="box" id="interestSelect"
+									name="interest">
+									<option disabled selected>디자인</option>
+									<option value="1">그래픽</option>
+									<option value="2">제품</option>
+									<option disabled selected>번역</option>
+									<option value="3">영어</option>
+									<option value="4">중국어</option>
+									<option disabled selected>사진 편집</option>
+									<option value="5">헤어 메이크업</option>
+									<option value="6">제품 홍보 사진</option>
+									<option disabled selected>세무</option>
+									<option value="7">사업자</option>
+									<option value="8">개인</option>
+									<option disabled selected>마케팅</option>
+									<option value="9">SNS 홍보</option>
+									<option value="10">해외 마케팅</option>
+								</select>
 								<!-- 여백 어케주드라 -->
 								<input class="box" name=career type="text" placeholder="연차:"
 									value="경력 : ${originalExpert.career }" readonly />
@@ -222,39 +200,48 @@ a:visited {
 							<input class="box" id="introduceInput" name="introduce"
 								placeholder="자기소개" value="${originalExpert.introduce }" readonly></input>
 						</div>
-						<!-- </div> -->
+						<div>
+							<br>
+							<p>전문가의 포트폴리오</p>
+							<br>
+							<embed
+								src="<c:url value="/images/upload/${originalExpert.expertfileName }"/>"
+								width="100%" height="500px" type="application/pdf">
+						</div>
 				</div>
 				</form>
 			</div>
 
-			  <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-             <div class="widget-sidebar story-sidebar">
-                 <div id="button">
-                     <img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-                 </div>
-                 <div id="button">
-                     <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
-                 </div>
-                 <div class="widget widget_tag_cloud">
-                     <div class="tagcloud">
-                         <div id="button">
-                             <a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
-                         </div>
-                         <div class="row">
-                             <div class="widget" style="text-align: left;">
-                                 <h3 class="widget-title">포트폴리오</h3>
-                                 <ul class="list-unstyled">
-                                     <li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
-                                     <li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
-                                     <li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
-                                     <li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
+			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
+				<div class="widget-sidebar story-sidebar">
+					<div id="button">
+						<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+							class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+					</div>
+					<div id="button">
+						<a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
+					</div>
+					<div class="widget widget_tag_cloud">
+						<div class="tagcloud">
+							<div id="button">
+								<a href="/mypageInfo" class="tag-cloud-link"
+									aria-label="admin change button">일반회원으로 전환</a>
+							</div>
+							<div class="row">
+								<div class="widget" style="text-align: left;">
+									<h3 class="widget-title">포트폴리오</h3>
+									<ul class="list-unstyled">
+										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
+										<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
+										<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
+										<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp" />
@@ -278,86 +265,7 @@ a:visited {
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 	<script>
-		/* 
-		 나중에 이거는 RestController 써서 AJAX 놀음 할 때 사용
-		 $(document).ready(function() {   
-		 // 전문가의 expertIdx를 가져오는 AJAX 요청
-		 $.ajax({
-		 url: '/getExpertIdx',
-		 method: 'GET',  
-		 dataType: 'json', 
-		 success: function(data) {
-		 // 가져온 expertIdx를 이용하여 HTML 요소를 업데이트
-		 $("#expertIdx").val(data.expertIdx);
 		
-		 // 기존 카테고리를 가져오는 AJAX 요청
-		 $.ajax({
-		 url: '/getExpertCategory', 
-		 method: 'GET',  
-		 dataType: 'json', 
-		 success: function(categoryData) {
-		 // 가져온 데이터를 이용하여 HTML 요소를 업데이트
-		 $("#originalCategory").val(categoryData.categoryName);
-		 },
-		 error: function(xhr, status, error) {
-		 console.error("기존 카테고리 데이터를 가져오는 중 오류 발생: " + error);
-		 }
-		 });
-		 },
-		 error: function(xhr, status, error) {
-		 console.error("전문가의 expertIdx 데이터를 가져오는 중 오류 발생: " + error);
-		 }
-		 });
-		
-		 // 포트폴리오 파일 선택 시 파일명 표시
-		 $("#formFile").change(function() {
-		 var fileName = $(this).val().split('\\').pop();
-		 $("#portfolioFileNameInput").val(fileName);
-		 });
-		
-		 // 수정 완료 버튼 클릭 시 AJAX 요청 등록
-		 $("#submitButton").click(function(e) {
-		 e.preventDefault();
-		
-		 // 전달할 데이터 준비 (expertIdx, 수정된 정보 등)
-		 var expertIdx = $("#expertIdx").val();
-		 var phone = $("#phone").val();
-		 var interest = $("#category-middle").val();
-		 var career = $("#career").val();
-		 var companyOne = $("#companyOne").val();
-		 var companyTwo = $("#companyTwo").val();
-		 var companyThree = $("#companyThree").val();
-		 var introduce = $("#introduce").val();
-		 var expertfileName = $("#portfolioFileNameInput").val();
-		
-		 // AJAX 요청 보내기
-		 $.ajax({
-		 url: '/modify',
-		 method: 'PUT',
-		 contentType: 'application/json',
-		 data: JSON.stringify({
-		 phone: phone,
-		 interest: interest,
-		 career: career,
-		 companyOne: companyOne,
-		 companyTwo: companyTwo,
-		 companyThree: companyThree,
-		 introduce: introduce,
-		 expertfileName: expertfileName
-		 }),
-		 success: function(response) {
-		 // 성공 시 동작
-		 alert("수정이 완료되었습니다.");
-		 // 페이지 리로드 등 원하는 동작 수행
-		 },
-		 error: function(xhr, status, error) {
-		 // 오류 시 동작
-		 alert("정보 수정에 실패하였습니다: " + error);
-		 }
-		 });
-		 });
-		 });
-		 */
 	</script>
 </body>
 </html>
