@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -150,15 +152,17 @@ h3 {
 	border: 1px solid #d9d6d6;
 }
 
-#join {
-	
+.error{
+	color: red;
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
 	<main class="main container">
-		<form method="post" id="expertjoinForm" enctype="multipart/form-data"
-			action="<c:url value="/expert/join"/>">
+	
+	<c:url value="/expert/join" var="url"/>
+		<form:form method="post" modelAttribute="expert" enctype="multipart/form-data" action="${url }">
+	
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -173,8 +177,8 @@ h3 {
 								<h3>전화번호</h3>
 								<div class="info">
 									<div id="phone-input">
-										<input class="box" type="tel" placeholder="01012345678"
-											name="phone" id="phone" />
+										<form:input	path="phone"/>
+										<form:errors path="phone" class="error" element="span" delimiter=","/>
 									</div>
 								</div>
 								<h3>자기 소개</h3>
@@ -221,10 +225,9 @@ h3 {
 							<h3>경력</h3>
 							<div class="info" id="company_category">
 								<div id="career-input">
-									<input class="box" type="text" placeholder="1년 6개월"
-										name="career" />
+									<form:input	path="career" />
 								</div>
-								<div class="error-msg"></div>
+								<form:errors path="career" cssClass="error" element="span" delimiter=", "/>
 							</div>
 
 							<h3>근무지</h3>
@@ -259,9 +262,9 @@ h3 {
 						<br>
 						<hr>
 						<div id="join" style="text-align: center; margin: 0 auto;">
-							<button type="submit" class="btn btn-primary"
+							<form:button type="submit" class="btn btn-primary"
 								style="font-size: 20px; text-align: center; margin: 0 auto;">전문가
-								등록</button>
+								등록</form:button>
 						</div>
 					</div>
 				</div>
@@ -285,7 +288,7 @@ h3 {
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</main>
 
 	<jsp:include page="footer.jsp" />

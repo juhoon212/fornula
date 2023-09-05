@@ -122,6 +122,20 @@ a{
 	/*border-bottom : solid 1px gray;*/
 }
 
+
+#itemimg {
+	transition: all 0.2s linear;
+	max-width: 100%;
+}
+
+.imgbox {
+	overflow: hidden;
+}
+
+.imgbox:hover img {
+	transform: scale(1.1);
+}
+
 </style>
 <script type="text/javascript">
     function disableLink() {
@@ -136,6 +150,8 @@ a{
 <jsp:include page="header.jsp" />
 
 <main class="main">
+
+	
         <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">

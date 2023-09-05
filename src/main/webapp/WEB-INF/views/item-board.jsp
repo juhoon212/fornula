@@ -96,10 +96,9 @@ li a {
 					<div class="row">
 						<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
 						<c:forEach var="itemList" items="${itemBoardList}">
-							<div class="blog-grid-col col-12 col-md-6 col-lg-4">
+							<div class="blog-grid-col col-12 col-md-6 col-lg-4" >
 								<div id="post-1"
-									class="post type-post card post-card post-grid-card h-100"
-									style="border-radius: 20px;">
+									class="post type-post card post-card post-grid-card h-100" style="border-radius: 20px;">
 									<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
 									<img id="itemimg"
 										src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
