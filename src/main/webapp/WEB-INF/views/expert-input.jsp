@@ -219,13 +219,23 @@ a:visited {
 							</div>
 							<div class="info" id="info__category">
 								<div id="category-flex">
-									<input class="box" type="text" name="interest" placeholder="기존 카테고리:" value="${originalExpert.interest}" readonly />
-
-									<!-- 여백 어케주드라 -->
-
 									<select class="box" id="interestSelect" name="interest">
-										<option disabled selected>디자인</option>
-										<option value="1">그래픽</option>
+										<option disabled selected>기존 카테고리:
+										        <c:choose>
+										            <c:when test="${originalExpert.interest eq '1'}">그래픽</c:when>
+										            <c:when test="${originalExpert.interest eq '2'}">제품</c:when>
+										            <c:when test="${originalExpert.interest eq '3'}">영어</c:when>
+										            <c:when test="${originalExpert.interest eq '4'}">중국어</c:when>
+										            <c:when test="${originalExpert.interest eq '5'}">헤어 메이크업</c:when>
+										            <c:when test="${originalExpert.interest eq '6'}">제품 홍보 사진</c:when>
+										            <c:when test="${originalExpert.interest eq '7'}">사업자</c:when>
+										            <c:when test="${originalExpert.interest eq '8'}">개인</c:when>
+										            <c:when test="${originalExpert.interest eq '9'}">SNS 홍보</c:when>
+										            <c:when test="${originalExpert.interest eq '10'}">해외 마케팅</c:when>
+										            <c:otherwise>기타</c:otherwise>
+										        </c:choose>
+										</option>
+   										<option value="1">그래픽</option>
 										<option value="2">제품</option>
 										<option disabled selected>번역</option>
 										<option value="3">영어</option>
@@ -241,7 +251,6 @@ a:visited {
 										<option value="10">해외 마케팅</option>
 									</select>
 
-									<!-- 여백 어케주드라 -->
 									<input class="box" name=career type="text" placeholder="연차:" value="${originalExpert.career }" />
 								</div>
 							</div>
@@ -320,6 +329,18 @@ a:visited {
 	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var originalInterest = "${originalExpert.interest}";
+			var select = document.getElementById("interestSelect");
 
+			for (var i = 0; i < select.options.length; i++) {
+				if (select.options[i].value === originalInterest) {
+					select.options[i].selected = true;
+					break;
+				}
+			}
+		});
+	</script>
 </body>
 </html>

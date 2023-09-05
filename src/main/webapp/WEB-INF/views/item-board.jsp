@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -119,9 +120,9 @@ li a {
 									</div>
 									<div class="card-footer">
 									    <div style="float: right;">
-									        <a> 
-									        	가격: ${itemList.item.price }₩
-									        </a>
+									        <a>
+  										  		가격: ₩<fmt:formatNumber type="number" value="${itemList.item.price}" pattern="#,###"/>
+											</a>
 									    </div>
 									</div>
 								</div>
@@ -263,7 +264,8 @@ li a {
 
 		// 초기 페이지 로딩 시 페이지 업데이트 호출
 		updatePage();
-		/* 작업중
+		
+		/* 카테고리 별 출력 작업중
 	    // 버튼 클릭 시 해당 카테고리로 리디렉션하는 함수
 	    function redirectToCategory(categoryIdx) {
 	        // categoryIdx에 따라 리디렉션 URL을 생성
@@ -292,6 +294,7 @@ li a {
 	        redirectToCategory(9); 
 	    });
 	    */
+
 	</script>
 </body>
 </html>
