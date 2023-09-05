@@ -188,7 +188,7 @@ h3 {
 }
 </style>
                      <!-- 스타일 태그 끝 -->
-                     <form name="passwordForm" method="post" action="mypagePwchange">
+                     <form name="passwordForm" method="post" action="<c:url value ="/mypagePwchange"/>">
                      <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">비밀번호 수정</label>
                         <h3>현재 비밀번호</h3>
                         <div class="info" id="info__pw">
@@ -236,8 +236,7 @@ h3 {
                </div>
 
 
-               <div id="button">
-                  <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
 
 
                </div>

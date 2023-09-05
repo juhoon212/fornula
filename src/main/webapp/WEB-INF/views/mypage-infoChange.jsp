@@ -214,7 +214,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="infoFormChange" method="post" action="/mypageInfoChange">
+   <form name="infoFormChange" method="post" action="<c:url value="/mypageInfoChange"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
@@ -276,7 +276,7 @@ h3 {
           <input type="button" class="changeBtn" style = "float:right;" value="회원수정"
                               onclick="infoChangeCheck();">
                               </div>
-      <span>&nbsp</span>
+      <span>&nbsp;</span>
     </form>
 </section>
         
