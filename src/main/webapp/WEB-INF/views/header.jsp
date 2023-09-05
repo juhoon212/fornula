@@ -17,6 +17,7 @@
 	href="<c:url value="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"/>"
 	rel="stylesheet">
 <style type="text/css">
+
 .profile {
 	display: block;
 	width: 100%;
@@ -62,6 +63,7 @@ p #logo {
 	margin-left: auto;
 }
 
+/* 카테고리 수정 */
 .dropdown-menu{
 	padding:10px;
 	border: 0px;
