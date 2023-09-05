@@ -80,9 +80,10 @@ li a {
 		<section style="width: 100%;">
 			<div id="box" style="margin: 30px 0px; width: 100%;">
 				<div id="category">
-					<p style="margin: 0 auto; padding: 25px">디자인</p>
+					<p style="margin: 0 auto; padding: 25px">전체 보기</p>
 				<div id="categoryBtn" style="text-align: center;">
-					<button id="designBtn" type="button" class="btn btn-primary">디자인</button>
+					<button id="allBtn" type="button" class="btn btn-primary">전체 보기</button>
+					<button id="designBtn" type="button" class="btn btn-outline-primary">디자인</button>
 					<button id="translationBtn" type="button" class="btn btn-outline-primary">번역</button>
 					<button id="photoEditionBtn" type="button" class="btn btn-outline-primary">사진/편집</button>
 					<button id="accountantBtn" type="button" class="btn btn-outline-primary">세무</button>
