@@ -81,11 +81,11 @@ li a {
 				<div id="category">
 					<p style="margin: 0 auto; padding: 25px">디자인</p>
 				<div id="categoryBtn" style="text-align: center;">
-					<button type="button" class="btn btn-primary">디자인</button>
-					<button type="button" class="btn btn-outline-primary">번역</button>
-					<button type="button" class="btn btn-outline-primary">사진/편집</button>
-					<button type="button" class="btn btn-outline-primary">세무</button>
-					<button type="button" class="btn btn-outline-primary">마케팅</button>
+					<button id="designBtn" type="button" class="btn btn-primary">디자인</button>
+					<button id="translationBtn" type="button" class="btn btn-outline-primary">번역</button>
+					<button id="photoEditionBtn" type="button" class="btn btn-outline-primary">사진/편집</button>
+					<button id="accountantBtn" type="button" class="btn btn-outline-primary">세무</button>
+					<button id="marketingBtn" type="button" class="btn btn-outline-primary">마케팅</button>
 				</div>
 				</div>
 			</div>
@@ -105,20 +105,24 @@ li a {
 										class="card-img-top img-fluid"
 										style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;">
 									<div class="card-body">
-										<ul class="post-meta">
-											<li><a href="single.html">${itemList.item.itemDate}</a>
-											</li>
-										</ul>
-										<h5 class="post-title card-title">${itemList.item.itemName}</h5>
-										<p class="post-text card-text text-truncate">
-											${itemList.item.itemContent}</p>
+									    <ul class="post-meta">
+									        <li><a href="single.html">${itemList.item.itemDate}</a></li>
+									    </ul>
+									    <h5 class="post-title card-title">${itemList.item.itemName}</h5>
+									    <p class="post-text card-text text-truncate">
+									        <a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
+									            <span style="color: black; font-size: 13px;">
+									                ${itemList.item.itemContent}
+									            </span>
+									        </a>
+									    </p>
 									</div>
 									<div class="card-footer">
-										<!-- 더 보기 버튼을 누르면 해당 itemIdx를 item페이지로 이동하면서 사용하도록 -->
-										<a href="<c:url value="/item/${itemList.item.itemIdx}/1"/>"
-											class="more-link card-link"> 더 보기 <i
-											class="lana-icon-arrow-right text-primary"></i>
-										</a>
+									    <div style="float: right;">
+									        <a> 
+									        	가격: ${itemList.item.price }₩
+									        </a>
+									    </div>
 									</div>
 								</div>
 							</div>
@@ -259,6 +263,35 @@ li a {
 
 		// 초기 페이지 로딩 시 페이지 업데이트 호출
 		updatePage();
+		/* 작업중
+	    // 버튼 클릭 시 해당 카테고리로 리디렉션하는 함수
+	    function redirectToCategory(categoryIdx) {
+	        // categoryIdx에 따라 리디렉션 URL을 생성
+	        var url = '<c:url value="/item/boardList"/>' + '?categoryIdx=' + categoryIdx;
+	        window.location.href = url;
+	    }
+
+	    // 버튼 클릭 이벤트 처리
+	    document.getElementById("designBtn").addEventListener("click", function () {
+	        redirectToCategory(1,2); 
+	    });
+
+	    document.getElementById("translationBtn").addEventListener("click", function () {
+	        redirectToCategory(3,4); 
+	    });
+
+	    document.getElementById("photoEditBtn").addEventListener("click", function () {
+	        redirectToCategory(5,6); 
+	    });
+		
+	    document.getElementById("accountantBtn").addEventListener("click", function () {
+	        redirectToCategory(7,8); 
+	    });
+	    
+	    document.getElementById("marketingBtn").addEventListener("click", function () {
+	        redirectToCategory(9); 
+	    });
+	    */
 	</script>
 </body>
 </html>
