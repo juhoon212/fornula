@@ -3,12 +3,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
-<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
-<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin/>
+<link rel="preconnect"
+	href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>"
+	crossorigin />
 <link
 	href="<c:url value="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"/>"
 	rel="stylesheet">
-<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect"
+	href="<c:url value="https://fonts.googleapis.com"/>">
 <link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin"/>
 <link
 	href="<c:url value="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"/>"
@@ -53,10 +56,10 @@ p #logo {
 	font-family: 'Permanent Marker', cursive;
 }
 
-.admin{
-	text-align : right;
-	float : right;
-	margin-left :auto;
+.admin {
+	text-align: right;
+	float: right;
+	margin-left: auto;
 }
 
 .dropdown-menu{
@@ -119,18 +122,13 @@ p #logo {
 						onclick="location.href="<c:url value="/member/join"/>">회원가입</button>
 				</div>
 				<div id="logos">
-					<a href="<c:url value=""/>">
-					</a>
-					<img
+					<a href="<c:url value=""/>"> </a> <img
 						src="<c:url value="/pictures/placeholder/social.png"/>"
-						alt="google"></a>
-						<a href="<c:url value=""/>"><img
+						alt="google"></a> <a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/instagram.png"/>"
-						alt="instagram"></a> 
-						<a href="<c:url value=""/>"><img
+						alt="instagram"></a> <a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/facebook.png"/>"
-						alt="facebook"></a> 
-						<a href="<c:url value=""/>"><img
+						alt="facebook"></a> <a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
 						alt="kakao"></a>
 				</div>
@@ -229,10 +227,10 @@ p #logo {
 						</div>
 
 
-					<!-- 토글, 검색 버튼  -->
-					<div class="d-none d-xl-inline-flex ml-xl-4">
-						<!-- 검색 기능 주석 처리 -->
-						<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
+				<!-- 토글, 검색 버튼  -->
+				<div class="d-none d-xl-inline-flex ml-xl-4">
+					<!-- 검색 기능 주석 처리 -->
+					<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
 						<button class="search-toggler" type="button"
 							data-toggle="collapse" data-target="#lana-search"
 							aria-controls="lana-search" aria-expanded="false"
@@ -352,23 +350,26 @@ p #logo {
 										</div>
 										</ul>
 									</div>
+									</ul>
 								</div>
+							</div>
 
-							</form>
-					</c:if>
-					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
-						<div class = "admin">
-							<form action="/member/logout" method="post">
-								<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원 관리&nbsp;&nbsp;|</a>&nbsp;&nbsp;
-								<a href="<c:url value="/admin/item"/>">상품 관리</a>
-								<button
-									style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
-									type="submit" id="logout">로그아웃</button>
-								<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
-							</form>
-						</div>
-					</c:if>
+						</form>
 				</c:if>
+				<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
+					<div class="admin">
+						<form action="/member/logout" method="post">
+							<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
+								관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a
+								href="<c:url value="/admin/item"/>">상품 관리</a>
+							<button
+								style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
+								type="submit" id="logout">로그아웃</button>
+							<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
+						</form>
+					</div>
+				</c:if>
+			</c:if>
 		</div>
 		</nav>
 
