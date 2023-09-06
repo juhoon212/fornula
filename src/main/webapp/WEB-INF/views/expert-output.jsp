@@ -152,7 +152,7 @@ a {
 							<br>
 							<p>전문가의 포트폴리오</p>
 							<br>
-							<embed src="<c:url value="/images/upload/${originalExpert.expertfileName }"/>" width="100%" height="500px" type="application/pdf">
+							<embed src="<c:url value="/images/portfolio/${originalExpert.expertfileName }"/>" width="100%" height="500px" type="application/pdf">
 						</div>
 				</div>
 				</form>

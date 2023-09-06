@@ -265,13 +265,12 @@ a:visited {
 							</div>
 						</div>
 						<div>
-							<section id="upload">
-								<!-- <h3 style="text-align: left;">포트폴리오 등록</h3> -->
-								<input class="form-control" type="file" id="portfolioFileInput" accept=".pdf" name=itemfileName>
-								<!-- <input class="box" type="text" id="portfolioFileNameInput" placeholder="포트폴리오 파일명" readonly> -->
-								<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
-								<p style="color: red;" id="errorMessage">${message}</p>
-							</section>
+					        <section id="upload">
+					            <input type="hidden" name="expertfileName" value="${originalExpert.expertfileName}" />
+					            <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf" name="expertfileName">
+					            <span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
+					            <p style="color: red;" id="errorMessage">${message}</p>
+					        </section>
 						</div>
 						<br>
 

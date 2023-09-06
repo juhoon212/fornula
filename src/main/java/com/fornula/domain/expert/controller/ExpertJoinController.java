@@ -2,7 +2,6 @@ package com.fornula.domain.expert.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,9 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +25,6 @@ import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.session.SessionConst;
 import com.google.common.util.concurrent.Service;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -55,19 +49,18 @@ public class ExpertJoinController {
 	}
 
 	@PostMapping("/join")
-	public String join(@Validated @ModelAttribute("expert") Expert expert, 
-			@RequestParam MultipartFile uploadFile, Model model,
-			Errors errors, HttpSession session) throws IllegalStateException, IOException {
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model,
+			HttpSession session) throws IllegalStateException, IOException {
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
-		
-		if(errors.hasErrors()) {
-			log.info("errors :{}", errors);
-			return "expert-join";
-		}
+
+		/*
+		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
+		 * expert.setInterest (interst);
+		 */
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
 		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {
