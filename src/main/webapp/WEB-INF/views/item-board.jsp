@@ -102,15 +102,22 @@ li a {
 								<div id="post-1"
 									class="post type-post card post-card post-grid-card h-100" style="border-radius: 20px;">
 									<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-									<img id="itemimg"
-										src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
-										class="card-img-top img-fluid"
-										style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;">
+									<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
+									    <img id="itemimg"
+									        src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
+									        class="card-img-top img-fluid"
+									        style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;"
+									        alt="${itemList.item.itemName}">
+									</a>
 									<div class="card-body">
 									    <ul class="post-meta">
 									        <li><a href="single.html">${itemList.item.itemDate}</a></li>
 									    </ul>
-									    <h5 class="post-title card-title">${itemList.item.itemName}</h5>
+									    <h5 class="post-title card-title">
+									        <a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
+									            ${itemList.item.itemName}
+									        </a>
+									    </h5>
 									    <p class="post-text card-text text-truncate">
 									        <a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
 									            <span style="color: black; font-size: 13px;">
