@@ -3,6 +3,7 @@ package com.fornula.domain.item.service;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.repository.ReviewRepository;
@@ -31,7 +32,7 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	public Expert findByMemberIdx(int memerIdx) {
 		Expert findExpert = itemDetailDAO.findByMemberIdx(memerIdx);
 		
-		if(findExpert == null) {
+		if(ObjectUtils.isEmpty(findExpert)) {
 			throw new NotFoundExpertException("전문가를 찾을 수 없습니다.");
 		}
 		

@@ -1,13 +1,15 @@
 package com.fornula.domain.member.restcontroller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.member.dto.join.IdCheckForm;
 import com.fornula.domain.member.dto.join.Message;
+import com.fornula.domain.member.dto.vo.IdCheckForm;
 import com.fornula.domain.member.service.MemberJoinService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,7 +34,7 @@ public class MemberJoinRestController {
 		
 		log.info("idCheck isNull? = {}", idCheck);
 		
-		if(idCheck == null) {
+		if(ObjectUtils.isEmpty(idCheck)) {
 			return new Message("사용가능한 아이디입니다.");
 		}
 		

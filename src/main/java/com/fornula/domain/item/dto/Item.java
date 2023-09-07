@@ -1,10 +1,15 @@
 package com.fornula.domain.item.dto;
 
+import com.fornula.domain.member.dto.vo.IdCheckForm;
+
 import lombok.AllArgsConstructor;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /*
   이름           널?       유형             
@@ -19,8 +24,9 @@ ITEM_STATUS  NOT NULL NUMBER
 ITEM_DATE    NOT NULL DATE 
 PHOTO_IDX	 NOT NULL NUMBER 
  */
-
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
