@@ -2,10 +2,14 @@ package com.fornula.domain.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class ErrorResult {
 	
 	private String errorCode;

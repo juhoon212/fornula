@@ -1,7 +1,10 @@
-package com.fornula.domain.member.dto.join;
+package com.fornula.domain.member.dto.vo;
+
+
+
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +15,8 @@ import lombok.Setter;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-
-// Message용 DTO
-
-public class Message { 
+public class IdCheckForm {
 	
-	private String message;
-	
-	
+	@NotNull
+	private String id;
 }

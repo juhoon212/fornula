@@ -1,10 +1,17 @@
-package com.fornula.domain.member.dto.join;
+package com.fornula.domain.member.dto.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
+@NoArgsConstructor
 
 // 회원가입 폼
 public class JoinMemberForm {

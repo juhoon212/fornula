@@ -24,9 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.item.dto.ItemForm;
 import com.fornula.domain.item.dto.Photo;
-
+import com.fornula.domain.item.dto.vo.ItemForm;
 import com.fornula.domain.item.service.ItemInsertService;
 
 

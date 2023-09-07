@@ -1,14 +1,10 @@
 package com.fornula.domain.member.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,11 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.member.dto.join.JoinMemberForm;
-import com.fornula.domain.member.dto.login.FindPasswordForm;
+import com.fornula.domain.member.dto.vo.FindPasswordForm;
 import com.fornula.domain.member.service.MemberJoinService;
 import com.fornula.domain.member.service.MemberLoginService;
 
@@ -79,7 +72,7 @@ public class MemberController {
 		Member findMember = memberLoginService.findPw(form.getId(), form.getEmail());
 		
 		// 실패 로직
-		if(findMember == null) {
+		if(ObjectUtils.isEmpty(findMember)) {
 			redirectAttributes.addAttribute("status", "false");
 			redirectAttributes.addFlashAttribute("message", "맞지 않는 아이디 또는 이메일입니다.");
 			return "redirect:/member/findPw";
@@ -107,7 +100,7 @@ public class MemberController {
 		
 		Member findByIdxMember = memberLoginService.findByIdx(Integer.parseInt(memberIdx));
 		
-		if(findByIdxMember == null) {
+		if(ObjectUtils.isEmpty(findByIdxMember)) {
 			redirectAttributes.addFlashAttribute("message", "찾으시는 비밀번호와 동일한 아이디가 없습니다");
 			return "redirect:/member/findPw";
 		}

@@ -33,8 +33,7 @@ public class PaymentController {
 			
 			ItemPayment payment = service.itemPayment(itemIdx);
 			
-			int pos = payment.getItemfileName().lastIndexOf("_");
-			String originalFileName = payment.getItemfileName().substring(pos+1);
+			String originalFileName = extractPhoto(payment);
 			
 			model.addAttribute("itemIdx", itemIdx);
 			model.addAttribute("payment", payment);
@@ -42,6 +41,8 @@ public class PaymentController {
 			
 			return "payment"; 
 		}
+
+		
 		
 		@PostMapping("/payment/{itemIdx}")
 		public String postPayment(@PathVariable Integer itemIdx,
@@ -51,6 +52,13 @@ public class PaymentController {
 			
 			  
 			return "redirect:/paymentSuccess/{itemIdx}"; 
+		}
+		
+		
+		private String extractPhoto(ItemPayment payment) {
+			int pos = payment.getItemfileName().lastIndexOf("_");
+			String originalFileName = payment.getItemfileName().substring(pos+1);
+			return originalFileName;
 		}
 				
 	}

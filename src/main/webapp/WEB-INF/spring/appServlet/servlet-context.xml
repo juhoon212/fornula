@@ -54,13 +54,13 @@
 
 	<!-- 로그인 인터셉터 -->
 	
-	 <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
-	 <beans:bean id ="AdminAuthInterceptor" class = "com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean> 
-	 <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor" />
+	  <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
+	 <beans:bean id="AdminAuthInterceptor" class="com.fornula.domain.util.interceptor.AdminAuthInterceptor"/> 
+	<!--  <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor"/>  -->
 	
 	
 	
-	<interceptors>
+	 <interceptors>
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/images/upload/**"/>
@@ -90,13 +90,14 @@
 			<mapping path="/admin/**"></mapping>
 			<beans:ref bean="AdminAuthInterceptor"/>
 		</interceptor>
-		<interceptor>
+		<!-- <interceptor>
+			<mapping path="/**"/>
 			<mapping path="/expert/input"/>
 			<mapping path="/expert/sales"/>
 			<mapping path="/expert/item"/>
 			<beans:ref bean="ExpertAuthInterceptor"/>
-		</interceptor>
-	</interceptors>
+		</interceptor> -->
+	</interceptors>  
 </beans:beans>
 		
 

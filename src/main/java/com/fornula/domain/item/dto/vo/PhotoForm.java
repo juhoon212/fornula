@@ -1,7 +1,6 @@
-package com.fornula.domain.member.dto.join;
+package com.fornula.domain.item.dto.vo;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +11,9 @@ import lombok.Setter;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+public class PhotoForm {
+	
+	private int itemIdx;
+	private String itemFileName;
 
-// Message용 DTO
-
-public class Message { 
-	
-	private String message;
-	
-	
 }
