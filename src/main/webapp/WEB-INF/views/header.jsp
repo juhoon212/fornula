@@ -3,21 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
-<link rel="preconnect"
-	href="<c:url value="https://fonts.googleapis.com"/>">
-<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>"
-	crossorigin />
+<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin/>
 <link
 	href="<c:url value="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"/>"
 	rel="stylesheet">
-<link rel="preconnect"
-	href="<c:url value="https://fonts.googleapis.com"/>">
+<link rel="preconnect" href="<c:url value="https://fonts.googleapis.com"/>">
 <link rel="preconnect" href="<c:url value="https://fonts.gstatic.com"/>" crossorigin"/>
 <link
 	href="<c:url value="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"/>"
 	rel="stylesheet">
 <style type="text/css">
-
 .profile {
 	display: block;
 	width: 100%;
@@ -57,33 +53,11 @@ p #logo {
 	font-family: 'Permanent Marker', cursive;
 }
 
-.admin {
-	text-align: right;
-	float: right;
-	margin-left: auto;
+.admin{
+	text-align : right;
+	float : right;
+	margin-left :auto;
 }
-
-/* 카테고리 수정 */
-.dropdown-menu{
-	padding:10px;
-	border: 0px;
-	margin:0 auto;
-	font-size: 	18px;
-	/* font-family: 'HakgyoansimWoojuR'; */
-}
-.dropdown-menu li h6{
-	padding:10px;
-	border: 0px;
-	margin:0 auto;
-	font-size: 	20px;
-	font-weight: bold;
-	/* font-family: 'HakgyoansimWoojuR'; */
-}
-
-.nav-link{
-	font-size: 	20px;
-}
-
 
 </style>
 </head>
@@ -124,13 +98,18 @@ p #logo {
 						onclick="location.href="<c:url value="/member/join"/>">회원가입</button>
 				</div>
 				<div id="logos">
-					<a href="<c:url value=""/>"> </a> <img
+					<a href="<c:url value=""/>">
+					</a>
+					<img
 						src="<c:url value="/pictures/placeholder/social.png"/>"
-						alt="google"></a> <a href="<c:url value=""/>"><img
+						alt="google"></a>
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/instagram.png"/>"
-						alt="instagram"></a> <a href="<c:url value=""/>"><img
+						alt="instagram"></a> 
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/facebook.png"/>"
-						alt="facebook"></a> <a href="<c:url value=""/>"><img
+						alt="facebook"></a> 
+						<a href="<c:url value=""/>"><img
 						src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
 						alt="kakao"></a>
 				</div>
@@ -140,11 +119,11 @@ p #logo {
 
 
 	<header class="header position-relative">
-		<div class="header-navbar border-bottom border-white" >
+		<div class="header-navbar border-bottom border-white">
 			<nav
 				class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 				id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
-				id="lana-pet-main-navbar" style="padding: 0px 16px !important; height: 100px;">
+				id="lana-pet-main-navbar">
 				<p id="logo">
 					<a class="navbar-brand" href="<c:url value="/"/>"> FORNUAL </a>
 				</p>
@@ -169,9 +148,9 @@ p #logo {
 
 
 						<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
-						<div class="collapse navbar-collapse" id="lana-navbar" >
-							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
-								<li class="nav-item dropdown"><a
+						<div class="collapse navbar-collapse" id="lana-navbar">
+							<ul class="navbar-nav ml-lg-auto">
+								<li class="nav-item dropdown"><a 
 									class="nav-link dropdown-toggle" href="<c:url value="/item/boardList"/>"
 									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">카테고리</a>
@@ -212,27 +191,27 @@ p #logo {
 										<li><a class="dropdown-item" href="<c:url value="/item/boardList"/>">해외
 												마케팅</a></li>
 									</ul>
-								<li><a class="nav-link"
+								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">디자인</a></li>
 
-								<li><a class="nav-link"
+								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">번역</a></li>
 
-								<li><a class="nav-link"
+								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">사진·편집</a></li>
 
-								<li><a class="nav-link"
+								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">세무</a></li>
-								<li><a class="nav-link"
+								<li><a class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>">마케팅</a></li>
 							</ul>
 						</div>
 
 
-				<!-- 토글, 검색 버튼  -->
-				<div class="d-none d-xl-inline-flex ml-xl-4">
-					<!-- 검색 기능 주석 처리 -->
-					<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
+					<!-- 토글, 검색 버튼  -->
+					<div class="d-none d-xl-inline-flex ml-xl-4">
+						<!-- 검색 기능 주석 처리 -->
+						<!-- <form class="search-widget d-none d-xl-inline-flex ml-3">
 						<button class="search-toggler" type="button"
 							data-toggle="collapse" data-target="#lana-search"
 							aria-controls="lana-search" aria-expanded="false"
@@ -248,7 +227,6 @@ p #logo {
 									id="loginButton"> Login </a></li>
 							</ul>
 						</div>
-						
 				</c:if>
 				<c:if test="${sessionScope.loginMember !=null}">
 					<c:if
@@ -352,28 +330,24 @@ p #logo {
 										</div>
 										</ul>
 									</div>
-									</ul>
 								</div>
-							</div>
 
-						</form>
+							</form>
+					</c:if>
+					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
+						<div class = "admin">
+							<form action="/member/logout" method="post">
+								<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원 관리&nbsp;&nbsp;|</a>&nbsp;&nbsp;
+								<a href="<c:url value="/admin/item"/>">상품 관리</a>
+								<button
+									style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
+									type="submit" id="logout">로그아웃</button>
+								<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
+							</form>
+						</div>
+					</c:if>
 				</c:if>
-				<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
-					<div class="admin">
-						<form action="/member/logout" method="post">
-							<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
-								관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a
-								href="<c:url value="/admin/item"/>">상품 관리</a>
-							<button
-								style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
-								type="submit" id="logout">로그아웃</button>
-							<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
-						</form>
-					</div>
-				</c:if>
-			</c:if>
 		</div>
-		</nav>
 
 		<!-- <div class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
@@ -403,6 +377,7 @@ p #logo {
 				</form>
 		</div> -->
 
+		</nav>
 		</div>
 	</header>
 	<script type="text/javascript"

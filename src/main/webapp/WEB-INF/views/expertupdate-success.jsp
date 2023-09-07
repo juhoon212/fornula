@@ -100,8 +100,9 @@
      	<div class="find-pw-box">
  			<a class="btn btn-light" type="button" href="<c:url value="/"/>">메인으로</a>    		
      	</div>
+     	
      	<div id="show-message">${message}</div>
-
+     	
      	<div class="find-pw-box">
  			<a class="btn btn-light" type="button" href="<c:url value="/expert/output"/>">포트폴리오 화면으로</a>    		
      	</div>
