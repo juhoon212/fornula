@@ -135,48 +135,6 @@ a {
 
 	<jsp:include page="header.jsp" />
 
-<<<<<<< HEAD
-<main class="main">
-        <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
-            <div class="container post-container bg-white">
-                <div class="row justify-content-center post-row no-gutters">
-                    <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        <div style="color : red;">${message}</div>
-                         <h1>${item.itemName }</h1>
-         
-                        <div class="gongback">
-							  <h4><a href="expertoutput">작성자 번호 : ${item.expertIdx }</a></h4>                        
-                            <h4 >${item.itemDate }</h4>
-                        </div>
-                        <hr>
-                        <div id ="jul">&nbsp</div>    
-                        <img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
-                    </div>
-                    <div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
-                        <div class="post-content">
-                           
-                            <h4>${item.itemContent }</h4>
-                           <div class = "post-content" id = "detailbox">
-                            <h4 style = "float :right;">₩${item.price }</h4>
-                            <button style = "float : right;"onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
-                            </div>
-                            
-                            
-                        </div>
-                        
-                            <hr>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-    
-	    <div class="container comments-container bg-white">
-	            <div class="row justify-content-center comments-row no-gutters">
-                <div class="col-12 col-sm-11 col-md-10 col-lg-8">
-                    <h4 class="comments-title font-weight-bold">
-                        Comments
-                    </h4>
 	<main class="main">
 
 
