@@ -240,35 +240,6 @@ a {
                             Next
                         </a>
                     </nav> -->
-
-					
-					<div style="height: 100px"></div>
-                    <div id="respond" class="comment-respond">
-                        <h4 id="reply-title" class="comment-reply-title font-weight-bold">
-                            게시글 쓰기
-                        </h4>
-                        <form method="Post" id="commentform" class="comment-form form-horizontal" action="<c:url value="/board/add/${item.itemIdx}"/>">          
-                            <div class="form-group row">
-                                <div class="col">
-                                    <textarea class="form-control" name="content" rows="8" title="Comment"
-                                              placeholder="Comment" aria-required="true" required="required"></textarea>
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col">
-                                    <input name="submit" type="submit" id="submit"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="Post Comment">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-    
-    
-</main>
-<jsp:include page="footer.jsp"/>
-
 			<div>${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">

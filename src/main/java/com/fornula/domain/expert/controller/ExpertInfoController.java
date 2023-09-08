@@ -83,7 +83,7 @@ public class ExpertInfoController {
     
 
     @PostMapping("/input")
-    public String modifyExpert(@Valid @ModelAttribute Expert expert, Errors errors, Model model/*, @RequestParam MultipartFile uploadFile*/) {
+    public String modifyExpert(@Valid @ModelAttribute Expert expert, Errors errors, Model model/* @RequestParam MultipartFile uploadFile*/) {
         log.info("Modifying expert information for expertIdx: {}", expert.getExpertIdx());
         
         if(errors.hasErrors()) {

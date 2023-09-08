@@ -314,7 +314,7 @@ a:visited {
 										<option value="9">SNS 홍보</option>
 										<option value="10">해외 마케팅</option>
 									</select> <input class="box" name=career type="text" placeholder="연차:"
-										연차: value="${originalExpert.career }" />
+										value="${originalExpert.career }" />
 								</div>
 							</div>
 							<div>
@@ -337,12 +337,12 @@ a:visited {
 									<div>
 										<p class="label">포트폴리오</p>
 									</div>
-									<input class="form-control" type="file" id="portfolioFileInput"
-										accept=".pdf" name=expertfileName />
-									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
+									<input type="hidden" name="expertfileName"
+										value="${originalExpert.expertfileName}" /> <input
+										class="form-control" type="file" id="portfolioFileInput"
+										accept=".pdf" name="expertfileName"> <span
+										style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
 										파일로 업로드 해주세요.]</span><br>
-									<form:errors path="expertfileName" cssClass="error"
-										element="span" delimiter="," />
 									<p style="color: red;" id="errorMessage">${message}</p>
 								</section>
 							</div>

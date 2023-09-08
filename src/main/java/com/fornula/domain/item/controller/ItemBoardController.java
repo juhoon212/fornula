@@ -34,7 +34,7 @@ public class ItemBoardController {
         Map<String, Object> resultMap = itemBoardService.getItemList(pageNum);
   
         
-        extractOriginalPhotoFileName(resultMap);
+        extractOriginalFileName(resultMap);
         
         log.info("pager = {}", resultMap.get("pager"));
         
@@ -45,7 +45,7 @@ public class ItemBoardController {
     }
     
 
-    private void extractOriginalPhotoFileName(Map<String, Object> resultMap) {
+    private void extractOriginalFileName(Map<String, Object> resultMap) {
     	
 		int filePos;
 		
