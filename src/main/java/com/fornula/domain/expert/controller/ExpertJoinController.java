@@ -2,7 +2,6 @@ package com.fornula.domain.expert.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -12,9 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,11 +66,11 @@ public class ExpertJoinController {
 
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
-		
-		if(errors.hasErrors()) {
-			log.info("errors :{}", errors);
-			return "expert-join";
-		}
+
+		/*
+		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
+		 * expert.setInterest (interst);
+		 */
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
 		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {

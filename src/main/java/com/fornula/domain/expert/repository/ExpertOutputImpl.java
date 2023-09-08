@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.expert.mapper.java.ExpertInputMapper;
+import com.fornula.domain.expert.mapper.java.ExpertOutputMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,6 @@ public class ExpertOutputImpl implements ExpertOutputDAO{
 	@Override
 	public Expert selectExpert(int expertIdx) {
 		log.info("ExpertOutputImpl 클래스의 selectExpert()메소드");
-		return sqlSession.getMapper(ExpertInputMapper.class).originalExpert(expertIdx);
+		return sqlSession.getMapper(ExpertOutputMapper.class).selectExpert(expertIdx);
 	}
 }

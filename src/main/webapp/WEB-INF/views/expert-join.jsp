@@ -151,17 +151,15 @@ h3 {
 	border: 1px solid #d9d6d6;
 }
 
-.error{
-	color: red;
+#join {
+	
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
 	<main class="main container">
-	
-	<c:url value="/expert/join" var="url"/>
-		<form:form method="post" modelAttribute="expert" enctype="multipart/form-data" action="${url }">
-	
+		<form method="post" id="expertjoinForm" enctype="multipart/form-data"
+			action="<c:url value="/expert/join"/>">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -226,7 +224,7 @@ h3 {
 								<div id="career-input">
 									<form:input	path="career" class="box" value="${expert.career }"/>
 								</div>
-								<form:errors path="career" cssClass="error" element="span" delimiter=", "/>
+								<div class="error-msg"></div>
 							</div>
 
 							<h3>근무지</h3>
@@ -261,9 +259,9 @@ h3 {
 						<br>
 						<hr>
 						<div id="join" style="text-align: center; margin: 0 auto;">
-							<form:button type="submit" class="btn btn-primary"
+							<button type="submit" class="btn btn-primary"
 								style="font-size: 20px; text-align: center; margin: 0 auto;">전문가
-								등록</form:button>
+								등록</button>
 						</div>
 					</div>
 				</div>
@@ -287,7 +285,7 @@ h3 {
 					</div>
 				</div>
 			</div>
-		</form:form>
+		</form>
 	</main>
 
 	<jsp:include page="footer.jsp" />

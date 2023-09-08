@@ -28,12 +28,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member login(String id, String password) {
 		
-		Optional<Member> optionalLoginMember = memberLoginRepository.selectMemberInfo(id);
-		Member loginMember = optionalLoginMember.orElse(null);
-		
-		if(loginMember == null) {
-			throw new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다.");
-		}
+		Member loginMember = memberLoginRepository.selectMemberInfo(id).orElseThrow(() -> new LoginFailException("아이디 또는 비밀번호가 맞지 않습니다."));
 		
 		log.info("loginMember = {}", loginMember.getId());
 		
@@ -49,14 +44,11 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member findByEmail(String email) {
 		
-		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberId(email);
-		Member findMember = optionalFindMember.orElse(null);
+		Member findMember = memberLoginRepository.selectMemberId(email).orElseThrow(() -> new NotFoundIdException("검색하신 아이디가 없습니다."));
+		
 		
 		log.info("findMember = {}", findMember);
 		
-		if(findMember == null) {
-			throw new NotFoundIdException("검색하신 아이디가 없습니다.");
-		}
 		
 		return findMember;
 	}
@@ -64,8 +56,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member findPw(String id, String email) {
 		
-		Optional<Member> optionalFindMember = memberLoginRepository.selectMemberPw(id, email);
-		Member findMember = optionalFindMember.orElse(null);
+		Member findMember = memberLoginRepository.selectMemberPw(id, email).orElseThrow(() -> new NotFoundPwException("비밀번호를 찾을 수 없습니다"));
 		
 		log.info("findMember = {}", findMember);
 		

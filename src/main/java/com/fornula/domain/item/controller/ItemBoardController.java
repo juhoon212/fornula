@@ -32,25 +32,29 @@ public class ItemBoardController {
     @GetMapping("/boardList")
     public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
         Map<String, Object> resultMap = itemBoardService.getItemList(pageNum);
-        int filePos; // UUID로 된 파일이름 추출
+  
         
-        
-        List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>)resultMap.get("itemBoardList");
-        for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
-			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
-			
-			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
-			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
-		}
+        extractOriginalFileName(resultMap);
         
         log.info("pager = {}", resultMap.get("pager"));
         
         model.addAttribute("itemBoardList", resultMap.get("itemBoardList"));
         model.addAttribute("pager", resultMap.get("pager"));
         
-       
-        
-   
         return "item-board";
+    }
+    
+
+    private void extractOriginalFileName(Map<String, Object> resultMap) {
+    	
+		int filePos;
+		
+		List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>)resultMap.get("itemBoardList");
+		for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
+			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
+			
+			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
+		}
     }
 }

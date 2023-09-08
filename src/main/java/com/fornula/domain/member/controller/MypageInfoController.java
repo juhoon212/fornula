@@ -58,8 +58,7 @@ public class MypageInfoController {
 	 //   log.info("modelJoinMember = {}", joinMember);
 	    
 	 //   model.addAttribute("member", joinMember);
-		   
-	    //카테고리 값이 null일때 에러처리를 어떻게 한담..
+		  
 		   //if(category.getOne()==null) {
 			//   return "mypage-info";
 		   //}
@@ -106,7 +105,7 @@ public class MypageInfoController {
 	    Category categoryTwo=service.mypageCategoryTwo(member.getCategoryTwo());
 	    Category categoryThree=service.mypageCategoryThree(member.getCategoryThree());
 	    
-	    log.info("mypageInfoChange = { ", joinMember);
+	    log.info("mypageInfoChange = {} ", joinMember);
 	    
 	    model.addAttribute("member", joinMember);
 	    model.addAttribute("categoryOne", categoryOne);

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class ItemDetailController {
 		   				Model model
 		   				) {
 	   
-	   	if(pageNum == null) {
+	   	if(ObjectUtils.isEmpty(pageNum)) {
 	   		pageNum = 1;
 	   	}
 
@@ -47,8 +48,7 @@ public class ItemDetailController {
     	
     	
     	
-    	int pos = selectPhoto.getItemfileName().lastIndexOf("_");
-    	String originalFileName = selectPhoto.getItemfileName().substring(pos + 1); // 사진 로직
+    	String originalFileName = extractPhoto(selectPhoto); // 사진 로직
     	
     	model.addAttribute("item", findItem);
     	model.addAttribute("originalFileName", originalFileName);
@@ -66,4 +66,12 @@ public class ItemDetailController {
     	
     	return "item";
     }
+
+   private String extractPhoto(Photo selectPhoto) {
+	   
+		int pos = selectPhoto.getItemfileName().lastIndexOf("_");
+		String originalFileName = selectPhoto.getItemfileName().substring(pos + 1);
+		
+		return originalFileName;
+   }
 }
