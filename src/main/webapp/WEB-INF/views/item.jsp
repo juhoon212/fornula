@@ -244,7 +244,8 @@ a {
 					
 					<div style="height: 100px"></div>
                     <div id="respond" class="comment-respond">
-                        <h4 id="reply-title" class="comment-reply-title font-weight-bold">
+                    	<h6 style="color : red;">* 게시글은 구매자만 남길 수 있습니다</h6>
+                        <h4 id="reply-title" class="comment-reply-title font-weight-bold">                
                             게시글 쓰기
                         </h4>
                         <form method="Post" id="commentform" class="comment-form form-horizontal" action="<c:url value="/board/add/${item.itemIdx}"/>">          

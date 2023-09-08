@@ -87,7 +87,7 @@
 	</update>
 	
 	<select id="selectPurchase" resultType="Purchase">
-		select purchase_idx, item_idx
+		select purchase_idx
 		from purchase join item on purchase.item_idx = item.item_idx
 		where purchase.member_idx = #{memberIdx} and item.item_idx = #{itemIdx} 
 	</select>
