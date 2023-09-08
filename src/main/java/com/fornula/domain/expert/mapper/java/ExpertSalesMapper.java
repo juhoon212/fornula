@@ -7,9 +7,11 @@ import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
 
 public interface ExpertSalesMapper {
-	List<SaleItemExpert> selectSalesList(int expertIdx);
+	//판매내역 페이징 처리
+	List<SaleItemExpert> selectSalesList(Map<String, Object> map);
+	int selectSalesCount();
+
+	//판매내역 상태 변경
 	int updateSalesStatus(int salesIdx);
-	List<ItemSales> selectSearchSalesList(Map<String, Object> searchList);
-	int selectExpertIdxByMemberIdx(int memberIdx);
 
 }

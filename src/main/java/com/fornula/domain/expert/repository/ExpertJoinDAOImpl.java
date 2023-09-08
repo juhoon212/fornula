@@ -25,5 +25,11 @@ public class ExpertJoinDAOImpl implements ExpertJoinDAO{
 		
 	}
 
+	@Override
+	public Member exceptionExpert(int memberIdx) {
+		return sqlSession.getMapper(ExpertJoinMapper.class).exceptionExpert(memberIdx);
+		
+	}
+
 }
  

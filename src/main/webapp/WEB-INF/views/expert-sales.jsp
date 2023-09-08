@@ -221,16 +221,51 @@ tr td {
 						<nav style="padding: 5px;"
 							class="navigation pagination justify-content-between text-uppercase"
 							role="navigation">
-							<a class="prev disabled" href="<c:url value="#"/>"> Prev </a>
-							<div class="nav-links">
-								<ul class="page-numbers">
-									<li><span aria-current="page" class="page-numbers current">1</span></li>
-									<li><a class="page-numbers" href="<c:url value="#"/>">2</a></li>
-									<li><span class="page-numbers dots">…</span></li>
-									<li><a class="page-numbers" href="<c:url value="#"/>">4</a></li>
-								</ul>
+							<div class="prev">
+								<c:choose>
+									<c:when test="${pager.startPage > pager.blockSize}">
+										<a
+											href="<c:url value="/expert/sales"/>?pageNum=${pager.prevPage}">PREV</a>
+									</c:when>
+									<c:when test="${pager.pageNum > 1}">
+										<a
+											href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum - 1}">PREV</a>
+									</c:when>
+									<c:otherwise>
+										<span class="disabled">PREV</span>
+									</c:otherwise>
+								</c:choose>
 							</div>
-							<a class="next" href="<c:url value="#"/>"> Next </a>
+
+							<div class="pages">
+								<c:forEach var="i" begin="${pager.startPage}"
+									end="${pager.endPage}" step="1">
+									<c:choose>
+										<c:when test="${pager.pageNum != i}">
+											<a href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<span class="current">[${i}]</span>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</div>
+
+							<div class="next">
+								<c:choose>
+									<c:when test="${pager.endPage != pager.totalPage}">
+										<a
+											href="<c:url value="/expert/sales"/>?pageNum=${pager.nextPage}">NEXT</a>
+									</c:when>
+									<c:when test="${pager.pageNum < pager.totalPage}">
+										<a
+											href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
+									</c:when>
+									<c:otherwise>
+										<span class="disabled">NEXT</span>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</nav>
 					</section>
 				</div>
@@ -255,7 +290,8 @@ tr td {
 								<div class="widget"
 									style="text-align: left; padding-left: 20px;">
 									<h3 class="widget-title">판매 관리</h3>
-									<ul class="list-unstyled"><!-- 이거 줄맞춤 안되있는거만 내가 class속성 추가해서 속성값으로 줄맞춤했어 -->
+									<ul class="list-unstyled">
+										<!-- 이거 줄맞춤 안되있는거만 내가 class속성 추가해서 속성값으로 줄맞춤했어 -->
 										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
 
 										<li><a href="<c:url value="/expert/sale"/>">판매 관리</a></li>
@@ -365,31 +401,8 @@ tr td {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<%-- 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			function fetchPrice() {
-				$.ajax({
-					type : 'GET',
-					url : '/price/' + expertIdx,
-					dataType : 'json',
-					success : function(data) {
-						// JSON 데이터를 화면에 출력
-						$('#price').text(data);
-
-					},
-					error : function(xhr) {
-						console.log('Error fetching JSON data=' + xhr.status);
-					}
-				});
-			}
-			var expertIdx =
-	<%=request.getAttribute("expertIdx")%>
-		;
-			fetchPrice(expertIdx);
-		});
+		
 	</script>
-
- --%>
 </body>
 </html>

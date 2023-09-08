@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	private final SqlSession sqlSession;
-	
+	/*
 	@Override
 	public List<ItemSales> selectSearchSalesList(int salesStatus, String salesDate) {
 		Map<String, Object> searchList = new HashMap<>();
@@ -28,18 +28,22 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 		
 		return sqlSession.getMapper(ExpertSalesMapper.class).selectSearchSalesList(searchList);
 	}
+	*/
+	//판매 내역 출력 + 페이징 처리
 	@Override
-	public int selectExpertIdxByMemberIdx(int memberIdx) {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectExpertIdxByMemberIdx(memberIdx);
+	public List<SaleItemExpert> selectSalesList(Map<String, Object> map) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList(map);
 	}
-
+	
 	@Override
-	public List<SaleItemExpert> selectSalesList(int expertIdx) {
-		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesList(expertIdx);
+	public int selectSalesCount() {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectSalesCount();
 	}
+	
 	
 	@Override
 	public int updateSalesStatus(int salesIdx) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).updateSalesStatus(salesIdx);
 	}
+
 }
