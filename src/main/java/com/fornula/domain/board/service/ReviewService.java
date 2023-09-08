@@ -11,7 +11,7 @@ public interface ReviewService {
 	
 	int addReview(Review review);
 	
-	int addReply(Review review);
+	int addReply(Review review, int memberIdx, int itemIdx);
 	
 	Purchase selectPurchase(int memberIdx, int itemIdx);
 	
