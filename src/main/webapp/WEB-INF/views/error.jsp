@@ -53,13 +53,17 @@
         margin-top: 20px;
         font-family: 'Do+Hyeon';
     }
+    
+    .message {
+    	display: flex;
+    }
 </style>
 <body>
     
     <div class = "ca">
         <a href="<c:url value="/"/>">FORNUAL </a>
         <span>잘못된 접근입니다</span>
-        <div>${message}</div>
+        <div class="message">${message}</div>
         <button onclick="history.back()">Back</button>
     </div>
 </body>

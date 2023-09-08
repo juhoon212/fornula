@@ -73,6 +73,13 @@
 		)
 	</insert>
 	
+	<select id="findExpert" resultType="Expert">
+		select expert_idx
+		from member join expert on member.member_idx = expert.member_idx
+		where member.member_idx = #{memberIdx}
+	</select>
+	
+	
 	<update id="addReply" >
 		update review
 		set answer_content = #{answerContent}, answer_date = sysdate
@@ -80,7 +87,7 @@
 	</update>
 	
 	<select id="selectPurchase" resultType="Purchase">
-		select purchase_idx
+		select purchase_idx, item_idx
 		from purchase join item on purchase.item_idx = item.item_idx
 		where purchase.member_idx = #{memberIdx} and item.item_idx = #{itemIdx} 
 	</select>

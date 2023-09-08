@@ -56,11 +56,7 @@ public class ItemInsertController {
 		
 		Item item = new Item();
 		
-		item.setExpertIdx(itemForm.getExpertIdx());
-		item.setPrice(itemForm.getPrice());
-		item.setItemName(itemForm.getItemName());
-		item.setItemContent(itemForm.getItemContent());
-		item.setCategoryIdx(itemForm.getCategoryIdx());
+		setItemInfo(itemForm, item);
 		
 		int result=itemInsertService.addItem(item);
 		
@@ -73,6 +69,15 @@ public class ItemInsertController {
 		
 		return "redirect:/item/photo/add/{itemIdx}/"; // 등록한 상품 상세페이지로 이동 
 	}
+
+	private void setItemInfo(ItemForm itemForm, Item item) {
+		item.setExpertIdx(itemForm.getExpertIdx());
+		item.setPrice(itemForm.getPrice());
+		item.setItemName(itemForm.getItemName());
+		item.setItemContent(itemForm.getItemContent());
+		item.setCategoryIdx(itemForm.getCategoryIdx());
+	}
+	
 	
 	@GetMapping("/photo/add/{itemIdx}")
 	public String addPhoto(@PathVariable String itemIdx, Model model) {
@@ -96,26 +101,39 @@ public class ItemInsertController {
 				return "redirect:/item/photo/add/{itemIdx}";
 			}
 			
-//			uploadFile의 경로를 저장하기 위한 식
+
 			String uploadDirectory=context.getServletContext().getRealPath("/resources/images");
+			
 			log.info("filepath = {}", uploadDirectory);
-//			uploadFile의 파일이름(PHOTO 테이블의 itemFileName)을 저장하기 위한 식
-			String uploadFileName = UUID.randomUUID().toString()+"_"+ multipartFile.getOriginalFilename();
 			
-			Photo itemPhoto = new Photo();
-	
-			itemPhoto.setItemfileName(uploadFileName);
-			itemPhoto.setItemIdx(itemIdx);
+			String uploadFileName = storePhotoName(multipartFile);
 			
-			multipartFile.transferTo(new File(uploadDirectory , uploadFileName));
+			Photo itemPhoto = transferPhoto(multipartFile, itemIdx, uploadDirectory, uploadFileName);
 			
-			// DB에 photo 객체 저장å
 			itemInsertService.addPhoto(itemPhoto);
 		
 		
-		redirectAttributes.addAttribute("itemIdx", itemIdx);
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
 		
 		
-		return "redirect:/item/{itemIdx}/1";
+			return "redirect:/item/{itemIdx}/1";
+	}
+	
+	
+	//	uploadFile의 경로를 저장하기 위한 메소드
+	private Photo transferPhoto(MultipartFile multipartFile, Integer itemIdx, String uploadDirectory, String uploadFileName)
+			throws IOException {
+		Photo itemPhoto = new Photo();
+
+		itemPhoto.setItemfileName(uploadFileName);
+		itemPhoto.setItemIdx(itemIdx);
+		
+		multipartFile.transferTo(new File(uploadDirectory , uploadFileName));
+		return itemPhoto;
+	}
+
+	private String storePhotoName(MultipartFile multipartFile) {
+		String uploadFileName = UUID.randomUUID().toString()+"_"+ multipartFile.getOriginalFilename();
+		return uploadFileName;
 	}	
 }

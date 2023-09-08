@@ -56,7 +56,7 @@ public class ItemDetailController {
     	
     	Map<String, Object> selectReviews = reviewService.selectReviews(pageNum, itemIdx); // 게시판 로직
     	
-    	if(selectReviews.get("reviewList") == null) {
+    	if(ObjectUtils.isEmpty(selectReviews.get("reviewList"))) {
     		
     		return "redirect:/400";
     	}

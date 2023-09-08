@@ -140,7 +140,7 @@ a{
             <div class="container post-container bg-white">
                 <div class="row justify-content-center post-row no-gutters">
                     <div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-                        
+                        <div style="color : red;">${message}</div>
                          <h1>${item.itemName }</h1>
          
                         <div class="gongback">
@@ -247,7 +247,7 @@ a{
                             Next
                         </a>
                     </nav> -->
-					<div>${message}</div>
+					
 					<div style="height: 100px"></div>
                     <div id="respond" class="comment-respond">
                         <h4 id="reply-title" class="comment-reply-title font-weight-bold">
