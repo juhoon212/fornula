@@ -7,11 +7,9 @@ import java.util.UUID;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.fornula.domain.exception.custom.ExistsExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
@@ -42,13 +37,10 @@ public class ExpertJoinController {
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
 
+	
 
-	@GetMapping("/success")
-	public String success() {
-		return "expertjoin-success";
-	}
 	@GetMapping("/join")
-	public String join(@ModelAttribute("expert") Expert expert, HttpSession session) {
+	public String join(HttpSession session) {
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 
 		session.setAttribute("member", member.getId());
@@ -57,10 +49,8 @@ public class ExpertJoinController {
 	}
 
 	@PostMapping("/join")
-	public String join(@Valid @ModelAttribute("expert") Expert expert, Errors errors, 
-			@RequestParam MultipartFile uploadFile, Model model,
-			HttpSession session, RedirectAttributes redirectAttributes) 
-					throws IllegalStateException, IOException, ExistsExpertException {
+	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model,
+			HttpSession session) throws IllegalStateException, IOException {
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
@@ -84,11 +74,18 @@ public class ExpertJoinController {
 			String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
 			log.info("filepath =" + uploadDirectory);
 	
-			String expertfileName = extracted(uploadFile);
+			String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
 			log.info("filename =" + expertfileName);
 	
 			expert.setExpertfileName(expertfileName);
 
+			try {
+				uploadFile.transferTo(new File(uploadDirectory, expertfileName));
+				System.out.println("파일 업로드 성공");
+			} catch (IllegalArgumentException | IOException e) {
+				System.out.println("파일 업로드 실패");
+				e.printStackTrace();
+			}
 		}
 		
 
@@ -97,13 +94,10 @@ public class ExpertJoinController {
 		// 등록처리에 성공하였을때 memberIdx 변경
 		member.setMemberStatus(2);
 		expertJoinService.updateExpertStatus(member);
-		redirectAttributes.addFlashAttribute("message","전문가 등록이 완료되었습니다");
+		session.setAttribute("loginMember", member);
+		model.addAttribute("message","전문가 등록이 완료되었습니다");
 		
-		return "redirect:/expert/success";
+		return "expertjoin-success";
 
-	}
-	private String extracted(MultipartFile uploadFile) {
-		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
-		return expertfileName;
 	}
 }

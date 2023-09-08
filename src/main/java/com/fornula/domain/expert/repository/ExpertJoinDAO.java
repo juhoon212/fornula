@@ -6,6 +6,5 @@ import com.fornula.domain.member.dto.Member;
 public interface ExpertJoinDAO {
 	int insertExpertInfo(Expert expert);
 	void updateExpertStatus(Member member);
-	Member exceptionExpert(int memberIdx);
 
 }

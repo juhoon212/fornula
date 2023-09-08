@@ -18,9 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class ItemBoardServiceImpl implements ItemBoardService{
-	
 	private final ItemBoardDAO itemBoardDAO;
-	
 //	상품 리스트(6개씩 출력되게 할거야) 출력 용도
 	@Override
 	public Map<String, Object> getItemList(int pageNum) {
