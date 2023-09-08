@@ -53,7 +53,7 @@
 	</beans:bean>
 
 	<!-- 로그인 인터셉터 -->
-	
+	<!-- 
 	 <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
 	 <beans:bean id ="AdminAuthInterceptor" class = "com.fornula.domain.util.interceptor.AdminAuthInterceptor"></beans:bean> 
 	 <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor" />
@@ -96,7 +96,7 @@
 			<mapping path="/expert/item"/>
 			<beans:ref bean="ExpertAuthInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 </beans:beans>
 		
 

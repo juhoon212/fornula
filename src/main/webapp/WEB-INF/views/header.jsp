@@ -253,8 +253,8 @@ p #logo {
 				<c:if test="${sessionScope.loginMember !=null}">
 					<c:if
 						test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
-						<div class="collapse navbar-collapse" id="lana-navbar">
-							<ul class="navbar-nav ml-lg-auto">
+						<div class="collapse navbar-collapse" id="lana-navbar" >
+							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="<c:url value="/item/boardList"/>"
 									id="post-dropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -265,7 +265,7 @@ p #logo {
 										</li>
 										<li><a class="dropdown-item" href="<c:url value="/item/boardList"/>">그래픽
 												디자인</a></li>
-										<li><a class="dropdown-item" href="<c:url value="/item/boardList"/>">제품
+										<li><a class="dropdown-item" href=""<c:url value="/item/boardList"/>">제품
 												디자인</a></li>
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
@@ -296,20 +296,21 @@ p #logo {
 										<li><a class="dropdown-item" href="<c:url value="/item/boardList"/>">해외
 												마케팅</a></li>
 									</ul>
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">디자인</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">번역</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">사진·편집</a></li>
 
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">세무</a></li>
-								<li><a class="nav-link dropdown-toggle"
+								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">마케팅</a></li>
 							</ul>
+						</div>
 							<form action="<c:url value="/member/logout"/>" method="post">
 								<!-- 프로필 사진 삽입 -->
 								<div class="dropdown">
@@ -342,8 +343,8 @@ p #logo {
 														정보 관리</a></li>
 												<li><a class="dropdown-item"
 													href="<c:url value="/expert/output "/>">전문가 정보</a></li>
+											<li><a class="dropdown-item" href="<c:url value="#"/>">장바구니</a>
 										</c:if>
-										<!-- <li><a class="dropdown-item" href="<c:url value="#"/>">장바구니</a> -->
 
 										<div style="padding-left: 18px;">
 											<button

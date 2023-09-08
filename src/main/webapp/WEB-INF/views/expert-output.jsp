@@ -128,8 +128,7 @@ a {
       <div class="row">
          <div class="col-12 col-lg-8">
             <div class="widget">
-               <form class="story-posts" id="content" action="/expert/input"
-                  method="post">
+               <form class="story-posts" id="content" action="<c:url value="/expert/input"/>" method="post">
                   <label
                      style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">포트폴리오</label>
                   <div>

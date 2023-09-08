@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -177,14 +176,14 @@ h3 {
 								<h3>전화번호</h3>
 								<div class="info">
 									<div id="phone-input">
-										<form:input	path="phone"/>
-										<form:errors path="phone" class="error" element="span" delimiter=","/>
+										<form:input	path="phone" id="phone" value="${expert.phone }" class="box" oninput="autoHypen(this)" maxlength="13" placeholder="010-1234-5678"/>
+										<form:errors path="phone" cssclass="error" element="span" delimiter=","/>
 									</div>
 								</div>
 								<h3>자기 소개</h3>
 								<div class="info">
 									<div id="introduce-input">
-										<textarea id="introduce" class="box"
+										<textarea id="introduce" class="box" 
 											placeholder="자기소개를 500자 이내로 작성해주세요." maxlength=500 name="introduce"></textarea>
 									</div>
 								</div>
@@ -192,7 +191,7 @@ h3 {
 						</div>
 						<hr>
 						<section id="career">
-							<h3>직업</h3>
+							<h3>직업</h3> 
 							<div class="info" id="career-input">
 								<div id="category-flex">
 									<select class="box" id="category-big" name="interest">
@@ -225,7 +224,7 @@ h3 {
 							<h3>경력</h3>
 							<div class="info" id="company_category">
 								<div id="career-input">
-									<form:input	path="career" />
+									<form:input	path="career" class="box" value="${expert.career }"/>
 								</div>
 								<form:errors path="career" cssClass="error" element="span" delimiter=", "/>
 							</div>
@@ -278,9 +277,9 @@ h3 {
 									style="text-align: left; padding-left: 20px;" id="list">
 									<h1 class="widget-title" style="font-size: 28px;">전문가 등록</h1>
 									<ul>
-										<li><a href="#profile">전문가 정보</a></li>
-										<li><a href="#career">경력 사항</a></li>
-										<li><a href="#upload">포트폴리오</a></li>
+										<li><a href="<c:url value="#profile"/>">전문가 정보</a></li>
+										<li><a href="<c:url value="#career"/>">경력 사항</a></li>
+										<li><a href="<c:url value="#upload"/>">포트폴리오</a></li>
 									</ul>
 								</div>
 							</div>
@@ -312,6 +311,15 @@ h3 {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
+	<script type="text/javascript">
+	$(document).on("keyup", "#phone", function() {
+	    $(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3" ).replace("--", "-")); 
+	});
+	function autoHypen(e){
+	    if(e.value.length>13){
+		e.value=e.value.slice(0,13);	
+	    }
+	}
+	</script>
 </body>
 </html>
