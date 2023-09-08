@@ -166,6 +166,11 @@ a:visited {
 h3 {
 	font-size: 20px;
 }
+#contentfont {
+   font-family: 'HakgyoansimWoojuR';
+   font-weight: normal;
+   font-style: normal;
+}
 
 /* 카테고리 */
 .info#info__category #category-flex {
@@ -220,15 +225,22 @@ a:visited {
 	text-align: left;
 	margin: 0 auto;
 }
+
+@font-face {
+   font-family: 'HakgyoansimWoojuR';
+   src:
+      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2')
+      format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
 </style>
 </head>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
-		<c:url value="/expert/input" var="url" />
-		<form:form method="post" modelAttribute="expert"
-			enctype="multipart/form-data" action="${url }" id="submitForm">
+		<form method="post" enctype="multipart/form-data" action="<c:url value="/expert/input"/>" id="submitForm">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="widget">
@@ -254,12 +266,10 @@ a:visited {
 									<p class="label">전화번호</p>
 								</div>
 								<div id="category-flex">
-									<form:input path="phone" id="phone" class="box"
+									<input name="phone" id="phone" class="box"
 										oninput="autoHypen(this)" maxlength="13"
 										value="${originalExpert.phone }" placeholder="숫자로 입력해주세요." />
 								</div>
-								<form:errors path="phone" cssClass="error" element="span"
-									delimiter="," />
 								<p class="error" id="phoneMsg"></p>
 							</div>
 							<div>
@@ -293,27 +303,28 @@ a:visited {
 												<c:otherwise>기타</c:otherwise>
 											</c:choose>
 										</option>
-										<option disabled selected
+										<option disabled 
 											style="color: orange; font-size: 20px">디자인</option>
 										<option value="1">그래픽</option>
 										<option value="2">제품</option>
-										<option disabled selected
+										<option disabled 
 											style="color: orange; font-size: 20px">번역</option>
 										<option value="3">영어</option>
 										<option value="4">중국어</option>
-										<option disabled selected
+										<option disabled 
 											style="color: orange; font-size: 20px">사진 편집</option>
 										<option value="5">헤어 메이크업</option>
 										<option value="6">제품 홍보 사진</option>
-										<option disabled selected
+										<option disabled 
 											style="color: orange; font-size: 20px">세무</option>
 										<option value="7">사업자</option>
 										<option value="8">개인</option>
-										<option disabled selected
+										<option disabled 
 											style="color: orange; font-size: 20px">마케팅</option>
 										<option value="9">SNS 홍보</option>
 										<option value="10">해외 마케팅</option>
-									</select> <input class="box" name=career type="text" placeholder="연차:"
+									</select> 
+									<input class="box" name=career type="text" placeholder="연차:"
 										value="${originalExpert.career }" />
 								</div>
 							</div>
@@ -337,11 +348,11 @@ a:visited {
 									<div>
 										<p class="label">포트폴리오</p>
 									</div>
-									<input type="hidden" name="expertfileName"
-										value="${originalExpert.expertfileName}" /> <input
-										class="form-control" type="file" id="portfolioFileInput"
-										accept=".pdf" name="expertfileName"> <span
-										style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
+									<input class="box"name="expertfileName" readonly="readonly"
+										value="${originalExpert.expertfileName}" />
+									<input class="form-control" type="file" id="portfolioFileInput"
+										accept=".pdf" name="uploadFile" value="${originalExpert.expertfileName}" /> 
+									<span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
 										파일로 업로드 해주세요.]</span><br>
 									<p style="color: red;" id="errorMessage">${message}</p>
 								</section>
@@ -349,8 +360,8 @@ a:visited {
 							<hr>
 							<br>
 							<div id="button" style="padding: 5px 10px;">
-								<form:button class="btn btn-primary " onclick="submitButton();"
-									type="submit">수정완료</form:button>
+								<button class="btn btn-primary " onclick="submitButton();"
+									type="submit">수정완료</button>
 							</div>
 						</div>
 					</div>
@@ -386,7 +397,7 @@ a:visited {
 					</div>
 				</div>
 			</div>
-		</form:form>
+		</form>
 		<jsp:include page="footer.jsp" />
 	</main>
 

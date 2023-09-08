@@ -2,6 +2,9 @@ package com.fornula.domain.expert.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -61,16 +64,19 @@ public class ExpertJoinController {
 			@RequestParam MultipartFile uploadFile, Model model,
 			HttpSession session, RedirectAttributes redirectAttributes) 
 					throws IllegalStateException, IOException, ExistsExpertException {
+		
+		if(errors.hasErrors()) {
+	           model.addAttribute("expert",expert);
+	           log.info("errors :{}", errors);
+	           return "expert-join";
+	        }
+		
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
 
-		/*
-		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
-		 * expert.setInterest (interst);
-		 */
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
 		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {
@@ -106,4 +112,6 @@ public class ExpertJoinController {
 		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
 		return expertfileName;
 	}
+	
+
 }
