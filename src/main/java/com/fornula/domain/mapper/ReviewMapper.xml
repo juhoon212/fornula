@@ -73,13 +73,6 @@
 		)
 	</insert>
 	
-	<select id="findExpert" resultType="Expert">
-		select expert_idx
-		from member join expert on member.member_idx = expert.member_idx
-		where member.member_idx = #{memberIdx}
-	</select>
-	
-	
 	<update id="addReply" >
 		update review
 		set answer_content = #{answerContent}, answer_date = sysdate

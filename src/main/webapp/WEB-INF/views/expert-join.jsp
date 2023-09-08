@@ -151,8 +151,8 @@ h3 {
 	border: 1px solid #d9d6d6;
 }
 
-#join {
-	
+.error {
+	color: red;
 }
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">

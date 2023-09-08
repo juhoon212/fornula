@@ -43,7 +43,7 @@ public class Expert {
 	private String phone;
 	private int interest;
 
-	@Size(min=1, max=500) 
+	@Size(max=500) 
 	private String introduce;
 	private String career;
 	private String companyOne;
