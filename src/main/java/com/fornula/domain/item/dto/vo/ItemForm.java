@@ -1,7 +1,6 @@
 package com.fornula.domain.item.dto.vo;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

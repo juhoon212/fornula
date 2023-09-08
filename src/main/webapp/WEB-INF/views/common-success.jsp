@@ -98,7 +98,8 @@
      	<div id="show-message">${message}</div>
      	
      	<div class="find-pw-box">
- 			<a class="btn btn-light" type="button" href="<c:url value="/"/>">메인으로</a>    		
+ 			<a class="btn btn-light" type="button" href="<c:url value="/"/>">메인으로</a>
+ 			<button onclick="history.back()">Back</button>		
      	</div>
       
     </section>
