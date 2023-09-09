@@ -29,6 +29,4 @@
        FROM EXPERT
        WHERE expert_idx=#{expertIdx}
    </select>
-   
-  
 </mapper>

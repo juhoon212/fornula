@@ -12,7 +12,6 @@
 			 #{interest}, #{introduce},  #{career}, 
 			 #{companyOne}, #{companyTwo}, #{companyThree},
 			 #{expertfileName})
-		 
 	</insert>
 	
 	<!-- 전문가 등록시 상태 변경 -->
@@ -21,10 +20,4 @@
 		set member_status = 2
 		where member_idx = #{memberIdx}
 	</update>
-	
-	
-	<!-- 예외처리를 위한 쿼리 -->
-	<select id="exceptionExpert" resultType="Member">
-		select member_status from member where member_idx = #{memberIdx}
-	</select>
 </mapper>

@@ -29,7 +29,7 @@
 		FROM item I
 		JOIN photo P
 		ON I.item_idx = P.item_idx
-		WHERE ROWNUM &lt;=3 and I.item_status = 1
+		WHERE ROWNUM &lt;=3
 	</select> 
 </mapper>
  	

@@ -25,10 +25,20 @@ public class MainController {
    //메인페이지 상품 출력
    @GetMapping
    public String home(Model model) {
-
+      
+      String originalFileName;
+      int pos; 
+      
+      
       List<ItemPhoto> itemList = itemMainService.getMainItemList();
       
-      extractPhoto(itemList);
+      for(ItemPhoto list : itemList) {
+         
+         pos = list.getPhoto().getItemfileName().lastIndexOf("_");
+         originalFileName = list.getPhoto().getItemfileName().substring(pos + 1);
+         
+         list.getPhoto().setItemfileName(originalFileName);
+      }
       
       model.addAttribute("itemList",itemList );
       
@@ -36,24 +46,9 @@ public class MainController {
       log.info("itemList: {}",itemList);
       return "main";
    }
-   
+
    @GetMapping("/success")
    public String test() {
       return "common-success";
    }
-
-   private void extractPhoto(List<ItemPhoto> itemList) {
-	String originalFileName;
-	int pos;
-	
-	for(ItemPhoto list : itemList) {
-         
-         pos = list.getPhoto().getItemfileName().lastIndexOf("_");
-         originalFileName = list.getPhoto().getItemfileName().substring(pos + 1);
-         
-         list.getPhoto().setItemfileName(originalFileName);
-      }
-}
-
-  
 }
