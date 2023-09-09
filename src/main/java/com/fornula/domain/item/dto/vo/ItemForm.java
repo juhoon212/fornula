@@ -19,7 +19,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ItemForm {
 	@NotEmpty(message="잘못된 접근입니다 다시 진행해주세요")
-	@Pattern(regexp = "^[0-9]+$")
 	private int expertIdx;
 	@NotEmpty(message="카테고리를 입력 후 진행해주세요")
 	private int categoryIdx;

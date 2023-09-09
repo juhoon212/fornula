@@ -65,7 +65,6 @@ public class ItemInsertController {
 		
 		if(result==0) {
 //			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
-	        log.info("유효성 검사 실패:");
 			return "redirect:/item/add";
 		}
 		
@@ -78,7 +77,7 @@ public class ItemInsertController {
 	public String addPhoto(@PathVariable String itemIdx, Model model) {
 		
 		model.addAttribute("itemIdx", itemIdx);
-	    log.info("상품 등록 성공");
+		
 		return "add-photo";
 	}
 	
