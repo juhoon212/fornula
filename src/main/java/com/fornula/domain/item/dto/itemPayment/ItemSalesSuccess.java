@@ -1,15 +1,14 @@
 package com.fornula.domain.item.dto.itemPayment;
 
-import com.fornula.domain.expert.dto.Sales;
-import com.fornula.domain.item.dto.Item;
-import com.fornula.domain.item.dto.Purchase;
-import com.fornula.domain.member.dto.Member;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ItemSalesSuccess {
 	private int salesIdx;
 	private int itemIdx;

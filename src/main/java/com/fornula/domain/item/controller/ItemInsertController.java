@@ -4,10 +4,9 @@ package com.fornula.domain.item.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,7 +49,7 @@ public class ItemInsertController {
 	
 	@PostMapping("/add/{expertIdx}")
 	@Transactional(rollbackFor = Exception.class)
-	public String insert(	@ModelAttribute ItemForm itemForm,
+	public String insert(	@ModelAttribute @Valid ItemForm itemForm,
 							@PathVariable Integer expertIdx,
 							RedirectAttributes redirectAttributes) {
 		
@@ -65,7 +64,8 @@ public class ItemInsertController {
 		int result=itemInsertService.addItem(item);
 		
 		if(result==0) {
-			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
+//			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
+	        log.info("유효성 검사 실패:");
 			return "redirect:/item/add";
 		}
 		
@@ -78,7 +78,7 @@ public class ItemInsertController {
 	public String addPhoto(@PathVariable String itemIdx, Model model) {
 		
 		model.addAttribute("itemIdx", itemIdx);
-		
+	    log.info("상품 등록 성공");
 		return "add-photo";
 	}
 	
