@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
+import com.fornula.domain.item.dto.vo.ItemForm;
 import com.fornula.domain.item.mapper.java.ItemInsertMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class ItemInsertDAOImpl implements ItemInsertDAO {
 	private final SqlSession sqlSession;
 	
 	@Override
-	public int insertItem(Item item) {
-		return sqlSession.getMapper(ItemInsertMapper.class).insertItem(item);
+	public int insertItem(ItemForm itemForm) {
+		return sqlSession.getMapper(ItemInsertMapper.class).insertItem(itemForm);
 	}
 	
 	@Override

@@ -79,7 +79,7 @@ public class ItemInsertController {
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
 		
-		int result=itemInsertService.addItem(item);
+		int result=itemInsertService.addItem(itemForm);
 		
 		if(result==0) {
 			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");

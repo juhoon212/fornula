@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
+import com.fornula.domain.item.dto.vo.ItemForm;
 import com.fornula.domain.item.repository.ItemInsertDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 	
 //	1.상품등록(임시 photoIdx 부여)
 	@Override
-	public int addItem(Item item) {
-		return itemInsertDAO.insertItem(item);
+	public int addItem(ItemForm itemForm) {
+		return itemInsertDAO.insertItem(itemForm);
 	}
 	
 //	2.3번 작업을 위한 준비운동(itemIdx 뽑아내기)

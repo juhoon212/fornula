@@ -40,13 +40,13 @@
 							<form:form class="contact-form mt-5" method="post" action="${url}" modelAttribute="itemForm" id="itemaddForm">
 								<div class="form-group row" id="itemPrice">
 									<div class="col" id="price">
-										<form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" name="itemForm.price" value="${itemForm.price }" />
+										<form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" value="${itemForm.price }" />
 									</div>
 									<form:errors path="price" cssClass="error" element="span" />
 								</div>
 								<div class="form-group row">
 									<div class="col" id="itemName">
-										<form:input path="itemName" class="form-control" placeholder="상품제목을 입력해주세요" name="itemForm.itemName" value="${itemForm.itemName }" />
+										<form:input path="itemName" class="form-control" placeholder="상품제목을 입력해주세요" value="${itemForm.itemName }" />
 									</div>
 									<form:errors path="itemName" cssClass="error" element="span" />
 								</div>
@@ -77,7 +77,7 @@
 									</div>
 									<form:errors path="itemContent" cssClass="error" element="span" />									
 								</div>
-								<button id="submit" type="submit" class="btn btn-primary" style="font-size: 20px;">상품 사진 등록하러 가기</button>
+								<form:button id="submit" type="submit" class="btn btn-primary" style="font-size: 20px;">상품 사진 등록하러 가기</form:button>
 							</form:form>
 						</div>
 					</div>
