@@ -51,31 +51,32 @@
 									<form:errors path="itemName" cssClass="error" element="span" />
 								</div>
 								<div class="form-group row" id="itemContent">
-									<div class="col">
-										<textarea class="form-control" rows="20" placeholder="상품설명" aria-required="true" required="required" aria-label="Message" name="itemContent" required></textarea>
-									</div>
-									<form:errors path="itemContent" cssClass="error" element="span" />
+	                                <div class="col">
+	                                    <textarea class="form-control" rows="20" placeholder="상품설명"
+	                                              aria-required="true" aria-label="Message" name="itemContent"></textarea>
+	                                </div>
+	                                <div class="error-msg"></div>
 								</div>
 								<div class="form-group row" id="categoryIdx">
 									<div class="col">
 										<h3>관심사</h3>
 										<div class="info" id="info__category">
 											<div id="category-flex">
-												<select class="box" id="category-big1" onchange="categorySelect1(this)">
-													<option disabled selected>대 카테고리</option>
-													<option value="a">디자인</option>
-													<option value="b">번역</option>
-													<option value="c">사진 편집</option>
-													<option value="d">세무</option>
-													<option value="e">마케팅</option>
+					           					<select class="box" id="category-big1" onchange = "categorySelect1(this)">
+												        <option disabled selected>대 카테고리</option>
+												        <option value="a">디자인</option>
+												        <option value="b">번역</option>
+												        <option value="c">사진 편집</option>
+												        <option value="d">세무</option>
+												        <option value="e">마케팅</option>
 												</select>
 												<select class="box" id="mcategory1" name="categoryIdx">
 													<option disabled selected>중 카테고리</option>
 												</select>
 											</div>
+											<div class="error-msg"></div>
 										</div>
 									</div>
-									<form:errors path="itemContent" cssClass="error" element="span" />									
 								</div>
 								<form:button id="submit" type="submit" class="btn btn-primary" style="font-size: 20px;">상품 사진 등록하러 가기</form:button>
 							</form:form>
@@ -98,7 +99,24 @@
 	<script defer src="<c:url value="/js/join.js"/>"></script>
 
 	<script type="text/javascript">
-		
+		$("#itemaddForm").submit(function() {
+			var submitResult = true;
+			$(".error").hide();
+			
+			if($(#itemName).value()==""){
+				$("#itemNameMsg").html("상품 제목을 입력해 주세요")
+				submitResult = false;
+			}
+			$(".errors").show();
+			
+			if($(#price).value()==""){
+				$("#priceMsg").html("상품 가격을 입력해 주세요")
+				submitResult = false;
+			}
+			$(".errors").show();			
+			
+			return submitResult = true; 
+		});
 	</script>
 </body>
 </html>

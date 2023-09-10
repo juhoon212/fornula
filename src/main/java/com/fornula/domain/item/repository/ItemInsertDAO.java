@@ -5,7 +5,7 @@ import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.vo.ItemForm;
 
 public interface ItemInsertDAO {
-	int insertItem(ItemForm itemForm);
+	int insertItem(Item item);
 	Item selectItemIdx(int expertIdx);
 	int insertPhoto(Photo photo);
 	int updateItemPhoto(int itemIdx);

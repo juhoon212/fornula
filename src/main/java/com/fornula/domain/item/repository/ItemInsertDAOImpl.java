@@ -16,8 +16,8 @@ public class ItemInsertDAOImpl implements ItemInsertDAO {
 	private final SqlSession sqlSession;
 	
 	@Override
-	public int insertItem(ItemForm itemForm) {
-		return sqlSession.getMapper(ItemInsertMapper.class).insertItem(itemForm);
+	public int insertItem(Item item) {
+		return sqlSession.getMapper(ItemInsertMapper.class).insertItem(item);
 	}
 	
 	@Override

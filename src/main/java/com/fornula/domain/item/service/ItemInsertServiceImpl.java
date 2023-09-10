@@ -16,8 +16,8 @@ public class ItemInsertServiceImpl implements ItemInsertService{
 	
 //	1.상품등록(임시 photoIdx 부여)
 	@Override
-	public int addItem(ItemForm itemForm) {
-		return itemInsertDAO.insertItem(itemForm);
+	public int addItem(Item item) {
+		return itemInsertDAO.insertItem(item);
 	}
 	
 //	2.3번 작업을 위한 준비운동(itemIdx 뽑아내기)
