@@ -1,5 +1,8 @@
 package com.fornula.domain.member.dto.vo;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +20,14 @@ import lombok.Setter;
 public class JoinMemberForm {
 	
 	private int memberIdx;
+	
+	@NotEmpty(message = "아이디를 입력해 주세요")
+	@Pattern(regexp = "^[a-zA-Z0-9]{6,20}$", message = "6~20자의 영문 소문자와 숫자만 사용 가능합니다")
 	private String id;
+	
+	@NotEmpty(message = "비밀번호를 입력해 주세요")
+	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+			, message = "8~20자의 영문, 숫자, 특수문자를 모두 포함한 비밀번호를 입력해주세요")
 	private String password;
 	private String email;
 	private String memberDate;
