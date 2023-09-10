@@ -48,4 +48,12 @@
 			photoIdx=PHOTO.photoIdx
 		where itemIdx=#{itemIdx}
 	</update>	 
+	
+	<!-- 아이템 중복 등록 예외를 위한 SQL문 -->
+	<select id="exceptionItem" resultType="Item">
+		SELECT * 
+		FROM item
+		WHERE item_name=#{itemName}
+	</select>
+	
 </mapper>

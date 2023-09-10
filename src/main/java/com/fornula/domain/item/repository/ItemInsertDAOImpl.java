@@ -34,4 +34,9 @@ public class ItemInsertDAOImpl implements ItemInsertDAO {
 	public int insertPhoto(Photo photo) {
 		return sqlSession.getMapper(ItemInsertMapper.class).insertPhoto(photo);
 	}
+	
+	@Override
+	public Item exceptionItem(String itemName) {
+		return sqlSession.getMapper(ItemInsertMapper.class).exceptionItem(itemName);
+	}
 }

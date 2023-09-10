@@ -4,13 +4,16 @@ package com.fornula.domain.item.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,9 +52,13 @@ public class ItemInsertController {
 	
 	@PostMapping("/add/{expertIdx}")
 	@Transactional(rollbackFor = Exception.class)
-	public String insert(	@ModelAttribute @Valid ItemForm itemForm,
+	public String insert(	@Valid
+							@ModelAttribute ItemForm itemForm,
 							@PathVariable Integer expertIdx,
+							Errors errors,
 							RedirectAttributes redirectAttributes) {
+		
+		log.info("상품 등록을 하는 전문가 번호:{}",expertIdx);
 		
 		Item item = new Item();
 		
@@ -61,12 +68,20 @@ public class ItemInsertController {
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
 		
+        if(errors.hasErrors()) {
+            log.info("errors :{}", errors);
+			return "redirect:/item/add";
+         }
+		
+		/* 이거를 위에꺼로 대체
 		int result=itemInsertService.addItem(item);
 		
 		if(result==0) {
-//			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
+			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
+			log.info("errors:{}",errors);
 			return "redirect:/item/add";
 		}
+		*/
 		
 		redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
 		
@@ -84,16 +99,26 @@ public class ItemInsertController {
 	
 	@PostMapping("/photo/add/{itemIdx}")
 	@Transactional(rollbackFor = Exception.class)
-	public String addPhotoPost( @RequestParam(required = false) MultipartFile multipartFile,
+	public String addPhotoPost( @Valid
+								@RequestParam(required = false) MultipartFile multipartFile,
+								Errors errors,
 								Model model, 
 								@PathVariable Integer itemIdx, 
 								RedirectAttributes redirectAttributes) throws IOException {
+//			validation 하면서 추가
+	        if(errors.hasErrors()) {
+				redirectAttributes.addAttribute("itemIdx", itemIdx);
+	            log.info("errors :{}", errors);
+				return "redirect:/item/photo/add/{itemIdx}";
+	         }
 		
+			/* 이거를 위에꺼로 대체
 			if(multipartFile.isEmpty() ||!multipartFile.getContentType().equals("image/png")) {
 				redirectAttributes.addFlashAttribute("message", "잘못된 파일입니다");
 				redirectAttributes.addAttribute("itemIdx", itemIdx);
 				return "redirect:/item/photo/add/{itemIdx}";
 			}
+			*/
 			
 //			uploadFile의 경로를 저장하기 위한 식
 			String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload/");
