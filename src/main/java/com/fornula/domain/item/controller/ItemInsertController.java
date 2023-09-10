@@ -24,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.fornula.domain.exception.custom.ExistsItemException;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.vo.ItemForm;
@@ -56,10 +56,21 @@ public class ItemInsertController {
 							@ModelAttribute ItemForm itemForm,
 							@PathVariable Integer expertIdx,
 							Errors errors,
-							RedirectAttributes redirectAttributes) {
+							Model model,
+							RedirectAttributes redirectAttributes){
 		
 		log.info("상품 등록을 하는 전문가 번호:{}",expertIdx);
+		log.info("itemName:{}",itemForm.getItemName());		
 		
+	    if (errors.hasErrors()) {
+	    	model.addAttribute("expertIdx", expertIdx);
+		    model.addAttribute("itemForm", itemForm);
+	        log.info("errors :{}", errors);
+	        return "item-add";
+         }
+		
+	    model.addAttribute("itemForm", itemForm);
+//	    상품 등록
 		Item item = new Item();
 		
 		item.setExpertIdx(itemForm.getExpertIdx());
@@ -67,23 +78,10 @@ public class ItemInsertController {
 		item.setItemName(itemForm.getItemName());
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
+
 		
-        if(errors.hasErrors()) {
-            log.info("errors :{}", errors);
-			return "redirect:/item/add";
-         }
-		
-		/* 이거를 위에꺼로 대체
-		int result=itemInsertService.addItem(item);
-		
-		if(result==0) {
-			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
-			log.info("errors:{}",errors);
-			return "redirect:/item/add";
-		}
-		*/
-		
-		redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
+	    redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
+	    log.info("상품 등록 성공 사진등록하러 ㄱ:{}", item.getItemIdx());
 		
 		return "redirect:/item/photo/add/{itemIdx}/"; // 등록한 상품 상세페이지로 이동 
 	}
@@ -104,7 +102,11 @@ public class ItemInsertController {
 								Errors errors,
 								Model model, 
 								@PathVariable Integer itemIdx, 
+								ItemForm itemForm,
 								RedirectAttributes redirectAttributes) throws IOException {
+		
+			log.info("expertIdx={}",itemForm.getExpertIdx());
+		
 //			validation 하면서 추가
 	        if(errors.hasErrors()) {
 				redirectAttributes.addAttribute("itemIdx", itemIdx);
@@ -112,13 +114,12 @@ public class ItemInsertController {
 				return "redirect:/item/photo/add/{itemIdx}";
 	         }
 		
-			/* 이거를 위에꺼로 대체
 			if(multipartFile.isEmpty() ||!multipartFile.getContentType().equals("image/png")) {
 				redirectAttributes.addFlashAttribute("message", "잘못된 파일입니다");
 				redirectAttributes.addAttribute("itemIdx", itemIdx);
 				return "redirect:/item/photo/add/{itemIdx}";
 			}
-			*/
+			
 			
 //			uploadFile의 경로를 저장하기 위한 식
 			String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload/");
@@ -142,4 +143,5 @@ public class ItemInsertController {
 		
 		return "redirect:/item/{itemIdx}/1";
 	}	
+	
 }

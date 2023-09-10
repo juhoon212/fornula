@@ -4,17 +4,19 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class ItemForm {
     private int expertIdx;
     

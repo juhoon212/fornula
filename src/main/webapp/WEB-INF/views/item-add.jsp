@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,15 +43,13 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">상품등록</h4>
                         <p>규정을 준수하여 상품을 등록해주세요</p>
-                     
-                        <form class="contact-form mt-5" method="post" action="<c:url value="/item/add/${expertIdx}"/>">
-                            <div class="form-group row" id="expertIdx">
-								<div class = "error-msg"></div>
+                     	
+						<form:form class="contact-form mt-5" method="post" action="<c:url value='/item/add/${expertIdx}'/>" modelAttribute="itemForm" id="submitForm">
+                            <div class="form-group row" id="itemPrice">
                                 <div class="col" id="price">
-                                    <input type="text" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
-                                           required="required" aria-label="Price" name="price" pattern="\d*" required>
+                                    <form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" name="itemForm.price" value="#{itemForm.price }"/>
                                 </div>
-                                <div class = "error-msg"></div>
+                                <form:errors path="price" cssClass="error" element="span" />
                             </div>
                             <div class="form-group row">
                                 <div class="col" id="itemName">
@@ -88,7 +88,7 @@
                            		<div class = "error-msg"></div>
                          	</div>
 								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품 사진 등록하러 가기</button>
-						</form>	
+						</form:form>	
 					</div>
 				</div>
 			</div>
