@@ -43,32 +43,32 @@ public class ItemInsertController {
 	private final WebApplicationContext context;
 
 	@GetMapping("/add/{expertIdx}")
-	public String add(@PathVariable Integer expertIdx, Model model) {
-		
+	public String add(@PathVariable Integer expertIdx, @ModelAttribute ItemForm itemForm, Model model) {
+		model.addAttribute("itemForm", itemForm);
 		model.addAttribute("expertIdx", expertIdx);
-		
+		log.info("expertIdx={}",expertIdx);
+		log.info("itemForm={}",itemForm);
 		return "item-add";
 	}
 	
-	@PostMapping("/add/{expertIdx}")
+	@PostMapping("/add/{expertIdx}") 
 	@Transactional(rollbackFor = Exception.class)
 	public String insert(	@Valid
 							@ModelAttribute ItemForm itemForm,
 							@PathVariable Integer expertIdx,
 							Errors errors,
 							Model model,
-							RedirectAttributes redirectAttributes){
-		
-		log.info("상품 등록을 하는 전문가 번호:{}",expertIdx);
-		log.info("itemName:{}",itemForm.getItemName());		
+							RedirectAttributes redirectAttributes) throws IllegalStateException, ExistsItemException{		
 		
 	    if (errors.hasErrors()) {
-	    	model.addAttribute("expertIdx", expertIdx);
 		    model.addAttribute("itemForm", itemForm);
 	        log.info("errors :{}", errors);
 	        return "item-add";
          }
-		
+
+	    log.info("itemForm",itemForm);
+	    
+	    itemForm.setExpertIdx(expertIdx);
 	    model.addAttribute("itemForm", itemForm);
 //	    상품 등록
 		Item item = new Item();
@@ -78,6 +78,13 @@ public class ItemInsertController {
 		item.setItemName(itemForm.getItemName());
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
+		
+		int result=itemInsertService.addItem(item);
+		
+		if(result==0) {
+			redirectAttributes.addFlashAttribute("message","상품등록에 실패하였습니다");
+			return "redirect:/item/add";
+		}
 
 		
 	    redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
@@ -87,39 +94,27 @@ public class ItemInsertController {
 	}
 	
 	@GetMapping("/photo/add/{itemIdx}")
-	public String addPhoto(@PathVariable String itemIdx, Model model) {
-		
+	public String addPhoto(@PathVariable String itemIdx,@ModelAttribute ItemForm itemForm, Model model) {
+		model.addAttribute("itemForm", itemForm);
 		model.addAttribute("itemIdx", itemIdx);
-		
+		log.info("itemIdx={}",itemIdx);
+		log.info("itemForm={}",itemForm);
 		return "add-photo";
 	}
 	
 	
 	@PostMapping("/photo/add/{itemIdx}")
 	@Transactional(rollbackFor = Exception.class)
-	public String addPhotoPost( @Valid
-								@RequestParam(required = false) MultipartFile multipartFile,
-								Errors errors,
+	public String addPhotoPost( @RequestParam(required = false) MultipartFile multipartFile,
 								Model model, 
 								@PathVariable Integer itemIdx, 
-								ItemForm itemForm,
 								RedirectAttributes redirectAttributes) throws IOException {
-		
-			log.info("expertIdx={}",itemForm.getExpertIdx());
-		
-//			validation 하면서 추가
-	        if(errors.hasErrors()) {
-				redirectAttributes.addAttribute("itemIdx", itemIdx);
-	            log.info("errors :{}", errors);
-				return "redirect:/item/photo/add/{itemIdx}";
-	         }
 		
 			if(multipartFile.isEmpty() ||!multipartFile.getContentType().equals("image/png")) {
 				redirectAttributes.addFlashAttribute("message", "잘못된 파일입니다");
 				redirectAttributes.addAttribute("itemIdx", itemIdx);
 				return "redirect:/item/photo/add/{itemIdx}";
 			}
-			
 			
 //			uploadFile의 경로를 저장하기 위한 식
 			String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload/");
@@ -143,5 +138,4 @@ public class ItemInsertController {
 		
 		return "redirect:/item/{itemIdx}/1";
 	}	
-	
 }

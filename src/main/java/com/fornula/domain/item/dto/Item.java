@@ -6,11 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /*
   이름           널?       유형             
@@ -25,9 +22,7 @@ ITEM_STATUS  NOT NULL NUMBER
 ITEM_DATE    NOT NULL DATE 
 PHOTO_IDX	 NOT NULL NUMBER 
  */
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {

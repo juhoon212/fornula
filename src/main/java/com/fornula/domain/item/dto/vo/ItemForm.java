@@ -4,19 +4,14 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-import org.springframework.stereotype.Component;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Component
 public class ItemForm {
     private int expertIdx;
     
@@ -30,7 +25,7 @@ public class ItemForm {
     @Size(max = 500, message = "500 글자 이상 입력할 수 없습니다.")
     private String itemContent;
     
-    @Min(value = 1, message = "1 이상의 값이어야 합니다.")
-    private int price;
+    @NotNull(message = "가격은 1 원 이상이어야만 합니다")
+    private Integer price;
 }
 
