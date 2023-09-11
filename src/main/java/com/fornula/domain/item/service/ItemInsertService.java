@@ -2,7 +2,6 @@ package com.fornula.domain.item.service;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.vo.ItemForm;
 
 public interface ItemInsertService {
 	int addItem(Item item);

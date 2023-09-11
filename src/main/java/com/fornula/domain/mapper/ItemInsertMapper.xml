@@ -55,4 +55,5 @@
 		FROM item
 		WHERE item_name=#{itemName}
 	</select>
+	
 </mapper>

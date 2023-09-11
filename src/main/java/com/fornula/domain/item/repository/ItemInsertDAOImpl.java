@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.vo.ItemForm;
 import com.fornula.domain.item.mapper.java.ItemInsertMapper;
 
 import lombok.RequiredArgsConstructor;

@@ -22,4 +22,3 @@ public class ItemForm {
     @NotNull(message = "가격은 1 원 이상이어야만 합니다")
     private Integer price;
 }
-

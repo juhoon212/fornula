@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.vo.ItemForm;
 import com.fornula.domain.item.repository.ItemInsertDAO;
 
 import lombok.RequiredArgsConstructor;

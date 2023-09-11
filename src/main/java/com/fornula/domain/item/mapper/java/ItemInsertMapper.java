@@ -2,7 +2,6 @@ package com.fornula.domain.item.mapper.java;
 
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
-import com.fornula.domain.item.dto.vo.ItemForm;
 
 public interface ItemInsertMapper {
 	int insertItem(Item item);
