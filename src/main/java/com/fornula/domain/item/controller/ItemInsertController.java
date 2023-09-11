@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fornula.domain.exception.custom.ExistsItemException;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.vo.ItemForm;
@@ -41,7 +40,6 @@ public class ItemInsertController {
 	public String add(@PathVariable Integer expertIdx, @ModelAttribute ItemForm itemForm, Model model) {
 		log.info("Received GET request for /item/add/{expertIdx}");
 		log.info("expertIdx={}", expertIdx);
-		log.info("itemForm={}", itemForm);
 
 		model.addAttribute("itemForm", itemForm);
 		model.addAttribute("expertIdx", expertIdx);
@@ -50,28 +48,21 @@ public class ItemInsertController {
 
 	@PostMapping("/add/{expertIdx}")
 	@Transactional(rollbackFor = Exception.class)
-	public String insert(@Valid @ModelAttribute ItemForm itemForm, @PathVariable Integer expertIdx, Errors errors,
-			Model model, RedirectAttributes redirectAttributes) throws IllegalStateException, ExistsItemException {
+	public String insert(@ModelAttribute @Valid ItemForm itemForm, Errors errors, @PathVariable Integer expertIdx,
+			Model model, RedirectAttributes redirectAttributes)  {
+		//log.info("itemForm", itemForm);
 
-		log.info("Received POST request for /item/add/{expertIdx}");
-		log.info("expertIdx={}", expertIdx);
-
+		
 		if (errors.hasErrors()) {
-			model.addAttribute("itemForm", itemForm);
+			System.out.println(errors.getErrorCount());
 			log.info("Validation errors: {}", errors);
 			return "item-add";
 		}
 		
-		log.info("itemForm", itemForm);
-		
-		itemForm.setExpertIdx(expertIdx);
-		
-		
 //		model.addAttribute("itemForm", itemForm);
 //	    상품 등록
-//		아니 이 과정에서 내가 값을 입력안하면 validation이 발동되야하는데 왜 안되냐고 진짜 
 		Item item = new Item();
-
+		
 		item.setExpertIdx(itemForm.getExpertIdx());
 		log.info("item", item);
 		item.setPrice(itemForm.getPrice());
@@ -90,13 +81,19 @@ public class ItemInsertController {
 			return "redirect:/item/add";
 		}
 		log.info("result", result);
-		log.info("check itemForm={}", itemForm);
-		
-		item.setItemStatus(1);
-		
-		log.info("itemstatus",item.getItemStatus());
 		
 		redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
+		
+		log.info("Received POST request for /item/add/{expertIdx}");
+		log.info("expertIdx={}", expertIdx);
+
+
+		
+		log.info("item", item);
+		
+		itemForm.setExpertIdx(expertIdx);
+		
+		
 		return "redirect:/item/photo/add/{itemIdx}/"; // 등록한 상품의 사진 등록 페이지로 이동
 
 	}

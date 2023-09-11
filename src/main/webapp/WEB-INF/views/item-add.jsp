@@ -35,18 +35,17 @@
 						<div class="post-content">
 							<h4 class="font-weight-bold">상품등록</h4>
 							<p>규정을 준수하여 상품을 등록해주세요</p>
-
-							<c:url value="/item/add" var="url" />
+							<c:url value="/item/add/${expertIdx }" var="url" />
 							<form:form class="contact-form mt-5" method="post" action="${url}" modelAttribute="itemForm" id="itemaddForm">
 								<div class="form-group row" id="itemPrice">
 									<div class="col" id="price">
-										<form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" value="${itemForm.price }" />
+										<form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" value="${itemForm.price}" />
 									</div>
 									<form:errors path="price" cssClass="error" element="span" />
 								</div>
 								<div class="form-group row">
 									<div class="col" id="itemName">
-										<form:input path="itemName" class="form-control" placeholder="상품제목을 입력해주세요" value="${itemForm.itemName }" />
+										<form:input path="itemName" class="form-control" placeholder="상품제목을 입력해주세요" value="${itemForm.itemName}" />
 									</div>
 									<form:errors path="itemName" cssClass="error" element="span" />
 								</div>
@@ -107,13 +106,13 @@
 				$("#itemNameMsg").html("상품 제목을 입력해 주세요")
 				submitResult = false;
 			}
-			$(".errors").show();
+			$(".error").show();
 			
 			if($(#price).value()==""){
 				$("#priceMsg").html("상품 가격을 입력해 주세요")
 				submitResult = false;
 			}
-			$(".errors").show();			
+			$(".error").show();			
 			
 			return submitResult = true; 
 		});
