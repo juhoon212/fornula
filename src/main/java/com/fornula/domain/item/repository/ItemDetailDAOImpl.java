@@ -40,6 +40,15 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public Item findItemByIdx(int itemIdx) {
 		return sqlSession.getMapper(ItemUpdateMapper.class).findItemByIdx(itemIdx);
 	}
+	@Override
+	public int updatePhoto(Photo photo) {
+		return sqlSession.getMapper(ItemUpdateMapper.class).updatePhoto(photo);
+	}
+	@Override
+	public Photo findByItemIdx(int itemIdx) {
+		return sqlSession.getMapper(ItemUpdateMapper.class).findPhotoByItemIdx(itemIdx);
+	}
+	
 	
 	
 }

@@ -7,5 +7,4 @@ public interface ItemInsertService {
 	int addItem(Item item);
 	Item getItemIdx(int expertIdx);
 	int addPhoto(Photo photo);
-	int modifyItemPhoto(int itemIdx);
 }
