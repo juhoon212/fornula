@@ -22,6 +22,6 @@ public class ItemForm {
     
     private String itemContent;
     
-    @Positive(message="가격은 필수 입력입니다")
+    @Positive(message="1원 이상의 가격을 입력해주세요")
     private int price;
 }
