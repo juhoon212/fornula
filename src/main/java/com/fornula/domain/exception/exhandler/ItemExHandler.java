@@ -3,18 +3,23 @@ package com.fornula.domain.exception.exhandler;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.ItemNotFoundException;
+import com.fornula.domain.member.dto.join.Message;
 
-@ControllerAdvice
+import lombok.extern.slf4j.Slf4j;
+
+@RestControllerAdvice
+@Slf4j
 public class ItemExHandler {
 		
 	@ExceptionHandler(ItemNotFoundException.class)
-	public String itemNotFoundException(ItemNotFoundException exception, Model model) {
+	public ErrorResult itemNotFoundException(ItemNotFoundException exception, Model model) {
 		
-		model.addAttribute("status", false);
-		model.addAttribute("message", "찾으시는 상품을 찾을 수 없습니다");
-		
-		return "/error";
+		log.info("ITEMNOTFOUNDEXCEPTION 발생 ", exception);
+		 
+		return new ErrorResult("Bad", exception.getMessage());
 	}
 }

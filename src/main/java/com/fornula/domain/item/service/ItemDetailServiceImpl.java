@@ -52,10 +52,10 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 	@Override
 	public int updateItem(Item item) {
 		
-		if(ObjectUtils.isEmpty(item)) {
+		if(item == null || item.getCategoryIdx() == 0) {
 			throw new ItemNotFoundException("아이템을 찾을 수 없습니다.");
 		}
-		
+
 		int result = itemDetailDAO.updateItem(item);
 		
 		if(result == 0) {
@@ -71,7 +71,7 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		Item findItem = itemDetailDAO.findItemByIdx(itemIdx);
 		
 		// 실패 로직
-		if(ObjectUtils.isEmpty(findItem)) {
+		if(findItem == null) {
 			throw new ItemNotFoundException("아이템을 찾을 수 없습니다.");
 		}
 		
@@ -81,6 +81,34 @@ public class ItemDetailServiceImpl implements ItemDetailService{
 		
 		return findItem;
 	}
+
+	@Override
+	public int updatePhoto(Photo photo) {
+		
+		int result = itemDetailDAO.updatePhoto(photo);
+		
+		log.info("updatePhoto = {}", photo.getItemfileName());
+		
+		if(result == 0) {
+			throw new ItemNotFoundException("사진이 없습니다");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public Photo findByItemIdx(int itemIdx) {
+		
+		Photo findPhoto = itemDetailDAO.findByItemIdx(itemIdx);
+		
+		if(findPhoto == null) {
+			throw new ItemNotFoundException("아이템에 해당하는 사진을 찾을 수 없습니다.");
+		}
+		
+		return findPhoto;
+	}
+	
+	
 	
 
 	

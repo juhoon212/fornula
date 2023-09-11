@@ -44,16 +44,16 @@
                         <p>규정을 준수하여 상품을 등록해주세요</p>
                      	<div class = "error-msg" style="color : red;"></div>
                             <div class="form-group row" id="expertIdx">
-                                <div class="col" id="price">
+                                <div class="col" id="price">가격
                                     <input id="price-box" type="text" value="${item.price}"  class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" aria-required="true"
                                            required="required" aria-label="Price" name="price" pattern="\d*" required>
-                                    <input id="itemIdx" type="hidden" name="itemIdx">
+                                    <input id="itemIdx" type="hidden" name="itemIdx" value="${item.itemIdx}">
                                     <div class = "error-msg" style="color : red;"></div>
                                 </div>
                                 
                             </div>
                             <div class="form-group row">
-                                <div class="col" id="itemName">
+                                <div class="col" id="itemName">상품 이름
                                     <input id="itemName-box" type="text" class="form-control" placeholder="상품제목을 입력해주세요" aria-required="true"
                                            required="required" value="${item.itemName}" aria-label="Subject" name="itemName" required>
                                            <div class = "error-msg" style="color : red;"></div>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="form-group row" id="itemContent">
-                                <div class="col">
+                                <div class="col">상품 내용
                                     <textarea id="itemContent-box" class="form-control" rows="20" placeholder="상품설명"
                                               aria-required="true" required="required" aria-label="Message" name="itemContent" required>${item.itemContent}</textarea>
                                               <div class = "error-msg" style="color : red;"></div>
@@ -88,8 +88,8 @@
 					        </div>  		
                            		</div>
                          	</div>
-                         		<c:url value=""/>	
-								<button id="submit" type="button" class="btn btn-primary" style="font-size:20px;">상품 사진 변경하러 가기</button>
+                         			
+								<button id="submit" type="submit" class="btn btn-primary" style="font-size:20px;">상품 사진 변경하러 가기</button>
 					</div>
 				</div>
 			</div>
@@ -115,15 +115,18 @@ let itemName = document.querySelector('#itemName-box');
 let itemContent = document.querySelector('#itemContent-box');
 let category = document.querySelector('#mcategory1');
 let itemIdx = document.querySelector('#itemIdx');
-let errorMsg = document.querySelector('.error-msg');
+let photo = document.querySelector('#formFile');
+let errorMsg = document.querySelectorAll('.error-msg');
 
 
 document.querySelector('#submit').addEventListener('click', (e) => {
-	 fetch("<c:url value="/item/update"/>", {
+	 fetch("${pageContext.request.contextPath}/item/update", {
 		  method: "POST", 
 		  headers: { 
-		    "Content-Type": "application/json",
-		  },body: JSON.stringify({
+			"Content-Type" : "application/json", 
+		    "Accept": "application/json"
+		  },
+		  body: JSON.stringify({
 			  		"itemIdx" : itemIdx.value,
 			        "price" : price.value, 
 			        "itemName" : itemName.value,
@@ -133,19 +136,24 @@ document.querySelector('#submit').addEventListener('click', (e) => {
 		})
 	.then((response) => response.json())
 	.then((data) => {
-	   	  data.forEach((a, i) => {
-	   		if(data[i].defaultMessage != null) {
-		  		errorMsg.innerHTML = data[i].defaultMessage; 
-		  	} else {
-		  		alert('상품 수정이 완료되었습니다.');
-		  		location.href="<c:url value="/expert/sales"/>";
-		  	}
-	   	  })
+		 if(data.errorCode === "Bad") {
+             console.log(data.message);
+             errorMsg.innerHTML = data.message;
+		 }
 		
-	  	
-	 })
-	  	e.preventDefault();
-})
+		if(Array.isArray(data)) {
+			 data.forEach((a, i) => {
+			   		if(data[i].defaultMessage != null) {
+				  		errorMsg[i].innerHTML = data[i].defaultMessage;
+				  	} 		
+				  })
+		} else {
+	  		location.href = "${pageContext.request.contextPath}/photo/update/${item.itemIdx}";
+	  	}   
+	    })
+	    
+	e.preventDefault()
+});
 
 </script>
 </body>
