@@ -9,4 +9,6 @@ public interface ItemDetailDAO {
 	Item selectItem(int itemIdx);
 	Expert findByMemberIdx(int memberIdx);
 	Photo selectPhoto(int itemIdx);
+	int updateItem(Item item);
+	Item findItemByIdx(int itemIdx);
 }

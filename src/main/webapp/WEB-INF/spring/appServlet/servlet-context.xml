@@ -54,9 +54,9 @@
 
 	<!-- 로그인 인터셉터 -->
 	
-	  <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
+	  <!-- <beans:bean class="com.fornula.domain.util.interceptor.LoginCheckInterceptor" id="loginCheckInterceptor"/>
 	 <beans:bean id="AdminAuthInterceptor" class="com.fornula.domain.util.interceptor.AdminAuthInterceptor"/> 
-	<!--  <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor"/>  -->
+	 <beans:bean id="ExpertAuthInterceptor" class="com.fornula.domain.util.interceptor.ExpertAuthInterceptor"/> 
 	
 	
 	
@@ -89,7 +89,7 @@
 		<interceptor>
 			<mapping path="/admin/**"></mapping>
 			<beans:ref bean="AdminAuthInterceptor"/>
-		</interceptor>
+		</interceptor> -->
 		<!-- <interceptor>
 			<mapping path="/**"/>
 			<mapping path="/expert/input"/>
@@ -97,7 +97,7 @@
 			<mapping path="/expert/item"/>
 			<beans:ref bean="ExpertAuthInterceptor"/>
 		</interceptor> -->
-	</interceptors>  
+	<!-- </interceptors>   -->
 </beans:beans>
 		
 

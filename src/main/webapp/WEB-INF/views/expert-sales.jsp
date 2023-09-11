@@ -176,6 +176,14 @@ tr td {
 											<div class="blog-posts">
 												<div id="post-2"
 													class="post type-post post-2 card post-card">
+														<a href="<c:url value="/item/update/${salesList.itemIdx}"/>"
+																	class="more-link card-link d-flex align-items-center">상품수정</a>
+														<p class="post-text card-text">
+														<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
+														<h4 class="post-title card-title">
+															<a href="<c:url value="/item/${salesList.itemIdx}/1"/>">${salesList.itemName}</a>
+														</h4>
+														<%-- <p class="subtitle" name="itemContent">${salesList.itemContent }</p> --%>
 
 													<div class="row">
 														<div class="col-md-4">
