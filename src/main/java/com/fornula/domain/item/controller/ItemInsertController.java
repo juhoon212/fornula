@@ -58,6 +58,8 @@ public class ItemInsertController {
 		
 		setItemInfo(itemForm, item);
 		
+		
+		
 		int result=itemInsertService.addItem(item);
 		
 		if(result==0) {

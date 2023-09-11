@@ -420,7 +420,6 @@ p #logo {
 	
 	loginButton.addEventListener('click', () => {
 	    document.querySelector('.black-bg').classList.add('show-modal');
-	    console.log(1);
 	})
 	
 	close.addEventListener('click', () => {
