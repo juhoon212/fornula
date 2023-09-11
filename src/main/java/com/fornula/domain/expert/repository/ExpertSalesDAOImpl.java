@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.mapper.java.ExpertJoinMapper;
 import com.fornula.domain.expert.mapper.java.ExpertSalesMapper;
 
@@ -44,6 +45,11 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	@Override
 	public int updateSalesStatus(int salesIdx) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).updateSalesStatus(salesIdx);
+	}
+
+	@Override
+	public List<TotalSalesMoney> selectTotalMoney(int expertIdx) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).selectTotalMoney(expertIdx);
 	}
 
 }

@@ -41,9 +41,8 @@ public class Expert {
 	@NotEmpty(message="")
 	@Pattern(regexp="^\\d{3}-\\d{3,4}-\\d{4}$", message="전화번호를 반드시 형식에 맞게 입력해주세요.")
 	private String phone;
+	
 	private int interest;
-
-	@Size(max=500) 
 	private String introduce;
 	private String career;
 	private String companyOne;

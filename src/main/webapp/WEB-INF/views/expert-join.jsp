@@ -158,8 +158,9 @@ h3 {
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" />
 	<main class="main container">
-		<form method="post" id="expertjoinForm" enctype="multipart/form-data"
-			action="<c:url value="/expert/join"/>">
+	<c:url value="/expert/join" var="url" />
+		<form:form method="post" id="expertjoinForm" enctype="multipart/form-data"
+			 action="${url }" modelAttribute="expert">
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
@@ -175,7 +176,7 @@ h3 {
 								<div class="info">
 									<div id="phone-input">
 										<form:input	path="phone" id="phone" value="${expert.phone }" class="box" oninput="autoHypen(this)" maxlength="13" placeholder="010-1234-5678"/>
-										<form:errors path="phone" cssclass="error" element="span" delimiter=","/>
+										<form:errors path="phone" cssClass="error" element="span" delimiter=","/>
 									</div>
 								</div>
 								<h3>자기 소개</h3>
@@ -259,9 +260,9 @@ h3 {
 						<br>
 						<hr>
 						<div id="join" style="text-align: center; margin: 0 auto;">
-							<button type="submit" class="btn btn-primary"
+							<form:button type="submit" class="btn btn-primary"
 								style="font-size: 20px; text-align: center; margin: 0 auto;">전문가
-								등록</button>
+								등록</form:button>
 						</div>
 					</div>
 				</div>
@@ -285,7 +286,7 @@ h3 {
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</main>
 
 	<jsp:include page="footer.jsp" />
@@ -318,6 +319,24 @@ h3 {
 		e.value=e.value.slice(0,13);	
 	    }
 	}
+	</script>
+	
+	<script type="text/javascript">
+		$("#expertjoinForm").submit(function() {
+			var submitResult = true;
+			$(".error").hide();
+		
+		var phoneReg = ^\\d{3}-\\d{3,4}-\\d{4}$;
+			if ($("#phone").val() == "") {
+				$("#phoneMsg").html("전화번호를 입력해 주세요.");
+				submitResult = false;
+			} else if (!phoneReg.test($("#phone").val())) {
+				$("#phoneMsg").html("전화번호를 형식에 맞게 입력해 주세요.");
+				submitResult = false;
+			}
+			$(".error").show();
+			return submitResult;
+		});
 	</script>
 </body>
 </html>

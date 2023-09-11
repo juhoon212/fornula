@@ -33,7 +33,6 @@ public class ExpertSalesController {
     private final ItemDetailService itemDetailService;
 
 	//판매내역을 출력하는 메소드
-		@SuppressWarnings("unchecked")
 		@GetMapping("/sales")
 		public String getSalesList(@RequestParam(defaultValue = "1") int pageNum, HttpSession session, Model model){
 			
@@ -54,9 +53,7 @@ public class ExpertSalesController {
 			List<SaleItemExpert> resultList= (List<SaleItemExpert>)resultMap.get("salesList");
 			log.info("resultList:{}",resultList);
 			
-			int price = 0;//총금액 출력
 			for(SaleItemExpert itemSalesList : resultList) {
-				price+=itemSalesList.getPrice();
 				
 				pos = itemSalesList.getItemfileName().lastIndexOf("_");
 				originalFileName = itemSalesList.getItemfileName().substring(pos + 1);
@@ -68,15 +65,17 @@ public class ExpertSalesController {
 			
 			model.addAttribute("salesList",resultMap.get("salesList") );
 			model.addAttribute("pager",resultMap.get("pager")) ;
-			model.addAttribute("price", price);
+			
+			
+			int price = expertSalesService.getTotalMoney(expertIdx);
+			String formatPrice = String.format("%,d", price);
+			log.info("price:{}", price);
+			
+			model.addAttribute("price", formatPrice);
 			
 			log.info("salesList:{}", resultList);
-			log.info("price:{}", price);
 
-			if (resultList.isEmpty()) {
-				model.addAttribute("message", "판매내역이 존재하지 않습니다.");
-				log.info("salesList:{}", resultList);
-			}
+			
 			return "expert-sales";
 
 		}
