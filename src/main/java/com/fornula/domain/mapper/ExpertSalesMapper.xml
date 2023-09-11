@@ -45,8 +45,10 @@
  	</select>
  	
  	
+ 	
+ 	
 	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
-	<!-- 
+	<!-- s
 	<update id="updateSalesStatus" parameterType="SaleItemExpert">
 		UPDATE sales S
         SET S.sales_status =

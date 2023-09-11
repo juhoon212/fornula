@@ -39,6 +39,8 @@
 		on itempurchase.item_idx=photo.item_idx
 
 	</select>
+	
+	
 
 	
 	

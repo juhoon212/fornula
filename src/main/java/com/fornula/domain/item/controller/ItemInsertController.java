@@ -62,6 +62,8 @@ public class ItemInsertController {
 		item.setItemContent(itemForm.getItemContent());
 		item.setCategoryIdx(itemForm.getCategoryIdx());
 		
+		
+		
 		int result=itemInsertService.addItem(item);
 		
 		if(result==0) {

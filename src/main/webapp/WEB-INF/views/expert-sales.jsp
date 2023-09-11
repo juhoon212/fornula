@@ -180,7 +180,10 @@ tr td {
 														<ul class="post-meta">
 															<li>${salesList.salesDate}</li>
 															<li>₩ ${salesList.price}</li>
+															
 														</ul>
+														<a href="<c:url value="/item/update/${salesList.itemIdx}"/>"
+																	class="more-link card-link d-flex align-items-center">상품수정</a>
 														<p class="post-text card-text">
 														<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
 														<h4 class="post-title card-title">
@@ -201,7 +204,7 @@ tr td {
 																	<option value="4" disabled="disabled">제작 완료</option>
 																</select>
 																 -->
-
+																
 																<a href="<c:url value="/item/${salesList.itemIdx}/1"/>"
 																	class="more-link card-link d-flex align-items-center">
 																	답글보기 <i class="lana-icon-arrow-right text-primary"></i>
