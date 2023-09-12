@@ -474,18 +474,4 @@ p #logo {
               
          e.preventDefault();
 	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 </script>
