@@ -38,29 +38,6 @@
 		</association>
 	</resultMap>
 
-	<!-- 카테고리를 입력받아서 해당 카테고리에 포함되어 있는 상품들만 출력하기 -->
-	<!-- 기능 보류 파이널때 사용할 수도 -->
-	<select id="selectCategoryItemList"
-		resultType="com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart">
-		SELECT i.item_idx
-		,i.expert_idx
-		,i.item_name
-		,i.item_content
-		,i.price
-		,i.item_date
-		,i.category_idx
-		,c.small
-		,p.itemfile_name
-		,p.photo_idx
-		FROM category c
-		INNER JOIN item i ON c.category_idx =
-		i.category_idx
-		INNER JOIN photo p ON i.item_idx = p.item_idx
-		WHERE
-		c.category_idx = #{categoryIdx}
-		AND i.item_status = 1
-	</select>
-
 	<!-- 우리는 상품 올린다음 수정하는 기능은 따로 안만들었으니 관리자가 상품 게시글을 삭제처리(상품상태 컬럼값을 0으로 변경)할 
 		때 사용할 SQL문 여기다가 작성해 민환아 -->
 	<update id="updateItem">
@@ -70,27 +47,6 @@
 		item_idx=#{itemIdx}
 	</update>
 
-	<!-- 검색창에서 상품 이름 중 일부분을 검색시에 해당 검색어가 상품 이름에 들어가있는 모든 상품을 검색하기 -->
-	<select id="searchItemList"
-		resultType="com.fornula.domain.item.dto.itemboard.ItemPhotoCategoryCart">
-		SELECT i.item_idx
-		,i.expert_idx
-		,i.item_name
-		,i.item_content
-		,i.price
-		,i.item_date
-		,i.category_idx
-		,c.small
-		,p.itemfile_name
-		,p.photo_idx
-		FROM item i
-		INNER JOIN photo p ON i.item_idx = p.item_idx
-		INNER JOIN category c ON i.category_idx = c.category_idx
-		WHERE
-		i.item_status = 1
-		AND i.item_name LIKE '%' || #{itemName} || '%'
-	</select>
-
 	<!-- 총 상품 게시글의 수를 카운트 하는 용도 -->
 	<select id="selectItemBoardCount" resultType="int">
 		SELECT COUNT(*)
@@ -98,5 +54,58 @@
 		WHERE item_status = 1
 	</select>
 
-
+	<!-- header의 검색창에서 사용할 검색 기능(상품 제목이나 내용에서 searchKeyword가 포함된 애들은 전부 리스트로 포함)-->
+	<select id="searchItemList" resultMap="ItemPhotoCategoryCart">
+	    SELECT *
+	    FROM (
+	        SELECT
+	            rownum rn, itemlist.*
+	        FROM (
+	            SELECT
+	                item.item_idx,
+	                item.category_idx,
+	                item.EXPERT_IDX,
+	                item.item_name,
+	                item.item_content,
+	                item.PRICE,
+	                photo.PHOTO_IDX,
+	                photo.ITEMFILE_NAME
+	            FROM item
+	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+	            WHERE item.item_status = 1
+	                <if test="searchKeyword != null and searchKeyword != ''">
+	                AND (item.item_name LIKE '%' || #{searchKeyword} || '%' 
+	                     OR item.item_content LIKE '%' || #{searchKeyword} || '%')
+                     </if> 
+	            ORDER BY item.item_idx DESC
+	        ) itemlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 상품 게시판에서 카테고리별 검색하는 검색 기능 -->
+	<select id="searchItemCategoryList" resultMap="ItemPhotoCategoryCart">
+	    SELECT *
+	    FROM (
+	        SELECT
+	            rownum rn, itemlist.*
+	        FROM (
+	            SELECT
+	                item.item_idx,
+	                item.category_idx,
+	                item.EXPERT_IDX,
+	                item.item_name,
+	                item.item_content,
+	                item.PRICE,
+	                photo.PHOTO_IDX,
+	                photo.ITEMFILE_NAME
+	            FROM item
+	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+	            WHERE item.item_status = 1
+	                AND item.category_idx = #{categoryIdx}
+	            ORDER BY item.item_idx DESC
+	        ) itemlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
 </mapper>
