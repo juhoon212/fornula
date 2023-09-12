@@ -1,13 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.board.mapper.java.SearchMapper">
-	<!-- header의 검색창에서 사용할 검색 기능 -->
-	<select id="searchItem" resultType="Item">
-		
+	<!-- header의 검색창에서 사용할 검색 기능(상품 제목이나 내용에서 searchKeyword가 포함된 애들은 전부 리스트로 포함)-->
+	<select id="searchItemList" resultMap="ItemPhotoCategoryCart">
+	    SELECT *
+	    FROM (
+	        SELECT
+	            rownum rn, itemlist.*
+	        FROM (
+	            SELECT
+	                item.item_idx,
+	                item.category_idx,
+	                item.EXPERT_IDX,
+	                item.item_name,
+	                item.item_content,
+	                item.PRICE,
+	                photo.PHOTO_IDX,
+	                photo.ITEMFILE_NAME
+	            FROM item
+	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+	            WHERE item.item_status = 1
+	                AND (item.item_name LIKE '%' || #{searchKeyword} || '%' 
+	                     OR item.item_content LIKE '%' || #{searchKeyword} || '%') 
+	            ORDER BY item.item_idx DESC
+	        ) itemlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
+
+	<resultMap type="ItemPhotoCategoryCart"
+		id="ItemPhotoCategoryCart">
+		<association property="item" javaType="Item">
+			<id column="item_idx" property="itemIdx" />
+			<result column="category_idx" property="categoryIdx" />
+			<result column="expert_idx" property="expertIdx" />
+			<result column="item_name" property="itemName" />
+			<result column="item_content" property="itemContent" />
+			<result column="price" property="price" />
+		</association>
+		<association property="photo" javaType="Photo">
+			<id column="photo_idx" property="photoIdx" />
+			<result column="itemfile_name" property="itemfileName" />
+		</association>
+	</resultMap>
 	
 	<!-- 상품 게시판에서 카테고리별 검색하는 검색 기능 -->
-	<select id="searchItemCategory" resultType="Item">
+	<select id="searchItemCategoryList" resultMap="ItemPhotoCategoryCart">
+	    SELECT *
+	    FROM (
+	        SELECT
+	            rownum rn, itemlist.*
+	        FROM (
+	            SELECT
+	                item.item_idx,
+	                item.category_idx,
+	                item.EXPERT_IDX,
+	                item.item_name,
+	                item.item_content,
+	                item.PRICE,
+	                photo.PHOTO_IDX,
+	                photo.ITEMFILE_NAME
+	            FROM item
+	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+	            WHERE item.item_status = 1
+	                AND item.category_idx = #{categoryIdx}
+	            ORDER BY item.item_idx DESC
+	        ) itemlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
 	
+	<resultMap type="ItemPhotoCategoryCart"
+		id="ItemPhotoCategoryCart">
+		<association property="item" javaType="Item">
+			<id column="item_idx" property="itemIdx" />
+			<result column="category_idx" property="categoryIdx" />
+			<result column="expert_idx" property="expertIdx" />
+			<result column="item_name" property="itemName" />
+			<result column="item_content" property="itemContent" />
+			<result column="price" property="price" />
+		</association>
+		<association property="photo" javaType="Photo">
+			<id column="photo_idx" property="photoIdx" />
+			<result column="itemfile_name" property="itemfileName" />
+		</association>
+	</resultMap>
+	
+		<!-- 총 상품 게시글의 수를 카운트 하는 용도 -->
+	<select id="selectItemBoardCount" resultType="int">
+		SELECT COUNT(*)
+		FROM item
+		WHERE item_status = 1
 	</select>
 </mapper>
