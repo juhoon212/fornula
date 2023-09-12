@@ -44,6 +44,20 @@
  		FROM sales
  	</select>
  	
+ 	<!-- 총금액 출력을 위한 쿼리문 -->
+ 	<select id="selectTotalMoney" resultType="TotalSalesMoney">
+ 		SELECT S.sales_idx,
+                S.sales_date,
+                S.sales_status,
+                I.item_idx,
+                I.item_name,
+                I.price,
+                I.item_content
+        FROM sales S
+        JOIN item I ON S.item_idx = I.item_idx
+        WHERE I.expert_idx = #{expertIdx} and I.item_status=1
+        ORDER BY S.sales_date
+    </select>
  	
  	
  	

@@ -7,6 +7,4 @@ public interface ItemInsertDAO {
 	int insertItem(Item item);
 	Item selectItemIdx(int expertIdx);
 	int insertPhoto(Photo photo);
-	int updateItemPhoto(int itemIdx);
-	Item exceptionItem(String itemName);
 }

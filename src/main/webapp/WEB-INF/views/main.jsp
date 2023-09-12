@@ -620,8 +620,7 @@ p #logo {
                frontError.innerHTML = data.message;
                frontError.style = "color : red";
             } else {
-                    
-               location.href = "<c:url value="/"/>";
+                    location.href = "<c:url value="/"/>";
                } 
               })
               

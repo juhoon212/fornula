@@ -14,6 +14,8 @@ public interface ItemDetailService {
 	Photo selectPhoto(int itemIdx);
 	int updateItem(Item item);
 	Item findItemByIdx(int itemIdx);
+	int updatePhoto(Photo photo);
+	Photo findByItemIdx(int itemIdx);
 }
 
 

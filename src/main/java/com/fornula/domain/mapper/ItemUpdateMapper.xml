@@ -18,9 +18,23 @@
  				CATEGORY_IDX = #{categoryIdx}
  			</if> 			
  		</set>
- 		
  		where ITEM_IDX = #{itemIdx}
  	</update>
+ 	
+ 	<update id="updatePhoto">
+ 		UPDATE PHOTO
+ 		SET ITEMFILE_NAME = #{itemfileName}
+ 		where ITEM_IDX = #{itemIdx}
+ 	</update>
+ 	
+ 	<select id="findPhotoByItemIdx" resultType="Photo">
+ 		SELECT 	PHOTO_IDX,
+ 				ITEM_IDX,
+ 				ITEMFILE_NAME
+ 		FROM PHOTO
+ 		WHERE ITEM_IDX = #{itemIdx}
+ 	</select>
+
  	
  	<select id="findItemByIdx" resultType="Item">
  		SELECT ITEM_IDX,

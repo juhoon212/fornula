@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 
 // Message용 DTO
@@ -18,6 +17,10 @@ import lombok.Setter;
 public class Message { 
 	
 	private String message;
+	
+	public Message(String message) {
+		this.message = message;
+	}
 	
 	
 }
