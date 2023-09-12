@@ -379,7 +379,7 @@ p #logo {
 		<div
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
-			검색 기능 주석 처리
+			<!-- 검색 기능 주석 처리 -->
 			<form method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
@@ -387,7 +387,7 @@ p #logo {
 						class="form-control search-input text-dark" placeholder="Search"
 						aria-label="Search" aria-describedby="search-button">
 					<div class="input-group-append">
-						검색 아이콘 버튼
+						<!-- 검색 아이콘 버튼 -->
 						<button type="button" class="btn btn-sm close-button"
 							data-toggle="collapse" data-target="#lana-search"
 							aria-controls="lana-search" aria-expanded="true"
