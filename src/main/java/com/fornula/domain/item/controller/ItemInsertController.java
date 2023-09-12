@@ -29,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequiredArgsConstructor
+@RequiredArgsConstructor 
 @Slf4j
 @RequestMapping("/item")
 public class ItemInsertController {
