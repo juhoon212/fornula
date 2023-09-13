@@ -1,10 +1,12 @@
 package com.fornula.domain.member.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,20 +34,20 @@ public class MemberController {
 	
 	// 회원가입 폼
 	@GetMapping("/join")
-	public String join() {
+	public String join(@ModelAttribute Member member) {
 		return "join";
 	}
 	
 	// 회원가입 
 	@PostMapping("/join")
-	public String joinForm(@ModelAttribute Member member, RedirectAttributes redirectAttributes) {
+	public String joinForm(@ModelAttribute @Valid Member member, RedirectAttributes redirectAttributes, Errors errors) {
 		
-		 int result = memberJoinService.joinMember(member);
 		 
-		 if(result == 0) {
-			 redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
-			 return "redirect:/member/join";
-		 }
+		if (errors.hasErrors()) {
+			System.out.println(errors.getErrorCount());
+			log.info("Validation errors: {}", errors);
+			return "member/join";
+		}
 		 
 		 redirectAttributes.addFlashAttribute("message", "회원가입 성공");
 		 return "redirect:/";
@@ -74,7 +76,8 @@ public class MemberController {
 		// 실패 로직
 		if(ObjectUtils.isEmpty(findMember)) {
 			redirectAttributes.addAttribute("status", "false");
-			redirectAttributes.addFlashAttribute("message", "맞지 않는 아이디 또는 이메일입니다.");
+			redirectAttributes.addFlashAttribute("message", "맞"
+					+ "지 않는 아이디 또는 이메일입니다.");
 			return "redirect:/member/findPw";
 		}
 		

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <!DOCTYPE html>
@@ -38,18 +39,21 @@
       </c:if>
 
       <section>
-      
+ 
+     <c:url value="/member/join" var="url"/>
+ <form:form id ="join_form" method="post" action="${url }" modelAttribute="member">
+ 
        <h3>아이디</h3>
         <div class="info" id="info__id">
           <div id="id-input">
-            <input class="box" id="id-box" type="text" placeholder="아이디 입력해 주세요." name ="id" required/>
+            <form:input path = "id" class="box" id="id-box" type="text" placeholder="아이디 입력해 주세요." name ="id"/>
             <button id="id-check">중복 확인</button>
           </div>
           <div class = "error-msg"></div>
+          <form:errors path ="id" cssClass="error"/>
           
         </div>
         
- <form id ="join_form" method="post" action="<c:url value="/member/join"/>">
 
         <!-- id -->
         <input type="hidden" name="id" id="id-hidden">
@@ -58,19 +62,21 @@
         <h3>이메일</h3>
         <div class="info" id = "info__email">
         
-            <input class="box" type="text" placeholder="이메일을 입력해 주세요." name = "email" required/>
+            <form:input path = "email" class="box" type="text" placeholder="이메일을 입력해 주세요." name = "email"/>
           
           <div class = "error-msg"></div>
+          <form:errors path ="email" cssClass="error"/>
         </div>
         <!-- 비밀번호 -->
         <h3>비밀번호</h3>
         <div class="info" id="info__pw">
-          <input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)" name="password" required/>
+          <form:input path = "password" class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)" name="password"/>
           <div class = "error-msg"></div>
+          <form:errors path ="password" cssClass="error"/>
         </div>
         <!-- 비밀번호 재확인-->
         <div class="info" id="info__pwRe">
-          <input class="box" type="password" placeholder="비밀번호를 한번 더 입력해 주세요." required/>
+          <input class="box" type="password" placeholder="비밀번호를 한번 더 입력해 주세요." />
           <div class = "error-msg"></div>
         </div>
         
@@ -78,7 +84,7 @@
         <h3>관심사</h3>
         <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect1(this)" required>
+            <select class="box" id="category-big" onchange = "categorySelect1(this)" >
               <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -86,7 +92,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory1" name = "categoryOne" required>
+            <select class="box" id="mcategory1" name = "categoryOne" >
               <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -94,7 +100,7 @@
         </div>
         <div class="info" id="info__category">
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect2(this)" required>
+            <select class="box" id="category-big" onchange = "categorySelect2(this)" >
               <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -102,7 +108,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory2" name = "categoryTwo" required>
+            <select class="box" id="mcategory2" name = "categoryTwo" >
               <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -110,7 +116,7 @@
         </div>
         <div class="info" id="info__category" >
           <div id="category-flex">
-            <select class="box" id="category-big" onchange = "categorySelect3(this)" required>
+            <select class="box" id="category-big" onchange = "categorySelect3(this)" >
               <option value = "" disabled selected>대 카테고리</option>
               <option value = "a">디자인</option>
               <option value = "b">번역</option>
@@ -118,7 +124,7 @@
               <option value = "d">세무</option>
               <option value = "e">마케팅</option>
             </select>
-            <select class="box" id="mcategory3" name = "categoryThree" required>
+            <select class="box" id="mcategory3" name = "categoryThree" >
               <option value = "" disabled selected>중 카테고리</option>
             </select>
           </div>
@@ -126,7 +132,7 @@
         </div>
        
       <button id="submit">가입하기</button>
-</form>
+</form:form>
       
     </section>
     </div>
