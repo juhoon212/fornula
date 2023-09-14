@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.util.HtmlUtils;
 
 import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
@@ -82,6 +83,9 @@ public class ReviewServiceImpl implements ReviewService{
 		if(ObjectUtils.isEmpty(loginExpert) || ObjectUtils.isEmpty(boardItem) || loginExpert.getExpertIdx() != boardItem.getExpertIdx()) {
 			throw new NoAuthReplyException("댓글을 달 권한이 없습니다");
 		}
+		
+		// 태그 공격 방어용
+		review.setAnswerContent(HtmlUtils.htmlEscape(review.getAnswerContent()));
 		
 		int result = reviewRepository.addReply(review);
 		

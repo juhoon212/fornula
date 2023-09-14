@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.HtmlUtils;
 
 import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.vo.ReviewForm;
@@ -64,7 +65,7 @@ public class BoardController {
 		
 		Review review = new Review();
 		review.setPurchaseIdx(purchase.getPurchaseIdx());
-		review.setContent(form.getContent());
+		review.setContent(HtmlUtils.htmlEscape(form.getContent()));
 		
 		int addResult = reviewService.addReview(review);
 		

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.HtmlUtils;
 
 import com.fornula.domain.exception.custom.ItemNotFoundException;
 import com.fornula.domain.item.dto.Item;
@@ -72,7 +73,8 @@ public class RestItemUpdateController {
 	// 상품수정 DTO 세팅
 	private Item setItem(Item originalItem, ItemUpdateForm form) {
 		
-		originalItem.setItemName(form.getItemName());
+		originalItem.setItemName(HtmlUtils.htmlEscape(form.getItemName()));
+		originalItem.setItemContent(HtmlUtils.htmlEscape(form.getItemContent()));
 		originalItem.setItemContent(form.getItemName());
 		originalItem.setCategoryIdx(form.getCategoryIdx());
 		originalItem.setPrice(form.getPrice());
