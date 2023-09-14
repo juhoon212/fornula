@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,14 +59,15 @@ li a {
 
 #category {
 	width: 100%;
-	height : 200px;
+	height: 200px;
 	background-color: white;
 	padding: 20px;
 	font-size: 40px;
 	text-align: center;
 	border-radius: 20px;
 }
-.btn{
+
+.btn {
 	height: 40px;
 	font-size: 16px;
 	text-align: center;
@@ -79,59 +80,75 @@ li a {
 	<main class="main container">
 		<section style="width: 100%;">
 			<div id="box" style="margin: 30px 0px; width: 100%;">
+				<div class="input-group search border-transparent">
+					<input type="text" name="searchKeyword"
+						class="form-control search-input text-dark"
+						placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search"
+						aria-describedby="search-button" value="${searchKeyword }">
+					<div class="input-group-append">
+						<button type="submit" id="search-button" class="btn search-button">
+							<i class="fa fa-search fa-lg text-dark"></i>
+						</button>
+					</div>
+				</div>
 				<div id="category">
 					<p style="margin: 0 auto; padding: 25px">전체 보기</p>
-				<div id="categoryBtn" style="text-align: center;">
-					<button id="allBtn" type="button" class="btn btn-primary">전체 보기</button>
-					<button id="designBtn" type="button" class="btn btn-outline-primary">디자인</button>
-					<button id="translationBtn" type="button" class="btn btn-outline-primary">번역</button>
-					<button id="photoEditionBtn" type="button" class="btn btn-outline-primary">사진/편집</button>
-					<button id="accountantBtn" type="button" class="btn btn-outline-primary">세무</button>
-					<button id="marketingBtn" type="button" class="btn btn-outline-primary">마케팅</button>
-				</div>
+					<div id="categoryBtn" style="text-align: center;">
+						<button id="allBtn" type="button" class="btn btn-primary">전체
+							보기</button>
+						<button id="designBtn" type="button"
+							class="btn btn-outline-primary" data-category-idx="1,2">디자인</button>
+						<button id="translationBtn" type="button"
+							class="btn btn-outline-primary" data-category-idx="3,4">번역</button>
+						<button id="photoEditionBtn" type="button"
+							class="btn btn-outline-primary" data-category-idx="5,6">사진/편집</button>
+						<button id="accountantBtn" type="button"
+							class="btn btn-outline-primary" data-category-idx="7,8">세무</button>
+						<button id="marketingBtn" type="button"
+							class="btn btn-outline-primary" data-category-idx="9,10">마케팅</button>
+					</div>
 				</div>
 			</div>
 		</section>
 		<div class="row">
 			<div class="col-12">
-				<div class="blog-grid-posts" >
+				<div class="blog-grid-posts">
 					<div class="row">
 						<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
 						<c:forEach var="itemList" items="${itemBoardList}">
-							<div class="blog-grid-col col-12 col-md-6 col-lg-4" >
+							<div class="blog-grid-col col-12 col-md-6 col-lg-4">
 								<div id="post-1"
-									class="post type-post card post-card post-grid-card h-100" style="border-radius: 20px;">
+									class="post type-post card post-card post-grid-card h-100"
+									style="border-radius: 20px;">
 									<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
 									<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
-									    <img id="itemimg"
-									        src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
-									        class="card-img-top img-fluid"
-									        style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;"
-									        alt="${itemList.item.itemName}">
+										<img id="itemimg"
+										src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>"
+										class="card-img-top img-fluid"
+										style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;"
+										alt="${itemList.item.itemName}">
 									</a>
 									<div class="card-body">
-									    <ul class="post-meta">
-									        <li><a href="single.html">${itemList.item.itemDate}</a></li>
-									    </ul>
-									    <h5 class="post-title card-title">
-									        <a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
-									            ${itemList.item.itemName}
-									        </a>
-									    </h5>
-									    <p class="post-text card-text text-truncate">
-									        <a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
-									            <span style="color: black; font-size: 13px;">
-									                ${itemList.item.itemContent}
-									            </span>
-									        </a>
-									    </p>
+										<ul class="post-meta">
+											<li><a href="single.html">${itemList.item.itemDate}</a></li>
+										</ul>
+										<h5 class="post-title card-title">
+											<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
+												${itemList.item.itemName} </a>
+										</h5>
+										<p class="post-text card-text text-truncate">
+											<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>">
+												<span style="color: black; font-size: 13px;">
+													${itemList.item.itemContent} </span>
+											</a>
+										</p>
 									</div>
 									<div class="card-footer">
-									    <div style="float: right;">
-									        <a>
-  										  		가격: ₩<fmt:formatNumber type="number" value="${itemList.item.price}" pattern="#,###"/>
+										<div style="float: right;">
+											<a> 가격: ₩<fmt:formatNumber type="number"
+													value="${itemList.item.price}" pattern="#,###" />
 											</a>
-									    </div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -175,29 +192,6 @@ li a {
 							</c:otherwise>
 						</c:choose>
 					</div>
-
-
-
-
-
-					<!--  <nav class="navigation pagination justify-content-between bg-transparent text-uppercase"
-                     role="navigation">
-   					<a class="prev disabled" href="#" id="prevBtn">
-                        Prev
-                    </a>
-                    <div class="nav-links">
-                        <ul class="page-numbers">
-                            <li><span aria-current="page" class="page-numbers current">1</span></li>
-                            <li><a class="page-numbers" href="#">2</a></li>
-                            <li><span class="page-numbers dots" >...</span></li>
-                            <li><a class="page-numbers" href="#">4</a></li>
-                        </ul>
-                    </div>
-   					<a class="next" href="#" id="nextBtn">
-                        Next
-                    </a>
-                </nav> -->
-
 				</div>
 			</div>
 		</div>
@@ -272,37 +266,27 @@ li a {
 
 		// 초기 페이지 로딩 시 페이지 업데이트 호출
 		updatePage();
-		
-		/* 카테고리 별 출력 작업중
-	    // 버튼 클릭 시 해당 카테고리로 리디렉션하는 함수
-	    function redirectToCategory(categoryIdx) {
-	        // categoryIdx에 따라 리디렉션 URL을 생성
-	        var url = '<c:url value="/item/boardList"/>' + '?categoryIdx=' + categoryIdx;
-	        window.location.href = url;
-	    }
 
-	    // 버튼 클릭 이벤트 처리
-	    document.getElementById("designBtn").addEventListener("click", function () {
-	        redirectToCategory(1,2); 
-	    });
+		// 각 버튼에 대한 클릭 이벤트 핸들러
+		document.getElementById("designBtn").addEventListener("click", function() {
+		    window.location.href = '/item-board?categoryIdx=1,2';
+		});
 
-	    document.getElementById("translationBtn").addEventListener("click", function () {
-	        redirectToCategory(3,4); 
-	    });
+		document.getElementById("translationBtn").addEventListener("click", function() {
+		    window.location.href = '/item-board?categoryIdx=3,4';
+		});
 
-	    document.getElementById("photoEditBtn").addEventListener("click", function () {
-	        redirectToCategory(5,6); 
-	    });
-		
-	    document.getElementById("accountantBtn").addEventListener("click", function () {
-	        redirectToCategory(7,8); 
-	    });
-	    
-	    document.getElementById("marketingBtn").addEventListener("click", function () {
-	        redirectToCategory(9); 
-	    });
-	    */
+		document.getElementById("photoEditionBtn").addEventListener("click", function() {
+		    window.location.href = '/item-board?categoryIdx=5,6';
+		});
 
+		document.getElementById("accountantBtn").addEventListener("click", function() {
+		    window.location.href = '/item-board?categoryIdx=7,8';
+		});
+
+		document.getElementById("marketingBtn").addEventListener("click", function() {
+		    window.location.href = '/item-board?categoryIdx=9,10';
+		});
 	</script>
 </body>
 </html>
