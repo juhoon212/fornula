@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-
 import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.repository.ReviewRepository;
@@ -65,7 +64,21 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public int addReply(Review review) {
+	public int addReply(Review review, int memberIdx, int itemIdx) {
+		
+		Expert loginExpert = itemDetailDAO.findByMemberIdx(memberIdx);
+		Item boardItem = itemDetailDAO.selectItem(itemIdx);
+		
+		
+		if(ObjectUtils.isEmpty(loginExpert) || ObjectUtils.isEmpty(boardItem) || loginExpert.getExpertIdx() != boardItem.getExpertIdx()) {
+			throw new NoAuthReplyException("댓글을 달 권한이 없습니다");
+		}
+		
+		// 태그 공격 방어용
+		review.setAnswerContent(HtmlUtils.htmlEscape(review.getAnswerContent()));
+		
+
+	
 		int result = reviewRepository.addReply(review);
 		return result;
 	}
