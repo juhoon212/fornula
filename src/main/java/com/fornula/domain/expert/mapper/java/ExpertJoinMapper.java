@@ -6,5 +6,5 @@ import com.fornula.domain.member.dto.Member;
 public interface ExpertJoinMapper {
 	int insertExpertInfo(Expert expert);
 	void updateExpertStatus(Member member);
-	Member exceptionExpert(int memberIdx);
+	
 }

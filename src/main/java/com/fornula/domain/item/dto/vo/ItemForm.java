@@ -1,37 +1,27 @@
 package com.fornula.domain.item.dto.vo;
 
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemForm {
-	
-	@NotNull
+    
 	private int expertIdx;
-	
-	@NotNull
-	private int categoryIdx;
-	
-	@NotEmpty
-	private String itemName;
-	
-	@Size(min = 10, message = "10자 이상 입력하세요")
-	private String itemContent;
-	
-	@Min(value = 1000, message = "1000원 이상을 입력하세요")
-	@Max(value = 1000000000, message = "가격 제한선을 넘었습니다.")
-	private int price;
-}
+    private int categoryIdx;
+    
+    @NotEmpty(message="상품 이름은 무조건 입력하세요")   
+    @Size(max = 30, message = "30 글자 이상 입력할 수 없습니다.")
+    private String itemName;
+    
+    private String itemContent;
+    
+    @Positive(message="1원 이상의 가격을 입력해주세요")
+    private int price;
+} 

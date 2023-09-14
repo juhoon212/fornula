@@ -1,4 +1,4 @@
-package com.fornula.domain.board.dto.vo;
+package com.fornula.domain.board.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

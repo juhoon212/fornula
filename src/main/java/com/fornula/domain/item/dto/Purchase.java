@@ -1,6 +1,9 @@
 package com.fornula.domain.item.dto;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /*
 이름              널?       유형     
@@ -12,8 +15,11 @@ PURCHASE_DATE   NOT NULL DATE
 PURCHASE_STATUS NOT NULL NUMBER 
  */
 
-@Data
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Purchase {
 	private int purchaseIdx;
 	private int itemIdx;

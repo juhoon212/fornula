@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.HtmlUtils;
 
 import com.fornula.domain.board.dto.Review;
-import com.fornula.domain.board.dto.vo.ReviewForm;
+import com.fornula.domain.board.dto.ReviewForm;
 import com.fornula.domain.board.service.ReviewService;
-import com.fornula.domain.exception.custom.NotFoundExpertException;
-import com.fornula.domain.exception.custom.NotFoundReviewException;
 import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.util.session.SessionConst;
@@ -45,7 +42,7 @@ public class BoardController {
 		
 		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
 		
-		if(ObjectUtils.isEmpty(loginMember)) {
+		if(loginMember == null) {
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
 			return "redirect:/item/{itemIdx}/1";
 		}
@@ -56,7 +53,7 @@ public class BoardController {
 		
 		Purchase purchase = reviewService.selectPurchase(loginMember.getMemberIdx(), itemIdx);
 		
-		if(ObjectUtils.isEmpty(purchase)) {
+		if(purchase == null) {
 			redirectAttributes.addAttribute("status", false);
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
 			redirectAttributes.addFlashAttribute("message", "상품 구매자만 후기를 달 수 있습니다.");
@@ -88,16 +85,9 @@ public class BoardController {
 	}
 	
 	@PostMapping("/add/reply/{itemIdx}")
-	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx,
-							RedirectAttributes redirectAttributes,
-							HttpSession session) {
-		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
+	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes) {
 		
-		if(ObjectUtils.isEmpty(loginMember)) {
-			throw new NotFoundReviewException("판매자만 댓글을 달 수 있습니다.");
-		}
-		
-		reviewService.addReply(review, loginMember.getMemberIdx(), itemIdx);
+		reviewService.addReply(review);
 
 		return "redirect:/item/{itemIdx}/1";
 	}

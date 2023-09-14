@@ -1,17 +1,18 @@
-package com.fornula.domain.item.dto.itemPayment;
+package com.fornula.domain.expert.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
-public class ItemSalesSuccess {
+public class TotalSalesMoney {
 	private int salesIdx;
-	private int itemIdx;
 	private String salesDate;
 	private int salesStatus;
+	private int itemIdx;
+	private String itemName;
+	private int price;
+	private String itemContent;
 }
