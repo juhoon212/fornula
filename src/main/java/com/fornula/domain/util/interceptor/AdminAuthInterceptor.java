@@ -12,7 +12,6 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//������ ���ͼ���
 public class AdminAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
@@ -27,7 +26,7 @@ public class AdminAuthInterceptor implements HandlerInterceptor {
 		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 9) {
 			log.info("admin interceptor");
 
-			response.sendRedirect("/error");
+			response.sendRedirect(request.getContextPath() + "/error");
 
 			return false;
 

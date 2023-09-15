@@ -2,10 +2,14 @@ package com.fornula.domain.member.dto.join;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 
 // Message용 DTO
@@ -13,6 +17,10 @@ import lombok.NoArgsConstructor;
 public class Message { 
 	
 	private String message;
+	
+	public Message(String message) {
+		this.message = message;
+	}
 	
 	
 }

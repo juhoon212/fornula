@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fornula.domain.exception.ErrorResult;
 import com.fornula.domain.exception.custom.LoginFailException;
 import com.fornula.domain.member.dto.Member;
-import com.fornula.domain.member.dto.login.FindPasswordForm;
-import com.fornula.domain.member.dto.login.IdFindForm;
-import com.fornula.domain.member.dto.login.LoginForm;
+import com.fornula.domain.member.dto.vo.FindPasswordForm;
+import com.fornula.domain.member.dto.vo.IdFindForm;
+import com.fornula.domain.member.dto.vo.LoginForm;
 import com.fornula.domain.member.service.MemberLoginService;
 import com.fornula.domain.util.session.SessionConst;
 
@@ -37,11 +37,11 @@ public class MemberLoginRestController {
 	
 	
 	@PostMapping("/login")
-	public Member login(@RequestBody LoginForm form,HttpServletRequest request) {
+	public Member login(@RequestBody LoginForm form,HttpServletRequest request, HttpSession session) {
 		
 		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		
 		log.info("isNewSession? = {}", session.isNew());
 		

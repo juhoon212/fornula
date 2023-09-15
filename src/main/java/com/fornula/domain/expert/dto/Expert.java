@@ -31,6 +31,7 @@ public class Expert {
 	private int expertIdx;
 	private int memberIdx;
 	private String phone;
+	
 	private int interest;
 	private String introduce;
 	private String career;

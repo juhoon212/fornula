@@ -10,6 +10,7 @@ import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.dto.itemdetail.ItemPhoto;
 import com.fornula.domain.item.mapper.java.ItemDetailMapper;
+import com.fornula.domain.item.mapper.java.ItemUpdateMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,4 +31,24 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
 	public Photo selectPhoto(int memberIdx) {
 		return sqlSession.getMapper(ItemDetailMapper.class).selectPhoto(memberIdx);
 	}
+	@Override
+	public int updateItem(Item item) {
+	
+		return sqlSession.getMapper(ItemUpdateMapper.class).updateItem(item);
+	}
+	@Override
+	public Item findItemByIdx(int itemIdx) {
+		return sqlSession.getMapper(ItemUpdateMapper.class).findItemByIdx(itemIdx);
+	}
+	@Override
+	public int updatePhoto(Photo photo) {
+		return sqlSession.getMapper(ItemUpdateMapper.class).updatePhoto(photo);
+	}
+	@Override
+	public Photo findByItemIdx(int itemIdx) {
+		return sqlSession.getMapper(ItemUpdateMapper.class).findPhotoByItemIdx(itemIdx);
+	}
+	
+	
+	
 }

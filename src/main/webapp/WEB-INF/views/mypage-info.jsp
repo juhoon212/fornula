@@ -209,7 +209,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="infoForm" method="post" action="/mypageInfo">
+   <form name="infoForm" method="post" action="<c:url value="/mypageInfo"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
@@ -304,7 +304,7 @@ h3 {
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
 								<c:if test="${member.memberStatus == 2}">
-									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+									<a href="<c:url value='/expert/output'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>

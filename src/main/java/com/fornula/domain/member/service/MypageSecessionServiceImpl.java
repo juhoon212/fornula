@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class MypageSecessionServiceImpl implements MypageSecessionService{
+public class MypageSecessionServiceImpl implements MypageSecessionService {
 	
   private final MypageSecessionRepository mypageSessionRepository;
   

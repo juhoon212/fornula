@@ -12,8 +12,8 @@ import com.fornula.domain.util.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//¿¸πÆ∞° ¿Œ≈Õº¡≈Õ
-public class ExpertAuthIntercepto implements HandlerInterceptor {
+//Ï†ÑÎ¨∏Í∞Ä Ïù∏ÌÑ∞ÏÖâÌÑ∞
+public class ExpertAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler
 			)
@@ -21,19 +21,19 @@ public class ExpertAuthIntercepto implements HandlerInterceptor {
 
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+		String requestURI = request.getRequestURI();
+		log.info("requestURI= {}",requestURI);
+		
+		
+		if (session == null ||loginMember == null || loginMember.getMemberStatus() != 2) {
+			log.info("loginMember{}",loginMember);
 
-		if (loginMember.getMemberStatus() != 1) {
-			log.info("¿¸πÆ∞°∞° æ∆¥— ∞ÊøÏ ø‰√ª");
-
-			response.sendError(HttpServletResponse.SC_FORBIDDEN);
-
+			response.sendRedirect(request.getContextPath() + "/");
+			
 			return false;
 
 		}
-		String requestURI = request.getRequestURI();
-		log.info("requestURI= {}",requestURI);
-
-		response.sendRedirect(requestURI);
+		
 		return true;
 	}
 }

@@ -2,14 +2,19 @@ package com.fornula.domain.expert.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fornula.domain.exception.custom.ExistsExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
@@ -37,13 +45,13 @@ public class ExpertJoinController {
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
 
-	@GetMapping("/sale")
-	public String sale() {
-		return "expert-sales";
-	}
 
+	@GetMapping("/success")
+	public String success() {
+		return "expertjoin-success";
+	}
 	@GetMapping("/join")
-	public String join(HttpSession session) {
+	public String join(@ModelAttribute("expert") Expert expert, HttpSession session) {
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 
 		session.setAttribute("member", member.getId());
@@ -52,18 +60,23 @@ public class ExpertJoinController {
 	}
 
 	@PostMapping("/join")
-	public String join(@ModelAttribute Expert expert, @RequestParam MultipartFile uploadFile, Model model,
-			HttpSession session) throws IllegalStateException, IOException {
+	public String join(@Valid @ModelAttribute("expert") Expert expert, Errors errors, 
+			@RequestParam MultipartFile uploadFile, Model model,
+			HttpSession session, RedirectAttributes redirectAttributes) 
+					throws IllegalStateException, IOException, ExistsExpertException {
+		
+		if(errors.hasErrors()) {
+	           model.addAttribute("expert",expert);
+	           log.info("errors :{}", errors);
+	           return "expert-join";
+	        }
+		
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
 
-		/*
-		 * int interst= expertJoinService.searchExpertCategory(expert.getInterest());
-		 * expert.setInterest (interst);
-		 */
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
 		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {
@@ -77,18 +90,11 @@ public class ExpertJoinController {
 			String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
 			log.info("filepath =" + uploadDirectory);
 	
-			String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+			String expertfileName = extracted(uploadFile);
 			log.info("filename =" + expertfileName);
 	
 			expert.setExpertfileName(expertfileName);
 
-			try {
-				uploadFile.transferTo(new File(uploadDirectory, expertfileName));
-				System.out.println("파일 업로드 성공");
-			} catch (IllegalArgumentException | IOException e) {
-				System.out.println("파일 업로드 실패");
-				e.printStackTrace();
-			}
 		}
 		
 
@@ -97,10 +103,15 @@ public class ExpertJoinController {
 		// 등록처리에 성공하였을때 memberIdx 변경
 		member.setMemberStatus(2);
 		expertJoinService.updateExpertStatus(member);
-		session.setAttribute("loginMember", member);
-		model.addAttribute("message","전문가 등록이 완료되었습니다");
+		redirectAttributes.addFlashAttribute("message","전문가 등록이 완료되었습니다");
 		
-		return "expertjoin-success";
+		return "redirect:/expert/success";
 
 	}
+	private String extracted(MultipartFile uploadFile) {
+		String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+		return expertfileName;
+	}
+	
+
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.fornula.domain.item.mapper.java.ItemUpdateMapper">
+
+	<update id="updateItem">
+ 		UPDATE ITEM
+ 		<set>
+ 			<if test="itemName != null">
+ 				ITEM_NAME = #{itemName},
+ 			</if>
+ 			<if test="price != null">
+ 				PRICE = #{price},
+ 			</if>
+ 			<if test="itemContent != null">
+ 				ITEM_CONTENT = #{itemContent},
+ 			</if>
+ 			<if test="categoryIdx != null">
+ 				CATEGORY_IDX = #{categoryIdx}
+ 			</if> 			
+ 		</set>
+ 		where ITEM_IDX = #{itemIdx}
+ 	</update>
+ 	
+ 	<update id="updatePhoto">
+ 		UPDATE PHOTO
+ 		SET ITEMFILE_NAME = #{itemfileName}
+ 		where ITEM_IDX = #{itemIdx}
+ 	</update>
+ 	
+ 	<select id="findPhotoByItemIdx" resultType="Photo">
+ 		SELECT 	PHOTO_IDX,
+ 				ITEM_IDX,
+ 				ITEMFILE_NAME
+ 		FROM PHOTO
+ 		WHERE ITEM_IDX = #{itemIdx}
+ 	</select>
+
+ 	
+ 	<select id="findItemByIdx" resultType="Item">
+ 		SELECT ITEM_IDX,
+ 				CATEGORY_IDX,
+ 				EXPERT_IDX,
+ 				ITEM_NAME,
+ 				ITEM_CONTENT,
+ 				PRICE,
+ 				ITEM_STATUS,
+ 				ITEM_DATE
+ 		FROM ITEM
+ 		WHERE ITEM_IDX = #{itemIdx}
+ 	</select>
+ 	
+ 	
+
+
+</mapper>

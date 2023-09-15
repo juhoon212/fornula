@@ -38,59 +38,57 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		
 		return resultMap;
 	}
-//	카테고리로 검색하는 용도 
-	@Override
-	public Map<String, Object> getCategoryItemList(int pageNum) {
-		int totalBoard=itemBoardDAO.selectItemBoardCount();
-		
-		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
-		
-		Map<String, Object> pageMap=new HashMap<String, Object>();
-		pageMap.put("startRow", pager.getStartRow());
-		pageMap.put("endRow", pager.getEndRow());
-	
-		List<ItemPhotoCategoryCart> itemCategoryBoardList=itemBoardDAO.selectCategoryItemList(pageMap);
-		
-		Map<String, Object> resultMap=new HashMap<String, Object>();
-		resultMap.put("itemCategoryBoardList", itemCategoryBoardList);
-		resultMap.put("pager", pager);
-		
-		return resultMap;
-	}
-//	검색창에서 상품 검색하는 용도
-    @Override
-    public Map<String, Object> getSearchItemList(int pageNum, String searchKeyword) {
-        int totalBoard = itemBoardDAO.selectItemBoardCount();
-        
-        Pager pager = new Pager(pageNum, totalBoard, 6, 6);
-
-        Map<String, Object> pageMap = new HashMap<>();
-        pageMap.put("startRow", pager.getStartRow());
-        pageMap.put("endRow", pager.getEndRow());
-        pageMap.put("searchKeyword", "%" + searchKeyword + "%"); // 검색어 조합
-
-        List<ItemPhotoCategoryCart> searchItemBoardList = itemBoardDAO.searchItemList(pageMap);
-
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("searchItemCategoryBoardList", searchItemBoardList);
-        resultMap.put("pager", pager);
-
-        return resultMap;
-    }
-//	관리자가 상품게시글 삭제처리(상태변경)하는 메소드임 이거 담당자가 채워놓기
-	/*
-	@Override
-	public void modifyItem(Item item) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
     
-//   상품 갯수를 검색하는 용도(상품 게시글의 갯수를 샌 다음 1,2,...,4 같은 페이지 처리에 사용할 것
+//  상품 갯수를 검색하는 용도(상품 게시글의 갯수를 샌 다음 1,2,...,4 같은 페이지 처리에 사용할 것
     @Override
     public int getItemBoardCount() {
         return itemBoardDAO.selectItemBoardCount();
     }
     
-   
+//  검색창에서 검색했을 때 실행될 메소드
+    @Override
+    public Map<String, Object> searchList(int pageNum, String searchKeyword) {
+		int totalBoard=itemBoardDAO.selectItemBoardCount();
+        log.info("Total item boards count: {}", totalBoard);
+
+		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
+
+		Map<String, Object> pageMap=new HashMap<String, Object>();
+		pageMap.put("startRow", pager.getStartRow());
+		pageMap.put("endRow", pager.getEndRow());
+		pageMap.put("searchKeyword", searchKeyword);
+		log.info("searchKeyword={}", searchKeyword);
+		
+		List<ItemPhotoCategoryCart> searchItemList=itemBoardDAO.searchItemList(pageMap);
+        log.info("Found {} items for page {}.", searchItemList.size(), pageNum);
+        
+		Map<String, Object> resultMap=new HashMap<String, Object>();
+		resultMap.put("pager", pager);
+		resultMap.put("searchItemList", searchItemList);		
+    	
+    	return resultMap;
+    }
+    
+//  상품 게시판에서 카테고리를 선택했을 때 상품들이 리스트로 출력되게 만들 메소드
+    @Override
+    public Map<String, Object> searchCategoryList(int pageNum) {
+		int totalBoard=itemBoardDAO.selectItemBoardCount();
+        log.info("Total item boards count: {}", totalBoard);
+
+		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
+		
+		Map<String, Object> pageMap=new HashMap<String, Object>();
+		pageMap.put("startRow", pager.getStartRow());
+		pageMap.put("endRow", pager.getEndRow());
+        log.info("PageMap for page {}: startRow: {}, endRow: {}", pageNum, pager.getStartRow(), pager.getEndRow());
+
+		List<ItemPhotoCategoryCart> searchItemCategoryList=itemBoardDAO.searchItemCategoryList(pageMap);
+        log.info("Found {} items in the category for page {}.", searchItemCategoryList.size(), pageNum);
+
+		Map<String, Object> resultMap=new HashMap<String, Object>();
+		resultMap.put("pager", pager);
+		resultMap.put("searchItemCategoryList", searchItemCategoryList);
+		
+		return resultMap;
+    }
 }

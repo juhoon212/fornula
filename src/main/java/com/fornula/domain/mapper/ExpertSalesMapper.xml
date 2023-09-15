@@ -18,46 +18,51 @@
         ORDER BY SALES.sales_date
 	</select> -->
 	
-	
-	<!-- 세션에 저장된 memberIdx를 통해 expertIdx를 가져오는 mapper -->
-	<!-- <select id="selectExpertIdxByMemberIdx" parameterType="int" resultType="int">
-		SELECT expert_idx
-		FROM expert
-		WHERE member_idx = #{memberIdx}	
-	</select> -->
-	
-	<resultMap type="ItemSales" id="ItemSales">
-		<association property="item" javaType="Item">
-			<id column="item_idx" property="itemIdx"/>
-			<result column="item_name" property="itemName"/>
-			<result column="price" property="price"/>
-			<result column="item_content" property="itemContent"/>
-		</association>
-		<association property="sales" javaType="Sales">
-			<id column="sales_idx" property="salesIdx"/>
-			<result column="sales_date" property="salesDate"/>
-			<result column="sales_status" property="salesStatus"/>
-			<result column="item_idx" property="itemIdx"/>
-		</association>
-	</resultMap>
-
-
 	<!-- 판매내역 출력-->
-	<select id="selectSalesList" resultType="ItemSales">
-		SELECT S.sales_idx,
-				S.sales_date,
-				S.sales_status,
-				I.item_idx,
-				I.item_name,
-				I.price,
-				I.item_content
-		FROM sales S
-		JOIN item I
-		ON S.item_idx = I.item_idx
-		ORDER BY S.sales_date
+	<select id="selectSalesList" resultType="SaleItemExpert">
+		SELECT * FROM(SELECT rownum rn, saleslist.* FROM
+				(SELECT S.sales_idx,
+                S.sales_date,
+                S.sales_status,
+                I.item_idx,
+                I.item_name,
+                I.price,
+                I.item_content,
+                P.itemfile_name
+        FROM sales S
+        JOIN item I ON S.item_idx = I.item_idx
+        LEFT JOIN photo P ON I.item_idx = P.item_idx
+        WHERE I.expert_idx = #{expertIdx} and I.item_status=1
+        ORDER BY S.sales_date
+        ) saleslist)
+        WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
  
+ 	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
+ 	<select id="selectSalesCount" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM sales
+ 	</select>
+ 	
+ 	<!-- 총금액 출력을 위한 쿼리문 -->
+ 	<select id="selectTotalMoney" resultType="TotalSalesMoney">
+ 		SELECT S.sales_idx,
+                S.sales_date,
+                S.sales_status,
+                I.item_idx,
+                I.item_name,
+                I.price,
+                I.item_content
+        FROM sales S
+        JOIN item I ON S.item_idx = I.item_idx
+        WHERE I.expert_idx = #{expertIdx} and I.item_status=1
+        ORDER BY S.sales_date
+    </select>
+ 	
+ 	
+ 	
 	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
+	<!-- s
 	<update id="updateSalesStatus" parameterType="SaleItemExpert">
 		UPDATE sales S
         SET S.sales_status =
@@ -86,18 +91,10 @@
         </otherwise>
         </choose>
 	</update>
+ -->
+ 
 	
-		
-	<!-- 구매확정된 총 판매금액 출력 -->
-	<select id="selectPrice" resultType="int">
-	 	SELECT SUM(I.price) as total_price
-		FROM item ITEM 
-		JOIN sales SALES 
-		ON ITEM.item_idx = SALES.item_idx 
-		<!-- WHERE SALES.sales_status BETWEEN 5 AND 7 --> 
-	</select> 
-</mapper>
-
+ </mapper>
 
 
 

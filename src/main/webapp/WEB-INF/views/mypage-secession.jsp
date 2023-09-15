@@ -119,7 +119,7 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
-   <form name="secessionForm" method="post" action="/mypageSession">
+   <form name="secessionForm" method="post" action="<c:url value="/mypageSession"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 탈퇴</label>
         <h3>
         fornual을 떠나는 이유를 알려주세요.
@@ -184,7 +184,7 @@ h3 {
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
 								<c:if test="${member.memberStatus == 2}">
-									<a href="<c:url value='/expert/sale'/>" class="tag-cloud-link"
+									<a href="<c:url value='/expert/output'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
