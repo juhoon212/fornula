@@ -113,43 +113,42 @@ table {
 
 tr th {
 	width: 50%;
-	border-right: 1px solid #ff8a00;
 }
 
 tr td {
-	padding: 0px 30px;
+	padding: 0px 40px;
 }
 
 #list {
 	padding-left: 30px;
 }
-
-a:link {
-	color: #212121;
-}
-
-a:visited {
-	color: #212121;
-}
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 	<!-- 스타일 태그 끝 -->
-			<main class="main container" id="main-content">
-	<div class="row">
-		<div class="col-12 col-lg-8">
-				<div class="sale" id="salecontent">
-					<div class="widget">
-					</div>
+	<main class="main container" id="main-content">
+		<div class="row">
+			<!-- <div class="story-posts"> -->
+			<div class="story-posts col-12 col-lg-8">
+				<!-- <div class="sale" id="salecontent" -->
 
-					<div class="story-posts">
-						<table>
-							<tr>
-								<th scope="col">총 판매 금액</th>
-								<td scope="col" style="text-align: right;" id="price"></td>
-							</tr>
-						</table>
-						<!-- <div class="input-group">
+				<div class="widget">
+
+					<div style="text-align: left;">
+						<label
+							style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">판매
+							관리</label>
+					</div>
+					<div style="padding: 20px;">
+					<table style="font-size: 21px;">
+						<tr>
+							<th scope="col">총 판매 금액</th>
+							<td scope="col" style="text-align: right;" id="price">${price }
+								&nbsp;&nbsp;원</td>
+						</tr>
+					</table>
+					</div>
+					<!-- <div class="input-group">
 							<select id="archive" class="form-control" name="salesStatus">
 								<option value="3">주문 접수</option>
 								<option value="4">제작중</option>
@@ -160,117 +159,141 @@ a:visited {
 								<i class="fa fa-search"></i>
 							</button>
 						</div> -->
-						<div id="post-1" class="lana_story type-lana_story post-1 card story-card">
-							<div class="card-body">
-								<div class="blog-posts">
-									<div id="post-2" class="post type-post post-2 card post-card">
-										<div class="row">
-											<div class="col-md-4">
-												<img class="card-img img-fluid"
-													src="<c:url value="/pictures/placeholder/530x400.svg"/>"
-													alt="Post">
+					<section>
+									<div id="post-1"
+										class="lana_story type-lana_story post-1 card story-card">
+						<c:choose>
+							<c:when test="${salesList == null }">
+								<div class="row">
+									<div class="col-md-4">
+										<p>판매내역이 존재하지 않습니다.</p>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="salesList" items="${salesList}">
+										<div class="card-body">
+											<div class="blog-posts">
+												<div id="post-2"
+													class="post type-post post-2 card post-card">
+														<a href="<c:url value="/item/update/${salesList.itemIdx}"/>"
+																	class="more-link card-link d-flex align-items-center">상품수정</a>
+														<p class="post-text card-text">
+														<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
+														<h4 class="post-title card-title">
+															<a href="<c:url value="/item/${salesList.itemIdx}/1"/>">${salesList.itemName}</a>
+														</h4>
+														<%-- <p class="subtitle" name="itemContent">${salesList.itemContent }</p> --%>
 
-											</div>
-											<div class="col-md-8">
-												<div
-													class="card-body h-100 d-flex align-items-start flex-column">
-													<ul class="post-meta">
-														<li><p name="salesDate">${sales.salesDate}</li>
-														<li><p name="salesStatus">${sales.salesDate}</li>
-													</ul>
-													<p class="post-text card-text">
-													<h6 class="post-title card-title" name="salesIdx">${sales.salesIdx }</h6>
-													<h4 class="post-title card-title">
-														<a href="single.html" name="itemName">${item.itemName }</a>
-													</h4>
-													<p class="subtitle">상품설명</p>
-
-													<div
-														class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
-														<div class="author-meta">
-															<select name="salesStatus" id="archive"
-																class="form-control" class="btn btn-primary"
-																style="font-size: 17px;">
-																<option selected="selected" disabled="disabled">주문
-																	접수</option>
-																<option value="3">제작중</option>
-																<option value="4">제작 완료</option>
-															</select>
+													<div class="row">
+														<div class="col-md-4">
+															<img class="card-img img-fluid"
+																src="<c:url value='/images/upload/${salesList.itemfileName}'/>"
+																alt="Post">
 														</div>
+														<div class="col-md-8">
+															<div
+																class="card-body h-100 d-flex align-items-start flex-column">
+																<ul class="post-meta">
+																	<li>${salesList.salesDate}</li>
+																	<li>₩ ${salesList.price}</li>
+																</ul>
+																<p class="post-text card-text">
+																<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
+																<h4 class="post-title card-title">
+																	<a href="<c:url value="/item/${salesList.itemIdx}/1"/>">${salesList.itemName}</a>
+																</h4>
+																<%-- <p class="subtitle" name="itemContent">${salesList.itemContent }</p> --%>
 
-														<a href="single.html"
-															class="more-link card-link d-flex align-items-center">
-															답글보기 <i class="lana-icon-arrow-right text-primary"></i>
-														</a>
+																<div
+																	class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
+																	<div class="author-meta">
+
+																		<!-- <select name="salesStatus" id="archive"
+																	class="form-control" class="btn btn-primary"
+																	style="font-size: 17px;">
+																	<option selected="selected" disabled="disabled"
+																		value="2">주문 접수</option>
+																	<option value="3" disabled="disabled">제작중</option>
+																	<option value="4" disabled="disabled">제작 완료</option>
+																</select>
+																 -->
+
+																		<a
+																			href="<c:url value="/item/${salesList.itemIdx}/1"/>"
+																			class="more-link card-link d-flex align-items-center">
+																			답글보기 <i class="lana-icon-arrow-right text-primary"></i>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 									</div>
-								</div>
-							</div>
-						</div>
 
-						<nav style="padding : 5px;"
+						<nav style="padding: 5px;"
 							class="navigation pagination justify-content-between text-uppercase"
 							role="navigation">
-							<a class="prev disabled" href="#"> Prev </a>
+							<a class="prev disabled" href="<c:url value="#"/>"> Prev </a>
 							<div class="nav-links">
 								<ul class="page-numbers">
 									<li><span aria-current="page" class="page-numbers current">1</span></li>
-									<li><a class="page-numbers" href="#">2</a></li>
+									<li><a class="page-numbers" href="<c:url value="#"/>">2</a></li>
 									<li><span class="page-numbers dots">…</span></li>
-									<li><a class="page-numbers" href="#">4</a></li>
+									<li><a class="page-numbers" href="<c:url value="#"/>">4</a></li>
 								</ul>
 							</div>
-							<a class="next" href="#"> Next </a>
+							<a class="next" href="<c:url value="#"/>"> Next </a>
 						</nav>
-					</div>
+					</section>
 				</div>
-		</div>
-
+			</div>
 			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 				<div class="widget-sidebar story-sidebar">
 					<div id="button">
-		            	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+						<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 							class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-		            </div>
+					</div>
 					<div id="button">
-						<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
+						<a href="<c:url value="#"/>" class="tag-cloud-link"
+							aria-label="idbutton">${loginMember.id}</a>
 					</div>
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
 							<div id="button">
-								<a href="/mypageInfo" class="tag-cloud-link"
-									aria-label="admin change button">일반회원으로 전환</a> 
+								<a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link"
+									aria-label="admin change button">일반회원으로 전환</a>
 							</div>
-							<div class="row" >
-                				<div class="widget">
-                    				<h3 class="widget-title">판매 관리</h3>
-                                    <ul>
-                   						<li>
-                   							<a href="<c:url value="/expert/input"/>">전문가 정보</a>
-               							</li>
-                       					<li>
-                       						<a href="<c:url value="/expert/sale"/>">판매 관리</a>
-                   						</li>
-                        				<li>
-                        					<a href="<c:url value="/expert/output"/>">포트폴리오</a>
-                       					</li>
-                        				<li>
-                        					<a href="<c:url value="/expert/item"/>">상품 등록</a>
-                       					</li>
-                    				</ul>
-                				</div>
-               				</div>
+							<div class="row">
+								<div class="widget"
+									style="text-align: left; padding-left: 20px;">
+									<h3 class="widget-title">판매 관리</h3>
+									<ul class="list-unstyled"><!-- 이거 줄맞춤 안되있는거만 내가 class속성 추가해서 속성값으로 줄맞춤했어 -->
+										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
+
+										<li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
+
+										<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
+										<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		<!-- 기존의 사이드바 양식
+		</div>
+		<jsp:include page="footer.jsp" />
+	</main>
+	<!-- 기존의 사이드바 양식
 		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 			<div class="widget-sidebar story-sidebar">
-
 			<div id="img" style="text-align: center;" >
 					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 						class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
@@ -286,26 +309,6 @@ a:visited {
 								<br>
 								
 						</div>
-								<br>
-						<div class="row">
-							<div class="widget" style="text-align: left;" id="list">
-								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
-									관리</h3>
-								<ul style="color: black;">
-									<li><a href="<c:url value="/expert/input"/>" id="info"
-										class="expertmenu">전문가 정보</a></li>
-									<li><a href="<c:url value="/expert/sales"/>" id="sale"
-										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-									<li><a href="<c:url value="/expert/output "/>" id="po"
-										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="<c:url value="/expert/item"/>" id="item"
-										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-								</ul>
-							</div>
-						</div>
-						 -->
-						
-			<!-- 			<div class="row">
 							<div class="widget" style="text-align: left;" id="list">
 								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
 									관리</h3>
@@ -321,14 +324,8 @@ a:visited {
 								</ul>
 							</div>
 						</div> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-			</main>
-	<jsp:include page="footer.jsp" />
-<!-- ajax 사용시 페이지 전환에 사용될 메소드
+
+	<!-- ajax 사용시 페이지 전환에 사용될 메소드
 	<script type="text/javascript">
 		function menuchange(url) {
 			let h3 = document.getElementById("expertmain");
@@ -387,29 +384,31 @@ a:visited {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-
+	<%-- 
 	<script type="text/javascript">
-	 $(document).ready(function() {
-		 function fetchPrice() {
-             $.ajax({
-                 type: 'GET',
-                 url: '/price/' + expertIdx,
-                 dataType: 'json',
-                 success: function(data) {
-                     // JSON 데이터를 화면에 출력
-                     $('#price').text(data);
-                     
-                 },
-                 error: function(xhr) {
-                     console.log('Error fetching JSON data='+xhr.status);
-                 }
-             });
-         }
-		 var expertIdx= <%= request.getAttribute("expertIdx") %>;
-		 fetchPrice(expertIdx);
-     });
- </script>
+		$(document).ready(function() {
+			function fetchPrice() {
+				$.ajax({
+					type : 'GET',
+					url : '/price/' + expertIdx,
+					dataType : 'json',
+					success : function(data) {
+						// JSON 데이터를 화면에 출력
+						$('#price').text(data);
 
-       
+					},
+					error : function(xhr) {
+						console.log('Error fetching JSON data=' + xhr.status);
+					}
+				});
+			}
+			var expertIdx =
+	<%=request.getAttribute("expertIdx")%>
+		;
+			fetchPrice(expertIdx);
+		});
+	</script>
+
+ --%>
 </body>
 </html>
