@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.repository.ExpertSalesDAO;
 import com.fornula.domain.util.pager.Pager;
 
@@ -49,15 +50,24 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("salesList", salesList);
 		resultMap.put("pager", pager);
-		resultMap.put("price", price);
 		
-		log.info("reusultMap{}:0",resultMap);
+		log.info("reusultMap{}:",resultMap);
 		return resultMap;
 	}
 
 	@Override
 	public int getSalesCount() {
 		return expertSalesDAO.selectSalesCount();
+	}
+
+	@Override
+	public int getTotalMoney(int expertIdx) {
+		int price =0;
+		List<TotalSalesMoney> totalList = expertSalesDAO.selectTotalMoney(expertIdx);
+		for(TotalSalesMoney totalSalesList : totalList) {
+			price += totalSalesList.getPrice();
+		}
+		return price;
 	}
 	
 	
