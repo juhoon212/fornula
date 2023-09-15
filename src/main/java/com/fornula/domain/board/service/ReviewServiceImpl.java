@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.repository.ReviewRepository;
+import com.fornula.domain.expert.dto.Expert;
+import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.util.pager.Pager;
 

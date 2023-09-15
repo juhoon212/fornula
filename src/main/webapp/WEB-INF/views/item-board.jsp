@@ -97,7 +97,6 @@ li a {
 				<!-- id="category" 안에 있는 내용 -->
 				<div id="categoryBtn" style="text-align: center;">
 					<div class="row" id="problem">
-						<!-- id="problem"인 div 태그 -->
 						<c:forEach var="category" begin="1" end="10">
 							<div class="col-md-2 col-5 p-0" style="margin: 5px;">
 								<div class="col">
