@@ -1,5 +1,6 @@
 package com.fornula.domain.item.service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 	private final ItemBoardDAO itemBoardDAO;
 //	상품 리스트(6개씩 출력되게 할거야) 출력 용도
 	@Override
-	public Map<String, Object> getItemList(int pageNum) {
+	public Map<String, Object> getItemList(int pageNum, Integer categoryIdx) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
 		
 		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
@@ -29,7 +30,11 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		Map<String, Object> pageMap=new HashMap<>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
-	
+		
+		// categoryIdx를 파라미터로 전달
+	    pageMap.put("categoryIdx", categoryIdx);
+		log.info("categoryIdx={}",categoryIdx);
+		
 		List<ItemPhotoCategoryCart> itemBoardList=itemBoardDAO.selectItemList(pageMap);
 		
 		Map<String, Object> resultMap=new HashMap<>();
@@ -48,47 +53,40 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 //  검색창에서 검색했을 때 실행될 메소드
     @Override
     public Map<String, Object> searchList(int pageNum, String searchKeyword) {
-		int totalBoard=itemBoardDAO.selectItemBoardCount();
+        int totalBoard = itemBoardDAO.selectItemBoardCount();
         log.info("Total item boards count: {}", totalBoard);
 
-		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
+        Pager pager = new Pager(pageNum, totalBoard, 6, 6);
 
-		Map<String, Object> pageMap=new HashMap<String, Object>();
-		pageMap.put("startRow", pager.getStartRow());
-		pageMap.put("endRow", pager.getEndRow());
-		pageMap.put("searchKeyword", searchKeyword);
-		log.info("searchKeyword={}", searchKeyword);
-		
-		List<ItemPhotoCategoryCart> searchItemList=itemBoardDAO.searchItemList(pageMap);
+        Map<String, Object> pageMap = new HashMap<String, Object>();
+        pageMap.put("startRow", pager.getStartRow());
+        pageMap.put("endRow", pager.getEndRow());
+
+        // 검색어 유효성 검사
+        if (searchKeyword == null || searchKeyword.trim().isEmpty()) {
+            log.info("검색어를 입력해주세요.");
+
+            Map<String, Object> emptyResultMap = new HashMap<String, Object>();
+            emptyResultMap.put("pager", pager);
+            emptyResultMap.put("searchItemList", Collections.emptyList());
+            return emptyResultMap;
+        }
+
+        pageMap.put("searchKeyword", searchKeyword);
+        log.info("searchKeyword={}", searchKeyword);
+
+        List<ItemPhotoCategoryCart> searchItemList = itemBoardDAO.searchItemList(pageMap);
         log.info("Found {} items for page {}.", searchItemList.size(), pageNum);
-        
-		Map<String, Object> resultMap=new HashMap<String, Object>();
-		resultMap.put("pager", pager);
-		resultMap.put("searchItemList", searchItemList);		
-    	
-    	return resultMap;
-    }
-    
-//  상품 게시판에서 카테고리를 선택했을 때 상품들이 리스트로 출력되게 만들 메소드
-    @Override
-    public Map<String, Object> searchCategoryList(int pageNum) {
-		int totalBoard=itemBoardDAO.selectItemBoardCount();
-        log.info("Total item boards count: {}", totalBoard);
 
-		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
-		
-		Map<String, Object> pageMap=new HashMap<String, Object>();
-		pageMap.put("startRow", pager.getStartRow());
-		pageMap.put("endRow", pager.getEndRow());
-        log.info("PageMap for page {}: startRow: {}, endRow: {}", pageNum, pager.getStartRow(), pager.getEndRow());
+        // 검색 결과가 비어있는 경우에 대한 처리
+        if (searchItemList.isEmpty()) {
+            log.info("검색 결과가 없습니다.");
+        }
 
-		List<ItemPhotoCategoryCart> searchItemCategoryList=itemBoardDAO.searchItemCategoryList(pageMap);
-        log.info("Found {} items in the category for page {}.", searchItemCategoryList.size(), pageNum);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("pager", pager);
+        resultMap.put("searchItemList", searchItemList);
 
-		Map<String, Object> resultMap=new HashMap<String, Object>();
-		resultMap.put("pager", pager);
-		resultMap.put("searchItemCategoryList", searchItemCategoryList);
-		
-		return resultMap;
+        return resultMap;
     }
 }

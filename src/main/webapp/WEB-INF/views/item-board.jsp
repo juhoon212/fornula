@@ -73,43 +73,64 @@ li a {
 	text-align: center;
 	padding: 0px 32px;
 }
+
+#problem {
+	height: 70%; /* 0.7배로 줄인 높이 */
+}
+
+.category-button.active {
+	color: orange;
+}
 </style>
 <body class="archive grid-3-columns">
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
-		<section style="width: 100%;">
-			<div id="box" style="margin: 30px 0px; width: 100%;">
-				<div class="input-group search border-transparent">
-					<input type="text" name="searchKeyword"
-						class="form-control search-input text-dark"
-						placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search"
-						aria-describedby="search-button" value="${searchKeyword }">
-					<div class="input-group-append">
-						<button type="submit" id="search-button" class="btn search-button">
-							<i class="fa fa-search fa-lg text-dark"></i>
-						</button>
+		<div style="width: 100%;">
+			<div id="box" style="width: 100%;">
+				<div class="row">
+					<div class="col-md-12 text-center mb-3" style="margin-top: 0;">
+						<a href="<c:url value="/item/boardList"/>"
+							style="font-size: 16px;">전체 보기</a>
 					</div>
 				</div>
-				<div id="category">
-					<p style="margin: 0 auto; padding: 25px">전체 보기</p>
-					<div id="categoryBtn" style="text-align: center;">
-						<button id="allBtn" type="button" class="btn btn-primary">전체
-							보기</button>
-						<button id="designBtn" type="button"
-							class="btn btn-outline-primary" data-category-idx="1,2">디자인</button>
-						<button id="translationBtn" type="button"
-							class="btn btn-outline-primary" data-category-idx="3,4">번역</button>
-						<button id="photoEditionBtn" type="button"
-							class="btn btn-outline-primary" data-category-idx="5,6">사진/편집</button>
-						<button id="accountantBtn" type="button"
-							class="btn btn-outline-primary" data-category-idx="7,8">세무</button>
-						<button id="marketingBtn" type="button"
-							class="btn btn-outline-primary" data-category-idx="9,10">마케팅</button>
+				<!-- id="category" 안에 있는 내용 -->
+				<div id="categoryBtn" style="text-align: center;">
+					<div class="row" id="problem">
+						<!-- id="problem"인 div 태그 -->
+						<c:forEach var="category" begin="1" end="10">
+							<div class="col-md-2 col-5 p-0" style="margin: 5px;">
+								<div class="col">
+									<form action="<c:url value='/item/boardList'/>" method="get">
+										<input type="hidden" name="categoryIdx" value="${category}" />
+										<!-- 이벤트 리스너를 추가하여 버튼 클릭 시 배경색 변경 -->
+										<button type="submit"
+											class="category-button btn category-button-${category} ${category == 1 ? 'all-button' : ''}">
+											<c:choose>
+												<c:when test="${category == 1}">그래픽</c:when>
+												<c:when test="${category == 2}">제품</c:when>
+												<c:when test="${category == 3}">영어</c:when>
+												<c:when test="${category == 4}">중국어</c:when>
+												<c:when test="${category == 5}">헤어 메이크업</c:when>
+												<c:when test="${category == 6}">제품 홍보 사진</c:when>
+												<c:when test="${category == 7}">사업자</c:when>
+												<c:when test="${category == 8}">개인</c:when>
+												<c:when test="${category == 9}">SNS 홍보</c:when>
+												<c:when test="${category == 10}">해외 마케팅</c:when>
+											</c:choose>
+										</button>
+									</form>
+								</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
+				<!-- 여기까지 id="category" 안에 있는 내용 -->
 			</div>
-		</section>
+		</div>
+
+
+
 		<div class="row">
 			<div class="col-12">
 				<div class="blog-grid-posts">
@@ -266,27 +287,6 @@ li a {
 
 		// 초기 페이지 로딩 시 페이지 업데이트 호출
 		updatePage();
-
-		// 각 버튼에 대한 클릭 이벤트 핸들러
-		document.getElementById("designBtn").addEventListener("click", function() {
-		    window.location.href = '/item-board?categoryIdx=1,2';
-		});
-
-		document.getElementById("translationBtn").addEventListener("click", function() {
-		    window.location.href = '/item-board?categoryIdx=3,4';
-		});
-
-		document.getElementById("photoEditionBtn").addEventListener("click", function() {
-		    window.location.href = '/item-board?categoryIdx=5,6';
-		});
-
-		document.getElementById("accountantBtn").addEventListener("click", function() {
-		    window.location.href = '/item-board?categoryIdx=7,8';
-		});
-
-		document.getElementById("marketingBtn").addEventListener("click", function() {
-		    window.location.href = '/item-board?categoryIdx=9,10';
-		});
 	</script>
 </body>
 </html>
