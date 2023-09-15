@@ -87,6 +87,24 @@ li a {
 
 	<main class="main container">
 		<div style="width: 100%;">
+			<form action="item-board" method="get"
+				class="search-form d-flex align-items-center h-100"
+				onsubmit="return validateSearch()">
+				<div class="input-group search border-transparent">
+					<input type="text" name="searchKeyword"
+						class="form-control search-input text-dark"
+						placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search"
+						aria-describedby="search-button" value="${searchKeyword}">
+					<div class="input-group-append">
+						<button type="submit" id="search-button" class="btn search-button">
+							<i class="fa fa-search fa-lg text-dark"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+			<!-- 에러 메시지를 표시할 공간 -->
+			<div id="error-message" class="text-danger"></div>
+
 			<div id="box" style="width: 100%;">
 				<div class="row">
 					<div class="col-md-12 text-center mb-3" style="margin-top: 0;">
@@ -286,6 +304,24 @@ li a {
 
 		// 초기 페이지 로딩 시 페이지 업데이트 호출
 		updatePage();
+		
+		// 검색어를 쓰지 않고 입력 시 검색어 입력을 요구
+		function validateSearch() {
+			// 검색어 입력란의 값을 가져옵니다.
+			var searchKeyword = document
+					.querySelector('input[name="searchKeyword"]').value;
+
+			// 검색어가 비어 있는 경우
+			if (searchKeyword.trim() === "") {
+				// 에러 메시지를 표시하고 폼 제출을 막습니다.
+				document.getElementById('error-message').textContent = "검색어를 입력하세요.";
+				return false;
+			} else {
+				// 검색어가 비어 있지 않은 경우 에러 메시지를 지웁니다.
+				document.getElementById('error-message').textContent = "";
+				return true; // 폼을 제출합니다.
+			}
+		}
 	</script>
 </body>
 </html>
