@@ -142,7 +142,6 @@ p #logo {
 			<nav
 				class="navbar navbar-expand-lg navbar-light py-4 bg-light-orange"
 				id="lana-pet-main-navbar" data-lana-collapse-bg="bg-light-orange"
-				id="lana-pet-main-navbar"
 				style="padding: 0px 16px !important; height: 100px;">
 				<p id="logo">
 					<a class="navbar-brand" href="<c:url value="/"/>"> FORNUAL </a>
@@ -231,7 +230,7 @@ p #logo {
 
 					<!-- 토글, 검색 버튼  -->
 					<div class="d-none d-xl-inline-flex ml-xl-4">
-						<!-- 검색 기능 주석 처리 -->
+						<!-- 검색 기능 -->
 						<form class="search-widget d-none d-xl-inline-flex ml-3">
 							<button class="search-toggler" type="button"
 								data-toggle="collapse" data-target="#lana-search"
@@ -379,13 +378,14 @@ p #logo {
 		<div
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
-			<!-- 검색 기능 주석 처리 -->
-			<form method="get"
+			<!-- 검색 기능 처리 -->
+			<form action="item-board" method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
-					<input type="text" name="s"
-						class="form-control search-input text-dark" placeholder="Search"
-						aria-label="Search" aria-describedby="search-button">
+					<input type="text" name="searchKeyword"
+						class="form-control search-input text-dark"
+						placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search"
+						aria-describedby="search-button" value="${searchKeyword }">
 					<div class="input-group-append">
 						<!-- 검색 아이콘 버튼 -->
 						<button type="button" class="btn btn-sm close-button"
@@ -402,9 +402,9 @@ p #logo {
 					</div>
 				</div>
 			</form>
-		</div>
 
 		</div>
+
 	</header>
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
