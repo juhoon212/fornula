@@ -610,7 +610,11 @@ p #logo {
            }, body: JSON.stringify({ 
                 "id" : id.value,
                 "password" : password.value
-              })
+              }),
+              beforeSend: function(xhr) {
+  				//XMLHttpRequest 객체의 요청 메세지의 머릿부에 CSRF 토큰을 저장하여 전달
+  				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+  			},
          })
       .then((response) => response.json())
         .then((data) => {

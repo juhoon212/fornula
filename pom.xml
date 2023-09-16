@@ -29,7 +29,10 @@
 		<org.springframework-version>5.3.29</org.springframework-version>
 		<org.aspectj-version>1.9.19</org.aspectj-version>
 		<org.slf4j-version>2.0.7</org.slf4j-version>
+		<spring.security-version>5.8.6</spring.security-version>
 	</properties>
+	
+	
 	
 	<!-- dependencies : dependency 엘리먼트를 등록하기 위한 엘리먼트 --> 
 	<dependencies>
@@ -284,6 +287,49 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>${spring.security-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>${spring.security-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>${spring.security-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>${spring.security-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis -->
+		<!--  => Social로그인 기능을 제공하기 위한 라이브러리 -->
+		<dependency>
+		    <groupId>com.github.scribejava</groupId>
+		    <artifactId>scribejava-apis</artifactId>
+		    <version>3.3.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
 
 	</dependencies>
 	

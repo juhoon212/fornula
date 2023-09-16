@@ -19,4 +19,6 @@ public interface MemberLoginRepository {
 	Optional<Member> findByIdx(int memberIdx);
 	
 	int updateMemberPassword(String password, String id);
+	
+	
 }

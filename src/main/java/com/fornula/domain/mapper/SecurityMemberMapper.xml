@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fornula.domain.member.mapper.java.SecurityMemberMapper">
+	
+	<insert id="addSecurityMember">
+	
+		<selectKey resultType="int" keyProperty="memberIdx" order="BEFORE">
+			select member_seq.nextval from dual
+		</selectKey>
+		
+		INSERT INTO MEMBER
+		VALUES(
+			#{memberIdx},
+			#{id},
+			#{password},
+			#{email},
+			sysdate , 
+			1,
+			#{memberFileName},
+			sysdate , 
+			#{categoryOne},
+			#{categoryTwo},
+			#{categoryThree},
+			1
+			)
+	</insert>
+	
+	<insert id="addAuth">
+	
+		<selectKey resultType="int" keyProperty="authIdx" order="BEFORE">
+			SELECT auth_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO AUTH 
+		VALUES(
+			#{authIdx},
+			#{id}, 
+			#{role}
+			)
+	</insert>
+	
+	<resultMap type="Member" id="securityMemberResultMap">
+		<id column="member_idx" property="memberIdx"/>
+		<result column="id" property="id"/>
+		<result column="password" property="password"/>
+		<result column="email" property="email"/>
+		<result column="member_date" property="memberDate"/>
+		<result column="member_status" property="memberStatus"/>
+		<result column="memberfile_name" property="memberfileName"/>
+		<result column="login_date" property="loginDate"/>
+		<result column="category_one" property="categoryOne"/>
+		<result column="category_two" property="categoryTwo"/>
+		<result column="category_three" property="categoryThree"/>
+		<result column="enabled" property="enabled"/>
+		<collection property="memberAuthList" ofType="Auth">
+			<result column="auth_idx" property="authIdx"/>
+			<result column="id" property="id"/>
+			<result column="role" property="role"/>
+		</collection>
+	</resultMap>
+	
+	<select id="findSecurityMemberById" resultMap="securityMemberResultMap">
+		SELECT  MEMBER.member_idx,
+				MEMBER.id,
+				MEMBER.password,
+				MEMBER.email,
+				MEMBER.member_date,
+				MEMBER.member_status,
+				MEMBER.memberfile_name,
+				MEMBER.login_date,
+				MEMBER.category_one,
+				MEMBER.category_two,
+				MEMBER.category_three,
+				MEMBER.enabled,
+				AUTH.ROLE
+		FROM Member
+			JOIN AUTH
+				ON MEMBER.id = AUTH.id
+		WHERE MEMBER.id = #{id}
+	</select>
+	
+	
+</mapper>
