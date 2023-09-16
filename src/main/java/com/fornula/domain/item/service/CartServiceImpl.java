@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.item.dto.Cart;
 import com.fornula.domain.item.dto.CartList;
+import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,11 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<CartList> getCartList(int memberIdx) {
 		return cartRepository.selectCart(memberIdx);
+	}
+
+	@Override
+	public Photo getCartPhotoIdx(int itemIdx) {
+		return cartRepository.selectCartPhotoidx(itemIdx);
 	}
 
 }

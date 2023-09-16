@@ -18,5 +18,4 @@ public class Cart {
 	private int itemIdx;
 	private int itemPhotoIdx;
 
-
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.item.dto.Cart;
 import com.fornula.domain.item.dto.CartList;
+import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.mapper.java.CartMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class CartRepositoryImpl implements CartRepository {
 
 	@Override
 	public int insertCart(Cart cart) {
-		return sqlSession.getMapper(CartMapper.class).insertCart(cart);
+		return sqlSession.getMapper(CartMapper.class).inserCart(cart);
 	}
 
 	@Override
@@ -29,7 +30,11 @@ public class CartRepositoryImpl implements CartRepository {
 
 	@Override
 	public List<CartList> selectCart(int memberIdx) {
-		// TODO Auto-generated method stub
 		return sqlSession.getMapper(CartMapper.class).selectCart(memberIdx);
+	}
+
+	@Override
+	public Photo selectCartPhotoidx(int itemIdx) {
+		return sqlSession.getMapper(CartMapper.class).selectCartPhotoidx(itemIdx);
 	}
 }

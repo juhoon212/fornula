@@ -147,7 +147,7 @@ a {
 
 						<div class="gongback">
 							<h4>
-								<a href="expertoutput">작성자 번호 : ${item.expertIdx }</a>
+								<a href="<c:url value="/expert/output"/>">작성자 번호 : ${item.expertIdx }</a>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
@@ -164,7 +164,12 @@ a {
 									₩
 									<fmt:formatNumber type="number" value="${item.price}" pattern="#,###" />
 								</h4>
-								<button style="float: right;" onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+								<span>
+									<button id="cartBtn" style="background: white;" onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'" data-itemIdx ="${item.itemIdx} ">
+									<img style="padding:0px 10px; width: 60px;" id="heartImg" src="<c:url value="/pictures/placeholder/noheart.png"/>"></button>
+									<%-- <button id="cartBtn" style="background: white;" data-itemIdx ="${item.itemIdx} "><img style="padding:0px 10px; width: 60px;" id="heartImg" src="<c:url value="/pictures/placeholder/noheart.png"/>"></button> --%>
+									<button style="float: right; padding: 5px;" onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+								</span>
 							</div>
 
 						</div>
@@ -263,7 +268,7 @@ a {
 	</main>
 	<jsp:include page="footer.jsp" />
 
-	<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+	<%-- <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script> --%>
 	<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
@@ -272,8 +277,31 @@ a {
 	<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+	$(document).ready(function () {
+        $("#cartBtn").click(function () {
+        	var PhotoURL ="${pageContext.request.contextPath}/pictures/placeholder/heart.png"
+        	
+        	var itemIdx = $(this).attr("data-itemIdx");
+        	
+            $.ajax({
+                type: "POST",
+                url: "/item/" + itemIdx + "/1",
+                success: function (response) {
+                    if (response === "success") {
+                        alert("장바구니에 상품이 추가되었습니다.");
+		                $("#cartBtn img").attr("src", PhotoURL);
+                    } else {
+                        alert("장바구니 추가에 실패했습니다.");
+                    }
+                },
+                error: function () {
+                    alert("장바구니 추가 중 오류가 발생했습니다.");
+                }
+            }); 
+        });
+    });
 	</script>
 </body>
 </html>

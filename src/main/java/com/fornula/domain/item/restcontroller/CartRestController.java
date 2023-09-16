@@ -36,18 +36,21 @@ public class CartRestController {
 	// 장바구니 삽입
 	@PostMapping("/item/{itemIdx}/{pageNum}")
 	public String addCart(@PathVariable int itemIdx
-			,HttpSession session) {
+			,HttpSession session
+			,Model model) {
 		
 		//세션에서 memberIdx 추출
 		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		int memberIdx=member.getMemberIdx();
 		log.info("memberIdx:{}", memberIdx);
+		log.info("itemIdx:{}", itemIdx);
 		
 		Cart cart = new Cart();
 		
 		//photo객체를 검색하는 서비스 호출
-		Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
-		int itemPhotoIdx = selectPhoto.getPhotoIdx();
+		Photo photo = cartService.getCartPhotoIdx(itemIdx);
+		int itemPhotoIdx = photo.getPhotoIdx();
+		log.info("photo:{}",photo);
 		log.info("itemPhotoIdx:{}",itemPhotoIdx);
     	
 		//cart 객체에 값 넣기

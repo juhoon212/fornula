@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.board.mapper.java.BoardMapper">
-
-  <!-- 게시물 작성 -->
+<!-- 
+  게시물 작성
   <insert id="insertBoard" parameterType="Board">
     <selectKey resultType="int" keyProperty="boardIdx" order="BEFORE">
        select board_seq.nextval from dual
@@ -20,14 +20,14 @@
                 ,sysdate  )
   </insert>
   
-  <!-- 게시물 삭제 -->
+  게시물 삭제
   <update id="deleteBoard">
     update board 
     set board_status=0
     where board_idx = #{boardIdx}
   </update>
  
-  <!-- 게시물 수정 -->
+  게시물 수정
   <update id="updateBoard" parameterType="Board">
     update board 
     set board_title = #{boardTitle}
@@ -37,7 +37,7 @@
     where board_idx = #{boardIdx}
   </update>
  
-   <!-- 게시물 한개 출력 -->
+   게시물 한개 출력
    <select id="selectBoard" resultType="Board">
    select board_idx
          ,board_title
@@ -53,7 +53,7 @@
     where board_idx = #{boardIdx}
    </select>
    
-   <!-- 게시물 갯수 -->
+   게시물 갯수
    <select id="count" resultType="int">
      select count(*) from board
      <if test="keyword != null and keyword !=''">
@@ -62,21 +62,21 @@
      </if>
    </select>
  
-   <!-- 댓글 갯수 증가 -->
+   댓글 갯수 증가
   <update id="updateCommentCnt" parameterType="map">
   update board 
   set comment_cnt = comment_cnt + #{cnt}
   where board_idx = #{boardIdx}
   </update>
  
-   <!-- 조회수 증가 -->
+   조회수 증가
    <update id="increaseViewCnt">
    update board 
    set view_cnt = view_cnt + 1
    where board_idx = #{boardIdx}
    </update>
  
-     <!-- 반복 select 
+     반복 select 
    <sql id="select">
    select board_idx
          ,board_title
@@ -96,9 +96,9 @@
    <include refid="select"/>
    order by reg_date desc, board_idx desc
    limit #(offset), #(pageSize)  
-  </select>-->
+  </select>
  
-   <!-- 게시물 전체 출력 -->
+   게시물 전체 출력
    <select id="selectBoardList" resultType="Board">
    select * 
    from(select rownum rn, b.*
@@ -121,5 +121,5 @@
          b )
      where rn between #{startRow} and #{endRow}
    </select>
- 
+   -->
 </mapper>

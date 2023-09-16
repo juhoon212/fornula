@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fornula.domain.admin.mapper.java.AdminMapper">
+<mapper namespace="com.fornula.domain.item.mapper.java.CartMapper">
 	<!-- 장바구니 담기 -->
 	<insert id="inserCart">
 		<selectKey resultType="int" keyProperty="cartIdx" order="BEFORE"> 
@@ -9,7 +9,20 @@
 		insert into cart values
 			(#{cartIdx},#{memberIdx},#{itemIdx},#{itemPhotoIdx},sysdate)
 	</insert>
-	
+<!-- 	<resultMap type="CartList" id="CartList">
+		<association property="cart" javaType="Cart">
+			<id column="item_idx" property="itemIdx"/>
+		</association>
+		<association property="item" javaType="Item">
+			<id column="item_name" property="itemName"/>
+			<result column="item_content" property="itemContent"/>
+			<result column="price" property="price"/>
+		<association property="photo" javaType="Photo">
+			<id column="itemfile_name" property="itemfileName" />
+		</association>
+		</association>
+	</resultMap> -->
+
 	<!-- 장바구니 출력 -->
 	<select id="selectCart" resultType="CartList">
 		select C.item_idx
@@ -22,6 +35,14 @@
 		left join photo P on I.item_idx =P.item_idx
 		where C.member_idx = #{memberIdx}
 		order by C.cart_date
+	</select>
+	
+	<!-- photoIdx 검색 -->
+	<select id="selectCartPhotoidx" resultType="Photo">
+		select photo_idx 
+			,itemfile_name
+		from photo
+		where item_idx = #{itemIdx}
 	</select>
 	
 	<!-- 장바구니 삭제 -->

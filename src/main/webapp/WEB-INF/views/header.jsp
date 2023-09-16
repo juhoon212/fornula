@@ -317,7 +317,7 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">전문가</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
+								href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">고객센터</a></li>
 							<li><a class="nav-link"
