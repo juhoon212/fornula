@@ -1,0 +1,35 @@
+package com.fornula.domain.item.repository;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.fornula.domain.item.dto.Cart;
+import com.fornula.domain.item.dto.CartList;
+import com.fornula.domain.item.mapper.java.CartMapper;
+
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor
+public class CartRepositoryImpl implements CartRepository {
+	private final SqlSession sqlSession;
+
+	@Override
+	public int insertCart(Cart cart) {
+		return sqlSession.getMapper(CartMapper.class).insertCart(cart);
+	}
+
+	@Override
+	public int delete(int itemIdx, int memberIdx) {
+		return sqlSession.getMapper(CartMapper.class).delete(itemIdx, memberIdx);
+	}
+
+	@Override
+	public List<CartList> selectCart(int memberIdx) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CartMapper.class).selectCart(memberIdx);
+	}
+}

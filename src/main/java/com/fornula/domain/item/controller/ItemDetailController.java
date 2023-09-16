@@ -47,7 +47,6 @@ public class ItemDetailController {
     	Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
     	
     	
-    	
     	String originalFileName = extractPhoto(selectPhoto); // 사진 로직
     	
     	model.addAttribute("item", findItem);
@@ -63,6 +62,7 @@ public class ItemDetailController {
 		
 		model.addAttribute("pager", selectReviews.get("pager"));
 		model.addAttribute("reviewList", selectReviews.get("reviewList"));
+		log.info("itemController: {}",selectReviews);
     	
     	return "item";
     }

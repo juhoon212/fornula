@@ -223,7 +223,13 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">세무</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">마케팅</a></li>
+								href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">전문가&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">고객센터</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">회사소개</a></li>
 						</ul>
 					</div>
 
@@ -307,11 +313,29 @@ p #logo {
 								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">세무</a></li>
 								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">마케팅</a></li>
+								href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">전문가</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">고객센터</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">회사소개</a></li>
 							</ul>
 						</div>
-						<form action="<c:url value="/member/logout"/>" method="post">
 							<!-- 프로필 사진 삽입 -->
+							<form class="search-widget d-none d-xl-inline-flex ml-3">
+							<button class="search-toggler" type="button"
+								data-toggle="collapse" data-target="#lana-search"
+								aria-controls="lana-search" aria-expanded="false"
+								aria-label="Toggle search">
+								<i class="fas fa-search fa-2x fa-fw text-dark"></i>
+							</button>
+						</form>
+							
+							
+						<form action="<c:url value="/member/logout"/>" method="post">
 							<div class="dropdown">
 								<div class="profile">
 									<c:if test="${sessionScope.loginMember.memberStatus == 1}">
