@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
@@ -12,25 +13,51 @@
 
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>">
 
-<link rel="stylesheet" id="montserrat-css" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-<link rel="stylesheet" id="open-sans-css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+<link rel="stylesheet" id="montserrat-css"
+	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+<link rel="stylesheet" id="open-sans-css"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-<link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
-<link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css" media="all">
-<link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>" type="text/css" media="all">
-<link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
-<link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link rel="stylesheet" id="animate-css"
+	href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="font-awesome-css"
+	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css"
+	href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="smartmenus-bootstrap-css"
+	href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="swiper-css"
+	href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="magnific-popup-css"
+	href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-icon-css"
+	href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-theme-css"
+	href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-print-css"
+	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
+	type="text/css" media="print">
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap"
+	rel="stylesheet">
 
 
 
@@ -130,15 +157,12 @@ a {
 </script>
 </head>
 <body class="single single-post">
-
-
-
 	<jsp:include page="header.jsp" />
 
 	<main class="main">
 
-
-		<div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
+		<div id="post-1"
+			class="post type-post post-1 has-post-thumbnail comment-open">
 			<div class="container post-container bg-white">
 				<div class="row justify-content-center post-row no-gutters">
 					<div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
@@ -147,13 +171,16 @@ a {
 
 						<div class="gongback">
 							<h4>
-								<a href="<c:url value="/expert/output"/>">작성자 번호 : ${item.expertIdx }</a>
+								<a href="<c:url value="/expert/output"/>">작성자 번호 :
+									${item.expertIdx }</a>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
 						<hr>
 						<div id="jul">&nbsp</div>
-						<img class="img-fluid post-thumbnail" src="<c:url value='/images/upload/${originalFileName}'/>" alt="Post">
+						<img class="img-fluid post-thumbnail"
+							src="<c:url value='/images/upload/${originalFileName}'/>"
+							alt="Post">
 					</div>
 					<div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
 						<div class="post-content">
@@ -162,13 +189,30 @@ a {
 							<div class="post-content" id="detailbox">
 								<h4 style="float: right;">
 									₩
-									<fmt:formatNumber type="number" value="${item.price}" pattern="#,###" />
+									<fmt:formatNumber type="number" value="${item.price}"
+										pattern="#,###" />
 								</h4>
 								<span>
-									<button id="cartBtn" style="background: white;" onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'" data-itemIdx ="${item.itemIdx} ">
-									<img style="padding:0px 10px; width: 60px;" id="heartImg" src="<c:url value="/pictures/placeholder/noheart.png"/>"></button>
-									<%-- <button id="cartBtn" style="background: white;" data-itemIdx ="${item.itemIdx} "><img style="padding:0px 10px; width: 60px;" id="heartImg" src="<c:url value="/pictures/placeholder/noheart.png"/>"></button> --%>
-									<button style="float: right; padding: 5px;" onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+									<c:forEach items="${cartList}" var="cartList">
+											<c:if test="${cartList.cartStatus ==0 }">
+												<button id="cartBtn" style="background: white;"
+													onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'"
+													data-itemIdx="${item.itemIdx} ">
+													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+														src="<c:url value="/pictures/placeholder/noheart.png"/>">
+												</button>
+											</c:if>
+											<c:if test="${cartList.cartStatus !=0} }">
+												<button id="cartBtn" style="background: white;"
+													onclick="location.href='<c:url value="/item/delete/${item.itemIdx}"/>'"
+													data-itemIdx="${item.itemIdx} ">
+													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+														src="<c:url value="/pictures/placeholder/heart.png"/>">
+												</button>
+											</c:if>
+									</c:forEach>
+									<button style="float: right; padding: 5px;"
+										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
 								</span>
 							</div>
 
@@ -186,7 +230,10 @@ a {
 					<h4 class="comments-title font-weight-bold">Comments</h4>
 					<c:forEach var="reviewList" items="${reviewList}">
 						<ul class="comment-list list-unstyled">
-							<li class="media"><img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4" src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
+							<li class="media"><img
+								class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
+								src="<c:url value="/pictures/placeholder/65x65.svg"/>"
+								alt="Avatar">
 								<div class="media-body">
 									<div class="d-bock d-md-flex w-100 justify-content-between">
 										<h5 class="comment-title">
@@ -200,9 +247,12 @@ a {
 										<p>${reviewList.review.content}</p>
 									</div>
 
-									<div style="padding-left: 10px" class="d-bock d-md-flex w-100 justify-content-between">
+
+									<div style="padding-left: 10px"
+										class="d-bock d-md-flex w-100 justify-content-between">
 										<h5 class="comment-title">
-											<span style="color: blue; , font-size: 10px; , padding-left: 10px;">판매자</span>
+											<span
+												style="color: blue; , font-size: 10px; , padding-left: 10px;">판매자</span>
 										</h5>
 										<div class="comment-date">
 											<span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
@@ -214,8 +264,10 @@ a {
 
 
 									<ul class="comment-meta">
-
-										<li id="replyButton"><a id="reply-btn" href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>" class="comment-reply"> <i class="fas fa-reply fa-flip-horizontal"></i> Reply
+										<li id="replyButton"><a id="reply-btn"
+											href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>"
+											class="comment-reply"> <i
+												class="fas fa-reply fa-flip-horizontal"></i> Reply
 										</a></li>
 									</ul>
 								</div></li>
@@ -229,35 +281,27 @@ a {
 
 
 			<hr />
-			<!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
-                         role="navigation">
-                        <a class="prev disabled" href="#">
-                            Prev
-                        </a>
-                        <div class="nav-links">
-                            <ul class="page-numbers">
-                                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                            </ul>
-                        </div>
-                        <a class="next" href="#">
-                            Next
-                        </a>
-                    </nav> -->
+			
 			<div>${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
-				<h4 id="reply-title" class="comment-reply-title font-weight-bold">게시글 쓰기</h4>
-				<form method="Post" id="commentform" class="comment-form form-horizontal" action="<c:url value="/board/add/${item.itemIdx}"/>">
+				<h4 id="reply-title" class="comment-reply-title font-weight-bold">게시글
+					쓰기</h4>
+				<form method="Post" id="commentform"
+					class="comment-form form-horizontal"
+					action="<c:url value="/board/add/${item.itemIdx}"/>">
 					<div class="form-group row">
 						<div class="col">
-							<textarea class="form-control" name="content" rows="8" title="Comment" placeholder="Comment" aria-required="true" required="required"></textarea>
+							<textarea class="form-control" name="content" rows="8"
+								title="Comment" placeholder="Comment" aria-required="true"
+								required="required"></textarea>
 						</div>
 					</div>
 					<div class="row text-center">
 						<div class="col">
-							<input name="submit" type="submit" id="submit" class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x" value="Post Comment">
+							<input name="submit" type="submit" id="submit"
+								class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
+								value="Post Comment">
 						</div>
 					</div>
 				</form>
@@ -269,39 +313,71 @@ a {
 	<jsp:include page="footer.jsp" />
 
 	<%-- <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script> --%>
-	<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function () {
-        $("#cartBtn").click(function () {
-        	var PhotoURL ="${pageContext.request.contextPath}/pictures/placeholder/heart.png"
-        	
-        	var itemIdx = $(this).attr("data-itemIdx");
-        	
-            $.ajax({
-                type: "POST",
-                url: "/item/" + itemIdx + "/1",
-                success: function (response) {
-                    if (response === "success") {
-                        alert("장바구니에 상품이 추가되었습니다.");
-		                $("#cartBtn img").attr("src", PhotoURL);
-                    } else {
-                        alert("장바구니 추가에 실패했습니다.");
-                    }
-                },
-                error: function () {
-                    alert("장바구니 추가 중 오류가 발생했습니다.");
+	 //var cart = ${cart};
+	$(document).ready(function() {
+	        //console.log(cart);
+	        //alert(cart);
+
+	        $("#cartBtn").click(function() {
+	        var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+	        var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+	        var itemIdx = $(this).attr("data-itemIdx");
+ 
+	        $.ajax({
+	            type: "POST",
+	            url: "/item/" + itemIdx + "/1",
+	            success: function(response) {
+	                if (response === "success") {
+	                    alert("장바구니에 상품이 추가되었습니다.");
+	                    $("#cartBtn img").attr("src", afterPhotoURL);
+	                } else {
+	                    alert("장바구니 추가에 실패했습니다.");
+	                }
+	            },
+	            error: function() {
+	                alert("장바구니 추가 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }); 
+	        
+                if (confirm("장바구니를 삭제하시겠습니다.")) {
+                    $.ajax({
+                        type: "delete",
+                        url: "/item/delete/"+itemIdx"
+                        dataType: "text",
+                        success: function (result) {
+                        	alert("장바구니를 삭제하였습니다.")
+                            cartListDisplay();
+                            $("#cartBtn img").attr("src", beforePhotoURL );
+                        },
+                        error: function (xhr) {
+                            alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+                        }
+                    });
                 }
-            }); 
+            }
         });
-    });
+
 	</script>
 </body>
 </html>

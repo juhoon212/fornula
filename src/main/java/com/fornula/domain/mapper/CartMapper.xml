@@ -7,9 +7,10 @@
 			select cart_seq.nextval from dual
 		</selectKey>
 		insert into cart values
-			(#{cartIdx},#{memberIdx},#{itemIdx},#{itemPhotoIdx},sysdate)
+			(#{cartIdx},#{memberIdx},#{itemIdx},#{itemPhotoIdx},sysdate, 1)
 	</insert>
-<!-- 	<resultMap type="CartList" id="CartList">
+	
+	<resultMap type="CartList" id="CartList">
 		<association property="cart" javaType="Cart">
 			<id column="item_idx" property="itemIdx"/>
 		</association>
@@ -17,22 +18,24 @@
 			<id column="item_name" property="itemName"/>
 			<result column="item_content" property="itemContent"/>
 			<result column="price" property="price"/>
+		</association>
 		<association property="photo" javaType="Photo">
 			<id column="itemfile_name" property="itemfileName" />
 		</association>
-		</association>
-	</resultMap> -->
-
+	</resultMap>
+	
 	<!-- 장바구니 출력 -->
 	<select id="selectCart" resultType="CartList">
 		select C.item_idx
+			  ,C.member_idx
 			  ,I.item_name
 			  ,I.item_content
 			  ,I.price
 			  ,P.itemfile_name
 		from cart C
-		join item I ON C.item_idx = I.item_idx
-		left join photo P on I.item_idx =P.item_idx
+		join item I 
+		ON C.item_idx = I.item_idx
+		left join photo P on I.item_idx=P.item_idx
 		where C.member_idx = #{memberIdx}
 		order by C.cart_date
 	</select>
@@ -49,5 +52,12 @@
 	<delete id="deleteCart">
 		delete from cart where item_idx=#{itemIdx} and member_idx =#{memberIdx}
 	</delete>
+	
+	
+	<!-- 장바구만 출력 -->
+	<select id="selectCartInfo" resultType="Cart">
+		select * from cart
+		where member_idx = #{memberIdx} and item_idx = #{itemIdx}
+	</select>
 	
 </mapper>

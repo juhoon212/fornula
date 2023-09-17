@@ -10,8 +10,10 @@ import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.repository.CartRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
 	private final CartRepository cartRepository;
@@ -35,5 +37,12 @@ public class CartServiceImpl implements CartService {
 	public Photo getCartPhotoIdx(int itemIdx) {
 		return cartRepository.selectCartPhotoidx(itemIdx);
 	}
+
+	@Override
+	public List<Cart> selectCartInfo(int memberIdx, int itemIdx) {
+		return cartRepository.selectCartInfo(memberIdx, itemIdx);
+	}
+
+
 
 }

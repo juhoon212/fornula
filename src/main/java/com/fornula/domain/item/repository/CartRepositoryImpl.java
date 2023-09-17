@@ -37,4 +37,10 @@ public class CartRepositoryImpl implements CartRepository {
 	public Photo selectCartPhotoidx(int itemIdx) {
 		return sqlSession.getMapper(CartMapper.class).selectCartPhotoidx(itemIdx);
 	}
+
+	@Override
+	public List<Cart> selectCartInfo(int memberIdx, int itemIdx) {
+		return sqlSession.getMapper(CartMapper.class).selectCartInfo(memberIdx, itemIdx);
+	}
+
 }

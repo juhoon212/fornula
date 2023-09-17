@@ -229,7 +229,7 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">고객센터</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">회사소개</a></li>
+								href="<c:url value="/info"/>">회사소개</a></li>
 						</ul>
 					</div>
 
@@ -321,7 +321,7 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">고객센터</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">회사소개</a></li>
+								href="<c:url value="/info"/>">회사소개</a></li>
 							</ul>
 						</div>
 							<!-- 프로필 사진 삽입 -->

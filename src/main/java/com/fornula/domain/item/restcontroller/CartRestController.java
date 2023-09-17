@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,44 +38,62 @@ public class CartRestController {
 	@PostMapping("/item/{itemIdx}/{pageNum}")
 	public String addCart(@PathVariable int itemIdx
 			,HttpSession session
+			,@ModelAttribute Cart cart
 			,Model model) {
 		
 		//세션에서 memberIdx 추출
 		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
 		int memberIdx=member.getMemberIdx();
-		log.info("memberIdx:{}", memberIdx);
-		log.info("itemIdx:{}", itemIdx);
+		log.info("postmapping의 memberIdx:{}", memberIdx);
+		log.info("postmapping의 itemIdx:{}", itemIdx);
 		
-		Cart cart = new Cart();
+		cart = new Cart();
 		
 		//photo객체를 검색하는 서비스 호출
 		Photo photo = cartService.getCartPhotoIdx(itemIdx);
 		int itemPhotoIdx = photo.getPhotoIdx();
-		log.info("photo:{}",photo);
-		log.info("itemPhotoIdx:{}",itemPhotoIdx);
+		log.info("postmapping의 photo:{}",photo);
+		log.info("postmapping의 itemPhotoIdx:{}",itemPhotoIdx);
     	
 		//cart 객체에 값 넣기
 		cart.setItemIdx(itemIdx);
 		cart.setItemPhotoIdx(itemPhotoIdx);
 		cart.setMemberIdx(memberIdx);
-		log.info("cart:{}",cart);
+		log.info("postmapping의 cart:{}",cart);
 		
 		//cart에 삽입하는 서비스 호출
 		cartService.addCart(cart);
 		
 		return "success";
 	}
+	
+	// 아이템 페이지 에서장바구니 삭제
+	@DeleteMapping("/item/delete/{itemIdx}")
+	public String removeItemCart(@PathVariable int itemIdx, HttpSession session) {
+
+			// 세션에서 memberIdx 추출
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		int memberIdx = member.getMemberIdx();
+		log.info("deletemapping의 memberIdx:{}", memberIdx);
+
+		cartService.removeCart(itemIdx, memberIdx);
+
+		return "success";
+		}
 
 	// 장바구니 목록 출력
+	
 	@GetMapping("/cart")
 	public List<CartList> getCartList(HttpSession session) {
 
 		// 세션에서 memberIdx 추출
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
-		log.info("memberIdx:{}", memberIdx);
+		log.info("getmapping의 memberIdx:{}", memberIdx);
 
-		return cartService.getCartList(memberIdx);
+		List<CartList> cartList=cartService.getCartList(memberIdx);
+		
+		return cartList;
 
 	}
 
@@ -85,10 +104,10 @@ public class CartRestController {
 		// 세션에서 memberIdx 추출
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
-		log.info("memberIdx:{}", memberIdx);
+		log.info("deletemapping의 memberIdx:{}", memberIdx);
 
 		cartService.removeCart(itemIdx, memberIdx);
 
-		return "succes";
+		return "success";
 	}
 }
