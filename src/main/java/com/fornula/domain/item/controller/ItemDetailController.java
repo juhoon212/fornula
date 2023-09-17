@@ -70,19 +70,19 @@ public class ItemDetailController {
     		return "redirect:/400";
     	}
     	
-    	Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		int memberIdx = member.getMemberIdx();
-		log.info("memberIdx:{}", memberIdx);
-		
-		List<Cart> cartList = cartService.selectCartInfo(memberIdx, itemIdx);
-		log.info("cart:{}", cartList);
-		model.addAttribute("cartList", cartList);
-		
-		
 		model.addAttribute("pager", selectReviews.get("pager"));
 		model.addAttribute("reviewList", selectReviews.get("reviewList"));
 		log.info("itemController: {}",selectReviews);
-    	
+		
+		
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		 if(member != null) { 
+			 int memberIdx = member.getMemberIdx();
+			 log.info("memberIdx:{}", memberIdx);
+			 List<Cart> cartList =cartService.selectCartInfo(memberIdx, itemIdx); 
+			 log.info("cart:{}",cartList); 
+			 model.addAttribute("cartList", cartList); }
+		
     	return "item";
     }
 

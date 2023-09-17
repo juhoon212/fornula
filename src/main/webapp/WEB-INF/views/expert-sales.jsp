@@ -140,13 +140,13 @@ tr td {
 							관리</label>
 					</div>
 					<div style="padding: 20px;">
-					<table style="font-size: 21px;">
-						<tr>
-							<th scope="col">총 판매 금액</th>
-							<td scope="col" style="text-align: right;" id="price">${price }
-								&nbsp;&nbsp;원</td>
-						</tr>
-					</table>
+						<table style="font-size: 21px;">
+							<tr>
+								<th scope="col">총 판매 금액</th>
+								<td scope="col" style="text-align: right;" id="price">${price }
+									&nbsp;&nbsp;원</td>
+							</tr>
+						</table>
 					</div>
 					<!-- <div class="input-group">
 							<select id="archive" class="form-control" name="salesStatus">
@@ -160,30 +160,22 @@ tr td {
 							</button>
 						</div> -->
 					<section>
-									<div id="post-1"
-										class="lana_story type-lana_story post-1 card story-card">
-						<c:choose>
-							<c:when test="${salesList == null }">
-								<div class="row">
-									<div class="col-md-4">
-										<p>판매내역이 존재하지 않습니다.</p>
+						<div id="post-1"
+							class="lana_story type-lana_story post-1 card story-card">
+							<c:choose>
+								<c:when test="${salesList == null }">
+									<div class="row">
+										<div class="col-md-4">
+											<p>판매내역이 존재하지 않습니다.</p>
+										</div>
 									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<c:forEach var="salesList" items="${salesList}">
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="salesList" items="${salesList}">
 										<div class="card-body">
 											<div class="blog-posts">
 												<div id="post-2"
 													class="post type-post post-2 card post-card">
-														<a href="<c:url value="/item/update/${salesList.itemIdx}"/>"
-																	class="more-link card-link d-flex align-items-center">상품수정</a>
-														<p class="post-text card-text">
-														<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
-														<h4 class="post-title card-title">
-															<a href="<c:url value="/item/${salesList.itemIdx}/1"/>">${salesList.itemName}</a>
-														</h4>
-														<%-- <p class="subtitle" name="itemContent">${salesList.itemContent }</p> --%>
 
 													<div class="row">
 														<div class="col-md-4">
@@ -232,24 +224,59 @@ tr td {
 												</div>
 											</div>
 										</div>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-									</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</div>
 
-						<nav style="padding: 5px;"
-							class="navigation pagination justify-content-between text-uppercase"
-							role="navigation">
-							<a class="prev disabled" href="<c:url value="#"/>"> Prev </a>
-							<div class="nav-links">
-								<ul class="page-numbers">
-									<li><span aria-current="page" class="page-numbers current">1</span></li>
-									<li><a class="page-numbers" href="<c:url value="#"/>">2</a></li>
-									<li><span class="page-numbers dots">…</span></li>
-									<li><a class="page-numbers" href="<c:url value="#"/>">4</a></li>
-								</ul>
+						<nav style="padding: 5px; text-align: center;">
+							<div class="pagination" style="text-align: center;">
+								<div class="prev">
+									<c:choose>
+										<c:when test="${pager.startPage > pager.blockSize}">
+											<a
+												href="<c:url value="/expert/sales"/>?pageNum=${pager.prevPage}">PREV</a>
+										</c:when>
+										<c:when test="${pager.pageNum > 1}">
+											<a
+												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum - 1}">PREV</a>
+										</c:when>
+										<c:otherwise>
+											<span class="disabled">PREV</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+
+								<div class="pages">
+									<c:forEach var="i" begin="${pager.startPage}"
+										end="${pager.endPage}" step="1">
+										<c:choose>
+											<c:when test="${pager.pageNum != i}">
+												<a href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
+											</c:when>
+											<c:otherwise>
+												<span class="current">[${i}]</span>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</div>
+
+								<div class="next">
+									<c:choose>
+										<c:when test="${pager.endPage != pager.totalPage}">
+											<a
+												href="<c:url value="/expert/sales"/>?pageNum=${pager.nextPage}">NEXT</a>
+										</c:when>
+										<c:when test="${pager.pageNum < pager.totalPage}">
+											<a
+												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
+										</c:when>
+										<c:otherwise>
+											<span class="disabled">NEXT</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
 							</div>
-							<a class="next" href="<c:url value="#"/>"> Next </a>
 						</nav>
 					</section>
 				</div>
@@ -274,7 +301,8 @@ tr td {
 								<div class="widget"
 									style="text-align: left; padding-left: 20px;">
 									<h3 class="widget-title">판매 관리</h3>
-									<ul class="list-unstyled"><!-- 이거 줄맞춤 안되있는거만 내가 class속성 추가해서 속성값으로 줄맞춤했어 -->
+									<ul class="list-unstyled">
+										<!-- 이거 줄맞춤 안되있는거만 내가 class속성 추가해서 속성값으로 줄맞춤했어 -->
 										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
 
 										<li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>

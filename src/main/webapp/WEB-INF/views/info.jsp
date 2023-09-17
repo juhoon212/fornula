@@ -242,13 +242,14 @@ p #logo {
 
 						// 마커가 지도 위에 표시되도록 설정합니다
 						marker.setMap(map);
-</script>
+						</script>
 						</div>
 						
 						<div class="col-4" style="text-align: left;">
-							<p style="font-size: 50px; font-family: 'HakgyoansimWoojuR'; font-weight: bold; ">Contact</p>
-							<p style="font-size: 27px;" >서울특별시 강남구 테헤란로 삼원타워</p>
-							<p style="font-size: 27px;">대표번호 02-1111-1111</p>
+							<p style="font-size: 48px; font-weight: bold; " data-scroll-animate="fadeInDown">CONTACT</p>
+							<hr>
+							<p style="font-size: 27px;font-family: 'HakgyoansimWoojuR';" >서울특별시 강남구 테헤란로 삼원타워</p>
+							<p style="font-size: 27px;font-family: 'HakgyoansimWoojuR';">대표번호 02-1111-1111</p>
 						</div>
 					</div>
 				</div>
