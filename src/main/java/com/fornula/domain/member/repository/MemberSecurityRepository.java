@@ -2,7 +2,7 @@ package com.fornula.domain.member.repository;
 
 import java.util.List;
 
-import com.fornula.domain.member.Auth;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 
 public interface MemberSecurityRepository {

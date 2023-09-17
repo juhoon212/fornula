@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.exception.custom.NotFoundIdException;
-import com.fornula.domain.member.Auth;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.RequiredArgsConstructor;

@@ -46,7 +46,7 @@
 		<!-- dataSource 필드에 DTO 클래스가 작성된 패키지 경로가 저장되도록 값 주입 -->
 		<!-- => XML 기반의 매퍼파일에서 Java 자료형 대신 사용될 별칭을 제공하기 위해 설정 -->
 		<!-- => Mybatis 환경설정파일의 typeAliases 엘리먼트(package 엘리먼트)와 유사한 기능 제공 -->
-		<property name="typeAliasesPackage" value="com.fornula" />
+		<property name="typeAliasesPackage" value="com.fornula.domain" />
 
 		<!-- mapperLocations 필드에 List 객체를 생성하여 저장되도록 의존성 주입 -->
 		<!-- => List 객체의 요소에는 XML 기반의 매퍼 파일의 경로를 저장 - 매퍼 등록 -->

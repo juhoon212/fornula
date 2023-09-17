@@ -1,4 +1,4 @@
-package com.fornula.domain.member;
+package com.fornula.domain.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

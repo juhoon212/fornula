@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.fornula.domain.member.Auth;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.mapper.java.SecurityMemberMapper;
 

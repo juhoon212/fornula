@@ -2,8 +2,6 @@ package com.fornula.domain.member.dto;
 
 import java.util.List;
 
-import com.fornula.domain.member.Auth;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fornula.domain.member.Auth;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 
 import lombok.AllArgsConstructor;

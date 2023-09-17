@@ -52,8 +52,8 @@
 		<result column="category_two" property="categoryTwo"/>
 		<result column="category_three" property="categoryThree"/>
 		<result column="enabled" property="enabled"/>
-		<collection property="memberAuthList" ofType="Auth">
-			<result column="auth_idx" property="authIdx"/>
+		<collection property="memberAuthList" ofType="com.fornula.domain.member.dto.Auth" javaType="List">
+			<id column="auth_idx" property="authIdx"/>
 			<result column="id" property="id"/>
 			<result column="role" property="role"/>
 		</collection>
