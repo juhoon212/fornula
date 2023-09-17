@@ -22,13 +22,27 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ItemBoardController {
 	private final ItemBoardService itemBoardService;
+	
+	private void extractOriginalFileName(Map<String, Object> resultMap) {
+		
+		int filePos;
+		
+		List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>) resultMap.get("itemBoardList");
+		for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
+			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
+			
+			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
+		}
+	}
 
-//  상품 전체를 출력하는 메소드  
+//  상품 전체를 출력하는 메소드 + 카테고리 버튼을 클릭하면 카테고리별로 상품을 출력하는 메소드 
 	@GetMapping("/boardList")
 	public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, 
-	                               @RequestParam(required = false) Integer categoryIdx, 
+	                               @RequestParam(required = false) Integer categoryIdx,
+	                               @RequestParam(required = false) String searchKeyword,
 	                               Model model) {
-	    Map<String, Object> resultMap = itemBoardService.getItemList(pageNum, categoryIdx);
+	    Map<String, Object> resultMap = itemBoardService.getItemList(pageNum, categoryIdx, searchKeyword);
 
 	    extractOriginalFileName(resultMap);
 
@@ -38,18 +52,5 @@ public class ItemBoardController {
 	    model.addAttribute("pager", resultMap.get("pager"));
 
 	    return "item-board";
-	}
-
-	private void extractOriginalFileName(Map<String, Object> resultMap) {
-
-		int filePos;
-
-		List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>) resultMap.get("itemBoardList");
-		for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
-			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
-
-			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
-			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
-		}
 	}
 }
