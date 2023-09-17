@@ -93,4 +93,10 @@ public class ItemDetailController {
 		
 		return originalFileName;
    }
+   
+	@GetMapping("/cartList")
+	public String getCart() {
+		return "cart";
+	}
+
 }

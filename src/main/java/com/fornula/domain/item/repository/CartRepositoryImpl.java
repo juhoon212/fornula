@@ -24,8 +24,8 @@ public class CartRepositoryImpl implements CartRepository {
 	}
 
 	@Override
-	public int delete(int itemIdx, int memberIdx) {
-		return sqlSession.getMapper(CartMapper.class).delete(itemIdx, memberIdx);
+	public int deleteCart(int itemIdx, int memberIdx) {
+		return sqlSession.getMapper(CartMapper.class).deleteCart(itemIdx, memberIdx);
 	}
 
 	@Override

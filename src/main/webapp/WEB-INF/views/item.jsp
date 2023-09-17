@@ -194,20 +194,19 @@ a {
 								</h4>
 								<span>
 									<c:forEach items="${cartList}" var="cartList">
-											<c:if test="${cartList.cartStatus ==0 }">
-												<button id="cartBtn" style="background: white;"
-													onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'"
-													data-itemIdx="${item.itemIdx} ">
-													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
-														src="<c:url value="/pictures/placeholder/noheart.png"/>">
-												</button>
-											</c:if>
-											<c:if test="${cartList.cartStatus !=0} }">
-												<button id="cartBtn" style="background: white;"
-													onclick="location.href='<c:url value="/item/delete/${item.itemIdx}"/>'"
-													data-itemIdx="${item.itemIdx} ">
+											<c:if test="${cartList.cartStatus ==1 && cartList!=null}">
+												<button id="cartBtn" style="background: white;"data-itemIdx="${item.itemIdx} ">
+													<%-- onclick="location.href='<c:url value="/item/${item.itemIdx}/delete"/>'" --%>
+													
 													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
 														src="<c:url value="/pictures/placeholder/heart.png"/>">
+												</button>
+											</c:if>
+											<c:if test="${empty cartList}">
+												<button id="cartBtn" style="background: white;"data-itemIdx="${item.itemIdx} ">
+													<%-- onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'" --%>
+													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+														src="<c:url value="/pictures/placeholder/noheart.png"/>">
 												</button>
 											</c:if>
 									</c:forEach>
@@ -333,51 +332,67 @@ a {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	 //var cart = ${cart};
-	$(document).ready(function() {
-	        //console.log(cart);
-	        //alert(cart);
+	/* var cart = ${cartList};
 
-	        $("#cartBtn").click(function() {
-	        var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
-	        var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
-	        var itemIdx = $(this).attr("data-itemIdx");
- 
-	        $.ajax({
-	            type: "POST",
-	            url: "/item/" + itemIdx + "/1",
-	            success: function(response) {
-	                if (response === "success") {
-	                    alert("장바구니에 상품이 추가되었습니다.");
-	                    $("#cartBtn img").attr("src", afterPhotoURL);
-	                } else {
-	                    alert("장바구니 추가에 실패했습니다.");
-	                }
-	            },
-	            error: function() {
-	                alert("장바구니 추가 중 오류가 발생했습니다.");
-	            }
-	        });
-	    }); 
-	        
-                if (confirm("장바구니를 삭제하시겠습니다.")) {
-                    $.ajax({
-                        type: "delete",
-                        url: "/item/delete/"+itemIdx"
-                        dataType: "text",
-                        success: function (result) {
-                        	alert("장바구니를 삭제하였습니다.")
-                            cartListDisplay();
-                            $("#cartBtn img").attr("src", beforePhotoURL );
-                        },
-                        error: function (xhr) {
-                            alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
-                        }
-                    });
-                }
-            }
-        });
+	var cartStatusValues = [];
 
+	for (var i = 0; i < cart.length; i++) {
+	  var cartItem = cart[i];
+	  var cartStatus = cartItem.cartStatus;
+	  cartStatusValues.push(cartStatus);
+	}
+	 */
+	 $(document).ready(function() {
+		    //console.log(cart);
+		    //alert(cart);
+		        var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+		        var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+		        var cartURL = "${pageContext.request.contextPath}";
+		        var item = $(this).attr("data-itemIdx");
+		        var itemIdx =${itemIdx};
+
+		    $("#cartBtn").click(function() {
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
+		            success: function(response) {
+		                if (response === "success") {
+		                    alert("장바구니에 상품이 추가되었습니다.");
+		                    $("#cartBtn img").attr("src", afterPhotoURL);
+		                } else {
+		                    alert("장바구니 추가에 실패했습니다.");
+		                }
+		            },
+		            error: function() {
+		                alert("장바구니 추가 중 오류가 발생했습니다.");	
+		            }
+		        });
+		    });
+
+		    /* 하트 클릭시 400페이지로 이동한다음에 뒤로가기 누르면 삭제가됨..  */
+		    $("#cartBtn").click(function() {
+		    if (confirm("장바구니를 삭제하시겠습니다.")) {
+		    	$.ajax({
+		            type: "DELETE", // HTTP 메서드 수정
+		            url: "${pageContext.request.contextPath}/item/"+itemIdx+"/delete",
+		            dataType: "text",
+		            success: function (result) {
+		                if (result === "success") { // 서버 응답 확인
+		                    window.location.href="${pageContext.request.contextPath}/item/" + itemIdx + "/1";
+		                    alert("장바구니를 삭제하였습니다.");
+		                    cartListDisplay();
+		                    $("#cartBtn img").attr("src", beforePhotoURL);
+		                } else {
+		                	alert("장바구니 삭제 중 오류가 발생했습니다.");
+		                }
+		            },
+		            error: function (xhr) {
+		                alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+		            }
+		        });
+		   	 }
+		 });
+	});
 	</script>
 </body>
 </html>

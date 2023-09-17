@@ -25,7 +25,8 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void removeCart(int itemIdx, int memberIdx) {
-		cartRepository.delete(itemIdx, memberIdx);
+		cartRepository.deleteCart(itemIdx, memberIdx);
+		log.info("Cart deleteMapping Service 실행 :{} ",cartRepository.deleteCart(itemIdx, memberIdx));
 	}
 
 	@Override

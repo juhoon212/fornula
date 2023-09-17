@@ -160,6 +160,7 @@ var photoURL ="${pageContext.request.contextPath}/images/upload/"
 var heartURL ="${pageContext.request.contextPath}/pictures/placeholder/";
 
 function cartListDisplay(){
+	alert("getmapping");
 	$.ajax({
 			type: "get",
 			url : cartListURL,

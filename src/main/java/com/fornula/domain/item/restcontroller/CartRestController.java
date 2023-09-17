@@ -36,53 +36,50 @@ public class CartRestController {
 
 	// 장바구니 삽입
 	@PostMapping("/item/{itemIdx}/{pageNum}")
-	public String addCart(@PathVariable int itemIdx
-			,HttpSession session
-			,@ModelAttribute Cart cart
-			,Model model) {
-		
-		//세션에서 memberIdx 추출
-		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
-		int memberIdx=member.getMemberIdx();
+	public String addCart(@PathVariable int itemIdx, HttpSession session, @ModelAttribute Cart cart, Model model) {
+
+		// 세션에서 memberIdx 추출
+		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		int memberIdx = member.getMemberIdx();
 		log.info("postmapping의 memberIdx:{}", memberIdx);
 		log.info("postmapping의 itemIdx:{}", itemIdx);
-		
+
 		cart = new Cart();
-		
-		//photo객체를 검색하는 서비스 호출
+
+		// photo객체를 검색하는 서비스 호출
 		Photo photo = cartService.getCartPhotoIdx(itemIdx);
 		int itemPhotoIdx = photo.getPhotoIdx();
-		log.info("postmapping의 photo:{}",photo);
-		log.info("postmapping의 itemPhotoIdx:{}",itemPhotoIdx);
-    	
-		//cart 객체에 값 넣기
+		log.info("postmapping의 photo:{}", photo);
+		log.info("postmapping의 itemPhotoIdx:{}", itemPhotoIdx);
+
+		// cart 객체에 값 넣기
 		cart.setItemIdx(itemIdx);
 		cart.setItemPhotoIdx(itemPhotoIdx);
 		cart.setMemberIdx(memberIdx);
-		log.info("postmapping의 cart:{}",cart);
-		
-		//cart에 삽입하는 서비스 호출
+		log.info("postmapping의 cart:{}", cart);
+
+		// cart에 삽입하는 서비스 호출
 		cartService.addCart(cart);
-		
+
 		return "success";
 	}
-	
-	// 아이템 페이지 에서장바구니 삭제
-	@DeleteMapping("/item/delete/{itemIdx}")
+
+	// 아이템 페이지에서 장바구니 삭제
+	@DeleteMapping("/item/{itemIdx}/delete")
 	public String removeItemCart(@PathVariable int itemIdx, HttpSession session) {
 
-			// 세션에서 memberIdx 추출
+		// 세션에서 memberIdx 추출
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("deletemapping의 memberIdx:{}", memberIdx);
+		log.info("deletemapping의 itemIdx :{}", itemIdx);
 
 		cartService.removeCart(itemIdx, memberIdx);
 
 		return "success";
-		}
+	}
 
 	// 장바구니 목록 출력
-	
 	@GetMapping("/cart")
 	public List<CartList> getCartList(HttpSession session) {
 
@@ -91,8 +88,8 @@ public class CartRestController {
 		int memberIdx = member.getMemberIdx();
 		log.info("getmapping의 memberIdx:{}", memberIdx);
 
-		List<CartList> cartList=cartService.getCartList(memberIdx);
-		
+		List<CartList> cartList = cartService.getCartList(memberIdx);
+
 		return cartList;
 
 	}

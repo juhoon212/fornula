@@ -11,7 +11,7 @@ import com.fornula.domain.item.dto.Photo;
 
 public interface CartService {
 	void addCart(Cart cart);
-	void removeCart(int itemIdx, int memberIdx );
+	void removeCart(@Param("itemIdx") int itemIdx, @Param("memberIdx") int memberIdx);
 	List<CartList> getCartList(int memberIdx);
 	Photo getCartPhotoIdx(int itemIdx);
 	List<Cart> selectCartInfo(@Param("memberIdx") int memberIdx, @Param("itemIdx") int itemIdx);
