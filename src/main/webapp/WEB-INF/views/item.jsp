@@ -157,22 +157,17 @@ a {
 </script>
 </head>
 <body class="single single-post">
-	<jsp:include page="header.jsp" />
-
+<jsp:include page="header.jsp" />
 	<main class="main">
-
 		<div id="post-1"
 			class="post type-post post-1 has-post-thumbnail comment-open">
 			<div class="container post-container bg-white">
 				<div class="row justify-content-center post-row no-gutters">
 					<div class="col-12 col-sm-11 col-md-10 post-thumbnail-col">
-
 						<h1>${item.itemName }</h1>
-
 						<div class="gongback">
 							<h4>
-								<a href="<c:url value="/expert/output"/>">작성자 번호 :
-									${item.expertIdx }</a>
+								<a href="<c:url value="expertoutput/${item.expertIdx }"/>">전문가 번호 : ${item.expertIdx }</a>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
@@ -184,7 +179,6 @@ a {
 					</div>
 					<div class="col-12 col-sm-11 col-md-10 col-lg-8 post-col">
 						<div class="post-content">
-
 							<h4>${item.itemContent }</h4>
 							<div class="post-content" id="detailbox">
 								<h4 style="float: right;">
@@ -194,14 +188,14 @@ a {
 								<span> 
 									<c:if test="${not empty cartList}">
 										<button id="cartBtn" style="background: white;">
-											<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
 												src="<c:url value="/pictures/placeholder/heart.png"/>">
 										</button>
 									</c:if> 
 									<c:if test="${empty cartList}">
 										<button id="cartBtn" style="background: white;"
 											data-itemIdx="${item.itemIdx} ">
-											<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
 												src="<c:url value="/pictures/placeholder/noheart.png"/>">
 										</button>
 									</c:if>
@@ -210,7 +204,6 @@ a {
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
 								</span>
 							</div>
-
 						</div>
 						<hr>
 					</div>
@@ -242,7 +235,6 @@ a {
 										<p>${reviewList.review.content}</p>
 									</div>
 
-
 									<div style="padding-left: 10px"
 										class="d-bock d-md-flex w-100 justify-content-between">
 										<h5 class="comment-title">
@@ -250,7 +242,7 @@ a {
 												style="color: blue; , font-size: 10px; , padding-left: 10px;">판매자</span>
 										</h5>
 										<div class="comment-date">
-											<span>&nbsp;&nbsp;&nbsp; ${reviewList.review.answerDate}</span>
+											<span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
 										</div>
 									</div>
 									<div class="comment-text">
@@ -259,6 +251,7 @@ a {
 
 
 									<ul class="comment-meta">
+
 										<li id="replyButton"><a id="reply-btn"
 											href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>"
 											class="comment-reply"> <i
@@ -276,7 +269,22 @@ a {
 
 
 			<hr />
-			
+			<!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
+                         role="navigation">
+                        <a class="prev disabled" href="#">
+                            Prev
+                        </a>
+                        <div class="nav-links">
+                            <ul class="page-numbers">
+                                <li><span aria-current="page" class="page-numbers current">1</span></li>
+                                <li><a class="page-numbers" href="#">2</a></li>
+                                <li><a class="page-numbers" href="#">3</a></li>
+                            </ul>
+                        </div>
+                        <a class="next" href="#">
+                            Next
+                        </a>
+                    </nav> -->
 			<div>${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
@@ -307,7 +315,6 @@ a {
 	</main>
 	<jsp:include page="footer.jsp" />
 
-	<%-- <script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script> --%>
 	<script type="text/javascript"
 		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 	<script type="text/javascript"
@@ -341,7 +348,6 @@ a {
 	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
 	                success: function(response) {
 	                    if (response === "success") {
-	                        alert("장바구니에 상품이 추가되었습니다.");
 	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
 	                    } else {
 	                        alert("로그인 사용자만 가능합니다.");
@@ -352,16 +358,12 @@ a {
 	                }
 	            });
 	        } else if (cartButton.attr("src") === afterPhotoURL) {
-	            if (confirm("장바구니를 삭제하시겠습니다.")) {
 	                $.ajax({
 	                    type: "DELETE",
 	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
 	                    dataType: "text",
 	                    success: function(result) {
 	                        if (result === "success") {
-	                            window.location.href = "${pageContext.request.contextPath}/item/" + itemIdx + "/1";
-	                            alert("장바구니를 삭제하였습니다.");
-	                            cartListDisplay();
 	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
 	                        } else {
 	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
@@ -371,7 +373,6 @@ a {
 	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
 	                    }
 	                });
-	            }
 	        }
 	    });
 	});

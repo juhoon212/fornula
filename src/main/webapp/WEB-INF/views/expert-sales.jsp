@@ -319,81 +319,7 @@ tr td {
 		</div>
 		<jsp:include page="footer.jsp" />
 	</main>
-	<!-- 기존의 사이드바 양식
-		<div class="col-12 col-lg-4 mt-4 mt-lg-0">
-			<div class="widget-sidebar story-sidebar">
-			<div id="img" style="text-align: center;" >
-					<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-						class="img-fluid rounded-circle mr-1 w-auto" alt="Author" width="200" height="200">
-				</div>
-				<div id="button" style="text-align: center;">
-					<a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id}</a>
-				</div>
-				<div class="widget widget_tag_cloud">
-					<div class="tagcloud">
-						<div id="changBtn" style="text-align: center;">
-							<a href="/mypageInfo" class="tag-cloud-link"
-								aria-label="admin change button">일반인으로 전환</a>
-								<br>
-								
-						</div>
-							<div class="widget" style="text-align: left;" id="list">
-								<h3 class="widget-title" id="expertmain" style="color: #ff8a00;">판매
-									관리</h3>
-								<ul style="color: black;">
-									<li><a href="javascript:menuchange();" id="info"
-										class="expertmenu">전문가 정보</a></li>
-									<li><a href="javascript:menuchange();" id="sale"
-										class="expertmenu" onclick="menuchange()">판매 관리</a></li>
-									<li><a href="javascript:menuchange();" id="po"
-										class="expertmenu" onclick="menuchange()">포트폴리오</a></li>
-									<li><a href="/expertitem" id="item"
-										class="expertmenu" onclick="menuchange()">상품 등록</a></li>
-								</ul>
-							</div>
-						</div> -->
 
-	<!-- ajax 사용시 페이지 전환에 사용될 메소드
-	<script type="text/javascript">
-		function menuchange(url) {
-			let h3 = document.getElementById("expertmain");
-			let info = document.getElementById("info");
-			let po = document.getElementById("po");
-			let sale = document.getElementById("sale");
-
-			info.addEventListener('click', function() {
-				h3.innerText = "전문가 정보";
-			});
-
-			po.addEventListener('click', function() {
-				h3.innerText = "포트 폴리오";
-			});
-
-			sale.addEventListener('click', function() {
-				h3.innerText = "판매 관리";
-			});
-		};
-	</script> -->
-
-	<!-- 
-//상태 update를 위해 saleIdx값을 백으로 보냄
-<script type="text/javascript">
-	function updateSalesStatus(saleIdx) {
-    fetch('/expert/update/${saleIdx}', {
-        method: 'PUT'
-    })
-    .then(response => response.json())
-    .then(updatedStatus => {
-        // 데이터의 상태를 변경할 수 있는 로직
-        console.log('Updated status for saleIdx ${saleIdx}: ${updatedStatus}');
-        // 변경된 상태를 출력하는 등의 동작 수행
-    })
-    .catch(error => {
-        console.error('Error updating sales status:', error);
-    });
-}
-</script>
- -->
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 	<script type="text/javascript"
@@ -412,31 +338,6 @@ tr td {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
-	<%-- 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			function fetchPrice() {
-				$.ajax({
-					type : 'GET',
-					url : '/price/' + expertIdx,
-					dataType : 'json',
-					success : function(data) {
-						// JSON 데이터를 화면에 출력
-						$('#price').text(data);
-
-					},
-					error : function(xhr) {
-						console.log('Error fetching JSON data=' + xhr.status);
-					}
-				});
-			}
-			var expertIdx =
-	<%=request.getAttribute("expertIdx")%>
-		;
-			fetchPrice(expertIdx);
-		});
-	</script>
-
- --%>
+	
 </body>
 </html>

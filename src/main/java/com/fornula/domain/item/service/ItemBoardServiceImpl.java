@@ -22,7 +22,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 	private final ItemBoardDAO itemBoardDAO;
 //	상품 리스트(6개씩 출력되게 할거야) 출력 용도
 	@Override
-	public Map<String, Object> getItemList(int pageNum, Integer categoryIdx) {
+	public Map<String, Object> getItemList(int pageNum, Integer categoryIdx, String searchKeyword) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
 		
 		Pager pager=new Pager(pageNum, totalBoard, 9, 6);
@@ -33,6 +33,9 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 		
 		// categoryIdx를 파라미터로 전달
 	    pageMap.put("categoryIdx", categoryIdx);
+		log.info("categoryIdx={}",categoryIdx);
+		// searchKeyword를 파라미터로 전달
+		pageMap.put("searchKeyword", searchKeyword);
 		log.info("categoryIdx={}",categoryIdx);
 		
 		List<ItemPhotoCategoryCart> itemBoardList=itemBoardDAO.selectItemList(pageMap);
@@ -48,45 +51,5 @@ public class ItemBoardServiceImpl implements ItemBoardService{
     @Override
     public int getItemBoardCount() {
         return itemBoardDAO.selectItemBoardCount();
-    }
-    
-//  검색창에서 검색했을 때 실행될 메소드
-    @Override
-    public Map<String, Object> searchList(int pageNum, String searchKeyword) {
-        int totalBoard = itemBoardDAO.selectItemBoardCount();
-        log.info("Total item boards count: {}", totalBoard);
-
-        Pager pager = new Pager(pageNum, totalBoard, 6, 6);
-
-        Map<String, Object> pageMap = new HashMap<String, Object>();
-        pageMap.put("startRow", pager.getStartRow());
-        pageMap.put("endRow", pager.getEndRow());
-
-        // 검색어 유효성 검사
-        if (searchKeyword == null || searchKeyword.trim().isEmpty()) {
-            log.info("검색어를 입력해주세요.");
-
-            Map<String, Object> emptyResultMap = new HashMap<String, Object>();
-            emptyResultMap.put("pager", pager);
-            emptyResultMap.put("searchItemList", Collections.emptyList());
-            return emptyResultMap;
-        }
-
-        pageMap.put("searchKeyword", searchKeyword);
-        log.info("searchKeyword={}", searchKeyword);
-
-        List<ItemPhotoCategoryCart> searchItemList = itemBoardDAO.searchItemList(pageMap);
-        log.info("Found {} items for page {}.", searchItemList.size(), pageNum);
-
-        // 검색 결과가 비어있는 경우에 대한 처리
-        if (searchItemList.isEmpty()) {
-            log.info("검색 결과가 없습니다.");
-        }
-
-        Map<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap.put("pager", pager);
-        resultMap.put("searchItemList", searchItemList);
-
-        return resultMap;
     }
 }

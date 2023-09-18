@@ -105,7 +105,7 @@
 																			onclick="location.href="
 																			<c:url value="/item/${cartList.itemIdx}/1"/>
 																			data-itemIdx="${cartList.itemIdx}">
-																	<img style="padding-left: 20px; width: 60px;"
+																	<img style="padding-left: 20px; width: 50px;"
 																			id="heartImg"
 																			src="<c:url value="/pictures/placeholder/heart.png"/>">
 																		</button></div>
