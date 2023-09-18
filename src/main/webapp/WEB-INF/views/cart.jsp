@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -57,26 +59,69 @@
 			<div class="col-12 col-lg-8">
 				<div class="widget">
 					<div class="story-posts">
+						<div style="text-align: left;">
+							<label
+								style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">장바구니</label>
+						</div>
 						<section>
-							<div id="post-1"
-								class="lana_story type-lana_story post-1 card story-card">
-								<div class="card-body">
-									<div class="blog-posts">
-
-										<div id="post-2" class="post type-post post-2 card post-card">
-
-											<div class="row">
-												<!-- 장바구니 내역 출력  -->
-												<div id="cartListDiv"></div>
-											</div>
+							<div class="row">
+								<!-- 장바구니 내역 출력  -->
+								<c:choose>
+									<c:when test="${empty cartList }">
+										<div class="card-body" style="text-align: center;">
+											<p>장바구니가 비었습니다.</p>
 										</div>
-									</div>
-								</div>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="cartList" items="${cartList}">
+											<div class="card-body">
+												<div class="blog-posts">
+													<div id="post-2"
+														class="post type-post post-2 card post-card">
+
+														<div class="row">
+															<div class="col-md-4">
+																<img class="card-img img-fluid"
+																	src="<c:url value="/images/upload/${cartList.itemfileName}"/>"
+																	alt="Post">
+															</div>
+															<div class="col-md-8">
+																<div
+																	class="card-body h-100 d-flex align-items-start flex-column">
+																	<p style="float: right;">
+																		₩
+																		<fmt:formatNumber type="number"
+																			value="${cartList.price}" pattern="#,###" />
+																	</p>
+
+																	<p class="post-text card-text">
+
+																		<h4 class="post-title card-title">
+																		<a href="<c:url value="/item/${cartList.itemIdx}/1"/>">${cartList.itemName}</a>
+																	</h4>
+																	<div style="text-align: right;">
+																		<button id="cartBtn"
+																			style="background: white; padding-left: 300px; border: 0px;"
+																			onclick="location.href="
+																			<c:url value="/item/${cartList.itemIdx}/1"/>
+																			data-itemIdx="${cartList.itemIdx}">
+																	<img style="padding-left: 20px; width: 60px;"
+																			id="heartImg"
+																			src="<c:url value="/pictures/placeholder/heart.png"/>">
+																		</button></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</section>
 					</div>
 				</div>
-
 			</div>
 
 			<div class="col-12 col-lg-4 mt-4 mt-lg-0">
@@ -86,7 +131,6 @@
 						<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 							class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
 					</div>
-
 
 					<div id="button">
 						<a href="<c:url value="#"/>" class="tag-cloud-link"
@@ -108,12 +152,9 @@
 										전환</a>
 								</c:if>
 							</div>
-
-
 							<div class="row">
 								<div class="widget">
 									<h3 class="widget-title">나의 정보</h3>
-
 									<ul>
 										<li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
 										<li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
@@ -123,7 +164,6 @@
 										<li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
 									</ul>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -153,82 +193,35 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-cartListDisplay();
 
-var cartListURL = "${pageContext.request.contextPath}/cart";
-var photoURL ="${pageContext.request.contextPath}/images/upload/"
-var heartURL ="${pageContext.request.contextPath}/pictures/placeholder/";
+	var cartListURL = "${pageContext.request.contextPath}/cart";
+	var photoURL ="${pageContext.request.contextPath}/images/upload/"
+	var heartURL ="${pageContext.request.contextPath}/pictures/placeholder/";
 
-function cartListDisplay(){
-	alert("getmapping");
-	$.ajax({
-			type: "get",
-			url : cartListURL,
-			dataType : "json",
-			success: function(result){
-				if(result.length == 0 ){
-					var html = "<div class='col-md-4'>";
-					html+="<p>장바구니가 비었습니다.</p>";
-					html+="</div>"
-					$("#cartListDiv").html(html);
-					return;
-				}
-				
-				var html = "<div class='col-md-4'>";
-				$(result).each(function(){
-					html+= "<img class='card-img img-fluid' src="photoURL+this.itemfileName+"'/>' alt='Post'>";
-					html+= "</div>";
-					html+= "<div class='col-md-8'>";
-					html+= "<div class='card-body h-100 d-flex align-items-start flex-column'>";
-					html+= "<ul class='post-meta'>";
-					html+= "<li> ₩"+this.price+"</li>";
-					html+= "</ul>";
-					html+= "<h6 class='post-title card-title'>"+this.itemIdx+"</h6>";
-					html+= "<h4 class='post-title card-title'>"+this.itemContent+"</h4>";
-					html+= "<div class='d-flex justify-content-between align-items-center post-meta mt-auto w-100'>";
-					html+= "<div class='author-meta'>";
-					html+= "<button id='cartBtn' style='background: white;' onclick='location.href="${pageContext.request.contextPath}/item/${item.itemIdx}/1"/>' data-itemIdx ='${item.itemIdx}'>";
-					html+= "<img style='padding:0px 10px; width: 60px;' id='heartImg' src="heartURL+"/noheart.png'/>'</button>";
-					
-					
-				});
-				html+="</div>";
-				html+="</div>";
-				html+="</div>";
-				html+="</div>";
-					
-					
-				$("#cartListDiv").html(html);
-			},
-			error: function(xhr){
-				alert("에러코드(게시글 목록 검색) = "+xhr.stauts);z			}
-		
+	$("#cartBtn").click(function() {
+	    var itemIdx = $(this).attr("data-itemIdx");
+
+	    if (confirm("장바구니를 삭제하시겠습니다.")) {
+	        $.ajax({
+	            type: "DELETE",
+	            url: "${pageContext.request.contextPath}/cart/" + itemIdx,
+	            dataType: "text",
+	            success: function(result) {
+	                if (result === "success") {
+	                    window.location.href = "${pageContext.request.contextPath}/cart";
+	                    alert("장바구니를 삭제하였습니다.");
+	                    cartListDisplay();
+	                    cartButton.attr("src", beforePhotoURL); // 이미지 변경
+	                } else {
+	                    alert("장바구니 삭제 중 오류가 발생했습니다.");
+	                }
+	            },
+	            error: function(xhr) {
+	                alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+	            }
+	        });
+	    }
 	});
-}
-
-$("#cartBtn").click(function(){
-	var itemIdx = $(this).attr("data-itemIdx");
-	
-	function remove(itemIdx){
-		if(confirm("장바구니를 삭제하시겠습니다.")){
-			$.ajax({
-				type:"delete",
-				url : cartListURL+itemIdx,
-				dataType : "text",
-				success: function(result){
-					cartListDisplay();
-					$("#cartBtn img").attr("src", PhotoURL+"noheart.png");
-				}
-			},
-			error: function(xhr){
-				alert("장바구니 삭제 중 오류가 발생했습니다."+xhr.status);
-			}
-			
-			});
-		}
-	}
-});
-
 </script>
 
 

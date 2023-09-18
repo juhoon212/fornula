@@ -1,6 +1,7 @@
 package com.fornula.domain.item.restcontroller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fornula.domain.item.dto.Cart;
@@ -40,9 +42,13 @@ public class CartRestController {
 
 		// 세션에서 memberIdx 추출
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
-		int memberIdx = member.getMemberIdx();
+		if(member==null) {
+			return "error";
+		}else {
+			int memberIdx = member.getMemberIdx();
 		log.info("postmapping의 memberIdx:{}", memberIdx);
 		log.info("postmapping의 itemIdx:{}", itemIdx);
+		
 
 		cart = new Cart();
 
@@ -60,8 +66,8 @@ public class CartRestController {
 
 		// cart에 삽입하는 서비스 호출
 		cartService.addCart(cart);
-
 		return "success";
+		}
 	}
 
 	// 아이템 페이지에서 장바구니 삭제
@@ -80,17 +86,16 @@ public class CartRestController {
 	}
 
 	// 장바구니 목록 출력
-	@GetMapping("/cart")
-	public List<CartList> getCartList(HttpSession session) {
+	@GetMapping("/cartList")
+	public List<CartList> getCartList(HttpSession session,
+			@RequestBody CartList cart) {
 
 		// 세션에서 memberIdx 추출
 		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("getmapping의 memberIdx:{}", memberIdx);
 
-		List<CartList> cartList = cartService.getCartList(memberIdx);
-
-		return cartList;
+		return cartService.getCartList(memberIdx);
 
 	}
 

@@ -228,17 +228,17 @@ tr td {
 								</c:otherwise>
 							</c:choose>
 						</div>
-
-						<nav style="padding: 5px; text-align: center;">
-							<div class="pagination" style="text-align: center;">
+					
+						<div class="" style="text-align: center; width:100%;">
+						 <nav style="width:100%;" class="navigation pagination justify-content-between text-uppercase" role="navigation">
 								<div class="prev">
 									<c:choose>
 										<c:when test="${pager.startPage > pager.blockSize}">
-											<a
+											<a class="prev disabled" 
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.prevPage}">PREV</a>
 										</c:when>
 										<c:when test="${pager.pageNum > 1}">
-											<a
+											<a class="prev disabled" 
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum - 1}">PREV</a>
 										</c:when>
 										<c:otherwise>
@@ -247,12 +247,12 @@ tr td {
 									</c:choose>
 								</div>
 
-								<div class="pages">
+								<div class="nav-links">
 									<c:forEach var="i" begin="${pager.startPage}"
 										end="${pager.endPage}" step="1">
 										<c:choose>
 											<c:when test="${pager.pageNum != i}">
-												<a href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
+												<a class="page-numbers" href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
 											</c:when>
 											<c:otherwise>
 												<span class="current">[${i}]</span>
@@ -264,11 +264,11 @@ tr td {
 								<div class="next">
 									<c:choose>
 										<c:when test="${pager.endPage != pager.totalPage}">
-											<a
+											<a class="next" 
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.nextPage}">NEXT</a>
 										</c:when>
 										<c:when test="${pager.pageNum < pager.totalPage}">
-											<a
+											<a class="next" 
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
 										</c:when>
 										<c:otherwise>
@@ -276,8 +276,8 @@ tr td {
 										</c:otherwise>
 									</c:choose>
 								</div>
-							</div>
 						</nav>
+							</div>
 					</section>
 				</div>
 			</div>

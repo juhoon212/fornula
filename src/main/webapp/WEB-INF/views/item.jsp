@@ -177,7 +177,7 @@ a {
 							<h4>${item.itemDate }</h4>
 						</div>
 						<hr>
-						<div id="jul">&nbsp</div>
+						<div id="jul">&nbsp;</div>
 						<img class="img-fluid post-thumbnail"
 							src="<c:url value='/images/upload/${originalFileName}'/>"
 							alt="Post">
@@ -188,28 +188,24 @@ a {
 							<h4>${item.itemContent }</h4>
 							<div class="post-content" id="detailbox">
 								<h4 style="float: right;">
-									₩
-									<fmt:formatNumber type="number" value="${item.price}"
+									₩<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-								<span>
-									<c:forEach items="${cartList}" var="cartList">
-											<c:if test="${cartList.cartStatus ==1 && cartList!=null}">
-												<button id="cartBtn" style="background: white;"data-itemIdx="${item.itemIdx} ">
-													<%-- onclick="location.href='<c:url value="/item/${item.itemIdx}/delete"/>'" --%>
-													
-													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
-														src="<c:url value="/pictures/placeholder/heart.png"/>">
-												</button>
-											</c:if>
-											<c:if test="${empty cartList}">
-												<button id="cartBtn" style="background: white;"data-itemIdx="${item.itemIdx} ">
-													<%-- onclick="location.href='<c:url value="/item/${item.itemIdx}/1"/>'" --%>
-													<img style="padding: 0px 10px; width: 60px;" id="heartImg"
-														src="<c:url value="/pictures/placeholder/noheart.png"/>">
-												</button>
-											</c:if>
-									</c:forEach>
+								<span> 
+									<c:if test="${not empty cartList}">
+										<button id="cartBtn" style="background: white;">
+											<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+												src="<c:url value="/pictures/placeholder/heart.png"/>">
+										</button>
+									</c:if> 
+									<c:if test="${empty cartList}">
+										<button id="cartBtn" style="background: white;"
+											data-itemIdx="${item.itemIdx} ">
+											<img style="padding: 0px 10px; width: 60px;" id="heartImg"
+												src="<c:url value="/pictures/placeholder/noheart.png"/>">
+										</button>
+									</c:if>
+
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
 								</span>
@@ -254,7 +250,7 @@ a {
 												style="color: blue; , font-size: 10px; , padding-left: 10px;">판매자</span>
 										</h5>
 										<div class="comment-date">
-											<span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
+											<span>&nbsp;&nbsp;&nbsp; ${reviewList.review.answerDate}</span>
 										</div>
 									</div>
 									<div class="comment-text">
@@ -332,67 +328,54 @@ a {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	/* var cart = ${cartList};
+	$(document).ready(function() {
+	    var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+	    var itemIdx = ${itemIdx};
+	    var cartButton = $("#heartImg");
 
-	var cartStatusValues = [];
-
-	for (var i = 0; i < cart.length; i++) {
-	  var cartItem = cart[i];
-	  var cartStatus = cartItem.cartStatus;
-	  cartStatusValues.push(cartStatus);
-	}
-	 */
-	 $(document).ready(function() {
-		    //console.log(cart);
-		    //alert(cart);
-		        var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
-		        var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
-		        var cartURL = "${pageContext.request.contextPath}";
-		        var item = $(this).attr("data-itemIdx");
-		        var itemIdx =${itemIdx};
-
-		    $("#cartBtn").click(function() {
-		        $.ajax({
-		            type: "POST",
-		            url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
-		            success: function(response) {
-		                if (response === "success") {
-		                    alert("장바구니에 상품이 추가되었습니다.");
-		                    $("#cartBtn img").attr("src", afterPhotoURL);
-		                } else {
-		                    alert("장바구니 추가에 실패했습니다.");
-		                }
-		            },
-		            error: function() {
-		                alert("장바구니 추가 중 오류가 발생했습니다.");	
-		            }
-		        });
-		    });
-
-		    /* 하트 클릭시 400페이지로 이동한다음에 뒤로가기 누르면 삭제가됨..  */
-		    $("#cartBtn").click(function() {
-		    if (confirm("장바구니를 삭제하시겠습니다.")) {
-		    	$.ajax({
-		            type: "DELETE", // HTTP 메서드 수정
-		            url: "${pageContext.request.contextPath}/item/"+itemIdx+"/delete",
-		            dataType: "text",
-		            success: function (result) {
-		                if (result === "success") { // 서버 응답 확인
-		                    window.location.href="${pageContext.request.contextPath}/item/" + itemIdx + "/1";
-		                    alert("장바구니를 삭제하였습니다.");
-		                    cartListDisplay();
-		                    $("#cartBtn img").attr("src", beforePhotoURL);
-		                } else {
-		                	alert("장바구니 삭제 중 오류가 발생했습니다.");
-		                }
-		            },
-		            error: function (xhr) {
-		                alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
-		            }
-		        });
-		   	 }
-		 });
+	    cartButton.click(function() {
+	        if (cartButton.attr("src") === beforePhotoURL) {
+	            $.ajax({
+	                type: "POST",
+	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
+	                success: function(response) {
+	                    if (response === "success") {
+	                        alert("장바구니에 상품이 추가되었습니다.");
+	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
+	                    } else {
+	                        alert("로그인 사용자만 가능합니다.");
+	                    }
+	                },
+	                error: function() {
+	                    alert("장바구니 추가 중 오류가 발생했습니다.");
+	                }
+	            });
+	        } else if (cartButton.attr("src") === afterPhotoURL) {
+	            if (confirm("장바구니를 삭제하시겠습니다.")) {
+	                $.ajax({
+	                    type: "DELETE",
+	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
+	                    dataType: "text",
+	                    success: function(result) {
+	                        if (result === "success") {
+	                            window.location.href = "${pageContext.request.contextPath}/item/" + itemIdx + "/1";
+	                            alert("장바구니를 삭제하였습니다.");
+	                            cartListDisplay();
+	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
+	                        } else {
+	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
+	                        }
+	                    },
+	                    error: function(xhr) {
+	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+	                    }
+	                });
+	            }
+	        }
+	    });
 	});
+
 	</script>
 </body>
 </html>

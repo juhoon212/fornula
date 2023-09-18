@@ -79,9 +79,10 @@ public class ItemDetailController {
 		 if(member != null) { 
 			 int memberIdx = member.getMemberIdx();
 			 log.info("memberIdx:{}", memberIdx);
-			 List<Cart> cartList =cartService.selectCartInfo(memberIdx, itemIdx); 
+			 Cart cartList =cartService.selectCartInfo(memberIdx, itemIdx); 
 			 log.info("cart:{}",cartList); 
-			 model.addAttribute("cartList", cartList); }
+			 model.addAttribute("cartList", cartList);
+		 }
 		
     	return "item";
     }

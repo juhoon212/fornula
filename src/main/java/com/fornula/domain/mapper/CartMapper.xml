@@ -10,20 +10,6 @@
 			(#{cartIdx},#{memberIdx},#{itemIdx},#{itemPhotoIdx},sysdate, 1)
 	</insert>
 	
-	<resultMap type="CartList" id="CartList">
-		<association property="cart" javaType="Cart">
-			<id column="item_idx" property="itemIdx"/>
-		</association>
-		<association property="item" javaType="Item">
-			<id column="item_name" property="itemName"/>
-			<result column="item_content" property="itemContent"/>
-			<result column="price" property="price"/>
-		</association>
-		<association property="photo" javaType="Photo">
-			<id column="itemfile_name" property="itemfileName" />
-		</association>
-	</resultMap>
-	
 	<!-- 장바구니 출력 -->
 	<select id="selectCart" resultType="CartList">
 		select C.item_idx
@@ -55,7 +41,7 @@
 	
 	
 	<!-- 장바구만 출력 -->
-	<select id="selectCartInfo" resultType="Cart">
+	<select id="selectCartInfo" resultType="int">
 		select * from cart
 		where member_idx = #{memberIdx} and item_idx = #{itemIdx}
 	</select>

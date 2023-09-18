@@ -1,6 +1,7 @@
 package com.fornula.domain.item.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -29,18 +30,18 @@ public class CartRepositoryImpl implements CartRepository {
 	}
 
 	@Override
-	public List<CartList> selectCart(int memberIdx) {
-		return sqlSession.getMapper(CartMapper.class).selectCart(memberIdx);
-	}
-
-	@Override
 	public Photo selectCartPhotoidx(int itemIdx) {
 		return sqlSession.getMapper(CartMapper.class).selectCartPhotoidx(itemIdx);
 	}
 
 	@Override
-	public List<Cart> selectCartInfo(int memberIdx, int itemIdx) {
+	public Cart selectCartInfo(int memberIdx, int itemIdx) {
 		return sqlSession.getMapper(CartMapper.class).selectCartInfo(memberIdx, itemIdx);
+	}
+
+	@Override
+	public List<CartList> selectCart(int memberIdx) {
+		return sqlSession.getMapper(CartMapper.class).selectCart(memberIdx);
 	}
 
 }
