@@ -30,14 +30,4 @@ public class ItemBoardDAOImpl implements ItemBoardDAO{
 	public int selectItemBoardCount() {
 		return sqlSession.getMapper(ItemBoardMapper.class).selectItemBoardCount();
 	}
-	
-	@Override
-	public List<ItemPhotoCategoryCart> searchItemList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).searchItemList(map);
-	}
-	
-	@Override
-	public List<ItemPhotoCategoryCart> searchItemCategoryList(Map<String, Object> map) {
-		return sqlSession.getMapper(ItemBoardMapper.class).searchItemCategoryList(map);
-	}
 }

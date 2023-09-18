@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertBoardMapper">
+	<select id="selectBoardList" resultType="ItemPhotoForExpert">
+	    SELECT *
+	    FROM (
+	        SELECT rownum rn, boardlist.*
+	        FROM (
+	            SELECT I.item_idx,
+	                I.category_idx,
+	                I.expert_idx,
+	                I.item_name,
+	                I.item_content,
+	                I.price,
+	                I.item_date,
+	                P.itemfile_name
+	            FROM item I
+	            JOIN photo P ON I.item_idx = P.item_idx
+	            LEFT JOIN expert E ON I.expert_idx = E.expert_idx
+	            WHERE I.expert_idx = #{expertIdx} AND I.item_status = 1
+	            ORDER BY I.item_date
+	        ) boardlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
+ 
+ 	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
+ 	<select id="selectItemCount" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM item
+ 	</select>
+ </mapper>
+
+
+
+
