@@ -313,7 +313,6 @@ h3 {
 									<ul class="list-unstyled">
 										<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
 										<li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
-										<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
 										<li><a href="<c:url value="/expert/board"/>">상품 관리</a></li>
 										<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
 									</ul>

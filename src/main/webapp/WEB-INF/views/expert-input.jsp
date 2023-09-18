@@ -338,7 +338,6 @@ a:visited {
 										<ul class="list-unstyled">
 											<li><a href="<c:url value="/expert/input"/>">전문가 정보</a></li>
 											<li><a href="<c:url value="/expert/sales"/>">판매 관리</a></li>
-											<li><a href="<c:url value="/expert/output"/>">포트폴리오</a></li>
 											<li><a href="<c:url value="/expert/board"/>">상품 관리</a></li>
 											<li><a href="<c:url value="/expert/item"/>">상품 등록</a></li>
 										</ul>
@@ -392,87 +391,6 @@ a:visited {
 
 
 	<script>
-		/* 
-		 나중에 이거는 RestController 써서 AJAX 놀음 할 때 사용
-		 $(document).ready(function() {   
-		 // 전문가의 expertIdx를 가져오는 AJAX 요청
-		 $.ajax({
-		 url: '/getExpertIdx',
-		 method: 'GET',  
-		 dataType: 'json', 
-		 success: function(data) {
-		 // 가져온 expertIdx를 이용하여 HTML 요소를 업데이트
-		 $("#expertIdx").val(data.expertIdx);
-		
-		 // 기존 카테고리를 가져오는 AJAX 요청
-		 $.ajax({
-		 url: '/getExpertCategory', 
-		 method: 'GET',  
-		 dataType: 'json', 
-		 success: function(categoryData) {
-		 // 가져온 데이터를 이용하여 HTML 요소를 업데이트
-		 $("#originalCategory").val(categoryData.categoryName);
-		 },
-		 error: function(xhr, status, error) {
-		 console.error("기존 카테고리 데이터를 가져오는 중 오류 발생: " + error);
-		 }
-		 });
-		 },
-		 error: function(xhr, status, error) {
-		 console.error("전문가의 expertIdx 데이터를 가져오는 중 오류 발생: " + error);
-		 }
-		 });
-		
-		 // 포트폴리오 파일 선택 시 파일명 표시
-		 $("#formFile").change(function() {
-		 var fileName = $(this).val().split('\\').pop();
-		 $("#portfolioFileNameInput").val(fileName);
-		 });
-		
-		 // 수정 완료 버튼 클릭 시 AJAX 요청 등록
-		 $("#submitButton").click(function(e) {
-		 e.preventDefault();
-		
-		 // 전달할 데이터 준비 (expertIdx, 수정된 정보 등)
-		 var expertIdx = $("#expertIdx").val();
-		 var phone = $("#phone").val();
-		 var interest = $("#category-middle").val();
-		 var career = $("#career").val();
-		 var companyOne = $("#companyOne").val();
-		 var companyTwo = $("#companyTwo").val();
-		 var companyThree = $("#companyThree").val();
-		 var introduce = $("#introduce").val();
-		 var expertfileName = $("#portfolioFileNameInput").val();
-		
-		 // AJAX 요청 보내기
-		 $.ajax({
-		 url: '/modify',
-		 method: 'PUT',
-		 contentType: 'application/json',
-		 data: JSON.stringify({
-		 phone: phone,
-		 interest: interest,
-		 career: career,
-		 companyOne: companyOne,
-		 companyTwo: companyTwo,
-		 companyThree: companyThree,
-		 introduce: introduce,
-		 expertfileName: expertfileName
-		 }),
-		 success: function(response) {
-		 // 성공 시 동작
-		 alert("수정이 완료되었습니다.");
-		 // 페이지 리로드 등 원하는 동작 수행
-		 },
-		 error: function(xhr, status, error) {
-		 // 오류 시 동작
-		 alert("정보 수정에 실패하였습니다: " + error);
-		 }
-		 });
-		 });
-		 });
-		 */
-	
 		document.addEventListener("DOMContentLoaded", function() {
 			var originalInterest = "${originalExpert.interest}";
 			var select = document.getElementById("interestSelect");
