@@ -16,7 +16,6 @@
 			#{email},
 			sysdate , 
 			1,
-			#{memberFileName},
 			sysdate , 
 			#{categoryOne},
 			#{categoryTwo},
@@ -46,13 +45,12 @@
 		<result column="email" property="email"/>
 		<result column="member_date" property="memberDate"/>
 		<result column="member_status" property="memberStatus"/>
-		<result column="memberfile_name" property="memberfileName"/>
 		<result column="login_date" property="loginDate"/>
 		<result column="category_one" property="categoryOne"/>
 		<result column="category_two" property="categoryTwo"/>
 		<result column="category_three" property="categoryThree"/>
 		<result column="enabled" property="enabled"/>
-		<collection property="memberAuthList" ofType="com.fornula.domain.member.dto.Auth" javaType="List">
+		<collection property="memberAuthList" ofType="Auth" javaType="list">
 			<id column="auth_idx" property="authIdx"/>
 			<result column="id" property="id"/>
 			<result column="role" property="role"/>
@@ -66,7 +64,6 @@
 				MEMBER.email,
 				MEMBER.member_date,
 				MEMBER.member_status,
-				MEMBER.memberfile_name,
 				MEMBER.login_date,
 				MEMBER.category_one,
 				MEMBER.category_two,

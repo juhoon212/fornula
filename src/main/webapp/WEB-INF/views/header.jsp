@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
 <link rel="preconnect"
@@ -238,11 +239,12 @@ p #logo {
 								aria-label="Toggle search">
 								<i class="fas fa-search fa-2x fa-fw text-dark"></i>
 							</button>
+							<sec:csrfInput/>
 						</form>
 						<!-- 로그인버튼 삽입 -->
 						<div class="button-nav-widget d-none d-xl-inline-flex">
 							<ul class="nav button-nav">
-								<li class="nav-item"><a href="<c:url value="#"/>"
+								<li class="nav-item"><a href="<c:url value="/member/login"/>"
 									class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
 									id="loginButton"> Login </a></li>
 							</ul>
@@ -331,7 +333,7 @@ p #logo {
 
 									<c:if test="${sessionScope.loginMember.memberStatus == 2}">
 										<a class="dropdown-toggle"
-											href="<c:url value="/expert/output "/>" role="button"
+											href="<c:url value="/expert/input "/>" role="button"
 											data-bs-toggle="dropdown" aria-expanded="false"> <img
 											src="<c:url value="/pictures/placeholder/profile.png"/>"
 											class="rounded-circle" alt="profilephoto" width="60"
@@ -341,7 +343,7 @@ p #logo {
 											<li><a class="dropdown-item"
 												href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
 											<li><a class="dropdown-item"
-												href="<c:url value="/expert/output "/>">전문가 정보</a></li>
+												href="<c:url value="/expert/input "/>">전문가 정보</a></li>
 											<li><a class="dropdown-item" href="<c:url value="#"/>">장바구니</a>
 									</c:if>
 
@@ -349,6 +351,7 @@ p #logo {
 										<button
 											style="border: none; background-color: white; color: black;"
 											type="submit" id="logout">로그아웃</button>
+										<sec:csrfInput/>
 									</div>
 									</ul>
 								</div>
@@ -368,6 +371,7 @@ p #logo {
 						style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
 						type="submit" id="logout">로그아웃</button>
 					<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
+					<sec:csrfInput/>
 				</form>
 			</div>
 		</c:if>
@@ -409,7 +413,7 @@ p #logo {
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 
-	<script>
+	<!-- <script>
 	let loginButton = document.querySelector('#loginButton');
 	let close = document.querySelector('.close');
 	let id = document.querySelector('#id-input');
@@ -473,5 +477,5 @@ p #logo {
               })
               
          e.preventDefault();
-	});
+	}); -->
 </script>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fornula.domain.exception.custom.NotFoundIdException;
 import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.repository.MemberSecurityRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberSecurityServiceImpl implements MemberSecurityService {
 	
-	private final MemberSecurityService memberSecurityService;
+	private final MemberSecurityRepository memberSecurityRepository;
 	
 	// 멤버 아이디로 추가
 	@Override
 	public int addSecurityMember(Member member) {
-		int result = memberSecurityService.addSecurityMember(member);
+		int result = memberSecurityRepository.addSecurityMember(member);
 		
 		if(result == 0) {
 			throw new UsernameNotFoundException("유저가 추가되지 않았습니다.");
@@ -35,7 +36,7 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 	@Override
 	public int addAuth(Auth auth) {
 		
-		int result = memberSecurityService.addAuth(auth);
+		int result = memberSecurityRepository.addAuth(auth);
 		
 		return result;
 	}
@@ -44,7 +45,7 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 	@Override
 	public List<Member> findSecurityMemberById(String id) {
 		
-		List<Member> memberList = memberSecurityService.findSecurityMemberById(id);
+		List<Member> memberList = memberSecurityRepository.findSecurityMemberById(id);
 		
 		if(memberList.isEmpty()) {
 			throw new NotFoundIdException("아이디로 찾을 수 없습니다.");

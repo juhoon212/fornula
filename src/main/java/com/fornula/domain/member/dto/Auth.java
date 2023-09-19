@@ -8,9 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Auth {
 	
 	private int authIdx;
