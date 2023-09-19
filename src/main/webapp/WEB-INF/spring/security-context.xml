@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/item/update/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/**" access="permitAll"/>
+		
+		 <form-login login-page="/member/login" login-processing-url="/member/login"
+			username-parameter="id" password-parameter="password" default-target-url="/"
+			authentication-success-handler-ref="loginSuccessHandler"
+            authentication-failure-handler-ref="loginFailHandler"/>
+			
+			<logout
+            logout-url="/member/logout"
+            logout-success-url="/"
+            delete-cookies="JSESSIONID" />
+            
+            <access-denied-handler ref="customAccessDeniedHandler" />
+            
+            <logout logout-url="/logout" logout-success-url="/" invalidate-session="true" delete-cookies="JSESSIONID, remember-me"/>
+            
+        <session-management>
+			<concurrency-control max-sessions="1" expired-url="/sessionError"/>
+		</session-management>	
+    </http>
+    
+    
+    
+    
+    <beans:bean class="com.fornula.domain.util.security.CustomAccessDeniedHandler" id="customAccessDeniedHandler"/>
+    <beans:bean class="com.fornula.domain.util.security.LoginSuccessHandler" id="loginSuccessHandler"/> 
+    <beans:bean class="com.fornula.domain.util.security.LoginFailHandler" id="loginFailHandler"/> 
+    <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>
+    
+    
+    <context:component-scan base-package="com.fornula.domain"/>
+    
+   	
+
+    <authentication-manager>
+		<authentication-provider user-service-ref="customMemberDetailService">
+			<password-encoder ref="passwordEncoder"/>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

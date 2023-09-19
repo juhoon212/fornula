@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -39,7 +40,7 @@ public class ExpertInfoController {
 	// 전문가 포트폴리오에서 정보 출력
 	@GetMapping("/output")
 	public String getExpert(@ModelAttribute Expert originalExpert, Model model) {
-		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 		int expertIdx = expert.getExpertIdx();
 
@@ -64,7 +65,7 @@ public class ExpertInfoController {
 	public String getOriginalExpert(@ModelAttribute Expert originalExpert,
 			Model model, HttpSession session) {
 		// 세션에 저장된 experIdx를 가져오기
-		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 		int expertIdx = expert.getExpertIdx();
 

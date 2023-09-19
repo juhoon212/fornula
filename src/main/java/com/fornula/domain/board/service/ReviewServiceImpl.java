@@ -6,12 +6,17 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.util.HtmlUtils;
+
 import com.fornula.domain.board.dto.Review;
 import com.fornula.domain.board.dto.Reviews;
 import com.fornula.domain.board.repository.ReviewRepository;
+import com.fornula.domain.exception.custom.NoAuthReplyException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.dto.Item;
 import com.fornula.domain.item.dto.Purchase;
+import com.fornula.domain.item.repository.ItemDetailDAO;
 import com.fornula.domain.util.pager.Pager;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ReviewServiceImpl implements ReviewService{
 	
 	private final ReviewRepository reviewRepository;
+	private final ItemDetailDAO itemDetailDAO;
 
 	@Override
 	public Map<String, Object> selectReviews(int pageNum, int itemIdx) {
@@ -65,6 +71,7 @@ public class ReviewServiceImpl implements ReviewService{
 		return purchase;
 	}
 
+
 	@Override
 	public int addReply(Review review, int memberIdx, int itemIdx) {
 		
@@ -84,6 +91,8 @@ public class ReviewServiceImpl implements ReviewService{
 		int result = reviewRepository.addReply(review);
 		return result;
 	}
+
+
 	
 	
 

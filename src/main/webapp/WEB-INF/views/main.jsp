@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
 
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta id="_csrf" name="_csrf" content="{{_csrf.token}}"/>
+<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}"/>
 <title>Fornual</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -569,6 +572,8 @@ p #logo {
    let password = document.querySelector('#password-input');
    let loginSubmit = document.querySelector('#login');
    let frontError = document.querySelector('.front-error');
+   const header = document.querySelector('meta[name="_csrf_header"]').content;
+   const token = document.querySelector('meta[name="_csrf"]').content;
    
    
    loginButton.addEventListener('click', () => {
@@ -601,16 +606,21 @@ p #logo {
             return;
       }
       
-      
+    //CSRF 토큰 관련 정보를 자바스트립트 변수에 저장 
+  	let csrfHeaderName="${_csrf.headerName}";
+  	let csrfTokenValue="${_csrf.token}";
       
       fetch("<c:url value="/member/login"/>", {
            method: "POST", 
            headers: { 
-             "Content-Type": "application/json",
+        	   'header': header,
+             	'X-Requested-With': 'XMLHttpRequest',
+               "Content-Type": "application/json",
+               'X-CSRF-Token': token
            }, body: JSON.stringify({ 
                 "id" : id.value,
                 "password" : password.value
-              })
+              }),
          })
       .then((response) => response.json())
         .then((data) => {
@@ -626,7 +636,6 @@ p #logo {
               
          e.preventDefault();
    });
-   
    </script>
 
 
