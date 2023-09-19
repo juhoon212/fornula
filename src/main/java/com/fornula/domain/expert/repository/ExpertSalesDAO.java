@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
 
 public interface ExpertSalesDAO {
@@ -16,4 +17,7 @@ public interface ExpertSalesDAO {
 	int updateSalesStatus(int salesIdx);
 	//총 금액을 출력
 	List<TotalSalesMoney> selectTotalMoney(int expertIdx);
+	//sales 객체 출력
+	Sales selectStatus(int salesIdx);
+
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.repository.ExpertSalesDAO;
 import com.fornula.domain.util.pager.Pager;
@@ -36,22 +37,13 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 		pageMap.put("expertIdx", expertIdx);
 		
 		List<SaleItemExpert> salesList = expertSalesDAO.selectSalesList(pageMap);
-		log.info("salesList :{}",salesList);
 		
-		//페이징에 따라 총금액 출력이 다름 - 수정 필요 
-		int price = 0;//총금액 출력
-		for(SaleItemExpert itemSalesList : salesList) {
-			price+=itemSalesList.getPrice();
-			log.info("price :{}",price);
-			
-		}
 		
 		//컨트롤러에 전달될 map
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("salesList", salesList);
 		resultMap.put("pager", pager);
 		
-		log.info("reusultMap{}:",resultMap);
 		return resultMap;
 	}
 
@@ -68,6 +60,16 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 			price += totalSalesList.getPrice();
 		}
 		return price;
+	}
+
+	@Override
+	public int modifySalesStatus(int salesIdx) {
+		return expertSalesDAO.updateSalesStatus(salesIdx);
+	}
+
+	@Override
+	public Sales selectStatus(int salesIdx) {
+		return expertSalesDAO.selectStatus(salesIdx);
 	}
 	
 	

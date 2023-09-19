@@ -28,15 +28,23 @@
                 I.item_name,
                 I.price,
                 I.item_content,
-                P.itemfile_name
-        FROM sales S
-        JOIN item I ON S.item_idx = I.item_idx
+                P.itemfile_name,
+                ST.status
+        FROM item I
+        LEFT JOIN sales S ON I.item_idx = S.item_idx
         LEFT JOIN photo P ON I.item_idx = P.item_idx
-        WHERE I.expert_idx = #{expertIdx} and I.item_status=1
+        LEFT JOIN status ST ON S.sales_status =ST.status_idx
+        WHERE I.expert_idx = #{expertIdx} AND I.item_status=1 AND S.sales_idx is not null
         ORDER BY S.sales_date
         ) saleslist)
         WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
+ 
+ 	<!-- 판매내역 상태를 위한 객체 출력 -->
+ 	<select id="selectStatus" resultType="Sales">
+ 		SELECT * FROM sales
+ 		WHERE sales_idx=#{salesIdx};
+ 	</select>
  
  	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
  	<select id="selectSalesCount" resultType="int">
@@ -59,41 +67,13 @@
         ORDER BY S.sales_date
     </select>
  	
- 	
- 	
-	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
-	<!-- s
-	<update id="updateSalesStatus" parameterType="SaleItemExpert">
-		UPDATE sales S
-        SET S.sales_status =
-		<choose>
-			<when test='S.sale_status gt 5 '>
-				#{salesStatus}
-			</when>   
-			<otherwise>
-			     
-         (  SELECT P.purchase_status
-            FROM purchase P
-            JOIN item I ON P.item_idx = I.item_idx
-            WHERE
-                I.item_idx = S.item_idx
-                AND P.purchase_status BETWEEN 5 AND 7
-                AND ROWNUM = 1
-        )
-        WHERE EXISTS (
-            SELECT 1
-            FROM purchase P
-            JOIN item I ON P.item_idx = I.item_idx
-            WHERE
-                I.item_idx = S.item_idx
-                AND P.purchase_status BETWEEN 5 AND 7
-        )
-        </otherwise>
-        </choose>
-	</update>
- -->
  
-	
+	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
+	<update id="updateSalesStatus" parameterType="Status">
+	 	UPDATE sales
+	 	SET sales_status =#{salesStatus}
+		where sales_idx = #{salesIdx};
+	</update>
  </mapper>
 
 

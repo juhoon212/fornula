@@ -122,6 +122,12 @@ tr td {
 #list {
 	padding-left: 30px;
 }
+
+#statusBtn {
+	text-align: center;
+	padding: 5px 20px;
+	color: black;
+}
 </style>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
@@ -191,31 +197,51 @@ tr td {
 																	<li>₩ ${salesList.price}</li>
 																</ul>
 																<p class="post-text card-text">
-																<h6 class="post-title card-title" name="salesIdx">${salesList.salesIdx }</h6>
+																	<span class="post-title card-title">${salesList.salesIdx }</span>
+																	<span
+																		style="color: #666666; width: 55px; height: 25px; font-weight: lighter; border: 2px solid orange; border-radius: 10px; padding: 5px; font-size: 15px; background: rgba(255, 138, 0, .1);">
+																		${salesList.status}</span>
 																<h4 class="post-title card-title">
 																	<a href="<c:url value="/item/${salesList.itemIdx}/1"/>">${salesList.itemName}</a>
 																</h4>
-																<%-- <p class="subtitle" name="itemContent">${salesList.itemContent }</p> --%>
-
 																<div
-																	class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
+																	class="">
 																	<div class="author-meta">
-
-																		<!-- <select name="salesStatus" id="archive"
-																	class="form-control" class="btn btn-primary"
-																	style="font-size: 17px;">
-																	<option selected="selected" disabled="disabled"
-																		value="2">주문 접수</option>
-																	<option value="3" disabled="disabled">제작중</option>
-																	<option value="4" disabled="disabled">제작 완료</option>
-																</select>
-																 -->
-
-																		<a
-																			href="<c:url value="/item/${salesList.itemIdx}/1"/>"
-																			class="more-link card-link d-flex align-items-center">
-																			답글보기 <i class="lana-icon-arrow-right text-primary"></i>
-																		</a>
+																		<c:choose>
+																			<c:when test="${salesList.salesStatus ==0}">
+																				<input disabled="disabled"
+																					class="btn btn-outline-primary" type="button"
+																					id="statusBtn" value="${salesStatus}">취소</input>
+																			</c:when>
+																			<c:when test="${salesList.salesStatus ==1}">
+																				<input disabled="disabled"
+																					class="btn btn-outline-primary" type="button"
+																					id="statusBtn" value="${salesStatus }">환불</input>
+																			</c:when>
+																			<c:when test="${salesList.salesStatus ==2}">
+																				<button type="button" id="Btn" value="${salesStatus }">제작시작</button>
+																			</c:when>
+																			<c:when test="${salesList.salesStatus ==3}">
+																				<button class="btn btn-outline-primary"
+																					type="button" id="statusBtn" value="${salesStatus }">제작완료</button>
+																			</c:when>
+																			<c:when test="${salesList.salesStatus ==5}">
+																				<input disabled="disabled"
+																					class="btn btn-outline-primary" type="button"
+																					id="statusBtn" value="${salesStatus }">구매확정</input>
+																			</c:when>
+																			<c:otherwise>	
+																				<div>
+																					<input disabled="disabled"
+																						class="btn btn-outline-primary" type="button"
+																						id="statusBtn">구매확정</input> 
+																					<a href="<c:url value="/item/${salesList.itemIdx}/1"/>"
+																					class="more-link card-link d-flex align-items-center">
+																						답글보기 <i class="lana-icon-arrow-right text-primary"></i>
+																				</a>
+																				</div>
+																			</c:otherwise>
+																		</c:choose>
 																	</div>
 																</div>
 															</div>
@@ -228,17 +254,18 @@ tr td {
 								</c:otherwise>
 							</c:choose>
 						</div>
-					
-						<div class="" style="text-align: center; width:100%;">
-						 <nav style="width:100%;" class="navigation pagination justify-content-between text-uppercase" role="navigation">
+						<div class="" style="text-align: center; width: 100%;">
+							<nav style="width: 100%;"
+								class="navigation pagination justify-content-between text-uppercase"
+								role="navigation">
 								<div class="prev">
 									<c:choose>
 										<c:when test="${pager.startPage > pager.blockSize}">
-											<a class="prev disabled" 
+											<a class="prev disabled"
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.prevPage}">PREV</a>
 										</c:when>
 										<c:when test="${pager.pageNum > 1}">
-											<a class="prev disabled" 
+											<a class="prev disabled"
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum - 1}">PREV</a>
 										</c:when>
 										<c:otherwise>
@@ -252,7 +279,8 @@ tr td {
 										end="${pager.endPage}" step="1">
 										<c:choose>
 											<c:when test="${pager.pageNum != i}">
-												<a class="page-numbers" href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
+												<a class="page-numbers"
+													href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
 											</c:when>
 											<c:otherwise>
 												<span class="current">[${i}]</span>
@@ -264,11 +292,11 @@ tr td {
 								<div class="next">
 									<c:choose>
 										<c:when test="${pager.endPage != pager.totalPage}">
-											<a class="next" 
+											<a class="next"
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.nextPage}">NEXT</a>
 										</c:when>
 										<c:when test="${pager.pageNum < pager.totalPage}">
-											<a class="next" 
+											<a class="next"
 												href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
 										</c:when>
 										<c:otherwise>
@@ -276,8 +304,8 @@ tr td {
 										</c:otherwise>
 									</c:choose>
 								</div>
-						</nav>
-							</div>
+							</nav>
+						</div>
 					</section>
 				</div>
 			</div>
@@ -338,6 +366,31 @@ tr td {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	$('#Btn').click(function() {
+		alert("ㅋㅋㅋㅋㅋ");
+	    var salesIdx = ${salesIdx};
+	    var salesStatus = $("#statusBtn").val();
+	    alert(salesStatus);
 	
+	  $.ajax({
+	        url: "${pageContext.request.contextPath}/expert/sales/update/" + salesIdx,
+	        type: "PUT",
+	        data: JSON.stringify({ "salesIdx": salesIdx, "salesStatus": salesStatus }),
+	        dataType: "text",
+	        success: function(result) {
+	            if (result === "success") {
+	                alert("상태를 변경하였습니다.");
+	            }
+	        },
+	        error: function(xhr) {
+	            alert("상태를 변경하는데 오류가 발생했습니다. 오류 코드: " + xhr.status);
+	        }
+	    });
+	}); 
+	}); 
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.fornula.domain.expert.service;
 
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
 
 import lombok.RequiredArgsConstructor;
@@ -16,5 +17,6 @@ public interface ExpertSalesService {
 	Map<String, Object> getSalesList(int pageNum, int expertIdx);
 	int getSalesCount();
 	int getTotalMoney(int expertIdx);
-	//int modifySalesStatus(int salesIdx);
+	int modifySalesStatus(int salesIdx);
+	Sales selectStatus(int salesIdx);
 } 

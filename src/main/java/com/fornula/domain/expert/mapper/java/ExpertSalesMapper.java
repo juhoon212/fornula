@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
 
 public interface ExpertSalesMapper {
@@ -14,5 +15,7 @@ public interface ExpertSalesMapper {
 	List<TotalSalesMoney> selectTotalMoney(int expertIdx);
 	//판매내역 상태 변경
 	int updateSalesStatus(int salesIdx);
+	//slaes객체 출력
+	Sales selectStatus(int salesIdx);
 
 }
