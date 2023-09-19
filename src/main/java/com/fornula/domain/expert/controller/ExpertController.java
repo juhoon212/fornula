@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -43,7 +44,7 @@ public class ExpertController{
 	@GetMapping("/expert/item")
 	public String expertItem(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
 			
-		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		Expert findExpert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx()); // MemberIdx 로 찾은 전문가
 			
 		model.addAttribute("expertIdx", findExpert.getExpertIdx());
@@ -53,7 +54,7 @@ public class ExpertController{
 		
 	@GetMapping("/expert/item/{expertIdx}")
 	public String expertItem(@PathVariable Integer expertIdx, Model model) {
-			
+		
 		model.addAttribute("expertIdx", expertIdx);
 			
 		return"item-add/{expertIdx}";

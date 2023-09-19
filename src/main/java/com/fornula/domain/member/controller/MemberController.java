@@ -69,6 +69,7 @@ public class MemberController {
 	@PostMapping("/findPw")
 	public String findPw(@ModelAttribute FindPasswordForm form, RedirectAttributes redirectAttributes) {
 		
+		log.info("PASSWORD findForm id = {}, email = {}", form.getId(),form.getEmail());
 		Member findMember = memberLoginService.findPw(form.getId(), form.getEmail());
 		
 		// 실패 로직
