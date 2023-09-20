@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.service.ExpertSalesService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -34,7 +36,8 @@ public class ExpertSalesController {
     private final ItemDetailService itemDetailService;
 
 	//판매내역을 출력하는 메소드
-		@GetMapping("/sales")
+    	@PreAuthorize("hasRole('ROLE_EXPERT')")
+    	@GetMapping("/sales")
 		public String getSalesList(@RequestParam(defaultValue = "1") int pageNum
 				, HttpSession session
 				, Model model
@@ -42,10 +45,9 @@ public class ExpertSalesController {
 			
 			String originalFileName; // 원본 파일 이름
 			int pos;
-			int salesIdx;
 			
 			//세션에 있는 expert_idx를 가져오기
-			Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+			CustomMemberDetails loginMember = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 	    	int expertIdx = expert.getExpertIdx();
 			//log.info("expertIdx:{}",expertIdx);//로그출력

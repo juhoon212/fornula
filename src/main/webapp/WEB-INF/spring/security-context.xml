@@ -12,7 +12,7 @@
 		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')"/>
-		<intercept-url pattern="/cart/**" access="permitAll"/>
+		<intercept-url pattern="/cart/**" access="hasRole('ROLE_MEMBER')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
 		 <form-login login-page="/member/login" login-processing-url="/member/login"
@@ -31,9 +31,13 @@
             
         <session-management>
 			<concurrency-control max-sessions="1" expired-url="/sessionError"/>
-		</session-management>	
+		</session-management>
+		
+		
+		
+		 <csrf disabled="true"/>	
+			
     </http>
-    
     
     
     

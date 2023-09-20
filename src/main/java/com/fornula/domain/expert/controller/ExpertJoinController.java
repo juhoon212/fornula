@@ -30,6 +30,7 @@ import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.service.MypageInfoService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 import com.google.common.util.concurrent.Service;
 
@@ -52,7 +53,7 @@ public class ExpertJoinController {
 	}
 	@GetMapping("/join")
 	public String join(@ModelAttribute("expert") Expert expert, HttpSession session) {
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails  member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 
 		session.setAttribute("member", member.getId());
 
@@ -74,7 +75,8 @@ public class ExpertJoinController {
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		//시큐리티 적용
+		CustomMemberDetails member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
 
 
@@ -101,7 +103,7 @@ public class ExpertJoinController {
 		expertJoinService.addExpertInfo(expert);
 
 		// 등록처리에 성공하였을때 memberIdx 변경
-		member.setMemberStatus(2);
+		//member.set();
 		expertJoinService.updateExpertStatus(member);
 		redirectAttributes.addFlashAttribute("message","전문가 등록이 완료되었습니다");
 		

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -185,6 +187,9 @@ a {
 									₩<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
+								
+							<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
+							<sec:authorize access="hasAnyRoel('ROLE_MEMBER','ROLE_EXPERT')">	
 								<span> 
 									<c:if test="${not empty cartList}">
 										<button id="cartBtn" style="background: white;">
@@ -203,6 +208,7 @@ a {
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
 								</span>
+							</sec:authorize>
 							</div>
 						</div>
 						<hr>

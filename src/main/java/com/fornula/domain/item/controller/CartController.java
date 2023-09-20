@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.fornula.domain.item.dto.CartList;
 import com.fornula.domain.item.service.CartService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CartController {
 	private final CartService cartService;
 	
+	//장바구니 담기 버튼에 대한 권한 설정
+	@PreAuthorize("isAuthenticated")
 	@GetMapping("/cart")
 	public String getCart(HttpSession session
 			, @ModelAttribute CartList cart
@@ -31,7 +35,7 @@ public class CartController {
 		int pos;
 		
 		// 세션에서 memberIdx 추출
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("getmapping의 memberIdx:{}", memberIdx);
 		
