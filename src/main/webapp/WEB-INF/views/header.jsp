@@ -164,11 +164,101 @@ p #logo {
 					</button>
 				</div>
 
-				<c:if
-					test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
 
 
+				<sec:authorize access="isAnonymous()">
 					<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
+					<div class="collapse navbar-collapse" id="lana-navbar">
+						<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle"
+								href="<c:url value="/item/boardList"/>" id="post-dropdown"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">카테고리</a>
+								<ul class="dropdown-menu" aria-labelledby="page-dropdown">
+									<li>
+										<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
+									</li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">그래픽 디자인</a></li>
+									<li><a class="dropdown-item" href=""<c:url value="/item/boardList"/>">제품
+											디자인</a></li>
+
+									<li>
+										<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
+									</li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">영어 번역</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">중국어 번역</a></li>
+									<li>
+										<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
+									</li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">헤어 메이크업</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">제품·홍보 사진</a></li>
+									<li>
+										<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
+									</li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">사업자 세무</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">개인 세무</a></li>
+									<li>
+										<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
+									</li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">SNS 홍보</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/item/boardList"/>">해외 마케팅</a></li>
+								</ul>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">디자인</a></li>
+
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">번역</a></li>
+
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">사진·편집</a></li>
+
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">세무</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">전문가&nbsp;&nbsp;&nbsp;|</a></li>
+							<li><a class="nav-link"
+								href="<c:url value="/item/boardList"/>">고객센터</a></li>
+							<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
+						</ul>
+					</div>
+
+
+					<!-- 토글, 검색 버튼  -->
+					<div class="d-none d-xl-inline-flex ml-xl-4"></div>
+					<!-- 검색 기능 -->
+					<form class="search-widget d-none d-xl-inline-flex ml-3">
+						<button class="search-toggler" type="button"
+							data-toggle="collapse" data-target="#lana-search"
+							aria-controls="lana-search" aria-expanded="false"
+							aria-label="Toggle search">
+							<i class="fas fa-search fa-2x fa-fw text-dark"></i>
+						</button>
+						<sec:csrfInput />
+					</form>
+					<!-- 로그인버튼 삽입 -->
+					<div class="button-nav-widget d-none d-xl-inline-flex">
+						<ul class="nav button-nav">
+							<li class="nav-item"><a
+								href="<c:url value="/member/login"/>"
+								class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
+								id="loginButton"> Login </a></li>
+						</ul>
+					</div>
+				</sec:authorize>
+
+				<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 					<div class="collapse navbar-collapse" id="lana-navbar">
 						<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
 							<li class="nav-item dropdown"><a
@@ -227,154 +317,65 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">전문가&nbsp;&nbsp;&nbsp;|</a></li>
+								href="<c:url value="/item/boardList"/>">전문가</a></li>
+							<li><a class="nav-link" href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">고객센터</a></li>
 							<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 						</ul>
 					</div>
+				</sec:authorize>
+				<sec:authorize
+					access="hasAnyRole('ROLE_EXPERT','ROLE_MEMBER')">
+					<!-- 프로필 사진 삽입 -->
+					<div class="dropdown">
+						<div class="profile">
 
+							<a class="dropdown-toggle" href="<c:url value="/mypageInfo"/>"
+								role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+								class="rounded-circle" alt="profilephoto" width="60" height="60">
+							</a>
 
-					<!-- 토글, 검색 버튼  -->
-					<div class="d-none d-xl-inline-flex ml-xl-4">
-						<!-- 검색 기능 -->
-						<form class="search-widget d-none d-xl-inline-flex ml-3">
-							<button class="search-toggler" type="button"
-								data-toggle="collapse" data-target="#lana-search"
-								aria-controls="lana-search" aria-expanded="false"
-								aria-label="Toggle search">
-								<i class="fas fa-search fa-2x fa-fw text-dark"></i>
-							</button>
-							<sec:csrfInput />
-						</form>
-						<!-- 로그인버튼 삽입 -->
-						<div class="button-nav-widget d-none d-xl-inline-flex">
-							<ul class="nav button-nav">
-								<li class="nav-item"><a
-									href="<c:url value="/member/login"/>"
-									class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
-									id="loginButton"> Login </a></li>
-							</ul>
-						</div>
-				</c:if>
-				<c:if test="${sessionScope.loginMember !=null}">
-					<c:if
-						test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
-						<div class="collapse navbar-collapse" id="lana-navbar">
-							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle"
-									href="<c:url value="/item/boardList"/>" id="post-dropdown"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">카테고리</a>
-									<ul class="dropdown-menu" aria-labelledby="page-dropdown">
-										<li>
-											<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
-										</li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">그래픽 디자인</a></li>
-										<li><a class="dropdown-item" href=""<c:url value="/item/boardList"/>">제품
-												디자인</a></li>
-										<li>
-											<h6 class="dropdown-header font-weight-medium text-primary">번역</h6>
-										</li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">영어 번역</a></li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">중국어 번역</a></li>
-										<li>
-											<h6 class="dropdown-header font-weight-medium text-primary">사진·편집</h6>
-										</li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">헤어 메이크업</a></li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">제품·홍보 사진</a></li>
-										<li>
-											<h6 class="dropdown-header font-weight-medium text-primary">세무</h6>
-										</li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">사업자 세무</a></li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">개인 세무</a></li>
-										<li>
-											<h6 class="dropdown-header font-weight-medium text-primary">마케팅</h6>
-										</li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">SNS 홍보</a></li>
-										<li><a class="dropdown-item"
-											href="<c:url value="/item/boardList"/>">해외 마케팅</a></li>
-									</ul>
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">디자인</a></li>
+							<c:if test="${sessionScope.loginMember.memberStatus == 1}">
 
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">번역</a></li>
+								<ul class="dropdown-menu" id="loginDropDown">
+									<li><a class="dropdown-item"
+										href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/expert/join"/>">전문가 등록</a></li>
+									<a class="dropdown-toggle"
+										href="<c:url value="/expert/input "/>" role="button"
+										data-bs-toggle="dropdown" aria-expanded="false"> <img
+										src="<c:url value="/pictures/placeholder/profile.png"/>"
+										class="rounded-circle" alt="profilephoto" width="60"
+										height="60">
+									</a>
+							</c:if>
+							<c:if test="${sessionScope.loginMember.memberStatus == 2}">
+								<ul class="dropdown-menu" id="loginDropDown">
+									<li><a class="dropdown-item"
+										href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
+									<li><a class="dropdown-item"
+										href="<c:url value="/expert/input "/>">전문가 정보</a></li>
+									<li><a class="dropdown-item" href="<c:url value="#"/>">장바구니</a>
+									</li>
+							</c:if>
 
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">사진·편집</a></li>
-
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">세무</a></li>
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">전문가</a></li>
-								<li><a class="nav-link" href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
-								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">고객센터</a></li>
-								<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
-							</ul>
-						</div>
-						<form action="<c:url value="/member/logout"/>" method="post">
-							<!-- 프로필 사진 삽입 -->
-							<div class="dropdown">
-								<div class="profile">
-									<c:if test="${sessionScope.loginMember.memberStatus == 1}">
-										<a class="dropdown-toggle" href="<c:url value="/mypageInfo"/>"
-											role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											<img src="<c:url value="/pictures/placeholder/profile.png"/>"
-											class="rounded-circle" alt="profilephoto" width="60"
-											height="60">
-										</a>
-
-										<ul class="dropdown-menu" id="loginDropDown">
-											<li><a class="dropdown-item"
-												href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
-											<li><a class="dropdown-item"
-												href="<c:url value="/expert/join"/>">전문가 등록</a></li>
-									</c:if>
-
-									<c:if test="${sessionScope.loginMember.memberStatus == 2}">
-										<a class="dropdown-toggle"
-											href="<c:url value="/expert/input "/>" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false"> <img
-											src="<c:url value="/pictures/placeholder/profile.png"/>"
-											class="rounded-circle" alt="profilephoto" width="60"
-											height="60">
-										</a>
-										<ul class="dropdown-menu" id="loginDropDown">
-											<li><a class="dropdown-item"
-												href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
-											<li><a class="dropdown-item"
-												href="<c:url value="/expert/input "/>">전문가 정보</a></li>
-											<li><a class="dropdown-item" href="<c:url value="#"/>">장바구니</a>
-									</c:if>
-
-									<div style="padding-left: 18px;">
-										<button
-											style="border: none; background-color: white; color: black;"
-											type="submit" id="logout">로그아웃</button>
-										<sec:csrfInput />
-									</div>
-									</ul>
+							<form action="<c:url value="/member/logout"/>" method="post">
+								<div style="padding-left: 18px;">
+									<button
+										style="border: none; background-color: white; color: black;"
+										type="submit" id="logout">로그아웃</button>
+									<sec:csrfInput />
 								</div>
-								</ul>
-							</div>
+							</form>
+				</sec:authorize>
+				</ul>
+		</div>
 		</div>
 
-		</form>
-		</c:if>
-		<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
 			<div class="admin">
 				<form action="/member/logout" method="post">
 					<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
@@ -387,10 +388,9 @@ p #logo {
 					<sec:csrfInput />
 				</form>
 			</div>
-		</c:if>
-		</c:if>
-		</div>
+		</sec:authorize>
 		</nav>
+		</div>
 
 		<div
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"

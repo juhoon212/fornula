@@ -15,11 +15,11 @@
 	</insert>
 	
 	<!-- 전문가 등록시 상태 변경 -->
-	<insert id="updateExpertStatus">
+	<insert id="updateExpertStatus" parameterType="com.fornula.domain.member.dto.Auth">
 		<selectKey resultType="int" keyProperty="authIdx" order ="BEFORE">
 			select auth_seq.nextval from dual
 		</selectKey>
 		insert into auth values
-			(#{authIdx), #{id}, 'ROLE_EXPERT')
+			(#{authId}, #{id}, 'ROLE_EXPERT')
 	</insert>
 </mapper>

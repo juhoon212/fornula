@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.repository.ExpertInputDAO;
 import com.fornula.domain.expert.repository.ExpertJoinDAO;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.util.security.CustomMemberDetails;
 
@@ -24,8 +25,8 @@ public class ExpertJoinServiceImpl implements ExpertJoinService {
 	}
 
 	@Override
-	public void updateExpertStatus(CustomMemberDetails  member) {
-		expertJoinDAO.updateExpertStatus(member);
+	public void updateExpertStatus(Auth auth) {
+		expertJoinDAO.updateExpertStatus(auth);
 		
 	}
 }
