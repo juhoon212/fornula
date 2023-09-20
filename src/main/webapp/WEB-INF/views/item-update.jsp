@@ -141,15 +141,16 @@ document.querySelector('#submit').addEventListener('click', (e) => {
 		dateType: "text",
 		success: function(data) {
 			
-			 if(data.errorCode === "Bad") {
-	             console.log(data.message);
-	             errorMsg.innerHTML = data.message;
-			 }
+			let successData = JSON.parse(data);
 			
-			if(Array.isArray(data)) {
-				 data.forEach((a, i) => {
-				   		if(data[i].defaultMessage != null) {
-					  		errorMsg[i].innerHTML = data[i].defaultMessage;
+			 
+	             errorMsg.innerHTML = successData.message;
+			 
+			
+			if(Array.isArray(successData)) {
+				successData.forEach((a, i) => {
+				   		if(successData[i].defaultMessage != null) {
+					  		errorMsg[i].innerHTML = successData[i].defaultMessage;
 					  	} 		
 					  })
 			} else {

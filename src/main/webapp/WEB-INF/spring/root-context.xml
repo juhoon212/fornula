@@ -66,6 +66,11 @@
 		id="transactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971520" />
+        <property name="defaultEncoding" value="utf-8" />
+    </bean>
 
 	<!-- annotation-driven: @Transactional 어노테이션을 사용하여 TransactionManager 객체로 
 		트랜젝션 처리 가능 -->
