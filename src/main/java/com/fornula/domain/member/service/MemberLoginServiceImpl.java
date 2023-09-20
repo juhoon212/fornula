@@ -55,6 +55,8 @@ public class MemberLoginServiceImpl implements MemberLoginService {
 	@Override
 	public Member findPw(String id, String email) {
 		
+		log.info("id = {}, email = {}", id, email);
+		
 		Member findMember = memberLoginRepository.selectMemberPw(id, email).orElseThrow(() -> new NotFoundPwException("비밀번호를 찾을 수 없습니다"));
 		
 		log.info("findMember = {}", findMember);

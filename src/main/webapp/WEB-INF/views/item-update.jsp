@@ -9,6 +9,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="_csrf" name="_csrf" content="{{_csrf.token}}"/>
+	<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}"/>
 
     <link rel="stylesheet" id="montserrat-css" 
           href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -117,43 +119,54 @@ let category = document.querySelector('#mcategory1');
 let itemIdx = document.querySelector('#itemIdx');
 let photo = document.querySelector('#formFile');
 let errorMsg = document.querySelectorAll('.error-msg');
+const header = document.querySelector('meta[name="_csrf_header"]').content;
+const token = document.querySelector('meta[name="_csrf"]').content;
 
 
 document.querySelector('#submit').addEventListener('click', (e) => {
-	 fetch("${pageContext.request.contextPath}/item/update", {
-		  method: "POST", 
-		  headers: { 
-			"Content-Type" : "application/json", 
-		    "Accept": "application/json"
-		  },
-		  body: JSON.stringify({
-			  		"itemIdx" : itemIdx.value,
-			        "price" : price.value, 
-			        "itemName" : itemName.value,
-			        "itemContent" : itemContent.value,
-			        "categoryIdx" : category.value
-			  })
-		})
-	.then((response) => response.json())
-	.then((data) => {
-		 if(data.errorCode === "Bad") {
-             console.log(data.message);
-             errorMsg.innerHTML = data.message;
-		 }
-		
-		if(Array.isArray(data)) {
-			 data.forEach((a, i) => {
-			   		if(data[i].defaultMessage != null) {
-				  		errorMsg[i].innerHTML = data[i].defaultMessage;
-				  	} 		
-				  })
-		} else {
-	  		location.href = "${pageContext.request.contextPath}/photo/update/${item.itemIdx}";
-	  	}   
-	    })
-	    
-	e.preventDefault()
+	
+	$.ajax({
+		type: "post",
+		url: "<c:url value="/reply/register"/>",
+		contentType: "application/json",
+		data: JSON.stringify(
+			{
+				"itemIdx" : itemIdx.value,
+			    "price" : price.value, 
+			    "itemName" : itemName.value,
+			    "itemContent" : itemContent.value,
+			    "categoryIdx" : category.value
+			}		
+		),
+		dateType: "text",
+		success: function(data) {
+			
+			let successData = JSON.parse(data);
+			
+			 
+	             errorMsg.innerHTML = successData.message;
+			 
+			
+			if(Array.isArray(successData)) {
+				successData.forEach((a, i) => {
+				   		if(successData[i].defaultMessage != null) {
+					  		errorMsg[i].innerHTML = successData[i].defaultMessage;
+					  	} 		
+					  })
+			} else {
+		  		location.href = "${pageContext.request.contextPath}/photo/update/${item.itemIdx}";
+		  	}   
+		    
+		},
+		error: function(xhr) {
+			alert("에러 = "+xhr.status);
+		}
+	})
+	
 });
+	
+	
+
 
 </script>
 </body>

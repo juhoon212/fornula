@@ -62,6 +62,8 @@ public class ExpertSalesController {
 			
 			for(SaleItemExpert itemSalesList : resultList) {
 				
+				log.info("판매 목록 = {}", itemSalesList);
+				
 				pos = itemSalesList.getItemfileName().lastIndexOf("_");
 				originalFileName = itemSalesList.getItemfileName().substring(pos + 1);
 				

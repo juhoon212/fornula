@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -42,6 +43,7 @@ public class RestItemUpdateController {
 	
 	private final ItemDetailService itemDetailService;
 	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/update")
 	public Object updateItem(@Valid @RequestBody ItemUpdateForm form , Errors errors) throws IOException{
 		
