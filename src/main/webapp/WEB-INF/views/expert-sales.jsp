@@ -393,10 +393,10 @@ tr td {
                 var salesIdx = currentStatus.data('salesidx');
                 var salesStatus = parseInt(currentSalesStatus) + 1;
 
-                alert("status " + (i + 1) + "번째를 클릭했습니다.");
+               /*  alert("status " + (i + 1) + "번째를 클릭했습니다.");
                 alert("i의 값: " + i);
                 alert("변경할 status의 값: " + salesStatus);
-                alert("변경할 idx의 값: " + salesIdx);
+                alert("변경할 idx의 값: " + salesIdx); */
 
                 $.ajax({
                     url: "${pageContext.request.contextPath}/expert/sales/update",
@@ -407,13 +407,13 @@ tr td {
                     success: function (result) {
                         if (result === "success") {
                             if (salesStatus == 3) {
-                                alert("주문전 상태를 변경하였습니다.");
+                                //alert("주문전 상태를 변경하였습니다.");
                                 currentStatus.text("제작완료"); // #Btn1의 text 변경
                                 currentStatus.closest('.post-card').find('#statusCheck').text('제작중');
                                 currentStatus.data('salesstatus', salesStatus); // salesstatus 값을 업데이트
                                 alert(salesStatus);
                             } else if (salesStatus == 4) {
-                                alert("주문중 상태를 변경하였습니다.");
+                               // alert("주문중 상태를 변경하였습니다.");
                                 currentStatus.prop("disabled", true);
                                 currentStatus.css({"color": "gray"});
                                 currentStatus.closest('.post-card').find('#statusCheck').text('제작완료');
