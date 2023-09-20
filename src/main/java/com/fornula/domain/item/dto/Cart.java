@@ -17,6 +17,6 @@ public class Cart {
 	private int memberIdx;
 	private int itemIdx;
 	private int itemPhotoIdx;
-
-
+	private String cartDate;
+	private int cartStatus;
 }

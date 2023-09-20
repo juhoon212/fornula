@@ -44,12 +44,11 @@ public class ExpertInfoController {
 		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 		int expertIdx = expert.getExpertIdx();
 
-		log.info(
-				"Expert Info: expertIdx={}, phone={}, interest={}, career={}, companyOne={}, companyTwo={}, companyThree={}, introduce={}",
+		log.info("Expert Info: expertIdx={}, phone={}, interest={}, career={}, companyOne={}, companyTwo={}, companyThree={}, introduce={}",
 				expert.getExpertIdx(), expert.getPhone(), expert.getInterest(), expert.getCareer(),
 				expert.getCompanyOne(), expert.getCompanyTwo(), expert.getCompanyThree(), expert.getIntroduce());
 
-//      기존 전문가 정보 조회
+		//기존 전문가 정보 조회
 		originalExpert = expertInputService.getOriginalExpert(expertIdx);
 		model.addAttribute("loginMember", loginMember);
 		model.addAttribute("originalExpert", originalExpert);

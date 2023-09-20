@@ -25,7 +25,7 @@ public class ItemBoardServiceImpl implements ItemBoardService{
 	public Map<String, Object> getItemList(int pageNum, Integer categoryIdx, String searchKeyword) {
 		int totalBoard=itemBoardDAO.selectItemBoardCount();
 		
-		Pager pager=new Pager(pageNum, totalBoard, 6, 6);
+		Pager pager=new Pager(pageNum, totalBoard, 9, 6);
 		
 		Map<String, Object> pageMap=new HashMap<>();
 		pageMap.put("startRow", pager.getStartRow());

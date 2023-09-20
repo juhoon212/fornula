@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -161,6 +163,7 @@ h3 {
 	<c:url value="/expert/join" var="url" />
 		<form:form method="post" id="expertjoinForm" enctype="multipart/form-data"
 			 action="${url }" modelAttribute="expert">
+			<sec:csrfInput/><!-- 토큰 생성  -->
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="story-posts">
