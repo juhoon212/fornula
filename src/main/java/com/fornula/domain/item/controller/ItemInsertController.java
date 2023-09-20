@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -35,7 +36,8 @@ import lombok.extern.slf4j.Slf4j;
 public class ItemInsertController {
 	private final ItemInsertService itemInsertService;
 	private final WebApplicationContext context;
-
+	
+	
 	@GetMapping("/add/{expertIdx}")
 	public String add(@PathVariable Integer expertIdx, @ModelAttribute ItemForm itemForm, Model model) {
 		log.info("Received GET request for /item/add/{expertIdx}");
@@ -45,7 +47,8 @@ public class ItemInsertController {
 		model.addAttribute("expertIdx", expertIdx);
 		return "item-add";
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping("/add/{expertIdx}")
 	@Transactional(rollbackFor = Exception.class)
 	public String insert(@ModelAttribute @Valid ItemForm itemForm, Errors errors, @PathVariable Integer expertIdx,
@@ -105,7 +108,8 @@ public class ItemInsertController {
 
 		return "add-photo";
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping("/photo/add/{itemIdx}")
 	@Transactional(rollbackFor = Exception.class)
 	public String addPhotoPost(@RequestParam(required = false) MultipartFile multipartFile, Model model,

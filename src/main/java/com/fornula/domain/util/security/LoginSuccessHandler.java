@@ -35,6 +35,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 			roleNames.add(authority.getAuthority());
 		}
 		CustomMemberDetails customMemberDetails = (CustomMemberDetails) authentication.getPrincipal();
+		
+		log.info("로그인 사용자 = {}", customMemberDetails.getId());
 
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionConst.Login_Member, customMemberDetails);

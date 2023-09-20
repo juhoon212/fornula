@@ -27,6 +27,7 @@ import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.item.service.ItemDetailServiceImpl;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.util.pager.Pager;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -72,7 +73,7 @@ public class ItemDetailController {
 		model.addAttribute("pager", selectReviews.get("pager"));
 		model.addAttribute("reviewList", selectReviews.get("reviewList"));
 
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		 if(member != null) { 
 			 int memberIdx = member.getMemberIdx();
 			 log.info("memberIdx:{}", memberIdx);

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -33,6 +34,7 @@ public class PhotoController {
 	private final ItemDetailService itemDetailService;
 	private final WebApplicationContext context;
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/update/{itemIdx}")
 	public String showUpdatePhoto(@PathVariable Integer itemIdx, Model model) {
 		model.addAttribute("itemIdx", itemIdx);

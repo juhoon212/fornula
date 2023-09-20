@@ -20,6 +20,7 @@ import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.service.ExpertSalesService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -45,7 +46,7 @@ public class ExpertSalesController {
 			int salesIdx;
 			
 			//세션에 있는 expert_idx를 가져오기
-			Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+			CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 	    	int expertIdx = expert.getExpertIdx();
 			//log.info("expertIdx:{}",expertIdx);//로그출력
@@ -59,6 +60,8 @@ public class ExpertSalesController {
 			//log.info("resultList:{}",resultList);
 			
 			for(SaleItemExpert itemSalesList : resultList) {
+				
+				log.info("판매 목록 = {}", itemSalesList);
 				
 				pos = itemSalesList.getItemfileName().lastIndexOf("_");
 				originalFileName = itemSalesList.getItemfileName().substring(pos + 1);
