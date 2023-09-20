@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
 <link rel="preconnect"
@@ -229,8 +230,7 @@ p #logo {
 								href="<c:url value="/item/boardList"/>">전문가&nbsp;&nbsp;&nbsp;|</a></li>
 							<li><a class="nav-link"
 								href="<c:url value="/item/boardList"/>">고객센터</a></li>
-							<li><a class="nav-link"
-								href="<c:url value="/info"/>">회사소개</a></li>
+							<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 						</ul>
 					</div>
 
@@ -245,11 +245,13 @@ p #logo {
 								aria-label="Toggle search">
 								<i class="fas fa-search fa-2x fa-fw text-dark"></i>
 							</button>
+							<sec:csrfInput />
 						</form>
 						<!-- 로그인버튼 삽입 -->
 						<div class="button-nav-widget d-none d-xl-inline-flex">
 							<ul class="nav button-nav">
-								<li class="nav-item"><a href="<c:url value="#"/>"
+								<li class="nav-item"><a
+									href="<c:url value="/member/login"/>"
 									class="btn btn-sm btn-outline-primary text-orange text-uppercase font-weight-bold my-auto"
 									id="loginButton"> Login </a></li>
 							</ul>
@@ -314,29 +316,17 @@ p #logo {
 								<li><a class="nav-link"
 									href="<c:url value="/item/boardList"/>">세무</a></li>
 								<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
-							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">전문가</a></li>
-							<li><a class="nav-link"
-								href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
-							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">고객센터</a></li>
-							<li><a class="nav-link"
-								href="<c:url value="/info"/>">회사소개</a></li>
+									href="<c:url value="/item/boardList"/>">마케팅&nbsp;&nbsp;&nbsp;|</a></li>
+								<li><a class="nav-link"
+									href="<c:url value="/item/boardList"/>">전문가</a></li>
+								<li><a class="nav-link" href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a></li>
+								<li><a class="nav-link"
+									href="<c:url value="/item/boardList"/>">고객센터</a></li>
+								<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 							</ul>
 						</div>
-							<!-- 프로필 사진 삽입 -->
-							<form class="search-widget d-none d-xl-inline-flex ml-3">
-							<button class="search-toggler" type="button"
-								data-toggle="collapse" data-target="#lana-search"
-								aria-controls="lana-search" aria-expanded="false"
-								aria-label="Toggle search">
-								<i class="fas fa-search fa-2x fa-fw text-dark"></i>
-							</button>
-						</form>
-							
-							
 						<form action="<c:url value="/member/logout"/>" method="post">
+							<!-- 프로필 사진 삽입 -->
 							<div class="dropdown">
 								<div class="profile">
 									<c:if test="${sessionScope.loginMember.memberStatus == 1}">
@@ -374,6 +364,7 @@ p #logo {
 										<button
 											style="border: none; background-color: white; color: black;"
 											type="submit" id="logout">로그아웃</button>
+										<sec:csrfInput />
 									</div>
 									</ul>
 								</div>
@@ -393,6 +384,7 @@ p #logo {
 						style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
 						type="submit" id="logout">로그아웃</button>
 					<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
+					<sec:csrfInput />
 				</form>
 			</div>
 		</c:if>
@@ -434,7 +426,7 @@ p #logo {
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
 
-	<script>
+	<!-- <script>
 	let loginButton = document.querySelector('#loginButton');
 	let close = document.querySelector('.close');
 	let id = document.querySelector('#id-input');
@@ -498,5 +490,5 @@ p #logo {
               })
               
          e.preventDefault();
-	});
-</script>
+	}); -->
+	</script>
