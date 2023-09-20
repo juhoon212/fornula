@@ -131,7 +131,7 @@
 													<span style="color: black;">주니어 전문가입니다</span>
 												</c:when>
 												<c:otherwise>
-      경력: ${expertList.career} 년차
+      경력: ${expertList.career} 차
     </c:otherwise>
 											</c:choose>
 										</a>
