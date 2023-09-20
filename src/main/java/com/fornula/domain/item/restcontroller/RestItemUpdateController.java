@@ -41,7 +41,6 @@ import lombok.extern.slf4j.Slf4j;
 public class RestItemUpdateController {
 	
 	private final ItemDetailService itemDetailService;
-	private final WebApplicationContext context;
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/update")
 	public Object updateItem(@Valid @RequestBody ItemUpdateForm form , Errors errors) throws IOException{

@@ -83,9 +83,10 @@ public class ReviewController {
 	}
 	
 	@PostMapping("/add/reply/{itemIdx}")
-	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes) {
+	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes, HttpSession session) {
 		
-		reviewService.addReply(review);
+		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
+		reviewService.addReply(review, itemIdx, loginMember.getMemberIdx());
 
 		return "redirect:/item/{itemIdx}/1";
 	}

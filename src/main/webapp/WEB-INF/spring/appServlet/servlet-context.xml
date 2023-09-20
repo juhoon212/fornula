@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/mvc"
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -38,19 +39,24 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.fornula.domain" />
 
 	<!-- 파일 업로드 처리 기능을 제공하는 클래스를 Spring Bean으로 등록 -->
 	<!-- => Spring Bean의 식별자(beanName)를 반드시 [multipartResolver]로 설정 -->
-	<beans:bean
+	<!-- <beans:bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
-		<!-- maxUploadSize 필드에 최대 업로드 처리 가능한 파일의 제한 용량(Byte)이 저장되도록 값 주입 -->
+		maxUploadSize 필드에 최대 업로드 처리 가능한 파일의 제한 용량(Byte)이 저장되도록 값 주입
 		<beans:property name="maxUploadSize" value="20971520" />
-		<!-- defaultEncoding 필드에 전달값에 문자형태(캐릭터셋)가 저장되도록 값 주입 -->
+		defaultEncoding 필드에 전달값에 문자형태(캐릭터셋)가 저장되도록 값 주입
 		<beans:property name="defaultEncoding" value="utf-8" />
-	</beans:bean>
+	</beans:bean> -->
+	
+	<context:component-scan
+		base-package="com.fornula.domain" />
+	
+	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"></security:global-method-security>
+	
+	
 
 	<!-- 로그인 인터셉터 -->
 	
@@ -98,6 +104,7 @@
 			<beans:ref bean="ExpertAuthInterceptor"/>
 		</interceptor> -->
 	<!-- </interceptors>   -->
+	
 </beans:beans>
 		
 
