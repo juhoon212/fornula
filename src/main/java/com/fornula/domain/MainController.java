@@ -51,4 +51,8 @@ public class MainController {
    public String test() {
       return "common-success";
    }
+   @GetMapping("/info")
+   public String info() {
+	   return "info";
+   }
 }

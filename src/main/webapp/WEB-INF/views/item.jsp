@@ -172,7 +172,7 @@ a {
 							<h4>${item.itemDate }</h4>
 						</div>
 						<hr>
-						<div id="jul">&nbsp</div>
+						<div id="jul">&nbsp;</div>
 						<img class="img-fluid post-thumbnail"
 							src="<c:url value='/images/upload/${originalFileName}'/>"
 							alt="Post">
@@ -182,12 +182,27 @@ a {
 							<h4>${item.itemContent }</h4>
 							<div class="post-content" id="detailbox">
 								<h4 style="float: right;">
-									₩
-									<fmt:formatNumber type="number" value="${item.price}"
+									₩<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-								<button style="float: right;"
-									onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+								<span> 
+									<c:if test="${not empty cartList}">
+										<button id="cartBtn" style="background: white;">
+											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
+												src="<c:url value="/pictures/placeholder/heart.png"/>">
+										</button>
+									</c:if> 
+									<c:if test="${empty cartList}">
+										<button id="cartBtn" style="background: white;"
+											data-itemIdx="${item.itemIdx} ">
+											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
+												src="<c:url value="/pictures/placeholder/noheart.png"/>">
+										</button>
+									</c:if>
+
+									<button style="float: right; padding: 5px;"
+										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
+								</span>
 							</div>
 						</div>
 						<hr>
@@ -301,8 +316,6 @@ a {
 	<jsp:include page="footer.jsp" />
 
 	<script type="text/javascript"
-		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
-	<script type="text/javascript"
 		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
@@ -318,8 +331,52 @@ a {
 		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+	$(document).ready(function() {
+	    var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+	    var itemIdx = ${itemIdx};
+	    var cartButton = $("#heartImg");
+
+	    cartButton.click(function() {
+	        if (cartButton.attr("src") === beforePhotoURL) {
+	            $.ajax({
+	                type: "POST",
+	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
+	                success: function(response) {
+	                    if (response === "success") {
+	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
+	                    } else {
+	                        alert("로그인 사용자만 가능합니다.");
+	                    }
+	                },
+	                error: function() {
+	                    alert("장바구니 추가 중 오류가 발생했습니다.");
+	                }
+	            });
+	        } else if (cartButton.attr("src") === afterPhotoURL) {
+	                $.ajax({
+	                    type: "DELETE",
+	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
+	                    dataType: "text",
+	                    success: function(result) {
+	                        if (result === "success") {
+	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
+	                        } else {
+	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
+	                        }
+	                    },
+	                    error: function(xhr) {
+	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+	                    }
+	                });
+	        }
+	    });
+	});
+
 	</script>
 </body>
 </html>
