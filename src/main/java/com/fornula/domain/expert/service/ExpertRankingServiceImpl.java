@@ -49,12 +49,32 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	}
 //	전문가 한명당 총 판매 금액 출력하는 메소드
 	@Override
-	public int getTotalMoney(int expertIdx) {
+	public Map<String, Object> getExpertRanking(int pageNum) {
+		int totalBoard=expertRankingDAO.selectExpertCount();
+		int pageSize=6;
+		int blockSize=5;
+		
+		Pager pager = new Pager(pageNum,totalBoard, pageSize, blockSize);
+		
+		Map<String, Object> pageMap = new HashMap<String, Object>();
+		pageMap.put("startRow", pager.getStartRow());
+		pageMap.put("endRow", pager.getEndRow());
+		
+		List<Expert> expertRankingList=expertRankingDAO.selectExpertList(pageMap);
+		log.info("pageMap", pageMap);
+		log.info("expertBoardList={}",expertRankingList);
+		
+		
 		int price =0;
-		List<TotalSalesMoney> totalList = expertRankingDAO.selectTotalMoney(expertIdx);
+		List<TotalSalesMoney> totalList = expertRankingDAO.selectTotalMoney(pageMap);
 		for(TotalSalesMoney totalSalesList : totalList) {
 			price += totalSalesList.getPrice();
 		}
-		return price;
+		Map<String, Object> resultPrice=new HashMap<String, Object>();
+		resultPrice.put("pager", pager);
+		resultPrice.put("expertRankingList", expertRankingList);
+		resultPrice.put("resultPrice", resultPrice);
+		
+		return resultPrice;
 	}
 }

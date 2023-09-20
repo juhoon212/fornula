@@ -30,17 +30,22 @@
  	</select>
  	
  	<!-- 총금액 출력을 위한 쿼리문 -->
- 	<select id="selectTotalMoney" resultType="TotalSalesMoney">
- 		SELECT S.sales_idx,
-                S.sales_date,
-                S.sales_status,
+ 	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
+ 		SELECT * 
+ 		FROM (
+ 			SELECT rownum AS rn, moneyList.*
+ 			FROM (
+ 				SELECT
+ 				E.expert_idx,
+                S.sales_idx,
                 I.item_idx,
-                I.item_name,
-                I.price,
-                I.item_content
-        FROM sales S
+                I.price
+        FROM expert E
         JOIN item I ON S.item_idx = I.item_idx
-        WHERE I.expert_idx = #{expertIdx} and I.item_status=1
+        	AND I.expert_idx = E.expert_idx
+        	) moneyList
+       	)
+        WHERE rn BETWEEN #{startRow} AND #{endRow}
     </select>
  </mapper>
 

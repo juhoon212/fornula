@@ -5,5 +5,5 @@ import java.util.Map;
 public interface ExpertRankingService {
 	Map<String, Object> getExpertList(int pageNum);
 	int getExpertCount();
-	int getTotalMoney(int expertIdx);
+	Map<String, Object> getExpertRanking(int pageNum);
 }
