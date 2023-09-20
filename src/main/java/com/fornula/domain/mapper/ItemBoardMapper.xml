@@ -25,6 +25,9 @@
                 <if test="categoryIdx != null">
                     AND item.category_idx = #{categoryIdx}
                 </if>
+                <if test="searchKeyword != null">
+                    AND (item.item_name LIKE '%' || #{searchKeyword} || '%' OR item.item_content LIKE '%' || #{searchKeyword} || '%')
+                </if>
             ORDER BY item.item_idx DESC
         ) itemlist
     )
@@ -61,60 +64,5 @@
 		SELECT COUNT(*)
 		FROM item
 		WHERE item_status = 1
-	</select>
-
-	<!-- header의 검색창에서 사용할 검색 기능(상품 제목이나 내용에서 searchKeyword가 포함된 애들은 전부 리스트로 포함)-->
-	<select id="searchItemList" resultMap="ItemPhotoCategoryCart">
-	    SELECT *
-	    FROM (
-	        SELECT
-	            rownum rn, itemlist.*
-	        FROM (
-	            SELECT
-	                item.item_idx,
-	                item.category_idx,
-	                item.EXPERT_IDX,
-	                item.item_name,
-	                item.item_content,
-	                item.PRICE,
-	                photo.PHOTO_IDX,
-	                photo.ITEMFILE_NAME
-	            FROM item
-	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
-	            WHERE item.item_status = 1
-	                <if test="searchKeyword != null and searchKeyword != ''">
-	                AND (item.item_name LIKE '%' || #{searchKeyword} || '%' 
-	                     OR item.item_content LIKE '%' || #{searchKeyword} || '%')
-                     </if> 
-	            ORDER BY item.item_idx DESC
-	        ) itemlist
-	    )
-	    WHERE rn BETWEEN #{startRow} AND #{endRow}
-	</select>
-	
-	<!-- 상품 게시판에서 카테고리별 검색하는 검색 기능 -->
-	<select id="searchItemCategoryList" resultMap="ItemPhotoCategoryCart">
-	    SELECT *
-	    FROM (
-	        SELECT
-	            rownum rn, itemlist.*
-	        FROM (
-	            SELECT
-	                item.item_idx,
-	                item.category_idx,
-	                item.EXPERT_IDX,
-	                item.item_name,
-	                item.item_content,
-	                item.PRICE,
-	                photo.PHOTO_IDX,
-	                photo.ITEMFILE_NAME
-	            FROM item
-	            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
-	            WHERE item.item_status = 1
-	                AND item.category_idx = #{categoryIdx}
-	            ORDER BY item.item_idx DESC
-	        ) itemlist
-	    )
-	    WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
 </mapper>
