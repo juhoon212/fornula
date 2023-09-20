@@ -15,7 +15,7 @@ import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertBoardService;
 import com.fornula.domain.item.dto.itemdetail.ItemPhotoForExpert;
 import com.fornula.domain.item.service.ItemDetailService;
-import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -36,7 +36,7 @@ public class ExpertBoardController {
 		String originalFileName;
 		int pos;
 		
-		Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 		int expertIdx = expert.getExpertIdx();
 		log.info("expertidx={}",expertIdx);
