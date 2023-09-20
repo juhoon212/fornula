@@ -414,8 +414,9 @@ tr td {
                                 alert(salesStatus);
                             } else if (salesStatus == 4) {
                                 alert("주문중 상태를 변경하였습니다.");
-                                $('#Btn2').prop("disabled", true);
-                                $('#statusCheck').text('제작완료');
+                                currentStatus.prop("disabled", true);
+                                currentStatus.css({"color": "gray"});
+                                currentStatus.closest('.post-card').find('#statusCheck').text('제작완료');
                             }
                         }
                     },
