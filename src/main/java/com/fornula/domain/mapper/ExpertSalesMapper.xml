@@ -41,11 +41,11 @@
 	</select>
  
  	<!-- 판매내역 상태를 위한 객체 출력 -->
- 	<select id="selectStatus" resultType="Sales">
+ <!-- 	<select id="selectStatus" resultType="Sales">
  		SELECT * FROM sales
  		WHERE sales_idx=#{salesIdx};
  	</select>
- 
+  -->
  	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
  	<select id="selectSalesCount" resultType="int">
  		SELECT COUNT(*)
@@ -69,10 +69,10 @@
  	
  
 	<!-- 상태 버튼 클릭시 판매 상태 변경 --> 
-	<update id="updateSalesStatus" parameterType="Status">
+	<update id="updateSalesStatus" parameterType="com.fornula.domain.expert.dto.Sales">
 	 	UPDATE sales
 	 	SET sales_status =#{salesStatus}
-		where sales_idx = #{salesIdx};
+		WHERE sales_idx = #{salesIdx}
 	</update>
  </mapper>
 

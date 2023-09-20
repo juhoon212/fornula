@@ -17,6 +17,6 @@ public interface ExpertSalesService {
 	Map<String, Object> getSalesList(int pageNum, int expertIdx);
 	int getSalesCount();
 	int getTotalMoney(int expertIdx);
-	int modifySalesStatus(int salesIdx);
-	Sales selectStatus(int salesIdx);
+	int modifySalesStatus(Sales sales);
+	//Sales selectStatus(int salesIdx);
 } 

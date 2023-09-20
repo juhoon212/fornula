@@ -14,10 +14,10 @@ public interface ExpertSalesDAO {
 	List<SaleItemExpert> selectSalesList(Map<String, Object> map);
 	int selectSalesCount();
 	//상태 버튼 클릭시 판매 상태 변경
-	int updateSalesStatus(int salesIdx);
+	int updateSalesStatus(Sales sales);
 	//총 금액을 출력
 	List<TotalSalesMoney> selectTotalMoney(int expertIdx);
 	//sales 객체 출력
-	Sales selectStatus(int salesIdx);
+	//Sales selectStatus(int salesIdx);
 
 }

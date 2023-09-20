@@ -14,8 +14,8 @@ public interface ExpertSalesMapper {
 	int selectSalesCount();
 	List<TotalSalesMoney> selectTotalMoney(int expertIdx);
 	//판매내역 상태 변경
-	int updateSalesStatus(int salesIdx);
+	int updateSalesStatus(Sales sales);
 	//slaes객체 출력
-	Sales selectStatus(int salesIdx);
+	//Sales selectStatus(int salesIdx);
 
 }

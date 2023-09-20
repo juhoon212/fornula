@@ -65,14 +65,7 @@ public class ExpertSalesController {
 				
 				itemSalesList.setItemfileName(originalFileName);
 				
-				salesIdx = itemSalesList.getSalesIdx();
-				log.info("salesIdx:{}",salesIdx);
-				
-				//sales  = expertSalesService.selectStatus(salesIdx);
-				//model.addAttribute("sales",sales);
-				//log.info("sales:{}",sales);
 			}
-			//log.info("pager : {}", resultMap.get("pager"));
 			
 			
 			

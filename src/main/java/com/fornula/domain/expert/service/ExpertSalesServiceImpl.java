@@ -63,15 +63,13 @@ public class ExpertSalesServiceImpl implements ExpertSalesService{
 	}
 
 	@Override
-	public int modifySalesStatus(int salesIdx) {
-		return expertSalesDAO.updateSalesStatus(salesIdx);
+	public int modifySalesStatus(Sales sales) {
+		return expertSalesDAO.updateSalesStatus(sales);
 	}
-
-	@Override
-	public Sales selectStatus(int salesIdx) {
-		return expertSalesDAO.selectStatus(salesIdx);
-	}
-	
-	
+	/*
+	 * @Override public Sales selectStatus(int salesIdx) { return
+	 * expertSalesDAO.selectStatus(salesIdx); }
+	 * 
+	 */
 
 }
