@@ -226,7 +226,7 @@ p #logo {
 							<li><a class="nav-link"
 								href="<c:url value="/expert/ranking"/>">전문가&nbsp;&nbsp;&nbsp;|</a></li>
 							<li><a class="nav-link"
-								href="<c:url value="/item/boardList"/>">고객센터</a></li>
+								href="<c:url value="/board/list"/>">고객센터</a></li>
 							<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 						</ul>
 					</div>
@@ -315,7 +315,7 @@ p #logo {
 									href="<c:url value="/expert/ranking"/>">전문가</a></li>
 								<li><a class="nav-link" href="<c:url value="/cart"/>">장바구니&nbsp;&nbsp;&nbsp;|</a>
 								<li><a class="nav-link"
-									href="<c:url value="/item/boardList"/>">고객센터</a></li>
+									href="<c:url value="/board/list"/>">고객센터</a></li>
 								<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 							</ul>
 

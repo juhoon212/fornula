@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>마이페이지-나의정보</title>
+    <title>마이페이지 - 나의정보</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,10 +32,11 @@
           media="print">
   
           
-
- 
 </head>
+
+<!-- my-page style-->
 <style>
+
 #button{
    display: flex;
    justify-content: center;
@@ -42,23 +44,6 @@
    padding-bottom: 2em;
    
 }
-
-</style>
-<body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
-
-<main class="main container">
-    <div class="row">
-        <div class="col-12 col-lg-8">
-         <div class="widget">
-        
-           
-                
-            <div class="story-posts">
-              
-<section>
-<!-- my-page style-->
-<style>
    .info {
    margin-bottom: 0px;
    }
@@ -182,8 +167,6 @@
 }
 
 
-
-
 .changeBtn {
    border: none;
    padding: 5px 10px;
@@ -209,18 +192,27 @@ h3 {
 
 </style>
 <!-- 스타일 태그 끝 -->
+
+<body class="archive post-type-archive post-type-archive-lana_story">
+<jsp:include page="header.jsp" />
+
+<main class="main container">
+    <div class="row">
+        <div class="col-12 col-lg-8">
+         <div class="widget">
+            <div class="story-posts">
+              
+<section>
+
    <form name="infoForm" method="post" action="<c:url value="/mypageInfo"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">내 정보 수정</label>
         <h3>
         아이디
         </h3>
         <div class="info" id="info__id">
-        
           <div id="id-input">
             <p class="box">${member.id }</p> 
-            
           </div>
-          
         </div>
 
         <h3>이메일</h3>
@@ -231,7 +223,6 @@ h3 {
              <a style="display: inline-block;" class="changeEmail" id=changeEmail href="<c:url value="/mypageInfoChange"/>">수정</a> </input></span>
              <div class="error-msg"></div>
           </div>
-          
         </div>
       
         <h3>휴대폰</h3>
@@ -243,7 +234,6 @@ h3 {
         </div>
             <h3>관심사</h3>
             <hr>
-            
                 <h3>관심사1</h3>
            <div class="info" id="info__category" >
           <div id="category-flex">
@@ -258,7 +248,6 @@ h3 {
           <p class="box" style = "margin-left :10px;">${categoryTwo.small }</p>           
             </div>
         </div>
-        
          <h3>관심사3</h3>
                <div class="info" id="info__category" >
           <div id="category-flex">
@@ -266,13 +255,7 @@ h3 {
           <p class="box" style = "margin-left :10px;">${categoryThree.small }</p>           
             </div>
         </div>
-        
-      
-     <!-- <div id="join" style = "float : right;">
-       <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitCheck();"
-                              style="text-align: center;" name="checkBtn" >회원수정</button>
-                              </div>
-      <span>&nbsp</span>--> 
+        <sec:csrfInput/>
     </form>
 </section>
         
