@@ -25,18 +25,19 @@
 	</insert>
 	
 	<insert id="addAuth">
-	
-		<selectKey resultType="int" keyProperty="authIdx" order="BEFORE">
-			SELECT auth_seq.nextval
-			FROM dual
-		</selectKey>
-		INSERT INTO AUTH 
-		VALUES(
-			#{authIdx},
-			#{id}, 
-			#{role}
-			)
-	</insert>
+   
+      <selectKey resultType="int" keyProperty="authIdx" order="BEFORE">
+         SELECT auth_seq.nextval
+         FROM dual
+      </selectKey>
+      INSERT INTO AUTH 
+      VALUES(
+         #{authIdx},
+         #{id}, 
+         'ROLE_MEMBER'
+         )
+   </insert>
+
 	
 	<resultMap type="Member" id="securityMemberResultMap">
 		<id column="member_idx" property="memberIdx"/>
@@ -75,6 +76,8 @@
 				ON MEMBER.id = AUTH.id
 		WHERE MEMBER.id = #{id}
 	</select>
+	
+	
 	
 	
 </mapper>

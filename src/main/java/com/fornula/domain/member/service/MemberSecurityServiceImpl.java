@@ -25,6 +25,7 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 	public int addSecurityMember(Member member) {
 		int result = memberSecurityRepository.addSecurityMember(member);
 		
+		
 		if(result == 0) {
 			throw new UsernameNotFoundException("유저가 추가되지 않았습니다.");
 		}

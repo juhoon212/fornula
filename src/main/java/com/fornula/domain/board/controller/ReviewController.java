@@ -20,6 +20,7 @@ import com.fornula.domain.board.dto.ReviewForm;
 import com.fornula.domain.board.service.ReviewService;
 import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -39,7 +40,7 @@ public class ReviewController {
 							RedirectAttributes redirectAttributes,
 							@PathVariable Integer itemIdx) {
 		
-		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		
 		if(loginMember == null) {
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
@@ -55,6 +56,7 @@ public class ReviewController {
 		if(purchase == null) {
 			redirectAttributes.addAttribute("status", false);
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			redirectAttributes.addFlashAttribute("message", "결제 한 사람만 댓글을 달 수 있습니다.");
 			return "redirect:/item/{itemIdx}/1";
 		}
 		
@@ -85,7 +87,7 @@ public class ReviewController {
 	@PostMapping("/add/reply/{itemIdx}")
 	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes, HttpSession session) {
 		
-		Member loginMember = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		reviewService.addReply(review, itemIdx, loginMember.getMemberIdx());
 
 		return "redirect:/item/{itemIdx}/1";
