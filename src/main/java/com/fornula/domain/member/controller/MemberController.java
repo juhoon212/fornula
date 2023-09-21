@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.vo.FindPasswordForm;
 import com.fornula.domain.member.service.MemberJoinService;
 import com.fornula.domain.member.service.MemberLoginService;
+import com.fornula.domain.member.service.MemberSecurityService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	
 	private final MemberLoginService memberLoginService;
-	private final MemberJoinService memberJoinService;
+	private final MemberSecurityService memberSecurityService;
 	
 	// 회원가입 폼
 	@GetMapping("/join")
@@ -38,18 +41,20 @@ public class MemberController {
 	
 	// 회원가입 
 	@PostMapping("/join")
-	public String joinForm(@ModelAttribute Member member, RedirectAttributes redirectAttributes) {
-		
-		 int result = memberJoinService.joinMember(member);
-		 
-		 if(result == 0) {
-			 redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
-			 return "redirect:/member/join";
-		 }
-		 
-		 redirectAttributes.addFlashAttribute("message", "회원가입 성공");
-		 return "redirect:/";
-	}
+	   public String joinForm(@ModelAttribute Member member,@ModelAttribute Auth auth,RedirectAttributes redirectAttributes) {
+	      
+	       int result = memberSecurityService.addSecurityMember(member);
+	       
+	       
+	       if(result == 0) {
+	          redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
+	          return "redirect:/member/join";
+	       }
+	       memberSecurityService.addAuth(auth);
+	       redirectAttributes.addFlashAttribute("message", "회원가입 성공");
+	       return "redirect:/";
+	   }
+
 	
 	
 	
