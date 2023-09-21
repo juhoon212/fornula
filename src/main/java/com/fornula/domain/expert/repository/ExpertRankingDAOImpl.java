@@ -32,4 +32,9 @@ public class ExpertRankingDAOImpl implements ExpertRankingDAO{
 	public List<ExpertMoneyRanking> selectTotalMoneyList(Map<String, Object> map) {
 		return sqlSession.getMapper(ExpertRankingMapper.class).selectTotalMoneyList(map);
 	}
+	
+	@Override
+	public int selectMoneyCount() {
+		return sqlSession.getMapper(ExpertRankingMapper.class).selectMoneyCount();
+	}
 }

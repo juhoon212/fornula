@@ -48,11 +48,11 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	public int getExpertCount() {
 		return expertRankingDAO.selectExpertCount();
 	}
-//	전문가 한명당 총 판매 금액 출력하는 메소드
+//	총판매액 순서로 출력하는 전문가 리스트를 뽑는 메소드
 	@Override
 	public Map<String, Object> getMoneyList(int pageNum) {
-		int totalBoard=expertRankingDAO.selectExpertCount();
-		int pageSize=1;
+		int totalBoard=expertRankingDAO.selectMoneyCount();
+		int pageSize=3;
 		int blockSize=1;
 		
 		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
@@ -70,5 +70,10 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 		log.info("resultMap={}", resultMap);
 		
 		return resultMap;
+	}
+//	총판매액 순서로 출력하는 전문가 리스트를 뽑는 메소드를 위하여 몇명 있는지 출력용 메소드	
+	@Override
+	public int getMoneyCount() {
+		return expertRankingDAO.selectMoneyCount();
 	}
 }
