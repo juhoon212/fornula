@@ -52,7 +52,7 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	public Map<String, Object> getExpertRanking(int pageNum) {
 		int totalBoard=expertRankingDAO.selectExpertCount();
 		int pageSize=6;
-		int blockSize=5;
+		int blockSize=3;
 		
 		Pager pager = new Pager(pageNum,totalBoard, pageSize, blockSize);
 		
