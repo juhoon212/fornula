@@ -15,6 +15,7 @@
     	
 		<intercept-url pattern="/item/update/**" access="hasRole('ROLE_MEMBER')"/>
 		<intercept-url pattern="/expert/join/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/expert/ranking**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')"/>

@@ -20,6 +20,11 @@
 			select auth_seq.nextval from dual
 		</selectKey>
 		insert into auth values
-			(#{authId}, #{id}, 'ROLE_EXPERT')
+			(#{authIdx}, #{id}, 'ROLE_EXPERT')
 	</insert>
+	
+	<!-- 예외처리를 위한 쿼리 -->
+	<select id="exceptionExpert" resultType="Auth">
+		SELECT * FROM auth WHERE id = #{id} and role='ROLE_EXPERT'
+	</select>
 </mapper>

@@ -60,6 +60,8 @@ public class ExpertJoinController {
 		CustomMemberDetails  member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 
 		session.setAttribute("member", member.getId());
+		expert.setMemberIdx(member.getMemberIdx());
+		log.info("getMemberIdx:{}", member.getMemberIdx());
 
 		return "expert-join";
 	}
