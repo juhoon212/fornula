@@ -55,22 +55,6 @@
 
 </head>
 <style>
-
-.id {
-font-family: 'Permanent Marker', cursive;
-	padding-left: 20px;
-	padding-bottom: 0px;
-	padding-top: 0px;
-	margin: 0 auto;
-	font-size: 2.5em;
-	text-align: center;
-	}
-	
-#button {
-	display: flex;
-	justify-content: center; align-items center;
-	padding-bottom: 2em;
-}
 #button {
 	display: flex;
 	justify-content: center; align-items center;
