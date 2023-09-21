@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
+import com.fornula.domain.expert.dto.vo.ExpertMoneyRanking;
 import com.fornula.domain.expert.mapper.java.ExpertRankingMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class ExpertRankingDAOImpl implements ExpertRankingDAO{
 	}
 	
 	@Override
-	public List<TotalSalesMoney> selectTotalMoney(Map<String, Object> map) {
-		return sqlSession.getMapper(ExpertRankingMapper.class).selectTotalMoney(map);
+	public List<ExpertMoneyRanking> selectTotalMoneyList(Map<String, Object> map) {
+		return sqlSession.getMapper(ExpertRankingMapper.class).selectTotalMoneyList(map);
 	}
 }

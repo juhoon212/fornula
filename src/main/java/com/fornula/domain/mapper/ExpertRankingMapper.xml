@@ -31,10 +31,30 @@
  	
  	<!-- 총금액 출력을 위한 쿼리문 -->
  	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
-아오 씨발 진짜 매퍼 좆같이 복잡하네
+	SELECT * FROM (
+	    SELECT
+	        e.EXPERT_IDX,
+	        COALESCE(totalPrice, 0) AS totalPrice,
+	        e.INTEREST,
+	        e.INTRODUCE,
+	        ROWNUM AS rn
+	    FROM
+	        EXPERT e
+	    LEFT JOIN
+	        (
+	            SELECT
+	                i.EXPERT_IDX,
+	                SUM(i.PRICE) AS totalPrice
+	            FROM
+	                SALES s
+	            JOIN
+	                ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+	            GROUP BY
+	                i.EXPERT_IDX
+	        ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+	    ORDER BY
+	        COALESCE(totalPrice, 0) DESC
+	) 
+	WHERE rn BETWEEN #{startRow} AND #{endRow};
     </select>
  </mapper>
-
-
-
-

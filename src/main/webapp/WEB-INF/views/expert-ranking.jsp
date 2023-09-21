@@ -53,17 +53,17 @@
 							<div class="card-body">
 								<img src="<c:url value="/pictures/placeholder/1.png"/>" class="card-img-top img-fluid rounded-circle" alt="Team Member" data-scroll-animate="zoomIn">
 								<h5 class="post-title card-title" data-scroll-animate="fadeInDown">
-									<a href="<c:url value='/expert/output/${moneyList.expertIdx}'/>"></a>
+									<a href="<c:url value='/expert/output/${ExpertMoneyRanking.expertIdx}'/>">전문가 번호:${ExpertMoneyRanking.expertIdx}</a>
 								</h5>
 								<h6 class="card-subtitle" data-scroll-animate="fadeInUp" id="interest1">
-									<a href="<c:url value='/expert/output/${moneyList.interest}'/>"></a>
+									<a href="<c:url value='/expert/output/${ExpertMoneyRanking.expertIdx}'/>">관심사:${ExpertMoneyRanking.interest}</a>
 								</h6>
 								<p class="post-text card-text" data-scroll-animate="fadeIn" id="subtitle">
-									<a href="<c:url value='/expert/output/${moneyList.introduce}'/>"></a>
+									<a href="<c:url value='/expert/output/${ExpertMoneyRanking.expertIdx}'/>">자기소개 :<br>${ExpertMoneyRanking.introduce}</a>
 								</p>
 								<table style="font-size: 21px;">
 									<tr>
-										<td scope="col" style="text-align: right;" id="price">${moneyList.price }원</td>
+										<td scope="col" style="text-align: right;" id="price">${selectTotalMoneyList.totalMoney }원</td>
 									</tr>
 								</table>
 							</div>

@@ -28,19 +28,23 @@ public class ExpertRankingController {
 	private final ExpertInputService expertInputService;
 	
 	
-//	전체 전문가 리스트 출력 메소드
+//	전문가 리스트 출력 메소드
 	@RequestMapping("/ranking")
 	public String getExpertList(@RequestParam(defaultValue = "1") int pageNum
 								,Model model) {
 			
 		Map<String, Object> resultMap=expertRankingService.getExpertList(pageNum);
+		Map<String, Object> resultMoney=expertRankingService.getMoneyList(pageNum);
 		log.info("pager={}",resultMap.get("expertBoardList"));
+		log.info("pager={}",resultMoney.get("expertMoneyList"));
 		
 		model.addAttribute("pager",resultMap.get("pager"));
+		model.addAttribute("pager",resultMoney.get("pager"));
 		model.addAttribute("expertBoardList", resultMap.get("expertBoardList"));
+		model.addAttribute("expertMoneyList", resultMoney.get("expertMoneyList"));
 		return "expert-ranking";
 	}
-	
+//	전문가 클릭시 포트폴리오로 넘기기
 	@GetMapping("/output/{expertIdx}")
 	public String goExpertOutput(@PathVariable Integer expertIdx, @ModelAttribute Expert originalExpert, Model model) {
 		Expert expert = expertInputService.getOriginalExpert(expertIdx);

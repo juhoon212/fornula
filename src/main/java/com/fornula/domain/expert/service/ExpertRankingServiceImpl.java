@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
+import com.fornula.domain.expert.dto.vo.ExpertMoneyRanking;
 import com.fornula.domain.expert.repository.ExpertRankingDAO;
 import com.fornula.domain.util.pager.Pager;
 
@@ -49,32 +50,25 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	}
 //	전문가 한명당 총 판매 금액 출력하는 메소드
 	@Override
-	public Map<String, Object> getExpertRanking(int pageNum) {
+	public Map<String, Object> getMoneyList(int pageNum) {
 		int totalBoard=expertRankingDAO.selectExpertCount();
-		int pageSize=6;
-		int blockSize=3;
+		int pageSize=1;
+		int blockSize=1;
 		
-		Pager pager = new Pager(pageNum,totalBoard, pageSize, blockSize);
+		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 		
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
-		
-		List<Expert> expertRankingList=expertRankingDAO.selectExpertList(pageMap);
+		List<ExpertMoneyRanking> expertMoneyList=expertRankingDAO.selectTotalMoneyList(pageMap);
 		log.info("pageMap", pageMap);
-		log.info("expertBoardList={}",expertRankingList);
+		log.info("expertMoneyList={}",expertMoneyList);
 		
+		Map<String, Object> resultMap=new HashMap<String, Object>();
+		resultMap.put("pager", pager);
+		resultMap.put("expertMoneyList", expertMoneyList);
+		log.info("resultMap={}", resultMap);
 		
-		int price =0;
-		List<TotalSalesMoney> totalList = expertRankingDAO.selectTotalMoney(pageMap);
-		for(TotalSalesMoney totalSalesList : totalList) {
-			price += totalSalesList.getPrice();
-		}
-		Map<String, Object> resultPrice=new HashMap<String, Object>();
-		resultPrice.put("pager", pager);
-		resultPrice.put("expertRankingList", expertRankingList);
-		resultPrice.put("resultPrice", resultPrice);
-		
-		return resultPrice;
+		return resultMap;
 	}
 }

@@ -9,6 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ExpertMoneyRanking {
 	private int expertIdx;
+	private int interest;
+	private String introduce;
 	private int salesIdx;
 	private int itemIdx;
 	private int price;
