@@ -72,7 +72,7 @@ public class MypageInfoController {
 	@GetMapping("/mypageInfoChange")
 	public String infoChange(HttpSession session, Model model) {
 	
-		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		log.info("getsessionMember = {}", member);
 		
 	    Member joinMember = service.mypageInfoService(member.getId());
@@ -94,7 +94,7 @@ public class MypageInfoController {
 	@PostMapping("/mypageInfoChange")
 	public String infoChange(@ModelAttribute Member email, HttpSession session, Model model) {
 	
-		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		
 		if(email.getEmail()==null) {
 			return "mypage-infoChange"; 
