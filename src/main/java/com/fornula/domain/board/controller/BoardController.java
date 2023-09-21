@@ -19,6 +19,7 @@ import com.fornula.domain.board.dto.Board;
 import com.fornula.domain.board.dto.InquiryBoard;
 import com.fornula.domain.board.service.BoardService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -47,7 +48,7 @@ public class BoardController {
                           ,Model model) {
       
        //현제 세션에 있는 ID값 받아오기 위한 MEMBER 객체 저장
-      Member member=(Member)session.getAttribute(SessionConst.Login_Member);
+	   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
       
       //VO 클래스를 DTO에 값 넣기
       Board board = new Board();
@@ -91,7 +92,7 @@ public class BoardController {
       int idx=Integer.parseInt((String)map.get("boardIdx"));
       Board board=boardService.selectBoard(idx);
       //model.addAttribute("securityBoard", board);
-      Member member=(Member)session.getAttribute(SessionConst.Login_Member);
+      CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
       model.addAttribute("search", map);
       model.addAttribute("member", member);
       model.addAttribute("board", board);
@@ -124,7 +125,7 @@ public class BoardController {
                       ,@ModelAttribute InquiryBoard inquiryBoard
                       ,Model model
                       ,HttpSession session) {
-     Member member=(Member)session.getAttribute(SessionConst.Login_Member);
+	   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);                            
     Board board= new Board();
     board.setBoardTitle(inquiryBoard.getBoardTitle());
     board.setId(member.getId());

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>  
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,12 +13,10 @@
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>"
 	type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
 	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
 	rel="stylesheet">
@@ -56,6 +55,22 @@
 
 </head>
 <style>
+
+.id {
+font-family: 'Permanent Marker', cursive;
+	padding-left: 20px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	margin: 0 auto;
+	font-size: 2.5em;
+	text-align: center;
+	}
+	
+#button {
+	display: flex;
+	justify-content: center; align-items center;
+	padding-bottom: 2em;
+}
 #button {
 	display: flex;
 	justify-content: center; align-items center;
@@ -195,7 +210,6 @@ tr td {
 				</div>
 				<div class="col-4">
 					<div class="widget-sidebar story-sidebar">
-						<!--  <form action="<c:url value="/payment/${itemIdx}"/>" method="post" id="paymentForm">-->
 							<div class="tagcloud">
 								<div class="widget"
 									style="text-align: left; padding-left: 20px; margin: 0 auto;"
@@ -203,24 +217,17 @@ tr td {
 									<label>총 결제 금액</label>
 									<p>₩ ${payment.price}</p>
 									<hr>
-
 									<input class="check" type="checkbox" name="agree"
 										onclick="agreeCheck()">&nbsp;결제 전 안내사항<br> <input
 										class="check" type="checkbox" name="agree"
 										onclick="agreeCheck()">&nbsp;개인 정보 제 3자 제공
 								</div>
 								<br>
-								<p
-									style="text-align: center; font-size: 15px; color: gray; width: 100%">위
+								<p style="text-align: center; font-size: 15px; color: gray; width: 100%">위
 									내용을 확인하였고, 결제에 동의합니다.</p>
-
 								<div style="width: 100%;">
-									<button id="checkSubmit" type="button" class="id"
-										style="text-align: center;" name="checkBtn" disabled>결제하기</button>
-						<!--  </form>-->
 						               <button id="html5_inicis" type="button" class="id"
 										style="text-align: center;" name="inicisBtn" disabled>일반결제(KG이니시스)</button>
-						
 										<button id="kakaopay" type="button" class="id"
 										style="text-align: center;" name="kakaoBtn" >간편결제(카카오페이)</button>
 								</div>

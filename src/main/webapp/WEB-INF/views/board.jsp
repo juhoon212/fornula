@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="loginId" value="${sessionScope.id}"/>
-<c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'ID='+=loginId}"/>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>상품 페이지 - 상품 상세 페이지</title>
+    <title>고객센터 - 상품 문의글 상세</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,10 +39,6 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap" rel="stylesheet">
-	
-	
-	
-	
 	
 
 <style type="text/css">
@@ -108,10 +102,6 @@ a{
 }
 
 
-
-
-
-
 .gongback {
      border-width:0;
 	 margin-top : 43px;
@@ -152,10 +142,7 @@ border-width:0;
 </head>
 <body class="single single-post">
 
-
-
 <jsp:include page="header.jsp" />
-
 
 <main class="main">
         <div id="post-1" class="post type-post post-1 has-post-thumbnail comment-open">
@@ -165,30 +152,30 @@ border-width:0;
                         
                       <h2 class="writing-header"> 게시판 ${mode=="new" ? "글쓰기" : "읽기"}</h2>
                         <hr>
-                   <form id="form" class="frm" action="" method="post" >  
-                   <input type="hidden" name="boardIdx" value="${board.boardIdx}">
-                         <div class="style"> 제목 <br>
-                        <input id="in" type="text" name="boardTitle" value="${board.boardTitle}" placeholder="제목을 입력해주세요"
-                        ${mode=="new" ? "" : "readonly ='readonly'"}>
-                        </div>
-                        <c:if test="${mode ne 'new'}">
-                         <div class="gongback"> <span>작성자 :
-                        <input id="in" type="text" name="id" value="${board.id}" readonly></span>
-                         <span>작성일 :
-                        <input id="in" type="regDate" name="regDate" value="${board.regDate}" readonly> </span>
-                        </div>
-                       </c:if>
-                         <div id ="jul">&nbsp</div>  
-                         <hr>
-                         <div class="style"> 내용 <br>
-                        <textarea rows="20" name="boardContent" placeholder="내용을 입력해주세요" id="in"
-                        ${mode=="new" ? "" : "readonly ='readonly'"}>${board.boardContent}</textarea>
-                        </div>
-                         <div class="style"> 파일 <br>
-                        <input id="in" type="text" name="boardFileName" value="${board.boardFileName}" placeholder="파일을 선택해주세요"
-                        ${mode=="new" ? "" : "readonly ='readonly'"}>
-                        </div>
-                        <c:if test="${mode eq 'new'}">
+                         <form id="form" class="frm" action="" method="post" >  
+                           <input type="hidden" name="boardIdx" value="${board.boardIdx}">
+                            <div class="style"> 제목 <br>
+                            <input id="in" type="text" name="boardTitle" value="${board.boardTitle}" placeholder="제목을 입력해주세요"
+                            ${mode=="new" ? "" : "readonly ='readonly'"}>
+                            </div>
+                            <c:if test="${mode ne 'new'}">
+                            <div class="gongback"> <span>작성자 :
+                            <input id="in" type="text" name="id" value="${board.id}" readonly></span>
+                            <span>작성일 :
+                            <input id="in" type="regDate" name="regDate" value="${board.regDate}" readonly> </span>
+                            </div>
+                            </c:if>
+                            <div id ="jul">&nbsp</div>  
+                            <hr>
+                            <div class="style"> 내용 <br>
+                            <textarea rows="20" name="boardContent" placeholder="내용을 입력해주세요" id="in"
+                            ${mode=="new" ? "" : "readonly ='readonly'"}>${board.boardContent}</textarea>
+                            </div>
+                            <div class="style"> 파일 <br>
+                            <input id="in" type="text" name="boardFileName" value="${board.boardFileName}" placeholder="파일을 선택해주세요"
+                             ${mode=="new" ? "" : "readonly ='readonly'"}>
+                            </div>
+                            <c:if test="${mode eq 'new'}">
                           <button type="button" id="writeBtn" class="btn btn-write"><i class="fa fa-pencil"></i> 등록</button>
                        </c:if>
                        <c:if test="${mode ne 'new'}">
@@ -198,121 +185,15 @@ border-width:0;
                        <button type="button" id="removeBtn"class="btn btn-remove"><i class="fa fa-trash"></i>삭제</button>
                        </c:if>
                        </c:if>
-                  
                        <button type="button" id="listBtn" class="btn btn-list"><i class="fa fa-bars"></i>목록</button>
+                       <sec:csrfInput/>
                        </form>      
-                            
-                       
                         </div>
-                        
-                            <hr>
+                        <hr>
                     </div>
                 </div>
             </div>
         </div>
-       
-    
-	    <div class="container comments-container bg-white">
-	            <div class="row justify-content-center comments-row no-gutters">
-                <div class="col-12 col-sm-11 col-md-10 col-lg-8">
-                    <h4 class="comments-title font-weight-bold">
-                        Comments
-                    </h4>
-					<c:forEach var="reviewList" items="${reviewList}">
-						<ul class="comment-list list-unstyled">
-                        <li class="media">
-                            <img class="avatar photo rounded-circle mr-2 mr-sm-3 mr-md-4"
-                                 src="<c:url value="/pictures/placeholder/65x65.svg"/>" alt="Avatar">
-                            <div class="media-body">
-                                <div class="d-bock d-md-flex w-100 justify-content-between">
-                                    <h5 class="comment-title">
-                                       <span>${reviewList.member.id}</span>
-                                    </h5>
-                                    <div class="comment-date">
-                                         <span>${reviewList.review.reviewDate}</span>
-                                    </div>
-                                </div>
-                                <div class="comment-text">
-                                    <p>
-                                        ${reviewList.review.content}
-                                    </p>
-                                </div>
-                                
-                                	<div style="padding-left : 10px" class="d-bock d-md-flex w-100 justify-content-between">                        
-                                		<h5 class="comment-title">
-                                       <span style="color : blue;, font-size: 10px;, padding-left: 10px;">판매자</span>
-	                                    </h5>
-	                                    <div class="comment-date">
-	                                         <span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
-	                                    </div>
-	                                	</div>
-	                                	<div class="comment-text">
-	                                    <p>
-	                                        ${reviewList.review.answerContent}
-                                    	</p>
-                                	</div>
-                                
-                                    
-                                <ul class="comment-meta">
-                               
-                                    <li id="replyButton">
-                                        <a id="reply-btn" href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>" class="comment-reply" >
-                                            <i class="fas fa-reply fa-flip-horizontal"></i> Reply
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        	</li>
-                        
-                     	 </ul>
-					</c:forEach>
-                    
-                       </div>
-                    </div>
-
-                                
-
-                    <hr/>
-                    <!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
-                         role="navigation">
-                        <a class="prev disabled" href="#">
-                            Prev
-                        </a>
-                        <div class="nav-links">
-                            <ul class="page-numbers">
-                                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                            </ul>
-                        </div>
-                        <a class="next" href="#">
-                            Next
-                        </a>
-                    </nav> -->
-					
-					<div style="height: 100px"></div>
-                    <div id="respond" class="comment-respond">
-                        <h4 id="reply-title" class="comment-reply-title font-weight-bold">
-                            게시글 쓰기
-                        </h4>
-                        <form method="Post" id="commentform" class="comment-form form-horizontal" action="<c:url value="/board/add/${item.itemIdx}"/>">          
-                            <div class="form-group row">
-                                <div class="col">
-                                    <textarea class="form-control" name="content" rows="8" title="Comment"
-                                              placeholder="Comment" aria-required="true" required="required"></textarea>
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col">
-                                    <input name="submit" type="submit" id="submit"
-                                           class="btn btn-primary btn-lg text-uppercase font-weight-bold w-15x"
-                                           value="Post Comment">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-    
     
 </main>
 <jsp:include page="footer.jsp"/>
