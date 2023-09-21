@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>  
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,40 +30,22 @@
           media="all">
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
-  
-          
-
  
 </head>
+
+<!-- my-page style-->
 <style>
-#button{
+   #button{
    display: flex;
    justify-content: center;
    align-items center;
-   padding-bottom: 2em;
-   
-}
+   padding-bottom: 2em; 
+   }
 
-#secession {
+   #secession {
     justify-content:center;
-}
-
-</style>
-<body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
-
-<main class="main container">
-    <div class="row">
-        <div class="col-12 col-lg-8">
-         <div class="widget">
-        
-           
-                
-            <div class="story-posts">
-              
-<section>
-<!-- my-page style-->
-<style>
+   }
+   
    .info {
    margin-bottom: 22px;
    }
@@ -115,10 +98,16 @@ h3 {
 }
 
 
-
-
 </style>
 <!-- 스타일 태그 끝 -->
+<body class="archive post-type-archive post-type-archive-lana_story">
+<jsp:include page="header.jsp" />
+
+<main class="main container">
+    <div class="row">
+        <div class="col-12 col-lg-8">
+         <div class="widget">
+            <div class="story-posts">            
    <form name="secessionForm" method="post" action="<c:url value="/mypageSession"/>">
    <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">회원 탈퇴</label>
         <h3>
@@ -132,52 +121,38 @@ h3 {
             <label><input type="checkbox" name="reason" value="cautionreason4"> 기타</label><br>
          </div>
         </div>
-   
         <h3>아이디 확인</h3>
         <div class="info">
           <div id="id-input">
             <input class="box" type="text" name="id" placeholder="fornual에 가입하신 아이디를 적어주세요."/>
-            
           </div>
           <p align="left" style="color: red;" id="idMessage">${message }</p>
         </div>
-        
          <div class="info">
           <p>* 현재 사용중인 계정 정보는 회원 탈퇴 후 복구가 불가능합니다.</p>
         </div>
-        
           <h3>관심사 분야</h3>
            <div class="info">
           <label><input class="check" type="checkbox" 
           name="caution" value="cautioncheck" onclick="agreeCheck()"> 주의사항을 모두 입력하였습니다.</label><br>
            </div>
-          
       <div style = "float : right;">
       <button class = "changeBtn" id="checkSubmit" type="button" onclick="submitSecessionCheck();"
                               style="text-align: center;" name="checkBtn" disabled>회원탈퇴</button>
       </div>
       <span>&nbsp</span>
- 
+      <sec:csrfInput/>
     </form>     
                   </div>
-            
             </div>
         </div>
-      
         <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
-            
             <div id="button"><img src="<c:url value="/pictures/placeholder/profile.png"/>"
-               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>
-              
-                  
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
-                       
-                  
+               class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>              
+                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>                       
                </div>
-               <div class="tagcloud">
-                     
-
+               <div class="tagcloud">                   
 							<div id="button">
 								<c:if test="${member.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
@@ -188,12 +163,9 @@ h3 {
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
-
-
                      <div class="row">
                         <div class="widget">
                            <h3 class="widget-title">나의 정보</h3>
-
                            <ul>
                               <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                               <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
@@ -201,7 +173,6 @@ h3 {
                               <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                            </ul>
                         </div>
-
                      </div>
                   </div>
             </div>
@@ -233,8 +204,6 @@ h3 {
          }
       }
       
-      
- 
  
  function submitSecessionCheck() {
     let h3=document.getElementById("idMessage");
@@ -249,13 +218,6 @@ h3 {
    
    secessionForm.submit();
 }
-
-
-//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
-
-
-
-
 
  </script>
 </body>

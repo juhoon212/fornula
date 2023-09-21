@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>  
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,6 +31,7 @@
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
+
 <style>
 #button{
    display: flex;
@@ -38,18 +40,14 @@
    padding-bottom: 2em;
    
 }
-
 </style>
+
 <body class="archive post-type-archive post-type-archive-lana_story">
 <jsp:include page="header.jsp" /> 
 <main class="main container">
     <div class="row">
-        <div class="col-12 col-lg-8">
-        
-        
-              <div class="widget">
-               
-         
+        <div class="col-12 col-lg-8">   
+              <div class="widget">      
             <div class="story-posts">
             <section>
                 <div id="post-1" class="lana_story type-lana_story post-1 card story-card">
@@ -58,18 +56,13 @@
 	                           <h3 style="font-size: 24px;">${message }</h3>
 	                 </div>
 	                 </c:if>
-               
                 <c:forEach var="Itempurchase" items="${Itempurchase}">
-                    <div class="card-body">
-                      
-                       <div class="blog-posts">
-                     
+                    <div class="card-body">      
+                       <div class="blog-posts">   
                 <div id="post-2" class="post type-post post-2 card post-card">
-              
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${Itempurchase.itemfileName}'/>" alt="Post">
-                            
+                            <img class="card-img img-fluid" src="<c:url value='/images/upload/${Itempurchase.itemfileName}'/>" alt="Post">   
                         </div>
                         <div class="col-md-8">
                             <div class="card-body h-100 d-flex align-items-start flex-column">
@@ -84,20 +77,16 @@
                                 <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
-                                    
                                     <a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>" class="more-link card-link d-flex align-items-center">
                                         리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
                                     </a>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                        </div>
-                        
-                    </div>
-                    
+                        </div>                        
+                    </div>                   
                 </div>
                </c:forEach>
                 <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
@@ -119,28 +108,20 @@
                 </div>
                 </section>
                 </div>
-            </div>
-        
-        </div>
-      
+            </div>        
+        </div>     
      <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-            <div class="widget-sidebar story-sidebar">
-            
+            <div class="widget-sidebar story-sidebar">          
             <div id="button">
             	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
-            </div>
-              
-                  
+            </div>               
                        <div id="button">
                        <a href="<c:url value="#"/>" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
                        </div>
-            <div class="widget widget_tag_cloud">
-                  
+            <div class="widget widget_tag_cloud">                
                     <div class="tagcloud">
-           
-
-							<div id="button">
+    						<div id="button">
 								<c:if test="${member.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 등록</a>
@@ -150,9 +131,7 @@
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
-
-
-            <div class="row" >
+               <div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
                
@@ -162,10 +141,9 @@
                         <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
-                </div>
-               
-                  </div>
-                </div>
+                 </div>
+               </div>
+             </div>
             </div>
         </div>
     </div>

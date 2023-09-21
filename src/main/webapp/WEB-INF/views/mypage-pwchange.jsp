@@ -1,7 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>  
 <!doctype html>
 <html lang="en">
 <head>
@@ -44,32 +44,17 @@
    href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
    type="text/css" media="print">
 
-
-
-
 </head>
+
+<!-- my-page style-->
 <style>
+               
 #button {
    display: flex;
    justify-content: center; align-items center;
    padding-bottom: 2em;
 }
-</style>
-<body class="archive post-type-archive post-type-archive-lana_story">
-<jsp:include page="header.jsp" />
- 
-   <main class="main container">
-      <div class="row">
-         <div class="col-12 col-lg-8">
-            <div class="widget">
 
-
-
-               <div class="story-posts">
-
-                  <section>
-                     <!-- my-page style-->
-                     <style>
 .info {
    margin-bottom: 22px;
 }
@@ -187,7 +172,16 @@ h3 {
    min-width: 64px;
 }
 </style>
-                     <!-- 스타일 태그 끝 -->
+<!-- 스타일 태그 끝 -->
+      
+<body class="archive post-type-archive post-type-archive-lana_story">
+<jsp:include page="header.jsp" />
+   <main class="main container">
+      <div class="row">
+         <div class="col-12 col-lg-8">
+            <div class="widget">
+               <div class="story-posts">
+                  <section>
                      <form name="passwordForm" method="post" action="<c:url value ="/mypagePwchange"/>">
                      <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">비밀번호 수정</label>
                         <h3>현재 비밀번호</h3>
@@ -211,22 +205,18 @@ h3 {
                            <p align="left" style="color: red; font-size : 14px;" id="reNewPassword"></p>
                               <div class="error-msg"></div>
                            </div>
-
                         </div>
-
                         <div id="join" style="float: right;">
                            <input type="button" class="changeBtn" value="변경하기"
                               onclick="pwsubmitCheck();">
                         </div>
                         <span>&nbsp</span>
+                        <sec:csrfInput/>
                      </form>
                   </section>
-
                </div>
-
             </div>
          </div>
-
          <div class="col-12 col-lg-4 mt-4 mt-lg-0">
             <div class="widget-sidebar story-sidebar">
 
@@ -234,18 +224,11 @@ h3 {
                   <img src="<c:url value="/pictures/placeholder/profile.png"/>"
                      class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
                </div>
-
-
-                       <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
-
-
+               <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
                </div>
                <div class="widget widget_tag_cloud">
-
                   <div class="tagcloud">
-                     
-
-							<div id="button">
+                     <div id="button">
 								<c:if test="${member.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 등록</a>
@@ -255,12 +238,9 @@ h3 {
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
-
-
                      <div class="row">
                         <div class="widget">
                            <h3 class="widget-title">나의 정보</h3>
-
                            <ul>
                               <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
                               <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
@@ -268,7 +248,6 @@ h3 {
                               <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
                            </ul>
                         </div>
-
                      </div>
                   </div>
                </div>
@@ -332,13 +311,6 @@ h3 {
    
    passwordForm.submit();
 }
-
-//<민환> 나의정보에서 <a href="#">에 이동할 주소들 넣어주세요.
-//<민환> 변경할 비밀번호 정규표현식 넣어주세요.
-
-
-
-
 
  </script>
 </body>
