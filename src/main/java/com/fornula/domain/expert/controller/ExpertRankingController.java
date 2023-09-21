@@ -41,13 +41,14 @@ public class ExpertRankingController {
 		return "expert-ranking";
 	}
 	
-//	전문가 총판매액 리스트 출력 메소드
-	@PostMapping("/ranking")
+//	전문가 총판매액 랭킹 리스트 출력 메소드
+	@RequestMapping("/ranking")
 	public String getMoneyList(@RequestParam(defaultValue = "1") int pageNum
 								,Model model) {
 			
 		Map<String, Object> resultMap=expertRankingService.getMoneyList();
 		log.info("pager={}",resultMap.get("expertMoneyList"));
+		log.info("로그테스트");
 		
 		model.addAttribute("pager",resultMap.get("pager"));
 		model.addAttribute("expertMoneyList", resultMap.get("expertMoneyList"));
