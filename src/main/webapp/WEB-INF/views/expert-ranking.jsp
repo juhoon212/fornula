@@ -155,7 +155,42 @@
 								</div>
 								<div class="card-footer">
 									<div style="float: right;">
-										<a href="<c:url value='/item/boardList?categoryIdx=${expertList.interest}'/>">관심사# ${expertList.interest }</a>
+										<!-- ${expertList.interest} 값에 따라 해당 관심사 이름으로 출력 -->
+										<c:choose>
+											<c:when test="${expertList.interest eq 1}">
+												<a href="<c:url value='/item/boardList?categoryIdx=1'/>">그래픽</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 2}">
+												<a href="<c:url value='/item/boardList?categoryIdx=2'/>">제품</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 3}">
+												<a href="<c:url value='/item/boardList?categoryIdx=3'/>">영어</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 4}">
+												<a href="<c:url value='/item/boardList?categoryIdx=4'/>">중국어</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 5}">
+												<a href="<c:url value='/item/boardList?categoryIdx=5'/>">헤어 메이크업</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 6}">
+												<a href="<c:url value='/item/boardList?categoryIdx=6'/>">제품 홍보 사진</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 7}">
+												<a href="<c:url value='/item/boardList?categoryIdx=7'/>">사업자</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 8}">
+												<a href="<c:url value='/item/boardList?categoryIdx=8'/>">개인</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 9}">
+												<a href="<c:url value='/item/boardList?categoryIdx=9'/>">SNS 홍보</a>
+											</c:when>
+											<c:when test="${expertList.interest eq 10}">
+												<a href="<c:url value='/item/boardList?categoryIdx=10'/>">해외 마케팅</a>
+											</c:when>
+											<c:otherwise>
+								                알 수 없음
+								            </c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
