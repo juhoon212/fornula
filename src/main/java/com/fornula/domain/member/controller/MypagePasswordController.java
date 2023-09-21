@@ -16,6 +16,7 @@ import com.fornula.domain.member.dto.mypage.Password;
 import com.fornula.domain.member.dto.mypage.Secession;
 import com.fornula.domain.member.service.MypagePasswordService;
 import com.fornula.domain.member.service.MypageSecessionService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class MypagePasswordController {
 	 @GetMapping("/mypagePwchange")
 	   public String Pwchange(HttpSession session) {
 		 
-		 Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		 CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		 
 		 session.setAttribute("member", member);
 		 
@@ -40,7 +41,7 @@ public class MypagePasswordController {
 	   
 	   @PostMapping("/mypagePwchange")
 	   public String Pwchange(@ModelAttribute Password password, HttpSession session,Model model) throws MypagePwException{
-		   Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		   
 		   log.info("sessionMember = {}", member); // 세션멤버조회
 		  

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.Itempurchase;
 import com.fornula.domain.member.service.MypageItemService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class MypageItemController {
    @GetMapping("/mypagePurchase")
    public String mypagePurchase(HttpSession session, Model model) {
    
-      Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+	   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
       int filePos;
     
       
