@@ -31,21 +31,24 @@
  	
  	<!-- 총금액 출력을 위한 쿼리문 -->
  	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
- 		SELECT * 
- 		FROM (
- 			SELECT rownum AS rn, moneyList.*
- 			FROM (
- 				SELECT
- 				E.expert_idx,
-                S.sales_idx,
-                I.item_idx,
-                I.price
-        FROM expert E
-        JOIN item I ON S.item_idx = I.item_idx
-        	AND I.expert_idx = E.expert_idx
-        	) moneyList
-       	)
-        WHERE rn BETWEEN #{startRow} AND #{endRow}
+		SELECT *,
+		       (SELECT SUM(I.price) 
+		        FROM item I
+		        WHERE I.expert_idx = moneyList.expert_idx
+		       ) AS totalMoney
+		FROM (
+		    SELECT rownum AS rn, moneyList.*
+		    FROM (
+		        SELECT E.expert_idx,
+		               S.sales_idx,
+		               I.item_idx,
+		               I.price
+		        FROM expert E
+		        JOIN item I ON S.item_idx = I.item_idx
+		                   AND I.expert_idx = E.expert_idx
+		    ) moneyList
+		) 
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
     </select>
  </mapper>
 
