@@ -195,7 +195,7 @@ tr td {
 				</div>
 				<div class="col-4">
 					<div class="widget-sidebar story-sidebar">
-						<form action="<c:url value="/payment/${itemIdx}"/>" method="post" name="PaymentForm">
+						<!--  <form action="<c:url value="/payment/${itemIdx}"/>" method="post" id="paymentForm">-->
 							<div class="tagcloud">
 								<div class="widget"
 									style="text-align: left; padding-left: 20px; margin: 0 auto;"
@@ -215,11 +215,17 @@ tr td {
 									내용을 확인하였고, 결제에 동의합니다.</p>
 
 								<div style="width: 100%;">
-									<button id="checkSubmit" type="submit" class="btn btn-primary"
+									<button id="checkSubmit" type="button" class="id"
 										style="text-align: center;" name="checkBtn" disabled>결제하기</button>
+						<!--  </form>-->
+						               <button id="html5_inicis" type="button" class="id"
+										style="text-align: center;" name="inicisBtn" disabled>일반결제(KG이니시스)</button>
+						
+										<button id="kakaopay" type="button" class="id"
+										style="text-align: center;" name="kakaoBtn" >간편결제(카카오페이)</button>
 								</div>
+								
 							</div>
-						</form>
 					</div>
 				</div>
 			</div>
@@ -259,26 +265,155 @@ tr td {
 	</script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script type="text/javascript">
+	
 		function agreeCheck(element) {
 			let checkedbox = document.querySelectorAll('input[class=check]:checked');
 			let cnt = checkedbox.length;
 			
 			if(cnt ==3 ){
-				document.querySelector('#checkSubmit').disabled=false;
+				document.querySelector('#html5_inicis').disabled=false;
 			}else{
-				document.querySelector('#checkSubmit').disabled=true;
+				document.querySelector('#html5_inicis').disabled=true;
 			}
-		}
+		};
+		/*
+		document.querySelector('#checkSubmit').addEventListener('click', () => {
+			paymentForm.submit();
+		});
 		
-
-		 function checkSubmit() {
+		
+			$('#kakaoSubmit').click(function(){
+				$.ajax({
+					url:'/cls/jq/kakaopay.cls' ,
+					method : 'GET',
+				dataType: 'json' ,
+				success:function(data){
+					alert(data.tid);
+				},
+				error:function(error){
+					console.log(error);
+				}
+				});
+			});
+			/*
+		document.querySelector('#kakaoSubmit').addEventListener('click', (e) => {
+			 fetch("${pageContext.request.contextPath}/cls/jq/kakaopay.cls", 
+					 {
+				  method: "get", 
+				  headers: { 
+					"Content-Type" : "application/json", 
+				    "Accept": "application/json"},
+				 
+				})
+			.then((response) => response.json())
+			.then((data) => {
+				 if(data.errorCode === "Bad") {
+					 
+		             alert(data.error);
+		           
+				 }
+				 var box = data.next_redirect_pc_url;
+				 window.open(box);
 			
+			    })
+			    
+			e.preventDefault()
+		});
+		*/
 		
-		   
-			 PaymentForm.submit();
-		}
-
+		
+     // var csrfHeaderName="${_csrf.headerName}"
+     // var csrfTokenValue="${_csrf.token}"
+	  //$(document).ajaxSend(function(e, xhr) {
+	  //xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+		
+	//});
+      
+      $(".id").click(function() {
+    	  var pg=$(this).attr("id");
+    	  
+    	  console.log(pg);
+    	  
+    	  var IMP=window.IMP;
+    	  IMP.init("imp53224164");
+    	  
+    	  var merchantUid="merchant_"+new Date().getTime();
+    	  var amount=${payment.price};
+    	  var itemIdx=${payment.itemIdx};
+  
+      
+    	//결제 전 주문번호와 결제금액을 세션에 저장하기 위한 페이지 요청
+  		// => 결제 후 결제정보와 비교하여 검증하기 위해 세션에 저장 
+  		$.ajax({
+  			type: "post",
+  			url: "<c:url value="/payment"/>",
+  			contentType: "application/json",
+  			data: JSON.stringify({"merchantUid":merchantUid, "amount":amount, "itemIdx": itemIdx}),
+  			dataType: "text",
+  			success: function(result) {
+  				if(result=="ok") {
+  					//결제를 요청하는 메소드 호출
+  					IMP.request_pay({
+  						// 결제 대행사 : kakaopay, html5_inicis, nice, jtnet, uplus, danal, payco 등
+  						pg : pg,
+  						// 결제 방식 : card(카드), samsung(삼성페이), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+  						pay_method : "card",
+  						//주문번호
+  						merchant_uid : merchantUid,
+  						//결제금액
+  						amount : amount,
+  						//결제창에 보여질 제품명
+  						name: "컴퓨터",
+  						//결제 사용자의 이메일 주소 
+  			            buyer_email: "ws5501@naver.com",
+  			            buyer_name: "윤주훈",//결제 사용자 이름
+  			            buyer_tel: "010-8287-9856",//결제 사용자 전화번호
+  			            buyer_postcode: "123-456",//결제 사용자 우편번호
+  			            buyer_addr: "서울시 강남구 역삼동 내빌딩 5층 501호"//결제 사용자 주소
+  						//m_redirect_url: "http://localhost:8000:auth/payment/pay",//모바일의 리다이렉트 URL 주소
+  				   
+  				},function(response) {//결제 관련 응답 결과를 제공받아 처리하는 함수
+					//response : 응답결과를 저장한 Object 객체
+					if (response.success) {//결제한 경우
+						//결제금액을 검증하기 위한 페이지를 요청
+						$.ajax({
+							type: "post",
+							url: "<c:url value="/complete"/>",
+							contentType: "application/json",
+							data: JSON.stringify({"impUid": response.imp_uid, "merchantUid": response.merchant_uid, "itemIdx": itemIdx}),
+							dataType: "text",
+							success: function(result) {
+								if(result == "success") {
+									console.log(result);
+									//결제 성공 페이지로 이동
+									alert("결제 성공");
+									location.href = "<c:url value="/common-success"/>";
+								} else {
+									//결제 실패 페이지로 이동
+									console.log(result);
+									alert("결제 취소");
+									location.href = "<c:url value="/common-success"/>";
+								}
+							}, 
+							error: function(xhr) {
+								console.log(xhr);
+							}
+						});
+					}
+				}  );
+			}
+		}, 
+  			
+  			error: function(xhr) {
+  				console.log(xhr);
+  			}
+  		});
+  		
+  	});
+  		
+		
 	</script>
 </body>
 </html>

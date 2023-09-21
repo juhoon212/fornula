@@ -1,4 +1,4 @@
-package com.fornula.domain.item.repository;
+package com.fornula.domain.payment.repository;
 
 import org.apache.ibatis.annotations.Param;
 

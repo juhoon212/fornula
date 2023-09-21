@@ -1,9 +1,9 @@
-package com.fornula.domain.item.repository;
+package com.fornula.domain.payment.repository;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.fornula.domain.item.mapper.java.ItemPaymentSuccessMapper;
+import com.fornula.domain.payment.mapper.ItemPaymentSuccessMapper;
 
 import lombok.RequiredArgsConstructor;
 
