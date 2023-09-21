@@ -41,11 +41,9 @@ public class MypagePasswordController {
 	   
 	   @PostMapping("/mypagePwchange")
 	   public String Pwchange(@ModelAttribute Password password, HttpSession session,Model model) throws MypagePwException{
-		   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		   
-		   log.info("sessionMember = {}", member); // 세션멤버조회
-		  
-		   Member loginMember = service.mypagePasswordId(member.getId());
+		   CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		   log.info("sessionMember = {}", loginMember); // 세션멤버조회
 		   
 		   
 		  //비번 복호화

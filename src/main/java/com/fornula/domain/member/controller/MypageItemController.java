@@ -31,7 +31,7 @@ public class MypageItemController {
    @GetMapping("/mypagePurchase")
    public String mypagePurchase(HttpSession session, Model model) {
    
-	   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+	  CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
       int filePos;
     
       

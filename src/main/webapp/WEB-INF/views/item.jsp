@@ -291,7 +291,7 @@ a {
                             Next
                         </a>
                     </nav> -->
-			<div>${message}</div>
+			<div style="color : red;">${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
 				<h4 id="reply-title" class="comment-reply-title font-weight-bold">게시글

@@ -1,6 +1,5 @@
 package com.fornula.domain.exception.custom;
 
-
 public class NoAuthReplyException extends RuntimeException{
 
 	/**
@@ -13,6 +12,10 @@ public class NoAuthReplyException extends RuntimeException{
 	}
 	
 	public NoAuthReplyException(String message) {
+		super(message);
+	}
+	
+	public NoAuthReplyException(String message, int memberIdx, int itemIdx) {
 		super(message);
 	}
 

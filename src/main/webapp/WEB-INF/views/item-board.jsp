@@ -248,7 +248,56 @@ li a {
 	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 	<script>
-		
+		// 현재 페이지 번호
+		var currentPage = 1;
+		var totalPages = 4; // 전체 페이지 수, 실제 데이터에 맞게 수정해야 합니다.
+
+		// Prev 버튼 클릭 시 이벤트 처리
+		document.getElementById("prevBtn").addEventListener("click",
+				function() {
+					if (currentPage > 1) {
+						currentPage--;
+						updatePage();
+					}
+				});
+
+		// Next 버튼 클릭 시 이벤트 처리
+		document.getElementById("nextBtn").addEventListener("click",
+				function() {
+					if (currentPage < totalPages) {
+						currentPage++;
+						updatePage();
+					}
+				});
+
+		// 페이지 업데이트 함수
+		function updatePage() {
+
+			// 현재 페이지 번호 업데이트
+			var currentPageElement = document
+					.querySelector(".page-numbers.current");
+			currentPageElement.textContent = currentPage;
+
+			// Prev, Next 버튼 활성화/비활성화 처리
+			var prevBtn = document.getElementById("prevBtn");
+			var nextBtn = document.getElementById("nextBtn");
+			if (currentPage === 1) {
+				prevBtn.classList.add("disabled");
+			} else {
+				prevBtn.classList.remove("disabled");
+			}
+
+			if (currentPage === totalPages) {
+				nextBtn.classList.add("disabled");
+			} else {
+				nextBtn.classList.remove("disabled");
+			}
+		}
+
+		// 초기 페이지 로딩 시 페이지 업데이트 호출
+		updatePage();
+
+
 	</script>
 </body>
 </html>
