@@ -384,12 +384,12 @@ tr td {
 									console.log(result);
 									//결제 성공 페이지로 이동
 									alert("결제 성공");
-									location.href = "<c:url value="/common-success"/>";
+									location.href = "<c:url value="/payment/common-success"/>";
 								} else {
 									//결제 실패 페이지로 이동
 									console.log(result);
 									alert("결제 취소");
-									location.href = "<c:url value="/common-success"/>";
+									location.href = "<c:url value="/payment/common-success"/>";
 								}
 							}, 
 							error: function(xhr) {
