@@ -14,10 +14,12 @@
     	</headers>
     	
 		<intercept-url pattern="/item/update/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/expert/join/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/expert/ranking**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')"/>
-		<intercept-url pattern="/cart/**" access="permitAll"/>
+		<intercept-url pattern="/cart/**" access="hasRole('ROLE_MEMBER')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
 		<csrf disabled="true"/>
@@ -41,11 +43,10 @@
 		</session-management>
 		
 		
+		
+		 <csrf disabled="true"/>	
+			
     </http>
-    
-    
-    
-    
     
     
     <beans:bean class="com.fornula.domain.util.security.CustomAccessDeniedHandler" id="customAccessDeniedHandler"/>
