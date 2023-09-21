@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.dto.vo.ExpertMoneyRanking;
 
 public interface ExpertRankingMapper {

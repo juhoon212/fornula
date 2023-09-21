@@ -57,7 +57,7 @@
 	            COALESCE(totalPrice, 0) DESC
 	    )
 	    WHERE totalPrice != 0
-            AND rn BETWEEN #{startRow} AND #{endRow};
+            AND rn BETWEEN 1 AND 3;
 	</select>
 
 	<!-- 총금액 출력을 위한 페이징 처리를 위한 count 검색 쿼리 

@@ -52,7 +52,7 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	@Override
 	public Map<String, Object> getMoneyList() {
 		int totalBoard=expertRankingDAO.selectExpertCount();
-		int pageSize=3;
+		int pageSize=1;
 		int blockSize=1;
 		int pageNum=1;
 		

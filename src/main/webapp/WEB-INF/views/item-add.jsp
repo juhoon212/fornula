@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>상품 페이지 - 상품 등록</title> 
+<title>상품 페이지 - 상품 등록</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,33 +42,40 @@
 									<div class="col" id="price">
 										<form:input path="price" class="form-control" placeholder="가격을 작성해주세요(화폐단위는 생략)" value="${itemForm.price}" />
 									</div>
-									<form:errors path="price" cssClass="error" element="span" />
 								</div>
+								<div class="form-group row">
+									<div class="col">
+										<form:errors path="price" cssClass="text-danger" element="span" />
+									</div>
+								</div>								
 								<div class="form-group row">
 									<div class="col" id="itemName">
 										<form:input path="itemName" class="form-control" placeholder="상품제목을 입력해주세요" value="${itemForm.itemName}" />
 									</div>
-									<form:errors path="itemName" cssClass="error" element="span" />
+								</div>
+								<div class="form-group row">
+									<div class="col">
+										<form:errors path="itemName" cssClass="text-danger" element="span" />
+									</div>
 								</div>
 								<div class="form-group row" id="itemContent">
-	                                <div class="col">
-	                                    <textarea class="form-control" rows="20" placeholder="상품설명"
-	                                              aria-required="true" aria-label="Message" name="itemContent"></textarea>
-	                                </div>
-	                                <div class="error-msg"></div>
+									<div class="col">
+										<textarea class="form-control" rows="20" placeholder="상품설명" aria-required="true" aria-label="Message" name="itemContent"></textarea>
+									</div>
+									<div class="error-msg"></div>
 								</div>
 								<div class="form-group row" id="categoryIdx">
 									<div class="col">
 										<h3>관심사</h3>
 										<div class="info" id="info__category">
 											<div id="category-flex">
-					           					<select class="box" id="category-big1" onchange = "categorySelect1(this)">
-												        <option disabled selected>대 카테고리</option>
-												        <option value="a">디자인</option>
-												        <option value="b">번역</option>
-												        <option value="c">사진 편집</option>
-												        <option value="d">세무</option>
-												        <option value="e">마케팅</option>
+												<select class="box" id="category-big1" onchange="categorySelect1(this)">
+													<option disabled selected>대 카테고리</option>
+													<option value="a">디자인</option>
+													<option value="b">번역</option>
+													<option value="c">사진 편집</option>
+													<option value="d">세무</option>
+													<option value="e">마케팅</option>
 												</select>
 												<select class="box" id="mcategory1" name="categoryIdx">
 													<option disabled selected>중 카테고리</option>
