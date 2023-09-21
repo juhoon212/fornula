@@ -318,6 +318,19 @@ p #logo {
 									href="<c:url value="/item/boardList"/>">고객센터</a></li>
 								<li><a class="nav-link" href="<c:url value="/info"/>">회사소개</a></li>
 							</ul>
+
+							<div class="d-none d-xl-inline-flex ml-xl-4">
+								<!-- 검색 기능 -->
+								<form class="search-widget d-none d-xl-inline-flex ml-3">
+									<button class="search-toggler" type="button"
+										data-toggle="collapse" data-target="#lana-search"
+										aria-controls="lana-search" aria-expanded="false"
+										aria-label="Toggle search">
+										<i class="fas fa-search fa-2x fa-fw text-dark"></i>
+									</button>
+									<sec:csrfInput />
+								</form>
+							</div>
 						</div>
 						<form action="<c:url value="/member/logout"/>" method="post">
 							<!-- 프로필 사진 삽입 -->
