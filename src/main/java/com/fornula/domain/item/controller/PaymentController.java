@@ -22,6 +22,7 @@ import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.payment.dto.Payments;
 import com.fornula.domain.payment.service.PaymentsService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -97,7 +98,7 @@ public class PaymentController {
 			
 			session.removeAttribute(payment.getMerchantUid());
 			
-			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+			CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 			
 			//결제된 결제금액을 반환받아 저장 
 			Long amount=returnPayment.getAmount();

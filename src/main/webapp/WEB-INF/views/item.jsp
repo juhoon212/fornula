@@ -189,7 +189,7 @@ a {
 								</h4>
 								
 							<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
-							<sec:authorize access="hasAnyRoel('ROLE_MEMBER','ROLE_EXPERT')">	
+							<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">	
 								<span> 
 									<c:if test="${not empty cartList}">
 										<button id="cartBtn" style="background: white;">
