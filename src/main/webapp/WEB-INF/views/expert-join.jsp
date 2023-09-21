@@ -179,7 +179,8 @@ h3 {
 								<div class="info">
 									<div id="phone-input">
 										<form:input	path="phone" id="phone" value="${expert.phone }" class="box" oninput="autoHypen(this)" maxlength="13" placeholder="010-1234-5678"/>
-										<form:errors path="phone" cssClass="error" element="span" delimiter=","/>
+										<form:errors path="phone"  cssClass="error" element="span" delimiter=","/>
+										<p id="phoneMsg" class="error"></p>
 									</div>
 								</div>
 								<h3>자기 소개</h3>
@@ -329,9 +330,10 @@ h3 {
 			var submitResult = true;
 			$(".error").hide();
 		
-		var phoneReg = ^\\d{3}-\\d{3,4}-\\d{4}$;
+		var phoneReg =" ^\\d{3}-\\d{3,4}-\\d{4}$";
 			if ($("#phone").val() == "") {
 				$("#phoneMsg").html("전화번호를 입력해 주세요.");
+				$("#phone").focus();
 				submitResult = false;
 			} else if (!phoneReg.test($("#phone").val())) {
 				$("#phoneMsg").html("전화번호를 형식에 맞게 입력해 주세요.");

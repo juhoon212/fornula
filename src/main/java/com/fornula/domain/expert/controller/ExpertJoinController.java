@@ -48,7 +48,7 @@ public class ExpertJoinController {
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
 
-
+	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')")
 	@GetMapping("/success")
 	public String success() {
 		return "expertjoin-success";
