@@ -26,10 +26,10 @@
                     <h3 class="widget-title">Page</h3>
                     <ul>
                         <li><a href="<c:url value="/#"/>">메인 페이지</a></li>
-                        <li><a href="<c:url value="/item/boardList"/>">디자인</a></li>
-                        <li><a href="<c:url value="item/boardList"/>">마케팅</a></li>
-                        <li><a href="<c:url value="item/boardList"/>">IT·프로그래밍</a></li>
-                        <li><a href="<c:url value="item/boardList"/>">투잡·재태크</a></li>
+                        <li><a href="<c:url value="/item/boardList"/>">게시판</a></li>
+                        <li><a href="<c:url value="expert/ranking"/>">전문가 랭킹</a></li>
+                        <li><a href="<c:url value="item/boardList"/>">고객센터</a></li>
+                        <li><a href="<c:url value="item/boardList"/>">회사소개</a></li>
                     </ul>
                 </div>
             </div>
