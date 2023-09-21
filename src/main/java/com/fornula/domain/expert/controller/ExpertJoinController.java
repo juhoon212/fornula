@@ -12,6 +12,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -28,8 +29,10 @@ import com.fornula.domain.exception.custom.ExistsExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.service.MypageInfoService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 import com.google.common.util.concurrent.Service;
 
@@ -50,15 +53,20 @@ public class ExpertJoinController {
 	public String success() {
 		return "expertjoin-success";
 	}
+	
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@GetMapping("/join")
 	public String join(@ModelAttribute("expert") Expert expert, HttpSession session) {
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails  member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 
 		session.setAttribute("member", member.getId());
+		expert.setMemberIdx(member.getMemberIdx());
+		log.info("getMemberIdx:{}", member.getMemberIdx());
 
 		return "expert-join";
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@PostMapping("/join")
 	public String join(@Valid @ModelAttribute("expert") Expert expert, Errors errors, 
 			@RequestParam MultipartFile uploadFile, Model model,
@@ -74,7 +82,8 @@ public class ExpertJoinController {
 		log.info("expert:{}", expert);
 		log.info("file:{}", uploadFile);
 
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		//시큐리티 적용
+		CustomMemberDetails member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 		expert.setMemberIdx(member.getMemberIdx());
 
 
@@ -101,8 +110,12 @@ public class ExpertJoinController {
 		expertJoinService.addExpertInfo(expert);
 
 		// 등록처리에 성공하였을때 memberIdx 변경
-		member.setMemberStatus(2);
-		expertJoinService.updateExpertStatus(member);
+		Auth auth = new Auth();
+		auth.setId(member.getId());
+		auth.setRole("ROLE_EXPERT");
+		log.info("auth:{}",auth);
+		
+		expertJoinService.updateExpertStatus(auth);
 		redirectAttributes.addFlashAttribute("message","전문가 등록이 완료되었습니다");
 		
 		return "redirect:/expert/success";

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import com.fornula.domain.item.dto.Photo;
 import com.fornula.domain.item.service.CartService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -36,12 +38,14 @@ public class CartRestController {
 	private final CartService cartService;
 	private final ItemDetailService itemDetailService;
 
+	
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	// 장바구니 삽입
 	@PostMapping("/item/{itemIdx}/{pageNum}")
 	public String addCart(@PathVariable int itemIdx, HttpSession session, @ModelAttribute Cart cart, Model model) {
 
 		// 세션에서 memberIdx 추출
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		if(member==null) {
 			return "error";
 		}else {
@@ -71,11 +75,12 @@ public class CartRestController {
 	}
 
 	// 아이템 페이지에서 장바구니 삭제
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@DeleteMapping("/item/{itemIdx}/delete")
 	public String removeItemCart(@PathVariable int itemIdx, HttpSession session) {
 
 		// 세션에서 memberIdx 추출
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("deletemapping의 memberIdx:{}", memberIdx);
 		log.info("deletemapping의 itemIdx :{}", itemIdx);
@@ -86,12 +91,13 @@ public class CartRestController {
 	}
 
 	// 장바구니 목록 출력
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@GetMapping("/cartList")
 	public List<CartList> getCartList(HttpSession session,
 			@RequestBody CartList cart) {
 
 		// 세션에서 memberIdx 추출
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("getmapping의 memberIdx:{}", memberIdx);
 
@@ -100,11 +106,12 @@ public class CartRestController {
 	}
 
 	// 장바구니 삭제
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@DeleteMapping("/cart/{itemIdx}")
 	public String removeCart(@PathVariable int itemIdx, HttpSession session) {
 
 		// 세션에서 memberIdx 추출
-		Member member = (Member) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		int memberIdx = member.getMemberIdx();
 		log.info("deletemapping의 memberIdx:{}", memberIdx);
 
