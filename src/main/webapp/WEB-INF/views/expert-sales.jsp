@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>       
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -97,7 +99,7 @@ tr td {
 	padding-left: 30px;
 }
 
-#Btn {
+.status {
 	text-align: center;
 	padding: 5px 20px;
 	color: black;
@@ -182,11 +184,14 @@ tr td {
 																			</c:when>
 																			<c:when test="${salesList.salesStatus ==2}">
 																				<div>
-																					<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" class="status" type="button" id="Btn">제작시작</button>
+																				<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"class="status"
+																				type="button" id="Btn1">제작시작</button>
 																				</div>
 																			</c:when>
 																			<c:when test="${salesList.salesStatus ==3}">
-																				<button disabled="disabled" data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" class="status" type="button" id="Btn" value="${salesStatus }">제작완료</button>
+																				<button 
+																					data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"
+																					class="status"type="button" id="Btn2" value="${salesStatus }">제작완료</button>
 																			</c:when>
 																			<c:when test="${salesList.salesStatus ==5}">
 																				<button disabled="disabled" data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" class="status" type="button" id="Btn" value="${salesStatus }">구매확정</button>
@@ -199,7 +204,8 @@ tr td {
 																				</div>
 																			</c:when>
 																			<c:otherwise>
-																				<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" class="status" type="button" id="Btn">${salesList.status }</button>
+																				<button disabled="disabled" style="color: gray;"data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"class="status"
+																				type="button" id="Btn">${salesList.status }</button>
 																			</c:otherwise>
 																		</c:choose>
 																	</div>
@@ -305,89 +311,49 @@ tr td {
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$('.status')
-									.each(
-											function(i) {
-												$(this)
-														.click(
-																function() {
-																	// 해당 i번째 요소의 dataset 가져오기
-																	// var sales = document.getElementById('Btn');
-																	//var salesIdx = sales.dataset.salesidx;
-																	// var salesStatus = sales.dataset.salesstatus;
+    $(document).ready(function () {
+        $('.status').each(function (i) {
+            $(this).click(function () {
+                var currentStatus = $(this);
+                var currentSalesStatus = currentStatus.data('salesstatus');
+                var salesIdx = currentStatus.data('salesidx');
+                var salesStatus = parseInt(currentSalesStatus) + 1;
 
-																	var currentStatus = $(this);
-																	var currentSalesStatus = currentStatus
-																			.data('salesstatus');
-																	var salesIdx = currentStatus
-																			.data('salesidx');
-																	var salesStatus = parseInt(currentSalesStatus) + 1;
+               /*  alert("status " + (i + 1) + "번째를 클릭했습니다.");
+                alert("i의 값: " + i);
+                alert("변경할 status의 값: " + salesStatus);
+                alert("변경할 idx의 값: " + salesIdx); */
 
-																	alert("status "
-																			+ (i + 1)
-																			+ "번째를 클릭했습니다.");
-																	alert("i의 값: "
-																			+ i);
-																	alert("변경할 status의 값: "
-																			+ salesStatus);
-																	alert("변경할 idx의 값: "
-																			+ salesIdx);
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/expert/sales/update",
+                    contentType: "application/json",
+                    type: "PUT",
+                    data: JSON.stringify({ "salesIdx": salesIdx, "salesStatus": salesStatus }),
+                    dataType: "text",
+                    success: function (result) {
+                        if (result === "success") {
+                            if (salesStatus == 3) {
+                                //alert("주문전 상태를 변경하였습니다.");
+                                currentStatus.text("제작완료"); // #Btn1의 text 변경
+                                currentStatus.closest('.post-card').find('#statusCheck').text('제작중');
+                                currentStatus.data('salesstatus', salesStatus); // salesstatus 값을 업데이트
+                                alert(salesStatus);
+                            } else if (salesStatus == 4) {
+                               // alert("주문중 상태를 변경하였습니다.");
+                                currentStatus.prop("disabled", true);
+                                currentStatus.css({"color": "gray"});
+                                currentStatus.closest('.post-card').find('#statusCheck').text('제작완료');
+                            }
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("상태를 변경하는데 오류가 발생했습니다. 오류 코드: " + xhr.status);
+                    }
+                });
+            });
+        });
+    });
 
-																	$
-																			.ajax({
-																				url : "${pageContext.request.contextPath}/expert/sales/update",
-																				contentType : "application/json",
-																				type : "PUT",
-																				data : JSON
-																						.stringify({
-																							"salesIdx" : salesIdx,
-																							"salesStatus" : salesStatus
-																						}),
-																				dataType : "text",
-																				success : function(
-																						result) {
-																					if (result === "success") {
-																						if (salesStatus == "3") {
-																							alert("주문전 상태를 변경하였습니다.");
-																							$(
-																									'#Btn')
-																									.text(
-																											"제작완료");
-																							$(
-																									'#statusCheck')
-																									.text(
-																											'제작중');
-																							currentStatus
-																									.data(
-																											'salesstatus',
-																											salesStatus); // salesstatus 값을 업데이트
-																							alert(salesStatus);
-																						} else if (salesStatus == "4") {
-																							alert("주문중 상태를 변경하였습니다.");
-																							$(
-																									'#Btn')
-																									.prop(
-																											"disabled",
-																											true);
-																							$(
-																									'#statusCheck')
-																									.text(
-																											'제작완료');
-																						}
-																					}
-																				},
-																				error : function(
-																						xhr) {
-																					alert("상태를 변경하는데 오류가 발생했습니다. 오류 코드: "
-																							+ xhr.status);
-																				}
-																			});
-																});
-											});
-						});
 	</script>
 </body>
 </html>

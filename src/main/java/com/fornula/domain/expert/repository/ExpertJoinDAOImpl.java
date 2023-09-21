@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.mapper.java.ExpertJoinMapper;
+import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +22,14 @@ public class ExpertJoinDAOImpl implements ExpertJoinDAO{
 	}
 
 	@Override
-	public void updateExpertStatus(Member member) {
-		sqlSession.getMapper(ExpertJoinMapper.class).updateExpertStatus(member);
+	public void updateExpertStatus(Auth auth) {
+		sqlSession.getMapper(ExpertJoinMapper.class).updateExpertStatus(auth);
+		
+	}
+
+	@Override
+	public Auth exceptionExpert(String id) {
+		return sqlSession.getMapper(ExpertJoinMapper.class).exceptionExpert(id);
 		
 	}
 

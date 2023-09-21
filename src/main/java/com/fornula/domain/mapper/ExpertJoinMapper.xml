@@ -15,9 +15,16 @@
 	</insert>
 	
 	<!-- 전문가 등록시 상태 변경 -->
-	<update id="updateExpertStatus" parameterType="com.fornula.domain.member.dto.Member">
-		update member
-		set member_status = 2
-		where member_idx = #{memberIdx}
-	</update>
+	<insert id="updateExpertStatus" parameterType="com.fornula.domain.member.dto.Auth">
+		<selectKey resultType="int" keyProperty="authIdx" order ="BEFORE">
+			select auth_seq.nextval from dual
+		</selectKey>
+		insert into auth values
+			(#{authIdx}, #{id}, 'ROLE_EXPERT')
+	</insert>
+	
+	<!-- 예외처리를 위한 쿼리 -->
+	<select id="exceptionExpert" resultType="Auth">
+		SELECT * FROM auth WHERE id = #{id} and role='ROLE_EXPERT'
+	</select>
 </mapper>

@@ -3,6 +3,7 @@ package com.fornula.domain.expert.restcontroller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ExpertSalesRestController {
 	private final ExpertSalesService expertSalesService;
 	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PutMapping("/sales/update")
 	public String modifyStatus(@RequestBody Sales sales) {
 		
