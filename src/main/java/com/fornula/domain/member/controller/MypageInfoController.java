@@ -14,6 +14,7 @@ import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.member.mapper.java.MypageInfoMapper;
 import com.fornula.domain.member.service.MypageInfoService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class MypageInfoController {
 	@GetMapping("/mypageInfo")
 	public String info(HttpSession session, Model model) {
 	
-		Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		log.info("getsessionMember = {}", member);
 		
 	    Member joinMember = service.mypageInfoService(member.getId());

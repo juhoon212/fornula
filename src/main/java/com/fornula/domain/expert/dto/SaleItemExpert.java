@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.dto;
 
+import java.util.List;
+
 import com.fornula.domain.item.dto.Purchase;
 
 import lombok.Data;
@@ -17,6 +19,9 @@ public class SaleItemExpert {
     private int salesStatus;
     private int photoIdx;
     private String itemfileName;
+    private String status;
     
+    private List<SaleItemExpert> salesList;
+
 	
 }

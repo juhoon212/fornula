@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
+import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.service.ExpertSalesService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -34,46 +36,51 @@ public class ExpertSalesController {
 
 	//판매내역을 출력하는 메소드
 		@GetMapping("/sales")
-		public String getSalesList(@RequestParam(defaultValue = "1") int pageNum, HttpSession session, Model model){
+		public String getSalesList(@RequestParam(defaultValue = "1") int pageNum
+				, HttpSession session
+				, Model model
+				){
 			
 			String originalFileName; // 원본 파일 이름
 			int pos;
+			int salesIdx;
 			
 			//세션에 있는 expert_idx를 가져오기
-			Member loginMember = (Member) session.getAttribute(SessionConst.Login_Member);
+			CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 	    	int expertIdx = expert.getExpertIdx();
-			log.info("expertIdx:{}",expertIdx);//로그출력
+			//log.info("expertIdx:{}",expertIdx);//로그출력
 
 			Map<String, Object> resultMap = expertSalesService.getSalesList(pageNum, expertIdx);//판매내역 리스트
-			log.info("list:{}", resultMap);// 로그출력
+			//log.info("list:{}", resultMap);// 로그출력
 			
 			
 			//여기부터 안넘어
 			List<SaleItemExpert> resultList= (List<SaleItemExpert>)resultMap.get("salesList");
-			log.info("resultList:{}",resultList);
+			//log.info("resultList:{}",resultList);
 			
 			for(SaleItemExpert itemSalesList : resultList) {
+				
+				log.info("판매 목록 = {}", itemSalesList);
 				
 				pos = itemSalesList.getItemfileName().lastIndexOf("_");
 				originalFileName = itemSalesList.getItemfileName().substring(pos + 1);
 				
 				itemSalesList.setItemfileName(originalFileName);
+				
 			}
-
-			log.info("pager : {}", resultMap.get("pager"));
 			
-			model.addAttribute("salesList",resultMap.get("salesList") );
+			
+			
+			model.addAttribute("salesList",resultMap.get("salesList"));
 			model.addAttribute("pager",resultMap.get("pager")) ;
-			
 			
 			int price = expertSalesService.getTotalMoney(expertIdx);
 			String formatPrice = String.format("%,d", price);
-			log.info("price:{}", price);
+			//log.info("price:{}", price);
 			
 			model.addAttribute("price", formatPrice);
 			
-			log.info("salesList:{}", resultList);
 
 			
 			return "expert-sales";

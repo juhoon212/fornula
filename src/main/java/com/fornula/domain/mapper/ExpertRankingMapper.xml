@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertRankingMapper">
+	<!-- 전문가 랭킹 뽑기 이전 전문가들 리스트 출력 -->
+	<select id="selectExpertList" resultType="Expert">
+	    SELECT *
+	    FROM (
+	        SELECT rownum AS rn, expertlist.*
+	        FROM (
+	            SELECT
+	                expert_idx
+	                ,phone
+	                ,interest
+	                ,introduce
+	                ,career
+	                ,company_one
+	                ,company_two
+	                ,company_three
+	            FROM expert 
+	            ORDER BY expert_idx           
+	        ) expertlist
+	    )
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
+ 
+ 	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
+ 	<select id="selectExpertCount" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM expert
+ 	</select>
+ 	
+ 	<!-- 총금액 출력을 위한 쿼리문 -->
+ 	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
+ 		SELECT * 
+ 		FROM (
+ 			SELECT rownum AS rn, moneyList.*
+ 			FROM (
+ 				SELECT
+ 				E.expert_idx,
+                S.sales_idx,
+                I.item_idx,
+                I.price
+        FROM expert E
+        JOIN item I ON S.item_idx = I.item_idx
+        	AND I.expert_idx = E.expert_idx
+        	) moneyList
+       	)
+        WHERE rn BETWEEN #{startRow} AND #{endRow}
+    </select>
+ </mapper>
+
+
+
+

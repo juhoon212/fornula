@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
+  <title>비밀번호 찾기</title>
 
   <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
   <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
@@ -109,7 +110,7 @@
 	            <input id="email-box" class="box" type="email" name="email" placeholder="가입하신 이메일을 입력해주세요"/>
 	          </div>
 	        </div>
-	
+			<sec:csrfInput/>
 	      	<button id="submit">비밀번호 찾기</button>
       	</form>
       	

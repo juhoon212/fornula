@@ -1,12 +1,14 @@
 package com.fornula.domain.member.dto;
 
+import java.util.List;
+
+import com.fornula.domain.util.security.CustomMemberDetails;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * 
@@ -26,7 +28,9 @@ LOGIN_DATE               DATE
  *
  */
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
@@ -42,4 +46,6 @@ public class Member {
 	private int categoryOne; // 카테고리 1,2,3 추가
 	private int categoryTwo;
 	private int categoryThree;
+	private String enabled;
+	private List<Auth> memberAuthList;
 }

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.fornula.domain.member.dto.vo.FindPasswordForm;
 import com.fornula.domain.member.dto.vo.IdFindForm;
 import com.fornula.domain.member.dto.vo.LoginForm;
 import com.fornula.domain.member.service.MemberLoginService;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -34,25 +36,25 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberLoginRestController {
 	
 	private final MemberLoginService memberLoginService;
+	private final MemberSecurityService memberSecurityService;
 	
-	
-	@PostMapping("/login")
-	public Member login(@RequestBody LoginForm form,HttpServletRequest request, HttpSession session) {
-		
-		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
-		
-		session = request.getSession();
-		
-		log.info("isNewSession? = {}", session.isNew());
-		
-		session.setAttribute(SessionConst.Login_Member, loginMember);
-		
-		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
-		
-		log.info("member = {}",loginMember.getId());
-		
-		return loginMember;
-	}
+//	@PostMapping("/login")
+//	public Member login(@RequestBody LoginForm form,HttpServletRequest request, HttpSession session) {
+//		
+//		Member loginMember = memberLoginService.login(form.getId(), form.getPassword());
+//		
+//		session = request.getSession();
+//		
+//		log.info("isNewSession? = {}", session.isNew());
+//		
+//		session.setAttribute(SessionConst.Login_Member, loginMember);
+//		
+//		session.setMaxInactiveInterval(3600); // 세션 유지 시간 1시간
+//		
+//		log.info("member = {}",loginMember.getId());
+//		
+//		return loginMember;
+//	}
 	
 	@PostMapping("/findId")
 	public Member findId(@RequestBody IdFindForm form) {
