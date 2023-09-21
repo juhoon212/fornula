@@ -12,4 +12,5 @@ public class ExpertMoneyRanking {
 	private int salesIdx;
 	private int itemIdx;
 	private int price;
+	private int totalMoney;
 }
