@@ -236,7 +236,6 @@ li a {
 			// Prev, Next 버튼 활성화/비활성화 처리
 			var prevBtn = document.getElementById("prevBtn");
 			var nextBtn = document.getElementById("nextBtn");
-
 			if (currentPage === 1) {
 				prevBtn.classList.add("disabled");
 			} else {
