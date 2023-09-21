@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 
 <!DOCTYPE html>
@@ -112,7 +113,7 @@
 	</form>
       <section>
         
-     	<div id="show-message">${message}</div>
+     	<div id="show-message" style="color : red;">${message}</div>
      	
      	<div class="find-pw-box">
  			<a class="btn btn-light" type="button" href="<c:url value="/"/>">메인으로</a>    		
@@ -121,6 +122,7 @@
     </section>
     </div>
   </div>
+  
   
 </body>
 </html>

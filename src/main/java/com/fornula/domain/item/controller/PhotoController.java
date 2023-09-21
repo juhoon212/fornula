@@ -69,7 +69,7 @@ public class PhotoController {
 			
 			redirectAttributes.addAttribute("status", true);
 			
-			return "redirect:/expert/sales";
+			return "redirect:/expert/board";
 	}
 	
 	

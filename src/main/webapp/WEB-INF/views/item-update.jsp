@@ -119,15 +119,20 @@ let category = document.querySelector('#mcategory1');
 let itemIdx = document.querySelector('#itemIdx');
 let photo = document.querySelector('#formFile');
 let errorMsg = document.querySelectorAll('.error-msg');
-const header = document.querySelector('meta[name="_csrf_header"]').content;
-const token = document.querySelector('meta[name="_csrf"]').content;
+
+/* let csrfHeaderName="${_csrf.headerName}";
+let csrfTokenValue="${_csrf.token}";
+
+$(document).ajaxSend(function(e, xhr) {
+	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+}); */
 
 
 document.querySelector('#submit').addEventListener('click', (e) => {
 	
 	$.ajax({
 		type: "post",
-		url: "<c:url value="/reply/register"/>",
+		url: "<c:url value="/item/update"/>",
 		contentType: "application/json",
 		data: JSON.stringify(
 			{
@@ -140,17 +145,15 @@ document.querySelector('#submit').addEventListener('click', (e) => {
 		),
 		dateType: "text",
 		success: function(data) {
-			
-			let successData = JSON.parse(data);
-			
+			console.log(data);
 			 
-	             errorMsg.innerHTML = successData.message;
+	             errorMsg.innerHTML = data.message;
 			 
 			
-			if(Array.isArray(successData)) {
-				successData.forEach((a, i) => {
-				   		if(successData[i].defaultMessage != null) {
-					  		errorMsg[i].innerHTML = successData[i].defaultMessage;
+			if(Array.isArray(data)) {
+				data.forEach((a, i) => {
+				   		if(data[i].defaultMessage != null) {
+					  		errorMsg[i].innerHTML = data[i].defaultMessage;
 					  	} 		
 					  })
 			} else {
@@ -158,8 +161,8 @@ document.querySelector('#submit').addEventListener('click', (e) => {
 		  	}   
 		    
 		},
-		error: function(xhr) {
-			alert("에러 = "+xhr.status);
+		error: function(error) {
+			console.log(error);
 		}
 	})
 	
