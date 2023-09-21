@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.dto.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +17,6 @@ public class ExpertMoneyRanking {
 	private int itemIdx;
 	private int price;
 	private int totalMoney;
+	
+	private List<ExpertMoneyRanking> expertMoneyList;
 }

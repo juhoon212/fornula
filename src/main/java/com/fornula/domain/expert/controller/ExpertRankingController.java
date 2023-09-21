@@ -33,7 +33,7 @@ public class ExpertRankingController {
 								,Model model) {
 			
 		Map<String, Object> resultMap=expertRankingService.getExpertList(pageNum);
-		log.info("pager={}",resultMap.get("expertBoardList"));
+//		log.info("pager={}",resultMap.get("expertBoardList"));
 		
 		model.addAttribute("pager",resultMap.get("pager"));
 		model.addAttribute("expertBoardList", resultMap.get("expertBoardList"));
@@ -46,7 +46,7 @@ public class ExpertRankingController {
 	public String getMoneyList(@RequestParam(defaultValue = "1") int pageNum
 								,Model model) {
 			
-		Map<String, Object> resultMap=expertRankingService.getMoneyList(pageNum);
+		Map<String, Object> resultMap=expertRankingService.getMoneyList();
 		log.info("pager={}",resultMap.get("expertMoneyList"));
 		
 		model.addAttribute("pager",resultMap.get("pager"));

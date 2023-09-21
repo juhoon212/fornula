@@ -33,13 +33,13 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
 		List<Expert> expertBoardList=expertRankingDAO.selectExpertList(pageMap);
-		log.info("pageMap", pageMap);
-		log.info("expertBoardList={}",expertBoardList);
+//		log.info("pageMap", pageMap);
+//		log.info("expertBoardList={}",expertBoardList);
 		
 		Map<String, Object> resultMap=new HashMap<String, Object>();
 		resultMap.put("pager", pager);
 		resultMap.put("expertBoardList", expertBoardList);
-		log.info("resultMap={}", resultMap);
+//		log.info("resultMap={}", resultMap);
 		
 		return resultMap;
 	}
@@ -50,10 +50,11 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	}
 //	총판매액 순서로 출력하는 전문가 리스트를 뽑는 메소드
 	@Override
-	public Map<String, Object> getMoneyList(int pageNum) {
-		int totalBoard=expertRankingDAO.selectMoneyCount();
+	public Map<String, Object> getMoneyList() {
+		int totalBoard=expertRankingDAO.selectExpertCount();
 		int pageSize=3;
 		int blockSize=1;
+		int pageNum=1;
 		
 		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 		
@@ -71,9 +72,11 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 		
 		return resultMap;
 	}
+	/*
 //	총판매액 순서로 출력하는 전문가 리스트를 뽑는 메소드를 위하여 몇명 있는지 출력용 메소드	
 	@Override
 	public int getMoneyCount() {
 		return expertRankingDAO.selectMoneyCount();
 	}
+	*/
 }

@@ -11,5 +11,5 @@ public interface ExpertRankingMapper {
 	List<Expert> selectExpertList(Map<String, Object> map);
 	int selectExpertCount();
 	List<ExpertMoneyRanking> selectTotalMoneyList(Map<String, Object> map);
-	int selectMoneyCount();
+//	int selectMoneyCount();
 }
