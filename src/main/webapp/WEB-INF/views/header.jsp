@@ -337,7 +337,7 @@ p #logo {
 							<div class="dropdown">
 								<div class="profile">
 									<c:if test="${sessionScope.loginMember.memberStatus == 1}">
-										<a class="dropdown-toggle" href="<c:url value="/mypageInfo"/>"
+										<a class="dropdown-toggle" href="<c:url value="/mypage/mypageInfo"/>"
 											role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											<img src="<c:url value="/pictures/placeholder/profile.png"/>"
 											class="rounded-circle" alt="profilephoto" width="60"
@@ -346,7 +346,7 @@ p #logo {
 
 										<ul class="dropdown-menu" id="loginDropDown">
 											<li><a class="dropdown-item"
-												href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
+												href="<c:url value="/mypage/mypageInfo"/>">내 정보 관리</a></li>
 											<li><a class="dropdown-item"
 												href="<c:url value="/expert/join"/>">전문가 등록</a></li>
 											<li><a class="dropdown-item"
@@ -363,7 +363,7 @@ p #logo {
 										</a>
 										<ul class="dropdown-menu" id="loginDropDown">
 											<li><a class="dropdown-item"
-												href="<c:url value="/mypageInfo"/>">내 정보 관리</a></li>
+												href="<c:url value="/mypage/mypageInfo"/>">내 정보 관리</a></li>
 											<li><a class="dropdown-item"
 												href="<c:url value="/expert/input "/>">전문가 정보</a></li>
 											<li><a class="dropdown-item"

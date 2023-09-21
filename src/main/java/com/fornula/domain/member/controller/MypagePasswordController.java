@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fornula.domain.exception.custom.MypageIdExcepion;
 import com.fornula.domain.exception.custom.MypagePwException;
@@ -25,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/mypage")
 public class MypagePasswordController {
 
 	public final MypagePasswordService service;

@@ -55,10 +55,14 @@
 
 </head>
 <style>
-#button {
-	display: flex;
-	justify-content: center; align-items center;
-	padding-bottom: 2em;
+
+.id {
+   text-align: center;
+   padding: 5px 20px;
+   color: black;
+   background: white;
+   border-radius: 10px;
+   border: 2px solid orange;
 }
 
 main {
@@ -347,9 +351,9 @@ tr td {
   				if(result=="ok") {
   					//결제를 요청하는 메소드 호출
   					IMP.request_pay({
-  						// 결제 대행사 : kakaopay, html5_inicis, nice, jtnet, uplus, danal, payco 등
+  						// 결제 대행사
   						pg : pg,
-  						// 결제 방식 : card(카드), samsung(삼성페이), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+  						// 결제 방식 : card(카드)
   						pay_method : "card",
   						//주문번호
   						merchant_uid : merchantUid,
@@ -371,7 +375,7 @@ tr td {
 						//결제금액을 검증하기 위한 페이지를 요청
 						$.ajax({
 							type: "post",
-							url: "<c:url value="/complete"/>",
+							url: "<c:url value="/payment/complete"/>",
 							contentType: "application/json",
 							data: JSON.stringify({"impUid": response.imp_uid, "merchantUid": response.merchant_uid, "itemIdx": itemIdx}),
 							dataType: "text",

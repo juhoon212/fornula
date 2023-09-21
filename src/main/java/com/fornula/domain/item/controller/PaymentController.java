@@ -30,13 +30,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/payment")
 public class PaymentController {
 
 	 private final ItemPaymentService service;
 	 private final PaymentsService paymentService;
 	
 	 
-		@GetMapping("/payment/{itemIdx}")
+		@GetMapping("/{itemIdx}")
 		public String getPayment(@PathVariable Integer itemIdx, Model model) {
 			
 			log.info("itemIdx = {}", itemIdx);
@@ -64,7 +65,7 @@ public class PaymentController {
 		}
 		*/
 		
-		@PostMapping("/payment")
+		@PostMapping
 		@ResponseBody
 		public String pay(@RequestBody Payments payment, HttpSession session) {
 			//결제 관련 API를 이용하기 전에 결제 금액 검증을 위해 세션에 주문번호(이름)와 결제금액(값)을 저장
@@ -118,15 +119,7 @@ public class PaymentController {
 				return "forgery";
 			}
 		}
-		
-		@GetMapping("/common-success")
-		public String commonSuccess() {
-			
-			return "/common-success"; 
-		}
-	
 
-		
 		private String extractPhoto(ItemPayment payment) {
 			int pos = payment.getItemfileName().lastIndexOf("_");
 			String originalFileName = payment.getItemfileName().substring(pos+1);
