@@ -60,13 +60,52 @@ li a {
 .category-button.active {
 	color: orange;
 }
+
+#noSearch {
+	width: 100%;
+}
+
+#problem {
+	width: 100%;
+}
+
+.search-form {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.search-input {
+	border: 1px solid #ccc;
+	border-radius: 5px; /* 모서리를 부드럽게 만듭니다 */
+	padding: 10px;
+	flex-grow: 1;
+}
+
+.search-button {
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px; /* 모서리를 부드럽게 만듭니다 */
+	color: #fff;
+	padding: 10px 20px;
+	transition: background-color 0.3s ease; /* hover 시 색상 변화를 부드럽게 만듭니다 */
+}
+
+.search-button:hover {
+	background-color: #0056b3;
+}
+
+/* 아이콘 색상을 변경합니다 */
+.search-button i {
+	color: #fff;
+}
 </style>
 <body class="archive grid-3-columns">
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
 		<div style="width: 100%;">
-			<form action="/item/boardList" method="get" class="search-form d-flex align-items-center h-100" onsubmit="return validateSearch()">
+			<form action="/item/boardList" method="get" class="search-form" onsubmit="return validateSearch()">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword" class="form-control search-input text-dark" placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search" aria-describedby="search-button" value="${param.searchKeyword}">
 					<div class="input-group-append">
@@ -87,10 +126,11 @@ li a {
 					</div>
 				</div>
 				<!-- id="category" 안에 있는 내용 -->
-				<div id="categoryBtn" style="text-align: center;">
+
+				<div id="categoryBtn" style="text-align: center; background-color: white;">
 					<div class="row" id="problem">
 						<c:forEach var="category" begin="1" end="10">
-							<div class="col-md-2 col-5 p-0" style="margin: 5px;">
+							<div class="col-md-2 col-6 p-0" style="margin: 15px 19px;">
 								<div class="col">
 									<form action="<c:url value='/item/boardList'/>" method="get">
 										<input type="hidden" name="categoryIdx" value="${category}" />
@@ -115,7 +155,6 @@ li a {
 						</c:forEach>
 					</div>
 				</div>
-				<!-- 여기까지 id="category" 안에 있는 내용 -->
 			</div>
 		</div>
 
@@ -125,66 +164,72 @@ li a {
 			<div class="col-12">
 				<div class="blog-grid-posts">
 					<div class="row">
-						<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
-						<c:forEach var="itemList" items="${itemBoardList}">
-							<div class="blog-grid-col col-12 col-md-6 col-lg-4">
-								<div id="post-1" class="post type-post card post-card post-grid-card h-100" style="border-radius: 20px;">
-									<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
-									<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> <img id="itemimg" src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>" class="card-img-top img-fluid" style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;" alt="${itemList.item.itemName}">
-									</a>
-									<div class="card-body">
-										<ul class="post-meta">
-											<li><a href="single.html">${itemList.item.itemDate}</a></li>
-										</ul>
-										<h5 class="post-title card-title">
-											<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> ${itemList.item.itemName} </a>
-										</h5>
-										<p class="post-text card-text text-truncate">
-											<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> <span style="color: black; font-size: 13px;"> ${itemList.item.itemContent} </span>
-											</a>
-										</p>
+						<c:choose>
+							<c:when test="${empty itemBoardList}">
+								<div class="row" id="noSearch">
+									<div class="col-12" style="color: red; display: flex; justify-content: center; align-items: center; min-height: 300px;">
+										<p>검색 결과가 없습니다</p>
 									</div>
-									<div class="card-footer">
-										<div style="float: right;">
-											<a> 가격: ₩<fmt:formatNumber type="number" value="${itemList.item.price}" pattern="#,###" />
+								</div>
+							</c:when>
+							<c:otherwise>
+								<!-- itemBoardList에 있는 각각의 itemPhotoCategoryCart에 접근합니다. -->
+								<c:forEach var="itemList" items="${itemBoardList}">
+									<div class="blog-grid-col col-12 col-md-6 col-lg-4">
+										<div id="post-1" class="post type-post card post-card post-grid-card h-100" style="border-radius: 20px;">
+											<!-- itemPhotoCategoryCart 객체의 item 프로퍼티 사용 -->
+											<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> <img id="itemimg" src="<c:url value='/images/upload/${itemList.photo.itemfileName}'/>" class="card-img-top img-fluid" style="width: 400px; height: 300px; border-radius: 20px 20px 0px 0px;" alt="${itemList.item.itemName}">
 											</a>
+											<div class="card-body">
+												<ul class="post-meta">
+													<li><a href="single.html">${itemList.item.itemDate}</a></li>
+												</ul>
+												<h5 class="post-title card-title">
+													<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> ${itemList.item.itemName} </a>
+												</h5>
+												<p class="post-text card-text text-truncate">
+													<a href="<c:url value='/item/${itemList.item.itemIdx}/1'/>"> <span style="color: black; font-size: 13px;"> ${itemList.item.itemContent} </span>
+													</a>
+												</p>
+											</div>
+											<div class="card-footer">
+												<div style="float: right;">
+													<a> 가격: ₩<fmt:formatNumber type="number" value="${itemList.item.price}" pattern="#,###" />
+													</a>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<div class="pages">
-						<c:choose>
-							<c:when test="${pager.startPage > pager.blockSize }">
-								<a href="<c:url value="/item/boardList"/>?pageNum=${pager.prevPage}"> Prev </a>
-
-							</c:when>
-							<c:otherwise>
-								Prev
+								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-						<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
-							<c:choose>
-								<c:when test="${pager.pageNum != i}">
-									<li><a href="<c:url value="/item/boardList"/>?pageNum=${i}">${i}</a>
-									<li>
-								</c:when>
-								<c:otherwise>
-									${i}
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-
+					</div>
+					<div id="paging">
 						<c:choose>
-							<c:when test="${pager.endPage != pager.totalPage }">
-								<div>
-									<a href="<c:url value="/item/boardList"/>?pageNum=${pager.nextPage}">Next</a>
-								</div>
+							<c:when test="${pager.startPage > 1}">
+								<a href="<c:url value='/item/boardList'/>?pageNum=${pager.prevPage}"> Prev </a>
 							</c:when>
 							<c:otherwise>
-								Next
-							</c:otherwise>
+      Prev
+    </c:otherwise>
+						</c:choose>
+						<c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+							<c:choose>
+								<c:when test="${pager.pageNum != i}">
+									<a href="<c:url value='/item/boardList'/>?pageNum=${i}">${i}</a>
+								</c:when>
+								<c:otherwise>
+        ${i}
+      </c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${pager.endPage != pager.totalPage}">
+								<a href="<c:url value='/item/boardList'/>?pageNum=${pager.nextPage}">Next</a>
+							</c:when>
+							<c:otherwise>
+      Next
+    </c:otherwise>
 						</c:choose>
 					</div>
 				</div>
@@ -203,56 +248,7 @@ li a {
 	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 	<script>
-		// 현재 페이지 번호
-		var currentPage = 1;
-		var totalPages = 4; // 전체 페이지 수, 실제 데이터에 맞게 수정해야 합니다.
-
-		// Prev 버튼 클릭 시 이벤트 처리
-		document.getElementById("prevBtn").addEventListener("click",
-				function() {
-					if (currentPage > 1) {
-						currentPage--;
-						updatePage();
-					}
-				});
-
-		// Next 버튼 클릭 시 이벤트 처리
-		document.getElementById("nextBtn").addEventListener("click",
-				function() {
-					if (currentPage < totalPages) {
-						currentPage++;
-						updatePage();
-					}
-				});
-
-		// 페이지 업데이트 함수
-		function updatePage() {
-
-			// 현재 페이지 번호 업데이트
-			var currentPageElement = document
-					.querySelector(".page-numbers.current");
-			currentPageElement.textContent = currentPage;
-
-			// Prev, Next 버튼 활성화/비활성화 처리
-			var prevBtn = document.getElementById("prevBtn");
-			var nextBtn = document.getElementById("nextBtn");
-
-			if (currentPage === 1) {
-				prevBtn.classList.add("disabled");
-			} else {
-				prevBtn.classList.remove("disabled");
-			}
-
-			if (currentPage === totalPages) {
-				nextBtn.classList.add("disabled");
-			} else {
-				nextBtn.classList.remove("disabled");
-			}
-		}
-
-		// 초기 페이지 로딩 시 페이지 업데이트 호출
-		updatePage();
-
+		
 	</script>
 </body>
 </html>
