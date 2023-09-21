@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!doctype html>
 <html lang="en">
@@ -159,7 +160,7 @@ a {
 </script>
 </head>
 <body class="single single-post">
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 	<main class="main">
 		<div id="post-1"
 			class="post type-post post-1 has-post-thumbnail comment-open">
@@ -169,7 +170,8 @@ a {
 						<h1>${item.itemName }</h1>
 						<div class="gongback">
 							<h4>
-								<a href="<c:url value="expertoutput/${item.expertIdx }"/>">전문가 번호 : ${item.expertIdx }</a>
+								<a href="<c:url value="expertoutput/${item.expertIdx }"/>">전문가
+									번호 : ${item.expertIdx }</a>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
@@ -184,31 +186,32 @@ a {
 							<h4>${item.itemContent }</h4>
 							<div class="post-content" id="detailbox">
 								<h4 style="float: right;">
-									₩<fmt:formatNumber type="number" value="${item.price}"
+									₩
+									<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-								
-							<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
-							<sec:authorize access="hasAnyRoel('ROLE_MEMBER','ROLE_EXPERT')">	
-								<span> 
-									<c:if test="${not empty cartList}">
-										<button id="cartBtn" style="background: white;">
-											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
-												src="<c:url value="/pictures/placeholder/heart.png"/>">
-										</button>
-									</c:if> 
-									<c:if test="${empty cartList}">
-										<button id="cartBtn" style="background: white;"
-											data-itemIdx="${item.itemIdx} ">
-											<img style="padding: 0px 10px; width: 50px;" id="heartImg"
-												src="<c:url value="/pictures/placeholder/noheart.png"/>">
-										</button>
-									</c:if>
 
+								<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
+								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
+									<span> <c:if test="${not empty cartList}">
+											<button id="cartBtn" style="background: white;">
+												<img style="padding: 0px 10px; width: 50px;" id="heartImg"
+													src="<c:url value="/pictures/placeholder/heart.png"/>">
+											</button>
+										</c:if> <c:if test="${empty cartList}">
+											<button id="cartBtn" style="background: white;"
+												data-itemIdx="${item.itemIdx} ">
+												<img style="padding: 0px 10px; width: 50px;" id="heartImg"
+													src="<c:url value="/pictures/placeholder/noheart.png"/>">
+											</button>
+										</c:if>
+								</sec:authorize>
+								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
-								</span>
-							</sec:authorize>
+										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+									</span>
+								</sec:authorize>
 							</div>
 						</div>
 						<hr>
@@ -313,6 +316,9 @@ a {
 								value="Post Comment">
 						</div>
 					</div>
+					<sec:csrfInput />
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+					<!-- 토큰 생성  -->
 				</form>
 			</div>
 		</div>
@@ -346,7 +352,6 @@ a {
 	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
 	    var itemIdx = ${itemIdx};
 	    var cartButton = $("#heartImg");
-
 	    cartButton.click(function() {
 	        if (cartButton.attr("src") === beforePhotoURL) {
 	            $.ajax({
@@ -354,6 +359,7 @@ a {
 	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
 	                success: function(response) {
 	                    if (response === "success") {
+	                        alert("장바구니에 상품이 추가되었습니다.");
 	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
 	                    } else {
 	                        alert("로그인 사용자만 가능합니다.");
@@ -364,12 +370,14 @@ a {
 	                }
 	            });
 	        } else if (cartButton.attr("src") === afterPhotoURL) {
+	            if (confirm("장바구니를 삭제하시겠습니다.")) {
 	                $.ajax({
 	                    type: "DELETE",
 	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
 	                    dataType: "text",
 	                    success: function(result) {
 	                        if (result === "success") {
+	                            alert("장바구니를 삭제하였습니다.");
 	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
 	                        } else {
 	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
@@ -379,10 +387,10 @@ a {
 	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
 	                    }
 	                });
+	            }
 	        }
 	    });
 	});
-
 	</script>
 </body>
 </html>
