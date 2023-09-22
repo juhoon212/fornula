@@ -1,5 +1,7 @@
 package com.fornula.domain.expert.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -86,7 +88,7 @@ public class ExpertInfoController {
 
 	@PostMapping("/input")
 	public String modifyExpert(@ModelAttribute Expert expert, Model model,
-			@RequestParam MultipartFile uploadFile) {
+			@RequestParam MultipartFile uploadFile) throws IOException {
 		log.info("Modifying expert information for expertIdx: {}", expert.getExpertIdx());
 
 		/*
@@ -101,13 +103,19 @@ public class ExpertInfoController {
 		}
 
 		if (!uploadFile.isEmpty()) {
-			String uploadDirectory = context.getServletContext().getRealPath("/resources/upload");
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/images/portfolio");
 			log.info("filepath =" + uploadDirectory);
 
 			String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
 			log.info("filename =" + expertfileName);
 
 			expert.setExpertfileName(expertfileName);
+			
+			File file=new File(uploadDirectory, expertfileName);
+			
+			uploadFile.transferTo(file);
+			model.addAttribute("uploadDirectory", uploadDirectory);
+			model.addAttribute("expertfileName", expertfileName);
 
 		}
 		
