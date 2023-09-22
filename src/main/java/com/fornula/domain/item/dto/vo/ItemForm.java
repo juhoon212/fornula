@@ -1,5 +1,6 @@
 package com.fornula.domain.item.dto.vo;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -22,6 +23,6 @@ public class ItemForm {
     
     private String itemContent;
     
-    @Positive(message="1원 이상의 가격을 입력해주세요")
+    @Min(value = 1000, message = "1000 이상의 값이어야 합니다.")
     private int price;
 } 
