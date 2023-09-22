@@ -38,23 +38,15 @@ public class ExpertRankingController {
 		model.addAttribute("pager",resultMap.get("pager"));
 		model.addAttribute("expertBoardList", resultMap.get("expertBoardList"));
 		
-		return "expert-ranking";
-	}
-	
-//	전문가 총판매액 랭킹 리스트 출력 메소드
-	@RequestMapping("/ranking")
-	public String getMoneyList(@RequestParam(defaultValue = "1") int pageNum
-								,Model model) {
-			
-		Map<String, Object> resultMap=expertRankingService.getMoneyList();
-		log.info("pager={}",resultMap.get("expertMoneyList"));
+		Map<String, Object> resultMoney=expertRankingService.getMoneyList();
+		log.info("pager={}",resultMoney.get("expertMoneyList"));
 		log.info("로그테스트");
 		
-		model.addAttribute("pager",resultMap.get("pager"));
-		model.addAttribute("expertMoneyList", resultMap.get("expertMoneyList"));
+		model.addAttribute("pager",resultMoney.get("pager"));
+		model.addAttribute("expertMoneyList", resultMoney.get("expertMoneyList"));
 		
 		return "expert-ranking";
-	}	
+	}
 	
 //	전문가 클릭시 포트폴리오로 넘기기
 	@GetMapping("/output/{expertIdx}")
@@ -66,8 +58,8 @@ public class ExpertRankingController {
 		model.addAttribute("expert", expert);
 		model.addAttribute("originalExpert", originalExpert);
 
-		log.info("Showing modify form for expertIdx: {}", expertIdx);
-		log.info("Showing modify form for originalExpert: {}", originalExpert);
+//		log.info("Showing modify form for expertIdx: {}", expertIdx);
+//		log.info("Showing modify form for originalExpert: {}", originalExpert);
 
 		return "expert-output";
 	}

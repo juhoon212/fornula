@@ -1,14 +1,14 @@
 package com.fornula.domain.expert.dto.vo;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ExpertMoneyRanking {
 	private int expertIdx;
 	private int interest;
@@ -17,6 +17,4 @@ public class ExpertMoneyRanking {
 	private int itemIdx;
 	private int price;
 	private int totalMoney;
-	
-	private List<ExpertMoneyRanking> expertMoneyList;
 }

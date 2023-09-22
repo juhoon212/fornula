@@ -52,8 +52,8 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	@Override
 	public Map<String, Object> getMoneyList() {
 		int totalBoard=expertRankingDAO.selectExpertCount();
-		int pageSize=1;
-		int blockSize=1;
+		int pageSize=6;
+		int blockSize=5;
 		int pageNum=1;
 		
 		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
