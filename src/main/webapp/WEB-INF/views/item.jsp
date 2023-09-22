@@ -158,6 +158,7 @@ a {
 		return false;
 	}
 </script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body class="single single-post">
 	<jsp:include page="header.jsp" />
@@ -172,6 +173,8 @@ a {
 							<h4>
 								<a href="<c:url value="expertoutput/${item.expertIdx }"/>">전문가
 									번호 : ${item.expertIdx }</a>
+								<button style="float: right; padding: 5px;" id="kakaoShareBtn">카카오톡
+									공유하기</button>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
@@ -209,7 +212,8 @@ a {
 								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
-										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+									<input type="hidden" name="${_csrf.parameterName }"
+										value="${_csrf.token }">
 									</span>
 								</sec:authorize>
 							</div>
@@ -294,7 +298,7 @@ a {
                             Next
                         </a>
                     </nav> -->
-			<div style="color : red;">${message}</div>
+			<div style="color: red;">${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
 				<h4 id="reply-title" class="comment-reply-title font-weight-bold">게시글
@@ -317,7 +321,8 @@ a {
 						</div>
 					</div>
 					<sec:csrfInput />
-					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+					<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }">
 					<!-- 토큰 생성  -->
 				</form>
 			</div>
@@ -346,52 +351,109 @@ a {
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		
+
 	<script type="text/javascript">
-	$(document).ready(function() {
-	    var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
-	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
-	    var itemIdx = ${itemIdx};
-	    var cartButton = $("#heartImg");
-	    cartButton.click(function() {
-	        if (cartButton.attr("src") === beforePhotoURL) {
-	            $.ajax({
-	                type: "POST",
-	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
-	                success: function(response) {
-	                    if (response === "success") {
-	                        alert("장바구니에 상품이 추가되었습니다.");
-	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
-	                    } else {
-	                        alert("로그인 사용자만 가능합니다.");
-	                    }
-	                },
-	                error: function() {
-	                    alert("장바구니 추가 중 오류가 발생했습니다.");
-	                }
-	            });
-	        } else if (cartButton.attr("src") === afterPhotoURL) {
-	            if (confirm("장바구니를 삭제하시겠습니다.")) {
-	                $.ajax({
-	                    type: "DELETE",
-	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
-	                    dataType: "text",
-	                    success: function(result) {
-	                        if (result === "success") {
-	                            alert("장바구니를 삭제하였습니다.");
-	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
-	                        } else {
-	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
-	                        }
-	                    },
-	                    error: function(xhr) {
-	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
-	                    }
-	                });
-	            }
-	        }
-	    });
-	});
+		$(document)
+				.ready(
+						function() {
+							var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+							var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+							var itemIdx = $
+							{
+								itemIdx
+							}
+							;
+							var cartButton = $("#heartImg");
+							cartButton
+									.click(function() {
+										if (cartButton.attr("src") === beforePhotoURL) {
+											$
+													.ajax({
+														type : "POST",
+														url : "${pageContext.request.contextPath}/item/"
+																+ itemIdx
+																+ "/1",
+														success : function(
+																response) {
+															if (response === "success") {
+																alert("장바구니에 상품이 추가되었습니다.");
+																cartButton
+																		.attr(
+																				"src",
+																				afterPhotoURL); // 이미지 변경
+															} else {
+																alert("로그인 사용자만 가능합니다.");
+															}
+														},
+														error : function() {
+															alert("장바구니 추가 중 오류가 발생했습니다.");
+														}
+													});
+										} else if (cartButton.attr("src") === afterPhotoURL) {
+											if (confirm("장바구니를 삭제하시겠습니다.")) {
+												$
+														.ajax({
+															type : "DELETE",
+															url : "${pageContext.request.contextPath}/item/"
+																	+ itemIdx
+																	+ "/delete",
+															dataType : "text",
+															success : function(
+																	result) {
+																if (result === "success") {
+																	alert("장바구니를 삭제하였습니다.");
+																	cartButton
+																			.attr(
+																					"src",
+																					beforePhotoURL); // 이미지 변경
+																} else {
+																	alert("장바구니 삭제 중 오류가 발생했습니다.");
+																}
+															},
+															error : function(
+																	xhr) {
+																alert("장바구니 삭제 중 오류가 발생했습니다."
+																		+ xhr.status);
+															}
+														});
+											}
+										}
+									});
+						});
 	</script>
+	<script>
+		document.getElementById('kakaoShareBtn').addEventListener('click',
+				kakaoShare);
+
+		Kakao.init('7be891cc70acabb92e26dbe3b9b50d68');
+
+		function kakaoShare() {
+			var itemName = "${item.itemName}";
+			var itemContent = "${item.itemContent}";
+			var originalFileName = "${originalFileName}";
+
+			Kakao.Link
+					.sendDefault({
+						objectType : 'feed',
+						content : {
+							title : itemName,
+							description : itemContent,
+							imageUrl : originalFileName,
+							link : {
+								mobileWebUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1',
+								webUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1'
+							}
+						},
+						buttons : [ {
+							title : '웹으로 보기',
+							link : {
+								mobileWebUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1',
+								webUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1'
+							}
+						} ]
+					});
+		}
+	</script>
+
 </body>
 </html>
