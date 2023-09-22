@@ -50,11 +50,10 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 	}
 //	총판매액 순서로 출력하는 전문가 리스트를 뽑는 메소드
 	@Override
-	public Map<String, Object> getMoneyList() {
+	public Map<String, Object> getMoneyList(int pageNum) {
 		int totalBoard=expertRankingDAO.selectExpertCount();
 		int pageSize=6;
 		int blockSize=5;
-		int pageNum=1;
 		
 		Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 		

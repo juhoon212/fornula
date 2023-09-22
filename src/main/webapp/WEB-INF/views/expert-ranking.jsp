@@ -67,6 +67,12 @@
 								<img src="<c:url value='/pictures/placeholder/1.png'/>"
 									class="card-img-top img-fluid rounded-circle" alt="Team Member"
 									data-scroll-animate="zoomIn">
+								<div style="font-size: 25px; text-align: center;">
+									<div style="vertical-align: middle;">
+										<a id="price">${expertMoneyList[0].totalMoney}원</a>
+									</div>
+								</div>
+								<br>
 								<h5 class="post-title card-title"
 									data-scroll-animate="fadeInDown">
 									<a
@@ -79,17 +85,22 @@
 										href="<c:url value='/expert/output/${expertMoneyList[0].expertIdx}'/>">
 										${expertMoneyList[0].interest}</a>
 								</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn"
-									id="subtitle">
-									<a
-										href="<c:url value='/expert/output/${expertMoneyList[0].expertIdx}'/>">자기소개
-										:<br>${expertMoneyList[0].introduce}</a>
-								</p>
-								<table style="font-size: 21px;">
-									<tr>
-										<td scope="col" style="text-align: right;" id="price">${expertMoneyList[0].totalMoney}원</td>
-									</tr>
-								</table>
+								<c:choose>
+									<c:when test="${empty expertMoneyList[0].introduce}">
+										<p class="post-text card-text" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<span style="color: red;">자기소개를 작성하지 않은 전문가입니다</span>
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p class="post-text card-text text-truncate" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<a
+												href="<c:url value='/expert/output/${expertMoneyList[0].expertIdx}'/>">
+												${expertMoneyList[0].introduce} </a>
+										</p>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -101,6 +112,12 @@
 								<img src="<c:url value='/pictures/placeholder/2.png'/>"
 									class="card-img-top img-fluid rounded-circle" alt="Team Member"
 									data-scroll-animate="zoomIn">
+								<div style="font-size: 25px; text-align: center;">
+									<div style="vertical-align: middle;">
+										<a id="price">${expertMoneyList[1].totalMoney}원</a>
+									</div>
+								</div>
+								<br>
 								<h5 class="post-title card-title"
 									data-scroll-animate="fadeInDown">
 									<a
@@ -113,17 +130,22 @@
 										href="<c:url value='/expert/output/${expertMoneyList[1].expertIdx}'/>">
 										${expertMoneyList[1].interest}</a>
 								</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn"
-									id="subtitle">
-									<a
-										href="<c:url value='/expert/output/${expertMoneyList[1].expertIdx}'/>">자기소개
-										:<br>${expertMoneyList[1].introduce}</a>
-								</p>
-								<table style="font-size: 21px;">
-									<tr>
-										<td scope="col" style="text-align: right;" id="price">${expertMoneyList[1].totalMoney}원</td>
-									</tr>
-								</table>
+								<c:choose>
+									<c:when test="${empty expertMoneyList[1].introduce}">
+										<p class="post-text card-text" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<span style="color: red;">자기소개를 작성하지 않은 전문가입니다</span>
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p class="post-text card-text" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<a
+												href="<c:url value='/expert/output/${expertMoneyList[1].expertIdx}'/>">
+												${expertMoneyList[1].introduce} </a>
+										</p>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -135,6 +157,12 @@
 								<img src="<c:url value='/pictures/placeholder/3.png'/>"
 									class="card-img-top img-fluid rounded-circle" alt="Team Member"
 									data-scroll-animate="zoomIn">
+								<div style="font-size: 25px; text-align: center;">
+									<div style="vertical-align: middle;">
+										<a id="price">${expertMoneyList[2].totalMoney}원</a>
+									</div>
+								</div>
+								<br>
 								<h5 class="post-title card-title"
 									data-scroll-animate="fadeInDown">
 									<a
@@ -147,17 +175,22 @@
 										href="<c:url value='/expert/output/${expertMoneyList[2].expertIdx}'/>">
 										${expertMoneyList[2].interest}</a>
 								</h6>
-								<p class="post-text card-text" data-scroll-animate="fadeIn"
-									id="subtitle">
-									<a
-										href="<c:url value='/expert/output/${expertMoneyList[2].expertIdx}'/>">자기소개
-										:<br>${expertMoneyList[2].introduce}</a>
-								</p>
-								<table style="font-size: 21px;">
-									<tr>
-										<td scope="col" style="text-align: right;" id="price">${expertMoneyList[2].totalMoney}원</td>
-									</tr>
-								</table>
+								<c:choose>
+									<c:when test="${empty expertMoneyList[2].introduce}">
+										<p class="post-text card-text text-truncate" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<span style="color: red;">자기소개를 작성하지 않은 전문가입니다</span>
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p class="post-text card-text" data-scroll-animate="fadeIn"
+											id="subtitle">
+											<a
+												href="<c:url value='/expert/output/${expertMoneyList[2].expertIdx}'/>">
+												${expertMoneyList[2].introduce} </a>
+										</p>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -253,7 +286,8 @@
 												<a href="<c:url value='/item/boardList?categoryIdx=9'/>">SNS홍보</a>
 											</c:when>
 											<c:when test="${expertList.interest eq 10}">
-												<a href="<c:url value='/item/boardList?categoryIdx=10'/>">해외 마케팅</a>
+												<a href="<c:url value='/item/boardList?categoryIdx=10'/>">해외
+													마케팅</a>
 											</c:when>
 											<c:otherwise>
 								                알 수 없음

@@ -38,7 +38,7 @@ public class ExpertRankingController {
 		model.addAttribute("pager",resultMap.get("pager"));
 		model.addAttribute("expertBoardList", resultMap.get("expertBoardList"));
 		
-		Map<String, Object> resultMoney=expertRankingService.getMoneyList();
+		Map<String, Object> resultMoney=expertRankingService.getMoneyList(pageNum);
 		log.info("pager={}",resultMoney.get("expertMoneyList"));
 		log.info("로그테스트");
 		
