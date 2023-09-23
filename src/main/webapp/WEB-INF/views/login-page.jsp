@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
+  <title>로그인</title>
 
   <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
   <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>" type="text/css">
@@ -46,6 +46,10 @@
 	align-items: center;
 }
 
+#id-input {
+	padding-bottom: 20px;
+}
+
 
 
 #header {
@@ -68,6 +72,15 @@
 	color : red;
 }
 
+#sec-message {
+	display: flex;
+	justify-content: center;
+}
+
+.id-pw-find {
+	padding: 20px;
+}
+
 
 
 </style>
@@ -82,7 +95,7 @@
       
       <header>
       	<div class="name-header">
-      		<h2 class="name">아이디 찾기</h2>
+      		<h2 class="name">Login</h2>
       	</div>
         
       </header>
@@ -105,7 +118,7 @@
 	        </div>
 	        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 					<%-- <h3 style="color: red;">아이디 또는 비밀번호가 맞지 않습니다.</h3> --%>
-					<h3 style="color: red;">${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message }</h3>
+					<h3 id="sec-message" style="color: red;">${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message }</h3>
 					<%-- 예외가 저장된 세션의 속성값 삭제 --%>
 					<c:remove var="SPRING_SECURITY_LAST_EXCEPTION"/>
 			</c:if>
@@ -122,7 +135,7 @@
                   src="<c:url value="/pictures/placeholder/instagram.png"/>"
                   alt="instagram"></a> <a href="<c:url value=""/>"><img
                   src="<c:url value="/pictures/placeholder/facebook.png"/>"
-                  alt="facebook"></a> <a href="<c:url value=""/>"><img
+                  alt="facebook"></a> <a href="<c:url value="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=http://localhost:9003/member/kakao/login/callback"/>"><img
                   src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
                   alt="kakao"></a>
             </div>
@@ -133,32 +146,13 @@
     </div>
   </div>
   
- <!-- <script type="text/javascript">
+ <script type="text/javascript">
  
- let emailBox = document.querySelector('.box');
- let messageBox = document.querySelector('#show-message');
  
- document.querySelector('#submit').addEventListener('click', (e) => {
-	 fetch("<c:url value="/member/findId"/>", {
-		  method: "POST", 
-		  headers: { 
-		    "Content-Type": "application/json",
-		  },body: JSON.stringify({ 
-			    "email" : emailBox.value		    
-			  })
-		})
-	.then((response) => response.json())
-	.then((data) => {
-	   	  
-	  	if(data.errorCode === "Bad") {
-	   		messageBox.innerHTML = data.message;
-	   } else {
-		   	messageBox.innerHTML = '아이디 = ' + data.id;
-		   	messageBox.style = 'color : green';
-	   	}
-	 })
-	  	e.preventDefault();
- }) -->
+ 
+ 
+ 
+ </script>
  	
  
      
@@ -166,7 +160,7 @@
 
  	
  	
- </script>
+
   
 </body>
 </html>

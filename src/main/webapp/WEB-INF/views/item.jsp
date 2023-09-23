@@ -190,7 +190,6 @@ a {
 									<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-
 								<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
 								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<span> <c:if test="${not empty cartList}">
