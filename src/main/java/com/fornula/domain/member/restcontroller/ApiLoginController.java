@@ -2,6 +2,7 @@ package com.fornula.domain.member.restcontroller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
@@ -162,7 +163,12 @@ public class ApiLoginController {
 			member.setCategoryThree(11);
 			member.setMemberAuthList(authList);
 			
-			if(memberSecurityService.findSecurityMemberById(member.getId()) == null) {
+			log.info("loginMember아이디  = {}", member.getId());
+			
+			List<Member> findSecurityMemberById = memberSecurityService.findSecurityMemberById(member.getId());
+			Member loginMember = findSecurityMemberById.stream().findAny().orElse(null);
+			
+			if(loginMember == null) {
 				memberSecurityService.addAuth(auth);
 				memberSecurityService.addSecurityMember(member);
 			}

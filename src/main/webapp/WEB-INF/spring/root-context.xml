@@ -74,6 +74,16 @@
 		<property name="maxUploadSize" value="20971520" />
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
+	
+	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource">
+		<property name="basenames">
+			<list>
+				<value>/WEB-INF/message/security_message</value>
+			</list>
+		</property>
+		<property name="cacheSeconds" value="60"/>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>		
 
 	<!-- annotation-driven: @Transactional 어노테이션을 사용하여 TransactionManager 객체로 
 		트랜젝션 처리 가능 -->
