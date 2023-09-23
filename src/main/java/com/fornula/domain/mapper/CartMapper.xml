@@ -41,7 +41,7 @@
 	
 	
 	<!-- 장바구만 출력 -->
-	<select id="selectCartInfo" resultType="int">
+	<select id="selectCartInfo" resultType="Cart">
 		select * from cart
 		where member_idx = #{memberIdx} and item_idx = #{itemIdx}
 	</select>

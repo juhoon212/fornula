@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.expert.dto.TotalSalesMoney;
+import com.fornula.domain.expert.dto.vo.ExpertMoneyRanking;
 
 public interface ExpertRankingMapper {
-//	전문가 랭킹이 아니라! 전문가 랭킹을 위한 전문가 리스트 출력 처리
 	List<Expert> selectExpertList(Map<String, Object> map);
 	int selectExpertCount();
-	List<TotalSalesMoney> selectTotalMoney(Map<String, Object> map);
+	List<ExpertMoneyRanking> selectTotalMoneyList(Map<String, Object> map);
+//	int selectMoneyCount();
 }

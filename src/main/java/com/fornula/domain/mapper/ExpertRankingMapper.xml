@@ -17,7 +17,7 @@
 	                ,company_two
 	                ,company_three
 	            FROM expert 
-	            ORDER BY expert_idx           
+	            ORDER BY expert_idx
 	        ) expertlist
 	    )
 	    WHERE rn BETWEEN #{startRow} AND #{endRow}
@@ -30,28 +30,64 @@
  	</select>
  	
  	<!-- 총금액 출력을 위한 쿼리문 -->
- 	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
-		SELECT *,
-		       (SELECT SUM(I.price) 
-		        FROM item I
-		        WHERE I.expert_idx = moneyList.expert_idx
-		       ) AS totalMoney
-		FROM (
-		    SELECT rownum AS rn, moneyList.*
-		    FROM (
-		        SELECT E.expert_idx,
-		               S.sales_idx,
-		               I.item_idx,
-		               I.price
-		        FROM expert E
-		        JOIN item I ON S.item_idx = I.item_idx
-		                   AND I.expert_idx = E.expert_idx
-		    ) moneyList
-		) 
-		WHERE rn BETWEEN #{startRow} AND #{endRow}
-    </select>
+	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
+	    SELECT *
+	    FROM (
+	        SELECT 
+	            ROWNUM AS rn,
+	            COALESCE(totalMoney, 0) AS totalMoney,
+	            e.EXPERT_IDX,
+	            e.INTEREST,
+	            e.INTRODUCE
+	        FROM
+	            EXPERT e
+	        LEFT JOIN
+	            (
+	                SELECT
+	                    i.EXPERT_IDX,
+	                    SUM(i.PRICE) AS totalMoney
+	                FROM
+	                    SALES s
+	                JOIN
+	                    ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+	                GROUP BY
+	                    i.EXPERT_IDX
+	            ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+	        ORDER BY
+	            COALESCE(totalMoney, 0) DESC
+	    )
+	    WHERE totalMoney != 0
+            AND rn BETWEEN 1 AND 3
+	</select>
+
+	<!-- 총금액 출력을 위한 페이징 처리를 위한 count 검색 쿼리 
+	<select id="selectMoneyCount" resultType="int">
+	    <![CDATA[
+	    SELECT COUNT(*) 
+	    FROM (
+	        SELECT 
+	            ROWNUM AS rn,
+	            e.EXPERT_IDX AS moneylist,
+	            COALESCE(totalPrice, 0) AS totalPrice,
+	            e.INTEREST,
+	            e.INTRODUCE
+	        FROM
+	            EXPERT e
+	        LEFT JOIN
+	            (
+	                SELECT
+	                    i.EXPERT_IDX,
+	                    SUM(i.PRICE) AS totalPrice
+	                FROM
+	                    SALES s
+	                JOIN
+	                    ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+	                GROUP BY
+	                    i.EXPERT_IDX
+	            ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+	        WHERE COALESCE(totalPrice, 0) <> 0
+	    ) subquery_alias
+	    ]]>
+	</select>
+	-->
  </mapper>
-
-
-
-
