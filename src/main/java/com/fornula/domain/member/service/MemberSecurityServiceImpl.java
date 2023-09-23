@@ -55,4 +55,9 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 		return memberList;
 	}
 
+	@Override
+	   public Member getSecurityMember(String id) {
+	      return memberSecurityRepository.findMemberById(id);
+	   }
+
 }

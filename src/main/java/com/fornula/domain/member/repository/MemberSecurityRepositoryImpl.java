@@ -31,5 +31,10 @@ public class MemberSecurityRepositoryImpl implements MemberSecurityRepository{
 	public List<Member> findSecurityMemberById(String id) {
 		return sqlSession.getMapper(SecurityMemberMapper.class).findSecurityMemberById(id);
 	}
+	
+	@Override
+	   public Member findMemberById(String id) {
+	      return sqlSession.getMapper(SecurityMemberMapper.class).findMemberById(id);
+	   }
 
 }

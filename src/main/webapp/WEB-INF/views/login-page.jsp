@@ -116,7 +116,7 @@
                   href="<c:url value="/member/findPw"/>">&nbsp;비밀번호 찾기 </a>
             </div>      
             <div id="logos">
-               <a href="<c:url value=""/>"> </a> <img
+               <a href="<c:url value="/google/login"/>"><img
                   src="<c:url value="/pictures/placeholder/social.png"/>"
                   alt="google"></a> <a href="<c:url value=""/>"><img
                   src="<c:url value="/pictures/placeholder/instagram.png"/>"
