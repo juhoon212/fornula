@@ -47,11 +47,7 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 	public List<Member> findSecurityMemberById(String id) {
 		
 		List<Member> memberList = memberSecurityRepository.findSecurityMemberById(id);
-		
-		if(memberList.isEmpty()) {
-			throw new NotFoundIdException("아이디로 찾을 수 없습니다.");
-		}
-		
+
 		return memberList;
 	}
 

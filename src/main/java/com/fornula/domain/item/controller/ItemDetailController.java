@@ -84,7 +84,7 @@ public class ItemDetailController {
 		
 		return "item";
 	}
-
+ 
 	private String extractPhoto(Photo selectPhoto) {
 
 		int pos = selectPhoto.getItemfileName().lastIndexOf("_");

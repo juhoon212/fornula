@@ -111,6 +111,11 @@
 			</c:if>
 			<input type="checkbox" name="remember-me">자동 로그인	
 	      	<button id="submit">로그인</button>
+	      	<div id="kakao">
+	      	<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=http://localhost:9003/member/kakao/login/callback">
+	      	<img src="<c:url value="/pictures/placeholder/kakao_login_medium_wide.png"/>" width="100%;" height="45px;" ></a>
+	      	
+	      	</div>
 	      	<div class="id-pw-find">
                <a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a
                   href="<c:url value="/member/findPw"/>">&nbsp;비밀번호 찾기 </a>
@@ -122,7 +127,7 @@
                   src="<c:url value="/pictures/placeholder/instagram.png"/>"
                   alt="instagram"></a> <a href="<c:url value=""/>"><img
                   src="<c:url value="/pictures/placeholder/facebook.png"/>"
-                  alt="facebook"></a> <a href="<c:url value=""/>"><img
+                  alt="facebook"></a> <a href="<c:url value="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=http://localhost:9003/member/kakao/login/callback"/>"><img
                   src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
                   alt="kakao"></a>
             </div>
