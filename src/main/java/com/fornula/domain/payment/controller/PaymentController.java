@@ -1,4 +1,4 @@
-package com.fornula.domain.item.controller;
+package com.fornula.domain.payment.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +22,7 @@ import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.payment.dto.Payments;
 import com.fornula.domain.payment.service.PaymentsService;
+import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
 import lombok.RequiredArgsConstructor;
@@ -30,13 +31,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/payment")
 public class PaymentController {
 
 	 private final ItemPaymentService service;
 	 private final PaymentsService paymentService;
 	
 	 
-		@GetMapping("/payment/{itemIdx}")
+		@GetMapping("/{itemIdx}")
 		public String getPayment(@PathVariable Integer itemIdx, Model model) {
 			
 			log.info("itemIdx = {}", itemIdx);
@@ -64,7 +66,7 @@ public class PaymentController {
 		}
 		*/
 		
-		@PostMapping("/payment")
+		@PostMapping
 		@ResponseBody
 		public String pay(@RequestBody Payments payment, HttpSession session) {
 			//결제 관련 API를 이용하기 전에 결제 금액 검증을 위해 세션에 주문번호(이름)와 결제금액(값)을 저장
@@ -97,7 +99,7 @@ public class PaymentController {
 			
 			session.removeAttribute(payment.getMerchantUid());
 			
-			Member member = (Member)session.getAttribute(SessionConst.Login_Member);
+		   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);     
 			
 			//결제된 결제금액을 반환받아 저장 
 			Long amount=returnPayment.getAmount();
@@ -118,14 +120,12 @@ public class PaymentController {
 				return "forgery";
 			}
 		}
-		
+
 		@GetMapping("/common-success")
 		public String commonSuccess() {
 			
 			return "/common-success"; 
 		}
-	
-
 		
 		private String extractPhoto(ItemPayment payment) {
 			int pos = payment.getItemfileName().lastIndexOf("_");
