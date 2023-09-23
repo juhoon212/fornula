@@ -78,7 +78,7 @@
 									data-scroll-animate="fadeInDown">
 									<a
 										href="<c:url value='/expert/output/${expertMoneyList[0].expertIdx}'/>">전문가
-										번호: ${expertMoneyList[0].expertIdx}</a>
+										ID: ${expertMoneyList[0].id}</a>
 								</h5>
 								<h6 class="card-subtitle" data-scroll-animate="fadeInUp"
 									id="interest1">
@@ -123,7 +123,7 @@
 									data-scroll-animate="fadeInDown">
 									<a
 										href="<c:url value='/expert/output/${expertMoneyList[1].expertIdx}'/>">전문가
-										번호: ${expertMoneyList[1].expertIdx}</a>
+										ID: ${expertMoneyList[1].id}</a>
 								</h5>
 								<h6 class="card-subtitle" data-scroll-animate="fadeInUp"
 									id="interest2">
@@ -168,7 +168,7 @@
 									data-scroll-animate="fadeInDown">
 									<a
 										href="<c:url value='/expert/output/${expertMoneyList[2].expertIdx}'/>">전문가
-										번호: ${expertMoneyList[2].expertIdx}</a>
+										ID: ${expertMoneyList[2].id}</a>
 								</h5>
 								<h6 class="card-subtitle" data-scroll-animate="fadeInUp"
 									id="interest3">
@@ -225,8 +225,10 @@
 								<a
 									href="<c:url value='/expert/output/${expertList.expertIdx}'/>">전문가
 									번호: ${expertList.expertIdx } </a>
+								<a
+									href="<c:url value='/expert/output/${expertList.expertIdx}'/>">전문가
+									ID: ${expertList.id } </a>									
 								<div class="card-body">
-
 									<h5 class="post-title card-title">
 										<a
 											href="<c:url value='/expert/output/${expertList.expertIdx}'/>">
