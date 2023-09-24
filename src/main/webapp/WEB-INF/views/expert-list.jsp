@@ -254,7 +254,7 @@ tr td {
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
 							<div id="button">
-								<a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link"
+								<a href="<c:url value="/mypage/mypageInfo"/>" class="tag-cloud-link"
 									aria-label="admin change button">일반회원으로 전환</a>
 							</div>
 							<div class="row">

@@ -9,16 +9,8 @@
                     <img class="footer-logo img-fluid mb-4" src="<c:url value="/pictures/placeholder/logo2.png"/>"
                          alt="Footer Logo">
                     <p style="text-align: left;">
-                        외주 사이트 입니다.
+                        전문가 외주 사이트 입니다.
                     </p>
-                    <ul class="social-icons list-inline">
-                        <li class="list-inline-item">
-                            <a href="<c:url value="#"/>" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="<c:url value="#"/>" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="col-md-4" style="text-align: center;">
