@@ -81,6 +81,10 @@
 	padding: 20px;
 }
 
+a {
+  text-decoration-line: none;
+  }
+
 
 
 </style>
@@ -126,7 +130,8 @@
 	      	<button id="submit">로그인</button>
 	      	<div class="id-pw-find">
                <a href="<c:url value="/member/findId"/>">아이디 찾기 /</a><a
-                  href="<c:url value="/member/findPw"/>">&nbsp;비밀번호 찾기 </a>
+                  href="<c:url value="/member/findPw"/>">&nbsp;│ 비밀번호 찾기 </a>
+                  <a href="<c:url value="/member/join"/>">&nbsp;│ 회원가입 </a>
             </div>      
             <div id="logos">
                <a href="<c:url value="/google/login"/>"><img
