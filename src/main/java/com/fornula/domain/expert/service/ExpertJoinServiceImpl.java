@@ -31,9 +31,9 @@ public class ExpertJoinServiceImpl implements ExpertJoinService {
 		CustomMemberDetails member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 		
 		Auth auth = expertJoinDAO.exceptionExpert(member.getId());
-		//role을 뽑는거니까
 		log.info("auth : {}", auth);
-		//role이 전문가이면
+		
+		//전문가 중복 등록 되었을 경우
 		if(auth!=null) {
 			log.info("등록 실패");
 			throw new ExistsExpertException("이미 전문가로 등록되었습니다.");
@@ -49,5 +49,10 @@ public class ExpertJoinServiceImpl implements ExpertJoinService {
 	public void updateExpertStatus(Auth auth) {
 		expertJoinDAO.updateExpertStatus(auth);
 		
+	}
+
+	@Override
+	public void updateStatus(int memberIdx) {
+		expertJoinDAO.updateStatus(memberIdx);
 	}
 }

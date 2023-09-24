@@ -254,8 +254,8 @@ p #logo {
 							</ul>
 						</div>
 				</c:if>
-				<c:if test="${loginMember !=null}">
-					<c:if test="${loginMember.memberStatus == 1 ||loginMember.memberStatus == 2}">
+				<c:if test="${sessionScope.loginMember !=null}">
+					<c:if test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
 						<div class="collapse navbar-collapse" id="lana-navbar">
 							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
 								<li class="nav-item dropdown"><a
