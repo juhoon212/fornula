@@ -127,7 +127,7 @@
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
 								<c:if test="${member.memberStatus == 2}">
-									<a href="<c:url value='/expert/output'/>" class="tag-cloud-link"
+									<a href="<c:url value='/expert/input'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
