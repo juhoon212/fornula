@@ -20,8 +20,8 @@
                         <li><a href="<c:url value="/#"/>">메인 페이지</a></li>
                         <li><a href="<c:url value="/item/boardList"/>">게시판</a></li>
                         <li><a href="<c:url value="expert/ranking"/>">전문가 랭킹</a></li>
-                        <li><a href="<c:url value="item/boardList"/>">고객센터</a></li>
-                        <li><a href="<c:url value="item/boardList"/>">회사소개</a></li>
+                        <li><a href="<c:url value="board/list"/>">고객센터</a></li>
+                        <li><a href="<c:url value="info"/>">회사소개</a></li>
                     </ul>
                 </div>
             </div>
