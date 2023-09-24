@@ -33,5 +33,10 @@ public class ExpertJoinDAOImpl implements ExpertJoinDAO{
 		
 	}
 
+	@Override
+	public void updateStatus(int memberIdx) {
+		sqlSession.getMapper(ExpertJoinMapper.class).updateStatus(memberIdx);		
+	}
+
 }
  

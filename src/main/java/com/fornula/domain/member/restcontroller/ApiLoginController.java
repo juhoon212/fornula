@@ -182,6 +182,7 @@ public class ApiLoginController {
 			session.setAttribute(SessionConst.Login_Member, customMemberDetails);
 			
 			log.info("loginMember = {}", customMemberDetails.getId());
+			log.info("loginMember = {}", customMemberDetails.getMemberStatus());
 			 
 			return "redirect:/";
 		}

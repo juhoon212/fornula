@@ -50,4 +50,9 @@ public class ExpertJoinServiceImpl implements ExpertJoinService {
 		expertJoinDAO.updateExpertStatus(auth);
 		
 	}
+
+	@Override
+	public void updateStatus(int memberIdx) {
+		expertJoinDAO.updateStatus(memberIdx);
+	}
 }

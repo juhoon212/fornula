@@ -35,7 +35,7 @@
         LEFT JOIN photo P ON I.item_idx = P.item_idx
         LEFT JOIN status ST ON S.sales_status =ST.status_idx
         WHERE I.expert_idx = #{expertIdx} AND I.item_status=1 AND S.sales_idx is not null
-        ORDER BY S.sales_date
+        ORDER BY S.sales_date desc
         ) saleslist)
         WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
@@ -73,6 +73,11 @@
 	 	UPDATE sales
 	 	SET sales_status =#{salesStatus}
 		WHERE sales_idx = #{salesIdx}
+	</update>
+	<update id="updatePurchaseStatus" parameterType="com.fornula.domain.item.dto.Purchase">
+	 	UPDATE purchase
+	 	SET purchase_status =#{salesStatus}
+		WHERE purchase_idx = #{salesIdx}
 	</update>
  </mapper>
 

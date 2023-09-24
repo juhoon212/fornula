@@ -7,6 +7,7 @@ import com.fornula.domain.expert.dto.ItemSales;
 import com.fornula.domain.expert.dto.SaleItemExpert;
 import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
+import com.fornula.domain.item.dto.Purchase;
 
 public interface ExpertSalesMapper {
 	//판매내역 페이징 처리
@@ -15,7 +16,5 @@ public interface ExpertSalesMapper {
 	List<TotalSalesMoney> selectTotalMoney(int expertIdx);
 	//판매내역 상태 변경
 	int updateSalesStatus(Sales sales);
-	//slaes객체 출력
-	//Sales selectStatus(int salesIdx);
-
+	int updatePurchaseStatus(Sales sales);
 }
