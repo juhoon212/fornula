@@ -403,7 +403,7 @@ p #logo {
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
 			<!-- 검색 기능 처리 -->
-			<form action="boardList" method="get"
+			<form action="item/boardList" method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword"
