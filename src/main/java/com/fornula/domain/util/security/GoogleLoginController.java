@@ -67,7 +67,7 @@ public class GoogleLoginController {
 		log.info("id:{}", id);
 		System.out.println("aaaaa");
 
-		// 반환받은 네이버 사용자 프로필의 값을 사용하여 Java 객체의 필드값으로 저장
+		// 반환받은 구글 사용자 프로필의 값을 사용하여 Java 객체의 필드값으로 저장
 		Auth auth = new Auth();
 		auth.setId("google_" + id);
 		auth.setRole("ROLE_MEMBER");
