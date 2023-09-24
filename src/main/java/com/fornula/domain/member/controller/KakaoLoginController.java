@@ -1,4 +1,4 @@
-package com.fornula.domain.member.restcontroller;
+package com.fornula.domain.member.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/member")
 @RequiredArgsConstructor
-public class ApiLoginController {
+public class KakaoLoginController {
 	
 	private final MemberSecurityService memberSecurityService;
 	

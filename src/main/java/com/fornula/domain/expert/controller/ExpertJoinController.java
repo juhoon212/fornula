@@ -31,6 +31,7 @@ import com.fornula.domain.expert.service.ExpertJoinService;
 import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
@@ -47,6 +48,7 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
+	private final MemberSecurityService memberSecurityService;
 
 	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')")
 	@GetMapping("/success")
@@ -83,7 +85,9 @@ public class ExpertJoinController {
 		log.info("file:{}", uploadFile);
 
 		//시큐리티 적용
-		CustomMemberDetails member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
+		CustomMemberDetails loginMember = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
+		Member member = memberSecurityService.getSecurityMember(loginMember.getId());
+		
 		expert.setMemberIdx(member.getMemberIdx());
 
 

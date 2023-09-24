@@ -113,15 +113,15 @@
  let emailBox = document.querySelector('.box');
  let messageBox = document.querySelector('#show-message');
  
-//CSRF 토큰 관련 정보를 자바스트립트 변수에 저장 
+/* //CSRF 토큰 관련 정보를 자바스트립트 변수에 저장 
  	let csrfHeaderName="${_csrf.headerName}";
 	let csrfTokenValue="${_csrf.token}"; */
 	
 	//ajaxSend() 메소드를 호출하여 페이지에서 Ajax 기능으로 요청하는 모든 웹프로그램에게 CSRF 토큰 전달
 	// => Ajax 요청시 beforeSend 속성을 설정 불필요
- 	$(document).ajaxSend(function(e, xhr) {
+/*  	$(document).ajaxSend(function(e, xhr) {
 		xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-	}); 
+	});  */
  
  
  document.querySelector('#submit').addEventListener('click', (e) => {
