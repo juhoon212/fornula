@@ -51,11 +51,7 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
-<<<<<<< HEAD
 	private final MemberSecurityService memberSecurityService;
-=======
-	private final MemberSecurityService memberSecurityService  ;
->>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 
 	@GetMapping("/success")
 	public String success() {
