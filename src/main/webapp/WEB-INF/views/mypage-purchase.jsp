@@ -134,7 +134,6 @@
                <div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
-               
                     <ul>
                     <li><a href="<c:url value="/mypage/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypage/mypagePurchase"/>">구매 관리</a></li>

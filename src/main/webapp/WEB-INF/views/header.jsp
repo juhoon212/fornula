@@ -379,7 +379,6 @@ p #logo {
 								</div>
 							</div>
 						</form>
-
 					</c:if>
 					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
 						<div class="admin">

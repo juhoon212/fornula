@@ -206,7 +206,6 @@ h3 {
          }
       }
       
- 
  function submitSecessionCheck() {
     let h3=document.getElementById("idMessage");
    

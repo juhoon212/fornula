@@ -195,11 +195,9 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-
 	var cartListURL = "${pageContext.request.contextPath}/cart";
 	var photoURL ="${pageContext.request.contextPath}/images/upload/"
 	var heartURL ="${pageContext.request.contextPath}/pictures/placeholder/";
-
 	$("#cartBtn").click(function() {
 	    var itemIdx = $(this).attr("data-itemIdx");
 
@@ -225,7 +223,5 @@
 	    }
 	});
 </script>
-
-
 </body>
 </html>

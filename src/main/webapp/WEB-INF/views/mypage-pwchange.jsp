@@ -255,7 +255,6 @@ h3 {
          </div>
    </main>
 <jsp:include page="footer.jsp" />
-
 <script defer src="<c:url value="/js/mypage-pwchange.js"/>"></script>
    <script type="text/javascript"
       src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
