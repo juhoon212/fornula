@@ -6,5 +6,5 @@ import com.fornula.domain.member.dto.mypage.Itempurchase;
 
 public interface MypageItemMapper {
   List<Itempurchase> selectPurchaseMypage (int memberIdx);
-  int updatePurchaseStatus(Itempurchase itempurchase);
+  //int updatePurchaseStatus(Itempurchase itempurchase);
 }

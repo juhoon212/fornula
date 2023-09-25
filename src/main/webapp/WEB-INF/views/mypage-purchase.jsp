@@ -74,21 +74,14 @@
                                 <h6 class="post-title card-title">${Itempurchase.purchaseIdx}</h6>
                                 <h4 class="post-title card-title"><a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>${Itempurchase.itemName}"></a>
                                 </h4>
-                                <div class="">
-                                  <div class="author-meta">
-                                     <button data-purchaseIdx="${Itempurchase.purchaseIdx }" data-purchaseStatus="${Itempurchase.purchaseStatus }"
-                                        class="status"type="button" id="Btn" value="${purchaseStatus }">${Itempurchase.status }
-                                         </button>
-                                       </div>
-                                   </div>
-                               <!--  <p class="subtitle"></p>
+                                <p class="subtitle"></p>
                                 <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
                                     <div class="author-meta">
                                     <a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>" class="more-link card-link d-flex align-items-center">
                                         리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
                                     </a>
                                 </div>
-                            </div>--> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -166,47 +159,7 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script type="text/javascript">
-    $(document).ready(function () {
-        $('.status').each(function (i) {
-            $(this).click(function () {
-                var currentStatus = $(this);
-                //현재의 상태를 가져옴
-                var currentPurchaseStatus = currentStatus.data('purchasestatus');
-                //현재 상태에서 +1을 해서 주문상태 변경하기 위한 변수S
-                var purchaseStatus = parseInt(currentPurchaseStatus) + 1;
-                //purchaseIdx를 가져옴
-                var purchaseIdx = currentStatus.data('purchaseidx');
 
-                $.ajax({
-                    url: "${pageContext.request.contextPath}/mypage/purchase/status",
-                    contentType: "application/json",
-                    type: "PUT",
-                    data: JSON.stringify({ "purchaseIdx": purchaseIdx, "purchaseStatus": purchaseStatus }),
-                    dataType: "text",
-                    success: function (result) {
-                        if (result === "success") {
-                            if (purchaseStatus == 3) {
-                                currentStatus.text("제작완료");
-                                currentStatus.closest('.post-card').find('#statusCheck').text('제작중');
-                                currentStatus.data('purchasestatus', purchaseStatus); // purchasestatus 값을 업데이트
-                            } else if (purchaseStatus == 4) {
-                                currentStatus.prop("disabled", true);
-                                currentStatus.css({"color": "gray"});
-                                currentStatus.closest('.post-card').find('#statusCheck').text('제작완료');
-                            }
-                        }
-                    },
-                    error: function (xhr) {
-                        alert("상태를 변경하는데 오류가 발생했습니다. 오류 코드: " + xhr.status);
-                    }
-                });
-            });
-        });
-    });
-
-   </script>
 
 
 </body>

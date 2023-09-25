@@ -20,11 +20,11 @@ public class MypageItemServiceImpl implements MypageItemService{
 		return mypageItemPurchase;
 	}
 
-	@Override
-	public int modifyPurchaseStatus(Itempurchase itempurchase) {
+	//@Override
+	//public int modifyPurchaseStatus(Itempurchase itempurchase) {
 	
-		return mypageItemRepository.updatePurchaseStatus(itempurchase);
-	}
+	//	return mypageItemRepository.updatePurchaseStatus(itempurchase);
+	//}
 
 	
   

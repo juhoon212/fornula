@@ -26,12 +26,12 @@
 		ON itempurchase.item_idx=photo.item_idx
 		</select>
 
-	<!-- 상태 버튼 클릭시 구매 상태 변경 --> 
+	<!-- 상태 버튼 클릭시 구매 상태 변경 
 	<update id="updatePurchaseStatus" parameterType="Itempurchase">
 	 	UPDATE purchase
 	 	SET purchase_status =#{purchaseStatus}
 		WHERE purchase_idx = #{purchaseIdx}
-	</update>
+	</update>--> 
 
 	
 	
