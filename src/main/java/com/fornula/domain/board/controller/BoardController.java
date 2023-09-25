@@ -62,7 +62,7 @@ public class BoardController {
       //서비스 write메소드 실행
       boardService.write(board);
       
-      return "board"; //목록으로 가야함(목록페이지 아직 만들지 않음)
+      return "redirect:/board/list";
    }
    
    /*게시물 출력
@@ -115,7 +115,7 @@ public class BoardController {
       //redirectAttributes.addAttribute("pageSize", pageSize);
       //redirectAttributes.addFlashAttribute("message", message);
       
-      return "redirect:/board/list"; //목록으로 가야함(목록페이지 아직 만들지 않음)
+      return "redirect:/board/list";
    }
    
    //게시물 수정
