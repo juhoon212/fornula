@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -48,9 +51,12 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
+<<<<<<< HEAD
 	private final MemberSecurityService memberSecurityService;
+=======
+	private final MemberSecurityService memberSecurityService  ;
+>>>>>>> branch 'main' of https://github.com/juhoon212/fornula.git
 
-	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')")
 	@GetMapping("/success")
 	public String success() {
 		return "expertjoin-success";
@@ -59,11 +65,9 @@ public class ExpertJoinController {
 	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	@GetMapping("/join")
 	public String join(@ModelAttribute("expert") Expert expert, HttpSession session) {
+		//세션에 저장된 member의 id를 출력하기 위한 메소드
 		CustomMemberDetails  member = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
-
 		session.setAttribute("member", member.getId());
-		expert.setMemberIdx(member.getMemberIdx());
-		log.info("getMemberIdx:{}", member.getMemberIdx());
 
 		return "expert-join";
 	}
@@ -87,8 +91,8 @@ public class ExpertJoinController {
 		//시큐리티 적용
 		CustomMemberDetails loginMember = (CustomMemberDetails ) session.getAttribute(SessionConst.Login_Member);
 		Member member = memberSecurityService.getSecurityMember(loginMember.getId());
-		
 		expert.setMemberIdx(member.getMemberIdx());
+		log.info("MemberIdx:{}", member.getMemberIdx());
 
 
 		// 업로드된 파일이 pdf 파일이 아닐 경우
@@ -109,7 +113,6 @@ public class ExpertJoinController {
 			expert.setExpertfileName(expertfileName);
 
 		}
-		
 
 		expertJoinService.addExpertInfo(expert);
 
@@ -120,7 +123,9 @@ public class ExpertJoinController {
 		log.info("auth:{}",auth);
 		
 		expertJoinService.updateExpertStatus(auth);
-		redirectAttributes.addFlashAttribute("message","전문가 등록이 완료되었습니다");
+		expertJoinService.updateStatus(member.getMemberIdx());
+		
+		log.info("memberSTatus :{}",member.getMemberStatus() );
 		
 		return "redirect:/expert/success";
 

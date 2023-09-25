@@ -67,7 +67,7 @@ public class GoogleLoginController {
 		log.info("id:{}", id);
 		System.out.println("aaaaa");
 
-		// 반환받은 네이버 사용자 프로필의 값을 사용하여 Java 객체의 필드값으로 저장
+		// 반환받은 구글 사용자 프로필의 값을 사용하여 Java 객체의 필드값으로 저장
 		Auth auth = new Auth();
 		auth.setId("google_" + id);
 		auth.setRole("ROLE_MEMBER");
@@ -92,27 +92,25 @@ public class GoogleLoginController {
 		log.info("member{}:", member);
 
 		// 아이디로 찾은 list에서 해당 id 객체 찾아서 비교
-		if(memberSecurityService.getSecurityMember("google_"+id) == null) {
-			memberSecurityService.addSecurityMember(member);
+		List<Member> findSecurityMemberById = memberSecurityService.findSecurityMemberById(member.getId());
+		Member loginMember = findSecurityMemberById.stream().findAny().orElse(null);
+		
+		if(loginMember == null) {
 			memberSecurityService.addAuth(auth);
+			memberSecurityService.addSecurityMember(member);
 		}
 		
 		// 구글 로그인 사용자 정보를 사용하여 UserDetails 객체(로그인 사용자)를 생성하여 저장
-		CustomMemberDetails customMemberDetails = new CustomMemberDetails(member);
-		log.info("customMemberDetails의 getId는{}:", customMemberDetails.getId());
-
-		Authentication authentication = new UsernamePasswordAuthenticationToken(customMemberDetails, null,
-				customMemberDetails.getAuthorities());
-
-		// SecurityContextHolder 객체 : 인증 사용자의 권한 관련 정보를 저장하기 위한 객체
+		CustomMemberDetails customMemberDetails = new CustomMemberDetails(loginMember);
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(customMemberDetails, null, customMemberDetails.getAuthorities());
+		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
-		
 		session.setAttribute(SessionConst.Login_Member, customMemberDetails);
-		CustomMemberDetails loginMember = (CustomMemberDetails)session.getAttribute(SessionConst.Login_Member);
-		model.addAttribute("loginMember",loginMember);
-        System.out.println("로그인멤버 = "+loginMember.getMemberStatus());
-        
+		
+		log.info("loginMember = {}", customMemberDetails.getMemberStatus());
+		 
 		return "redirect:/";
 	}
 }

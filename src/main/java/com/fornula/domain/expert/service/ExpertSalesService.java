@@ -18,5 +18,6 @@ public interface ExpertSalesService {
 	int getSalesCount();
 	int getTotalMoney(int expertIdx);
 	int modifySalesStatus(Sales sales);
+	int modifyPurchaseStatus(Sales sales);
 	//Sales selectStatus(int salesIdx);
 } 

@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.fornula.domain.expert.dto.Expert;
-import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.dto.vo.ExpertMoneyRanking;
 import com.fornula.domain.expert.repository.ExpertRankingDAO;
 import com.fornula.domain.util.pager.Pager;
@@ -32,7 +30,7 @@ public class ExpertRankingServiceImpl implements ExpertRankingService{
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
-		List<Expert> expertBoardList=expertRankingDAO.selectExpertList(pageMap);
+		List<ExpertMoneyRanking> expertBoardList=expertRankingDAO.selectExpertList(pageMap);
 //		log.info("pageMap", pageMap);
 //		log.info("expertBoardList={}",expertBoardList);
 		

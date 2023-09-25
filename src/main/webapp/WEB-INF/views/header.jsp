@@ -254,8 +254,8 @@ p #logo {
 							</ul>
 						</div>
 				</c:if>
-				<c:if test="${loginMember !=null}">
-					<c:if test="${loginMember.memberStatus == 1 ||loginMember.memberStatus == 2}">
+				<c:if test="${sessionScope.loginMember !=null}">
+					<c:if test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
 						<div class="collapse navbar-collapse" id="lana-navbar">
 							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
 								<li class="nav-item dropdown"><a
@@ -403,7 +403,7 @@ p #logo {
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
 			<!-- 검색 기능 처리 -->
-			<form action="boardList" method="get"
+			<form action="item/boardList" method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword"
