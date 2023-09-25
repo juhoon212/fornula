@@ -161,9 +161,9 @@
 										<li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
 										<li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
 										<li><a href="<c:url value="/cart"/>">장바구니</a></li>
-										<li><a href="<c:url value="/mypagePwchange"/>">비밀번호
+										<li><a href="<c:url value="/mypage/mypagePwchange"/>">비밀번호
 												수정</a></li>
-										<li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
+										<li><a href="<c:url value="/mypage/mypageSession"/>">회원 탈퇴</a></li>
 									</ul>
 								</div>
 							</div>
@@ -195,15 +195,13 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
-
 	var cartListURL = "${pageContext.request.contextPath}/cart";
 	var photoURL ="${pageContext.request.contextPath}/images/upload/"
 	var heartURL ="${pageContext.request.contextPath}/pictures/placeholder/";
-
-	$("#cartBtn").click(function() {
+	$("[id^='cartBtn']").click(function() {
 	    var itemIdx = $(this).attr("data-itemIdx");
 
-	    if (confirm("장바구니를 삭제하시겠습니다.")) {
+	    if (confirm("장바구니를 삭제하시겠습니까?")) {
 	        $.ajax({
 	            type: "DELETE",
 	            url: "${pageContext.request.contextPath}/cart/" + itemIdx,
@@ -213,19 +211,18 @@
 	                    window.location.href = "${pageContext.request.contextPath}/cart";
 	                    alert("장바구니를 삭제하였습니다.");
 	                    cartListDisplay();
-	                    cartButton.attr("src", beforePhotoURL); // 이미지 변경
+	                    var heartImgId = "heartImg" + itemIdx;
+	                    $("#" + heartImgId).attr("src", beforePhotoURL); // 이미지 변경
 	                } else {
 	                    alert("장바구니 삭제 중 오류가 발생했습니다.");
 	                }
 	            },
 	            error: function(xhr) {
-	                alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+	                alert("장바구니 삭제 중 오류가 발생했습니다. 오류 코드: " + xhr.status);
 	            }
 	        });
 	    }
 	});
 </script>
-
-
 </body>
 </html>

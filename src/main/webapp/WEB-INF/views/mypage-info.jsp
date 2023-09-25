@@ -271,16 +271,11 @@ h3 {
             	<img src="<c:url value="/pictures/placeholder/profile.png"/>"
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
             </div>
-              
-                  
                        <div id="button">
                        <a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>
                        </div>
             <div class="widget widget_tag_cloud">
-                  
                     <div class="tagcloud">
-           
-
 							<div id="button">
 								<c:if test="${member.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
@@ -291,8 +286,6 @@ h3 {
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
-
-
             <div class="row" >
                 <div class="widget">
                     <h3 class="widget-title">나의 정보</h3>
@@ -300,6 +293,8 @@ h3 {
                     <ul>
                     <li><a href="<c:url value="/mypage/mypageInfo"/>">내정보 수정</a></li>
                         <li><a href="<c:url value="/mypage/mypagePurchase"/>">구매 관리</a></li>
+                        										<li><a href="<c:url value="/cart"/>">장바구니</a></li>
+                        
                         <li><a href="<c:url value="/mypage/mypagePwchange"/>">비밀번호 수정</a></li>
                         <li><a href="<c:url value="/mypage/mypageSession"/>">회원 탈퇴</a></li>
                     </ul>
