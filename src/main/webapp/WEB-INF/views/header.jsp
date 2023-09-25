@@ -382,7 +382,7 @@ p #logo {
 					</c:if>
 					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
 						<div class="admin">
-							<form action="/member/logout" method="post">
+							<form action="<c:url value="/member/logout"/>" method="post">
 								<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
 									관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a
 									href="<c:url value="/admin/item"/>">상품 관리</a>

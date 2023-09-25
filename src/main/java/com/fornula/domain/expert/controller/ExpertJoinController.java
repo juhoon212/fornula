@@ -54,7 +54,8 @@ public class ExpertJoinController {
 	private final MemberSecurityService memberSecurityService;
 
 	@GetMapping("/success")
-	public String success() {
+	public String success(Model model) {
+		model.addAttribute("message","전문가 등록이 완료되었습니다.");
 		return "expertjoin-success";
 	}
 	
@@ -122,7 +123,7 @@ public class ExpertJoinController {
 		
 		log.info("memberSTatus :{}",member.getMemberStatus() );
 		
-		return "redirect:/expert/success";
+		return "expertjoin-success";
 
 	}
 	private String extracted(MultipartFile uploadFile) {
