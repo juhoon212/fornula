@@ -54,8 +54,8 @@
  <form:form id ="join_form" method="post" action="${url }" modelAttribute="member">
 
         <!-- id -->
-        <input type="hidden" name="id" id="id-hidden">
-       
+        <form:input path = "id" type="hidden" name="id" id="id-hidden"/>
+        <form:errors path="id" cssClass="error-msg" element="div" delimiter=" "/>
         <!-- 이메일 -->
         <h3>이메일</h3>
         <div class="info" id = "info__email">
