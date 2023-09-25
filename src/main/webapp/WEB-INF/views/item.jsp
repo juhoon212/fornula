@@ -394,15 +394,19 @@ var itemIdx = ${itemIdx};
 				description : '전문가 외주 플랫폼 "FORNUAL"입니다 ',
 				imageUrl : '<c:url value="/pictures/placeholder/광고 1.jpg"/>',
 				link : {
-					mobileWebUrl : 'http://52.78.69.41:8080/fornula/',
-					webUrl : 'http://52.78.69.41:8080/fornula/',
+					mobileWebUrl : 'https://itwill.xyz/fornual',
+					webUrl : 'https://itwill.xyz/fornual',
+					/* mobileWebUrl : 'http://52.78.69.41:8080/fornula/',
+					webUrl : 'http://52.78.69.41:8080/fornula/',   */
 				},
 			},
 			buttons : [ {
 				title : '웹으로 보기',
 				link : {
-					mobileWebUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
-					webUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
+					mobileWebUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
+					webUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
+					/* mobileWebUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
+					webUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1', */
 				},
 			}, ],
 			// 카카오톡 미설치 시 카카오톡 설치 경로이동
