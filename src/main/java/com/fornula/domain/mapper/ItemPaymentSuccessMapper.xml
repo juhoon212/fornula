@@ -2,32 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.payment.mapper.ItemPaymentSuccessMapper">
 
-	<!-- 결제완료페이지에서 사용할 SQL문 -->
-	
+	<!-- 결제완료 후 구매테이블에 구매상품 UPDATE쿼리 -->
 	<insert id="insertPurchaseItem">
 		<selectKey resultType="int" keyProperty="purchaseIdx" order="BEFORE">
-			select purchase_seq.nextval from dual
+		SELECT purchase_seq.nextval FROM dual
 		</selectKey>
-		insert into purchase values(#{purchaseIdx}
+		INSERT INTO purchase VALUES(#{purchaseIdx}
 			,#{itemIdx}
 			,#{memberIdx}
 			,SYSDATE
 			,2)
-		<!-- where item_idx = #{itemIdx} -->
 	</insert>
 	
-	<!-- salesIdx에러 -->
+	<!-- 결제완료 후 판매테이블에 판매상품 UPDATE쿼리 -->
 	<insert id="insertSalesItem"  >
 		<selectKey resultType="int" keyProperty="salesIdx" order="BEFORE">
-			select sales_seq.nextval from dual
+	    SELECT sales_seq.nextval FROM dual
 		</selectKey>
-		insert into sales values(
+		INSERT INTO sales VALUES(
 		     #{salesIdx}
 			,#{itemIdx}
 			,SYSDATE
 			,2)
-				<!-- where item_idx = #{itemIdx} -->
 	</insert>
-	
 	
 </mapper>

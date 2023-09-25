@@ -5,43 +5,43 @@
    
    <!-- 이메일 수정 쿼리 -->
    <update id="updateMypageInfo" >
-   update member 
-    set email=#{email}
-    where id=#{id}
+     UPDATE member 
+     SET email=#{email}
+     WHERE id=#{id}
    </update>
  
    <!-- 회원정보 뽑는 쿼리 -->
     <select id="selectMypagePassword" resultType="Member" >
-      select  member_idx,
+      SELECT  member_idx,
             id,
             password,
             email,
             member_date,
             member_status,
             login_date
-      from member
-      where id = #{id}
+      FROM member
+      WHERE id = #{id}
    </select>
    
    <!-- 회원세션에서 categortyone int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
     <select id="selectMypageCategoryOne" resultType="Category" >
-      select  large, small
-      from category
-      where category_idx = #{categoryOne}
+      SELECT  large, small
+      FROM category
+      WHERE category_idx = #{categoryOne}
    </select>
 
    <!-- 회원세션에서 categortyTwo int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
     <select id="selectMypageCategoryTwo" resultType="Category" >
-      select  small, large
-      from category
-      where category_idx = #{categoryTwo}
+      SELECT  small, large
+      FROM category
+      WHERE category_idx = #{categoryTwo}
    </select>
    
       <!-- 회원세션에서 categortyone int로 받아서 관심사테이블에서 다시 String으로 뽑는 쿼리 -->
     <select id="selectMypageCategoryThree" resultType="Category" >
-      select  small, large
-      from category
-      where category_idx = #{categoryThree}
+      SELECT  small, large
+      FROM category
+      WHERE category_idx = #{categoryThree}
    </select>
 
 </mapper>
