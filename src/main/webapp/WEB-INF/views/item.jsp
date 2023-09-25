@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+   uri="http://www.springframework.org/security/tags"%>
 
 <!doctype html>
 <html lang="en">
@@ -17,50 +17,49 @@
 <link rel="stylesheet" href="<c:url value="/css/login-form.css"/>">
 
 <link rel="stylesheet" id="montserrat-css"
-	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+   href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 <link rel="stylesheet" id="open-sans-css"
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+   href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
 <link rel="stylesheet" id="animate-css"
-	href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
-	media="all">
+   href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
+   media="all">
 <link rel="stylesheet" id="font-awesome-css"
-	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
-	type="text/css" media="all">
+   href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
+   type="text/css" media="all">
 <link rel="stylesheet" id="bootstrap-css"
-	href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>"
-	type="text/css" media="all">
+   href="<c:url value="/css/bootstrap.min.css?ver=4.6.0"/>"
+   type="text/css" media="all">
 <link rel="stylesheet" id="smartmenus-bootstrap-css"
-	href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
-	type="text/css" media="all">
+   href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
+   type="text/css" media="all">
 <link rel="stylesheet" id="swiper-css"
-	href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css"
-	media="all">
+   href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css"
+   media="all">
 <link rel="stylesheet" id="magnific-popup-css"
-	href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>"
-	type="text/css" media="all">
+   href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>"
+   type="text/css" media="all">
 <link rel="stylesheet" id="lana-pet-icon-css"
-	href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>"
-	type="text/css" media="all">
+   href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>"
+   type="text/css" media="all">
 <link rel="stylesheet" id="lana-pet-theme-css"
-	href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>"
-	type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-print-css"
-	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
-	type="text/css" media="print">
+   href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>"
+   type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-print-css" 
+href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
 <link
-	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+   rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+   rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap"
+   rel="stylesheet">
 
 
 
@@ -152,13 +151,84 @@ a {
 .imgbox:hover img {
 	transform: scale(1.1);
 }
+
+/* component */
+
+.star-ratings {
+  display : block;
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+}
+ 
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
+.comment-date {
+	padding-top : 10px;
+}
+
+/* component */
+
+.star-rating {
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  width:5em;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+}
+
+/* explanation */
+
+
+.update-item {
+	font-size: 15px;
+}
+
+
 </style>
 <script type="text/javascript">
 	function disableLink() {
 		return false;
 	}
 </script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body class="single single-post">
 	<jsp:include page="header.jsp" />
@@ -173,8 +243,6 @@ a {
 							<h4>
 								<a href="<c:url value="expertoutput/${item.expertIdx }"/>">전문가
 									번호 : ${item.expertIdx }</a>
-								<button style="float: right; padding: 5px;" id="kakaoShareBtn">카카오톡
-									공유하기</button>
 							</h4>
 							<h4>${item.itemDate }</h4>
 						</div>
@@ -193,9 +261,12 @@ a {
 									<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-								<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
-								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
-									<span> <c:if test="${not empty cartList}">
+								<!-- 카카오톡 공유하기 기능 추가 -->
+									<span>
+										<a id="kakao-link-btn" href="javascript:kakaoShare()"> <img
+							src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" />
+						</a>								
+									 <c:if test="${not empty cartList}">
 											<button id="cartBtn" style="background: white;">
 												<img style="padding: 0px 10px; width: 50px;" id="heartImg"
 													src="<c:url value="/pictures/placeholder/heart.png"/>">
@@ -207,14 +278,10 @@ a {
 													src="<c:url value="/pictures/placeholder/noheart.png"/>">
 											</button>
 										</c:if>
-								</sec:authorize>
-								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
-									<input type="hidden" name="${_csrf.parameterName }"
-										value="${_csrf.token }">
+										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 									</span>
-								</sec:authorize>
 							</div>
 						</div>
 						<hr>
@@ -235,18 +302,38 @@ a {
 								src="<c:url value="/pictures/placeholder/65x65.svg"/>"
 								alt="Avatar">
 								<div class="media-body">
+									<div class="comment-title">
+											<div>${reviewList.member.id} 님</div>
+									</div>
 									<div class="d-bock d-md-flex w-100 justify-content-between">
-										<h5 class="comment-title">
-											<span>${reviewList.member.id}</span>
-										</h5>
+													<div class="star-ratings">
+														<div class="star-ratings-fill space-x-2 text-lg">
+														<c:if test="${reviewList.review.score == 5}">
+															<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+														</c:if>
+														<c:if test="${reviewList.review.score == 4}">
+															<span>★</span><span>★</span><span>★</span><span>★</span>
+														</c:if>
+														<c:if test="${reviewList.review.score == 3}">
+															<span>★</span><span>★</span><span>★</span>
+														</c:if>
+														<c:if test="${reviewList.review.score == 2}">
+															<span>★</span><span>★</span>
+														</c:if>
+														<c:if test="${reviewList.review.score == 1}">
+															<span>★</span>
+														</c:if>
+														</div>
+													</div>
+										
+										
 										<div class="comment-date">
 											<span>${reviewList.review.reviewDate}</span>
 										</div>
 									</div>
 									<div class="comment-text">
 										<p>${reviewList.review.content}</p>
-									</div>
-									
+									</div>							
 									<c:if test="${reviewList.review.answerContent} != null">
 										<div style="padding-left: 10px"
 										class="d-bock d-md-flex w-100 justify-content-between">
@@ -267,7 +354,8 @@ a {
 
 
 									<ul class="comment-meta">
-
+										
+										
 										<li id="replyButton"><a id="reply-btn"
 											href="<c:url value="/board/add/reply/${item.itemIdx}/${reviewList.review.reviewIdx}"/>"
 											class="comment-reply"> <i
@@ -276,32 +364,20 @@ a {
 									</ul>
 								</div></li>
 
+
+								<sec:authorize access="isAuthenticated()">
+								<sec:authentication property="principal" var="loginMember"/>
+								<c:if test="${loginMember.id eq reviewList.member.id}">
+									<li><a class="update-item" href="${pageContext.request.contextPath}/board/review/update/${reviewList.review.reviewIdx}/${item.itemIdx}">리뷰 수정</a></li>
+								</c:if>
+								</sec:authorize>
 						</ul>
 					</c:forEach>
 
 				</div>
 			</div>
-
-
-
 			<hr />
-			<!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
-                         role="navigation">
-                        <a class="prev disabled" href="#">
-                            Prev
-                        </a>
-                        <div class="nav-links">
-                            <ul class="page-numbers">
-                                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                            </ul>
-                        </div>
-                        <a class="next" href="#">
-                            Next
-                        </a>
-                    </nav> -->
-			<div style="color: red;">${message}</div>
+			<div style="color : red;">${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
 				<h4 id="reply-title" class="comment-reply-title font-weight-bold">게시글
@@ -310,7 +386,20 @@ a {
 					class="comment-form form-horizontal"
 					action="<c:url value="/board/add/${item.itemIdx}"/>">
 					<div class="form-group row">
+					
 						<div class="col">
+							<div class="star-rating"> 
+								 <input type="radio" id="5-stars" name="score" value="5" />
+								 <label for="5-stars" class="star">&#9733;</label>
+								 <input type="radio" id="4-stars" name="score" value="4" />
+								 <label for="4-stars" class="star">&#9733;</label>
+								 <input type="radio" id="3-stars" name="score" value="3" />
+								 <label for="3-stars" class="star">&#9733;</label>
+								 <input type="radio" id="2-stars" name="score" value="2" />
+								 <label for="2-stars" class="star">&#9733;</label>
+								 <input type="radio" id="1-star" name="score" value="1" />
+								 <label for="1-star" class="star">&#9733;</label>
+							</div>
 							<textarea class="form-control" name="content" rows="8"
 								title="Comment" placeholder="Comment" aria-required="true"
 								required="required"></textarea>
@@ -324,8 +413,7 @@ a {
 						</div>
 					</div>
 					<sec:csrfInput />
-					<input type="hidden" name="${_csrf.parameterName }"
-						value="${_csrf.token }">
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 					<!-- 토큰 생성  -->
 				</form>
 			</div>
@@ -354,109 +442,95 @@ a {
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
-							var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
-							var itemIdx = $
-							{
-								itemIdx
-							}
-							;
-							var cartButton = $("#heartImg");
-							cartButton
-									.click(function() {
-										if (cartButton.attr("src") === beforePhotoURL) {
-											$
-													.ajax({
-														type : "POST",
-														url : "${pageContext.request.contextPath}/item/"
-																+ itemIdx
-																+ "/1",
-														success : function(
-																response) {
-															if (response === "success") {
-																alert("장바구니에 상품이 추가되었습니다.");
-																cartButton
-																		.attr(
-																				"src",
-																				afterPhotoURL); // 이미지 변경
-															} else {
-																alert("로그인 사용자만 가능합니다.");
-															}
-														},
-														error : function() {
-															alert("장바구니 추가 중 오류가 발생했습니다.");
-														}
-													});
-										} else if (cartButton.attr("src") === afterPhotoURL) {
-											if (confirm("장바구니를 삭제하시겠습니다.")) {
-												$
-														.ajax({
-															type : "DELETE",
-															url : "${pageContext.request.contextPath}/item/"
-																	+ itemIdx
-																	+ "/delete",
-															dataType : "text",
-															success : function(
-																	result) {
-																if (result === "success") {
-																	alert("장바구니를 삭제하였습니다.");
-																	cartButton
-																			.attr(
-																					"src",
-																					beforePhotoURL); // 이미지 변경
-																} else {
-																	alert("장바구니 삭제 중 오류가 발생했습니다.");
-																}
-															},
-															error : function(
-																	xhr) {
-																alert("장바구니 삭제 중 오류가 발생했습니다."
-																		+ xhr.status);
-															}
-														});
-											}
-										}
-									});
-						});
+	$(document).ready(function() {
+	    var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
+	    var itemIdx = ${itemIdx};
+	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
+	    var cartButton = $("#heartImg");
+	    cartButton.click(function() {
+	        if (cartButton.attr("src") === beforePhotoURL) {
+	            $.ajax({
+	                type: "POST",
+	                url: "${pageContext.request.contextPath}/item/" + itemIdx + "/1",
+	                success: function(response) {
+	                    if (response === "success") {
+	                        alert("장바구니에 상품이 추가되었습니다.");
+	                        cartButton.attr("src", afterPhotoURL); // 이미지 변경
+	                    } else {
+	                        alert("로그인 사용자만 가능합니다.");
+	                    }
+	                },
+	                error: function() {
+	                    alert("장바구니 추가 중 오류가 발생했습니다.");
+	                }
+	            });
+	        } else if (cartButton.attr("src") === afterPhotoURL) {
+	            if (confirm("장바구니를 삭제하시겠습니다.")) {
+	                $.ajax({
+	                    type: "DELETE",
+	                    url: "${pageContext.request.contextPath}/item/" + itemIdx + "/delete",
+	                    dataType: "text",
+	                    success: function(result) {
+	                        if (result === "success") {
+	                            alert("장바구니를 삭제하였습니다.");
+	                            cartButton.attr("src", beforePhotoURL); // 이미지 변경
+	                        } else {
+	                            alert("장바구니 삭제 중 오류가 발생했습니다.");
+	                        }
+	                    },
+	                    error: function(xhr) {
+	                        alert("장바구니 삭제 중 오류가 발생했습니다." + xhr.status);
+	                    }
+	                });
+	            }
+	        }
+	    });
+	});
+	
+	
+	
+	
+	
 	</script>
-	<script>
-		document.getElementById('kakaoShareBtn').addEventListener('click',
-				kakaoShare);
+	
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript">
+var itemIdx = ${itemIdx};
 
-		Kakao.init('7be891cc70acabb92e26dbe3b9b50d68');
+	// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+	Kakao.init('b8e41eee0cc466dfb4360a1b5f92e9a7');
 
-		function kakaoShare() {
-			var itemName = "${item.itemName}";
-			var itemContent = "${item.itemContent}";
-			var originalFileName = "${originalFileName}";
+	// SDK 초기화 여부를 판단합니다.
+	console.log(Kakao.isInitialized());
 
-			Kakao.Link
-					.sendDefault({
-						objectType : 'feed',
-						content : {
-							title : itemName,
-							description : itemContent,
-							imageUrl : originalFileName,
-							link : {
-								mobileWebUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1',
-								webUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1'
-							}
-						},
-						buttons : [ {
-							title : '웹으로 보기',
-							link : {
-								mobileWebUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1',
-								webUrl : 'http://localhost:8000/item/${itemList.item.itemIdx}/1'
-							}
-						} ]
-					});
-		}
-	</script>
-
+	function kakaoShare() {
+		Kakao.Link.sendDefault({
+			objectType : 'feed',
+			content : {
+				title : 'FORNUAL',
+				description : '전문가 외주 플랫폼 "FORNUAL"입니다 ',
+				imageUrl : '<c:url value="/pictures/placeholder/광고 1.jpg"/>',
+				link : {
+					mobileWebUrl : 'https://itwill.xyz/fornual',
+					webUrl : 'https://itwill.xyz/fornual',
+					/* mobileWebUrl : 'http://52.78.69.41:8080/fornula/',
+					webUrl : 'http://52.78.69.41:8080/fornula/',   */
+				},
+			},
+			buttons : [ {
+				title : '웹으로 보기',
+				link : {
+					mobileWebUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
+					webUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
+					/* mobileWebUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
+					webUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1', */
+				},
+			}, ],
+			// 카카오톡 미설치 시 카카오톡 설치 경로이동
+			installTalk : true,
+		})
+	}
+</script>
 </body>
 </html>

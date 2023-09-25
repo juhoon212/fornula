@@ -1,5 +1,6 @@
 package com.fornula.domain.board.controller;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -64,6 +66,12 @@ public class ReviewController {
 		
 		Review review = new Review();
 		review.setPurchaseIdx(purchase.getPurchaseIdx());
+		
+		if(review.getScore() == 0) {
+			review.setScore(1);
+		}
+		
+		review.setScore(form.getScore());
 		review.setContent(form.getContent());
 		
 		int addResult = reviewService.addReview(review);
@@ -96,5 +104,17 @@ public class ReviewController {
 
 		return "redirect:/item/{itemIdx}/1";
 	}
+	
+	// 리뷰 수정 페이지
+	@GetMapping("/review/update/{reviewIdx}/{itemIdx}")
+	@PreAuthorize("isAuthenticated()")
+	public String updateReview(@PathVariable String reviewIdx, @PathVariable int itemIdx, Model model) {
+		
+		model.addAttribute("reviewIdx", reviewIdx);
+		model.addAttribute("itemIdx", itemIdx);
+		
+		return "review-update";
+	}
+	
 	
 }

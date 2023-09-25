@@ -14,6 +14,10 @@ public interface ReviewService {
 	int addReply(Review review,int memberIdx, int itemIdx);
 	
 	Purchase selectPurchase(int memberIdx, int itemIdx);
+	
+	int updateReview(Review review);
+	
+	Review findReviewByReviewIdx(int reviewIdx);
 
 	
 }

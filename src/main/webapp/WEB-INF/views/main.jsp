@@ -208,7 +208,7 @@ p #logo {
 
    <!--로그인 팝업창 by J  uho on-->
 
-   <div class="black-bg">
+   <%-- <div class="black-bg">
       <div class="white-bg">
          <div>
             <div class="mb-3">
@@ -252,7 +252,7 @@ p #logo {
             </div>
          </div>
       </div>
-   </div>
+   </div> --%>
 
 
    <jsp:include page="header.jsp" />
