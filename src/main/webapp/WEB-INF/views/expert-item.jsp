@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>    
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -305,7 +307,7 @@ h3 {
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
 							<div id="button">
-								<a href="/mypageInfo" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+								<a href="/mypage/mypageInfo" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
 							</div>
 							<div class="row">
 								<div class="widget" style="text-align: left;">

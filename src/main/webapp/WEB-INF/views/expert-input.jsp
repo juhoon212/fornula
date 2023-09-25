@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,18 +14,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" id="montserrat-css" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-<link rel="stylesheet" id="open-sans-css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+<link rel="stylesheet" id="montserrat-css"
+	href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+<link rel="stylesheet" id="open-sans-css"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
 
-<link rel="stylesheet" id="animate-css" href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css" media="all">
-<link rel="stylesheet" id="font-awesome-css" href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>" type="text/css" media="all">
-<link rel="stylesheet" id="bootstrap-css" href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="smartmenus-bootstrap-css" href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>" type="text/css" media="all">
-<link rel="stylesheet" id="swiper-css" href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css" media="all">
-<link rel="stylesheet" id="magnific-popup-css" href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-icon-css" href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-theme-css" href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>" type="text/css" media="all">
-<link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css" media="print">
+<link rel="stylesheet" id="animate-css"
+	href="<c:url value="/css/animate.min.css?ver=3.7.2"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="font-awesome-css"
+	href="<c:url value="/css/font-awesome.min.css?ver=5.15.4"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css"
+	href="<c:url value="/css/bootstrap.min.css?ver =4.6.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="smartmenus-bootstrap-css"
+	href="<c:url value="/css/smartmenus-bootstrap.min.css?ver=1.1.1"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="swiper-css"
+	href="<c:url value="/css/swiper.min.css?ver=4.5.3"/>" type="text/css"
+	media="all">
+<link rel="stylesheet" id="magnific-popup-css"
+	href="<c:url value="/css/magnific-popup.min.css?ver=1.1.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-icon-css"
+	href="<c:url value="/css/lana-pet-icon.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-theme-css"
+	href="<c:url value="/css/lana-pet-theme.min.css?ver=1.0.0"/>"
+	type="text/css" media="all">
+<link rel="stylesheet" id="lana-pet-print-css"
+	href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>"
+	type="text/css" media="print">
 
 <style>
 #button {
@@ -218,23 +242,29 @@ a:visited {
 </head>
 <body class="archive post-type-archive post-type-archive-lana_story">
 	<jsp:include page="header.jsp" />
-
 	<main class="main container">
-		<form method="post" enctype="multipart/form-data" action="<c:url value="/expert/input"/>" id="submitForm">
+		<form method="post" enctype="multipart/form-data"
+			action="<c:url value="/expert/input"/>" id="submitForm">
+			<sec:csrfInput />
+			<!-- 토큰 생성  -->
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<div class="widget">
 						<div class="story-posts">
 							<div class="info" id="info__category">
 								<div style="text-align: left;">
-									<br> <label style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">전문가 정보</label>
+									<br> <label
+										style="color: #fdbb42; font-size: 24px; margin-bottom: 30px;">전문가
+										정보</label>
 								</div>
 								<div>
 									<p class="label">전문가 번호</p>
 								</div>
 								<div id="category-flex">
 									<!-- 여기서 expertIdx는 현재 세션에 로그인한 전문가의 expertIdx임 -->
-									<input class="box" type="text" name="expertIdx" placeholder="전문가번호" value="${originalExpert.expertIdx }" readonly />
+									<input class="box" type="text" name="expertIdx"
+										placeholder="전문가번호" value="${originalExpert.expertIdx }"
+										readonly />
 								</div>
 							</div>
 							<div class="info" id="info__category">
@@ -242,7 +272,9 @@ a:visited {
 									<p class="label">전화번호</p>
 								</div>
 								<div id="category-flex">
-									<input name="phone" id="phone" class="box" oninput="autoHypen(this)" maxlength="13" value="${originalExpert.phone }" placeholder="숫자로 입력해주세요." />
+									<input name="phone" id="phone" class="box"
+										oninput="autoHypen(this)" maxlength="13"
+										value="${originalExpert.phone }" placeholder="숫자로 입력해주세요." />
 								</div>
 								<p class="error" id="phoneMsg"></p>
 							</div>
@@ -251,7 +283,9 @@ a:visited {
 							</div>
 							<div id="category-flex">
 								<div id="category-flex">
-									<textarea class="box" name="introduce" maxlength="500" style="resize: none; height: 300px; font-family: 'HakgyoansimWoojuR';" placeholder="자기소개를 입력해주세요.">${originalExpert.introduce }</textarea>
+									<textarea class="box" name="introduce" maxlength="500"
+										style="resize: none; height: 300px; font-family: 'HakgyoansimWoojuR';"
+										placeholder="자기소개를 입력해주세요.">${originalExpert.introduce }</textarea>
 								</div>
 							</div>
 							<div>
@@ -281,7 +315,8 @@ a:visited {
 										<option disabled style="color: orange; font-size: 20px">번역</option>
 										<option value="3">영어</option>
 										<option value="4">중국어</option>
-										<option disabled style="color: orange; font-size: 20px">사진 편집</option>
+										<option disabled style="color: orange; font-size: 20px">사진
+											편집</option>
 										<option value="5">헤어 메이크업</option>
 										<option value="6">제품 홍보 사진</option>
 										<option disabled style="color: orange; font-size: 20px">세무</option>
@@ -290,8 +325,8 @@ a:visited {
 										<option disabled style="color: orange; font-size: 20px">마케팅</option>
 										<option value="9">SNS 홍보</option>
 										<option value="10">해외 마케팅</option>
-									</select>
-									<input class="box" name=career type="text" placeholder="연차:" value="${originalExpert.career }" />
+									</select> <input class="box" name=career type="text" placeholder="연차:"
+										value="${originalExpert.career }" />
 								</div>
 							</div>
 							<div>
@@ -299,7 +334,14 @@ a:visited {
 							</div>
 							<div class="info" id="info__category">
 								<div id="category-flex">
-									<input class="box" type="text" id="companyOneInput" name="companyOne" placeholder="근무지1" value="${originalExpert.companyOne }" /> <input class="box" type="text" id="companyTwoInput" name="companyTwo" placeholder="근무지2" value="${originalExpert.companyTwo }" /> <input class="box" type="text" id="companyThreeInput" name="companyThree" placeholder="근무지3" value="${originalExpert.companyThree }" />
+									<input class="box" type="text" id="companyOneInput"
+										name="companyOne" placeholder="근무지1"
+										value="${originalExpert.companyOne }" /> <input class="box"
+										type="text" id="companyTwoInput" name="companyTwo"
+										placeholder="근무지2" value="${originalExpert.companyTwo }" /> <input
+										class="box" type="text" id="companyThreeInput"
+										name="companyThree" placeholder="근무지3"
+										value="${originalExpert.companyThree }" />
 								</div>
 							</div>
 							<div>
@@ -307,14 +349,21 @@ a:visited {
 									<div>
 										<p class="label">포트폴리오</p>
 									</div>
-									<input class="box" name="expertfileName" readonly="readonly" value="${originalExpert.expertfileName}" /> <input class="form-control" type="file" id="portfolioFileInput" accept=".pdf" name="uploadFile" value="${originalExpert.expertfileName}" /> <span style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF 파일로 업로드 해주세요.]</span><br>
+									<input class="box" name="expertfileName" readonly="readonly"
+										value="${originalExpert.expertfileName}" /> <input
+										class="form-control" type="file" id="portfolioFileInput"
+										accept=".pdf" name="uploadFile"
+										value="${originalExpert.expertfileName}" /> <span
+										style="color: gray; font-size: 15px; padding: 0px 25px;">[PDF
+										파일로 업로드 해주세요.]</span><br>
 									<p style="color: red;" id="errorMessage">${message}</p>
 								</section>
 							</div>
 							<hr>
 							<br>
 							<div id="button" style="padding: 5px 10px;">
-								<button class="btn btn-primary " onclick="submitButton();" type="submit">수정완료</button>
+								<button class="btn btn-primary " onclick="submitButton();"
+									type="submit">수정완료</button>
 							</div>
 						</div>
 					</div>
@@ -322,7 +371,8 @@ a:visited {
 				<div class="col-12 col-lg-4 mt-4 mt-lg-0">
 					<div class="widget-sidebar story-sidebar">
 						<div id="button">
-							<img src="<c:url value="/pictures/placeholder/profile.png"/>" class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
+							<img src="<c:url value="/pictures/placeholder/profile.png"/>"
+								class="img-fluid rounded-circle mr-1 w-auto" alt="Author">
 						</div>
 						<div id="button">
 							<a href="#" class="tag-cloud-link" aria-label="idbutton">${loginMember.id}</a>
@@ -330,7 +380,8 @@ a:visited {
 						<div class="widget widget_tag_cloud">
 							<div class="tagcloud">
 								<div id="button">
-									<a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+									<a href="<c:url value="/mypage/mypageInfo"/>" class="tag-cloud-link"
+										aria-label="admin change button">일반회원으로 전환</a>
 								</div>
 								<div class="row">
 									<div class="widget" style="text-align: left;">
@@ -352,15 +403,24 @@ a:visited {
 		<jsp:include page="footer.jsp" />
 	</main>
 
-	<script type="text/javascript" src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
-	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/jquery.min.js?ver=3.6.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/popper.min.js?ver=1.16.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/bootstrap.min.js?ver=4.6.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/smartmenus.min.js?ver=1.1.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/smartmenus-bootstrap.min.js?ver=1.1.1"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/swiper.min.js?ver=4.5.3"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 	<script type="text/javascript">
 	$(document).on("keyup", "#phone", function() {
 	    $(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3" ).replace("--", "-")); 

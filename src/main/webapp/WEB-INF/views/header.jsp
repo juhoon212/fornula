@@ -255,15 +255,14 @@ p #logo {
 						</div>
 				</c:if>
 				<c:if test="${sessionScope.loginMember !=null}">
-					<c:if
-						test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
+					<c:if test="${sessionScope.loginMember.memberStatus == 1 ||sessionScope.loginMember.memberStatus == 2}">
 						<div class="collapse navbar-collapse" id="lana-navbar">
 							<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle"
 									href="<c:url value="/item/boardList"/>" id="post-dropdown"
 									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">카테고리&nbsp;&nbsp;&nbsp;|</a>
+									aria-expanded="false">카테고리</a>
 									<ul class="dropdown-menu" aria-labelledby="page-dropdown">
 										<li>
 											<h6 class="dropdown-header font-weight-medium text-primary">디자인</h6>
@@ -378,27 +377,25 @@ p #logo {
 									</div>
 									</ul>
 								</div>
-								</ul>
 							</div>
-		</div>
+						</form>
 
-		</form>
-		</c:if>
-		<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
-			<div class="admin">
-				<form action="/member/logout" method="post">
-					<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
-						관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a href="<c:url value="/admin/item"/>">상품
-						관리</a>
-					<button
-						style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
-						type="submit" id="logout">로그아웃</button>
-					<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
-					<sec:csrfInput />
-				</form>
-			</div>
-		</c:if>
-		</c:if>
+					</c:if>
+					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
+						<div class="admin">
+							<form action="/member/logout" method="post">
+								<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
+									관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a
+									href="<c:url value="/admin/item"/>">상품 관리</a>
+								<button
+									style="border: 0px; background: background-color: #ffffff; opacity: 0.5; color: black;"
+									type="submit" id="logout">로그아웃</button>
+								<p>관리자: ${sessionScope.loginMember.id }님이 로그인하셨습니다.</p>
+								<sec:csrfInput />
+							</form>
+						</div>
+					</c:if>
+				</c:if>
 		</div>
 		</nav>
 
@@ -406,7 +403,7 @@ p #logo {
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
 			<!-- 검색 기능 처리 -->
-			<form action="boardList" method="get"
+			<form action="item/boardList" method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword"

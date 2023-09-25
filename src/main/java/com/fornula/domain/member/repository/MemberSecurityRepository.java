@@ -10,4 +10,5 @@ public interface MemberSecurityRepository {
 	int addSecurityMember(Member member);
 	int addAuth(Auth auth);
 	List<Member> findSecurityMemberById(String id);
+	Member findMemberById(String id);
 }

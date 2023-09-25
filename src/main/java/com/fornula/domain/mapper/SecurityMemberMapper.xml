@@ -16,6 +16,7 @@
 			#{email},
 			sysdate , 
 			1,
+			null,
 			sysdate , 
 			#{categoryOne},
 			#{categoryTwo},
@@ -76,7 +77,25 @@
 				ON MEMBER.id = AUTH.id
 		WHERE MEMBER.id = #{id}
 	</select>
-	
+	   <select id="findMemberById" resultMap="securityMemberResultMap">
+      SELECT  MEMBER.member_idx,
+            MEMBER.id,
+            MEMBER.password,
+            MEMBER.email,
+            MEMBER.member_date,
+            MEMBER.member_status,
+            MEMBER.memberfile_name,
+            MEMBER.login_date,
+            MEMBER.category_one,
+            MEMBER.category_two,
+            MEMBER.category_three,
+            MEMBER.enabled,
+            AUTH.ROLE
+      FROM Member
+         JOIN AUTH
+            ON MEMBER.id = AUTH.id
+      WHERE MEMBER.id = #{id}
+   </select>
 	
 	
 	

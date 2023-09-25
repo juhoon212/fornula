@@ -9,5 +9,6 @@ public interface ExpertJoinMapper {
 	int insertExpertInfo(Expert expert);
 	void updateExpertStatus(Auth auth);
 	Auth exceptionExpert(String id);
+	void updateStatus(int memberIdx);
 	
 }

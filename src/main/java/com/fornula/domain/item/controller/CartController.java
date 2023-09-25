@@ -25,7 +25,7 @@ public class CartController {
 	private final CartService cartService;
 	
 	//장바구니 담기 버튼에 대한 권한 설정
-	@PreAuthorize("isAuthenticated")
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/cart")
 	public String getCart(HttpSession session
 			, @ModelAttribute CartList cart

@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertSalesMapper">
-	<!-- 검색필터를 이용한 검색 -->
-	<!-- <select id="selectSearchSalesList" resultType="ItemSales">
-		SELECT SALES.sales_idx,
-				SALES.sales_date,
-				SALES.sales_status,
-				ITEM.item_name,
-				ITEM.item_idx,
-				ITEM.price,
-				ITEM.item_content
-		FROM sales SALES
-   		JOIN item ITEM 
-   		ON SALES.item_idx = ITEM.item_idx
-   		WHERE SALES.sales_status = #{salesStatus}
-    	AND SALES.sales_date = #{salesDate}
-        ORDER BY SALES.sales_date
-	</select> -->
-	
 	<!-- 판매내역 출력-->
 	<select id="selectSalesList" resultType="SaleItemExpert">
 		SELECT * FROM(SELECT rownum rn, saleslist.* FROM
@@ -35,17 +18,11 @@
         LEFT JOIN photo P ON I.item_idx = P.item_idx
         LEFT JOIN status ST ON S.sales_status =ST.status_idx
         WHERE I.expert_idx = #{expertIdx} AND I.item_status=1 AND S.sales_idx is not null
-        ORDER BY S.sales_date
+        ORDER BY S.sales_date desc
         ) saleslist)
         WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
  
- 	<!-- 판매내역 상태를 위한 객체 출력 -->
- <!-- 	<select id="selectStatus" resultType="Sales">
- 		SELECT * FROM sales
- 		WHERE sales_idx=#{salesIdx};
- 	</select>
-  -->
  	<!-- 페이징 처리를 위한 count 검색 쿼리  -->
  	<select id="selectSalesCount" resultType="int">
  		SELECT COUNT(*)
@@ -73,6 +50,11 @@
 	 	UPDATE sales
 	 	SET sales_status =#{salesStatus}
 		WHERE sales_idx = #{salesIdx}
+	</update>
+	<update id="updatePurchaseStatus" parameterType="com.fornula.domain.item.dto.Purchase">
+	 	UPDATE purchase
+	 	SET purchase_status =#{salesStatus}
+		WHERE purchase_idx = #{salesIdx}
 	</update>
  </mapper>
 

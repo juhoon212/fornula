@@ -13,4 +13,6 @@ public interface ExpertJoinDAO {
 	//회원에서 전문가로 상태 변경
 	void updateExpertStatus(Auth auth);
 
+	void updateStatus(int memberIdx);
+
 }

@@ -80,7 +80,7 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		
 		if(ObjectUtils.isEmpty(loginExpert) || ObjectUtils.isEmpty(boardItem) || loginExpert.getExpertIdx() != boardItem.getExpertIdx()) {
-			throw new NoAuthReplyException("댓글을 달 권한이 없습니다", memberIdx, itemIdx);
+			throw new NoAuthReplyException("댓글을 달 권한이 없습니다, 판매자만 가능합니다.", memberIdx, itemIdx);
 		}
 		
 		// 태그 공격 방어용

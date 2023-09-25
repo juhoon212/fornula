@@ -18,7 +18,7 @@
 	            JOIN photo P ON I.item_idx = P.item_idx
 	            LEFT JOIN expert E ON I.expert_idx = E.expert_idx
 	            WHERE I.expert_idx = #{expertIdx} AND I.item_status = 1
-	            ORDER BY I.item_date
+	            ORDER BY I.item_date DESC
 	        ) boardlist
 	    )
 	    WHERE rn BETWEEN #{startRow} AND #{endRow}

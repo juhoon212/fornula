@@ -33,6 +33,7 @@ public class ExpertSalesRestController {
 		
 		
 		expertSalesService.modifySalesStatus(sales);
+		expertSalesService.modifyPurchaseStatus(sales);
 		
 		return "success";
 	}

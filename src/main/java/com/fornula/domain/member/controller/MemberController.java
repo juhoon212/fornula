@@ -1,10 +1,12 @@
 package com.fornula.domain.member.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,21 +37,19 @@ public class MemberController {
 	
 	// 회원가입 폼
 	@GetMapping("/join")
-	public String join() {
+	public String join(@ModelAttribute Member member) {
 		return "join";
 	}
 	
 	// 회원가입 
 	@PostMapping("/join")
-	   public String joinForm(@ModelAttribute Member member,@ModelAttribute Auth auth,RedirectAttributes redirectAttributes) {
+	   public String joinForm(@ModelAttribute @Valid Member member, Errors errors, @ModelAttribute Auth auth,RedirectAttributes redirectAttributes) {
 	      
-	       int result = memberSecurityService.addSecurityMember(member);
-	       
-	       
-	       if(result == 0) {
-	          redirectAttributes.addFlashAttribute("message", "회원가입이 실패하였습니다");
-	          return "redirect:/member/join";
-	       }
+			if(errors.hasErrors()) {
+				return "join";
+			}
+		
+		
 	       memberSecurityService.addAuth(auth);
 	       redirectAttributes.addFlashAttribute("message", "회원가입 성공");
 	       return "redirect:/";
@@ -126,7 +126,6 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
-		
 	}
 	
 	

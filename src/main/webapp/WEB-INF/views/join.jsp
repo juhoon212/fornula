@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <!DOCTYPE html>
@@ -49,7 +50,8 @@
           
         </div>
         
- <form id ="join_form" method="post" action="<c:url value="/member/join"/>">
+ <c:url value="/member/join" var="url" />
+ <form:form id ="join_form" method="post" action="${url }" modelAttribute="member">
 
         <!-- id -->
         <input type="hidden" name="id" id="id-hidden">
@@ -58,19 +60,20 @@
         <h3>이메일</h3>
         <div class="info" id = "info__email">
         
-            <input class="box" type="text" placeholder="이메일을 입력해 주세요." name = "email" required/>
-          
+            <form:input path ="email" class="box" type="text" placeholder="이메일을 입력해 주세요."/>
+          	<form:errors path="email" cssClass="error-msg" element="div" delimiter=" "/>
           <div class = "error-msg"></div>
         </div>
         <!-- 비밀번호 -->
         <h3>비밀번호</h3>
         <div class="info" id="info__pw">
-          <input class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)" name="password" required/>
+          <form:input path = "password" class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)" name="password"/>
+          <form:errors path = "password" cssClass="error-msg" element="div" delimiter=" "/>
           <div class = "error-msg"></div>
         </div>
         <!-- 비밀번호 재확인-->
         <div class="info" id="info__pwRe">
-          <input class="box" type="password" placeholder="비밀번호를 한번 더 입력해 주세요." required/>
+          <input class="box" type="password" placeholder="비밀번호를 한번 더 입력해 주세요."/>
           <div class = "error-msg"></div>
         </div>
         
@@ -125,8 +128,8 @@
           <div class="error-msg"></div>
         </div>
        
-      <button id="submit">가입하기</button>
-</form>
+      <form:button id="submit">가입하기</form:button>
+</form:form>
       
     </section>
     </div>
