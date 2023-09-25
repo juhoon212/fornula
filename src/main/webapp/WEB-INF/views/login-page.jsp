@@ -138,7 +138,7 @@ a {
                   src="<c:url value="/pictures/placeholder/social.png"/>"
                   alt="google"></a> <a href="<c:url value=""/>"><img
                   src="<c:url value="/pictures/placeholder/instagram.png"/>"
-                  alt="instagram"></a> <a href="<c:url value=""/>"><img
+                  alt="instagram"></a> <a href="<c:url value="/naver/login"/>"><img
                   src="<c:url value="/pictures/placeholder/facebook.png"/>"
                   alt="facebook"></a> <a href="<c:url value="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=http://localhost:9003/member/kakao/login/callback"/>"><img
                   src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
