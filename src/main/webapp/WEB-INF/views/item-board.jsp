@@ -107,7 +107,7 @@ li a {
 
 	<main class="main container">
 		<div style="width: 100%;">
-			<form action="<c:url value="/item/boardList"/>" method="get" class="search-form" onsubmit="return validateSearch()">
+			<form action="/item/boardList" method="get" class="search-form" onsubmit="return validateSearch()">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword" class="form-control search-input text-dark" placeholder="상품 이름, 내용을 입력해주세요" aria-label="Search" aria-describedby="search-button" value="${param.searchKeyword}">
 					<div class="input-group-append">

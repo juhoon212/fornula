@@ -134,9 +134,8 @@ a {
 	text-align: left;
 	margin: 0 auto;
 }
-
 main {
-	padding: 0; /* padding을 없애기 */
+    padding: 0; /* padding을 없애기 */
 }
 </style>
 </head>
@@ -144,87 +143,79 @@ main {
 	<jsp:include page="header.jsp" />
 
 	<main class="main container">
-		<div class="col-12 col-lg-8" style="display: flex;">
-			<div class="widget">
-				<div class="story-posts" id="content"
-					style="height: 900px; width: 800px;">
-					<label style="color: #fdbb42; font-size: 24px;">포트폴리오</label>
-					<c:choose>
-						<c:when test="${not empty originalExpert.expertfileName}">
-							<embed
-								src="<c:url value='/images/portfolio/${originalExpert.expertfileName}'/>"
-								width="100%" height="700px;">
-						</c:when>
-						<c:otherwise>
-							<p style="color: red;">PDF 파일을 등록하지 않은 전문가입니다</p>
-						</c:otherwise>
-					</c:choose>
-					<div id="button">
-						<a href="<c:url value="/"/>">메인으로</a>
+			<div class="col-12 col-lg-8" style="display: flex;">
+				<div class="widget">
+					<div class="story-posts" id="content" style="height:900px; width:800px;">
+						<label
+							style="color: #fdbb42; font-size: 24px;">포트폴리오</label>
+						<embed
+							src="<c:url value="/images/portfolio/${originalExpert.expertfileName }"/>"
+							width="100%" height=700px;>
+						<div id="button">
+							<a href="<c:url value="/"/>">메인으로</a>
+						</div>
 					</div>
 				</div>
-
-			</div>
-			<div class="widget" style="height: 900px; width: 400px;">
-				<div class="widget-sidebar story-sidebar"
-					style="height: 900px; width: 500px;">
-					<div>
-						<br>
-						<p>전문가 정보</p>
-						<br>
-						<div class="info" id="info__category">
-							<div>
-								<p class="label">전화번호</p>
-							</div>
-							<div id="category-flex">
-								<input class="box" type="text" name="phone" placeholder="전화번호"
-									value="${originalExpert.phone }" readonly />
-							</div>
-						</div>
+				<div class="widget" style="height:900px; width:400px;">
+					<div class="widget-sidebar story-sidebar" style="height:900px; width:500px;">
 						<div>
-							<p class="label">직무 및 연차</p>
-						</div>
-						<div class="info" id="info__category">
-							<div id="category-flex">
-								<input class="box" type="text" name="interest"
-									placeholder="기존 카테고리:" value="${originalExpert.interest}"
-									readonly /> <input class="box" name=career type="text"
-									placeholder="연차:" value="경력 : ${originalExpert.career }"
-									readonly />
-
+							<br>
+							<p>전문가 정보</p>
+							<br>
+							<div class="info" id="info__category">
+								<div>
+									<p class="label">전화번호</p>
+								</div>
+								<div id="category-flex">
+									<input class="box" type="text" name="phone" placeholder="전화번호"
+										value="${originalExpert.phone }" readonly />
+								</div>
 							</div>
-						</div>
-						<div>
-							<p class="label">경력 사항</p>
-						</div>
-						<div class="info" id="info__category">
-							<div id="category-flex">
-								<input class="box" type="text" id="companyOneInput"
-									name="companyOne" placeholder="근무지1"
-									value="${originalExpert.companyOne }" readonly />
-								<!-- 여백 어케주드라 -->
-								<input class="box" type="text" id="companyTwoInput"
-									name="companyTwo" placeholder="근무지2"
-									value="${originalExpert.companyTwo }" readonly />
-								<!-- 여백 어케주드라 -->
-								<input class="box" type="text" id="companyThreeInput"
-									name="companyThree" placeholder="근무지3"
-									value="${originalExpert.companyThree }" readonly />
-							</div>
-						</div>
-						<div id="category-flex">
 							<div>
-								<p class="label">자기소개</p>
+								<p class="label">직무 및 연차</p>
 							</div>
-							<textarea class="box" name="introduce" maxlength="500"
-								readonly="readonly"
-								style="resize: none; height: 300px; font-family: 'HakgyoansimWoojuR';"
-								placeholder="자기소개를 입력해주세요.">${originalExpert.introduce }</textarea>
+							<div class="info" id="info__category">
+								<div id="category-flex">
+
+									<input class="box" type="text" name="interest"
+										placeholder="기존 카테고리:" value="${originalExpert.interest}"
+										readonly />
+									<input class="box" name=career type="text" placeholder="연차:"
+										value="경력 : ${originalExpert.career }" readonly />
+						
+								</div>
+							</div>
+							<div>
+								<p class="label">경력 사항</p>
+							</div>
+							<div class="info" id="info__category">
+								<div id="category-flex">
+									<input class="box" type="text" id="companyOneInput"
+										name="companyOne" placeholder="근무지1"
+										value="${originalExpert.companyOne }" readonly />
+									<!-- 여백 어케주드라 -->
+									<input class="box" type="text" id="companyTwoInput"
+										name="companyTwo" placeholder="근무지2"
+										value="${originalExpert.companyTwo }" readonly />
+									<!-- 여백 어케주드라 -->
+									<input class="box" type="text" id="companyThreeInput"
+										name="companyThree" placeholder="근무지3"
+										value="${originalExpert.companyThree }" readonly />
+								</div>
+							</div>
+							<div id="category-flex">
+								<div>
+									<p class="label">자기소개</p>
+								</div>
+								<textarea class="box" name="introduce" maxlength="500"
+									readonly="readonly"
+									style="resize: none; height: 300px; font-family: 'HakgyoansimWoojuR';"
+									placeholder="자기소개를 입력해주세요.">${originalExpert.introduce }</textarea>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	</main>
 	<jsp:include page="footer.jsp" />
 

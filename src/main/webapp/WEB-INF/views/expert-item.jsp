@@ -338,6 +338,27 @@ h3 {
 	<script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
 
 	<script type="text/javascript">
+		/*
+		 function menuchange() {
+		 let h3=document.getElementById("expertmain");
+		 let info=document.getElementById("info");
+		 let po=document.getElementById("po");
+		 let sale=document.getElementById("sale");
+		
+		 info.addEventListener('click',function(){
+		 h3.innerText="전문가 정보";
+		 });
+		
+		 po.addEventListener('click',function(){
+		 h3.innerText="포트 폴리오";
+		 });
+		
+		 sale.addEventListener('click',function(){
+		 h3.innerText="판매 관리";
+		 });
+		 };
+		 */
+
 		function toggleSubmitButton(checkbox) {
 			var submitButton = document.getElementById('checkSubmit');
 			submitButton.disabled = !checkbox.checked;

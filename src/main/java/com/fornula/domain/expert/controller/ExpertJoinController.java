@@ -1,21 +1,12 @@
 package com.fornula.domain.expert.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -31,14 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fornula.domain.exception.custom.ExistsExpertException;
 import com.fornula.domain.expert.dto.Expert;
 import com.fornula.domain.expert.service.ExpertJoinService;
-import com.fornula.domain.item.dto.Category;
 import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
-import com.google.common.util.concurrent.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
