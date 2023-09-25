@@ -21,6 +21,12 @@ public class MypageItemRepositoryImpl implements MypageItemRepository{
 		return sqlSession.getMapper(MypageItemMapper.class).selectPurchaseMypage(memberIdx);
 	}
 
+	//@Override
+	//public int updatePurchaseStatus(Itempurchase itempurchase) {
+		
+	//	return sqlSession.getMapper(MypageItemMapper.class).updatePurchaseStatus(itempurchase);
+	//}
+
 
 }
 

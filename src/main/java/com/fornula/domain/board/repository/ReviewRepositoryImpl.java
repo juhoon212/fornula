@@ -47,6 +47,18 @@ public class ReviewRepositoryImpl implements ReviewRepository{
 	}
 
 
+	@Override
+	public int updateReview(Review review) {
+		return sqlSession.getMapper(ReviewMapper.class).updateReview(review);
+	}
+
+
+	@Override
+	public Review findReviewByReviewIdx(int reviewIdx) {
+		return sqlSession.getMapper(ReviewMapper.class).findReviewByReviewIdx(reviewIdx);
+	}
+
+
 	
 
 }

@@ -14,5 +14,7 @@ public interface ReviewMapper {
 	int countReview(int itemIdx);
 	int addReview(Review review);
 	int addReply(Review review);
+	int updateReview(Review review);
+	Review findReviewByReviewIdx(int reviewIdx);
 	List<Purchase> selectPurchase(@Param("memberIdx")int memberIdx, @Param("itemIdx")int itemIdx);
 }

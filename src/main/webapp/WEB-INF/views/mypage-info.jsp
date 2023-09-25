@@ -229,7 +229,7 @@ h3 {
         <div class="info" id = info__phone>
            <div id= "phone-input">
           <input class="box" type="text" placeholder="휴대폰 인증해주세요." readonly="readonly"/>
-           <button class="changeBtn" id="">인증</button>
+           <button class="changeBtn" readonly="readonly">인증</button>
            </div>
         </div>
             <h3>관심사</h3>
