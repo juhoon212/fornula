@@ -3,6 +3,7 @@ package com.fornula.domain.member.service;
 import java.util.List;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.fornula.domain.exception.custom.NotFoundIdException;
@@ -19,10 +20,18 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberSecurityServiceImpl implements MemberSecurityService {
 	
 	private final MemberSecurityRepository memberSecurityRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// 멤버 아이디로 추가
 	@Override
 	public int addSecurityMember(Member member) {
+		
+		
+		String password = member.getPassword();
+		String encodePassword = bCryptPasswordEncoder.encode(password);
+		
+		member.setPassword(encodePassword);
+		
 		int result = memberSecurityRepository.addSecurityMember(member);
 		
 		
