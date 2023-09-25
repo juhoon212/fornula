@@ -20,6 +20,7 @@ import com.fornula.domain.item.service.ItemPaymentService;
 import com.fornula.domain.item.service.ItemPaymentSuccessService;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.payment.dto.Payments;
 import com.fornula.domain.payment.service.PaymentsService;
 import com.fornula.domain.util.security.CustomMemberDetails;
@@ -36,7 +37,7 @@ public class PaymentController {
 
 	 private final ItemPaymentService service;
 	 private final PaymentsService paymentService;
-	
+	 private final MemberSecurityService memberSecurityService;
 	 
 		@GetMapping("/{itemIdx}")
 		public String getPayment(@PathVariable Integer itemIdx, Model model) {
@@ -99,7 +100,11 @@ public class PaymentController {
 			
 			session.removeAttribute(payment.getMerchantUid());
 			
-		   CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);     
+		   CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		   
+		   Member member = memberSecurityService.getSecurityMember(loginMember.getId());
+		   
+		   log.info("member = {}", member.getId());
 			
 			//결제된 결제금액을 반환받아 저장 
 			Long amount=returnPayment.getAmount();
@@ -108,10 +113,10 @@ public class PaymentController {
 			if(beforeAmount.equals(amount)) {//검증 성공
 				
 				paymentService.PaymentSalesSuccess(payment.getItemIdx());//테이블에 결제정보 삽입 처리
-				//log.info("returnPayment.getItemIdx() = {}", returnPayment.getItemIdx());
+				log.info("returnPayment.getItemIdx() = {}", payment.getItemIdx());
 				
 				paymentService.PaymentPurchaseSuccess(payment.getItemIdx(),member.getMemberIdx());//테이블에 결제정보 삽입 처리
-				//log.info("member.getMemberIdx() = {}", member.getMemberIdx());
+				log.info("member.getMemberIdx() = {}", member.getMemberIdx());
 				model.addAttribute("message", "결제 성공하였습니다.");
 				return "success";
 			} else {//검증 실패(결제 금액 불일치) - 위변조된 결제

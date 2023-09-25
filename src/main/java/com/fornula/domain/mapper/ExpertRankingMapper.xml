@@ -2,24 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.fornula.domain.expert.mapper.java.ExpertRankingMapper">
 	<!-- 전문가 랭킹 뽑기 이전 전문가들 리스트 출력 -->
-	<select id="selectExpertList" resultType="Expert">
-	    SELECT *
-	    FROM (
-	        SELECT rownum AS rn, expertlist.*
-	        FROM (
-	            SELECT
-	                expert_idx
-	                ,phone
-	                ,interest
-	                ,introduce
-	                ,career
-	                ,company_one
-	                ,company_two
-	                ,company_three
-	            FROM expert 
-	            ORDER BY expert_idx
-	        ) expertlist
-	    )
+	<select id="selectExpertList" resultType="ExpertMoneyRanking">
+		SELECT
+		    e.*,
+		    m.ID
+		FROM (
+		    SELECT
+		        rownum AS rn,
+		        expert_idx,
+		        member_idx,
+		        phone,
+		        interest,
+		        introduce,
+		        career,
+		        company_one,
+		        company_two,
+		        company_three
+		    FROM (
+		        SELECT *
+		        FROM expert
+		        ORDER BY expert_idx
+		    ) subquery
+		) e
+		LEFT JOIN MEMBER m ON e.member_idx = m.member_idx
 	    WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
  
@@ -31,33 +36,36 @@
  	
  	<!-- 총금액 출력을 위한 쿼리문 -->
 	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
-	    SELECT *
-	    FROM (
-	        SELECT 
-	            ROWNUM AS rn,
-	            COALESCE(totalMoney, 0) AS totalMoney,
-	            e.EXPERT_IDX,
-	            e.INTEREST,
-	            e.INTRODUCE
-	        FROM
-	            EXPERT e
-	        LEFT JOIN
-	            (
-	                SELECT
-	                    i.EXPERT_IDX,
-	                    SUM(i.PRICE) AS totalMoney
-	                FROM
-	                    SALES s
-	                JOIN
-	                    ITEM i ON s.ITEM_IDX = i.ITEM_IDX
-	                GROUP BY
-	                    i.EXPERT_IDX
-	            ) t ON e.EXPERT_IDX = t.EXPERT_IDX
-	        ORDER BY
-	            COALESCE(totalMoney, 0) DESC
-	    )
-	    WHERE totalMoney != 0
-            AND rn BETWEEN 1 AND 3
+		SELECT *
+		FROM (
+		    SELECT 
+		        ROWNUM AS rn,
+		        COALESCE(totalMoney, 0) AS totalMoney,
+		        e.EXPERT_IDX,
+		        e.INTEREST,
+		        e.INTRODUCE,
+		        m.ID
+		    FROM
+		        EXPERT e
+		    LEFT JOIN
+		        (
+		            SELECT
+		                i.EXPERT_IDX,
+		                SUM(i.PRICE) AS totalMoney
+		            FROM
+		                SALES s
+		            JOIN
+		                ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+		            GROUP BY
+		                i.EXPERT_IDX
+		        ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+		    LEFT JOIN
+		        MEMBER m ON e.MEMBER_IDX = m.MEMBER_IDX
+		    WHERE totalMoney != 0
+		    ORDER BY
+		        COALESCE(totalMoney, 0) DESC
+		)
+		WHERE rn BETWEEN 1 AND 3
 	</select>
 
 	<!-- 총금액 출력을 위한 페이징 처리를 위한 count 검색 쿼리 

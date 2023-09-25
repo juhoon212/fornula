@@ -152,14 +152,15 @@ h3 {
                class="img-fluid rounded-circle mr-1 w-auto" alt="Author"></div>              
                        <div id="button"><a href="#" class="tag-cloud-link" aria-label="idbutton">${member.id }</a>                       
                </div>
-               <div class="tagcloud">                   
-							<div id="button">
+               <div class="widget widget_tag_cloud">
+                  <div class="tagcloud">
+                     <div id="button">
 								<c:if test="${member.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
 								<c:if test="${member.memberStatus == 2}">
-									<a href="<c:url value='/expert/output'/>" class="tag-cloud-link"
+									<a href="<c:url value='/expert/input'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
@@ -175,6 +176,7 @@ h3 {
                         </div>
                      </div>
                   </div>
+               </div>
             </div>
         </div>
     </div>

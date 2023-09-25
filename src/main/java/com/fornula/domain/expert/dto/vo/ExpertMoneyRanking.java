@@ -17,4 +17,7 @@ public class ExpertMoneyRanking {
 	private int itemIdx;
 	private int price;
 	private int totalMoney;
+	private String career;
+	private String id;
+	private int memberIdx;
 }

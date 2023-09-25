@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fornula.domain.exception.custom.MypageIdExcepion;
 import com.fornula.domain.item.dto.Category;
+import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.dto.mypage.InfoCategory;
 import com.fornula.domain.member.mapper.java.MypageInfoMapper;
+import com.fornula.domain.member.service.MemberLoginService;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.member.service.MypageInfoService;
 import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
@@ -28,13 +31,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/mypage")
 public class MypageInfoController {
 	
-	public final MypageInfoService service;
+	private final MypageInfoService service;
+	private final MemberSecurityService memberSecurityService;
+	
 	
 	@GetMapping("/mypageInfo")
 	public String info(HttpSession session, Model model) {
 	
-		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
-		log.info("getsessionMember = {}", member.getId());
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		
+		Member member = memberSecurityService.getSecurityMember(loginMember.getId());
 		
 	    Member joinMember = service.mypageInfoService(member.getId());
 	    Category categoryOne=service.mypageCategoryOne(member.getCategoryOne());
@@ -89,6 +95,7 @@ public class MypageInfoController {
 	    model.addAttribute("categoryOne", categoryOne);
 	    model.addAttribute("categoryTwo", categoryTwo);
 	    model.addAttribute("categoryThree", categoryThree);
+	    
 		   
 		return "mypage-infoChange"; 
 		  

@@ -3,6 +3,7 @@ package com.fornula.domain.admin.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class AdminController {
 
 	private final AdminService adminService;
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/user")
 	public String memberList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
@@ -39,7 +40,7 @@ public class AdminController {
 		return "admin-user";
 	}
 	
-
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/memberupdate")
 	public String memberUpdate(@RequestParam int memberIdx) throws MemberNotFoundException {
 		adminService.updateMemberStatus(memberIdx);
@@ -57,7 +58,7 @@ public class AdminController {
 		return "admin-item";
 	}
 	*/
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/item")
 	public String itemList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 		
@@ -69,6 +70,7 @@ public class AdminController {
 		return "admin-item";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/itemupdate")
 	public String update(@RequestParam int itemIdx) throws ItemNotFoundException {
 		adminService.updateItemStatus(itemIdx);
