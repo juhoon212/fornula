@@ -49,7 +49,7 @@ public class MemberController {
 				return "join";
 			}
 		
-		
+		   memberSecurityService.addSecurityMember(member);
 	       memberSecurityService.addAuth(auth);
 	       redirectAttributes.addFlashAttribute("message", "회원가입 성공");
 	       return "redirect:/";
