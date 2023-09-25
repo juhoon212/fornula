@@ -2,32 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fornula.domain.item.mapper.java.ItemPaymentMapper">
 
-	<!-- 결제페이지에서 사용할 SQL문 -->
-
-
+	<!-- 결제전 결제페이지에서 결제 상품 정보 출력 SELECT쿼리 -->
 	<select id="selectItemPayment" resultType="ItemPayment" >
-		select  item.item_name,
+		SELECT  item.item_name,
 				item.item_idx,
 				item.price,
 				photo.photo_idx,
 				photo.itemfile_name
-		from item join photo 
-		on item.item_idx=photo.item_idx
-		where item.item_idx = #{itemIdx}
+		FROM item JOIN photo 
+		ON item.item_idx=photo.item_idx
+		WHERE item.item_idx = #{itemIdx}
 	</select>
-	<!--
-	<resultMap type="ItemPayment" id="ItemPayment">
-	<association property="photo" javaType="Photo">
-			<id column="photo_idx" property="photoIdx"/>	
-			<result column="itemfile_name" property="itemfileName"/>		
-		</association>
-		<association property="item" javaType="Item">
-			<id column="item_idx" property="itemIdx"/>
-			<result column="item_name" property="itemName"/>
-			<result column="price" property="price"/>
-		</association>
-		
-	</resultMap>
-	-->
-	
+
 </mapper>

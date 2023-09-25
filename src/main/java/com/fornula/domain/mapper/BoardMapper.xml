@@ -5,9 +5,9 @@
   <!-- 게시물 작성 -->
   <insert id="insertBoard" parameterType="Board">
     <selectKey resultType="int" keyProperty="boardIdx" order="BEFORE">
-       select board_seq.nextval from dual
+       SELECT board_seq.nextval FROM dual
     </selectKey>
-      insert into board values(
+       INSERT INTO board VALUES(
                 #{boardIdx}
                 ,#{boardTitle}
                 ,#{boardContent}
@@ -22,24 +22,24 @@
   
   <!-- 게시물 삭제 -->
   <update id="deleteBoard">
-    update board 
-    set board_status=0
-    where board_idx = #{boardIdx}
+    UPDATE board 
+    SET board_status=0
+    WHERE board_idx = #{boardIdx}
   </update>
  
   <!-- 게시물 수정 -->
   <update id="updateBoard" parameterType="Board">
-    update board 
-    set board_title = #{boardTitle}
+    UPDATE board 
+    SET board_title = #{boardTitle}
        ,board_content = #{boardContent}
        ,boardfile_name = #{boardFileName}
        ,up_date = sysdate
-    where board_idx = #{boardIdx}
+    WHERE board_idx = #{boardIdx}
   </update>
  
    <!-- 게시물 한개 출력 -->
    <select id="selectBoard" resultType="Board">
-   select board_idx
+   SELECT board_idx
          ,board_title
          ,board_content
          ,id
@@ -49,60 +49,38 @@
          ,reg_date
          ,comment_cnt
          ,up_date
-    from board
-    where board_idx = #{boardIdx}
+    FROM board
+    WHERE board_idx = #{boardIdx}
    </select>
    
    <!-- 게시물 갯수 -->
    <select id="count" resultType="int">
-     select count(*) from board
+     SELECT count(*) FROM board
      <if test="keyword != null and keyword !=''">
        <bind name="word" value="'%'+keyword+'%'"/>
-       where ${column} like #{word}
+       WHERE ${column} LIKE #{word}
      </if>
    </select>
  
    <!-- 댓글 갯수 증가 -->
   <update id="updateCommentCnt" parameterType="map">
-  update board 
-  set comment_cnt = comment_cnt + #{cnt}
-  where board_idx = #{boardIdx}
+  UPDATE board 
+  SET comment_cnt = comment_cnt + #{cnt}
+  WHERE board_idx = #{boardIdx}
   </update>
  
    <!-- 조회수 증가 -->
    <update id="increaseViewCnt">
-   update board 
-   set view_cnt = view_cnt + 1
-   where board_idx = #{boardIdx}
+   UPDATE board 
+   SET view_cnt = view_cnt + 1
+   WHERE board_idx = #{boardIdx}
    </update>
- 
-     <!-- 반복 select 
-   <sql id="select">
-   select board_idx
-         ,board_title
-         ,board_content
-         ,ids
-         ,boardfile_name
-         ,board_status
-         ,view_cnt
-         ,reg_date
-         ,comment_cnt
-         ,up_date
-   from board
-  </sql> 
-  
-  페이지 전체 출력
-  <select id="selectList" parameterType="map" resultType="Board">
-   <include refid="select"/>
-   order by reg_date desc, board_idx desc
-   limit #(offset), #(pageSize)  
-  </select>-->
  
    <!-- 게시물 전체 출력 -->
    <select id="selectBoardList" resultType="Board">
-   select * 
-   from(select rownum rn, b.*
-        from (select board_idx
+   SELECT * 
+   FROM(SELECT rownum rn, b.*
+        FROM (SELECT board_idx
                 ,board_title
                 ,board_content
                 ,id
@@ -112,14 +90,14 @@
                 ,reg_date
                 ,comment_cnt
                 ,up_date
-               from board
+               FROM board
                <if test="keyword != null and keyword != ''">
                  <bind name="word" value="'%'+keyword+'%'"/>
-                  where ${column} like #{word}
+                  WHERE ${column} LIKE #{word}
                </if>
-                order by reg_date desc, board_idx desc )
+                ORDER BY reg_date desc, board_idx desc )
          b )
-     where rn between #{startRow} and #{endRow}
+     WHERE rn BETWEEN #{startRow} AND #{endRow}
    </select>
  
 </mapper>
