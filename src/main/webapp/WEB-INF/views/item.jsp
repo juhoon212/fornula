@@ -190,9 +190,12 @@ a {
 									<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-								<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
-								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
-									<span> <c:if test="${not empty cartList}">
+								<!-- 카카오톡 공유하기 기능 추가 -->
+									<span>
+										<a id="kakao-link-btn" href="javascript:kakaoShare()"> <img
+							src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" />
+						</a>								
+									 <c:if test="${not empty cartList}">
 											<button id="cartBtn" style="background: white;">
 												<img style="padding: 0px 10px; width: 50px;" id="heartImg"
 													src="<c:url value="/pictures/placeholder/heart.png"/>">
@@ -204,13 +207,10 @@ a {
 													src="<c:url value="/pictures/placeholder/noheart.png"/>">
 											</button>
 										</c:if>
-								</sec:authorize>
-								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<button style="float: right; padding: 5px;"
 										onclick="location.href='<c:url value="/payment/${item.itemIdx}"/>'">결제하기</button>
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 									</span>
-								</sec:authorize>
 							</div>
 						</div>
 						<hr>
@@ -267,32 +267,12 @@ a {
 										</a></li>
 									</ul>
 								</div></li>
-
 						</ul>
 					</c:forEach>
 
 				</div>
 			</div>
-
-
-
 			<hr />
-			<!-- <nav class="navigation pagination comment-pagination justify-content-between text-uppercase"
-                         role="navigation">
-                        <a class="prev disabled" href="#">
-                            Prev
-                        </a>
-                        <div class="nav-links">
-                            <ul class="page-numbers">
-                                <li><span aria-current="page" class="page-numbers current">1</span></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                            </ul>
-                        </div>
-                        <a class="next" href="#">
-                            Next
-                        </a>
-                    </nav> -->
 			<div style="color : red;">${message}</div>
 			<div style="height: 100px"></div>
 			<div id="respond" class="comment-respond">
@@ -345,12 +325,11 @@ a {
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		
 	<script type="text/javascript">
 	$(document).ready(function() {
 	    var beforePhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/noheart.png";
-	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
 	    var itemIdx = ${itemIdx};
+	    var afterPhotoURL = "${pageContext.request.contextPath}/pictures/placeholder/heart.png";
 	    var cartButton = $("#heartImg");
 	    cartButton.click(function() {
 	        if (cartButton.attr("src") === beforePhotoURL) {
@@ -392,5 +371,40 @@ a {
 	    });
 	});
 	</script>
+	
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript">
+var itemIdx = ${itemIdx};
+
+	// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+	Kakao.init('b8e41eee0cc466dfb4360a1b5f92e9a7');
+
+	// SDK 초기화 여부를 판단합니다.
+	console.log(Kakao.isInitialized());
+
+	function kakaoShare() {
+		Kakao.Link.sendDefault({
+			objectType : 'feed',
+			content : {
+				title : 'FORNUAL',
+				description : '전문가 외주 플랫폼 "FORNUAL"입니다 ',
+				imageUrl : '<c:url value="/pictures/placeholder/광고 1.jpg"/>',
+				link : {
+					mobileWebUrl : 'http://52.78.69.41:8080/fornula/',
+					webUrl : 'http://52.78.69.41:8080/fornula/',
+				},
+			},
+			buttons : [ {
+				title : '웹으로 보기',
+				link : {
+					mobileWebUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
+					webUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
+				},
+			}, ],
+			// 카카오톡 미설치 시 카카오톡 설치 경로이동
+			installTalk : true,
+		})
+	}
+</script>
 </body>
 </html>
