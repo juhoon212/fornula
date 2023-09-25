@@ -200,7 +200,7 @@
 <script type="text/javascript">
 	let submitButton = document.querySelector('#submit');
 	let content = document.querySelector('#content-box');
-	let score = document.querySelector('input[name="score"]:checked').value;
+	let score = document.querySelector('input[name="score"]:checked');
 	
 	submitButton.addEventListener('click', () => {
 		$.ajax({
@@ -208,8 +208,7 @@
 			url: "<c:url value="${pageContext.request.contextPath}/board/review/update/${reviewIdx}"/>",
 			contentType: "application/json",
 			data: JSON.stringify({
-				"content" : content.value,
-				"score" : score
+				"content" : content.value
 			}),
 			success : function(result) {
 				if(result == "success") {

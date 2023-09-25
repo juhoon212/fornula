@@ -152,7 +152,6 @@ h3 {
 	resize: none;
 	border: 1px solid #d9d6d6;
 }
-
 .error {
 	color: red;
 }

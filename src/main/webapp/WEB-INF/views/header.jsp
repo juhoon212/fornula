@@ -379,11 +379,10 @@ p #logo {
 								</div>
 							</div>
 						</form>
-
 					</c:if>
 					<c:if test="${sessionScope.loginMember.memberStatus == 9 }">
 						<div class="admin">
-							<form action="/member/logout" method="post">
+							<form action="<c:url value="/member/logout"/>" method="post">
 								<a href="<c:url value="/admin/user"/>">&nbsp;&nbsp;회원
 									관리&nbsp;&nbsp;|</a>&nbsp;&nbsp; <a
 									href="<c:url value="/admin/item"/>">상품 관리</a>
@@ -403,7 +402,7 @@ p #logo {
 			class="collapse search-collapse py-4 bg-light text-white position-absolute animated fadeInDown"
 			id="lana-search">
 			<!-- 검색 기능 처리 -->
-			<form action="item/boardList" method="get"
+			<form action="<c:url value="/item/boardList"/>" method="get"
 				class="search-form d-flex align-items-center h-100">
 				<div class="input-group search border-transparent">
 					<input type="text" name="searchKeyword"
