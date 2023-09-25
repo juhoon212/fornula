@@ -8,6 +8,7 @@
 			from (  select review_idx,
 							review.content,
 							review_date,
+							score,
 							review_status,
 							reviewfile_name,
 							answer_content,
@@ -28,6 +29,7 @@
 		<association property="review" javaType="Review">
 			<id column="review_idx" property="reviewIdx"/>
 			<result column="content" property="content"/>
+			<result column="score" property="score"/>
 			<result column="review_date" property="reviewDate"/>
 			<result column="review_status" property="reviewStatus"/>
 			<result column="reviewfile_name" property="reviewfileName"/>
@@ -63,7 +65,7 @@
 		insert into review values(
 			#{reviewIdx},
 			#{purchaseIdx},
-			5,
+			#{score},
 			#{content},
 			sysdate,
 			1,
@@ -83,6 +85,26 @@
 		select purchase_idx
 		from purchase join item on purchase.item_idx = item.item_idx
 		where purchase.member_idx = #{memberIdx} and item.item_idx = #{itemIdx} 
+	</select>
+	
+	<update id="updateReview">
+		UPDATE REVIEW
+		SET CONTENT = #{content} , 
+			SCORE = #{score}
+		WHERE REVIEW_IDX = #{reviewIdx}
+	</update>
+	
+	<select id="findReviewByReviewIdx" resultType="Review">
+		SELECT  REVIEW_IDX,
+				PURCHASE_IDX,
+				SCORE,
+				CONTENT,
+				REVIEW_DATE,
+				REVIEW_STATUS,
+				ANSWER_CONTENT,
+				ANSWER_DATE
+		FROM REVIEW
+		WHERE REVIEW_IDX = #{reviewIdx}
 	</select>
 	
 	

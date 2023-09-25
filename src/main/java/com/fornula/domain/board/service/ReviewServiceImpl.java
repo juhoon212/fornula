@@ -1,6 +1,7 @@
 package com.fornula.domain.board.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -46,6 +47,10 @@ public class ReviewServiceImpl implements ReviewService{
 	
 		List<Reviews> reviewList = reviewRepository.selectReviews(pageMap);
 		
+		for (Reviews reviews : reviewList) {
+			log.info("평점 = {}", reviews.getReview().getScore());
+		}   
+		
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("reviewList", reviewList);
 		resultMap.put("pager", pager);
@@ -90,6 +95,30 @@ public class ReviewServiceImpl implements ReviewService{
 	
 		int result = reviewRepository.addReply(review);
 		return result;
+	}
+
+	@Override
+	public int updateReview(Review review) {
+		
+		int updateReview = reviewRepository.updateReview(review);
+		
+		if(updateReview == 0) {
+			throw new NoAuthReplyException();
+		}
+		
+		return updateReview;
+	}
+
+	@Override
+	public Review findReviewByReviewIdx(int reviewIdx) {
+		
+		Review findReview = reviewRepository.findReviewByReviewIdx(reviewIdx);
+		
+		if(ObjectUtils.isEmpty(findReview)) {
+			throw new NoAuthReplyException("권한이 없습니다.");
+		}
+		
+		return findReview;
 	}
 
 
