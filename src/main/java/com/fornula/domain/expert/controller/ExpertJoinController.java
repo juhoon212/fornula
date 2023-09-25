@@ -51,7 +51,7 @@ public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
-	private final MemberSecurityService memberSecurityService  ;
+	private final MemberSecurityService memberSecurityService;
 
 	@GetMapping("/success")
 	public String success() {

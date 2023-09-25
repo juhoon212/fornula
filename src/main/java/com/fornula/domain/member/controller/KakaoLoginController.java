@@ -1,4 +1,4 @@
-package com.fornula.domain.member.restcontroller;
+package com.fornula.domain.member.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +39,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/member")
 @RequiredArgsConstructor
-public class ApiLoginController {
+public class KakaoLoginController {
 	
 	private final MemberSecurityService memberSecurityService;
 	
 	private final static String GRANT_TYPE = "authorization_code";
 	private final static String CLIENT_ID = "5dddeec3f8b529b8f641c9f64fced9ae";
-	private final static String REDIRECT_URI = "http://localhost:9003/member/kakao/login/callback";
+	private final static String REDIRECT_URI = "https://www.itwill.xyz/fornula/member/kakao/login/callback";
 	private final static String CLIENT_SECRET = "jqTkMb7rJz26JZnT25FR93rOy6s2dcHo";
 	
 	
@@ -182,7 +182,6 @@ public class ApiLoginController {
 			session.setAttribute(SessionConst.Login_Member, customMemberDetails);
 			
 			log.info("loginMember = {}", customMemberDetails.getId());
-			log.info("loginMember = {}", customMemberDetails.getMemberStatus());
 			 
 			return "redirect:/";
 		}
