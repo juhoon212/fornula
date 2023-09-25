@@ -9,8 +9,6 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="_csrf" name="_csrf" content="{{_csrf.token}}"/>
-	<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}"/>
 
     <link rel="stylesheet" id="montserrat-css" 
           href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -33,6 +31,7 @@
     <link rel="stylesheet" id="lana-pet-print-css" href="<c:url value="/css/lana-pet-print.min.css?ver=1.0.0"/>" type="text/css"
           media="print">
 </head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <body class="page page-template-default">
 <jsp:include page="header.jsp" />
 
@@ -120,12 +119,12 @@ let itemIdx = document.querySelector('#itemIdx');
 let photo = document.querySelector('#formFile');
 let errorMsg = document.querySelectorAll('.error-msg');
 
-/* let csrfHeaderName="${_csrf.headerName}";
+/*  let csrfHeaderName="${_csrf.headerName}";
 let csrfTokenValue="${_csrf.token}";
 
 $(document).ajaxSend(function(e, xhr) {
 	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-}); */
+});  */
 
 
 document.querySelector('#submit').addEventListener('click', (e) => {

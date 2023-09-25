@@ -1,6 +1,7 @@
 package com.fornula.domain.board.controller;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +24,7 @@ import com.fornula.domain.board.dto.ReviewForm;
 import com.fornula.domain.board.service.ReviewService;
 import com.fornula.domain.item.dto.Purchase;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
@@ -36,6 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ReviewController {
 	
 	private final ReviewService reviewService;
+	private final MemberSecurityService memberSecurityService;
 	
 	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping("/add/{itemIdx}")
@@ -100,7 +103,8 @@ public class ReviewController {
 	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes, HttpSession session) {
 		
 		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
-		reviewService.addReply(review, itemIdx, loginMember.getMemberIdx());
+		Member member = memberSecurityService.getSecurityMember(loginMember.getId());
+		reviewService.addReply(review, itemIdx, member.getMemberIdx());
 
 		return "redirect:/item/{itemIdx}/1";
 	}

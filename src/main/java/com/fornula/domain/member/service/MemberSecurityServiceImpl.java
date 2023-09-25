@@ -2,11 +2,11 @@ package com.fornula.domain.member.service;
 
 import java.util.List;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.fornula.domain.exception.custom.NotFoundIdException;
+import org.springframework.util.ObjectUtils;
 import com.fornula.domain.member.dto.Auth;
 import com.fornula.domain.member.dto.Member;
 import com.fornula.domain.member.repository.MemberSecurityRepository;
@@ -62,7 +62,13 @@ public class MemberSecurityServiceImpl implements MemberSecurityService {
 
 	@Override
 	   public Member getSecurityMember(String id) {
-	      return memberSecurityRepository.findMemberById(id);
+		Member findMember = memberSecurityRepository.findMemberById(id);
+		
+		if(ObjectUtils.isEmpty(findMember)) {
+			throw new BadCredentialsException("아이디를 찾을 수 없습니다.");
+		}
+		
+	      return findMember;
 	   }
 
 }
