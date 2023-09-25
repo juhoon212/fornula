@@ -18,11 +18,13 @@
 		<intercept-url pattern="/expert/ranking**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/payment/**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
+		<intercept-url pattern="/board/write" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/cart/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/mypage/**" access="hasRole('ROLE_MEMBER')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
-		<csrf disabled="true"/>
+		<!-- <csrf disabled="true"/> -->
 		
 		 <form-login login-page="/member/login" login-processing-url="/member/login"
 			username-parameter="id" password-parameter="password" default-target-url="/"

@@ -10,4 +10,4 @@ public interface MemberSecurityService {
 	int addSecurityMember(Member member);
 	int addAuth(Auth auth);
 	List<Member> findSecurityMemberById(String id);
-}
+	Member getSecurityMember(String id);}

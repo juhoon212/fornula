@@ -9,5 +9,6 @@ import com.fornula.domain.util.security.CustomMemberDetails;
 public interface ExpertJoinService {
 	void addExpertInfo(Expert expert) throws ExistsExpertException;
 	void updateExpertStatus(Auth auth);
+	void updateStatus(int memberIdx);
 	//int searchExpertCategory(int interest);
 }

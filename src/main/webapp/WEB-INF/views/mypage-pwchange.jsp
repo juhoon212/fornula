@@ -182,7 +182,7 @@ h3 {
             <div class="widget">
                <div class="story-posts">
                   <section>
-                     <form name="passwordForm" method="post" action="<c:url value ="/mypagePwchange"/>">
+                     <form name="passwordForm" method="post" action="<c:url value ="/mypage/mypagePwchange"/>">
                      <label style = "color : #fdbb42; font-size : 24px; margin-bottom : 30px;">비밀번호 수정</label>
                         <h3>현재 비밀번호</h3>
                         <div class="info" id="info__pw">
@@ -234,7 +234,7 @@ h3 {
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
 								<c:if test="${member.memberStatus == 2}">
-									<a href="<c:url value='/expert/output'/>" class="tag-cloud-link"
+									<a href="<c:url value='/expert/input'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 전환</a>
 								</c:if>
 							</div>
@@ -242,10 +242,10 @@ h3 {
                         <div class="widget">
                            <h3 class="widget-title">나의 정보</h3>
                            <ul>
-                              <li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
-                              <li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
-                              <li><a href="<c:url value="/mypagePwchange"/>">비밀번호 수정</a></li>
-                              <li><a href="<c:url value="/mypageSession"/>">회원 탈퇴</a></li>
+                              <li><a href="<c:url value="/mypage/mypageInfo"/>">내정보 수정</a></li>
+                              <li><a href="<c:url value="/mypage/mypagePurchase"/>">구매 관리</a></li>
+                              <li><a href="<c:url value="/mypage/mypagePwchange"/>">비밀번호 수정</a></li>
+                              <li><a href="<c:url value="/mypage/mypageSession"/>">회원 탈퇴</a></li>
                            </ul>
                         </div>
                      </div>

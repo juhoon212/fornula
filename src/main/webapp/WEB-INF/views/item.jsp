@@ -193,7 +193,6 @@ a {
 									<fmt:formatNumber type="number" value="${item.price}"
 										pattern="#,###" />
 								</h4>
-
 								<!-- 권한 상관 없이 로그인 인증을 받은 경우 -->
 								<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')">
 									<span> <c:if test="${not empty cartList}">
@@ -247,8 +246,9 @@ a {
 									<div class="comment-text">
 										<p>${reviewList.review.content}</p>
 									</div>
-
-									<div style="padding-left: 10px"
+									
+									<c:if test="${reviewList.review.answerContent} != null">
+										<div style="padding-left: 10px"
 										class="d-bock d-md-flex w-100 justify-content-between">
 										<h5 class="comment-title">
 											<span
@@ -257,10 +257,13 @@ a {
 										<div class="comment-date">
 											<span>&nbsp&nbsp&nbsp ${reviewList.review.answerDate}</span>
 										</div>
-									</div>
-									<div class="comment-text">
-										<p>${reviewList.review.answerContent}</p>
-									</div>
+										</div>
+										<div class="comment-text">
+											<p>${reviewList.review.answerContent}</p>
+										</div>
+									
+									</c:if>
+									
 
 
 									<ul class="comment-meta">

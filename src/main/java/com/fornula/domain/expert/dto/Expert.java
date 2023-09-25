@@ -2,6 +2,10 @@ package com.fornula.domain.expert.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 import org.springframework.stereotype.Component;
 
 import com.fornula.domain.item.dto.Item;
@@ -30,6 +34,9 @@ EXPERTFILE_NAME          VARCHAR2(100)  */
 public class Expert {
 	private int expertIdx;
 	private int memberIdx;
+	
+	@NotEmpty(message = "전화번호를 반드시 입력해주세요.")
+	@Pattern(regexp="^\\d{3}-\\d{3,4}-\\d{4}$", message="전화번호 형식에 맞게 입력해주세요.")
 	private String phone;
 	
 	private int interest;

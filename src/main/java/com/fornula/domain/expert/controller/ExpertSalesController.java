@@ -6,6 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.service.ExpertSalesService;
 import com.fornula.domain.item.service.ItemDetailService;
 import com.fornula.domain.member.dto.Member;
+import com.fornula.domain.member.service.MemberSecurityService;
 import com.fornula.domain.util.security.CustomMemberDetails;
 import com.fornula.domain.util.session.SessionConst;
 
@@ -34,6 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ExpertSalesController {
 	private final ExpertSalesService expertSalesService;
     private final ItemDetailService itemDetailService;
+    private final MemberSecurityService memberSecurityService;
 
 	//판매내역을 출력하는 메소드
     	@PreAuthorize("hasRole('ROLE_EXPERT')")
@@ -50,15 +55,15 @@ public class ExpertSalesController {
 			CustomMemberDetails loginMember = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
 	    	int expertIdx = expert.getExpertIdx();
-			//log.info("expertIdx:{}",expertIdx);//로그출력
+			log.info("expertIdx:{}",expertIdx);//로그출력
 
 			Map<String, Object> resultMap = expertSalesService.getSalesList(pageNum, expertIdx);//판매내역 리스트
-			//log.info("list:{}", resultMap);// 로그출력
+			log.info("list:{}", resultMap);// 로그출력
 			
 			
 			//여기부터 안넘어
 			List<SaleItemExpert> resultList= (List<SaleItemExpert>)resultMap.get("salesList");
-			//log.info("resultList:{}",resultList);
+			log.info("resultList:{}",resultList);
 			
 			for(SaleItemExpert itemSalesList : resultList) {
 				
@@ -70,8 +75,6 @@ public class ExpertSalesController {
 				itemSalesList.setItemfileName(originalFileName);
 				
 			}
-			
-			
 			
 			model.addAttribute("salesList",resultMap.get("salesList"));
 			model.addAttribute("pager",resultMap.get("pager")) ;

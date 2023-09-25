@@ -14,6 +14,7 @@ import com.fornula.domain.expert.dto.Sales;
 import com.fornula.domain.expert.dto.TotalSalesMoney;
 import com.fornula.domain.expert.mapper.java.ExpertJoinMapper;
 import com.fornula.domain.expert.mapper.java.ExpertSalesMapper;
+import com.fornula.domain.item.dto.Purchase;
 
 import lombok.RequiredArgsConstructor;
 
@@ -52,8 +53,9 @@ public class ExpertSalesDAOImpl implements ExpertSalesDAO {
 	public List<TotalSalesMoney> selectTotalMoney(int expertIdx) {
 		return sqlSession.getMapper(ExpertSalesMapper.class).selectTotalMoney(expertIdx);
 	}
-	/*
-	 * @Override public Sales selectStatus(int salesIdx) { return
-	 * sqlSession.getMapper(ExpertSalesMapper.class).selectStatus(salesIdx); }
-	 */
+
+	@Override
+	public int updatePurchaseStatus(Sales sales) {
+		return sqlSession.getMapper(ExpertSalesMapper.class).updatePurchaseStatus(sales);
+	}
 }

@@ -12,7 +12,6 @@ public class ExistsExpertException extends Exception {
 	private Expert expert;
 	
 	public ExistsExpertException() {
-
 	}
 	public ExistsExpertException(String message) {
 		super(message);

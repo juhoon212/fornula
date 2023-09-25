@@ -108,6 +108,7 @@
           
           <div class = "error-msg"></div>
         </div>
+       	<sec:csrfInput/>
         <!-- 비밀번호 -->
        	<button id="submit">등록하기</button>
 	</form>

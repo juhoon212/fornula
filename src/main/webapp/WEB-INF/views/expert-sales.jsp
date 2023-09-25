@@ -174,40 +174,9 @@ tr td {
 																</h4>
 																<div class="">
 																	<div class="author-meta">
-
-																		<c:choose>
-																			<c:when test="${salesList.salesStatus ==0}">
-																				<button disabled="disabled" class="status" data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" type="button" id="Btn" value="${salesStatus}">취소</button>
-																			</c:when>
-																			<c:when test="${salesList.salesStatus ==1}">
-																				<button disabled="disabled" class="status" data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" type="button" id="Btn" value="${salesStatus }">환불</button>
-																			</c:when>
-																			<c:when test="${salesList.salesStatus ==2}">
-																				<div>
-																				<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"class="status"
-																				type="button" id="Btn1">제작시작</button>
-																				</div>
-																			</c:when>
-																			<c:when test="${salesList.salesStatus ==3}">
-																				<button 
-																					data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"
-																					class="status"type="button" id="Btn2" value="${salesStatus }">제작완료</button>
-																			</c:when>
-																			<c:when test="${salesList.salesStatus ==5}">
-																				<button disabled="disabled" data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }" class="status" type="button" id="Btn" value="${salesStatus }">구매확정</button>
-																			</c:when>
-																			<c:when test="${salesList.salesStatus ==6}">
-																				<div>
-																					<button disabled="disabled" type="button" id="Btn">구매확정</button>
-																					<a href="<c:url value="/item/${salesList.itemIdx}/1"/>" class="more-link card-link d-flex align-items-center"> 답글보기 <i class="lana-icon-arrow-right text-primary"></i>
-																					</a>
-																				</div>
-																			</c:when>
-																			<c:otherwise>
-																				<button disabled="disabled" style="color: gray;"data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"class="status"
-																				type="button" id="Btn">${salesList.status }</button>
-																			</c:otherwise>
-																		</c:choose>
+																		<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"
+																				class="status"type="button" id="Btn" >${salesList.status }
+																		</button>
 																	</div>
 																</div>
 															</div>
@@ -278,7 +247,7 @@ tr td {
 					<div class="widget widget_tag_cloud">
 						<div class="tagcloud">
 							<div id="button">
-								<a href="<c:url value="/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
+								<a href="<c:url value="/mypage/mypageInfo"/>" class="tag-cloud-link" aria-label="admin change button">일반회원으로 전환</a>
 							</div>
 							<div class="row">
 								<div class="widget" style="text-align: left; padding-left: 20px;">
@@ -319,11 +288,6 @@ tr td {
                 var salesIdx = currentStatus.data('salesidx');
                 var salesStatus = parseInt(currentSalesStatus) + 1;
 
-               /*  alert("status " + (i + 1) + "번째를 클릭했습니다.");
-                alert("i의 값: " + i);
-                alert("변경할 status의 값: " + salesStatus);
-                alert("변경할 idx의 값: " + salesIdx); */
-
                 $.ajax({
                     url: "${pageContext.request.contextPath}/expert/sales/update",
                     contentType: "application/json",
@@ -337,7 +301,6 @@ tr td {
                                 currentStatus.text("제작완료"); // #Btn1의 text 변경
                                 currentStatus.closest('.post-card').find('#statusCheck').text('제작중');
                                 currentStatus.data('salesstatus', salesStatus); // salesstatus 값을 업데이트
-                                alert(salesStatus);
                             } else if (salesStatus == 4) {
                                // alert("주문중 상태를 변경하였습니다.");
                                 currentStatus.prop("disabled", true);
