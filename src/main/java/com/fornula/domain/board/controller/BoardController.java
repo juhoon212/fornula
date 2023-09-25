@@ -102,13 +102,12 @@ public class BoardController {
    //게시물 삭제
    @PostMapping("/remove")
    public String remove(@RequestParam Integer boardIdx
-                     
                       ,HttpSession session
                       ,RedirectAttributes redirectAttributes) {
       //로그인 중인 작성자 아이디
       // String writer = (String)session.getAttribute(SessionConst.Login_Member);
       //String message="DEL_OK";
-      //log.info("writer = {}", writer);
+      log.info("writer = {}", boardIdx);
       boardService.remove(boardIdx);
       
       //redirectAttributes.addAttribute("pageNum", pageNum);

@@ -314,6 +314,7 @@ border-width:0;
 
     <table>
       <tr>
+        
         <th class="no">번호</th>
         <th class="title">제목</th>
         <th class="writer">이름</th>
@@ -321,6 +322,7 @@ border-width:0;
         <th class="viewcnt">조회수</th>
       </tr>
       <c:forEach var="board" items="${result.boardList}">
+      <c:if test="${board.boardStatus != 0}">
         <tr>
           <td class="no">${board.boardIdx}</td>
           <td class="title"><a href="<c:url value="/board/read?boardIdx=${board.boardIdx}"/>">${board.boardTitle}</a></td>
@@ -328,7 +330,9 @@ border-width:0;
           <td>${board.regDate}</td>
           <td class="viewcnt">${board.viewCnt}</td>
         </tr>
+         </c:if>
       </c:forEach>
+     
     </table>
     <br>
     <div class="paging-container">

@@ -71,17 +71,17 @@
                                     <li>₩ ${Itempurchase.price} </li>
                                 </ul>
                                 <p class="post-text card-text">
-                                <h6 class="post-title card-title">${Itempurchase.purchaseIdx}</h6>
+                                <h6 class="post-title card-title">${Itempurchase.purchaseIdx}</h6> <span id="statusCheck" style="color: #666666; width: 55px; height: 25px; font-weight: lighter; border: 2px solid orange; border-radius: 10px; padding: 5px; font-size: 15px; background: rgba(255, 138, 0, .1);"> ${salesList.status}</span>
                                 <h4 class="post-title card-title"><a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>${Itempurchase.itemName}"></a>
                                 </h4>
                                 <p class="subtitle"></p>
-                                <div class="d-flex justify-content-between align-items-center post-meta mt-auto w-100">
-                                    <div class="author-meta">
-                                    <a href="<c:url value="/item/${Itempurchase.itemIdx}/1"/>" class="more-link card-link d-flex align-items-center">
-                                        리뷰쓰기 <i class="lana-icon-arrow-right text-primary"></i>
-                                    </a>
-                                </div>
-                            </div>
+                               <div class="">
+																	<div class="author-meta">
+																		<button data-salesIdx="${salesList.salesIdx }" data-salesStatus="${salesList.salesStatus }"
+																				class="status"type="button" id="Btn" >${salesList.status }
+																		</button>
+																	</div>
+																</div>
                         </div>
                     </div>
                 </div>
@@ -89,22 +89,50 @@
                     </div>                   
                 </div>
                </c:forEach>
-                <nav class="navigation pagination justify-content-between text-uppercase" role="navigation">
-                    <a class="prev disabled" href="<c:url value="#"/>">
-                        Prev
-                    </a>
-                    <div class="nav-links">
-                        <ul class="page-numbers">
-                            <li><span aria-current="page" class="page-numbers current">1</span></li>
-                            <li><a class="page-numbers" href="<c:url value="#"/>">2</a></li>
-                            <li><span class="page-numbers dots">…</span></li>
-                            <li><a class="page-numbers" href="<c:url value="#"/>">4</a></li>
-                        </ul>
-                    </div>
-                    <a class="next" href="<c:url value="#"/>">
-                        Next
-                    </a>
-                </nav>
+              <div class="" style="text-align: center; width: 100%;">
+							<nav style="width: 100%;" class="navigation pagination justify-content-between text-uppercase" role="navigation">
+								<div class="prev">
+									<c:choose>
+										<c:when test="${pager.startPage > pager.blockSize}">
+											<a class="prev disabled" href="<c:url value="/expert/sales"/>?pageNum=${pager.prevPage}">PREV</a>
+										</c:when>
+										<c:when test="${pager.pageNum > 1}">
+											<a class="prev disabled" href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum - 1}">PREV</a>
+										</c:when>
+										<c:otherwise>
+											<span class="disabled">PREV</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+
+								<div class="nav-links">
+									<c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+										<c:choose>
+											<c:when test="${pager.pageNum != i}">
+												<a class="page-numbers" href="<c:url value="/expert/sales"/>?pageNum=${i}">${i}</a>
+											</c:when>
+											<c:otherwise>
+												<span class="current">[${i}]</span>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</div>
+
+								<div class="next">
+									<c:choose>
+										<c:when test="${pager.endPage != pager.totalPage}">
+											<a class="next" href="<c:url value="/expert/sales"/>?pageNum=${pager.nextPage}">NEXT</a>
+										</c:when>
+										<c:when test="${pager.pageNum < pager.totalPage}">
+											<a class="next" href="<c:url value="/expert/sales"/>?pageNum=${pager.pageNum + 1}">NEXT</a>
+										</c:when>
+										<c:otherwise>
+											<span class="disabled">NEXT</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</nav>
+						</div>
                 </div>
                 </section>
                 </div>
@@ -159,7 +187,46 @@
 <script type="text/javascript" src="<c:url value="/js/scrollmagic.min.js?ver=2.0.8"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/magnific-popup.min.js?ver=1.1.0"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/custom-theme.js?ver=1.0.0"/>"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function () {
+        $('.status').each(function (i) {
+            $(this).click(function () {
+                var currentStatus = $(this);
+                var currentSalesStatus = currentStatus.data('salesstatus');
+                var salesIdx = currentStatus.data('salesidx');
+                var salesStatus = parseInt(currentSalesStatus) + 1;
 
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/expert/sales/update",
+                    contentType: "application/json",
+                    type: "PUT",
+                    data: JSON.stringify({ "salesIdx": salesIdx, "salesStatus": salesStatus }),
+                    dataType: "text",
+                    success: function (result) {
+                        if (result === "success") {
+                            if (salesStatus == 3) {
+                                //alert("주문전 상태를 변경하였습니다.");
+                                currentStatus.text("제작완료"); // #Btn1의 text 변경
+                                currentStatus.closest('.post-card').find('#statusCheck').text('제작중');
+                                currentStatus.data('salesstatus', salesStatus); // salesstatus 값을 업데이트
+                            } else if (salesStatus == 4) {
+                               // alert("주문중 상태를 변경하였습니다.");
+                                currentStatus.prop("disabled", true);
+                                currentStatus.css({"color": "gray"});
+                                currentStatus.closest('.post-card').find('#statusCheck').text('제작완료');
+                            }
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("상태를 변경하는데 오류가 발생했습니다. 오류 코드: " + xhr.status);
+                    }
+                });
+            });
+        });
+    });
+
+	</script>
 
 
 </body>
