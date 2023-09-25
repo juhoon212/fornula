@@ -60,15 +60,15 @@
         <h3>이메일</h3>
         <div class="info" id = "info__email">
         
-            <form:input path ="email" class="box" type="text" placeholder="이메일을 입력해 주세요." name = "email"/>
-          	<form:errors path = "email" cssClass="error-msg" element="span" delimiter=" "/>
+            <form:input path ="email" class="box" type="text" placeholder="이메일을 입력해 주세요."/>
+          	<form:errors path="email" cssClass="error-msg" element="div" delimiter=" "/>
           <div class = "error-msg"></div>
         </div>
         <!-- 비밀번호 -->
         <h3>비밀번호</h3>
         <div class="info" id="info__pw">
           <form:input path = "password" class="box" type="password" placeholder="비밀번호를 입력해 주세요.(8자리 이상)" name="password"/>
-          <form:errors path = "password" cssClass="error-msg" element="span" delimiter=" "/>
+          <form:errors path = "password" cssClass="error-msg" element="div" delimiter=" "/>
           <div class = "error-msg"></div>
         </div>
         <!-- 비밀번호 재확인-->

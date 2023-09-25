@@ -37,7 +37,7 @@ public class MemberController {
 	
 	// 회원가입 폼
 	@GetMapping("/join")
-	public String join() {
+	public String join(@ModelAttribute Member member) {
 		return "join";
 	}
 	
