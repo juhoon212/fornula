@@ -20,7 +20,8 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 public class GoogleLoginBean {
 	private static final String GOOGLE_CLIENT_ID = "746123676134-el542ag1abucm152bt5n6s2l3q9s0reh.apps.googleusercontent.com";
 	private static final String GOOGLE_CLIENT_SECRET = "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";
-	private static final String GOOGLE_REDIRECT_URI = "https://itwill.xyz/fornual/google/callback";
+	//private static final String GOOGLE_REDIRECT_URI = "https://itwill.xyz/fornula/google/callback";
+	private static final String GOOGLE_REDIRECT_URI = "http://localhost:9003/google/callback";
 	private static final String GOOGLE_SESSION_STATE = "googleState";
 	// 토큰으로 가져올 값의 범위 - 이메일,id,email 가져옴
 	private final static String GOOGLE_SCOPE = "email openid profile";

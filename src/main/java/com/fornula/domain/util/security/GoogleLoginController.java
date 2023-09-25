@@ -91,26 +91,22 @@ public class GoogleLoginController {
 
 		log.info("member{}:", member);
 
-		// 아이디로 찾은 list에서 해당 id 객체 찾아서 비교
-		List<Member> findSecurityMemberById = memberSecurityService.findSecurityMemberById(member.getId());
-		Member loginMember = findSecurityMemberById.stream().findAny().orElse(null);
-		
-		if(loginMember == null) {
-			memberSecurityService.addAuth(auth);
+		if(memberSecurityService.getSecurityMember("naver_"+id) == null) {
 			memberSecurityService.addSecurityMember(member);
+			memberSecurityService.addAuth(auth);
 		}
 		
-		// 구글 로그인 사용자 정보를 사용하여 UserDetails 객체(로그인 사용자)를 생성하여 저장
-		CustomMemberDetails customMemberDetails = new CustomMemberDetails(loginMember);
+		CustomMemberDetails customMemberDetails=new CustomMemberDetails(member);
 		
-		Authentication authentication = new UsernamePasswordAuthenticationToken(customMemberDetails, null, customMemberDetails.getAuthorities());
+		Authentication authentication=new UsernamePasswordAuthenticationToken
+				(customMemberDetails, null, customMemberDetails.getAuthorities());
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		session.setAttribute(SessionConst.Login_Member, customMemberDetails);
+		CustomMemberDetails loginMember = (CustomMemberDetails)session.getAttribute(SessionConst.Login_Member);
+		model.addAttribute("loginMember",loginMember);
 		
-		log.info("loginMember = {}", customMemberDetails.getMemberStatus());
-		 
 		return "redirect:/";
 	}
 }

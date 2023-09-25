@@ -23,7 +23,7 @@
 		ON C.item_idx = I.item_idx
 		left join photo P on I.item_idx=P.item_idx
 		where C.member_idx = #{memberIdx}
-		order by C.cart_date
+		order by C.cart_date desc
 	</select>
 	
 	<!-- photoIdx 검색 -->
