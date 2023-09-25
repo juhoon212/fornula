@@ -24,7 +24,7 @@
 		<intercept-url pattern="/mypage/**" access="hasRole('ROLE_MEMBER')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
-		<csrf disabled="true"/>
+		<!-- <csrf disabled="true"/> -->
 		
 		 <form-login login-page="/member/login" login-processing-url="/member/login"
 			username-parameter="id" password-parameter="password" default-target-url="/"

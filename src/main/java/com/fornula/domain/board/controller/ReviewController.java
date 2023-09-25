@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class ReviewController {
 	
 	private final ReviewService reviewService;
 	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping("/add/{itemIdx}")
 	public String addBoard(@ModelAttribute ReviewForm form,
 							HttpSession session,
@@ -75,6 +77,7 @@ public class ReviewController {
 		return "redirect:/item/{itemIdx}/1";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@GetMapping("/add/reply/{itemIdx}/{reviewIdx}")
 	public String showReplyForm(@PathVariable Integer itemIdx, @PathVariable Integer reviewIdx, Model model) {
 		
@@ -85,6 +88,7 @@ public class ReviewController {
 	}
 	
 	@PostMapping("/add/reply/{itemIdx}")
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes, HttpSession session) {
 		
 		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
