@@ -49,16 +49,17 @@ public class ReviewController {
 		
 		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
 		
+		
+		
 		if(loginMember == null) {
 			redirectAttributes.addAttribute("itemIdx", itemIdx);
 			return "redirect:/item/{itemIdx}/1";
 		}
 		
-		log.info("loginMember 번호 = {}", loginMember.getMemberIdx());
-		// 비로그인 사용자
+		Member securityMember = memberSecurityService.getSecurityMember(loginMember.getId());
 		
 		
-		Purchase purchase = reviewService.selectPurchase(loginMember.getMemberIdx(), itemIdx);
+		Purchase purchase = reviewService.selectPurchase(securityMember.getMemberIdx(), itemIdx);
 		
 		if(purchase == null) {
 			redirectAttributes.addAttribute("status", false);
