@@ -136,7 +136,7 @@
 
 					<div id="button">
 						<a href="<c:url value="#"/>" class="tag-cloud-link"
-							aria-label="idbutton">${member.id }</a>
+							aria-label="idbutton">${sessionScope.loginMember.id }</a>
 					</div>
 					<div class="widget widget_tag_cloud">
 
@@ -144,11 +144,11 @@
 
 
 							<div id="button">
-								<c:if test="${member.memberStatus == 1}">
+								<c:if test="${sessionScope.loginMember.memberStatus == 1}">
 									<a href="<c:url value='/expert/join'/>" class="tag-cloud-link"
 										aria-label="admin change button">전문가로 등록</a>
 								</c:if>
-								<c:if test="${member.memberStatus == 2}">
+								<c:if test="${sessionScope.loginMember.memberStatus == 2}">
 									<a href="<c:url value='/expert/output'/>"
 										class="tag-cloud-link" aria-label="admin change button">전문가로
 										전환</a>

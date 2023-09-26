@@ -88,25 +88,36 @@ public class GoogleLoginController {
 		member.setCategoryThree(1);
 		
 		member.setMemberAuthList(authList);
-
+		System.out.println(member);
 		log.info("member{}:", member);
-
-		if(memberSecurityService.getSecurityMember("naver_"+id) == null) {
-			memberSecurityService.addSecurityMember(member);
+		
+		
+		List<Member> findSecurityMemberById = memberSecurityService.findSecurityMemberById(member.getId());
+		Member loginMember = findSecurityMemberById.stream().findAny().orElse(null);
+		
+		if(loginMember == null) {
 			memberSecurityService.addAuth(auth);
-		}
+			
+			memberSecurityService.addSecurityMember(member);
+			
+			CustomMemberDetails customMemberDetails = new CustomMemberDetails(member);
+			
+			session.setAttribute(SessionConst.Login_Member, customMemberDetails);
+
+		}else {
 		
-		CustomMemberDetails customMemberDetails=new CustomMemberDetails(member);
+		CustomMemberDetails customMemberDetails = new CustomMemberDetails(loginMember);
 		
-		Authentication authentication=new UsernamePasswordAuthenticationToken
-				(customMemberDetails, null, customMemberDetails.getAuthorities());
+		Authentication authentication = new UsernamePasswordAuthenticationToken(customMemberDetails, null, customMemberDetails.getAuthorities());
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		session.setAttribute(SessionConst.Login_Member, customMemberDetails);
-		CustomMemberDetails loginMember = (CustomMemberDetails)session.getAttribute(SessionConst.Login_Member);
-		model.addAttribute("loginMember",loginMember);
 		
+		log.info("loginMember = {}", customMemberDetails.getId());
+		
+		}
 		return "redirect:/";
+		 
 	}
 }

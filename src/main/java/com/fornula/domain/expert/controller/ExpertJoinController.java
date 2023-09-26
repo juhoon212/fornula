@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,12 +37,14 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/expert")
+@Transactional
 public class ExpertJoinController {
 	private final ExpertJoinService expertJoinService;
 	private final WebApplicationContext context;
 	private final MypageInfoService service;
 	private final MemberSecurityService memberSecurityService;
 
+	
 	@GetMapping("/success")
 	public String success(Model model) {
 		model.addAttribute("message","전문가 등록이 완료되었습니다.");
@@ -112,7 +115,7 @@ public class ExpertJoinController {
 		
 		log.info("memberSTatus :{}",member.getMemberStatus() );
 		
-		return "expertjoin-success";
+		return "redirect:/expert/success";
 
 	}
 	private String extracted(MultipartFile uploadFile) {
