@@ -45,7 +45,7 @@ public class KakaoLoginController {
 	
 	private final static String GRANT_TYPE = "authorization_code";
 	private final static String CLIENT_ID = "5dddeec3f8b529b8f641c9f64fced9ae";
-	private final static String REDIRECT_URI = "https://itwill.xyz/fornula/member/kakao/login/callback";
+	private final static String REDIRECT_URI = "https://www.itwill.xyz/fornula/member/kakao/login/callback";
 	private final static String CLIENT_SECRET = "jqTkMb7rJz26JZnT25FR93rOy6s2dcHo";
 	
 	
