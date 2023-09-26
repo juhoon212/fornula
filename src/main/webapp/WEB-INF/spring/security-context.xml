@@ -13,7 +13,8 @@
     		<frame-options disabled="true"/>
     	</headers>
 		<intercept-url pattern="/item/update/**" access="hasRole('ROLE_MEMBER')"/>
-		<intercept-url pattern="/expert/join/**" access="hasRole('ROLE_MEMBER')"/>
+		<intercept-url pattern="/expert/join/**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
+		<intercept-url pattern="/expert/success/**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/expert/ranking**" access="hasAnyRole('ROLE_MEMBER','ROLE_EXPERT')"/>
 		<intercept-url pattern="/expert/**" access="hasRole('ROLE_EXPERT')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
