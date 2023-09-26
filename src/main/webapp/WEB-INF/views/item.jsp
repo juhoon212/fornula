@@ -521,8 +521,8 @@ var itemIdx = ${itemIdx};
 			buttons : [ {
 				title : '웹으로 보기',
 				link : {
-					mobileWebUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
-					webUrl : 'https://itwill.xyz/fornual/item/'+itemIdx+'/1',
+					mobileWebUrl : 'https://www.itwill.xyz/fornula/item/'+itemIdx+'/1',
+					webUrl : 'https://www.itwill.xyz/fornula/item/'+itemIdx+'/1',
 					/* mobileWebUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1',
 					webUrl : 'http://52.78.69.41:8080/fornula/item/'+itemIdx+'/1', */
 				},
