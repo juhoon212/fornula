@@ -74,9 +74,7 @@ public class PaymentController {
 			log.info("payment 실행");
 			log.info("pay 메소드 itemIdx = {}", payment.getItemIdx());
 			session.setAttribute(payment.getMerchantUid(), payment.getAmount());
-			//redirectAttributes.addAttribute("itemIdx", itemIdx);
-			// ,@RequestParam Integer itemIdx
-			 //,RedirectAttributes redirectAttributes
+			
 			return "ok";	 
 		}
 		
