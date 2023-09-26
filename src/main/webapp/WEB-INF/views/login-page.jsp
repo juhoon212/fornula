@@ -140,7 +140,7 @@ a {
                   alt="google"></a> <a href="<c:url value="/naver/login"/>"><img
                   src="<c:url value="/pictures/placeholder/naver_icon-icons.com_59869.png"/>"
 
-                  alt="naver"></a> <a href="<c:url value="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=https://www.itwill.xyz.fornula/member/kakao/login/callback"/>"><img
+                  alt="naver"></a> <a href="<c:url value="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=5dddeec3f8b529b8f641c9f64fced9ae&redirect_uri=https://www.itwill.xyz/fornula/member/kakao/login/callback"/>"><img
 
                  src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
                   alt="kakao"></a>

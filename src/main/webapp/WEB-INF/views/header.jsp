@@ -166,8 +166,6 @@ p #logo {
 
 				<c:if
 					test="${sessionScope.loginMember ==null || sessionScope.loginMember.memberStatus == 0  }">
-
-
 					<!-- NAVBAR 메뉴 - 드랍다운 박스  -->
 					<div class="collapse navbar-collapse" id="lana-navbar">
 						<ul class="navbar-nav ml-lg-auto" style="right: auto; display:;">

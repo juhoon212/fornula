@@ -113,7 +113,12 @@ public class ExpertJoinController {
 		expertJoinService.updateExpertStatus(auth);
 		expertJoinService.updateStatus(member.getMemberIdx());
 		
+		loginMember.setMemberStatus(member.getMemberStatus());
+		
+		session.setAttribute(SessionConst.Login_Member, loginMember);
+		model.addAttribute("loginMember",loginMember);
 		log.info("memberSTatus :{}",member.getMemberStatus() );
+		System.out.println(member.getMemberStatus());
 		
 		return "redirect:/expert/success";
 
