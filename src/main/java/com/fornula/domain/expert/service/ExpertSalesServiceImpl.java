@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ExpertSalesServiceImpl implements ExpertSalesService{
 	private final ExpertSalesDAO expertSalesDAO;
-
+ 
 	@Override
 	public Map<String, Object> getSalesList(int pageNum, int expertIdx) {
 		int totalSales = expertSalesDAO.selectSalesCount();

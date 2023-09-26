@@ -91,10 +91,13 @@
                 ,comment_cnt
                 ,up_date
                FROM board
+               <where>
                <if test="keyword != null and keyword != ''">
                  <bind name="word" value="'%'+keyword+'%'"/>
-                  WHERE ${column} LIKE #{word}
+                 ${column} LIKE #{word} and
                </if>
+               board_status = 1
+               </where>      
                 ORDER BY reg_date desc, board_idx desc )
          b )
      WHERE rn BETWEEN #{startRow} AND #{endRow}

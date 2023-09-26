@@ -158,8 +158,8 @@
 								<div class="widget">
 									<h3 class="widget-title">나의 정보</h3>
 									<ul>
-										<li><a href="<c:url value="/mypageInfo"/>">내정보 수정</a></li>
-										<li><a href="<c:url value="/mypagePurchase"/>">구매 관리</a></li>
+										<li><a href="<c:url value="/mypage/mypageInfo"/>">내정보 수정</a></li>
+										<li><a href="<c:url value="/mypage/mypagePurchase"/>">구매 관리</a></li>
 										<li><a href="<c:url value="/cart"/>">장바구니</a></li>
 										<li><a href="<c:url value="/mypage/mypagePwchange"/>">비밀번호
 												수정</a></li>
