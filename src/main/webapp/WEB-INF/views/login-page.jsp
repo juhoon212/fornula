@@ -145,7 +145,6 @@ a {
                  src="<c:url value="/pictures/placeholder/kakao-talk.png"/>"
                   alt="kakao"></a>
             </div>
-            	
 	<sec:csrfInput/>
          </form> 
     </section>
