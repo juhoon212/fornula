@@ -27,7 +27,6 @@ public class ReviewRestController {
 		Review findReview = reviewService.findReviewByReviewIdx(Integer.parseInt(reviewIdx));
 		
 		findReview.setContent(reviewForm.getContent());
-		findReview.setScore(reviewForm.getScore());
 		
 		int updateReview = reviewService.updateReview(findReview);
 		
