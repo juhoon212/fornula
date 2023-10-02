@@ -163,20 +163,6 @@
                     <div class="post-content">
                         <h4 class="font-weight-bold">게시글 수정</h4>
                             </div>               
-							<div>
-								 <div class="star-rating"> 
-									 <input type="radio" id="5-stars" class="stars" name="score" value="5" />
-									 <label for="5-stars" class="star">&#9733;</label>
-									 <input type="radio" id="4-stars" class="stars" name="score" value="4" />
-									 <label for="4-stars" class="star">&#9733;</label>
-									 <input type="radio" id="3-stars" class="stars" name="score" value="3" />
-									 <label for="3-stars" class="star">&#9733;</label>
-									 <input type="radio" id="2-stars" class="stars" name="score" value="2" />
-									 <label for="2-stars" class="star">&#9733;</label>
-									 <input type="radio" id="1-star" class="stars" name="score" value="1" />
-									 <label for="1-star" class="star">&#9733;</label>
-								</div>
-							</div>
                             <div class="form-group row" id="itemContent">
                             
                            
