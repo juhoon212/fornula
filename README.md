@@ -148,6 +148,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 # 주요 기능
 회원가입 기능
----
+
+
 로그인 기능
----
+
