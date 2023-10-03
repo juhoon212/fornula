@@ -128,8 +128,11 @@ KG 이그니스 결제 api
 # ERD 
 https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_loc=-8762%2C-1383%2C11595%2C6595%2C0_0&invitationId=inv_8e8e90e3-7087-4962-9d8c-8bd40844fee2
 
-# Oralcle 11g DB 정의서
 
+이거 수정해야할듯
+
+# Oralcle 11g DB 정의서
+이거 수정해야할듯
 
 # 요구사항 정의서
 
@@ -144,3 +147,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 # 주요 기능
+회원가입 기능
+---
+로그인 기능
+---
