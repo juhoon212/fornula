@@ -1,6 +1,6 @@
 # fornula
 Spring Framework + JSP 전문가 외주 사이트
-<www.naver.com> 여기다가 우리 도메인적기
+<여기다가 우리 도메인적기> 
 
 
 - FORNUAL은 전문가 외주를 목표로 공급과 수요를 연결해주는 사이트입니다.
