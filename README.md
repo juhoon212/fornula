@@ -82,6 +82,27 @@ FOR + MANAUL의 합성어인 FORNUAL은 카카오, 구글, 네이버 로그인�
 - 공유하기 기능 / 지도 API 기능
 
 
+# 개발 환경
+- Java 11
+
+
+- JavaScript(ECMA-6)
+
+
+- tomcat V 9.0
+
+
+- 서버 : AWS
+
+
+- Database : Oracle DB(11g)
+
+
+- 템플릿 : bootstrap framework
+
+
+
+
 # 페이지 흐름도
 
 
