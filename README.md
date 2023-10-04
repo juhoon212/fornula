@@ -450,6 +450,9 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 >> View
 
+
+[QnA 게시판](https://github.com/juhoon212/fornula/blob/main/screenshot/QnA%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
+
 ---
 
 [전문가랭킹 기능](#전문가랭킹-기능)
