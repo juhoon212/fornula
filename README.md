@@ -613,7 +613,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 [상품 기능](#상품-기능)
 
 
-- 상품 등록, 수정, 게시판 기능에 대한 페이지입니다
+- 상품 등록, 수정, 게시판, 리뷰 기능에 대한 페이지입니다
 
 
 >> 주요 소스 코드
@@ -851,6 +851,94 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 ```
 
 
+>> ReviewController.java
+- 댓글/답글 기능을 구현하기 위한 컨트롤러입니다
+
+
+```
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
+	@PostMapping("/add/{itemIdx}")
+	public String addBoard(@ModelAttribute ReviewForm form,
+							HttpSession session,
+							RedirectAttributes redirectAttributes,
+							@PathVariable Integer itemIdx) {
+		
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		
+		
+		
+		if(loginMember == null) {
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			return "redirect:/item/{itemIdx}/1";
+		}
+		
+		Member securityMember = memberSecurityService.getSecurityMember(loginMember.getId());
+		
+		
+		Purchase purchase = reviewService.selectPurchase(securityMember.getMemberIdx(), itemIdx);
+		
+		if(purchase == null) {
+			redirectAttributes.addAttribute("status", false);
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			redirectAttributes.addFlashAttribute("message", "결제 한 사람만 댓글을 달 수 있습니다.");
+			return "redirect:/item/{itemIdx}/1";
+		}
+		
+		Review review = new Review();
+		review.setPurchaseIdx(purchase.getPurchaseIdx());
+		
+		if(review.getScore() == 0) {
+			review.setScore(1);
+		}
+		
+		review.setScore(form.getScore());
+		review.setContent(form.getContent());
+		
+		int addResult = reviewService.addReview(review);
+		
+		if(addResult == 0) {
+			return "404";
+		}
+		
+		redirectAttributes.addAttribute("itemIdx", itemIdx);
+		
+		return "redirect:/item/{itemIdx}/1";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
+	@GetMapping("/add/reply/{itemIdx}/{reviewIdx}")
+	public String showReplyForm(@PathVariable Integer itemIdx, @PathVariable Integer reviewIdx, Model model) {
+		
+		model.addAttribute("itemIdx", itemIdx);
+		model.addAttribute("reviewIdx", reviewIdx);
+		
+		return "reply";
+	}
+	
+	@PostMapping("/add/reply/{itemIdx}")
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
+	public String addReply(@ModelAttribute Review review, @PathVariable Integer itemIdx, RedirectAttributes redirectAttributes, HttpSession session) {
+		
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		Member member = memberSecurityService.getSecurityMember(loginMember.getId());
+		reviewService.addReply(review, itemIdx, member.getMemberIdx());
+
+		return "redirect:/item/{itemIdx}/1";
+	}
+	
+	// 리뷰 수정 페이지
+	@GetMapping("/review/update/{reviewIdx}/{itemIdx}")
+	@PreAuthorize("isAuthenticated()")
+	public String updateReview(@PathVariable String reviewIdx, @PathVariable int itemIdx, Model model) {
+		
+		model.addAttribute("reviewIdx", reviewIdx);
+		model.addAttribute("itemIdx", itemIdx);
+		
+		return "review-update";
+	}
+```
+
+
 >> View
 
 
@@ -864,6 +952,9 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 [상품 게시판](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
+
+
+[댓글/답글](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%A6%AC%EB%B7%B0.png)
 
 ---
 
