@@ -716,6 +716,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 전문가 창을 클릭할 시 전문가의 포트폴리오를 볼 수 있도록 만든 기능입니다
 
 
+```
 //	전문가 클릭시 포트폴리오로 넘기기
 	@GetMapping("/output/{expertIdx}")
 	public String goExpertOutput(@PathVariable Integer expertIdx, @ModelAttribute Expert originalExpert, Model model) {
@@ -728,6 +729,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 		return "expert-output";
 	}
+```
 
 
 >> ExpertRankingMapper.xml
