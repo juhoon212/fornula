@@ -296,7 +296,31 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 - 카카오, 구글, 네이버 로그인 기능 및 일반적인 회원 가입 기능입니다
+- Security가 적용되었습니다
 
+
+>> 주요 소스 코드
+
+
+>> MemberLoginController.java
+	@GetMapping("/login")
+	public String login() {
+		return "login-page";
+	}
+
+
+>> 코드 또 뭐있지..?
+
+
+>> View
+[구글 로그인](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B5%AC%EA%B8%80%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
+
+
+[네이버 로그인](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%84%A4%EC%9D%B4%EB%B2%84%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
+
+
+[카카오 로그인]
+(https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
 
 [메인페이지 기능](#메인페이지-기능)
 
