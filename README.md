@@ -180,6 +180,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 6. Query문을 짜임새 있게 짤 것
 # 2차(파이널) 프로젝트 발표
+[final ppt.pptx](https://github.com/juhoon212/fornula/files/12798265/final.ppt.pptx)
 
 
 # 주요 기능
