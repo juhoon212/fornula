@@ -322,6 +322,20 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 검색, 전문가 랭킹, 고객센터, 회사소개, 카테고리별 검색 기능이 포함된 페이지입니다 
 
 
+>> 주요 소스 코드
+
+
+>> View
+
+
+[헤더(비로그인)](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%97%A4%EB%8D%94(%EB%B9%84%EB%A1%9C%EA%B7%B8%EC%9D%B8).png)
+
+
+[헤더(로그인)](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%97%A4%EB%8D%94(%EB%A1%9C%EA%B7%B8%EC%9D%B8).png)
+
+
+[메인페이지](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png)
+
 [마이페이지 기능](#마이페이지-기능)
 
 
