@@ -138,10 +138,17 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 [요구사항 명세서 _ 5조.docx](https://github.com/juhoon212/fornula/files/12797938/_.5.docx)
 
 # 1차(세미) 프로젝트 발표
-
-
+[5조 최종본.pptx](https://github.com/juhoon212/fornula/files/12797994/5.pptx)
 
 # 피드백
+0908 파이널 프로젝트 / 첫번째 피드백
+
+
+1.	프로젝트 방향
+
+
+- 기능을 여러개 만드는 것이 주니어 개발자에겐 조금 더 도움이 될 수 있을 것
+- 검증 로직을 통하여 404,500 상태코드를 최소화 할 것
 
 
 # 2차(파이널) 프로젝트 발표
