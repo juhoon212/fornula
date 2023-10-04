@@ -137,9 +137,6 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 # 요구사항 정의서
 [요구사항 명세서 _ 5조.docx](https://github.com/juhoon212/fornula/files/12797938/_.5.docx)
 
-# 1차(세미) 프로젝트 발표
-[5조 최종본.pptx](https://github.com/juhoon212/fornula/files/12797994/5.pptx)
-
 # 피드백
 0908 파이널 프로젝트 / 첫번째 피드백
 
@@ -179,7 +176,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 6. Query문을 짜임새 있게 짤 것
-# 2차(파이널) 프로젝트 발표
+# 파이널 프로젝트 발표
 [final ppt.pptx](https://github.com/juhoon212/fornula/files/12798265/final.ppt.pptx)
 
 
