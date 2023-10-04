@@ -388,7 +388,39 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 >> 주요 소스 코드
 
 
+>> ItemBoardMapper.xml
 
+
+	<!-- 상품 게시판에서 상품 리스트들을 뽑을 때 사용하는 SQL문 / categoryIdx를 입력 받는다면 해당 categoryIdx가 포함된 상품만 출력되도록 변경 -->
+	<select id="selectItemList" resultMap="ItemPhotoCategoryCart">
+    SELECT *
+    FROM (
+        SELECT rownum rn, itemlist.*
+        FROM (
+            SELECT
+                item.item_idx,
+                item.category_idx,
+                item.EXPERT_IDX,
+                item.item_name,
+                item.item_content,
+                item.PRICE,
+                photo.PHOTO_IDX,
+                photo.ITEMFILE_NAME
+            FROM item
+            JOIN PHOTO ON item.ITEM_IDX = photo.ITEM_IDX
+            WHERE
+                item.item_status = 1
+                <if test="categoryIdx != null">
+                    AND item.category_idx = #{categoryIdx}
+                </if>
+                <if test="searchKeyword != null">
+                    AND (item.item_name LIKE '%' || #{searchKeyword} || '%' OR item.item_content LIKE '%' || #{searchKeyword} || '%')
+                </if>
+            ORDER BY item.item_idx DESC
+        ) itemlist
+    )
+    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
 
 
 >> View
@@ -404,6 +436,9 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 - 상품 등록, 수정, 게시판 기능에 대한 페이지입니다
 
+
+
+---
 
 [QnA 기능](#QnA-기능)
 
