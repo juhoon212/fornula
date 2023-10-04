@@ -349,20 +349,6 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 >> View
 
-
-[마이페이지]()
-
-[전문가페이지 기능](#전문가페이지-기능)
-
-
-- 전문가 정보 수정, 판매 관리, 상품 관리, 상품 등록이 포함된 페이지입니다
-
-
->> 주요 소스 코드
-
-
->> View
-
 [마이페이지 - 정보 수정](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80(%EC%A0%95%EB%B3%B4%EC%88%98%EC%A0%95).png)
 
 
@@ -376,6 +362,19 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 [마이페이지 - 회원 탈퇴](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%9A%8C%EC%9B%90%ED%83%88%ED%87%B4.png)
+
+---
+
+[전문가페이지 기능](#전문가페이지-기능)
+
+
+- 전문가 정보 수정, 판매 관리, 상품 관리, 상품 등록이 포함된 페이지입니다
+
+
+>> 주요 소스 코드
+
+
+>> View
 
 ---
 
@@ -458,6 +457,13 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 - 전문가 판매액 순서로 출력, 모든 전문가를 등록일자 순서로 출력하는 페이지입니다
 
+
+>> 주요 소스 코드
+
+
+>> View
+
+---
 
 [결제 기능](#결제-기능)
 
