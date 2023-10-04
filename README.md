@@ -132,10 +132,10 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 이거 수정해야할듯
 
 # Oralcle 11g DB 정의서
+[DB 정의서](https://github.com/juhoon212/fornula/raw/main/fornual.sql)
 
 
 # 피드백
-0908 파이널 프로젝트 / 첫번째 피드백
 
 
 1.	프로젝트 방향
