@@ -425,7 +425,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 >> View
 
 
-[검색 기능](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5.png)
+[검색창](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5.png)
 
 
 ---
@@ -477,7 +477,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 >> View
 
 
-[결제 기능](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%B0%EC%A0%9C.png)
+[결제 창](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%B0%EC%A0%9C.png)
 
 ---
 
