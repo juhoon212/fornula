@@ -1,4 +1,4 @@
-# fornula
+![image](https://github.com/juhoon212/fornula/assets/129178751/540959a6-6c47-4570-92b0-77763b25dd0d)# fornula
 Spring Framework + JSP 전문가 외주 사이트
 <여기다가 우리 도메인적기> 
 
@@ -278,6 +278,8 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 		return "redirect:/";
 	}
 
+>> View
+[회원가입](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.png)
 
 [로그인 기능](#로그인-기능)
 
