@@ -282,7 +282,8 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 >> View
 [회원가입](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.png)
-
+[ID 찾기](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%95%84%EC%9D%B4%EB%94%94%20%EC%B0%BE%EA%B8%B0.png)
+[비밀번호 찾기](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EC%B0%BE%EA%B8%B0.png)
 
 [로그인 기능](#로그인-기능)
 
