@@ -188,11 +188,6 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 >> MemberController.java
-
-
-...
-	private final MemberLoginService memberLoginService;
-	private final MemberSecurityService memberSecurityService;
 	
 	// 회원가입 폼
 	@GetMapping("/join")
@@ -286,7 +281,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 		session.invalidate();
 		return "redirect:/";
 	}
-...
+
 
 [로그인 기능](#로그인-기능)
 
