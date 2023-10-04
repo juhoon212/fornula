@@ -385,6 +385,20 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - SQL문을 활용하여 여러 방법(카테고리별 검색, 내용/제목 포함 검색)으로 검색이 가능하도록 만든 기능입니다
 
 
+>> 주요 소스 코드
+
+
+
+
+
+>> View
+
+
+[검색 기능](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5.png)
+
+
+---
+
 [상품 기능](#상품-기능)
 
 
