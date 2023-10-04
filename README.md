@@ -303,6 +303,8 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 >> View
+
+
 [구글 로그인](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B5%AC%EA%B8%80%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
 
 
@@ -310,6 +312,8 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 [카카오 로그인](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A1%9C%EA%B7%B8%EC%9D%B8.png)
+
+---
 
 [메인페이지 기능](#메인페이지-기능)
 
