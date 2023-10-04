@@ -336,6 +336,9 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 [메인페이지](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png)
 
+
+[회사 소개](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C.png)
+
 ---
 
 [마이페이지 기능](#마이페이지-기능)
