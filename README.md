@@ -475,9 +475,6 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 		model.addAttribute("expert", expert);
 		model.addAttribute("originalExpert", originalExpert);
 
-//		log.info("Showing modify form for expertIdx: {}", expertIdx);
-//		log.info("Showing modify form for originalExpert: {}", originalExpert);
-
 		return "expert-output";
 	}
 
