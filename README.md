@@ -182,9 +182,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 - 일반적인 회원 가입 기능입니다
 - 아이디 찾기, 비밀번호 찾기, 실패 로직 등이 포함되어 있습니다
-- 주요 소스 코드
-
-
+>> 주요 소스 코드
 >> MemberController.java
 	
 	// 회원가입 폼
