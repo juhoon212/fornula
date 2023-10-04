@@ -135,9 +135,10 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 이거 수정해야할듯
 
 # 요구사항 정의서
-
+[요구사항 명세서 _ 5조.docx](https://github.com/juhoon212/fornula/files/12797938/_.5.docx)
 
 # 1차(세미) 프로젝트 발표
+
 
 
 # 피드백
