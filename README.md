@@ -461,7 +461,98 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 >> 주요 소스 코드
 
 
+>> ExpertRankingController.java
+- 전문가 창을 클릭할 시 전문가의 포트폴리오를 볼 수 있도록 만든 기능입니다
+
+
+//	전문가 클릭시 포트폴리오로 넘기기
+	@GetMapping("/output/{expertIdx}")
+	public String goExpertOutput(@PathVariable Integer expertIdx, @ModelAttribute Expert originalExpert, Model model) {
+		Expert expert = expertInputService.getOriginalExpert(expertIdx);
+
+		originalExpert = expertInputService.getOriginalExpert(expertIdx);
+
+		model.addAttribute("expert", expert);
+		model.addAttribute("originalExpert", originalExpert);
+
+//		log.info("Showing modify form for expertIdx: {}", expertIdx);
+//		log.info("Showing modify form for originalExpert: {}", originalExpert);
+
+		return "expert-output";
+	}
+
+
+>> ExpertRankingMapper.xml
+- 전문가 랭킹 SQL문입니다
+
+
+	<select id="selectExpertList" resultType="ExpertMoneyRanking">
+		SELECT
+		    e.*,
+		    m.ID
+		FROM (
+		    SELECT
+		        rownum AS rn,
+		        expert_idx,
+		        member_idx,
+		        phone,
+		        interest,
+		        introduce,
+		        career,
+		        company_one,
+		        company_two,
+		        company_three
+		    FROM (
+		        SELECT *
+		        FROM expert
+		        ORDER BY expert_idx
+		    ) subquery
+		) e
+		LEFT JOIN MEMBER m ON e.member_idx = m.member_idx
+	    WHERE rn BETWEEN #{startRow} AND #{endRow}
+	</select>
+
+
+
+	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
+		SELECT *
+		FROM (
+		    SELECT 
+		        ROWNUM AS rn,
+		        COALESCE(totalMoney, 0) AS totalMoney,
+		        e.EXPERT_IDX,
+		        e.INTEREST,
+		        e.INTRODUCE,
+		        m.ID
+		    FROM
+		        EXPERT e
+		    LEFT JOIN
+		        (
+		            SELECT
+		                i.EXPERT_IDX,
+		                SUM(i.PRICE) AS totalMoney
+		            FROM
+		                SALES s
+		            JOIN
+		                ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+		            GROUP BY
+		                i.EXPERT_IDX
+		        ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+		    LEFT JOIN
+		        MEMBER m ON e.MEMBER_IDX = m.MEMBER_IDX
+		    WHERE totalMoney != 0
+		    ORDER BY
+		        COALESCE(totalMoney, 0) DESC
+		)
+		WHERE rn BETWEEN 1 AND 3
+	</select>
+ 
+
 >> View
+
+
+[전문가 랭킹](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%A0%84%EB%AC%B8%EA%B0%80%20%EB%9E%AD%ED%82%B9.png)
+
 
 ---
 
