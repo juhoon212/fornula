@@ -436,6 +436,246 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 상품 등록, 수정, 게시판 기능에 대한 페이지입니다
 
 
+>> 주요 소스 코드
+
+
+>> ItemInsertController.java
+- 상품 정보 입력, 상품 사진 등록을 위한 컨트롤러입니다
+
+
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
+	@PostMapping("/add/{expertIdx}")
+	@Transactional(rollbackFor = Exception.class)
+	public String insert(@ModelAttribute @Valid ItemForm itemForm, Errors errors, @PathVariable Integer expertIdx,
+			Model model, RedirectAttributes redirectAttributes)  {
+		//log.info("itemForm", itemForm);
+
+		
+		if (errors.hasErrors()) {
+			System.out.println(errors.getErrorCount());
+			log.info("Validation errors: {}", errors);
+			return "item-add";
+		}
+		
+//		model.addAttribute("itemForm", itemForm);
+//	    상품 등록
+		Item item = new Item();
+		
+		item.setExpertIdx(itemForm.getExpertIdx());
+		log.info("item", item);
+		item.setPrice(itemForm.getPrice());
+		log.info("item", item);
+		item.setItemName(itemForm.getItemName());
+		log.info("item", item);
+		item.setItemContent(itemForm.getItemContent());
+		log.info("item", item);
+		item.setCategoryIdx(itemForm.getCategoryIdx());
+		log.info("item", item);
+		
+		int result = itemInsertService.addItem(item);
+		
+		if (result == 0) {
+			redirectAttributes.addFlashAttribute("message", "상품등록에 실패하였습니다");
+			return "redirect:/item/add";
+		}
+		log.info("result", result);
+		
+		redirectAttributes.addAttribute("itemIdx", item.getItemIdx());
+		
+		log.info("Received POST request for /item/add/{expertIdx}");
+		log.info("expertIdx={}", expertIdx);
+
+
+		
+		log.info("item", item);
+		
+		itemForm.setExpertIdx(expertIdx);
+		
+		
+		return "redirect:/item/photo/add/{itemIdx}/"; // 등록한 상품의 사진 등록 페이지로 이동
+
+	}
+
+	@GetMapping("/photo/add/{itemIdx}")
+	public String addPhoto(@PathVariable String itemIdx, Model model) {
+		log.info("Received GET request for /item/photo/add/{itemIdx}");
+		model.addAttribute("itemIdx", itemIdx);
+
+		return "add-photo";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_EXPERT')")
+	@PostMapping("/photo/add/{itemIdx}")
+	@Transactional(rollbackFor = Exception.class)
+	public String addPhotoPost(@RequestParam(required = false) MultipartFile multipartFile, Model model,
+			@PathVariable Integer itemIdx, RedirectAttributes redirectAttributes) throws IOException {
+
+		log.info("Received POST request for /item/photo/add/{itemIdx}");
+		log.info("itemIdx={}", itemIdx);
+
+		if (multipartFile.isEmpty() || !multipartFile.getContentType().equals("image/png")) {
+			redirectAttributes.addFlashAttribute("message", "잘못된 파일입니다");
+			redirectAttributes.addAttribute("itemIdx", itemIdx);
+			return "redirect:/item/photo/add/{itemIdx}";
+		}
+
+//			uploadFile의 경로를 저장하기 위한 식
+		String uploadDirectory = context.getServletContext().getRealPath("/resources/images/upload/");
+		log.info("filepath = {}", uploadDirectory);
+//			uploadFile의 파일이름(PHOTO 테이블의 itemFileName)을 저장하기 위한 식
+		String uploadFileName = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
+
+		Photo itemPhoto = new Photo();
+
+		itemPhoto.setItemfileName(uploadFileName);
+		itemPhoto.setItemIdx(itemIdx);
+
+		multipartFile.transferTo(new File(uploadDirectory, uploadFileName));
+
+		// DB에 photo 객체 저장å
+		itemInsertService.addPhoto(itemPhoto);
+
+		redirectAttributes.addAttribute("itemIdx", itemIdx);
+
+		return "redirect:/item/{itemIdx}/1";
+	}
+
+
+>> ItemUpdateController.java
+- 상품 수정을 위한 컨트롤러입니다
+
+
+	@GetMapping("/{itemIdx}")
+	public String showUpdateItemForm(@PathVariable int itemIdx, Model model) {
+		
+		Item findItem = itemDetailService.findItemByIdx(itemIdx);
+		
+		model.addAttribute("item", findItem);
+		
+		return "item-update";
+	}
+
+
+>> ItemDetailController.java
+- 상품 상세 페이지를 위한 컨트롤러입니다
+
+
+	@GetMapping("/{itemIdx}/{pageNum}")
+	public String showItemsAndReviews(@PathVariable Integer itemIdx, 
+				@PathVariable Integer pageNum,
+				HttpSession session,
+				Model model
+				) {
+		if (ObjectUtils.isEmpty(pageNum)) {
+			pageNum = 1;
+		}
+
+		Item findItem = itemDetailService.getItem(itemIdx);
+		findItem.setItemDate(findItem.getItemDate().substring(0, 10));
+		Photo selectPhoto = itemDetailService.selectPhoto(itemIdx);
+
+		String originalFileName = extractPhoto(selectPhoto); // 사진 로직
+
+		model.addAttribute("item", findItem);
+		model.addAttribute("originalFileName", originalFileName);
+
+		Map<String, Object> selectReviews = reviewService.selectReviews(pageNum, itemIdx); // 게시판 로직
+
+		if (selectReviews.get("reviewList") == null) {
+
+			return "redirect:/400";
+		}
+
+		model.addAttribute("pager", selectReviews.get("pager"));
+		model.addAttribute("reviewList", selectReviews.get("reviewList"));
+
+		CustomMemberDetails member =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		 if(member != null) { 
+			 int memberIdx = member.getMemberIdx();
+			 log.info("memberIdx:{}", memberIdx);
+			 Cart cartList =cartService.selectCartInfo(memberIdx, itemIdx); 
+			 log.info("cart:{}",cartList); 
+			 model.addAttribute("cartList", cartList);
+		 }
+		
+		return "item";
+	}
+ 
+	private String extractPhoto(Photo selectPhoto) {
+
+		int pos = selectPhoto.getItemfileName().lastIndexOf("_");
+		String originalFileName = selectPhoto.getItemfileName().substring(pos + 1);
+
+		return originalFileName;
+	}
+
+	@GetMapping("/{itemIdx}/expertoutput/{expertIdx}")
+	public String goExpertOutput(@PathVariable Integer itemIdx, @ModelAttribute Expert originalExpert, Model model) {
+		Item item = itemDetailService.getItem(itemIdx);
+		Expert expert = expertInputService.getOriginalExpert(item.getExpertIdx());
+		int expertIdx = expert.getExpertIdx();
+
+		originalExpert = expertInputService.getOriginalExpert(expertIdx);
+		model.addAttribute("item", item);
+		model.addAttribute("expert", expert);
+		model.addAttribute("originalExpert", originalExpert);
+
+		log.info("Showing modify form for expertIdx: {}", expertIdx);
+		log.info("Showing modify form for originalExpert: {}", originalExpert);
+
+		return "expert-output";
+	}
+
+
+>> ItemBoardController.java
+- 상품 게시판을 위한 컨트롤러입니다
+
+
+	private void extractOriginalFileName(Map<String, Object> resultMap) {
+		
+		int filePos;
+		
+		List<ItemPhotoCategoryCart> resultList = (List<ItemPhotoCategoryCart>) resultMap.get("itemBoardList");
+		for (ItemPhotoCategoryCart itemPhotoCategoryCart : resultList) {
+			filePos = itemPhotoCategoryCart.getPhoto().getItemfileName().lastIndexOf("_");
+			
+			String originalFileName = itemPhotoCategoryCart.getPhoto().getItemfileName().substring(filePos + 1);
+			itemPhotoCategoryCart.getPhoto().setItemfileName(originalFileName);
+		}
+	}
+
+//  상품 전체를 출력하는 메소드 + 카테고리 버튼을 클릭하면 카테고리별로 상품을 출력하는 메소드 
+	@GetMapping("/boardList")
+	public String getItemBoardList(@RequestParam(defaultValue = "1") int pageNum, 
+	                               @RequestParam(required = false) Integer categoryIdx,
+	                               @RequestParam(required = false) String searchKeyword,
+	                               Model model) {
+	    Map<String, Object> resultMap = itemBoardService.getItemList(pageNum, categoryIdx, searchKeyword);
+
+	    extractOriginalFileName(resultMap);
+
+	    log.info("pager = {}", resultMap.get("pager"));
+
+	    model.addAttribute("itemBoardList", resultMap.get("itemBoardList"));
+	    model.addAttribute("pager", resultMap.get("pager"));
+
+	    return "item-board";
+	}
+
+
+>> View
+
+
+[상품 등록](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%20%EB%93%B1%EB%A1%9D.png)
+
+
+[상품 수정](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%20%EC%88%98%EC%A0%95.png)
+
+
+[상품 상세](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%20%EC%83%81%EC%84%B8.png)
+
+
+[상품 게시판](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
 
 ---
 
