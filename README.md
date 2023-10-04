@@ -183,7 +183,110 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 - 일반적인 회원 가입 기능입니다
+- 아이디 찾기, 비밀번호 찾기, 실패 로직 등이 포함되어 있습니다
+- 주요 소스 코드
 
+
+>> MemberController.java
+
+
+...
+	private final MemberLoginService memberLoginService;
+	private final MemberSecurityService memberSecurityService;
+	
+	// 회원가입 폼
+	@GetMapping("/join")
+	public String join(@ModelAttribute Member member) {
+		return "join";
+	}
+	
+	// 회원가입 
+	@PostMapping("/join")
+	   public String joinForm(@ModelAttribute @Valid Member member, Errors errors, @ModelAttribute Auth auth,RedirectAttributes redirectAttributes) {
+	      
+			if(errors.hasErrors()) {
+				return "join";
+			}
+		
+		   memberSecurityService.addSecurityMember(member);
+	       memberSecurityService.addAuth(auth);
+	       redirectAttributes.addFlashAttribute("message", "회원가입 성공");
+	       return "redirect:/";
+	   }
+
+	
+	
+	
+	// 아이디 찾기
+	@GetMapping("/findId")
+	public String showFindId() {
+		return "find-id";
+	}
+	
+	
+	// 비밀번호 찾기
+	@GetMapping("/findPw")
+	public String findPw() {
+		return "find-pw";
+	}
+	
+	@PostMapping("/findPw")
+	public String findPw(@ModelAttribute FindPasswordForm form, RedirectAttributes redirectAttributes) {
+		
+		log.info("PASSWORD findForm id = {}, email = {}", form.getId(),form.getEmail());
+		Member findMember = memberLoginService.findPw(form.getId(), form.getEmail());
+		
+		// 실패 로직
+		if(ObjectUtils.isEmpty(findMember)) {
+			redirectAttributes.addAttribute("status", "false");
+			redirectAttributes.addFlashAttribute("message", "맞지 않는 아이디 또는 이메일입니다.");
+			return "redirect:/member/findPw";
+		}
+		
+		redirectAttributes.addAttribute("memberIdx", findMember.getMemberIdx());
+		
+		return "redirect:/member/updatePassword/{memberIdx}";
+	}
+	
+	@GetMapping("/updatePassword/{memberIdx}")
+	public String findNewPw(@PathVariable String memberIdx, Model model) {
+		
+		model.addAttribute("memberIdx", memberIdx);
+		
+		return "update-password";
+	}
+	
+	@PostMapping("/updatePassword/{memberIdx}") 
+	public String updatePassword(@PathVariable String memberIdx, 
+								@RequestParam(required = false) String newPassword, 
+								RedirectAttributes redirectAttributes, 
+								Model model
+								) {
+		
+		Member findByIdxMember = memberLoginService.findByIdx(Integer.parseInt(memberIdx));
+		
+		if(ObjectUtils.isEmpty(findByIdxMember)) {
+			redirectAttributes.addFlashAttribute("message", "찾으시는 비밀번호와 동일한 아이디가 없습니다");
+			return "redirect:/member/findPw";
+		}
+		
+		int result = memberLoginService.updatePassword(findByIdxMember.getId(), newPassword);
+		
+		if(result == 0) {
+			return "400";
+		}
+		
+		model.addAttribute("message", "비밀번호가 변경되었습니다.");
+		return "common-success";
+	}
+	
+	//로그아웃
+	@PostMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+...
 
 [로그인 기능](#로그인-기능)
 
@@ -238,10 +341,3 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 
 - 카카오페이, kG 이그니스 결제 API를 활용하여 구현한 기능입니다
-
-
-
-
-## 회원가입 기능 {#회원가입-기능}
-
-이 곳에 회원가입 기능에 대한 설명을 작성합니다.
