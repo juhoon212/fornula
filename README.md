@@ -476,6 +476,9 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 >> View
 
+
+[결제 기능](https://github.com/juhoon212/fornula/blob/main/screenshot/%EA%B2%B0%EC%A0%9C.png)
+
 ---
 
 # 발표자료
