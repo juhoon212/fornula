@@ -374,7 +374,187 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 >> 주요 소스 코드
 
 
+>> ExpertInfoController.java
+- 전문가 정보 수정 페이지를 위한 컨트롤러입니다
+
+
+```
+	@GetMapping("/input")
+	public String getOriginalExpert(@ModelAttribute Expert originalExpert,
+			Model model, HttpSession session) {
+		// 세션에 저장된 experIdx를 가져오기
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
+		int expertIdx = expert.getExpertIdx();
+
+		log.info(
+				"Expert Info: expertIdx={}, phone={}, interest={}, career={}, companyOne={}, companyTwo={}, companyThree={}, introduce={}",
+				expert.getExpertIdx(), expert.getPhone(), expert.getInterest(), expert.getCareer(),
+				expert.getCompanyOne(), expert.getCompanyTwo(), expert.getCompanyThree(), expert.getIntroduce());
+
+//      //기존 전문가 정보 조회
+		originalExpert = expertInputService.getOriginalExpert(expertIdx);
+		model.addAttribute("loginMember", loginMember);
+		model.addAttribute("originalExpert", originalExpert);
+
+		log.info("Showing modify form for expertIdx: {}", expertIdx);
+		log.info("Showing modify form for originalExpert: {}", originalExpert);
+
+		return "expert-input";
+	}
+
+	@PostMapping("/input")
+	public String modifyExpert(@ModelAttribute Expert expert, Model model,
+			@RequestParam MultipartFile uploadFile) throws IOException {
+		log.info("Modifying expert information for expertIdx: {}", expert.getExpertIdx());
+
+		/*
+		 * if (errors.hasErrors()) { model.addAttribute("originalExpert", expert);
+		 * log.info("errors :{}", errors); return "expert-input"; }
+		 */
+
+		if (!uploadFile.isEmpty() && !uploadFile.getContentType().equals("application/pdf")) {
+			log.info("file:{}", uploadFile);
+			model.addAttribute("message", "pdf 파일만 업로드해주세요.");
+			return "expert-input";
+		}
+
+		if (!uploadFile.isEmpty()) {
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/images/portfolio");
+			log.info("filepath =" + uploadDirectory);
+
+			String expertfileName = UUID.randomUUID().toString() + "_" + uploadFile.getOriginalFilename();
+			log.info("filename =" + expertfileName);
+
+			expert.setExpertfileName(expertfileName);
+			
+			File file=new File(uploadDirectory, expertfileName);
+			
+			uploadFile.transferTo(file);
+			model.addAttribute("uploadDirectory", uploadDirectory);
+			model.addAttribute("expertfileName", expertfileName);
+
+		}
+		
+		expertInputService.modifyExpert(expert);
+		model.addAttribute("message", "전문가 수정을 완료하였습니다.");
+
+		return "expertupdate-success";
+	}
+```
+
+
+>> ExpertSalesController.java
+- 전문가 판매관리를 위한 컨트롤러입니다
+
+
+```
+	//판매내역을 출력하는 메소드
+    	@PreAuthorize("hasRole('ROLE_EXPERT')")
+    	@GetMapping("/sales")
+		public String getSalesList(@RequestParam(defaultValue = "1") int pageNum
+				, HttpSession session
+				, Model model
+				){
+			
+			String originalFileName; // 원본 파일 이름
+			int pos;
+			
+			//세션에 있는 expert_idx를 가져오기
+			CustomMemberDetails loginMember = (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+	    	Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
+	    	int expertIdx = expert.getExpertIdx();
+			log.info("expertIdx:{}",expertIdx);//로그출력
+
+			Map<String, Object> resultMap = expertSalesService.getSalesList(pageNum, expertIdx);//판매내역 리스트
+			log.info("list:{}", resultMap);// 로그출력
+			
+			
+			//여기부터 안넘어
+			List<SaleItemExpert> resultList= (List<SaleItemExpert>)resultMap.get("salesList");
+			log.info("resultList:{}",resultList);
+			
+			for(SaleItemExpert itemSalesList : resultList) {
+				
+				log.info("판매 목록 = {}", itemSalesList);
+				
+				pos = itemSalesList.getItemfileName().lastIndexOf("_");
+				originalFileName = itemSalesList.getItemfileName().substring(pos + 1);
+				
+				itemSalesList.setItemfileName(originalFileName);
+				
+			}
+			
+			model.addAttribute("salesList",resultMap.get("salesList"));
+			model.addAttribute("pager",resultMap.get("pager")) ;
+			
+			int price = expertSalesService.getTotalMoney(expertIdx);
+			String formatPrice = String.format("%,d", price);
+			//log.info("price:{}", price);
+			
+			model.addAttribute("price", formatPrice);
+			
+
+			
+			return "expert-sales";
+
+		}
+```
+
+
+>> ExpertBoardController.java
+- 전문가 상품관리를 위한 컨트롤러입니다
+
+
+```
+	@GetMapping("/board")
+	public String getBoardList(@RequestParam(defaultValue = "1") int pageNum
+								,HttpSession session
+								,Model model) {
+		String originalFileName;
+		int pos;
+		
+		CustomMemberDetails loginMember =  (CustomMemberDetails) session.getAttribute(SessionConst.Login_Member);
+		Expert expert = itemDetailService.findByMemberIdx(loginMember.getMemberIdx());
+		int expertIdx = expert.getExpertIdx();
+		log.info("expertidx={}",expertIdx);
+		
+		Map<String, Object> resultMap=expertBoardService.getBoardList(pageNum, expertIdx);
+		log.info("list={}", resultMap);
+		
+		List<ItemPhotoForExpert> resultList=(List<ItemPhotoForExpert>)resultMap.get("boardList");
+		log.info("resultList={}",resultList);
+		
+		for(ItemPhotoForExpert itemBoardList : resultList) {
+			
+			pos=itemBoardList.getItemfileName().lastIndexOf("_");
+			originalFileName=itemBoardList.getItemfileName().substring(pos+1);
+			
+			itemBoardList.setItemfileName(originalFileName);
+		}
+		
+		log.info("pager={}", resultMap.get("pager"));
+		
+		model.addAttribute("boardList",resultMap.get("boardList"));
+		model.addAttribute("pager", resultMap.get("pager"));
+		
+		log.info("boardList={}", resultList);
+		
+		return "expert-list";
+	}
+```
+
+
 >> View
+
+
+[전문가 페이지 - 정보 수정](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%A0%84%EB%AC%B8%EA%B0%80%20%ED%8E%98%EC%9D%B4%EC%A7%80%20-%20%EC%A0%95%EB%B3%B4%20%EC%88%98%EC%A0%95.png)
+
+
+[상품 관리](https://github.com/juhoon212/fornula/blob/main/screenshot/%EC%83%81%ED%92%88%20%EA%B4%80%EB%A6%AC.png)
+
+
+[판매 관리](https://github.com/juhoon212/fornula/blob/main/screenshot/%ED%8C%90%EB%A7%A4%20%EA%B4%80%EB%A6%AC.png)
 
 ---
 
