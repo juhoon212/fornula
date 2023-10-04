@@ -483,66 +483,68 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 전문가 랭킹 SQL문입니다
 
 
-	<select id="selectExpertList" resultType="ExpertMoneyRanking">
-		SELECT
-		    e.*,
-		    m.ID
-		FROM (
-		    SELECT
-		        rownum AS rn,
-		        expert_idx,
-		        member_idx,
-		        phone,
-		        interest,
-		        introduce,
-		        career,
-		        company_one,
-		        company_two,
-		        company_three
-		    FROM (
-		        SELECT *
-		        FROM expert
-		        ORDER BY expert_idx
-		    ) subquery
-		) e
-		LEFT JOIN MEMBER m ON e.member_idx = m.member_idx
-	    WHERE rn BETWEEN #{startRow} AND #{endRow}
-	</select>
+```sql
+<select id="selectExpertList" resultType="ExpertMoneyRanking">
+    SELECT
+        e.*,
+        m.ID
+    FROM (
+        SELECT
+            rownum AS rn,
+            expert_idx,
+            member_idx,
+            phone,
+            interest,
+            introduce,
+            career,
+            company_one,
+            company_two,
+            company_three
+        FROM (
+            SELECT *
+            FROM expert
+            ORDER BY expert_idx
+        ) subquery
+    ) e
+    LEFT JOIN MEMBER m ON e.member_idx = m.member_idx
+    WHERE rn BETWEEN #{startRow} AND #{endRow}
+</select>
 
 
 
-	<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
-		SELECT *
-		FROM (
-		    SELECT 
-		        ROWNUM AS rn,
-		        COALESCE(totalMoney, 0) AS totalMoney,
-		        e.EXPERT_IDX,
-		        e.INTEREST,
-		        e.INTRODUCE,
-		        m.ID
-		    FROM
-		        EXPERT e
-		    LEFT JOIN
-		        (
-		            SELECT
-		                i.EXPERT_IDX,
-		                SUM(i.PRICE) AS totalMoney
-		            FROM
-		                SALES s
-		            JOIN
-		                ITEM i ON s.ITEM_IDX = i.ITEM_IDX
-		            GROUP BY
-		                i.EXPERT_IDX
-		        ) t ON e.EXPERT_IDX = t.EXPERT_IDX
-		    LEFT JOIN
-		        MEMBER m ON e.MEMBER_IDX = m.MEMBER_IDX
-		    WHERE totalMoney != 0
-		    ORDER BY
-		        COALESCE(totalMoney, 0) DESC
-		)
-		WHERE rn BETWEEN 1 AND 3
-	</select>
+
+<select id="selectTotalMoneyList" resultType="ExpertMoneyRanking">
+    SELECT *
+    FROM (
+        SELECT 
+            ROWNUM AS rn,
+            COALESCE(totalMoney, 0) AS totalMoney,
+            e.EXPERT_IDX,
+            e.INTEREST,
+            e.INTRODUCE,
+            m.ID
+        FROM
+            EXPERT e
+        LEFT JOIN
+            (
+                SELECT
+                    i.EXPERT_IDX,
+                    SUM(i.PRICE) AS totalMoney
+                FROM
+                    SALES s
+                JOIN
+                    ITEM i ON s.ITEM_IDX = i.ITEM_IDX
+                GROUP BY
+                    i.EXPERT_IDX
+            ) t ON e.EXPERT_IDX = t.EXPERT_IDX
+        LEFT JOIN
+            MEMBER m ON e.MEMBER_IDX = m.MEMBER_IDX
+        WHERE totalMoney != 0
+        ORDER BY
+            COALESCE(totalMoney, 0) DESC
+    )
+    WHERE rn BETWEEN 1 AND 3
+</select>
  
 
 >> View
