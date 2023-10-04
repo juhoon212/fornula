@@ -443,6 +443,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 상품 정보 입력, 상품 사진 등록을 위한 컨트롤러입니다
 
 
+```
 	@PreAuthorize("hasRole('ROLE_EXPERT')")
 	@PostMapping("/add/{expertIdx}")
 	@Transactional(rollbackFor = Exception.class)
@@ -539,12 +540,14 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 		return "redirect:/item/{itemIdx}/1";
 	}
+```
 
 
 >> ItemUpdateController.java
 - 상품 수정을 위한 컨트롤러입니다
 
 
+```
 	@GetMapping("/{itemIdx}")
 	public String showUpdateItemForm(@PathVariable int itemIdx, Model model) {
 		
@@ -554,12 +557,14 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 		
 		return "item-update";
 	}
+```
 
 
 >> ItemDetailController.java
 - 상품 상세 페이지를 위한 컨트롤러입니다
 
 
+```
 	@GetMapping("/{itemIdx}/{pageNum}")
 	public String showItemsAndReviews(@PathVariable Integer itemIdx, 
 				@PathVariable Integer pageNum,
@@ -625,12 +630,14 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 		return "expert-output";
 	}
+```
 
 
 >> ItemBoardController.java
 - 상품 게시판을 위한 컨트롤러입니다
 
 
+```
 	private void extractOriginalFileName(Map<String, Object> resultMap) {
 		
 		int filePos;
@@ -661,6 +668,7 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 
 	    return "item-board";
 	}
+```
 
 
 >> View
