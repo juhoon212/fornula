@@ -88,7 +88,7 @@ FOR + MANAUL의 합성어인 FORNUAL은 카카오, 구글, 네이버 로그인�
 - Java 11
 
 
-- JavaScript(ECMA-6)
+- JavaScript
 
 
 - tomcat V 9.0
@@ -106,7 +106,7 @@ FOR + MANAUL의 합성어인 FORNUAL은 카카오, 구글, 네이버 로그인�
 - Database : Oracle DB(11g)
 
 
-- 템플릿 : bootstrap framework
+- 템플릿 : bootstrap
 
 
 - 외부 API :
@@ -160,19 +160,13 @@ KG 이그니스 결제 api
 - 여유가 된다면 swagger를 사용해보는 것을 추천
 
 
-4. Spring Security를 사용할 때 참고 해볼 리스트
-
-
-- AML을 활용해 볼 것 / AML은 자금 세탁 방지를 위한 활동 및 장책을 나타낸다
-
-
-5. 소셜 로그인 시 주의사항
+4. 소셜 로그인 시 주의사항
 
 
 - front에서만 구축하는 것이 아닌, back 영역에서도 Token을 활용할 것
 
 
-6. Query문을 짜임새 있게 짤 것
+5. Query문을 짜임새 있게 짤 것
 
 
 # 주요 기능
