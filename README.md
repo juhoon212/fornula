@@ -131,8 +131,6 @@ KG 이그니스 결제 api
 <img width="1191" alt="ERD" src="https://github.com/juhoon212/fornula/assets/129178751/7e19901b-b190-4e6b-a8cd-da830a14a88b">
 
 
-이거 수정해야할듯
-
 # Oralcle 11g DB 정의서
 [DB 정의서](https://github.com/juhoon212/fornula/raw/main/fornual.sql)
 
