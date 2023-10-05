@@ -246,9 +246,6 @@ https://lucid.app/lucidchart/7aa35c73-1678-4844-9c96-00d91b703d72/edit?viewport_
 - 내 정보 수정, 구매 관리, 장바구니, 비밀번호 수정, 회원 탈퇴 기능이 포함된 페이지입니다
 
 
->> 주요 소스 코드
-
-
 >> View
 
 [마이페이지 - 정보 수정](https://github.com/juhoon212/fornula/blob/main/screenshot/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80(%EC%A0%95%EB%B3%B4%EC%88%98%EC%A0%95).png)
