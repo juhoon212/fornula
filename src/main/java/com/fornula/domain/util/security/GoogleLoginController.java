@@ -114,6 +114,9 @@ public class GoogleLoginController {
 		
 		session.setAttribute(SessionConst.Login_Member, customMemberDetails);
 		
+		member.setMemberStatus(customMemberDetails.getMemberStatus());
+		log.info("status={}",customMemberDetails.getMemberStatus());
+		
 		log.info("loginMember = {}", customMemberDetails.getId());
 		
 		}

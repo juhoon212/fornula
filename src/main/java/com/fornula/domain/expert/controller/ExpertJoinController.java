@@ -111,9 +111,9 @@ public class ExpertJoinController {
 		log.info("auth:{}",auth);
 		
 		expertJoinService.updateExpertStatus(auth);
-		expertJoinService.updateStatus(member.getMemberIdx());
+		expertJoinService.updateStatus(member.getMemberIdx());//member_status를 2로 변경
 		
-		loginMember.setMemberStatus(member.getMemberStatus());
+		loginMember.setMemberStatus(2);
 		
 		session.setAttribute(SessionConst.Login_Member, loginMember);
 		model.addAttribute("loginMember",loginMember);
